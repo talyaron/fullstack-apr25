@@ -1,0 +1,64 @@
+/* Base styles */
+body {
+    background-color: rgb(245, 242, 242);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: rgb(80, 80, 80);
+}
+
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+}
+
+/* Modern image styles */
+.image-container {
+    text-align: center;
+    margin: 25px 0 35px;
+}
+
+.image-container img {
+    width: 220px;
+    height: auto;
+    border-radius: 10px; /* Softer corners instead of circle */
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Deeper shadow for depth */
+    transition: all 0.3s ease;
+    /* Stylish gradient border */
+    border: none;
+    padding: 5px;
+    background: linear-gradient(145deg, #3a7bd5, #00d2ff);
+}
+
+.image-container img:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* Text styles */
+h1 {
+    color: #3a7bd5; /* Matching the image gradient */
+    font-size: 32px;
+    font-weight: bold;
+    margin: 30px 0 20px;
+    text-align: center;
+}
+
+p {
+    color: rgb(80, 80, 80);
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 16px 0;
+    text-align: center;
+}
+
+/* Content section */
+.content {
+    padding: 10px 20px;
+}
