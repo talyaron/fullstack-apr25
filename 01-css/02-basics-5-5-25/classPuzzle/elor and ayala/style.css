@@ -1,2 +1,18 @@
-body{
+
+div.title{
+    color: blue;
+    font-size: 25px;
+    line-height: 1.5;
+    text-align: center;
+}
+h1{
+    color: black;
+    font-size: 22px;
+    transform: rorate(5deg);
+}
+p{
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: justify;
 }
