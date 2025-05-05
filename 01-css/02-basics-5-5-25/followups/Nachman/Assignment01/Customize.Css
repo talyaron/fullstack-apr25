@@ -16,7 +16,7 @@ body {
     border-radius: 15px;
 }
 
-/* Modern image styles */
+/* Image styles - simplified */
 .image-container {
     text-align: center;
     margin: 25px 0 35px;
@@ -25,25 +25,16 @@ body {
 .image-container img {
     width: 220px;
     height: auto;
-    border-radius: 10px; /* Softer corners instead of circle */
+    border-radius: 10px;
     display: block;
     margin: 0 auto;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Deeper shadow for depth */
-    transition: all 0.3s ease;
-    /* Stylish gradient border */
-    border: none;
-    padding: 5px;
-    background: linear-gradient(145deg, #3a7bd5, #00d2ff);
-}
-
-.image-container img:hover {
-    transform: translateY(-5px); /* Slight lift on hover */
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+    border: 3px solid #3a7bd5; /* Simple blue border */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Text styles */
 h1 {
-    color: #3a7bd5; /* Matching the image gradient */
+    color: #3a7bd5;
     font-size: 32px;
     font-weight: bold;
     margin: 30px 0 20px;
