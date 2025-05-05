@@ -1,0 +1,136 @@
+h1{
+    color: aqua;
+    font-style: oblique;
+    text-align: center;
+}
+h2{
+    color: orange;
+    font-style: inherit;
+    text-align: center;
+}
+h3{
+    color: blueviolet;
+    font-style: unset;
+    text-align: center;
+}
+body{
+    background-color: bisque;
+}
+p{
+    text-align: center;
+}
+div{
+    text-align: center;
+    border-radius: 20%;
+}
+
+.container-div-center{
+    width: 500px;
+    margin: 0 auto;
+}
+
+.slider-container {
+    width: 500px;
+    height: 300px;
+    border: 3px solid black;
+    overflow: hidden;
+    position: relative;
+}
+
+.slider-container input {
+    display: none;
+}
+
+.slides {
+    width: 500%;
+    display: flex;
+}
+
+.slide {
+    width: 20%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: white;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+.dots {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.dots label {
+    width: 10px;
+    height: 10px;
+    background-color: white;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+#slide1:checked ~ .slides {
+    margin-left: 0;
+}
+
+#slide2:checked ~ .slides {
+    margin-left: -100%;
+}
+
+#slide3:checked ~ .slides {
+    margin-left: -200%;
+}
+
+#slide4:checked ~ .slides {
+    margin-left: -300%;
+}
+
+#slider2-slide1:checked ~ .slides {
+    margin-left: 0%;
+}
+
+#slider2-slide2:checked ~ .slides {
+    margin-left: -100%;
+}
+
+#slider2-slide3:checked ~ .slides {
+    margin-left: -200%;
+}
+
+#slider3-slide1:checked ~ .slides {
+    margin-left: 0%;
+}
+
+#slider3-slide2:checked ~ .slides {
+    margin-left: -100%;
+}
+
+#slider4-slide1:checked ~ .slides {
+    margin-left: 0%;
+}
+
+#slider4-slide2:checked ~ .slides {
+    margin-left: -100%;
+}
+
+#slider4-slide3:checked ~ .slides {
+    margin-left: -200%;
+}
+
+#slider4-slide4:checked ~ .slides {
+    margin-left: -300%;
+}
+
+#slider4-slide5:checked ~ .slides {
+    margin-left: -400%;
+}
