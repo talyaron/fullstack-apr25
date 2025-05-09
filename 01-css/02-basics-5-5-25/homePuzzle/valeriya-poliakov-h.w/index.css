@@ -1,0 +1,12 @@
+h1, h4, body {
+    color: #0e0d0d;
+    font: 16px;
+    text-align: center;
+    
+}
+body{
+    background-color: rgb(172, 189, 235);
+}
+h1 {
+    color: #582b31;
+}
