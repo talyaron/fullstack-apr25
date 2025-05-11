@@ -28,15 +28,22 @@
         }
       </style>
     </div>
-    <div id="birthdayduck">
+    <div class="birthdayduck">
       <h3>This duck have birthday</h3>
       <img src="./happybirthday.jpg" style="width: 250px; height: 250px" />
       <br />
       <span>Click 10 times and see </span>
       <br />
+      <div class="button-wraper">
+        <button onclick="confettiOnButton()" class="confetti_button">Confetti for ducky</button>
+      </div>
+      <br/>
       <button class="birthdayButton" onclick="happyBirthdatCounter()">Click here for HappyBirthday</button>
       <br />
-      <span id="Display">HappyBirthday Counter - <span id="counterDisplay">0</span>
+      <div class="counterStyle">
+
+        <span id="Display">HappyBirthday Counter - <span id="counterDisplay">0</span>
+      </div>
       </span>
     </div>
     </div>
