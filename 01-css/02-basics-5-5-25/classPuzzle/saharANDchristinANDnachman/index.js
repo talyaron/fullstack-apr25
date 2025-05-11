@@ -1,7 +1,7 @@
 let counterButton = 0;
 function happyBirthdatCounter() {
-  if (counterButton < 10) {
-    confetti();
+  if (counterButton < 9) {
+    // confetti();
     counterButton++;
     document.getElementById("counterDisplay").textContent = counterButton;
     console.log("counterButton", counterButton);
@@ -40,4 +40,16 @@ function confetti2() {
 }
 function thumbs(x) {
   x.classList.toggle("fa-thumbs-down");
+}
+
+function confettiOnButton(){
+   document.getElementsByClassName("confetti_button")[0].addEventListener("click",()=>{
+      let canvas = document.createElement("canvas")
+      canvas.width = 500;
+      canvas.height = 800;
+      let container = document.getElementsByClassName("button-wraper")[0];
+      container.appendChild(canvas);      
+      let confetti_button = confetti.create(canvas);
+      confetti_button().then(()=> container.removeChild(canvas));
+    });
 }
