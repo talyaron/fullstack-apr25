@@ -2,14 +2,27 @@ body{
     font-family: "Cal Sans", sans-serif;
     font-weight: 400;
     font-style: normal;
-    border: 2px black solid;
+    /* border: 2px black solid; */
+    /* border-radius: 2%; */
 }
 
 div>img{
     width: 100%;
+    
 }
 
 div{
-    width:30%;
+    width:25%;
+        border: 2px black solid;
 
+
+}
+
+.first{
+    color: rgb(86, 86, 86);
+    font-size: 12px;
+}
+.read{
+    color: rgb(0, 0, 0);
+    font-size: 14px;
 }
