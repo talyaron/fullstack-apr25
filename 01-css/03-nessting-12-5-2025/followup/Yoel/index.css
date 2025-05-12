@@ -1,0 +1,9 @@
+div{
+    width: 100px;
+    border: 50px black;
+    
+}
+div > img{
+    width: 200px;
+    height: 300px;
+}
