@@ -1,3 +1,16 @@
-helf{
-    color: beige;
+body{
+    background-color: black;
+
+}
+.health{
+    padding: 15px;
+
+
+}
+.helth >img{
+    width: 100%;
+}
+.des1{
+    font-size: 20px;
+
 }
