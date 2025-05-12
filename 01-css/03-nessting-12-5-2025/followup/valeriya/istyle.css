@@ -1,0 +1,6 @@
+div{
+    border-image: round; color: #000;
+    p{
+      list-style-position: inside;
+    }
+}
