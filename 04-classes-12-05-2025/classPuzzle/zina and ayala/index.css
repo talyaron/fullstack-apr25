@@ -1,3 +1,22 @@
-helf{
-    color: beige;
+body{
+    background-color: black;
+
 }
+.health{
+    margin: 15px;
+    width: 250px;
+
+
+}
+.helth >img{
+    width: 100%;
+}
+.des{
+    
+
+  font-family: "Cal Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
