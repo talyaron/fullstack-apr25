@@ -1,0 +1,29 @@
+body{
+    font-family: "Rubik", sans-serif;
+}
+
+div{
+    height: 400px;
+    width: 390px;
+    margin: auto;
+}
+
+div>img{
+    width: 85%;
+}
+
+div>h2{
+    width: 300px;
+}
+
+.health{
+    width: 30%;
+}
+
+.environment{
+    width: 40%;
+}
+
+.read{
+    width: 25%;
+}
