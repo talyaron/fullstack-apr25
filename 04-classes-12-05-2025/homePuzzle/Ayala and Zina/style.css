@@ -1,3 +1,11 @@
+body {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 550;
+    font-style: normal;
+    font-size: 17px;
+}
+
 .class {
     max-width: 730px;
     margin-left: auto;
@@ -7,16 +15,84 @@
     border-right: 1px solid rgb(179, 174, 174);
     padding: 30px;
 
-    
+
 
 
 }
-.story{
+
+.story {
     display: flex;
     justify-content: space-between;
+    text-align: center;
 }
-.profile> img {
+.des{
+    font-size: 15px;
+}
+.profile>img {
     width: 80px;
-        height: auto;
-        border-radius: 50%;
+    height: auto;
+    border-radius: 50%;
+
+}
+
+.post {
+    margin-top: 25px;
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+
+
+}
+
+.headline {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    
+}
+
+.left {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.left>img {
+    width: 45px;
+    height: auto;
+
+    margin-right: 20px;
+}
+
+span {
+    margin-right: 5px;
+}
+.bold{
+    font-weight: 700;
+}
+.grey {
+    color: gray
+}
+.postpic{
+   background-color: black;
+   display: flex;
+   justify-content: space-between;
+   height: 660px;
+   margin-top: 15px;
+
+;
+}
+.postpic>img {
+    height: 100%;
+    width: auto;
+    
+}   
+.postpic >div{
+color: white;
+    font-size: 30;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 620px;
+
+
 }
