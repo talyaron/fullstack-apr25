@@ -1,0 +1,23 @@
+.class {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    border-left: 1px solid rgb(179, 174, 174);
+    border-right: 1px solid rgb(179, 174, 174);
+    padding: 30px;
+
+    
+
+
+
+}
+.story{
+    display: flex;
+    justify-content: space-between;
+}
+.profile> img {
+    width: 70px;
+        height: auto;
+        border-radius: 50%;
+}
