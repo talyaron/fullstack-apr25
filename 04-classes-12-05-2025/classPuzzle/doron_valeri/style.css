@@ -6,6 +6,7 @@ div{
     height: 400px;
     width: 390px;
     margin: auto;
+    padding: 0%;
 }
 
 div>img{
@@ -14,16 +15,20 @@ div>img{
 
 div>h2{
     width: 300px;
+    padding: 0%;
 }
 
 .health{
     width: 30%;
+    padding: 0%;
 }
 
 .environment{
     width: 40%;
+    padding: 0%;
 }
 
 .read{
     width: 25%;
+    padding: 0%;
 }
