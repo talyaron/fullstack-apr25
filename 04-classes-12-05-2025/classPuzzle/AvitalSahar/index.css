@@ -29,4 +29,5 @@ div > img {
 }
 .all {
   display: flex;
+  gap:5px;
 }
