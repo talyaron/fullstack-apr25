@@ -1,0 +1,16 @@
+#nav{
+    display: flex;
+}
+
+.story>p{
+    margin: 0%;
+}
+
+.main{
+    padding-left: 10%;
+    
+}
+
+.profile{
+    display: flex;
+}
