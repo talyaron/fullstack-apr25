@@ -1,0 +1,100 @@
+body {
+<<<<<<< Updated upstream
+  font-family: Arial, sans-serif;
+  background-color: #fafafa;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  width: 500px;
+  border-radius:12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 12px;
+}
+.main-post {
+  width: 500px;
+  background-color: #fff;
+  overflow: hidden;
+  margin-top: 0px;
+}
+.container {
+  display: flex;
+  align-items: center;
+  padding: 4px 4px;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.text-block {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  flex: 1;
+}
+.line1 {
+  font-size: 14px;
+  font-weight: bold;
+}
+.line2 {
+  font-size: 13px;
+  color: #888;
+}
+.dots {
+  font-size: 18px;
+}
+.photo-container {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.photo-container img {
+  height: 650px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+.buttons img {
+  width: 100%;
+  display: block;
+  padding: 8px 12px;
+  box-sizing: border-box;
+}
+=======
+    font-family: sans-serif;
+    background: #fafafa;
+    direction: rtl;
+    padding: 20px;
+  }
+  
+  .stories {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+  }
+  
+  .story {
+    text-align: center;
+    width: 80px;
+  }
+  
+  .story img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    padding: 3px;
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  }
+  
+  .story-name {
+    margin-top: 6px;
+    font-size: 14px;
+    color: #333;
+    white-space: nowrap;
+  }
+  
+>>>>>>> Stashed changes

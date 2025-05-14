@@ -1,0 +1,36 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+#nav{
+    display: flex;
+}
+
+.story>p{
+    margin: 0%;
+}
+
+.main{
+    padding-left: 5%;
+    padding-right: 5%;
+    
+}
+
+.profile{
+    display: flex;
+}
+
+#description>p{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#box{
+    border: 2px solid rgb(212, 210, 210);
+    color: gray;
+
+}
+#box>p{
+    margin-top: 0%;
+}

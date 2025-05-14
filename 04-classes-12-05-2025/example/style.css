@@ -2,12 +2,15 @@ body{
     font-family: "Playwrite DK Loopet",
     cursive;
 }
-
-div {
-    width: 500px;
-    border: 1px solid black;
-  
+.wrapper{
+    display: flex;
+    gap:10px;
 }
+
+*{
+    box-sizing: border-box;
+}
+
 
 div>img {
     width: 100%;
@@ -17,8 +20,24 @@ div>img {
 .the-blue {
     color: blue;
     font-size: 30px;
+    width:500px;
+
+
 }
+
+.the-blue > *{
+  
+    padding:50px;
+    margin: 40px;
+}
+
 
 .the-red {
     color: red;
+<<<<<<< Updated upstream
+    width:500px;
+=======
+    font: ;
+>>>>>>> Stashed changes
 }
+
