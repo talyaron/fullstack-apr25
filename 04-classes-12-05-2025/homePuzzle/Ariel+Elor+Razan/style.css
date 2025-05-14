@@ -1,17 +1,72 @@
-body {
-<<<<<<< Updated upstream
-  font-family: Arial, sans-serif;
-  background-color: #fafafa;
-  display: flex;
-  justify-content: center;
-  padding: 20px;
-  width: 500px;
-  border-radius:12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  padding: 12px;
+*{
+  margin: 0;
+  padding: 0;
+  text-shadow: 0 0.5px 0 black;
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
 }
+
+body {
+  background-color: rgba(19, 110, 80, 0.658);
+  width: 460px;
+  font-size: 14px;
+  margin: auto;
+}
+
+.warrper-PostDescription {
+  width: 460px;
+  margin: auto;
+}
+
+span, p, div {
+  background-color: aliceblue;
+}
+
+span {
+  font-weight: bold;
+}
+/*********************/
+/*********************/
+/*********************/
+/*********************/
+/*********************/
+/*********************/
+/* ELOR - STORIES */
+.stories-profiles{
+  display: flex;
+}
+
+.stories {
+  gap: 15px;
+  overflow-x: auto;
+  padding: 10px;
+  background: #fff;
+}
+.story {
+  text-align: center;
+}
+
+.story img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 3px solid linear-gradient;
+  background: linear-gradient(#feda, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+}
+
+.story p {
+  margin-top: 5px;
+}
+/*********************/
+/*********************/
+/*********************/
+/*********************/
+/*********************/
+/*********************/
+/* RAZAN - MAIN POST */
+
 .main-post {
-  width: 500px;
+  /* width: 500px; */
   background-color: #fff;
   overflow: hidden;
   margin-top: 0px;
@@ -64,33 +119,56 @@ body {
   padding: 8px 12px;
   box-sizing: border-box;
 }
-=======
-    font-family: sans-serif;
-    background: #fafafa;
-    direction: rtl;
-    padding: 20px;
-  }
-  
-  stories {
-    display: flex;
-    gap: 15px;
-    overflow-x: auto;
-    padding: 10px;
-    background: #fff;
-  }
-  story {
-    text-align: center;
-    font-size: 12px;
-    width: 70px;
-  }
-  story img. {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    border: 3px solid linear-gradient;
-    background: linear-gradient(#feda, #fa7e1e, #d62976, #962fbf, #4f5bd5);
-  }
-  story p. {
-    margin-top: 5px;
-  }
->>>>>>> Stashed changes
+/*********************/
+/*********************/
+/*********************/
+/*********************/
+/*********************/
+/*********************/
+/* ARIEL - COMMENTS */
+
+.descriptionAuthor, .addComment > p {
+  padding-bottom: 7px;
+}
+
+.commentBox {
+  padding-bottom: 15px;
+}
+
+.comments {
+background-color: aliceblue;
+padding: 20px;
+}
+
+.serbFlag {
+  width: 15px;
+}
+
+.grayTag {
+  color: rgb(153, 153, 149);
+  font-weight: 500;
+}
+
+.see {
+  padding-top: 7px;
+  font-weight: bold;
+}
+
+.commentArea {
+  border: none;
+  outline: none;
+  resize: none;
+  width: 100%;
+  background-color: transparent;
+}
+
+.commentArea::placeholder {
+  color: #8e8e8e;
+
+}
+.commentArea:active::placeholder {
+  color: #8e8e8e;
+}
+.commentArea:focus::placeholder {
+  color: transparent;
+}
