@@ -1,7 +1,7 @@
 body {
     font-family: "Montserrat", sans-serif;
-    font-size: 17px;
-    background-color: #f0f0f0;
+    font-size: 15px;
+    background-color: white;
 }
 
 .container {
@@ -27,23 +27,26 @@ body {
 }
 
 .des {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-    color: #333;
+    margin-top: 0px;
+    margin-bottom: 40px;
+    font-size: 13px;
+    font-weight:bold ;
     text-align: center;
+    color: #353535;
 }
 
 .post {
-    margin-top: 25px;
-    max-width: 550px;
+    
+    max-width: 530px;
     margin: auto;
 }
 
-.headline {
+.headline ,.post-actions ,.add-comment{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
+    
 }
 
 .left {
@@ -53,7 +56,7 @@ body {
 }
 
 .left img {
-    width: 45px;
+    width: 35px;
     height: auto;
 }
 
@@ -76,6 +79,8 @@ body {
     align-items: center;
     height: 660px;
     margin-top: 15px;
+    margin-bottom:15px;
+
 }
 
 .postpic img {
@@ -85,16 +90,28 @@ body {
 
 .icon {
     font-family: 'Raleway', sans-serif;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: bold;
     color: white;
+    margin-top: 610px;
+    padding: 25px}
+   
+.post-actions{
+    margin-bottom: 0px;
+    i{
+        font-size: 25px;
+        color: #333;
+        margin: 0 3px;
+    }
+   
+    .far:hover::before {
+  font-weight: 900;
+  color: black;
+}
 }
 
 .post-details {
-    margin-top: 10px;
-    font-size: 14px;
-    color: #333;
-    padding-top: 10px;
+ color: #000;
 }
 
 .likes {
@@ -106,12 +123,21 @@ body {
     font-size: 15px;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
-
-.view-comments {
-    color: gray;
-    font-size: 13px;
+.more{
+    font-size: 15px;
+    margin-left: 2px;
+color: gray;
 }
 
+.view-comments ,.add-comment{
+    color: gray;
+    font-size: 16px;
+}
+.add-comment{
+    width: 100%;
+    padding-bottom: 20px;
+    border-bottom: solid 3px rgba(194, 192, 192, 0.459);   
+}
 @media (max-width: 600px) {
     .container {
         width: 100%;
