@@ -1,4 +1,4 @@
-*{
+{
   margin: 0;
   padding: 0;
   text-shadow: 0 0.5px 0 black;
@@ -41,14 +41,21 @@ span {
   overflow-x: auto;
   padding: 10px;
   background: #fff;
+  margin: 30px;
 }
 .story {
   text-align: center;
+  margin: 30px;
+    float: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: red;
 }
-
 .story img {
-  width: 60px;
-  height: 60px;
+  image-orientation: 0deg;
+  width: 43px;
+  height: 43px;
   border-radius: 50%;
   border: 3px solid linear-gradient;
   background: linear-gradient(#feda, #fa7e1e, #d62976, #962fbf, #4f5bd5);
@@ -56,6 +63,9 @@ span {
 
 .story p {
   margin-top: 5px;
+  flex-direction: row;
+  display: flex;
+  text-align: left;
 }
 /*********************/
 /*********************/
