@@ -1,15 +1,15 @@
+body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .story{
     display: flex;
-  
     justify-content: center;
     align-items: center;   
     gap: 15px;
     padding-top: 20px;
-    
-    
-    
-    
     
     
 }
@@ -19,15 +19,14 @@
     display: flex;
     flex-direction: column;
     display: block;
-    transform: translate();
     align-items: center;
     font-family: "Protest Riot", sans-serif;
     p{
       transform: translateY(-6px);
       font-size: 11.5px;
+      
 
     }
-    
     
     
     
@@ -38,6 +37,7 @@
   border-radius: 50%;
   padding: 3px; 
   display: inline-block;
+  
   
  
 
@@ -54,6 +54,7 @@
   
   
   
+  
 }
 
 .storypost img {
@@ -61,10 +62,78 @@
   height: 66px;
   border-radius: 50%;
   display: block;
+}
+
+
+
+/* PART 2 */
+    
+
+
+
+
+
+.icon-text-wrapper{
+  display: flex;
   
-   
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.icon{
+  .bold{
+    font-weight: 800;
+  }
+  .gray{
+    color: gray;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+
+  }
+  }
+  p6{
+    font-size: 12px;
+  }
+    
   
 }
+
+
+
+
+
+
+.video{
+
+
+}
+
+.like-section{
+  .likes{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight:bold;
+    margin-top: 0px;
+    
+    
+    
+
+  }
+  
+}
+
+.postcomment{
+  h4{ 
+    color: gray;
+  }
+    width: 422px;
+  p1{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    
+    
+  }
+}
+
 
 
 
