@@ -22,3 +22,10 @@ img {
     box-sizing: border-box;
 }
 
+.story>div{
+
+ height: 0.1cm;
+ width: 2cm;
+   p{
+    font-size: 10px;   }
+}
