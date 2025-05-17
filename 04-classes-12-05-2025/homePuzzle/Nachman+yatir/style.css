@@ -1,4 +1,15 @@
-.story{
+
+HTML{
+    font-size: 1.2rem ;
+    line-height: 1.6;
+    
+}
+
+.STORY{
     display: flex;
-    gap: 10px;
+    gap: 12PX;
+}
+
+*{
+    box-sizing: border-box;
 }
