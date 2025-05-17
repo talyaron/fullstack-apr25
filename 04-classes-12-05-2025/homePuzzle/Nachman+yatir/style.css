@@ -1,15 +1,24 @@
 
-HTML{
+html{
     font-size: 1.2rem ;
     line-height: 1.6;
     
 }
 
-.STORY{
+img {
+    width: 100%;
+}
+
+.story{
     display: flex;
     gap: 12PX;
 }
-
+.story>div>img{
+    
+    border-radius: 100px;
+    padding: auto;
+}
 *{
     box-sizing: border-box;
 }
+
