@@ -1,7 +1,7 @@
 body{
     background-color: rgb(253, 251, 251);
     color: #080808;
-    
+
 .storiesline{
     display: flex;
     padding: 5px;
@@ -22,11 +22,26 @@ div>p{
 div{
     padding: 5px;
 }
-.story-inner{
-    padding: 5px;
 
-div>img{
+img h{
+  max-width: 100%;
+  height: auto;
+}
 
-    }
+#heart {
+    width: 20px;
+    height: 20px;
+}
+#message {
+    width: 20px;
+    height: 20px;
+}
+#share{
+    width: 20px;
+    height: 20px;
+}
+#save{
+    width: 20px;
+    height: 20px;
 }
 }
