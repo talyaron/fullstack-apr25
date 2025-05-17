@@ -23,12 +23,9 @@ img {
 }
 
 .story>div{
+
  height: 0.1cm;
  width: 2cm;
    p{
-    font-size: 10px;
-   }
-
- 
-
+    font-size: 10px;   }
 }
