@@ -1,0 +1,60 @@
+.wrapper {
+    border: black;
+    width: 500px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    transform: rotate(30deg);
+    background-color: green;
+}
+.line1 {
+    border: black;
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+.line2 {
+    border: black;
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 220px;
+}
+.box1 {
+    width: 200px;
+    height: 200px;
+    border: black;
+    margin: 20px;
+    background-color: rgb(220, 0, 132);
+    display: flex;
+    flex-direction: row;
+}
+.box2 {
+    width: 200px;
+    height: 200px;
+    border: black;
+    margin: 20px;
+    background-color: rgb(48, 0, 220);
+    display: flex;
+    flex-direction: row;
+}
+.box3 {
+    width: 200px;
+    height: 200px;
+    border: black;
+    margin: 20px;
+    background-color: rgb(209, 220, 0);
+    display: flex;
+    flex-direction: row;
+}
+.box4 {
+    width: 200px;
+    height: 200px;
+    border: black;
+    margin: 20px;
+    background-color: rgb(0, 220, 95);
+    display: flex;
+    flex-direction: row;
+}
