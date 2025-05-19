@@ -1,0 +1,43 @@
+.wrapper {
+    border: 3px solid black;
+    margin: 0 auto;
+    width: 530px;
+    height: 530px;
+    rotate: 20deg;
+
+
+}
+
+.box {
+    width: 250px;
+    height: 250px;
+    margin: 10px;
+
+}
+
+.one {
+    background-color: rgb(243, 160, 64);
+    position: relative;
+}
+
+.two {
+    background-color: rgb(158, 95, 158);
+    position: relative;
+}
+
+.three {
+    background-color: rgb(93, 150, 224);
+    position: relative;
+
+
+    bottom: 49%;
+    left: 49%;
+
+}
+
+.four {
+    background-color: rgb(201, 82, 82);
+    position: relative;
+    bottom: 147%;
+    left: 49%;
+}
