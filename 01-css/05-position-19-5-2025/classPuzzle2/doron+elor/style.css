@@ -1,0 +1,42 @@
+.highq{/*doron */
+background-color: rgb(18, 16, 16);
+color: yellow;
+width: 100px;
+height: 50px;
+position: fixed;
+left: 100px;
+/* z-index: 100; */
+}
+
+.video-container {
+    width: 640px;
+    margin: auto;
+    border: 2px solid black;
+}
+
+video {
+    width: 100%;
+    display: block;
+}
+
+.videostick{/*doron */
+    position:sticky;
+    top: 10px;
+    left: 75%;
+}
+
+.instagram{/*elor */
+
+}
+
+.youtube{/*elor */
+
+}
+
+.test{/*elor */
+
+}
+
+.text{/*elor */
+
+}
