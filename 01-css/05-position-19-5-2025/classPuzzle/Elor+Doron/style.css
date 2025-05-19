@@ -1,6 +1,7 @@
 .wrapper{
     rotate: 20deg;
     border: 2px solid black;
+<<<<<<< Updated upstream
     margin: auto;
     max-width: fit-content;
     position: relative;
@@ -33,4 +34,11 @@
 
 .box4{
     background-color: blue;
+=======
+    width: 100px;
+    height: 100px;
+}
+.box{
+
+>>>>>>> Stashed changes
 }
