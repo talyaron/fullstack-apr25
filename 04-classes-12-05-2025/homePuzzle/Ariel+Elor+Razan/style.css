@@ -46,7 +46,7 @@ span {
 .story {
   text-align: center;
   margin: 30px;
-    float: none;
+  float: none;
   width: 45px;
   height: 45px;
   border-radius: 50%;
@@ -59,6 +59,54 @@ span {
   border-radius: 50%;
   border: 3px solid linear-gradient;
   background: linear-gradient(#feda, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.story-container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.stories-bar {
+  display: flex;
+  gap: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 10px;
+  overflow-x: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.story {
+  text-align: center;
+  flex: 0 0 auto;
+}
+
+.story img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #e91e63;
+}
+
+.story span {
+  display: block;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.main-image {
+  width: 100%;
+  display: block;
 }
 
 .story p {
