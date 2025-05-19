@@ -1,0 +1,27 @@
+.wrapper{
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: 1fr 1fr; 
+    width: 300px; 
+    height: 300px; 
+    border: 2px solid black;
+    transform: rotate(5deg); 
+    direction: rtl;  
+}
+.red-box{
+    background-color: rgb(231, 117, 117);
+    border-right: 1px;
+    border-bottom: 1px;
+    border-color: #ffb300;
+    border-width: 2px;
+
+}
+.yellow-box{
+
+}
+.blue-box{
+
+}
+.purple-box[
+
+]
