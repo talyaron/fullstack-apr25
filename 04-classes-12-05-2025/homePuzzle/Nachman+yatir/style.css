@@ -1,31 +1,125 @@
-
-html{
-    font-size: 1.2rem ;
-    line-height: 1.6;
-    
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fafafa;
+  margin: 0;
+  padding: 20px 0;
 }
 
-img {
-    width: 100%;
+.instagram-container {
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-.story{
-    display: flex;
-    gap: 12PX;
-}
-.story>div>img{
-    
-    border-radius: 100px;
-    padding: auto;
-}
-*{
-    box-sizing: border-box;
+.stories {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
 }
 
-.story>div{
+.story {
+  text-align: center;
+  font-size: 12px;
+}
 
- height: 0.1cm;
- width: 2cm;
-   p{
-    font-size: 10px;   }
+.story img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 3px solid #d6249f;
+}
+
+.instagram-post {
+  background-color: white;
+  border: 1px solid #dbdbdb;
+  border-radius: 8px;
+  margin-top: 30px;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.post-header img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.post-user-info {
+  font-size: 14px;
+}
+
+.post-user-info span {
+  font-weight: bold;
+  display: block;
+}
+
+.post-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-top: 1px solid #dbdbdb;
+  border-bottom: 1px solid #dbdbdb;
+}
+
+
+.post-actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  font-size: 20px;
+}
+
+
+.likes-count {
+  padding: 0 10px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+
+.post-caption {
+  padding: 10px;
+  font-size: 14px;
+}
+
+
+.comments {
+  padding: 0 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+.view-all {
+  color: gray;
+  margin-top: 5px;
+  font-size: 13px;
+}
+
+
+.add-comment {
+  display: flex;
+  border-top: 1px solid #dbdbdb;
+  padding: 10px;
+}
+
+.add-comment input {
+  flex: 1;
+  border: none;
+  font-size: 14px;
+  outline: none;
+  background-color: #fafafa;
+}
+
+.add-comment button {
+  background: none;
+  border: none;
+  color: #0095f6;
+  font-weight: bold;
+  cursor: pointer;
 }
