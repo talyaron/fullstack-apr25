@@ -27,6 +27,14 @@ body{
     z-index: 100;
     transform: translateX(50%);
 }
+.boxh4 {
+    position: relative;
+    left: 200px;
+}
+.boxp4 {
+    position: relative;
+    left: 200px;
+}
 .video{
     position:sticky;
     bottom: 100px;
