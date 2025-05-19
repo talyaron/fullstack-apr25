@@ -1,5 +1,11 @@
 .highq{/*doron */
-background-color: rgba(41, 39, 39, 0.082);
+background-color: rgb(18, 16, 16);
+color: yellow;
+width: 100px;
+height: 50px;
+position: fixed;
+left: 100px;
+z-index: 100;
 }
 
 .instagram{/*elor */
