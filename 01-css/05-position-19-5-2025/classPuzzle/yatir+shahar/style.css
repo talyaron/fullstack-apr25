@@ -9,6 +9,7 @@
     width: 100px;
     background-color: black;
     border: white solid ;
+    transform: rotate(45deg);
 }
 
 
