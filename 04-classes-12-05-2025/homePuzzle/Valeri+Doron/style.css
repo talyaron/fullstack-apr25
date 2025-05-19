@@ -37,11 +37,12 @@ img h{
     height: 20px;
 }
 #share{
-    width: 20px;
-    height: 20px;
+    width: 23px;
+    height: 23px;
 }
 #save{
-    width: 20px;
-    height: 20px;
+    width: 23px;
+    height: 23px;
+    padding-left: 21%;
 }
 }
