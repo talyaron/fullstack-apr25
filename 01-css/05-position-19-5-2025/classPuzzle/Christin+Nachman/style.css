@@ -17,19 +17,34 @@ body {
     direction: rtl;  
 }
 .red-box{
-    background-color: rgb(231, 117, 117);
-    border-right: 1px;
-    border-bottom: 1px;
-    border-color: #ffb300;
+    background-color: #ffcdd2;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    border-color: #f44336;
     border-width: 2px;
 
 }
 .yellow-box{
+    background-color: #ffe0b2;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    border-color: #ffb300;
+    border-width: 2px;
 
 }
 .blue-box{
+    background-color: #bbdefb;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    border-color: #2196f3;
+    border-width: 2px;
 
 }
-.purple-box[
+.purple-box{
+    background-color: #e1bee7;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-color: #9c27b0;
+    border-width: 2px;
 
-]
+}
