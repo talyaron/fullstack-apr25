@@ -15,7 +15,7 @@ body {
     border: 2px solid black;
     transform: rotate(15deg); 
     direction: rtl;  
-    gap: 7px;
+    gap: 6px;
     padding 10px;
     background-color: white;
 }
