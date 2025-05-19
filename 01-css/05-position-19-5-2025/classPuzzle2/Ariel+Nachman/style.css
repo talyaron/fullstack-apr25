@@ -1,0 +1,26 @@
+.fixed-square {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  background-color: salmon;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  cursor: pointer;
+}
+.sticky-square {
+  position: sticky;
+  top: 500px;
+  left: 140px;
+  background-color: blue;
+}
+
+.play-btn {
+  z-index: 1000;
+  width: 40px;
+  position: sticky;
+  left: 0;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
