@@ -29,7 +29,7 @@ body{
 }
 .video{
     position:sticky;
-    bottom: 30px;
+    bottom: 100px;
     left:0;
     align-items: center;
     justify-content: center;
