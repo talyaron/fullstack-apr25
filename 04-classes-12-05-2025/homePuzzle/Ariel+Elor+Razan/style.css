@@ -99,10 +99,7 @@ span {
   margin-left: 10px;
   flex: 1;
 }
-.line1 {
-  font-size: 14px;
-  font-weight: bold;
-}
+
 .line2 {
   font-size: 13px;
   color: #888;
@@ -128,6 +125,24 @@ span {
   display: block;
   padding: 8px 12px;
   box-sizing: border-box;
+}
+.grey1 {
+  color: rgb(74, 74, 73);
+  font-weight: 500;
+  font-size: 14px;
+}
+.grey2 {
+  color: rgb(74, 74, 73);
+  font-weight: 500;
+  font-size: 14px;
+}
+.boldfont {
+  font-weight: bold;
+  font-size: 14px;
+  }
+.boldfont2 {
+  font-weight: bold;
+  font-size: 14px;
 }
 /*********************/
 /*********************/
