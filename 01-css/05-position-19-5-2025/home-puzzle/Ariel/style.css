@@ -1,0 +1,72 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans Hebrew", "Arial", sans-serif;
+  font-size: 1.5rem;
+  direction: rtl;
+}
+
+:root {
+  font-size: 16px; /* 1rem = 16px */
+
+  /* 
+  margin: 2rem;  = 32px
+  padding: 1.5rem; = 24px
+  font-size: 0.875rem;  = 14px
+  */
+}
+
+body {
+  background-color: #ffffff;
+  color: #333;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+main {
+  /* Works without thw two next selectors*/
+  /* width: 100%; */
+  /* position: relative; */
+  min-height: 1500px;
+}
+.main-content{
+  width: calc(100% - 40%);
+  height: 1500px;
+  background-color: blueviolet;
+  margin: 50px 10px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.wrapper-notifications{
+  width: 27%;
+  margin: 50px 10px;
+  margin-bottom: 20px;
+  top: 20px;
+  left: 0;
+  display: inline-block;
+  vertical-align: top;
+  min-height: 1500px;
+}
+
+.all-notlications {
+  position: sticky;
+  top: 20px;
+  height: 700px;
+  background-image: url("./img/n12-cover.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+
+
+
+
+.demo-section {
+  width: 87%;
+  height: 400px;
+  background-color: blueviolet;
+  margin: 50px auto;
+}
