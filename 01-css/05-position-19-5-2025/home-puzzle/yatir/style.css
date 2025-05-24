@@ -1,0 +1,63 @@
+
+body{
+    display: flex;
+    gap: 10px;
+    
+}
+
+.top{
+    height: 1000px;
+
+}
+ *{
+    box-sizing: border-box;
+ }
+
+.all{
+    background-color: rgb(235, 79, 79);
+    width: 300px;
+    height: 500px;
+    border: black solid 5px;
+    border-radius: 10px;
+    position:sticky;
+    top: 5px;
+
+
+
+    
+}
+.news-1{
+    position: relative;
+}
+.news-2{
+    position: relative;
+}
+.news-3{
+    position: relative;
+}
+.news-4{
+    position: relative;
+}
+
+p{
+    border: gray solid 1px;
+    border-radius: 10px;
+    width: 250px;
+    background-color: gray;
+    height: 50px;
+   
+
+
+}
+
+img{
+    width: 25px;
+    height: 25px;
+    border-radius: 50px;
+    position: absolute;
+    right: 0px;
+}
+
+.more{
+    
+}
