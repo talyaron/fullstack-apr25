@@ -1,0 +1,53 @@
+/* כותרת נשארת קבועה */
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #cd1212;
+    padding: 1px;
+    text-align: center;
+    z-index: 1;
+}
+
+/* מיקום האייקונים – נמוך יותר */
+.social-container {
+    position: fixed;
+    top: 300px; /* נמוך יותר מתחת לכותרת */
+    left: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    z-index: 1001;
+}
+
+/* צבעים חדשים לאייקונים */
+.instagram {
+    background-color: #d6249f; /* צבע אינסטגרם רך יותר */
+}
+
+.twitter {
+    background-color: #0099ff; /* כחול שמתאים יותר לעיצוב */
+}
+
+/* תנועה חלקה בזמן התקרבות */
+.social-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: transform 0.4s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+/* שינוי גודל ותנועה */
+.social-icon:hover {
+    transform: scale(1.2) translateX(15px);
+    background-color: #ff6600;
+}
+
+/* שמירה על נראות של האייקון */
+.social-icon i {
+    font-size: 15px;
+    color: rgb(119, 27, 27);
+}
