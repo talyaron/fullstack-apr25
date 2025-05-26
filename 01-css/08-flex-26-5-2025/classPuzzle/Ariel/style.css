@@ -1,0 +1,97 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans Hebrew', "Arial", sans-serif;
+  /* font-size: 1.5rem; */
+  direction: rtl;
+  color: black;
+}
+
+:root {
+  font-size: 16px; /* 1rem = 16px */
+
+  /* 
+  margin: 2rem;  = 32px
+  padding: 1.5rem; = 24px
+  font-size: 0.875rem;  = 14px
+  */
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+/******************************/
+
+
+.nav-flexer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  background: rgb(255, 255, 255);
+  position: relative;
+  font-size: 1.125rem;
+  padding-top: 1rem;
+  padding-bottom: 0.875rem;
+}
+
+.logo-area {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.ul-nav-flexer {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.ul-nav-flexer > li > a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+}
+
+/* SEACOND NAV */
+
+.nav-flexer-second {
+  font-size: 1.5rem;
+  box-shadow: 0px 0px 8px #cccccc;
+  padding-top: 0.6rem;
+  padding-bottom: 0;
+}
+.ul-nav-flexer-second {
+  font-size: 1.5rem;
+}
+
+.ul-nav-flexer-second > li > a {
+  max-width: 150px;
+}
+
+.logo-area-second {
+  position: absolute;
+  right: 10px;
+  top: 60%;
+  transform: translateY(-50%);
+}
+
+.logo-area-second img {
+  position: absolute;
+  width: 30px;
+  top: 20%;
+}
+
+.ul-nav-flexer-second img{
+  padding: 0.2rem 0 0.5rem;
+}
