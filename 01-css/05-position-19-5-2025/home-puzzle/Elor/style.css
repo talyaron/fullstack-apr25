@@ -1,0 +1,45 @@
+.צאט{
+    font-size: larger;
+    width: 150px;
+    height: 210px;
+    background-color: red;
+    border: 3px solid black;
+    position:sticky;
+    
+}
+div> img {
+    width: 50px;
+    height:100px;
+    display: flex;
+    flex-direction: column;
+    line-height: 0;
+}
+.כתבה1 {
+    justify-content: flex-end;
+    display: inline-block;
+    width: calc(100%-40%)
+    height: 400px;
+    margin: 50px;
+    background-color: blue;
+    vertical-align: top;
+}
+div> img {
+    width: 80px;
+    height: 300px;
+    display: flex;
+    border-color: 1px solid black;
+}
+.כתבה2 {
+    width: 100px;
+    height: auto;
+    background-color: blue;
+    font-size: medium;
+    font-style: oblique;
+    border: 2px solid brown;
+}
+div> img{
+    width: 80px;
+    height: 200px;
+
+}
+
