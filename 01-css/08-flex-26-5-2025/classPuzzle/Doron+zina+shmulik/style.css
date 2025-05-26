@@ -1,0 +1,22 @@
+.bottomwrapper{
+    display: flex;
+}
+
+.newsletter{
+    flex: 3;
+    background-color: rgb(26, 70, 45);
+
+}
+
+.input{
+    border: 2px white solid;
+    color: white;
+}
+
+.opt{
+    display: flex;
+}
+
+.bot{
+    display: flex;
+}
