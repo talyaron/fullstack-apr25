@@ -1,49 +1,48 @@
 .container {
-  display: grid;
   gap: 10px;
   border: 2px solid black;
   width: 210px;
   height: 210px;
   padding: 10px;
   background-color: white;
-  position: relative; 
+  position: relative;
 }
 
 .square {
-  width: 100px;
-  height: 100px;
-  border: 2px solid black;
+  width: 90px;
+  height: 90px;
+  border: 1px solid black;
   position: relative; 
 }
 
 .yellow { 
   background-color: yellow; 
-  grid-column: 1;
-  grid-row: 1;
-  top: 5px;
-  left: 5px;
+  grid-column: 0.9;
+  grid-row: 0.9;
+  top: 4px;
+  left: 4px;
 }
 
 .red { 
   background-color: red; 
   grid-column: 2;
   grid-row: 1;
-  top: 10px;
-  left: 10px;
+  top: 4px;
+  left: 4px;
 }
 
 .purple { 
   background-color: purple; 
   grid-column: 1;
   grid-row: 2;
-  bottom: 5px;
-  right: 5px;
+  bottom: 4px;
+  right: 4px;
 }
 
 .blue { 
   background-color: blue; 
   grid-column: 2;
   grid-row: 2;
-  bottom: 10px;
-  right: 10px;
+  bottom: 4px;
+  right: 4px;
 }

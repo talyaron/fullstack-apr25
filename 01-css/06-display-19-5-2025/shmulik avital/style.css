@@ -1,0 +1,82 @@
+
+.wrapper{
+    position: absolute;
+
+    top: 10%;
+    left: 33.33%;
+    align-items: flex-start;
+
+
+
+
+
+}
+
+
+.box{
+
+    width: 200px;
+    height: 200px;
+    background-color: white;
+    border-radius: 20%;
+    position: relative;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    color: rgb(10, 10, 20);
+    align-items: stretch;
+    
+    
+}
+.box1{
+    position: relative;
+    top: 30%;
+    left: 50%;
+    text-align: right;
+    
+    width: 700px;
+    height: 3000px;
+    background-color: aquamarine;
+   flex
+   
+
+}
+.circle{
+    width: 30px;
+    height: 30px;
+    background-color: yellow;
+    border: 1px gray solid;
+    position: absolute;
+    top :30%;
+    left:100%;
+    transform: translate(-50%,-50%);
+    border-radius:50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+.mainbox{
+    width: 200px;
+    height: 1600px;
+    background-color: rgb(230, 224, 224);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 10px;
+}
+.heder{
+    height: 50px;
+    width: 222px;
+    background-color: red;
+    display: flex;
+    align-items: center;
+}
+.mainhedlain{
+
+    height:2%;
+    width: 100%;
+    background-color: red;
+    
+}
