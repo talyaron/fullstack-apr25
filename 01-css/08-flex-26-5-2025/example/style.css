@@ -1,0 +1,11 @@
+.container{
+    border: 1px solid black;
+    display: flex;
+    height: 100px;
+}
+
+.box{
+    background-color: lightblue;
+    height: 100%;
+    width: 100px;
+}
