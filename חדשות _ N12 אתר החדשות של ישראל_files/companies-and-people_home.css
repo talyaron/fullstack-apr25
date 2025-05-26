@@ -1,0 +1,142 @@
+.duns-text-logo{
+  height: 13px;
+  margin-right:10px;
+  margin-top:5px;
+  margin-bottom: 0px;
+}
+
+.top-strip{
+  display: block;
+  font-size: .7rem;
+}
+
+.box {
+    posi1tion: relative;
+    background-color:#ffffff;
+    width:33%;
+    /*max-width:290px;*/
+    /*padding:5px;*/
+    /*width: 177px;*/
+    /*height: 115px;*/
+    /*margin-left: 1px;*/
+    /*text-align:center;*/
+    /*float: right;*/
+    /*border: 1px solid #dfdede;*/
+    /*border-top:2px solid #dfdede;*/
+    /*-webkit-box-sizing: border-box;*/
+    /*-moz-box-sizing: border-box;*/
+    /*box-sizing: border-box;*/
+}
+
+
+.frame-title
+{
+   font-size: 1.2rem; 
+   border-bottom:#d2af69 1px solid;
+   margin-bottom:5px;
+   padding-right:5px;
+   color: #d2af69;
+   font-weight: 600;
+}
+.box .name{
+    /*padding: 0 1px;*/
+    /*margin-top: 0px;*/
+    font-size: .9rem;
+    /*line-height:95%;*/
+}
+.box:hover .to-box-page{
+  text-decoration: underline;
+}
+.box .to-box-page {
+    font-size: .80rem;
+    padding-top:10px;
+    /*bottom: 0px;*/
+    /*text-align:center;*/
+    /*right: 29%;*/
+    color: #d2af69;
+    font-weight: 600;
+}
+
+.overlay-links {
+
+    /*position: absolute;*/
+
+
+}
+
+/*manager*/
+.manager:hover .img-holder img{
+     -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+    transform: scale(1.05);
+}
+.manager .content{
+    font-size: 0;
+}
+.manager .content .img-holder{
+    display: inline-block;
+    vertical-align: middle;
+    height: 100px;
+    width: 27%;
+    margin-right: 5px;
+    margin-top: 1.5%;
+    overflow: hidden;
+}
+.manager .content .info{
+    display: inline-block;
+    vertical-align: middle;
+    width: 65%;
+    margin-right: 10px;
+}
+.manager .content .info .name {
+    color: #d2af69;
+    font-weight:600;
+    font-size: 1.3rem;
+}
+.manager .content .info .firm-name {
+    font-size: 1rem;
+        line-height:95%;
+
+}
+.manager .content .info .to-box-page {
+    font-size: 0.8rem;
+        line-height:120%;
+
+}
+
+/*company*/
+.company .img-holder {
+    width: 70%;
+    height: 70%;
+    posit1ion: relative;
+    bac1kground-color: white;
+    overflow: hidden;
+}
+.company .img-holder img {
+    /*display: block;*/
+    /*position: relative;*/
+    margin: 0 auto;
+    padding-top:5px;
+    /*top: 50%;*/
+   
+    max-width: 70%;
+    max-height: 70%;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out
+}
+.company:hover .img-holder img {
+        -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+    transform: scale(1.05);
+}
+.company .name {
+    color: #000000;
+    /*font-weight:600;*/
+    font-size: 1.0rem;
+}
