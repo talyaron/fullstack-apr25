@@ -1,0 +1,17 @@
+
+.pic img{
+    position: sticky;
+    left: 0;
+    top: 0px;
+    transition: opacity 0.5s ease-in-out;
+    width: 150%;
+    
+}
+.chat{
+    display: flex;
+    
+}
+.magazine h1{
+    background-color: red;
+}
+
