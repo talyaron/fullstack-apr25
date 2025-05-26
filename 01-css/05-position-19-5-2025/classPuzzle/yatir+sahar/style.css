@@ -1,0 +1,52 @@
+.wharper {
+  height: 400px;
+  width: 400px;
+  border: black solid;
+  position: relative;
+  margin-top: 10%;
+  margin-left: 10%;
+  transform: rotate(45deg);
+}
+
+.pos-up-right {
+  color: black;
+  border: black solid;
+  width: 49%;
+  height: 49%;
+  position: absolute;
+  right: 0%;
+  top: 0%;
+  background-color: green;
+}
+
+.pos-up-left {
+  color: black;
+  border: black solid;
+  width: 49%;
+  height: 49%;
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  background-color: black;
+}
+.pos-down-left {
+  color: black;
+  border: black solid;
+  width: 49%;
+  height: 49%;
+  position: absolute;
+  right: 0%;
+  bottom: 0%;
+  background-color: blue;
+}
+
+.pos-down-right {
+  color: black;
+  border: black solid;
+  width: 49%;
+  height: 49%;
+  position: absolute;
+  bottom: 0%;
+  left: 0%;
+  background-color: red;
+}
