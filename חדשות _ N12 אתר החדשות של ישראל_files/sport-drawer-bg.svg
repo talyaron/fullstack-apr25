@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="113px" viewBox="0 0 48 113" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>tabLabelSport</title>
+    <g id="ForDevelopers" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-Copy" transform="translate(-252.000000, -159.000000)" fill="#C6C7CA">
+            <path d="M252,194 C252,180.646953 256.846663,168.425905 264.876793,159.00005 C269.835519,164.820227 276.006603,169.573934 282.999666,172.870866 L283.000719,172.912673 C292.96143,176.886884 300,186.621469 300,198 C300,209.378531 292.96143,219.113116 283.000719,223.087327 L282.999666,223.129134 C264.678987,231.766556 252,250.40261 252,272 L252,196 L252.036379,196.000788 C252.012196,195.336847 252,194.669848 252,194 Z" id="tabLabelSport"></path>
+        </g>
+    </g>
+</svg>
