@@ -3,20 +3,33 @@
 }
 
 .newsletter{
-    flex: 3;
+    flex-grow: 3;
     background-color: rgb(26, 70, 45);
-
+    text-align: center;
+    color: white;
 }
 
 .input{
-    border: 2px white solid;
+    border: 1px white solid;
     color: white;
+    width: 40%;
+    text-align: center;
+    background-color: inherit;
 }
 
 .opt{
     display: flex;
+    justify-content: space-evenly;
 }
 
 .bot{
     display: flex;
+}
+
+input{
+    text-align: center;
+}
+
+.check{
+    text-align: right;
 }
