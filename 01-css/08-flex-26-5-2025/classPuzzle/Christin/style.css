@@ -1,0 +1,148 @@
+.container01 {
+    
+    display: flex;
+    height: 50px;
+    gap: 10px;
+    justify-content: space-evenly;
+    align-items: center;
+    color: aqua;
+
+    
+  }
+  .container01 img{
+    height: 50px;
+    right: 0;
+  }
+  .container02{
+    position: sticky;
+    top: 0;
+    left: 0;
+    border: 1px solid black;
+    display: flex;
+    height: 75px;
+    gap: 5px;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: nowrap;
+    background-color: rgb(238, 232, 226);
+  }
+  .container03{
+    display: flex;
+    height: 100px;
+    justify-content: space-evenly;
+  }
+  .container04{
+    
+    font-size: 20px;
+    display: flex;
+    flex-direction:row-reverse;
+    flex-wrap:wrap;
+    height: 140px;
+    gap: 20px;
+    justify-content: flex-start;
+    align-items: center;
+    
+
+  }
+  .box04{
+    border-bottom: 1px solid black;
+
+  }
+  .a{
+    color: rgb(210, 51, 51);
+    border-left:1px solid black ;
+  }
+  .b{
+    color: black;
+    border-left:1px solid black ;
+  }
+  .c{
+    color: rgb(3, 15, 57);
+    border-left:1px solid black ;
+  }
+  .d{
+    color: rgb(196, 48, 164);
+    border-left:1px solid black ;
+  }
+  .e{
+    color: rgb(63, 148, 66);
+    border-left:1px solid black ;
+  }
+  .f{
+    color: rgb(29, 28, 28);
+    border-left:1px solid black ;
+  }
+  .g{
+    color: rgb(70, 95, 170);
+    border-left:1px solid black ;
+  }
+  .h{
+    color: rgb(92, 27, 27);
+    border-left:1px solid black ;
+  }
+  .i{
+    color: rgb(84, 29, 29);
+    border-left:1px solid black ;
+  }
+  .j{
+    color: rgb(91, 27, 94);
+    border-left:1px solid black ;
+  }
+  .k{
+    color: rgb(219, 181, 15);
+    border-left:1px solid black ;
+  }
+  .m{
+    color: rgb(184, 107, 8);
+    border-left:1px solid black ;
+  }
+  .n{
+    color: rgb(38, 38, 37);
+    border-left:1px solid black ;
+  }
+  .v{
+    color: rgb(14, 14, 13);
+    border-left:1px solid black ;
+  }
+  .x{
+    color: rgb(30, 30, 28);
+    border-left:1px solid black ;
+  }
+  .z{
+    color: rgb(29, 28, 28);
+    border-left:1px solid black ;
+  }
+  .p{
+    color: rgb(21, 21, 20);
+    border-left:1px solid black ;
+  }
+  .l{
+    color: rgb(84, 3, 88);
+    border-left:1px solid black ;
+  }
+  .s{
+    color: rgb(118, 205, 121);
+    border-left:1px solid black ;
+  }
+  .container04 h1{
+    display: flex;
+    height: 150px;
+    justify-content: space-evenly;
+    color: aqua;
+  }
+  .containers{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+  }
+  .container05 img{
+
+    width:1500px
+    
+  }
+
+
+  
+  
+
