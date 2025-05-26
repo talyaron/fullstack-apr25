@@ -17,6 +17,7 @@ div>img{
 div>p{
     width: 50px;
     overflow: hidden;
+    display: inline;
 }
 
 div{
@@ -43,6 +44,9 @@ img h{
 #save{
     width: 23px;
     height: 23px;
-    padding-left: 21%;
+    padding-left: 360px;
+}
+h4, h4 {
+    display: inline;
 }
 }
