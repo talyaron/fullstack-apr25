@@ -3,33 +3,66 @@
 }
 
 .newsletter{
-    flex-grow: 3;
+    display: flex;
+    flex-direction: column;
     background-color: rgb(26, 70, 45);
     text-align: center;
     color: white;
+    align-content: space-around;
+    justify-content: space-evenly;
+    gap: 20px;
 }
 
 .input{
     border: 1px white solid;
     color: white;
-    width: 40%;
+    width: 100%;
     text-align: center;
     background-color: inherit;
 }
 
-.opt{
+.sidebyside{
     display: flex;
     justify-content: space-evenly;
+    
 }
 
-.bot{
+.left{
     display: flex;
+    flex-direction: column;
+    width: 45%;
+    gap: 10px;
 }
 
-input{
-    text-align: center;
+.right{
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    gap: 10px;
+}
+
+button{
+    justify-content: left;
+    background-color: aqua;
+    color: white;
+    border-radius: 20%;
+    width: 100px;
+    height: 50px;
+    font-size: x-large;
+}
+
+.button{
+    display: flex;
+    justify-content: flex-start;
 }
 
 .check{
-    text-align: right;
+    overflow-wrap: break-word;
+    white-space: normal;
+    overflow: hidden;
+    direction: rtl;
+}
+
+.title{
+    font-size: x-large;
 }
