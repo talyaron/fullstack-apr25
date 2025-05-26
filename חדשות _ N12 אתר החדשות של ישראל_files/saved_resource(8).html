@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<!-- saved from url=(0025)https://n12.rabbicdn.com/ -->
+<html lang="he" dir="rtl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Mako N12 Bring them home (embed)</title>
+		
+		<meta name="description" content="">
+		<meta property="og:title" content="">
+		<meta property="og:description" content="">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<link rel="icon" type="image/x-icon" href="https://rcs.mako.co.il/images/N12favicon/favicon.ico">
+
+		<style>
+			html {
+				-webkit-text-size-adjust: 100%;
+				-ms-text-size-adjust: 100%;
+				-ms-overflow-style: scrollbar;
+				-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+				font-size: 62.5%;
+				font-variant-ligatures: none;
+				line-height: 1.15;
+				height: 100%;
+			}
+
+			body {
+				margin: 0;
+				padding: 0;
+				direction: rtl;
+				font-size: 1.6rem;
+				font-weight: 400;
+				line-height: 1.4;
+				height: 100%;
+			}
+
+			#root {
+				height: 100%;
+			}
+
+			div {
+				box-sizing: border-box;
+			}
+
+			.container {
+				position: relative;
+				display: flex;
+				flex-direction: column;
+				width: 100%;
+				height: 100%;
+			}
+
+			.picture {
+				position: relative;
+				flex-grow: 1;
+				width: 100%;
+				height: 100%;
+				background-size: cover;
+				background-position: center;
+			}
+
+			.name {
+				position: absolute;
+				right: 0;
+				bottom: 0;
+				color: white;
+				font-family: "Arial", sans-serif;
+				font-size: 14px;
+				line-height: 1;
+				text-shadow: 0 0 6px rgb(0 0 0 / 90%);
+				right: 10px;
+				bottom: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="root"><div class="container"><div class="picture" style="background-image: url(&quot;https://img.mako.co.il//2023/11/05/RomBreslavsky.jpg&quot;);"></div><div class="name">רום ברסלבסקי, 21</div></div></div>
+		<script>
+			(async function init() {
+				const SLIDE_DURATION = 3_000;
+				const data = await fetchData();
+
+				setSlide(0);
+
+				async function setSlide(index) {
+					const nextSlideIndex = index < data.length - 1 ? index + 1 : 0;
+
+					renderSlide(data[index]);
+
+					await Promise.all([
+						new Promise((resolve) => setTimeout(resolve, SLIDE_DURATION)),
+						new Promise((resolve) => {
+							const image = new Image();
+							image.onload = resolve;
+							image.src = data[nextSlideIndex].j;
+						}),
+					]);
+
+					setSlide(nextSlideIndex);
+				}
+
+				function renderSlide(data) {
+					const container = document.createElement("div");
+					container.classList.add("container");
+
+					const picture = document.createElement("div");
+					picture.classList.add("picture");
+					picture.style.backgroundImage = `url(${data.j})`;
+					container.appendChild(picture);
+
+					const name = document.createElement("div");
+					name.classList.add("name");
+					name.innerText = data.d
+						? `${data.b} ${data.c}, ${data.d}`
+						: `${data.b} ${data.c}`;
+					container.appendChild(name);
+
+					const root = document.getElementById("root");
+					root.innerHTML = "";
+					root.appendChild(container);
+				}
+
+				async function fetchData() {
+					const url =
+						"https://mako-n12-bring-them-home.rabbicdn.com/website%2Fdata.json";
+					const response = await fetch(url);
+					const result = await response.json();
+					const filteredResult = result.rows.filter(
+						(row) => row.status === "1"
+					);
+
+					return filteredResult.sort((row) => {
+						if (row.silhouette === "1") {
+							// Silhouette should be last
+							return 1 + Math.random();
+						}
+
+						return Math.random() - 0.5;
+					});
+				}
+			})();
+		</script>
+	
+
+</body></html>
