@@ -1,0 +1,48 @@
+body{
+    background-color: rgb(253, 251, 251);
+    color: #080808;
+
+.storiesline{
+    display: flex;
+    padding: 5px;
+}
+
+div>img{
+    width: 45px;
+    height: 45px;
+    border-radius: 90%;
+    border: solid pink;
+}
+
+div>p{
+    width: 50px;
+    overflow: hidden;
+}
+
+div{
+    padding: 5px;
+}
+
+img h{
+  max-width: 100%;
+  height: auto;
+}
+
+#heart {
+    width: 20px;
+    height: 20px;
+}
+#message {
+    width: 20px;
+    height: 20px;
+}
+#share{
+    width: 23px;
+    height: 23px;
+}
+#save{
+    width: 23px;
+    height: 23px;
+    padding-left: 21%;
+}
+}

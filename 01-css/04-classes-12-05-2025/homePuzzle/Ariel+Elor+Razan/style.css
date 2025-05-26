@@ -1,0 +1,247 @@
+*{
+  margin: 0;
+  padding: 0;
+  text-shadow: 0 0.5px 0 black;
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgba(19, 110, 80, 0.658);
+  width: 460px;
+  font-size: 14px;
+  margin: auto;
+}
+
+.warrper-PostDescription {
+  width: 460px;
+  margin: auto;
+}
+
+span, p, div {
+  background-color: aliceblue;
+}
+
+span {
+  font-weight: bold;
+}
+/*********************/
+/*********************/
+/*********************/
+/*********************/
+/*********************/
+/*********************/
+/* ELOR - STORIES */
+.stories-profiles{
+  display: flex;
+}
+
+.stories {
+  gap: 15px;
+  overflow-x: auto;
+  padding: 10px;
+  background: #fff;
+  margin: 30px;
+}
+.story {
+  text-align: center;
+  margin: 30px;
+  float: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: red;
+}
+.story img {
+  image-orientation: 0deg;
+  width: 43px;
+  height: 43px;
+  border-radius: 50%;
+  border: 3px solid linear-gradient;
+  background: linear-gradient(#feda, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.story-container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.stories-bar {
+  display: flex;
+  gap: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 10px;
+  overflow-x: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.story {
+  text-align: center;
+  flex: 0 0 auto;
+}
+
+.story img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #e91e63;
+}
+
+.story span {
+  display: block;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.main-image {
+  width: 100%;
+  display: block;
+}
+
+.story p {
+  margin-top: 5px;
+  flex-direction: row;
+  display: flex;
+  text-align: left;
+}
+/*********************/
+/*********************/
+/*********************/
+/*********************/
+/*********************/
+/*********************/
+/* RAZAN - MAIN POST */
+
+.main-post {
+  /* width: 500px; */
+  background-color: #fff;
+  overflow: hidden;
+  margin-top: 0px;
+}
+.container {
+  display: flex;
+  align-items: center;
+  padding: 4px 4px;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.text-block {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  flex: 1;
+}
+
+.line2 {
+  font-size: 13px;
+  color: #888;
+}
+.dots {
+  font-size: 18px;
+}
+.photo-container {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.photo-container img {
+  height: 650px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+.buttons img {
+  width: 100%;
+  display: block;
+  padding: 8px 12px;
+  box-sizing: border-box;
+}
+.grey1 {
+  color: rgb(74, 74, 73);
+  font-weight: 500;
+  font-size: 14px;
+}
+.grey2 {
+  color: rgb(74, 74, 73);
+  font-weight: 500;
+  font-size: 14px;
+}
+.boldfont {
+  font-weight: bold;
+  font-size: 14px;
+  }
+.boldfont2 {
+  font-weight: bold;
+  font-size: 14px;
+}
+/*********************/
+/*********************/
+/*********************/
+/*********************/
+/*********************/
+/*********************/
+/* ARIEL - COMMENTS */
+
+.descriptionAuthor, .addComment > p {
+  padding-bottom: 7px;
+}
+
+.commentBox {
+  padding-bottom: 15px;
+}
+
+.comments {
+background-color: aliceblue;
+padding: 20px;
+}
+
+.serbFlag {
+  width: 15px;
+}
+
+.grayTag {
+  color: rgb(153, 153, 149);
+  font-weight: 500;
+}
+
+.see {
+  padding-top: 7px;
+  font-weight: bold;
+}
+
+.commentArea {
+  border: none;
+  outline: none;
+  resize: none;
+  width: 100%;
+  background-color: transparent;
+}
+
+.commentArea::placeholder {
+  color: #8e8e8e;
+
+}
+.commentArea:active::placeholder {
+  color: #8e8e8e;
+}
+.commentArea:focus::placeholder {
+  color: transparent;
+}

@@ -1,9 +1,0 @@
-CRM_Project/
-│── backend/    # צד שרת
-│   │── main.py  # קובץ API ראשי
-│   │── models.py  # הגדרת מסד נתונים
-│   │── auth.py  # אבטחת משתמשים
-│── frontend/   # צד לקוח
-│   │── App.js   # ממשק משתמש
-│   │── ClientsList.js  # רשימת לקוחות
-│── requirements.txt  # חבילות לתלות
