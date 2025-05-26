@@ -1,0 +1,21 @@
+.container {
+  border: 1px solid black;
+  display: flex;
+  height: 100px;
+  gap: 10px;
+  justify-content: space-evenly;
+  height: 300px;
+  align-items: center;
+    flex-wrap: nowrap;
+}
+
+.box {
+  background-color: lightblue;
+  height: 100px;
+ width: 200px;
+}
+
+.double {
+  
+  background-color: lightgreen;
+}

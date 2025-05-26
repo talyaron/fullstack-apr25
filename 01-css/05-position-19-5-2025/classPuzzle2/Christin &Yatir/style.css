@@ -1,0 +1,25 @@
+.first-pic{
+    position:fixed;
+    top: 10px;
+    left:0;
+    
+}
+.text-1{
+    position: relative;
+    top: 110px;
+    right:500px;
+    
+}
+.text-2{
+    position: relative;
+    top: 110px;
+    right:500px;
+}
+.video-pic{
+    position:sticky;
+    top: 30px;
+    right: 0;
+    transform: translateX(50%);
+    
+    
+}
