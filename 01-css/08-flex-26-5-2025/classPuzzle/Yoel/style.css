@@ -1,0 +1,112 @@
+.header-container {
+    display: flex;
+    flex-direction: row;
+    gap: 300px;
+    justify-content: center;
+
+
+
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+    font-size: 20px;
+    justify-content: baseline;
+
+
+
+
+}
+
+.box {}
+
+.kenyon {
+    position: absolute;
+    right: 5%;
+    font-size: 28px;
+    transform: translateY(-8px);
+
+}
+
+.options-container {
+    display: flex;
+    justify-content: center;
+    flex: 7;
+    border-color: 2px black;
+
+
+}
+
+/*      Part 2 2      */
+
+
+.options1 {
+    display: flex;
+    flex-direction: row-reverse;
+    flex: 7;
+    justify-content: center;
+    gap: 30px;
+    border: 1px solid black;
+    font-size: 24px;
+    color: #444444;
+
+    margin-bottom: 50px;
+
+}
+
+.choose-mall {
+
+    position: absolute;
+    right: 20px;
+
+}
+
+
+/*       Part 3    */
+
+
+.kenyon-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.kenyoney-azrieli {
+    display: flex;
+    flex-direction: grid;
+    flex-wrap: wrap;
+    gap: 100px;
+    text-align: center;
+
+
+}
+
+.snif {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-style: solid;
+    border-color: black;
+    font-family: "Nunito Sans", sans-serif;
+
+
+    .line1 {
+        font-size: 20px;
+        margin-bottom: -30px;
+        margin-top: -5px;
+
+    }
+
+    .line2 {
+        font-size: 30.042px;
+
+    }
+
+    .line3 {
+        font-size: 60px;
+        margin-top: -65px;
+        margin-bottom: -15px;
+    }
+}
