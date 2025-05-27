@@ -63,3 +63,66 @@
     font-weight: bold;
     color: rgb(24, 171, 122);
 }
+.green {
+    color: green;
+}
+.green:hover{
+    color:white;
+    background-color: green;
+}
+.red {
+    color: red;
+}
+.red:hover {
+    color: white;
+    background-color: red;
+}
+.orange{
+    color: orange;
+}
+.orange:hover{
+    color:white;
+    background-color: orange;
+}
+.black{
+    color: black;
+}
+.black:hover{
+    color:white;
+    background-color: black;
+}
+.pink{
+    color: pink;
+}
+.pink:hover{
+    color:white;
+    background-color: pink;
+}
+.lightpink{
+    color: lightpink;
+}
+.lightpink:hover{
+    color:white;
+    background-color: lightpink;
+}
+.blue{
+    color: lightblue;
+}
+.blue:hover{
+    color:white;
+    background-color: lightblue;
+}
+.purple{
+    color: purple;
+}
+.purple:hover{
+    color:white;
+    background-color: purple;
+}
+.yellow{
+    color: yellowgreen;
+}
+.yellow:hover{
+    color:white;
+    background-color: yellowgreen;
+}
