@@ -1,0 +1,104 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+   font-family: "Cal Sans", sans-serif;
+  font-weight:00;
+  font-style: normal;
+  color: rgb(100, 100, 100);
+
+
+
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+}
+
+.header {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.header>img {
+    margin-right: 3%;
+    flex: 1
+}
+
+.nav {
+    display: flex;
+    justify-content: flex-end;
+   flex: 10;
+    height: 100%;
+    align-items: center;
+}
+
+.ob {
+    text-align: center;
+flex: 1;
+}
+.icon{
+ text-align: center;  
+    width: 100%;
+}
+
+.ob>i {
+    font-size: 200%;
+    color: rgb(20, 110, 110);
+    ;
+}
+
+.second {
+    width: 100%;
+    height: 10%;
+    position: sticky;
+    top:0;
+padding: 0.5%;
+    z-index: 2;
+    background-color: white;
+    justify-content: space-around;
+    flex-direction: row-reverse;
+     box-shadow: 0 -6px 8px -5px rgba(0, 0, 0, 0.3), 
+                       0 6px 8px -5px rgba(0, 0, 0, 0.3);
+}
+
+.mallop{
+    flex: 1;
+
+}
+.innav{
+    display: flex;
+    flex:6;
+    overflow: none;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+}
+.td{
+    font-size: 50%;
+}
+.innav>div {
+    text-align: center;
+    font-size: 150%;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+.innav>div>img{
+    margin: 0;
+    width: 20%;
+    height:auto;
+}
+
+
+
+
+.tmp{
+    height: 30%;
+    width: 100%;
+    background-color: rgb(130, 130, 252);
+}
