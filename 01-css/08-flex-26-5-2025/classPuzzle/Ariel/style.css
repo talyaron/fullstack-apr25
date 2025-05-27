@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Open Sans Hebrew', "Arial", sans-serif;
+  font-family: "Open Sans Hebrew", "Arial", sans-serif;
   /* font-size: 1.5rem; */
   direction: rtl;
   color: black;
@@ -29,8 +29,8 @@ li {
 a {
   text-decoration: none;
 }
-/******************************/
 
+/******************************/
 
 .nav-flexer {
   display: flex;
@@ -92,6 +92,95 @@ a {
   top: 20%;
 }
 
-.ul-nav-flexer-second img{
+.ul-nav-flexer-second img {
   padding: 0.2rem 0 0.5rem;
+}
+
+/* PRE HEADER */
+.header {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  /* background: rgb(255, 255, 255); */
+  /* position: relative; */
+  font-size: 1rem;
+  padding-top: 2rem;
+}
+
+.header > h1 {
+  color: #324147;
+}
+
+.bullet {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  background-color: #324147;
+  margin-top: 1rem;
+}
+
+/******************************/
+
+.header-list{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1.5rem;
+}
+
+.header-list > a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+  width: 12.25rem; 
+  flex: 0 0 10%;
+  /* border: 1px solid rgb(216, 216, 216); */
+}
+
+.header-list-title, .header-list-city {
+  color: inherit;
+}
+
+.header-list-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.header-list-city {
+  font-size: 1.7rem; 
+}
+
+.item-yehuda {
+  margin-left: auto;
+  margin-right: 1rem;
+}
+
+.hover-white {
+  color: rgb(239, 66, 53); 
+  background: white
+}
+
+.hover-white:hover {
+  color: white; 
+  background: rgb(239, 66, 53);
+  transition: all 0.3s ease-in-out;
+}
+
+.bullet1 {
+  background-color: rgb(239, 66, 53);
+}
+
+.bullet1:hover {
+  background-color: white;
+  transition: all 0.3s ease-in-out;
+}
+/******************************/
+
+.dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
 }
