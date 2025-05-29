@@ -110,3 +110,7 @@
         margin-bottom: -15px;
     }
 }
+
+.options{
+    flex:1
+}
