@@ -1,0 +1,13 @@
+.categories{
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    padding: 1%;
+    
+}
+.collection{
+    color: white;
+}
+.highlight{
+    color: rgb(255, 230, 2);
+}
