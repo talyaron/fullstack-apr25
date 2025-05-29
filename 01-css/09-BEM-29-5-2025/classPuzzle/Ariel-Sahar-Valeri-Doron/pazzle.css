@@ -1,0 +1,66 @@
+.main-navbar {
+  background-color: rgb(255, 255, 255);
+  border: 1px solid black;
+  height: 100px;
+  width: 100%;
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+}
+
+.main-navbar__logo {
+  /* border: 2px solid black; */
+  height: 50%;
+}
+
+.main-navbar__search {
+  /* border: 2px solid black; */
+    height: 50%;
+}
+
+.main-navbar__sales {
+  /* border: 2px solid black; */
+    height: 50%;
+}
+
+.main-navbar__weather {
+  /* border: 2px solid black; */
+    height: 50%;
+}
+
+.main-navbar__mail {
+  /* border: 2px solid black; */
+    height: 50%;
+
+
+}
+
+.category-navbar {
+  background-color: rgb(60, 61, 60);
+}
+
+.category-navbar__item-news {
+}
+.category-navbar__item-sport {
+}
+.category-navbar__item-culture {
+}
+.category-navbar__item-celebrities {
+}
+.category-navbar__item-money {
+}
+.category-navbar__item-food {
+}
+.category-navbar__item-health {
+}
+.category-navbar__item-travel {
+}
+.category-navbar__item-tech {
+}
+.category-navbar__item-more {
+}
+.category-navbar__item-connections {
+}
