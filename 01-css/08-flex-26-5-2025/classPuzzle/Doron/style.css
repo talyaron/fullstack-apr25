@@ -1,0 +1,199 @@
+.topbarwrapper{
+    display: flex;
+    flex-direction: row;
+}
+
+.botbarwrapper{
+    display: flex;
+    flex-direction: row;
+}
+
+.mall{
+    border-bottom: 1px solid gray;
+    text-align: center;
+    text-orientation: rtl;
+    width: 12.5%;
+}
+
+.wrappermalls{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+
+.toprow{
+    display: flex;
+    flex-direction: row;
+    width: inherit;
+    
+}
+
+.city{
+    font-weight: bold;
+}
+
+.ramla{
+    
+}
+
+.haifa{
+
+}
+
+.modiin{
+
+}
+
+.ako{
+
+}
+
+.hodhasharon{
+
+}
+
+.holon{
+
+}
+
+.jerusalem{
+
+}
+
+.telaviv{
+
+}
+
+.ayalon{
+
+}
+
+.midrow{
+    display: flex;
+    flex-direction: row;
+    width: inherit;
+}
+
+.herzelia{
+
+}
+
+.taon{
+
+}
+
+.mallhayameilat{
+
+}
+
+.businessholon{
+
+}
+
+.rishonim{
+
+}
+
+.sharona{
+
+}
+
+.ranana{
+
+}
+
+.hanegev{
+
+}
+
+.givataim{
+
+}
+
+.botrow{
+    display: flex;
+    flex-direction: row-reverse;
+    width: inherit;
+}
+
+.oryehuda{
+
+}
+
+.dots{
+    font-weight: bolder;
+}
+
+.bottomwrapper{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.newsletter{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(26, 70, 45);
+    text-align: center;
+    color: white;
+    align-content: space-around;
+    justify-content: space-evenly;
+    gap: 20px;
+    width: 100%;
+    flex-wrap: nowrap;
+}
+
+.input{
+    border: 1px white solid;
+    color: white;
+    width: 100%;
+    text-align: center;
+    background-color: inherit;
+}
+
+.sidebyside{
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+.left{
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    gap: 10px;
+}
+
+.right{
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    gap: 10px;
+}
+
+button{
+    justify-content: left;
+    background-color: aqua;
+    color: white;
+    border-radius: 20%;
+    width: 100px;
+    height: 50px;
+    font-size: x-large;
+}
+
+.button{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.check{
+    overflow-wrap: break-word;
+    white-space: normal;
+    overflow: hidden;
+    direction: rtl;
+}
+
+.title{
+    font-size: x-large;
+}

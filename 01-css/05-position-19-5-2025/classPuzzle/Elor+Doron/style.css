@@ -1,0 +1,44 @@
+.wrapper{
+    rotate: 20deg;
+    border: 2px solid black;
+<<<<<<< Updated upstream
+    margin: auto;
+    max-width: fit-content;
+    position: relative;
+    top: 100px;
+}
+
+.flex{
+    display: flex;
+}
+
+.box{
+    width: 200px;
+    height: 200px;
+    border: 1px solid gray;
+    color: gray;
+    margin: 10px;
+}
+.box1{
+    background-color: yellow;
+    position: relative;
+}
+
+.box2{
+    background-color: red;
+}
+
+.box3{
+    background-color: purple;
+}
+
+.box4{
+    background-color: blue;
+=======
+    width: 100px;
+    height: 100px;
+}
+.box{
+
+>>>>>>> Stashed changes
+}

@@ -1,0 +1,12 @@
+.block{
+
+    border: 1px solid black;
+    height: 100px;
+}
+
+.inline{
+
+    border: 1px solid black;
+    height: 100px;
+    color: red;
+}

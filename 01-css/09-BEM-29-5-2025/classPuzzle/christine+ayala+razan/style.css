@@ -1,0 +1,23 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.categories {
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    padding: 1% 5%;
+    margin: 0;
+
+}
+
+.categories__collection {
+    font-size: 20px;
+    cursor: pointer;
+    color: white;
+}
+
+.categories__highlight {
+    color: rgb(255, 230, 2);
+}
