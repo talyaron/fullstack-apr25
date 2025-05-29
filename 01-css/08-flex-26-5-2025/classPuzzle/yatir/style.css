@@ -1,0 +1,114 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 100px auto;
+
+}
+
+.mall {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid grey;
+    padding: 30px;
+    gap:5px;
+}
+
+
+.mall-name {
+    font-family: 'Courier New', Courier, monospace;
+    font-style: italic;
+
+}
+
+.mall-city {
+    font-size: 30px;
+}
+
+.mall-dots{
+    font-size: 25px;
+}
+
+
+.red {
+    color: red;
+}
+.red:hover{
+    background-color: red;
+    color: white;
+}
+
+.blue {
+    color: blue;
+}
+
+.blue:hover{
+    background-color:blue;
+    color: white;
+}
+
+.yellow{
+    color: yellow;
+}
+.yellow:hover{
+    background-color:yellow;
+    color: white;
+}
+
+.green{
+    color: green;
+}
+.green:hover{
+    background-color: green;
+    color: white;
+}
+
+.pink{
+    color: pink;
+}
+.pink:hover{
+    background-color: pink;
+    color: white;
+}
+
+.black{
+    color: black;
+}
+.black:hover{
+    background-color: black;
+    color: white;
+}
+
+.purple{
+    color: purple;
+}
+.purple:hover{
+    background-color:purple;
+    color: white;
+}
+
+.grey{
+    color: grey;
+}
+.grey:hover{
+    background-color:grey;
+    color: white;
+}
+
+.brown{
+    color: brown;
+}
+.brown:hover{
+    background-color: brown;
+    color: white;
+}
+
+.mall:hover{
+     cursor: pointer;
+}
+
+
+
+
