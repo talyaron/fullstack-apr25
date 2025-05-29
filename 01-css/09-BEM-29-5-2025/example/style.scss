@@ -1,19 +1,59 @@
-.navigation{
-    background-color: red;
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
 }
 
-.navigation__gender{
+.btn {
+    background-color: teal;
     color: white;
+    padding: 10px 20px;
+    border: none;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 150ms ease-in-out;
+
+    &:hover {
+        background-color: darkcyan;
+    }
+
+    &--danger {
+        background-color: crimson;
+        &:hover {
+            background-color: darkred;
+        }
+    }
+
+    &--disabled {
+        background-color: lightgray;
+        color: gray;
+        cursor: not-allowed;
+        &:hover {
+            background-color: lightgray;
+            /* No change on hover */
+            color: gray;
+            /* No change on hover */
+            cursor: not-allowed;
+            /* Maintain not-allowed cursor */
+        }
+    }
 }
 
-.navigation__personal{
-    color: white;
-}
+.categories {
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    padding: 1% 5%;
+    margin: 0;
 
-.navigation__logo{
-    color: white;
-}
+    &__collection {
+        font-size: 15px;
+        cursor: pointer;
+        color: white;
+        font-weight: 800;
 
-.navigation__search-bar{
-    color: white;
+        &:hover {
+            background-color: darkgray;
+        }
+    } 
+
 }
