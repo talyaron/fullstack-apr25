@@ -1,0 +1,22 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nav {
+    background-color: white;
+    display: flex;
+    justify-content:center;
+    gap: 20px;
+    padding: 1% 5%;
+    margin: 0;
+
+}
+
+.nav__item {
+    font-size: 15px;
+    cursor: pointer;
+    color: black;
+    font-weight: 800;
+}
