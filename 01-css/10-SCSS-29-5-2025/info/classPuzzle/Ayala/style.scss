@@ -1,0 +1,22 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.nav{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    height: 10%;
+    display: flex;
+    background-color: white;
+    color: black;
+    font-size: 17px;
+    border-bottom: 1px solid grey;
+    &__item{
+        padding:  1%;
+        flex:1;
+        text-align: center;
+        font-weight: 100;
+        &:hover{
+            background-color: rgb(212, 209, 209);
+        }
+    }
+}
