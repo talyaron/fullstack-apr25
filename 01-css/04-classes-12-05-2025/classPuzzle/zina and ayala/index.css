@@ -1,0 +1,24 @@
+body{
+    background-color: black;
+
+}
+.health{
+    width: 300px;
+    border: 5px solid black;
+background-color: white;
+
+}
+.health >img{
+    width: 100%;
+}
+.des{
+    
+
+  font-family: "Cal Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  
+}
+
+
+
