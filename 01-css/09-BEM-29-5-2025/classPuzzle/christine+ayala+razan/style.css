@@ -1,13 +1,24 @@
-.categories{
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.categories {
     background-color: black;
     display: flex;
     justify-content: space-between;
-    padding: 1%;
-    
+    padding: 1% 5%;
+    margin: 0;
+
 }
-.collection{
+
+.categories__collection {
+    font-size: 20px;
+    cursor: pointer;
     color: white;
 }
-.highlight{
+
+.categories__highlight {
     color: rgb(255, 230, 2);
 }
