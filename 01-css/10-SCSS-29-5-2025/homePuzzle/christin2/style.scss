@@ -1,0 +1,152 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+.header{
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+    background: linear-gradient(to right, rgb(155, 44, 138), blue);
+    font-style: italic;
+    color: rgb(244, 244, 243);
+}
+.portfolio{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    &__sidebar{
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left:0;
+        width: 300px;
+        height: 100vh; /* Full height */
+        background-color: rgb(54, 14, 130);
+        padding: 20px;
+        box-sizing: border-box;   
+        color: white; 
+        gap: 15px;
+        &__search{
+            width: 100px;
+            padding: 10px 60px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        &__nav{
+            &:hover{
+                background-color: beige;
+                color: black;
+            }
+        }
+    }
+    &__content{
+        margin-left: 350px; 
+        flex: 1;
+        padding: 50px;
+        gap: 100px;
+       
+        h3{
+            margin-top: 50px;    /* Space above each header */
+            margin-bottom: 20px;
+            font-size: 170%;
+            border-bottom: 3px solid rgb(85, 85, 215);
+            font-style: oblique;
+        }
+        img{
+            border-radius: 30%;
+            width: 600px;
+            margin-top: 50px;    /* Space above each header */
+            margin-bottom: 20px;
+        }
+        &__personal{
+            p{
+                margin-top: 50px;    /* Space above each header */
+                margin-bottom: 20px;
+            }
+        }
+        &__skills{
+            &__item{
+                display: flex;
+                padding: 20px;
+                gap: 50px;
+              
+                
+            }
+        }
+        &__experience{
+            display: flex;
+            flex-direction: column;
+            &__des{
+                padding: 30px;
+                gap: 50 px;
+                &__header{
+                    font-weight: bolder;
+                    font-size: 20px;
+                }
+                &__years{
+                    color: gray;
+                    font-size: 15px;
+                }
+                
+            }
+            
+            
+
+        }
+        &__footer{
+            text-align: center;
+            &__information{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 50px;
+                gap: 50px;
+                &__email{
+                    background-color: rgb(94, 159, 207);
+                    border-radius: 10%;
+                    border-width: 50px;
+                    padding: 50px;
+                    &__header{
+                        font-size: 30px;
+                        color: white;
+                    }
+                    &__des{
+                        font-size: 20px;
+                        color:gray ;
+                        &:hover{
+                            background-color: antiquewhite;
+                            color: black;
+                        }
+                    }
+                }
+                &__phone{
+                    background-color: rgb(94, 159, 207);
+                    border-radius: 10%;
+                    border-width: 50px;
+                    padding: 50px;
+                    &__header{
+                        font-size: 30px;
+                        color: white;
+                    }
+                    &__des{
+                        font-size: 20px;
+                        color:gray ;
+                        &:hover{
+                            background-color: antiquewhite;
+                            color: black;
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
+}
