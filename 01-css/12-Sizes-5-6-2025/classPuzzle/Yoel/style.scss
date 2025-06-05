@@ -1,0 +1,37 @@
+html {
+  font-size: 17px;
+}
+
+body {
+    background-color: aquamarine;
+
+}
+
+.container {
+    background-color: white;
+    font-family: "Nunito Sans", sans-serif;
+          padding: 0.2rem;
+          padding-right: 2rem;
+          width: 21rem;
+
+          
+          
+
+    .TextAboveImage {
+        h2 {
+            font-size: 1.35rem;
+        }
+    }
+    .Image{
+        #Amazon_Truck{
+            height: 18rem;
+        }        
+    }
+    .text_under_image{
+        color: rgba(0, 104, 202, 0.932);
+        font-size: 0.7rem;
+        cursor: pointer;
+  
+    }
+
+}
