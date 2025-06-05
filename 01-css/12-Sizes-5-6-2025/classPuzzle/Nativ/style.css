@@ -1,0 +1,20 @@
+html {
+    font-size: 17px;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;  
+}
+
+img{
+    height: 50vh;
+    width: 50vw;
+}
+
+p{
+    font-size: 5vh;
+}

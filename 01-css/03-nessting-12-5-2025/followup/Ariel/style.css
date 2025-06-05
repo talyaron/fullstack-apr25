@@ -1,0 +1,15 @@
+div {
+  width: 350px;
+  border: black 2px solid;
+  border-radius: 2%;
+}
+
+p {
+  text-align: center;
+}
+
+div > img {
+  width: 100%;
+  border-top-right-radius: 2%;
+  border-top-left-radius: 2%;
+}
