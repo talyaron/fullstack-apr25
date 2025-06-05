@@ -1,0 +1,134 @@
+.attractions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    border: 1px solid rgb(224, 222, 222);
+    font-size: 14px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    gap: 2px;
+    &:hover{
+
+    }
+
+    &__Home {
+        padding: 4px;
+    }
+
+    &__Home:hover {
+        background-color: gray;
+        color: grayscale($color: #000000);
+        cursor: pointer;
+    }
+
+    &__News {
+        padding: 4px;
+    }
+
+    &__News:hover {
+        background-color: gray;
+        color: grayscale($color: #000000);
+        cursor: pointer;
+    }
+
+    &__Sport {
+        padding: 4px;
+    }
+
+    &__Sport:hover {
+        background-color: gray;
+        color: grayscale($color: #000000);
+        cursor: pointer;
+    }
+
+    &__Business {
+        padding: 4px;
+    }
+
+    &__Business:hover {
+        background-color: gray;
+        color: grayscale($color: #000000);
+        cursor: pointer;
+    }
+
+    &__Innovations {
+        padding: 4px;
+    }
+
+    &__Innovations:hover {
+        background-color: gray;
+        color: grayscale($color: #000000);
+        cursor: pointer;
+    }
+
+    &__Culture {
+        padding: 4px;
+    }
+
+    &__Culture:hover {
+        background-color: gray;
+        color: grayscale($color: #000000);
+        cursor: pointer;
+    }
+
+    &__Arts {
+        padding: 4px;
+    }
+
+    &__Arts:hover {
+        background-color: gray;
+        color: grayscale($color: #000000);
+        cursor: pointer;
+    }
+
+    &__Travel {
+        padding: 4px;
+    }
+
+    &__Travel:hover {
+        background-color: gray;
+        color: grayscale($color: #000000);
+        cursor: pointer;
+    }
+
+    &__Earth {
+        padding: 4px;
+    }
+
+    &__Earth:hover {
+        background-color: gray;
+        color: grayscale($color: #000000);
+        cursor: pointer;
+    }
+
+    &__Audio {
+        padding: 4px;
+    }
+
+    &__Audio:hover {
+        background-color: gray;
+        color: grayscale($color: #000000);
+        cursor: pointer;
+    }
+
+    &__Video {
+        padding: 4px;
+    }
+
+    &__Video:hover {
+        background-color: gray;
+        color: grayscale($color: #000000);
+        cursor: pointer;
+    }
+
+    &__Live {
+        padding: 4px;
+    }
+
+    &__Live:hover {
+        background-color: gray;
+        color: grayscale($color: #000000);
+        cursor: pointer;
+    }
+
+}
