@@ -1,0 +1,11 @@
+body {
+    p{color: rgb(19, 18, 18);
+    } 
+   h1 {text-align: center;} 
+   border: 5px black solid;
+   border-radius: 1%;
+   font-family: cursive;
+   padding: 20px;
+   
+}
+

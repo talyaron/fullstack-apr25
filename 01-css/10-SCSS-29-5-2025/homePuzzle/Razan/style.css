@@ -1,0 +1,92 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 250px;
+    width:100%;
+    border-style: double;
+}
+.nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    width:100%;
+    border-style: double;
+    font-size: 20px;
+    background-color: rgb(157, 126, 85);
+    color: white;
+    position: sticky;
+    top: 0;
+}
+.categories:hover{
+  background-color: white;
+  color: rgb(157, 126, 85);
+}
+.logo img {
+    width: 250px;
+    height: 250px;
+    border-radius: 100%;
+    border-style: double;
+    object-fit: cover;
+    }
+.busname{
+    font-size: 100px;
+    align-self: center;
+    color: rgb(157, 126, 85);
+}
+form.search input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+  align-self: center;
+}
+form.search button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: rgb(157, 126, 85);
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+  align-self: center;
+}
+form.search button:hover {
+  background: #1a3f2e;
+}
+.photos{
+  display: flex;
+  align-items: stretch;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 500px;
+  justify-content: space-evenly;
+  object-fit: cover;
+  align-content: space-around;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+.photos img{
+  height: 100%;
+  object-fit: cover;
+  margin: 5px;
+}
+.footer{
+  display: flex;
+  justify-content: center;
+  gap: 1000px;
+  color:#5c3d27;
+  background-color: rgb(231, 205, 184);
+  flex-direction: row;
+  border-style: double;
+}
+.whatsapp{
+  font-size: 80px;
+  position: fixed;
+}

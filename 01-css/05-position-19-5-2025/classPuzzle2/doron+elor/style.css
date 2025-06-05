@@ -1,0 +1,58 @@
+.highq{/*doron */
+background-color: rgb(18, 16, 16);
+color: yellow;
+width: 100px;
+height: 50px;
+position: fixed;
+left: 100px;
+/* z-index: 100; */
+}
+
+.video-container {
+    width: 640px;
+    margin: auto;
+    border: 2px solid black;
+}
+
+video {
+    width: 100%;
+    display: block;
+}
+
+.videostick{/*doron */
+    position:sticky;
+    top: 10px;
+    left: 75%;
+}
+
+.instagram{/*elor */
+    position:fixed;
+    top: 150px;
+    width: 50px;
+    height: 50px;
+    border: 1px grey solid;
+background-color: brown;
+}
+
+.youtube{/*elor */
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    border: 1px green solid;
+    background-color: blue;
+    
+}
+
+.test{/*elor */
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    border:1px green solid;
+    background-color: black;
+bottom: 50px;
+}
+
+.text{/*elor */
+    
+
+}

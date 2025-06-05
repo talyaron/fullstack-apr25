@@ -1,0 +1,18 @@
+
+.worker{
+    width: 10%;
+}
+.worker > img{
+    width: 100%;
+}
+
+.bull{
+    width: 50%;
+    /* height:100px; */
+}
+.bull > img {
+    width: 100%
+}
+img{
+    width:300px;
+}

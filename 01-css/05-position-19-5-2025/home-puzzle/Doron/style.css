@@ -1,0 +1,46 @@
+.split{
+    display: flex;
+}
+
+.right{
+    width: 75%;
+}
+
+.left{
+    background-color: aqua;
+    width: 25%;
+    height: fit-content;
+    position: sticky;
+    top: 40px;
+}
+
+.reporter{
+    color: red;
+    text-align: right;
+}
+
+.time{
+    position: left;
+    color: red;
+}
+
+.news{
+    border-radius: 10%;
+    background-color: gray;
+    margin: 10px;
+    width: inherit;
+}
+
+.top{
+    display: flex;
+    position: sticky;
+    top: 10px;
+    background-color: red;
+    margin-bottom: 10px;
+}
+
+.top > div{
+    height: fit-content;
+    color: white;
+    margin-right: 10px;
+}

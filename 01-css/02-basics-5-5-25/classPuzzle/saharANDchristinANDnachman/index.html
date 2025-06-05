@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ducky The Duck</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <section>
+    <h1>SCN site first project</h1>
+    <div id="duckHair">
+      <h3>This is a duck with hair</h3>
+      <img src="./duckHair.jpg" style="width: 250px; height: 250px" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <i onclick="thumbs(this)" class="fa fa-thumbs-up" style="cursor: pointer;"></i>
+      <style>
+        .fa {
+          font-size: 50px;
+          cursor: pointer;
+          user-select: none;
+        }
+
+        .fa:hover {
+          color: rgb(88, 145, 211);
+        }
+      </style>
+    </div>
+    <div class="birthdayduck">
+      <h3>This duck have birthday</h3>
+      <img src="./happybirthday.jpg" style="width: 250px; height: 250px" />
+      <br />
+      <span>Click 10 times and see </span>
+      <br />
+      <div class="button-wraper">
+        <button onclick="confettiOnButton()" class="confetti_button">Confetti for ducky</button>
+      </div>
+      <br/>
+      <button class="birthdayButton" onclick="happyBirthdatCounter()">Click here for HappyBirthday</button>
+      <br />
+      <div class="counterStyle">
+
+        <span id="Display">HappyBirthday Counter - <span id="counterDisplay">0</span>
+      </div>
+      </span>
+    </div>
+    </div>
+
+  </section>
+  <script src="index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+</body>
+
+</html>
