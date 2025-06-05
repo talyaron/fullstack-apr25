@@ -1,0 +1,135 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+.discount{
+    text-align: center;
+    border: 1px dotted black;
+    background-color: beige;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.navigation{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+
+    &__logo{
+        margin-right: auto;
+         
+        
+    }
+    &__search{
+        width: 300px;
+        padding: 12px 70px;
+        font-size: 16px;
+        border: 2px solid #ddd;
+        border-radius: 25px;
+        outline: none;
+        transition: border-color 0.3s ease;
+    }
+    &__personal{
+        padding: 12px 20px;
+        &:hover{
+            background-color: rgb(211, 198, 198);
+        }
+
+    }
+    
+    &__location{
+        display: flex;
+        justify-content: center;
+        width: fit-content;
+        align-items: center;
+        padding: 12px 10px;
+        &:hover{
+            background-color: rgb(211, 198, 198);
+        }
+    
+
+
+    }
+
+}
+.categories {
+    position: sticky;
+    top: 0;
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    padding: 1% 5%;
+    
+
+    &__collection{
+        font-size: 15px;
+        cursor: pointer;
+        color: white;
+        font-weight: 800;
+        &:hover{
+            background-color: beige;
+        }
+    
+    &__highlight{
+        color: rgb(255, 230, 2);
+        &:hover{
+            background-color: beige;
+        }
+    }
+}
+
+}
+.topsales{
+    padding: 20px;
+    &__header{
+        display: flex;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 200%;
+        margin-bottom: 20px;
+    }
+    &__top3 {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 15px;
+        padding: 20px;
+        
+        &__item {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            max-width: 300px;
+        }
+        
+        &__pic {
+            img {
+                width: 100%;
+                height: 300px;
+                object-fit: cover;
+                border-radius: 8px;
+            }
+        }
+        
+        &__description {
+            margin-top: 10px;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        &__price {
+            margin-top: 5px;
+            font-weight: bold;
+            text-align: center;
+        }
+    }
+}
+
+    
+
+
+
+
+
