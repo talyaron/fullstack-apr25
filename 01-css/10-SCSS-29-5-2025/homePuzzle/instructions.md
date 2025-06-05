@@ -6,4 +6,4 @@ Simple site with a header, a main section, and a footer. Use flexbox to align th
 Add a navigation bar with links to different sections of the site (use # for internal links).
 
 # level 3
-Add a sidebar with links to different sections of the site (use # for internal links). Use grid to layout the main section with the sidebar and the content area.
+Add a sidebar with links to different sections of the site (use # for internal links). Use grid to layout the main section with the sidebar and the content area.Create a site about you. Use all the css stack we have learned so far.
