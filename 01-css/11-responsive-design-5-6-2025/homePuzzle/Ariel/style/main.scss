@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans Hebrew", "Arial", sans-serif;
+  color: black;
+}
+
+:root {
+  font-size: 16px; /* 1rem = 16px */
+  /* 
+  margin: 2rem;  = 32px
+  padding: 1.5rem; = 24px
+  font-size: 0.875rem;  = 14px
+  */
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+// importing 
+@import '_level1';
