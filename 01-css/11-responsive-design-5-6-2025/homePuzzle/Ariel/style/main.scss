@@ -2,8 +2,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Open Sans Hebrew", "Arial", sans-serif;
+  font-family: 'Nunito', sans-serif;
   color: black;
+  letter-spacing: 0;
 }
 
 :root {
@@ -26,6 +27,7 @@ li {
 a {
   text-decoration: none;
 }
+
 
 // importing 
 @import '_level1';
