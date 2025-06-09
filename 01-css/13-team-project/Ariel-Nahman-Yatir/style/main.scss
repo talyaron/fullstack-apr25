@@ -1,9 +1,36 @@
-:root{
-font-size: 17px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Nunito', sans-serif;
+  color: black;
+  letter-spacing: 0;
 
---primary-color: rgb(247, 247, 247);
---secondary-color: rgb(202, 0, 6);
---third-color: rgb(0, 0, 0);
+  // -- Variables for colors
+  --primary-color: rgb(247, 247, 247);
+  --secondary-color: rgb(202, 0, 6);
+  --third-color: rgb(0, 0, 0);
+}
+
+:root {
+  font-size: 16px; /* 1rem = 16px */
+  /* 
+  margin: 2rem;  = 32px
+  padding: 1.5rem; = 24px
+  font-size: 0.875rem;  = 14px
+  */
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
 }
 
 body {
