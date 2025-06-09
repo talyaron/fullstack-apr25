@@ -1,19 +1,39 @@
-.nav {
-  &__right {
-    &-logo {
-      width: 100vw;
-      height: 100vh;
-      background-image: url("../../img/IPB-logo-new.png");
-      display: block;
-      // background-size: cover;
-      // background-position: center;
+nav {
+  margin: 5vh 20vw;
+
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__right {
+      width: 50%;
+
+      &-logo {
+        width: 9vw;
+        height: 9vh;
+        background-image: url("../../img/IPB-logo-new.png");
+        display: block;
+        background-size: cover;
+      }
+    }
+
+    &__left {
+      width: 50%;
+
+      &-links {
+        display: flex;
+        gap: 2.5rem;
+        justify-content: flex-end;
+      }
     }
   }
-
-  // &__left {
-
-  //   &-links{
-
-  //   }
-  // }
 }
+
+// section {
+
+//   .section{
+
+//     .section
+//   }
+// }

@@ -31,11 +31,17 @@ li {
 }
 li:hover {
   color: var(--secondary-color);
+  text-decoration: underline;
 }
 
 a {
   text-decoration: none;
 }
+a:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
 
 body {
   background-color: var(--primary-color);
