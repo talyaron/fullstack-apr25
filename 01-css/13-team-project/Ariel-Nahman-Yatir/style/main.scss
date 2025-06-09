@@ -29,6 +29,9 @@ ul {
 li {
   cursor: pointer;
 }
+li:hover {
+  color: var(--secondary-color);
+}
 
 a {
   text-decoration: none;
