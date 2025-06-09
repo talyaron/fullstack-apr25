@@ -1,0 +1,21 @@
+.navigation {
+  background-color: hsla(25, 93%, 11%, 0.75);
+  padding: 1px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+
+  &__items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.logo p {
+  color: rgb(190, 195, 217);
+  font-size: 28px;
+  font-weight: bold;
+}
