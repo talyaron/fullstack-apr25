@@ -1,4 +1,4 @@
-<<<<<<< Updated upstream
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,41 +8,38 @@
   <title>W3Main</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="./dist/main.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
 </head>
 
 <body>
   <nav class="first-navbar">
-    <a href="index.html"><img src="./pics/w3logo.png" alt="logo"></a>
+    <a href="index.html"><img src="./pics/w3logo.png" alt="logo" class="first-navbar__logo"></a>
     <button class="first-navbar__btn">Tutorials</button>
     <button class="first-navbar__btn">Exercises</button>
     <button class="first-navbar__btn">Services</button>
-    <input type="text" name="" id="" placeholder="Search...">
+    <input type="text" name="" id="" placeholder="Search..." class="first-navbar__search">
     <button class="first-navbar__darkmode">darkmode</button>
     <button class="first-navbar__sign-in">sign in</button>
   </nav>
   <nav class="second-navbar">
-    <button>html</button>
-    <button>css</button>
+    <!-- <button class="second-navbar__btn">HTML</button> -->
+    <a href="./buttons.html" class="second-navbar__btn">HTML</a>
+        <a href="./therdpag.html" class="second-navbar__btn">CSS</a>
+
+    <!-- <button class="second-navbar__btn">CSS</button> -->
   </nav>
-  <div>
-    <h1>Learn to code</h1>
-    <h4>With the world's largest web developer site.</h4>
+  <div class="first-div">
+    <h1 class="first-div__h1">Learn to code</h1>
+    <h4 class="first-div__h4">With the world's largest web developer site.</h4>
     <form class="example" action="action_page.php">
-      <input type="text" placeholder="Search.." name="search">
+    <input type="text" name="" id="" placeholder="Search..." class="first-div__search">
       <button type="submit"><i class="fa fa-search"></i></button>
-    </form>
-    <h2>Not Sure Where To Begin?
+   </form>
+   <p class="first-div__p">Not Sure Where To Begin?</p>
   </div>
 </body>
 
-=======
-<html>
-  <head>
-    <title>My First Page</title>
-  </head>
-  <body>
-    <h1>Hello, world!</h1>
-    <p>This is a simple HTML page.</p>
-  </body>
->>>>>>> Stashed changes
-</html>

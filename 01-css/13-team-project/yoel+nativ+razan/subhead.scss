@@ -7,7 +7,7 @@
   direction: ltr;
   margin: 0;
   font-family: Arial, sans-serif;
-  width: 100%;
+  width: 100vw;
   height: 10vh;
 }
 
@@ -37,6 +37,10 @@
 
 .logo {
   text-align: center;
+
+  img{
+    width: 80%;
+  }
 
   .logo-text {
     font-size: 12px;
