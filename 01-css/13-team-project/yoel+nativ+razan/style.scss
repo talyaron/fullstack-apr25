@@ -78,28 +78,4 @@
   --swatchSize: 40px;
 }
 
-<<<<<<< Updated upstream
-  &__items {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  &__item {
-    color: #99aab5;
-    padding: 3px 10px;
-    cursor: pointer;
-  }
-  &__item:hover {
-    color: white;
-  }
-}
-
-.logo p {
-  color: rgb(190, 195, 217);
-  font-size: 28px;
-  font-weight: bold;
-}
-@import "toolbar"
-=======
 @import "nav";
->>>>>>> Stashed changes
