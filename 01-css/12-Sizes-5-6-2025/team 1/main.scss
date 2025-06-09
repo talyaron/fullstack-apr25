@@ -1,0 +1,19 @@
+@import "search";
+$color-green : #13c45a;
+
+
+
+
+.first-navbar {
+
+
+  &__btn {
+
+    border: none;
+    padding: 0 10px;
+    &:hover {
+
+      background-color:$color-green;
+    }
+  }
+}
