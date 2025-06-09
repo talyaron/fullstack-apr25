@@ -1,10 +1,11 @@
-html {
+:root {
     font-size: 17px;
 }
 
 .showcase {
     font-family: "Roboto", sans-serif;
     margin: auto;
+
     
     
 
@@ -31,11 +32,14 @@ html {
         justify-content: center;
         gap: 0.8rem;
         
+        
+        
     }
 
     &__images {
         display: flex;
         flex-direction: column;
+        
         
 
 
