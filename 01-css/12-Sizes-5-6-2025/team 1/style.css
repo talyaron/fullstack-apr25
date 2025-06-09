@@ -1,0 +1,52 @@
+:root {
+    font-size: 17px;
+}
+
+@import "buttons";
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    font-size: 28px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    background-color: #16ac54;
+    color: white;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color:#0eaa52;
+}
+
+.box {
+    width: 300px;
+    height: auto; 
+    background-color:aquamarine;
+    border: 2px solid #333;
+    padding: 20px;
+    text-align: center;
+    font-size: 18px;
+    margin: 20px auto;
+    border-radius: 10px; 
+}
+
+.box p {
+    margin: auto;
+    box-shadow:#333;
+    color: aquamarine;
+
+}
