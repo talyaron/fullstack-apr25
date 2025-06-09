@@ -1,13 +1,13 @@
 :root {
-    font-size: 17px;
+  font-size: 17px;
 
-    // variables
-    --primary-color: #0099ff;
-    --secondary-color: #2ec1cc;
-    --danger-color: #ff4d4d;
-    --font-family: 'Arial', sans-serif;
+  // variables
+  --primary-color: #0099ff;
+  --secondary-color: #2ec1cc;
+  --danger-color: #ff4d4d;
+  --font-family: "Arial", sans-serif;
 
-    --border-radius: 100px;
+  --border-radius: 100px;
 }
 
 @import "buttons";
