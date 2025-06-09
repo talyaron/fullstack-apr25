@@ -1,0 +1,72 @@
+body {
+  font-family: Arial, sans-serif;
+  direction: rtl;
+  background-color: var(--primary-color);
+  color: var(--third-color);
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: white;
+  border-bottom: 1px solid #ccc;
+}
+
+.logo img {
+  height: 40px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--third-color);
+  font-weight: bold;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.contact-link {
+  color: var(--secondary-color);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+.login-btn {
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.contact-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.contact-container h1 {
+  color: var(--secondary-color);
+}
+
+.contact-container a {
+  color: blue;
+}
