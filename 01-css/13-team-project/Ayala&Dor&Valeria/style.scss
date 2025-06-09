@@ -3,7 +3,7 @@
 
     --border-radius:15px;
     --primary-color: rgb(104, 49, 28);
-    --seconday-color: rgb(165, 93, 64);
+    --secondary-color: rgb(165, 93, 64);
     --button-color: rgb(207, 118, 15);
     --context-color: rgb(16, 56, 3);
     --additional-color:rgb(92, 92, 92);
@@ -12,5 +12,7 @@
 
 
 
+@import "about";
 
-@import 'homepage';
+
+@import "homepage";
