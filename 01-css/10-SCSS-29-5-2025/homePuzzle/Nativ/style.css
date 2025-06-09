@@ -48,11 +48,11 @@ body {
   border-radius: 45px;
   margin-bottom: 30px;
 }
-.navigation__item {
-  color: #99aab5;
-  padding: 3px 10px;
-  cursor: pointer;
-}
+  .navigation__item {
+    color: #99aab5;
+    padding: 3px 10px;
+    cursor: pointer;
+  }
 
 .navigation__item:hover {
   color: white;
