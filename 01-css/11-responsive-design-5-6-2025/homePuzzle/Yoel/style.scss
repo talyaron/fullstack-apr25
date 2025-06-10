@@ -82,6 +82,7 @@ body {
                 flex-direction: row;
                 text-align: center;
 
+
                 &__guest {
                     background-color: rgb(204, 204, 204);
                     font-size: 0.9rem;
@@ -92,6 +93,7 @@ body {
 
                 &__heart {
                     margin-left: 1.8rem;
+
                 }
             }
 
@@ -245,3 +247,4 @@ body {
 }
 
 // To do tomorrow -  Make the Footer.// 
+// Need to fix - Heart position when zooming in
