@@ -2,45 +2,61 @@
     font-size: 17px;
 }
 
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    /* horizontal center */
+    align-items: center;
+    /* vertical center */
+}
+
 .showcase {
     font-family: "Roboto", sans-serif;
     margin: auto;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-    
-    
 
-    
-            .showcase__title__container{
-            display: flex;
-            flex-direction: column;
-            justify-content: left;
-            align-items: left;
-            background-color: red;
-        }
+
+
+
+
+    .showcase__title__container {
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+        align-items: left;
+        background-color: red;
+
+    }
+
     &__title {
         font-size: 1.4rem;
         font-weight: bolder;
         display: flex;
-        justify-content: center;
 
 
-        
+
+
     }
 
     &__container {
         display: flex;
         justify-content: center;
         gap: 0.8rem;
-        
-        
-        
+
+
+
     }
 
     &__images {
         display: flex;
         flex-direction: column;
-        
-        
+
+
 
 
 
@@ -53,7 +69,9 @@
             height: 18vh;
             border-radius: 13%;
             cursor: pointer;
+            object-fit: cover;
             
+
 
 
 
@@ -81,7 +99,7 @@
 
         .card-2 {
             background-image: url(./Images/pretty-house.jpg);
-            
+
 
         }
 
@@ -144,3 +162,86 @@
         font-size: 0.8rem;
     }
 }
+
+@media (max-width: 600px) {
+    .showcase {
+        &__container {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        &__images {
+            &__edit {
+                width: 80vw;
+                height: 30vh;
+            }
+        }
+    }
+}
+@media (max-width: 600px) {
+  .showcase {
+    &__container {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__images {
+      &__edit {
+        width: 80vw;
+        height: 30vh;
+      }
+    }
+
+    &__explanation,
+    &__date,
+    &__price {
+      font-size: 1rem;
+      padding-left: 0;
+      text-align: center;
+    }
+
+    &__images__edit__favorite {
+      justify-content: center;
+
+      &__guest {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) and (min-width: 601px) {
+  .showcase {
+    &__images {
+      &__edit {
+        width: 40vw;
+        height: 25vh;
+      }
+    }
+
+    &__container {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+  }
+}
+
+@media (max-width: 1600px) and (min-width: 901px) {
+  .showcase {
+    &__images {
+      &__edit {
+        width: 22vw;
+        height: 18vh;
+      }
+    }
+
+    &__container {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+  }
+}
+
+// To do tomorrow -  Make the Footer.// 
