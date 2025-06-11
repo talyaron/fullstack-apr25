@@ -1,19 +1,81 @@
+body {
+  font-family: "Nunito Sans", sans-serif;
+}
 @import "search";
-$color-green : #13c45a;
 
-
-
+$color-green: #04aa6d;
 
 .first-navbar {
+  position: relative;
+  flex-direction: row;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  // align-items: center;
+  &__btn {
+    background-color: white;
+    padding: 8px 16px;
+    float: left;
+    width: auto;
+    border: none;
+    display: block;
+    outline: 0;
+    &:hover {
+      background-color: $color-green;
+    }
+  }
+  &__logo {
+    height: 3rem;
+    position: relative;
+    right: 100%;
+  }
 
+  &__search {
+    border-radius: 100px;
+  }
+}
+
+.second-navbar {
+  position: relative;
+  flex-direction: row;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: #282a35;
+  // top: 56px;
+  max-width: 1750px;
 
   &__btn {
-
+    background-color: #282a35;
+    color: white;
     border: none;
-    padding: 0 10px;
-    &:hover {
+    padding: 5 15px;
+    line-height: 1.5;
 
-      background-color:$color-green;
+    &:hover {
+      background-color: black;
     }
+  }
+}
+.first-div {
+  align-items: center;
+  text-align: center;
+  width: 100%;
+
+  // max-width: 980px;
+  background-color: #282a35;
+
+  &__h1 {
+    color: white;
+    font-size: 4rem;
+  }
+  &__h4 {
+    color: #fff4a3;
+  }
+
+  &__p {
+    color: white;
+    text-decoration: underline;
   }
 }
