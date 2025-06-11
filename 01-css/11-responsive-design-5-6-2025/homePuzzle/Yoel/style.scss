@@ -1,185 +1,195 @@
 :root {
-    font-size: 17px;
+  font-size: 17px;
+}
+
+header{
+
+}
+
+main {
+  margin-bottom: 190px;
 }
 
 body {
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    /* horizontal center */
-    align-items: center;
-    /* vertical center */
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  /* horizontal center */
+  align-items: center;
+  /* vertical center */
+  flex-direction: column;
 }
 
 .showcase {
-    font-family: "Roboto", sans-serif;
-    margin: auto;
-    display: inline-flex;
+  font-family: "Roboto", sans-serif;
+  margin: auto;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+
+
+
+
+
+  .showcase__title__container {
+    display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: left;
+    align-items: left;
+    background-color: red;
+
+  }
+
+  &__title {
+    font-size: 1.4rem;
+    font-weight: bolder;
+    display: flex;
+
+
+
+
+  }
+
+  &__container {
+    display: flex;
     justify-content: center;
+    gap: 0.8rem;
+
+
+
+  }
+
+  &__images {
+    display: flex;
+    flex-direction: column;
+
+
+
+
+
+    &__edit {
+      background-image: url(./Images/pretty.house-4.jpg);
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      width: 9vw;
+      height: 18vh;
+      border-radius: 13%;
+      cursor: pointer;
+      object-fit: cover;
 
 
 
 
 
 
-    .showcase__title__container {
+
+      &__favorite {
         display: flex;
-        flex-direction: column;
-        justify-content: left;
-        align-items: left;
-        background-color: red;
+        flex-direction: row;
+        text-align: center;
+
+
+        &__guest {
+          background-color: rgb(204, 204, 204);
+          font-size: 0.9rem;
+          border-radius: 19%;
+          margin-left: 0.4rem;
+          padding: 0.2rem;
+        }
+
+        &__heart {
+          margin-left: 1.8rem;
+
+        }
+      }
 
     }
 
-    &__title {
-        font-size: 1.4rem;
-        font-weight: bolder;
-        display: flex;
-
-
+    .card-2 {
+      background-image: url(./Images/pretty-house.jpg);
 
 
     }
 
-    &__container {
-        display: flex;
-        justify-content: center;
-        gap: 0.8rem;
-
-
+    .card-3 {
+      background-image: url(./Images/broken-house.jpg);
 
     }
 
-    &__images {
-        display: flex;
-        flex-direction: column;
-
-
-
-
-
-        &__edit {
-            background-image: url(./Images/pretty.house-4.jpg);
-            background-position: center;
-            background-size: cover;
-            background-repeat: no-repeat;
-            width: 9vw;
-            height: 18vh;
-            border-radius: 13%;
-            cursor: pointer;
-            object-fit: cover;
-            
-
-
-
-
-
-
-            &__favorite {
-                display: flex;
-                flex-direction: row;
-                text-align: center;
-
-
-                &__guest {
-                    background-color: rgb(204, 204, 204);
-                    font-size: 0.9rem;
-                    border-radius: 19%;
-                    margin-left: 0.4rem;
-                    padding: 0.2rem;
-                }
-
-                &__heart {
-                    margin-left: 1.8rem;
-
-                }
-            }
-
-        }
-
-        .card-2 {
-            background-image: url(./Images/pretty-house.jpg);
-
-
-        }
-
-        .card-3 {
-            background-image: url(./Images/broken-house.jpg);
-
-        }
-
-        .card-4 {
-            background-image: url(./Images/pretty-house2.jpg);
-
-        }
-
-        .card-5 {
-            background-image: url(./Images/pretty-house3.jpg);
-
-        }
-
-        .card-6 {
-            background-image: url(./Images/pretty-house-1.jpg);
-
-        }
-
-        .card-7 {
-            background-image: url(./Images/pretty-house-2.jpg);
-
-        }
-
-        .card-8 {
-            background-image: url(./Images/pretty-house-3.jpg);
-
-        }
-
-        .card-9 {
-            background-image: url(./Images/pretty-house-4.jpg);
-
-        }
-
-        .card-10 {
-            background-image: url(./Images/pretty-house-5.jpg);
-
-        }
+    .card-4 {
+      background-image: url(./Images/pretty-house2.jpg);
 
     }
 
-    &__explanation,
-    &__date,
-    &__price {
-        padding-left: 0.2rem;
-        font-size: 0.9rem;
+    .card-5 {
+      background-image: url(./Images/pretty-house3.jpg);
+
     }
 
-    &__explanation {
-        font-weight: bold;
+    .card-6 {
+      background-image: url(./Images/pretty-house-1.jpg);
+
     }
 
-    &__date,
-    &__price {
-        color: gray;
-        font-size: 0.8rem;
+    .card-7 {
+      background-image: url(./Images/pretty-house-2.jpg);
+
     }
+
+    .card-8 {
+      background-image: url(./Images/pretty-house-3.jpg);
+
+    }
+
+    .card-9 {
+      background-image: url(./Images/pretty-house-4.jpg);
+
+    }
+
+    .card-10 {
+      background-image: url(./Images/pretty-house-5.jpg);
+
+    }
+
+  }
+
+  &__explanation,
+  &__date,
+  &__price {
+    padding-left: 0.2rem;
+    font-size: 0.9rem;
+  }
+
+  &__explanation {
+    font-weight: bold;
+  }
+
+  &__date,
+  &__price {
+    color: gray;
+    font-size: 0.8rem;
+  }
 }
 
 @media (max-width: 600px) {
-    .showcase {
-        &__container {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        &__images {
-            &__edit {
-                width: 80vw;
-                height: 30vh;
-            }
-        }
+  .showcase {
+    &__container {
+      flex-direction: column;
+      align-items: center;
     }
+
+    &__images {
+      &__edit {
+        width: 80vw;
+        height: 30vh;
+      }
+    }
+  }
 }
+
 @media (max-width: 600px) {
   .showcase {
     &__container {
@@ -244,7 +254,65 @@ body {
       gap: 1rem;
     }
   }
+
 }
 
-// To do tomorrow -  Make the Footer.// 
-// Need to fix - Heart position when zooming in
+
+// Footer //
+
+footer {
+  width: 100%;
+
+  margin-top: 2vw;
+  position: relative;
+
+
+}
+
+.addition {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  background-color: lightgray;
+
+
+  &__help {
+    h5 {
+      font-size: 1.1rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    &__custom-link {
+
+      text-decoration: none;
+      color: black;
+      font-size: 0.9rem;
+
+      &:hover {
+        color: red;
+      }
+    }
+  }
+
+
+
+  &__care {
+    h5 {
+      font-size: 1.1rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+  }
+
+}
+
+@import "Header";
