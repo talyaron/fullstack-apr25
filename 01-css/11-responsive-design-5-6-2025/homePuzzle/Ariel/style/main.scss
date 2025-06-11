@@ -16,6 +16,10 @@
   */
 }
 
+body{
+  margin: 0 3vw;
+}
+
 ul {
   list-style: none;
 }
@@ -31,3 +35,4 @@ a {
 
 // importing 
 @import '_level1';
+@import '_level2';
