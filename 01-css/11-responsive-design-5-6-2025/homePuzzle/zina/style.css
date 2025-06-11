@@ -1,0 +1,52 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grid-group {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 2px;
+}
+
+.card {
+    width: 200px;
+    height: 240px;
+    padding: 0;
+    background-color: white;
+}
+
+.card__img {
+    width: 100%;
+    height: 155px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#img1 { background-image: url("n1.png"); }
+#img2 { background-image: url("n2.png"); }
+#img3 { background-image: url("n3.png"); }
+#img4 { background-image: url("n4.png"); }
+#img5 { background-image: url("n5.png"); }
+#img6 { background-image: url("n6.png"); }
+#img7 { background-image: url("n7.png"); }
+#img8 { background-image: url("n8.png"); }
+#img9 { background-image: url("n9.png"); }
+#img10 { background-image: url("n10.png"); }
+
+
+h1 {
+    text-align: left;
+    font-size: 28px;
+    color: #333;
+    margin-left: 20px; 
+}
+
+
+@media screen and (max-width: 768px) {
+    .grid-group {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
