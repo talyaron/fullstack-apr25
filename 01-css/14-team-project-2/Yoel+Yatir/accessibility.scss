@@ -1,0 +1,14 @@
+.accessibility{
+    &__image{
+        position: fixed;
+        top: 58px;
+        right: 13px;
+        
+        img{
+                width: 31px;
+                height: auto;
+                background-color: var(--webpage-color);
+        }
+
+    }
+}
