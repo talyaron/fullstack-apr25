@@ -83,6 +83,15 @@ body {
     flex-grow: 1;
     gap: 1rem;
   }
+   &__btn--group2 {
+    // width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // flex-grow: 1;
+    // gap: 1rem;
+    // left: 100px;
+  }
   &__btn {
     border: 1px solid #ddd;
     background-color: white;
@@ -105,4 +114,18 @@ body {
       transform: scale(0.97);
     }
   }
+}
+.footer{
+  background-color: whitesmoke;
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  font-size: 0.8rem;
+  color: #555;
+  position: relative;
+  bottom: 0;
+  flex-direction: row;
 }
