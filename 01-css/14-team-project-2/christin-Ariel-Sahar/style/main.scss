@@ -2,14 +2,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   color: black;
   letter-spacing: 0;
   direction: ltr;
 
   // -- Variables for colors
-  --primary-color: black;
-  --secondary-color: rgb(247, 247, 247);
+  --primary-color: rgb(247, 247, 247);
+  --secondary-color: black;
 }
 
 :root {
@@ -41,13 +41,12 @@ a:hover {
   text-decoration: underline;
 }
 
-
 body {
   background-color: var(--primary-color);
 }
 
-// importing 
+// importing
 
-@import 'aboutUs';
-@import 'event';
-@import 'contact';
+@import "about.scss";
+@import "event";
+@import "contact";
