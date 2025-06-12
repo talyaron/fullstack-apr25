@@ -5,12 +5,11 @@
   font-family: 'Nunito', sans-serif;
   color: black;
   letter-spacing: 0;
-  direction: rtl; /* Right-to-left text direction */
+  direction: ltr;
 
   // -- Variables for colors
-  --primary-color: rgb(247, 247, 247);
-  --secondary-color: rgb(202, 0, 6);
-  --third-color: rgb(0, 0, 0);
+  --primary-color: black;
+  --secondary-color: rgb(247, 247, 247);
 }
 
 :root {
@@ -30,7 +29,7 @@ li {
   cursor: pointer;
 }
 li:hover {
-  color: var(--secondary-color);
+  // color: var(--secondary-color);
   text-decoration: underline;
 }
 
@@ -38,7 +37,7 @@ a {
   text-decoration: none;
 }
 a:hover {
-  color: var(--secondary-color);
+  // color: var(--secondary-color);
   text-decoration: underline;
 }
 
@@ -49,7 +48,6 @@ body {
 
 // importing 
 
-@import 'buttons';
-@import 'forms';
-@import 'ofIndex';
-@import 'contant';
+@import 'aboutUs';
+@import 'event';
+@import 'contact';
