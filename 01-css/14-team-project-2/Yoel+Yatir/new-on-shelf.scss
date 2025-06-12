@@ -1,0 +1,41 @@
+   :root{
+
+    font: 17px;
+    background-color: var(--webpage-color);
+    background-color: #F6F6F6;
+    
+   }
+
+
+   
+   header{
+
+    .header {
+
+        &__hot{
+            background-color: white;
+            
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        font-family: var(--font-font-family);
+        font-family: "Noto Sans Hebrew", sans-serif; //remove later//
+        width: 90vw;
+        height: 10vh;
+        }
+
+
+        &__hot__image {
+
+            width: 48vw;
+            height: 10vh;
+            background-image: url(../Images/market.png);
+            background-size: cover; // or contain, depending on how you want it to fit
+            background-position: center;
+            background-repeat: no-repeat;
+            cursor: pointer;
+        }
+    }
+
+}
