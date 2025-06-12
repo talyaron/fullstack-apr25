@@ -1,0 +1,26 @@
+@import "about.scss";
+@import "help.scss";
+@import "success.scss";
+@import "header&footer.scss";
+
+* {
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+    
+}
+:root {
+    --primary-color: black;
+    --btn-primary: rgb(255, 251, 0);
+    --btn-secondary: white;
+    --background-primary: rgb(253, 227, 140);
+    --background-footer: rgb(248, 196, 119);
+    --background-secondary: rgb(140, 202, 253);
+
+    font-size: 17px;
+    font-family: 'Courier New', Courier, monospace;
+
+
+}
