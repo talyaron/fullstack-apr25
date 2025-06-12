@@ -1,0 +1,17 @@
+#about {
+  margin: 5vh 20vw;
+}
+
+.main{
+
+  &__title{
+
+  }
+
+  &__nav{
+
+    &-ul{
+      display: flex;
+    }
+  }
+}
