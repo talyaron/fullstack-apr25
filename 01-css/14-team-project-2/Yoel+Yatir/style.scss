@@ -1,5 +1,6 @@
     :root{
-    
+    font-size: 17px;
+    --webpage-color: ##F6F6F6
     --ge-panel-color: #f1f3f4;
     --toolbar-color: #f1f3f4;
     --workspace-color: #ececec;
@@ -25,5 +26,13 @@
     --dark-inverse-active-color: #c4c4c4;
     --dark-highlight-color: #000000;
     --dark-header-color: #1B1D1E;
+    --font-font-family: "Noto Sans Hebrew", sans-serif;
+
     }
+    
+    @import "accessibility";
+    @import "nav";
+    @import "footer";
+    @import "circular";
+    @import "new-on-shelf";
     
