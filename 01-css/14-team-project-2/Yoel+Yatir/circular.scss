@@ -1,0 +1,39 @@
+.circular {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+
+    &__background {
+        width: 8.45vw; 
+        height: 14.3vh;
+        background-color: rgb(255, 238, 238);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid gray;
+        margin-right: 13px;
+    }
+
+    &__image {
+        display: flex;
+        flex-direction: row;
+        justify-self: center;
+        width: 7.8vw; 
+        height: 12.74vh; 
+        border-radius: 50%;
+        transition: all 0.25s ease;
+        background-image: url(../dist/Images/item.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: auto;
+
+
+        &:hover {
+            width: 8.45vw;
+            height: 14.3vh;
+            background-image: 7.8vw 12.75vh;
+        }
+    }
+}
