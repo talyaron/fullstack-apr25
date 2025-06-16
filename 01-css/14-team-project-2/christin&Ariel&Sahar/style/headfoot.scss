@@ -1,3 +1,4 @@
+
 body {
   font-family: "Assistant";
   font-weight: 700;
@@ -86,13 +87,20 @@ body {
 }
 
 .footer {
-  top: 50rem;
+  background-color: rgb(51, 52, 51);
   position: relative;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  // margin-top: 100%;
+  // z-index: 100;
   width: 100%;
-  height: 40rem;
+  height: 100px; // Set a fixed height for the footer
   background-image: url(https://campus.gov.il/wp-content/themes/campusnew/images/ltr/back-to-top.svg),
     url(https://campus.gov.il/wp-content/themes/campusnew/images/footer-bg-mobile.svg);
   background-repeat: no-repeat, no-repeat;
-  background-position: right 0 bottom 0, left center;
+  background-position: right 0 bottom 0, bottom 0 left 0;
   background-size: 50px,100%; // התמונה הראשונה קטנה, השנייה גדולה
 }
+
+
