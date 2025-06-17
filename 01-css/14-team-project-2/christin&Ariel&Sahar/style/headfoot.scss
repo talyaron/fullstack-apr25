@@ -20,7 +20,7 @@ body {
   top: -1px;
   left: 0;
   right: 0;
-  position: absolute;
+  position: static;
 
   &__top-nav {
     top: 0;
