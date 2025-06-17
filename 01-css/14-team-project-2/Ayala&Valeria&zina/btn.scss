@@ -1,0 +1,22 @@
+
+.btn {
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 0.8rem 1.2rem;
+    transition: all 0.3s;
+
+    &:hover {
+        transform: translateY(-0.2rem);
+        box-shadow: 0 4px 0px 2px rgb(0, 0, 0);
+        cursor: pointer;
+    }
+
+    &--yellow {
+        background-color: var(--btn-primary);
+
+    }
+
+    &--white {
+        background-color: var(--btn-secondary);
+    }
+}

@@ -1,38 +1,89 @@
-* {
-    box-sizing: border-box;
-}
 
 .header {
-    display: flex;
+    position: fixed;
+    width: 100vw;
     height: 5rem;
-    background-color: yellow;
-    border-bottom: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, 0.171);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    background-color: white;
+    z-index: 10;
 
     .nav {
-        flex: 2;
         display: flex;
-
-        .logo {
-            height: 8%;
-
-            aspect-ratio: 3/12;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-            background-image: url('../img/logo.png');
-        }
+        gap: 1rem;
+        align-items: center;
 
         &__bar {
-            a{
-                text-decoration: none;
-                color: inherit;
+
+            height: 50%;
+            display: flex;
+            align-items: center;
+            padding: 0 0.5rem;
+
+            &:hover {
+                background-color: rgb(221, 221, 221);
+                border-radius: 5px;
             }
 
+        }
+
+        a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo {
+            cursor: pointer;
+            width: 150px;
+            // height: 85%;
+            background-image: url('../img/logo.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 100% 100%;
+            aspect-ratio: 12/3;
+            transition: 0.3s;
+
+            &:hover {
+                transform: scale(1.05);
+            }
         }
     }
 
     .right {
         display: flex;
-    }
+        align-items: center;
+        gap: 1rem;
 
+        &__bar {
+            cursor: pointer;
+            height: 50%;
+            display: flex;
+            align-items: center;
+            padding: 0 0.5rem;
+
+            &:hover {
+                background-color: rgb(221, 221, 221);
+                border-radius: 5px;
+            }
+
+            i {
+                font-size: 2rem;
+            }
+        }
+
+    }
+}
+
+
+
+
+
+.footer {
+    bottom: 0;
 }
