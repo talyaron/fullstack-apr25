@@ -1,0 +1,20 @@
+footer {
+    width: 100%;
+    background-color: gray;
+
+
+    .info {
+        display: none;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        color: black;
+    }
+
+
+@media (max-width: 1400px){
+    .info{
+        display: flex;
+    }
+}
+}

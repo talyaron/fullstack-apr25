@@ -2,6 +2,7 @@
 @import "help.scss";
 @import "success.scss";
 @import "header&footer.scss";
+@import "btn.scss";
 
 * {
     box-sizing: border-box;
@@ -17,10 +18,11 @@ body{
     --btn-secondary: white;
     --background-primary: rgb(253, 227, 140);
     --background-footer: rgb(248, 196, 119);
-    --background-secondary: rgb(140, 202, 253);
+    --background-secondary: rgb(195, 221, 252);
 
     font-size: 17px;
-    font-family: 'Courier New', Courier, monospace;
-
+    font-weight: 300;
+    font-family: "Inter", sans-serif;
+    --title-font: "Texturina", serif;
 
 }
