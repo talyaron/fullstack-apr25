@@ -1,4 +1,3 @@
-
 .main {
     padding-top: 5rem;
     display: flex;
@@ -44,32 +43,33 @@
             margin: 5rem auto;
             gap: 2rem;
 
-            &__section {
-
-                .title {
-
-                    font-family: var(--title-font);
-
-                    font-size: 2.5rem;
-                    font-weight: 550;
-                    margin-bottom: 1rem;
-
-                    &--float {
-                        float: left;
-                        margin: 0 0.58rem 0 0;
-                        line-height: 0.9;
 
 
-                    }
+            &__title {
+
+                font-family: var(--title-font);
+
+                font-size: 2.5rem;
+                font-weight: 550;
+                margin-bottom: 1rem;
+
+                &--float {
+                    float: left;
+                    margin: 0 0.58rem 0 0;
+                    line-height: 0.9;
+
 
                 }
 
-                .text {
-                    text-align: justify;
-                    line-height: 1.5rem;
-
-                }
             }
+
+            &__text {
+                text-align: justify;
+                line-height: 1.5rem;
+
+            }
+
+            // &__section {}
         }
 
         .learn-more {
@@ -106,7 +106,8 @@
                     padding: 0.5rem 0;
 
                 }
-                &__text{
+
+                &__text {
                     font-size: 0.95rem;
                     line-height: 1.3rem;
                 }
