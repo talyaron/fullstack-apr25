@@ -12,6 +12,12 @@
             background-color: var(--background-secondary);
             padding: 3.5rem 4rem;
 
+            @media screen and (max-width:768px) {
+                flex-direction: column;
+                gap: 3.5rem;
+
+            }
+
 
             &__title {
                 font-family: var(--title-font);
@@ -23,6 +29,12 @@
                 justify-content: flex-end;
                 padding-right: 2rem;
                 align-items: center;
+
+                @media screen and (max-width:768px) {
+                    padding: 0;
+                    margin: auto;
+
+                }
             }
 
             &__img {
@@ -80,6 +92,8 @@
             gap: 2rem;
             margin-bottom: 4rem;
 
+
+
             &__title {
                 font-size: 2rem;
                 font-weight: 350;
@@ -89,10 +103,21 @@
                 display: flex;
                 width: 100%;
                 gap: 2%;
+
+                // @media screen and (max-width:1024px) {
+                //     flex-direction: column;
+
+                // }
             }
 
             &__section {
                 width: 32%;
+                display: flex;
+                flex-direction: column;
+
+                // @media screen and (max-width:1024px) {
+                //     flex-direction: row;
+                // }
 
                 &__small-title {
                     font-size: 0.9rem;
