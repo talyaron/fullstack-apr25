@@ -18,6 +18,7 @@
   }
 
   &__image {
+    
     display: flex;
     flex-direction: row;
     justify-self: center;
@@ -27,7 +28,8 @@
     transition: all 0.25s ease;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: 125%;
+    
 
     &.circular__image__1 {
       background-image: url("../Images/circular/img1.png");
