@@ -1,41 +1,44 @@
-   :root{
+:root {
+  font: 17px;
+  background-color: var(--webpage-color);
+  background-color: #f6f6f6;
+}
 
-    font: 17px;
-    background-color: var(--webpage-color);
-    background-color: #F6F6F6;
-    
-   }
+.message {
+  margin-top: 100px;
+  &__img {
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    width: 98vw;
+    height: 50vh;
+    background-image: url("../Images/war_message.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+header {
+  .header {
+    &__hot {
+      background-color: white;
 
-
-   
-   header{
-
-    .header {
-
-        &__hot{
-            background-color: white;
-            
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        font-family: var(--font-font-family);
-        font-family: "Noto Sans Hebrew", sans-serif; //remove later//
-        width: 90vw;
-        height: 10vh;
-        }
-
-
-        &__hot__image {
-
-            width: 48vw;
-            height: 10vh;
-            background-image: url(../Images/market.png);
-            background-size: cover; // or contain, depending on how you want it to fit
-            background-position: center;
-            background-repeat: no-repeat;
-            cursor: pointer;
-        }
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-font-family);
+      font-family: "Noto Sans Hebrew", sans-serif;
+      width: 90vw;
+      height: 10vh;
     }
+  }
+}
 
+h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
