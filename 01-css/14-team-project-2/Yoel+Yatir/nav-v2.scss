@@ -1,11 +1,6 @@
-:root {
-  font-size: 17px;
-  font-family: "Roboto", sans-serif;
-  background-color: #f6f6f6;
-}
+
 
 .nav {
-  margin-top: 1vh;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -17,11 +12,13 @@
   background-color: #f6f6f6;
   flex-wrap: wrap;
   border-bottom: 1px solid rgb(204, 204, 204);
+      font-family: 'Nunito Sans', sans-serif;
+
 
   &__icon {
     position: absolute;
     right: 3vw;
-    top: -1vh;
+    top: 0vh;
     margin-bottom: 1vw;
     cursor: pointer;
   }
