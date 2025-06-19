@@ -9,12 +9,14 @@
 
         .headline {
             display: flex;
+            padding: 7%;
             background-color: var(--background-secondary);
             padding: 3.5rem 4rem;
+            gap:3rem;
 
             @media screen and (max-width:768px) {
                 flex-direction: column;
-                gap: 3.5rem;
+
 
             }
 
@@ -35,6 +37,11 @@
                     margin: auto;
 
                 }
+
+                @media screen and (max-width:462px) {
+                    font-size: 2rem;
+
+                }
             }
 
             &__img {
@@ -51,7 +58,8 @@
         .description {
             display: flex;
             flex-direction: column;
-            width: 47vw;
+            max-width: 120ch;
+            padding: 0 10%;
             margin: 5rem auto;
             gap: 2rem;
 
@@ -87,10 +95,12 @@
         .learn-more {
             display: flex;
             flex-direction: column;
-            width: 70vw;
+            max-width: 1500px;
             margin: auto;
             gap: 2rem;
+            font-weight: 480;
             margin-bottom: 4rem;
+            padding: 10%;
 
 
 
@@ -101,9 +111,8 @@
 
             &__wrapper {
                 display: flex;
-                width: 100%;
-                gap: 2%;
-
+                gap: 3%;
+                justify-content: center;
                 // @media screen and (max-width:1024px) {
                 //     flex-direction: column;
 
