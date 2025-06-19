@@ -12,7 +12,7 @@
             padding: 7%;
             background-color: var(--background-secondary);
             padding: 3.5rem 4rem;
-            gap:3rem;
+            gap: 3rem;
 
             @media screen and (max-width:768px) {
                 flex-direction: column;
@@ -38,7 +38,7 @@
 
                 }
 
-                @media screen and (max-width:462px) {
+                @media screen and (max-width:533px) {
                     font-size: 2rem;
 
                 }
@@ -95,12 +95,12 @@
         .learn-more {
             display: flex;
             flex-direction: column;
-            max-width: 1500px;
+            max-width: 1300px;
             margin: auto;
             gap: 2rem;
             font-weight: 480;
             margin-bottom: 4rem;
-            padding: 10%;
+            padding: 0 10%;
 
 
 
@@ -111,12 +111,13 @@
 
             &__wrapper {
                 display: flex;
-                gap: 3%;
+                gap: 1rem;
                 justify-content: center;
-                // @media screen and (max-width:1024px) {
-                //     flex-direction: column;
 
-                // }
+                @media screen and (max-width:1100px) {
+                    flex-direction: column;
+
+                }
             }
 
             &__section {
@@ -124,9 +125,15 @@
                 display: flex;
                 flex-direction: column;
 
-                // @media screen and (max-width:1024px) {
-                //     flex-direction: row;
-                // }
+                @media screen and (max-width:1100px) {
+                    flex-direction: row-reverse;
+                    width: 100%;
+                }
+
+                @media screen and (max-width:650px) {
+                    flex-direction: column;
+                    width: 100%;
+                }
 
                 &__small-title {
                     font-size: 0.9rem;
@@ -149,10 +156,21 @@
                 .more-img {
                     background-position: center;
                     background-repeat: no-repeat;
-                    background-size: 100% 100%;
                     aspect-ratio: 36/20;
                     border-radius: 20px;
+                    background-size: 100%;
+
+
                     // border: 1px solid black;
+                    @media screen and (max-width:1100px) {
+                        width: 55%; // או כל ערך שמתאים לך
+                        flex-shrink: 0; // מונע התכווצות יתר
+                    }
+
+                    @media screen and (max-width:650px) {
+                        background-size: 100%;
+                        width: 100%;
+                    }
 
                     &--one {
                         // width: 500px;
