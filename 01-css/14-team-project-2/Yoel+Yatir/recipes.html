@@ -4,11 +4,47 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./dist/style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet"
+    <link rel="stylesheet" href="./dist/filtering.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@100..900&display=swap"
+      rel="stylesheet"
     />
     <title>recipes</title>
   </head>
   <body>
+    <!-- Accessibility start-->
+
+    <div class="accessibility">
+      <div class="accessibility__image">
+        <img src="./Images/accessibillity.png" alt="accessibility" />
+      </div>
+    </div>
+    <!-- Accessibility end-->
+
+    <!--Chef bot start -->
+    <div class="bot">
+      <div class="bot__image">
+        <img src="./Images/whatsapp.png" alt="whatsapp" />
+      </div>
+      <div class="bot__text">שף בוט</div>
+    </div>
+
+    <!-- Cheff bot end -->
+
+    <!-- Customer Service bot Start-->
+
+    <div class="customer-service">
+      <div class="bot__image">
+        <img src="./Images/message.png" alt="whatsapp" />
+      </div>
+      <div class="bot__text">שירות לקוחות</div>
+    </div>
+    <!-- Customer Service bot End-->
+
     <!-- nav start-->
     <div class="nav">
       <div class="nav__icon">
@@ -62,7 +98,202 @@
         </div>
       </div>
       <div class="headtitle__image"></div>
-      <!--head-title end-->
     </div>
+    <!--head-title end-->
+
+    <!--circular recipes start-->
+    <div class="circular-recipes">
+      <div class="circular-recipes__background">
+        <div
+          class="circular-recipes__background__image circular-recipes__background__image1"
+        ></div>
+        <div class="circular-recipes__background__image__text">
+          <p>something</p>
+        </div>
+      </div>
+      <div class="circular-recipes__background">
+        <div
+          class="circular-recipes__background__image circular-recipes__background__image2"
+        ></div>
+        <div class="circular-recipes__background__image__text">
+          <p>something</p>
+        </div>
+      </div>
+
+      <div class="circular-recipes__background">
+        <div
+          class="circular-recipes__background__image circular-recipes__background__image3"
+        ></div>
+        <div class="circular-recipes__background__image__text">
+          <p>something</p>
+        </div>
+      </div>
+      <div class="circular-recipes__background">
+        <div
+          class="circular-recipes__background__image circular-recipes__background__image4"
+        ></div>
+        <div class="circular-recipes__background__image__text">
+          <p>something</p>
+        </div>
+      </div>
+      <div class="circular-recipes__background">
+        <div
+          class="circular-recipes__background__image circular-recipes__background__image5"
+        ></div>
+        <div class="circular-recipes__background__image__text">
+          <p>something</p>
+        </div>
+      </div>
+      <div class="circular-recipes__background">
+        <div
+          class="circular-recipes__background__image circular-recipes__background__image6"
+        ></div>
+        <div class="circular-recipes__background__image__text">
+          <p>something</p>
+        </div>
+      </div>
+      <div class="circular-recipes__background">
+        <div
+          class="circular-recipes__background__image circular-recipes__background__image7"
+        ></div>
+        <div class="circular-recipes__background__image__text">
+          <p>something</p>
+        </div>
+      </div>
+      <div class="circular-recipes__background">
+        <div
+          class="circular-recipes__background__image circular-recipes__background__image8"
+        ></div>
+        <div class="circular-recipes__background__image__text">
+          <p>something</p>
+        </div>
+      </div>
+    </div>
+
+    <!--circular recipes end-->
+
+    <!--  search bar -->
+
+    <div class="filtering">
+      <div class="search-container">
+        <input type="text" class="search-bar" placeholder="חיפוש חופשי..." />
+        <div class="search-icon">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+            />
+          </svg>
+        </div>
+      </div>
+
+      <div class="filtering__type">
+        <p class="filering__type__headline">סוג מתכון</p>
+        <label><input type="checkbox" name="recipe" value="בשר" /> בשר</label
+        ><br />
+        <label><input type="checkbox" name="recipe" value="דגים" /> דגים</label
+        ><br />
+        <label><input type="checkbox" name="recipe" value="חגים" /> חגים</label
+        ><br />
+        <label
+          ><input type="checkbox" name="recipe" value="ירקות" /> ירקות</label
+        ><br />
+        <label
+          ><input type="checkbox" name="recipe" value="ללא_גלוטן" /> ללא
+          גלוטן</label
+        ><br />
+        <label><input type="checkbox" name="recipe" value="מאפים" />מאפים</label
+        ><br />
+        <label
+          ><input type="checkbox" name="recipe" value="מנות_ראשונות" /> מנות
+          ראשונות</label
+        ><br />
+        <label
+          ><input type="checkbox" name="recipe" value="מרקים" /> מרקים</label
+        ><br />
+        <label
+          ><input type="checkbox" name="recipe" value="סלטים" /> סלטים</label
+        ><br />
+        <label
+          ><input type="checkbox" name="recipe" value="עוגות" /> עוגות</label
+        ><br />
+        <label
+          ><input type="checkbox" name="recipe" value="עיקריות" />
+          עיקריות</label
+        ><br />
+        <label
+          ><input type="checkbox" name="recipe" value="קינוחים" />
+          קינוחים</label
+        ><br />
+        <label
+          ><input type="checkbox" name="recipe" value="תוספות" /> תוספות</label
+        ><br />
+      </div>
+      <div class="filtering__by">
+        <p class="filering__by__headline">סינון לפי</p>
+        <label><input type="checkbox" name="kosher" value="בשרי" /> בשר</label
+        ><br />
+        <label><input type="checkbox" name="kosher" value="חלבי" /> דגים</label
+        ><br />
+        <label><input type="checkbox" name="kosher" value="פרווה" /> חגים</label
+        ><br />
+      </div>
+
+
+      <div class="filtering__difficulty">
+        <p class="filering__difficulty__headline">דרגת קושי</p>
+        <label
+          ><input type="checkbox" name="recipe" value="בינוני" /> בינוני</label
+        ><br />
+        <label><input type="checkbox" name="recipe" value="קל" /> קל</label
+        ><br />
+      </div>
+
+
+      <div class="filtering__time">
+        <p class="filering__time__headline">סוג מתכון</p>
+      
+      <label><input type="checkbox" name="time" value="שעה" /> מעל שעה</label
+      ><br />
+      <label
+        ><input type="checkbox" name="time" value="עד_15_דקות" /> עד 15
+        דקות</label
+      ><br />
+      <label
+        ><input type="checkbox" name="time" value="עד_חצי_שעה" /> עד חצי
+        שעה</label
+      ><br />
+      <label><input type="checkbox" name="time" value="עד_שעה" /> עד שעה</label
+      ><br />
+    </div>
+    <!--   -->
+    <!--   -->
+    <!--   -->
+    <!--   -->
+    <!--   -->
+    <!--   -->
+    <!--   -->
   </body>
 </html>
+
+<!--
+
+To do list for the end of the project!
+
+Make the accessibility part --done --
+, make a whatsapp and customer service fixed parts --done--
+
+
+-- the hard work : 
+Do the main page part - 
+חיפוש חופשי, אופציות בחירה, סינון,
+
+ולאחר מיכן, לעשות חלק של תמונות
+
+
+
+לקראת סיום  - להוסיף את הפווטר
+
+ולהכי בסוף!
+לחבר את הדפים, לעשות אופציית כניסה לדפים אחרים.
+
+-->
