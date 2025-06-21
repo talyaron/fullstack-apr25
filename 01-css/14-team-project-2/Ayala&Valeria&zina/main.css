@@ -1,19 +1,48 @@
 header a{
 font-size: 40 20px;
-text-align: center;
-  margin-right: 50px;
-  color: black;
-  font-weight: bold;
+ margin-right: 150px;
+ color: black;
+ font-weight: bold;
   row-gap: 30px;
+   cursor: pointer;
  
 }
-
-.btn{
-    line-height:10;
-
-    text-align: center;
+img{
+  margin-right: 70px;
 }
 
+.start-button {
+  background-color: #ffe01b;
+  color: black;                    
+  border: 2px solid black;     
+  border-radius: 15px;             
+  padding: 12px 24px;           
+  font-size: 16px;                 
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 40px;
+}
+
+.start-button:hover {
+  background-color: #e6b800;    
+}
+
+.log-button{
+  background-color: #ffe01b;
+  color: black;                 
+  border: 2px solid black;       
+  border-radius: 15px;           
+  padding: 12px 24px;             
+  font-size: 16px;                 
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.log-button:hover {
+  background-color: #e6b800;      
+}
 
 p{
   font-size: 16px;
