@@ -1,0 +1,41 @@
+.customer-service {
+    position: absolute;
+    display: inline-flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 165px;
+    height: 46px;
+    background-color: #159DD7;
+    left: 0.6vw;
+    bottom: 3vh;
+    border-bottom: 1px solid transparent;
+    border-radius: 50px;
+    font-family: "Noto Sans Hebrew", sans-serif;
+    cursor: pointer;
+    font-size: 0.9rem;
+
+
+    &:hover {
+        filter: brightness(0.7);
+
+    }
+
+    &__image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            width: 20px;
+            height: 20px;
+
+        }
+    }
+
+    &__text {
+        color: white;
+        border-bottom: 1px solid transparent;
+    }
+}
