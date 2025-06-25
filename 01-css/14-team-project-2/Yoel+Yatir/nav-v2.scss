@@ -1,0 +1,126 @@
+
+
+.nav {
+  position: sticky;
+  z-index: 1000;
+  top: 0px;
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  background-color: #f6f6f6;
+  flex-wrap: wrap;
+  border-bottom: 1px solid rgb(204, 204, 204);
+      font-family: 'Nunito Sans', sans-serif;
+
+
+  &__icon {
+    position: absolute;
+    right: 3vw;
+    top: 0vh;
+    margin-bottom: 1vw;
+    cursor: pointer;
+  }
+
+  &__places {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 20px;
+    margin-right: 60px;
+    border: 2px solid transparent;
+
+
+    &__text {
+      border: 2px solid transparent;
+      transition: border 0.3s ease;
+
+      &:hover {
+        animation-delay: 0.5s;
+        border-bottom: 1px solid black;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__relocation {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: row;
+    gap: 10px;
+    position: relative;
+    left: -3vw;
+
+    &__hot {
+      display: flex;
+      flex-direction: row-reverse;
+      gap: 9px;
+
+      &__text {
+        display: flex;
+        justify-self: center;
+        align-items: right;
+        color: white;
+        border: 1px solid rgb(110, 110, 110);
+        border-radius: 50px;
+        padding: 5px 15px 5px 15px;
+        background-color: rgb(189, 0, 0);
+        border-radius: 50px;
+        margin-top: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+
+        &:hover {
+          background-color: white;
+          color: red;
+          border-color: red;
+        }
+
+        &__2 {
+          background-color: rgb(20, 172, 243);
+
+          &:hover {
+            color: rgb(20, 172, 243);
+            border-color: rgb(20, 172, 243);
+          }
+        }
+      }
+    }
+  }
+
+  &__location {
+    &__social {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-top: 7px;
+      margin-right: 5px;
+    }
+
+    &__instagram {
+      img {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+      }
+    }
+
+    &__facebook {
+      img {
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+      }
+    }
+
+    &__tiktok {
+      img {
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+// make mobile version
+// make hover animation on facebook.. icons

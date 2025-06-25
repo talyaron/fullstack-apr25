@@ -1,0 +1,317 @@
+.header {
+    position: fixed;
+    width: 100vw;
+    height: 4rem;
+    border: 1px solid rgba(0, 0, 0, 0.171);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    background-color: white;
+    z-index: 10;
+   
+
+    &-nav {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+
+        &__bar {
+
+            height: 50%;
+            display: flex;
+            align-items: center;
+            padding: 0 0.5rem;
+
+            &:hover {
+                background-color: rgb(221, 221, 221);
+                border-radius: 5px;
+            }
+
+            @media screen and (max-width:1100px) {
+                display: none;
+
+            }
+
+            i {
+                font-size: 2rem;
+            }
+        }
+
+        a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo {
+            i{
+                display: none;
+                
+            }
+            cursor: pointer;
+            height:2.5rem;
+            background-image: url('../img/logo.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 100% 100%;
+            aspect-ratio: 12/3;
+            transition: 0.3s;
+
+
+            &:hover {
+                transform: scale(1.05);
+            }
+             @media screen and (max-width:400px) {
+                background-image: none;
+                aspect-ratio: 1/1;
+                i{
+                    display: block;
+                    font-size: 3rem;
+                }
+                
+            }
+           
+        }
+    }
+
+    &-right {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        &__bar {
+            cursor: pointer;
+            height: 50%;
+            display: flex;
+            align-items: center;
+            padding: 0 0.5rem;
+
+            &:hover {
+                background-color: rgb(221, 221, 221);
+                border-radius: 5px;
+            }
+
+            i {
+                font-size: 2rem;
+            }
+        }
+
+        &__phone {
+            @media screen and(max-width:745px) {
+                display: none;
+
+            }
+        } &__menu {
+            @media screen and(max-width:420px) {
+                display: none;
+
+            }
+        }
+
+        .login {
+            @media screen and(max-width:520px) {
+                display: none;
+
+            }
+        }
+
+    }
+}
+
+
+
+.footer {
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-footer);
+    justify-content: center;
+    align-items: center;
+
+    >* {
+        width: 100%;
+        justify-content: center;
+    }
+
+    &-links {
+        padding: 2rem 3rem 3rem 3rem;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1rem 2rem;
+        justify-content: center;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.37);
+
+        &__title {
+            font-weight: 400;
+        }
+
+        &__link {
+            font-size: 0.8rem;
+            text-decoration: underline;
+
+            &:hover {
+                transform: scale(1.02);
+                cursor: pointer;
+            }
+
+        }
+
+    }
+
+    &-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3rem;
+        padding: 3rem 10%;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.37);
+        justify-content: flex-start;
+
+        &_section {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+
+            &__title {
+                font-weight: 400;
+            }
+
+            &__link {
+                font-size: 0.8rem;
+                text-decoration: underline;
+
+                &:hover {
+                    transform: scale(1.02);
+                    cursor: pointer;
+                }
+            }
+
+            &--check {
+                width: 12rem;
+
+                @media screen and (max-width:745px) {
+                    width: 80vw;
+                }
+            }
+
+            &__logo {
+                display: flex;
+                align-items: center;
+                gap: 0.4rem;
+                cursor: pointer;
+
+                &__img {
+
+                    width: 60%;
+                    background-image: url('../img/logo.png');
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: 100% 100%;
+                    aspect-ratio: 12/3;
+                }
+
+                &__text {
+                    font-size: 0.9rem;
+
+                }
+            }
+
+            &__text {
+                font-size: 0.8rem;
+                font-weight: 400;
+            }
+
+            &__arrow {
+                cursor: pointer;
+                font-size: 0.9rem;
+                display: flex;
+                gap: 1rem;
+                width: fit-content;
+                align-items: center;
+                transition: all 0.5s;
+
+                i {
+                    background-color: var(--btn-primary);
+                    padding: 0.1rem;
+                    border-radius: 50px;
+                    transition: all 0.5s;
+
+
+                }
+
+                &:hover {
+                    background-color: var(--btn-primary);
+                    border-radius: 50px;
+                    transform: translateX(0.3rem);
+                    padding-left: 0.5rem;
+
+                    i {
+                        transform: translateX(-0.6rem);
+
+                    }
+
+                }
+            }
+        }
+
+
+
+    }
+
+    &-media {
+        display: flex;
+        padding-top: 1.7rem;
+        align-items: center;
+        gap: 2rem;
+
+        @media screen and (max-width:700px) {
+            flex-direction: column;
+            gap: 0rem;
+
+        }
+
+        &__top,
+        &__bottom {
+            display: flex;
+            align-items: center;
+            gap: 2vw;
+            height: 5ch;
+        }
+
+        &__icon {
+            cursor: pointer;
+
+
+            i {
+                font-size: 1.5rem;
+
+            }
+
+            &--appstore,
+            &--googleplay {
+                height: 70%;
+                background-position: center;
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                aspect-ratio: 52/15;
+                border-radius: 7px;
+
+
+            }
+
+            &--appstore {
+
+                background-image: url('../img/apple.png');
+
+
+            }
+
+            &--googleplay {
+                background-image: url('../img/google.png');
+            }
+        }
+    }
+}

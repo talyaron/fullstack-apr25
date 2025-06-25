@@ -1,0 +1,90 @@
+.circular-recipes {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    font-family: var(--font-font-family);
+
+
+
+    &__background {
+        width: 8vw;
+        height: 8vw;
+        background-color: rgb(254, 252, 252);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid gray;
+        margin-right: 13px;
+        cursor: pointer;
+
+        &__image {
+
+            display: flex;
+            flex-direction: row;
+            justify-self: center;
+            width: 7vw;
+            height: 7vw;
+            border-radius: 50%;
+            transition: height, width, 0.25s ease;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 150%;
+            border-radius: 50%;
+
+
+            &1 {
+
+                background-image: url("../Images/circular-images/eggs.png");
+
+            }
+
+            &2 {
+                background-image: url("../Images/circular-images/meatish.png");
+            }
+
+            &3 {
+                background-image: url("../Images/circular-images/octopus.png");
+            }
+
+            &4 {
+                background-image: url("../Images/circular-images/pancake.png");
+            }
+
+            &5 {
+                background-image: url("../Images/circular-images/pasta.png");
+            }
+
+            &6 {
+                background-image: url("../Images/circular-images/pizza.png");
+            }
+
+            &7 {
+                background-image: url("../Images/circular-images/Tacos.png");
+            }
+
+            &8 {
+                background-image: url("../Images/circular-images/Tortia.png");
+            }
+
+            &:hover {
+                width: 8vw;
+                height: 8vw;
+
+
+            }
+
+            &__text {
+                position: absolute;
+                transform: translate(0, 10vh);
+                font-size: 0.8rem;
+
+
+
+
+            }
+        }
+    }
+}
