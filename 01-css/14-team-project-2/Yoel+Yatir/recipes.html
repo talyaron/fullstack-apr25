@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./dist/style.css" />
     <link rel="stylesheet" href="./dist/filtering.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
     <link
       href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
       rel="stylesheet"
@@ -172,100 +174,90 @@
 
     <!--circular recipes end-->
 
-    <!--  search bar -->
-
-    <div class="filtering">
-      <div class="search-container">
-        <input type="text" class="search-bar" placeholder="חיפוש חופשי..." />
-        <div class="search-icon">
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
-            />
-          </svg>
-        </div>
-      </div>
-
-      <div class="filtering__type">
-        <p class="filering__type__headline">סוג מתכון</p>
-        <label><input type="checkbox" name="recipe" value="בשר" /> בשר</label
-        ><br />
-        <label><input type="checkbox" name="recipe" value="דגים" /> דגים</label
-        ><br />
-        <label><input type="checkbox" name="recipe" value="חגים" /> חגים</label
-        ><br />
-        <label
-          ><input type="checkbox" name="recipe" value="ירקות" /> ירקות</label
-        ><br />
-        <label
-          ><input type="checkbox" name="recipe" value="ללא_גלוטן" /> ללא
-          גלוטן</label
-        ><br />
-        <label><input type="checkbox" name="recipe" value="מאפים" />מאפים</label
-        ><br />
-        <label
-          ><input type="checkbox" name="recipe" value="מנות_ראשונות" /> מנות
-          ראשונות</label
-        ><br />
-        <label
-          ><input type="checkbox" name="recipe" value="מרקים" /> מרקים</label
-        ><br />
-        <label
-          ><input type="checkbox" name="recipe" value="סלטים" /> סלטים</label
-        ><br />
-        <label
-          ><input type="checkbox" name="recipe" value="עוגות" /> עוגות</label
-        ><br />
-        <label
-          ><input type="checkbox" name="recipe" value="עיקריות" />
-          עיקריות</label
-        ><br />
-        <label
-          ><input type="checkbox" name="recipe" value="קינוחים" />
-          קינוחים</label
-        ><br />
-        <label
-          ><input type="checkbox" name="recipe" value="תוספות" /> תוספות</label
-        ><br />
-      </div>
-      <div class="filtering__by">
-        <p class="filering__by__headline">סינון לפי</p>
-        <label><input type="checkbox" name="kosher" value="בשרי" /> בשר</label
-        ><br />
-        <label><input type="checkbox" name="kosher" value="חלבי" /> דגים</label
-        ><br />
-        <label><input type="checkbox" name="kosher" value="פרווה" /> חגים</label
-        ><br />
-      </div>
+    <!--  search bar and selection-->
 
 
-      <div class="filtering__difficulty">
-        <p class="filering__difficulty__headline">דרגת קושי</p>
-        <label
-          ><input type="checkbox" name="recipe" value="בינוני" /> בינוני</label
-        ><br />
-        <label><input type="checkbox" name="recipe" value="קל" /> קל</label
-        ><br />
-      </div>
-
-
-      <div class="filtering__time">
-        <p class="filering__time__headline">סוג מתכון</p>
-      
-      <label><input type="checkbox" name="time" value="שעה" /> מעל שעה</label
-      ><br />
-      <label
-        ><input type="checkbox" name="time" value="עד_15_דקות" /> עד 15
-        דקות</label
-      ><br />
-      <label
-        ><input type="checkbox" name="time" value="עד_חצי_שעה" /> עד חצי
-        שעה</label
-      ><br />
-      <label><input type="checkbox" name="time" value="עד_שעה" /> עד שעה</label
-      ><br />
+<div class="selection">
+<div class="filtering">
+  <div class="search-container">
+    <input type="text" class="search-bar" placeholder="חיפוש חופשי..." />
+    <div class="search-icon">
+      <svg viewBox="0 0 24 24">
+        <path
+          d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+        />
+      </svg>
     </div>
-    <!--   -->
+  </div>
+
+  <div class="filtering__type">
+    <div class="filtering__type__headline">
+    <p>סוג מתכון</p>
+    </div>
+    <label><input type="checkbox" name="recipe" value="בשר" /> בשר</label><br />
+    <label><input type="checkbox" name="recipe" value="דגים" /> דגים</label><br />
+    <label><input type="checkbox" name="recipe" value="חגים" /> חגים</label><br />
+    <label><input type="checkbox" name="recipe" value="ירקות" /> ירקות</label><br />
+    <label><input type="checkbox" name="recipe" value="ללא_גלוטן" /> ללא גלוטן</label><br />
+    <label><input type="checkbox" name="recipe" value="מאפים" /> מאפים</label><br />
+    <label><input type="checkbox" name="recipe" value="מנות_ראשונות" /> מנות ראשונות</label><br />
+    <label><input type="checkbox" name="recipe" value="מרקים" /> מרקים</label><br />
+    <label><input type="checkbox" name="recipe" value="סלטים" /> סלטים</label><br />
+    <label><input type="checkbox" name="recipe" value="עוגות" /> עוגות</label><br />
+    <label><input type="checkbox" name="recipe" value="עיקריות" /> עיקריות</label><br />
+    <label><input type="checkbox" name="recipe" value="קינוחים" /> קינוחים</label><br />
+    <label><input type="checkbox" name="recipe" value="תוספות" /> תוספות</label><br />
+    <p><i class="fa-brands fa-instagram"></i><i class="fa-solid fa-hashtag"></i> as</p>
+  </div>
+
+  <div class="filtering__by">
+    <div class="filtering__by__headline">
+    <p class="filtering__by__headline">סינון לפי</p>
+    </div>
+    <label><input type="checkbox" name="kosher" value="בשרי" /> בשר</label><br />
+    <label><input type="checkbox" name="kosher" value="חלבי" /> חלבי</label><br />
+    <label><input type="checkbox" name="kosher" value="פרווה" /> פרווה</label><br />
+  </div>
+
+  <div class="filtering__difficulty">
+    <div class="filtering__difficulty__headline">
+    <p>דרגת קושי</p></div>
+    <label><input type="checkbox" name="difficulty" value="בינוני" /> בינוני</label><br />
+    <label><input type="checkbox" name="difficulty" value="קל" /> קל</label><br />
+  </div>
+
+  <div class="filtering__time">
+    <div class="filtering__time__headline">
+    <p>משך זמן</p>
+    </div>
+    <label><input type="checkbox" name="time" value="שעה" /> מעל שעה</label><br />
+    <label><input type="checkbox" name="time" value="עד_15_דקות" /> עד 15 דקות</label><br />
+    <label><input type="checkbox" name="time" value="עד_חצי_שעה" /> עד חצי שעה</label><br />
+    <label><input type="checkbox" name="time" value="עד_שעה" /> עד שעה</label><br />
+  </div>
+</div>
+    <!--Selection continuation Images-->
+<div class="selection__food">
+  <div class="selection__food__image1">
+    <div class="selection__food__image1__text">
+    <div>
+      <h4></h4>
+      </div>
+    </div>
+  </div>
+    <div class="selection__food__image1"></div>
+      <div class="selection__food__image1"></div>
+        <div class="selection__food__image1"></div>
+          <div class="selection__food__image1"></div>
+            <div class="selection__food__image1"></div>
+              <div class="selection__food__image1"></div>
+                <div class="selection__food__image1"></div>
+                  <div class="selection__food__image1"></div>
+                    <div class="selection__food__image1"></div>
+
+</div>
+</div>
+
     <!--   -->
     <!--   -->
     <!--   -->
