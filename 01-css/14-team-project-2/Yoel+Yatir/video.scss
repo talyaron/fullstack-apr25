@@ -1,0 +1,17 @@
+.video {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  position: relative;
+  &__div {
+    display: flex;
+    flex-direction: row;
+  }
+  &__container {
+    margin-left: 3em;
+    margin-right: 3em;
+  }
+}
+iframe {
+  width: 50vw;
+  height: 50vh;
+}
