@@ -8,6 +8,8 @@ body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .header {
+position: fixed;
+top: 0;
   width: 100vw;
   height: 4rem;
   border: 1px solid rgba(0, 0, 0, 0.171);
@@ -16,9 +18,11 @@ body {
   padding: 0 0rem;
   font-size: 1rem;
   font-weight: 500;
-  background-color: white;
   z-index: 10;
 
+  &:hover {
+    background-color: white;
+    }
   &-nav {
     display: flex;
     gap: 1rem;
@@ -151,7 +155,7 @@ body {
     border-radius: 50px;
     justify-content: center;
     justify-items: center;
-    margin: 4rem;
+    margin-top: 7rem;
     padding: 0.5rem;
     max-width: 30%;
     margin-left: 33vw;
@@ -193,15 +197,29 @@ body {
     &__left{
         &-nav{
             display: flex;
-            gap: 30px;
+            gap: 50px;
             border: 2px solid rgba(157, 161, 161, 0.821);
             border-radius: 50px;
             justify-items: left;
             padding: 0.5rem;
-            max-width: 30%;
+            max-width: 40%;
             align-items: baseline;
             background-color: white;
+        &__btn1{
+            cursor: pointer;
+            background-color: black;
+            color: white;
+            border-radius: 40px;
+            padding: 0.2rem 0.8rem;
+            }
+        &__btn2{
+            cursor: pointer;
+            border-radius: 40px;
+            &:hover {
+            background-color: rgba(243, 241, 241, 0.67);
+            }
         }
+    }
         &-offer{
             h1{
                 font-size: 3rem;
@@ -215,9 +233,16 @@ body {
                display: flex;
                flex-direction: row;
                gap: 200px; 
+               .checkmark {
+                    background-color: rgb(255, 233, 36);
+                    color: black;
+                    padding: 4px 8px;
+                    border-radius: 30px; // optional, makes it look nicer
+                    font-weight: bold;
+                }
             }
         }
-    }
+}
     &__right{
         flex-direction: row-reverse;
         .image{
@@ -425,4 +450,26 @@ body {
             }
         }
     }
+}
+.vertical-text {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background-color: #e1e1dd;
+  padding: 0.4rem;
+  border-radius: 10px 0 0 10px;
+  z-index: 1000;
+  writing-mode: vertical-rl;
+  text-orientation: sideways-right;
+}
+.stickychat{
+    position: fixed;
+    top: 90%;
+    right: 3vw;
+    color: white;
+    background-color: black;
+    border-radius: 50px;
+    padding: 1rem;
+    font-size: 1.1rem;
 }
