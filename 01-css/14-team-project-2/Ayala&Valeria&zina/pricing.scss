@@ -4,6 +4,8 @@ body {
     height: 100vh;
     width: 100vw;
     background-color: rgba(241, 241, 242, 0.975);
+    font-size: 13px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .header {
   width: 100vw;
@@ -144,8 +146,8 @@ body {
 }
 .services{
     display: flex;
-    gap: 50px;
-    border: 2px solid black;
+    gap: 20px;
+    border: 2px solid rgba(157, 161, 161, 0.821);
     border-radius: 50px;
     justify-content: center;
     justify-items: center;
@@ -155,6 +157,7 @@ body {
     margin-left: 33vw;
     margin-right: 33vw;
     align-items: baseline;
+    background-color: white;
 
     &__email{
     cursor: pointer;
@@ -181,6 +184,54 @@ body {
       transform: translateY(-5px);
     }
   }
+}
+.free{
+    display: flex;
+    margin: 10vh;
+    gap: 20px;
+    justify-content: center;
+    &__left{
+        &-nav{
+            display: flex;
+            gap: 30px;
+            border: 2px solid rgba(157, 161, 161, 0.821);
+            border-radius: 50px;
+            justify-items: left;
+            padding: 0.5rem;
+            max-width: 30%;
+            align-items: baseline;
+            background-color: white;
+        }
+        &-offer{
+            h1{
+                font-size: 3rem;
+                font-family: 'Times New Roman', Times, serif;
+            }
+            p{
+                font-size: 1rem;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+            }
+            &__properties{
+               display: flex;
+               flex-direction: row;
+               gap: 200px; 
+            }
+        }
+    }
+    &__right{
+        flex-direction: row-reverse;
+        .image{
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            width: 25vw;
+            height: auto;
+        }
+    }
+}
+.mainpic{
+    .image{
+        width: 100vw;
+        height: auto;
+    }
 }
 .footer {
     bottom: 0;
