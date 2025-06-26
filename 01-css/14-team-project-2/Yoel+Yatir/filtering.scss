@@ -2,6 +2,7 @@
   position: relative;
   width: 100%;
   max-width: 400px;
+  
 }
 
 .search-bar {
@@ -37,4 +38,36 @@
   height: 18px;
   cursor: pointer;
   color: #666;
+}
+
+.filtering{
+  width: 20vw;
+  
+  &__type{
+    &__headline{
+      color: white;
+      background-color: #353535;
+
+    }
+  }
+}
+
+
+.selection{
+
+
+
+  &__food{
+      display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+   &__image1{
+    width: 20vw;
+    height: 24vh;
+    background-image: url(../Images/circular-images/pancake-profile.png);
+    background-position: center;
+    border-radius: 30px;
+    cursor: pointer;
+
+  } 
+  }
 }
