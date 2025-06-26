@@ -7,12 +7,13 @@
     font-size: 13px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-.header {
-position: fixed;
-top: 0;
+.my-header {
+  position: fixed;
+  top: 0;
   width: 100vw;
   height: 4rem;
   border: 1px solid rgba(0, 0, 0, 0.171);
+  background-color: rgba(241, 241, 242, 0.975);
   display: flex;
   justify-content: space-between;
   padding: 0 0rem;
