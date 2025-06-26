@@ -30,6 +30,12 @@ li {
 li:hover {
  // color: var(--secondary-color);
  text-decoration: underline;
+  cursor: pointer;
+  text-decoration: none;
+}
+li:hover {
+  // color: var(--secondary-color);
+  text-decoration: none;
 }
 
 a {
