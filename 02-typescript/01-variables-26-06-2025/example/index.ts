@@ -1,3 +1,4 @@
+//primitive variables
 let greeting = "55";
 let number: number = 42;
 
