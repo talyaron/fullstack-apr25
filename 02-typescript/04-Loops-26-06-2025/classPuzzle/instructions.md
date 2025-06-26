@@ -1,0 +1,1 @@
+write a code that gets x as number, and return and answer if this number is a prime number or not.
