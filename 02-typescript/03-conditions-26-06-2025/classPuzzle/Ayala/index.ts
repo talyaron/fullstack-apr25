@@ -4,8 +4,8 @@ let ori: number = 5;
 let rechel: number = 90;
 let noam: number = 45;
 
-let go: string = "you can go to the start you the queue";
-let wait: string = "you have to wait to your turn"
+let go: string = ", you can go to the start you the queue.";
+let wait: string = ", you have to wait to your turn."
 
 if (shani >= 75) {
     console.log("Shani" + go);
