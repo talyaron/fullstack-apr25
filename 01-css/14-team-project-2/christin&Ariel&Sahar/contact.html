@@ -4,25 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Campus</title>
-    <link rel="stylesheet" href="./dist/style/dist/contact.css">
+    <link rel="stylesheet" href="./style/dist/contact.css">
+    <link rel="stylesheet" href="./style/dist/headfoot.css">
+
 
 </head>
 <body>
+
+   <div class="outline">
+    <div class="outline__top-nav">
+      <h1 class="outline__header">Contact us</h1>
+      <div class="outline__top-nav--menu">
+        <div class="outline__top-nav--menu--list">
+          <ul>
+            <li><a href="./about.html">About</a></li>
+            <li><a href="./event.html">Event</a></li>
+            <li><a href="./contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="outline__top-nav--left">
+        <img src="./pics/logo-campus-il.svg" alt="logo" />
+        <img src="./pics/header-logo-digital.svg" alt="" />
+        <img src="./pics/header-logo-malag.png" alt="" />
+      </div>
+      <div class="outline__top-nav--right">
+
+
+        <div class="outline__top-nav--right--signin">
+          <a href="">sign in</a>
+          |
+          <a href="">sign up</a>
+
+        </div>
+        <div class="outline__top-nav--right--language">
+
+          <img src="https://campus.gov.il/wp-content/themes/campusnew/images/header/header-languages.svg" alt="">
+
+          <p>EN <img src="https://campus.gov.il/wp-content/themes/campusnew/images/header/menu-open.svg"
+              class="outline__top-nav--right--language--arrow"></p>
+        </div>
+      </div>
+
+
+
+    </div>
+
+  </div>
     <div class="contact">
         <div class="contact__phone">
-            <div class="contact__phone__img">
+            <div class="contact__img">
                 <img src="./contact pic/phone.jpeg" alt="phone pic">
             </div>
-            <div class="contact__phone__title">Phone Number</div>
-            <div class="contact__phone__detail">1299</div>
+            <div class="contact__title">Phone Number</div>
+            <div class="contact__detail">1299</div>
             
         </div>
         <div class="contact__email">
-            <div class="contact__email__img">
+            <div class="contact__img">
                 <img src="./contact pic/email.jpeg" alt="email pic">
             </div>
-            <div class="contact__email__title">Email</div>
-            <div class="contact__email__detail">Campus@mail.gov.il</div>
+            <div class="contact__title">Email</div>
+            <div class="contact__detail">Campus@mail.gov.il</div>
         </div>
 
     </div>
@@ -62,22 +105,18 @@
         <div class="details__questions">
             <h1>Send Us a Question</h1>
             <p>Fields marked with * are mandatory</p>
-            <div class="details__questions__row">
-                <div class="details__questions__row__first">Full Name *</div>
-                <div class="details__questions__row__second">Email *</div>
-                
-
+            <div class="details__row">
+                <div class="details__field">Full Name *</div>
+                <div class="details__field">Email *</div>
             </div>
-            <div class="details__questions__row">
-                <div class="details__questions__row__first">Phone Number *</div>
-                <div class="details__questions__row__second">Choose a Subject</div>
-                
-                
+            <div class="details__row">
+                <div class="details__field">Phone Number *</div>
+                <div class="details__field">Choose a Subject</div>
             </div>
-            <div class="details__questions__text"> Write your text here
+            <div class="details__text"> Write your text here
                 
             </div>
-            <button class="details__questions__button">Send
+            <button class="details__button">Send
                 
             </button>
 
@@ -86,7 +125,9 @@
         </div>
 
     </div>
-    
+      <footer class="footer">
+
+    </footer>
     
 </body>
 </html>

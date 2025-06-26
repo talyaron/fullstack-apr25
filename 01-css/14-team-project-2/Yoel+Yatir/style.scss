@@ -1,38 +1,48 @@
-    :root{
-    font-size: 17px;
-    --webpage-color: ##F6F6F6
-    --ge-panel-color: #f1f3f4;
-    --toolbar-color: #f1f3f4;
-    --workspace-color: #ececec;
-    --dark-toolbar-color: #1e2022;
-    --inactive-color: #e4e4e4;
-    --active-color: #c4c4c4;
-    --primary-color: #c2e7ff;
-    --primary-hover-color: #abcfe7;
-    --accent-color: #e1e9f7;
-    --accent-hover-color: #d8e5f8;
-    --accent-text-color: #0b57d0;
-    --border-color: #dadada;
-    --highlight-color: #e2e2e2;
-    --scrollbar-hover-color: #959798;
-    --text-color: #3F3F3F;
-    --dark-color: #121212;
-    --ge-dark-panel-color: #1B1D1E;
-    --dark-border-color: #333333;
-    --dark-text-color: #C0C0C0;
-    --dark-accent-color: #003555;
-    --dark-accent-text-color: #52a5f6;
-    --dark-active-accent-color: #004A77;
-    --dark-inverse-active-color: #c4c4c4;
-    --dark-highlight-color: #000000;
-    --dark-header-color: #1B1D1E;
-    --font-font-family: "Noto Sans Hebrew", sans-serif;
+:root {
+  font-size: 17px;
+  --webpage-color: #f6f6f6;
+  --ge-panel-color: #f1f3f4;
+  --toolbar-color: #f1f3f4;
+  --workspace-color: #ececec;
+  --dark-toolbar-color: #1e2022;
+  --inactive-color: #e4e4e4;
+  --active-color: #c4c4c4;
+  --primary-color: #c2e7ff;
+  --primary-hover-color: #abcfe7;
+  --accent-color: #e1e9f7;
+  --accent-hover-color: #d8e5f8;
+  --accent-text-color: #0b57d0;
+  --border-color: #dadada;
+  --highlight-color: #e2e2e2;
+  --scrollbar-hover-color: #959798;
+  --text-color: #3f3f3f;
+  --dark-color: #121212;
+  --ge-dark-panel-color: #1b1d1e;
+  --dark-border-color: #333333;
+  --dark-text-color: #c0c0c0;
+  --dark-accent-color: #003555;
+  --dark-accent-text-color: #52a5f6;
+  --dark-active-accent-color: #004a77;
+  --dark-inverse-active-color: #c4c4c4;
+  --dark-highlight-color: #000000;
+  --dark-header-color: #1b1d1e;
+  --font-font-family: "Noto Sans Hebrew", sans-serif;
+}
 
-    }
-    
-    @import "accessibility";
-    @import "nav";
-    @import "footer";
-    @import "circular";
-    @import "new-on-shelf";
-    
+html {
+  margin: 0;
+  padding: 0;
+  background-color: var(--webpage-color);
+}
+
+@import "accessibility";
+@import "nav";
+@import "video";
+@import "footer";
+@import "circular";
+@import "circular-recipes";
+@import "new-on-shelf";
+@import "nav-v2";
+@import "head-title";
+@import "bot";
+@import "customer-service";
