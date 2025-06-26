@@ -1,0 +1,148 @@
+header a{
+font-size: 16 30px;
+ margin-right: 150px;
+ color: black;
+ font-weight: bold;
+  row-gap: 30px;
+   cursor: pointer;
+ 
+}
+img{
+  margin-right: 70px;
+}
+
+.start-button {
+  background-color: #ffe01b;
+  color: black;                    
+  border: 2px solid black;     
+  border-radius: 15px;             
+  padding: 12px 24px;           
+  font-size: 16px;                 
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 40px;
+}
+
+.start-button:hover {
+  background-color: #e6b800;    
+}
+
+.log-button{
+  background-color: #ffe01b;
+  color: black;                 
+  border: 2px solid black;       
+  border-radius: 15px;           
+  padding: 12px 24px;             
+  font-size: 16px;                 
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.log-button:hover {
+  background-color: #e6b800;      
+}
+
+.button-box {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+  border: 2px solid #0c0b0b; 
+  border-radius: 150px;
+  background-color: white;
+  max-width: 700px;
+  margin: 40px auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+}
+
+.btn-item {
+  text-decoration: none;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+.btn-item:hover {
+  background-color: #f2f2f2;
+}
+
+.btn-item.active {
+  background-color: black;
+  color: white;
+}
+.promo-button {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  overflow: hidden;
+  font-family: sans-serif;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.left-part {
+  background-color: black;
+  color: white;
+  padding: 12px 20px;
+  font-weight: bold;
+  border-radius: 50px 0 0 50px;
+}
+
+.right-part {
+  background-color: white;
+  color: black;
+  padding: 12px 20px;
+  font-weight: bold;
+  border-radius: 0 50px 50px 0;
+}
+main{
+  margin: 150px;
+}
+.features-grid ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.features-grid li {
+  position: relative;
+  padding-left: 32px;
+  margin-bottom: 16px;
+  font-size: 16px;
+  color: #333;
+}
+
+.features-grid li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: black;
+  background-color: #ffcc00;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+p{
+  font-size: 16px;
+  font-weight: 500;
+  
+}
+h1{
+  font-weight: 800;
+}
+h2{
+  font-weight: 600;
+}

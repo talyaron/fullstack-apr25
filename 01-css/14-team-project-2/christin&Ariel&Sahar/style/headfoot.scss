@@ -144,4 +144,39 @@ body {
   background-repeat: no-repeat, no-repeat;
   background-position: right 0 bottom 0, bottom 0 left 0;
   background-size: 50px, 100%; // התמונה הראשונה קטנה, השנייה גדולה
+  &__information{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 }
+&__digital{
+    width: 60vw;
+    img{
+        width: 14vw;
+        height: 14vh;
+    }
+}
+&__education{
+    width: 60vw;
+    img{
+        width: 14vw;
+        height: 14vh;
+    }
+}
+&__navigation{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+&__title{
+    color: white;
+}
+&__categories{
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    border-left: solid 2px white;
+
+}
+}
+

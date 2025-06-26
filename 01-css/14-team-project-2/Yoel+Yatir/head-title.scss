@@ -11,7 +11,8 @@
     border-radius: 15px;
     margin: 0 auto;
     margin-top: 4vh;
-    font-family: 'Nunito Sans', sans-serif;
+  font-family: "Noto Sans Hebrew", sans-serif;
+  z-index: 5;
     //font -- combine with the general font//
 
     &__subject {

@@ -1,0 +1,44 @@
+.customer-success-management{
+    padding: 1.5rem;
+    width: 100vw;
+    background-color: black;
+}
+.csm-box1-title{
+    color: var(--primary-color);
+}
+.csm-box1-header-cl{
+    font-size: 3rem; 
+    color: var(--primary-color);
+}
+.csm-box1-text{
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+.csm-box1-btn{
+    border-radius: 100%;
+    border: 1px solid black;
+    background-color: var(--btn-primary);
+    font-size: 15px;
+
+    &:hover{
+        width: 100%;
+        height: 100%;
+        transition: bottom .3s cubic-bezier(.5,2.5,.7,.7);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        cursor: pointer;
+        color: white;
+    }
+
+
+.csm-box1-2-img{
+    display: flex;
+    justify-items: center;
+
+}
+
+
+
+
+}
