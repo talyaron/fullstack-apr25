@@ -10,7 +10,7 @@
     font-weight: 500;
     background-color: white;
     z-index: 10;
-   
+
 
     &-nav {
         display: flex;
@@ -29,7 +29,7 @@
                 border-radius: 5px;
             }
 
-            @media screen and (max-width:1100px) {
+            @media screen and (max-width:1030px) {
                 display: none;
 
             }
@@ -47,10 +47,11 @@
         }
 
         .logo {
-            i{
+            i {
                 display: none;
-                
+
             }
+
             cursor: pointer;
             height:2.5rem;
             background-image: url('../img/logo.png');
@@ -64,16 +65,18 @@
             &:hover {
                 transform: scale(1.05);
             }
-             @media screen and (max-width:400px) {
+
+            @media screen and (max-width:400px) {
                 background-image: none;
                 aspect-ratio: 1/1;
-                i{
+
+                i {
                     display: block;
                     font-size: 3rem;
                 }
-                
+
             }
-           
+
         }
     }
 
@@ -100,11 +103,13 @@
         }
 
         &__phone {
-            @media screen and(max-width:745px) {
+            @media screen and(max-width:1220px) {
                 display: none;
 
             }
-        } &__menu {
+        }
+
+        &__menu {
             @media screen and(max-width:420px) {
                 display: none;
 
