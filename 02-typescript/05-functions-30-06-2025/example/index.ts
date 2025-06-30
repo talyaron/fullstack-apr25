@@ -4,14 +4,14 @@
 // They can take inputs (parameters) and return outputs (return values).
 
 function add(a: number, b: number): number {
-    return a + b;
+  return a + b;
 }
 
 function greet(name: string): string {
-    return "Hello, " + name + "!";
+  return "Hello, " + name + "!";
 }
 function multiply(a: number, b: number): number {
-    return a * b;
+  return a * b;
 }
 
 let sum = add(5, 10);
@@ -23,17 +23,16 @@ console.log("greeting:", greeting); // Output: greeting: Hello, Alice!
 console.log("product:", product); // Output: product: 50
 console.log("Sahar:", greet("Sahar")); // Output: Sahar: Hello, Sahar!
 
+function divide(a: number, b: number): number | undefined {
+  try {
+    if (b === 0) throw new Error("Division by zero is not allowed");
 
-function divide(a: number, b: number): number|undefined {
-    try {
-        if(b === 0) throw new Error("Division by zero is not allowed");
+    return a / b;
+  } catch (e) {
+    console.error("Error:", e);
 
-        return a / b;
-    } catch (e) {
-        console.error("Error:", e);
-
-        return undefined; // Return undefined if division by zero occurs
-    }
+    return undefined; // Return undefined if division by zero occurs
+  }
 }
 
 console.log("divide:", divide(10, 2)); // Output: divide: 5
