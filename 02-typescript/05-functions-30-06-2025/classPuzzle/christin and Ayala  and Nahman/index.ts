@@ -15,12 +15,8 @@ function isPrime(a : number):boolean|undefined{
     }
 }
 
-<<<<<<< Updated upstream
 console.log("isPrime:", isPrime(7));
 console.time("isPrime");
 console.log("isPrime (1971):", isPrime(197119711971));
 console.timeEnd("isPrime");
 console.log("isPrime (0):", isPrime(0));
-=======
-console.log("isPrime:", isPrime(7));
->>>>>>> Stashed changes
