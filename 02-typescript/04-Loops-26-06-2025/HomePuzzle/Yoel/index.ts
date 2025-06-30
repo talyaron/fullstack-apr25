@@ -69,7 +69,7 @@ if (num5 % 2 === 0) {
 console.log("~~~~~~~~~~~~~New Exercise~~~~~~~~~~~~~~~~~");
 // -- Level 2 -- //
 
-for (let i = 1; i <= 21; i++) {
+for (let i = 1; i <= 20; i++) {
   if (i % 3 !== 0) console.log("Number:", i);
   else {
     console.log("Fizz");
