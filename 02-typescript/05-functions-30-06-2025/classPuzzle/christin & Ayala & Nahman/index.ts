@@ -1,4 +1,4 @@
-function isPrime(a : number):boolean|undefined{
+function nPrime(a : number):boolean|undefined{
     try{
         if(a <= 1) throw new Error(a + " can't be a prime number, prime number has to be bigger than 1");
 
@@ -15,4 +15,4 @@ function isPrime(a : number):boolean|undefined{
     }
 }
 
-console.log("isPrime:", isPrime(7));
+console.log("isPrime:", nPrime(7));
