@@ -22,3 +22,19 @@ console.log("sum:", sum); // Output: sum: 15
 console.log("greeting:", greeting); // Output: greeting: Hello, Alice!
 console.log("product:", product); // Output: product: 50
 console.log("Sahar:", greet("Sahar")); // Output: Sahar: Hello, Sahar!
+
+
+function divide(a: number, b: number): number|undefined {
+    try {
+        if(b === 0) throw new Error("Division by zero is not allowed");
+
+        return a / b;
+    } catch (e) {
+        console.error("Error:", e);
+
+        return undefined; // Return undefined if division by zero occurs
+    }
+}
+
+console.log("divide:", divide(10, 2)); // Output: divide: 5
+console.log("divide:", divide(10, 0)); // Output: divide: Infinity

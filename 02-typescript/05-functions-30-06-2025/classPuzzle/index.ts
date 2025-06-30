@@ -1,3 +1,5 @@
+//Take this code and transform it to a function. Use try-catch to handle errors. think of the edge cases.
+
 for (let num = 2; num <= 20; num++) {
     let isPrime = true; //assume its a prime now
 
