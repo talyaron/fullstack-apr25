@@ -1,4 +1,4 @@
-let x: number = 2;
+let x: number = 113;
 let isPrimary=false
 
 for (let i=2; i<x; i++) {
