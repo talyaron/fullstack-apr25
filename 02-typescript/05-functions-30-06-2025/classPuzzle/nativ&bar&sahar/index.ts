@@ -17,11 +17,10 @@ function isPrime(a: number) {
         return prime;
       }
     }
-    if (prime) return true;
+    return true;
   } catch (e) {
     console.error("error", e);
   }
-  if (prime) return prime;
 }
 
-console.log("number:", isPrime("dgf"));
+console.log("number:", isPrime(15));
