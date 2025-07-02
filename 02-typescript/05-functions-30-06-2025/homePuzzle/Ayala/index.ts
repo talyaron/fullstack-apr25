@@ -134,7 +134,7 @@ console.log(calc(5, 6, "/"));
 console.log(calc(5, 6, "+"));
 console.log(calc(5, 6, "-"));
 console.log(calc(5, 6, "*"));
-console.log(calc("N", 6, "S"));
+// console.log(calc("N", 6, "S"));
 console.log(calc(3, 6, "S"));
 console.log(calc(5, 0, "/"));
 
