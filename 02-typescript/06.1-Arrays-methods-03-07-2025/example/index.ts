@@ -33,3 +33,13 @@ let multiplyByTwo = numbers.map((num: number) => {
     return num * 2;
 });
 console.log(multiplyByTwo);
+
+
+let userData: Array<string> = [];
+
+let userName = prompt("Enter your name: ");
+if (userName) {
+    userData.push(userName);
+}
+
+console.log(userData[0]) We'll kumaria police chamashadi would say that
