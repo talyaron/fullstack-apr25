@@ -12,7 +12,7 @@ interface Person {
 }
 
 //Object
-let Ayala: Person = {
+let ayala: Person = {
     gender: "female", //key: value (of any type),
     brothers: 1,
     address:{
@@ -23,3 +23,4 @@ let Ayala: Person = {
     hobbies: ["eating", "sleeping", "camping"],
     isMarried: false,
 }
+console.log(ayala);
