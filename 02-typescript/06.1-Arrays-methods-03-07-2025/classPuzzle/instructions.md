@@ -1,0 +1,1 @@
+Look at the page of the Array's methods in the MDN documentation, and to run some interesting methods. use in yor code, and at the end of the exercise, you will have to present your code to the class, and explain what you did.
