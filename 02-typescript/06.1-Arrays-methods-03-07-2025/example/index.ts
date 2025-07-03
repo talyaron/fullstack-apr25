@@ -6,7 +6,7 @@ console.log(nameStrings);
 let nameArray: Array<string> = nameStrings.split(", "); // Split the string back into an array using ", " as the separator
 console.log(nameArray);
 
-let name2: Array<string> = names.slice(0, 2);
+let name2: Array<string> = names.slice(0, 2); //copy the first two elements of the array // splice is used to extract elements from an array
 console.log(name2);
 console.log(names);
 
