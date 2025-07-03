@@ -11,3 +11,25 @@ console.log(name2);
 console.log(names);
 
 //find another just to copy alice and bob.
+
+// normal function
+function add(a: number, b: number): number {
+    return a + b;
+}
+
+//arrow function
+let multiply = (a: number, b: number): number => {
+    return a * b;
+}
+
+//methods with callback
+names.forEach((name: string, index:number) => {
+    console.log(`${index}: ${name}` + " is a name in the array.");
+});
+
+let numbers: Array<number> = [1, 2, 3, 4, 5];
+
+let multiplyByTwo = numbers.map((num: number) => {
+    return num * 2;
+});
+console.log(multiplyByTwo);
