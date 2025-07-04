@@ -201,3 +201,168 @@ console.log("Square of" + test5 + "is:" + (test5 ** 2));
 console.log("Cube of" + test5 + "is:" + (test5 ** 3));
 
 //Exrecise 2.3:
+1
+1 2
+1 2 3
+1 2 3 4
+1 2 3 4 5
+
+for (let row = 1; row <= 5; row++) {
+    let line = " ";
+
+    for (let num = 1; num <= row; num++) {
+        line += num + " ";
+    }
+    console.log(line);
+}
+
+//Exrecise 2.4:
+//You have a list of numeric scores,
+//For each one, print its letter grade using this scale:
+
+//Score Range	Grade
+//90–100	      A
+//80–89	          B
+//70–79	          C
+//60–69	          D
+//< 60	          F
+let score1 = 95;
+let score2 = 87;
+let score3 = 76;
+let score4 = 68;
+let score5 = 52;
+let score6 = 91; 
+
+let score1 = 95;
+
+if (score1  >=90) {
+    console.log(score1 + "is an A");
+}  else if (score1 >=80) {
+    console.log(score1 + "is an B");
+}  else if (score1 >=70) {
+    console.log(score1 + "is an C");
+}  else if (score1 >=60) {
+    console.log(score1 + "is a D");
+}  else {
+    console.log(score1 + "is an F");
+}
+
+//Exrecise 3.1:
+for (let num = 2; num <= 100; num++) {
+    let isPrime = true;
+
+    for (let i = 2; i <num; i++) {
+        if (num % i === 0) {
+            isPrime = false;
+            break;
+        }
+}
+   if (isPrime) {
+    console.log(num + "is a prime number");
+
+    let count=0;
+
+    count++;
+
+    console.log("Total primes found;" + count);
+   }
+}
+
+//Exrecise 3.2:
+let current = 2;
+let sequence = [current];
+
+for (let i = 0; i < 10; i++) {
+    current = current *3;
+    sequence.push(current);
+}
+
+console.log("Full sequence:" + sequence);
+
+let sum= 0;
+
+for (let i= 0; i < sequence.length; i++) {
+    sum+= sequence[i];
+}
+console.log("Sum of all the numbers: " + sum);
+
+//Exrecise 3.3:
+let fizzCount = 0;
+let buzzCount = 0;
+let bangCount = 0;
+let fizzBuzzCount = 0;
+let fizzBangCount = 0;
+let buzzBangCount = 0;
+let fizzBuzzBangCount = 0;
+let numberCount = 0;
+
+for (let i = 1; i <= 100; i++) {
+    let output = "";
+
+    if (i % 3 === 0) output += "Fizz";
+    if (i % 5 === 0) output += "Buzz";
+    if (i % 7 === 0) output += "Bang";
+
+    if (output === "Fizz") fizzCount++;
+    else if (output === "Buzz") buzzCount++;
+    else if (output === "Bang") bangCount++;
+    else if (output === "FizzBuzz") fizzBuzzCount++;
+    else if (output === "BuzzBang") buzzBangCount++;
+    else if (output === "FizzBuzzBang") fizzBuzzBangCount++;
+    else numberCount++;
+
+    console.log(output || i);
+}
+
+//Exrecise 3.4:
+let decimal = 8;
+let binary = "";
+
+while (decimal > 0) {
+    let remainder = decimal % 2;
+    binary = remainder + binary;
+    decimal = Math.floor (decimal / 2);
+}
+
+console.log("Binary: " + binary);
+
+let numbers = [8, 15, 32, 47, 64];
+
+for (let i = 0; i < numbers.length; i++) {
+    let decimal = numbers[i];
+    let binary = "";
+
+    while (decimal > 0) {
+        let remainder = decimal % 2;
+        binary = remainder + binary;
+        decimal = Math.floor (decimal / 2);
+    }
+
+    console.log(numbers[i] + "in binary is: " + binary);
+}
+
+//Bonus challenge: Calculator Project;
+
+let num1 = 10;
+let num2 = 5;
+let operator = "+";
+let result: number;
+
+if (operator === "+") {
+    result = num1 + num2;
+} else if (operator === "-") {
+    result = num1 - num2;
+} else if (operator === "*") {
+    result = num1 * num2;
+} else if (operator === "/") {
+    if (num2 === 0) {
+        console.log("Error: Cannot divide by 0");
+    } else {
+        result = num1 / num2;
+    } else {
+        console.log("Invalide operator");
+    }
+
+    if (result !== undefined) {
+        console.log('result: ${num1} ${operator} ${num2} = ${result}');
+    }
