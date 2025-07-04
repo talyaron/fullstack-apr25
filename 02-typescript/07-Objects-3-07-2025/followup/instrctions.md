@@ -1,0 +1,1 @@
+create several types of objects and their interfaces.
