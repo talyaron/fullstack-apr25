@@ -65,18 +65,24 @@ function analyzeTestScores(scores: Array<number>) {
     let valid = scores.filter((x) => typeof x === "number" && x <= 100 && x > 0)
     let passed = 0;
     let highest = 0;
+    let sum = 0;
     for (let i = 0; i < valid.length; i++) {
         if (valid[i] >= 60) passed++;
         if (valid[i] > highest) highest = valid[i]
+        sum += valid[i];
     }
-console.log([valid.length, passed, highest]);
+    console.log([valid.length, passed, highest]);
 
 
+    console.log("The avarage core is: " + (sum / valid.length));
 }
 
 console.log(analyzeTestScores([85, 92, 45, 67, 105, -5, 78, 55, 90]));
 // console.log(analyzeTestScores([true, 10, 45, "67", 105, -5, "yes", 55, 90]));
 
+
+console.log("");
+console.log("Extra Challenge");
 
 
 
