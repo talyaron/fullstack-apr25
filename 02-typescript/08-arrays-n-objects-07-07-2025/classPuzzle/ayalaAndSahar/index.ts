@@ -14,8 +14,7 @@ function calculateAverageScore(students: Student[]): number {
   for (let student of students) {
     sum += student.score;
   }
-  console.log("sum" + sum);
-  console.log("sum" + sum);
+
   return Math.floor(sum / students.length);
 }
 
