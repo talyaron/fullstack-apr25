@@ -26,4 +26,3 @@ console.log("List of people:");
     people.forEach(person => {
         console.log(`Name: ${person.name}, Last Name: ${person.lastName}, Age: ${person.age !== undefined ? person.age : "Not provided"}`);
     });
-debugger;
