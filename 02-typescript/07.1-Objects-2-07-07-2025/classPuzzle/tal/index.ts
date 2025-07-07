@@ -1,52 +1,47 @@
+let isStop: boolean = false;
+
 interface Person {
     name: string;
     lastName: string;
-    age?: number;
-    address?: {
-        city: string;
-        street: string;
-        number: number;
-    };
+    age?: number | undefined | string; // optional property
 }
 
-type Person2 = {
-    name: string;
-    lastName: string;
-    age?: number;
-    address?: {
-        city: string;
-        street: string;
-        number: number;
-    };
-}
+let people: Person[] = [];
 
-let nativ: Person = {
-    name: "Nativ",
-    lastName: "Kalo",
-    address: {
-        city: "Tel Aviv",
-        street: "Allenby",
-        number: 12
+while (!isStop) {
+    let name: string | null = prompt("Enter your name");
+    let lastName: string | null = prompt("Enter your last name");
+    let age: string | number | undefined | null = prompt("Enter your age (optional, press Enter to skip)");
+
+    if (!name || !lastName) {
+        console.log("Name and last name are required.");
+        continue; // skip to the next iteration if name or last name is not provided
     }
+
+    if (age) {
+        age = Number(age);
+    }
+
+    let person: Person = {
+        name: name,
+        lastName: lastName,
+        age: age || undefined // set age to undefined if not provided
+    };
+
+    people.push(person);
+
+    // add to array of people
+
+
+
+    let shouldStop = confirm("Do you want to stop? (OK to stop, Cancel to continue)");
+    if (shouldStop) {
+        isStop = true;
+    } 
 }
 
-// retrieving the value of a property
-console.log(nativ.name); // Nativ
-console.log(nativ.lastName); // Kalo
+console.log(people);
 
-console.log(nativ["name"]); // Nativ
-console.log(nativ["lastName"]); // Kalo
-
-console.log(nativ.address?.city); // Tel Aviv
-console.log(nativ.address?.["city"]); // Tel Aviv
-console.log(nativ["address"]?.city); // Tel Aviv
-console.log(nativ["address"]?.["city"]); // Tel Aviv
-
-for (let key in nativ.address) {
-
-    console.log(key, nativ.address[key]); // city Tel Aviv, street Allenby, number 12
-}
-
-for (let key in nativ) {
-    console.log(key, nativ[key]); // name Nativ, lastName Kalo, address { city: 'Tel Aviv', street: 'Allenby', number: 12 }
-}
+people.forEach((person) => {
+    console.log(`Name: ${person.name}, Last Name: ${person.lastName}, Age: ${person.age !== undefined ? person.age : "Not provided"}`);
+});
