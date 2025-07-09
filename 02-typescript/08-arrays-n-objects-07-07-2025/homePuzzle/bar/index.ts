@@ -35,3 +35,38 @@ function sumArray(numbers: number[]): number {
     return total;
 }
 console.log("Sum of [1,2,3,4]:", sumArray([1, 2, 3, 4]));
+
+//🟡 Exercise 2.2: Count Objects in an Array:
+function countPeople(people: { name: string, age: number}[]): number {
+ return people.length;   
+}
+
+let people = [
+    { name: "Alice", age: 25},
+    { name: "Bob", age: 30},
+    { name: "Charlie", age: 35}
+];
+
+console.log("Number of people:", countPeople(people));
+people.push({name: "Diana", age: 40});
+console.log("After adding Diana", countPeople(people));
+
+people.pop();
+console.log("After removing the last person:", countPeople(people));
+
+people.shift();
+console.log("After removing the first person:", countPeople(people));
+
+//🟡 Exercise 2.3: Find the Largest Number:
+function findLargest(numbers: number[]): number {
+    let largest = numbers [0]; 
+
+    for (let i = 1; i < numbers.length; i++) {
+        if (numbers[i] > largest) {
+            largest = numbers [i];
+        }
+    }
+    return largest;
+}
+
+console.log("Largest in [5, 2, 9, 1]:", findLargest([5, 2, 9, 1]));
