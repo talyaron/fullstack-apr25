@@ -25,7 +25,10 @@ console.log("Sahar:", greet("Sahar")); // Output: Sahar: Hello, Sahar!
 
 function divide(a: number, b: number): number | undefined {
   try {
+    //Edge case
     if (b === 0) throw new Error("Division by zero is not allowed");
+    if (isNaN(b)) throw new Error("Invalid input: b is not a number");
+    if (isNaN(a)) throw new Error("Invalid input: a is not a number");
 
     return a / b;
   } catch (e) {
@@ -37,3 +40,4 @@ function divide(a: number, b: number): number | undefined {
 
 console.log("divide:", divide(10, 2)); // Output: divide: 5
 console.log("divide:", divide(10, 0)); // Output: divide: Infinity
+console.log("divide 2:", divide(10,undefined)); // Output: divide: 2
