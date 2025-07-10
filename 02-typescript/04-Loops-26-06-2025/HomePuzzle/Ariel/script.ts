@@ -51,7 +51,7 @@
 // Exercise 2.1: Modulus Applications
 
 // A
-// for (let i = 1; i <= 20; i++) { 
+// for (let i = 1; i <= 20; i++) {
 //   if (i % 3 === 0) {
 //     console.log(`fizz`);
 //   }
@@ -62,7 +62,7 @@
 
 // B
 // for (let i = 1; i < 51; i++) {
-  
+
 //   if (i % 7 === 1) {
 //     console.log(`${i} result remainder is, and result is ${i / 7}`);
 //   } else {
@@ -71,36 +71,31 @@
 // }
 
 // Exercise 2.2: Number Analyzer
-let test1 = 0;
-let test2 = -8;
-let test3 = 15;
-let test4 = 24;
-let test5 = -7;
+// let test1 = 0;
+// let test2 = -8;
+// let test3 = 15;
+// let test4 = 24;
+// let test5 = -7;
 
-let arrayTests = [test1, test2, test3, test4, test5]
+// let arrayTests = [test1, test2, test3, test4, test5];
 
-// a
-for (let n of arrayTests) {
+// for (let n of arrayTests) {
+//   // a
+//   if (n > 0) console.log(`${n} is positive number.`);
+//   else if (n < 0) console.log(`${n} is negative number.`);
+//   else console.log(`${n} is zero.`);
+
+//   // b
+//   if (n % 2 === 0) console.log(`${n} is even number.`);
+//   else console.log(`${n} is odd number.`);
+
+//   // c
+//   if (n % 5 === 0) console.log(`Yes! divisible by 5!`);
+//   else console.log(`Not divisible by 5!`);
   
-  if (n > 0) console.log(`${n} is positive number.`);
-  else if (n < 0) console.log(`${n} is negative number.`);
-  else console.log(`${n} is zero.`);
-}
 
-console.log(``);
-
-// b
-for (let n of arrayTests) {
+//   // d
+//   console.log(n ** 2);
+//   console.log(n ** 3);
   
-  if (n % 2 === 0) console.log(`${n} is even number.`);
-  else console.log(`${n} is odd number.`);
-}
-
-console.log(``);
-
-// c
-for (let n of arrayTests) {
-  
-  if (n / 5 === 0) console.log(``);
-   
-}
+// }
