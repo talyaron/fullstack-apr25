@@ -3,7 +3,7 @@
 ## Understanding the Foundation
 
 Before diving into these challenges, let's make sure you understand what we're building toward. Functions are like little machines that take input, process it, and give you output. Think of them as recipes where you provide ingredients (parameters) and follow steps to create something useful (the return value).
-
+ 
 Try-catch blocks are your safety net in programming. They let you anticipate when something might go wrong and handle it gracefully instead of letting your program crash. Imagine you're cooking and you want to check if the milk has gone bad before adding it to your recipe - that's essentially what try-catch does for your code.
 
 ---
