@@ -9,6 +9,7 @@ function updateTitle(newTitle: string) {
         title.innerText = newTitle;
         title.style.color = "green";
         title.style.backgroundColor = "blue";
+        title.style.border = "3px solid black";
 
     } catch (error) {
         console.error("Error updating title:", error);
