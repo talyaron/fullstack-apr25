@@ -308,7 +308,7 @@ function advancedSort(people: { name: string, age: number, salary?: number }[]):
     // 3. If both salary and age are equal, then by name (alphabetically)
 
     let sorted = [...people]; // Create a copy
-    // for (const person of sorted) {
+    // for (let person of sorted) {
     //     if (typeof person.salary != "number") person.salary = 0
     // }
     sorted.sort((a, b) => ((b.salary ?? 0) - (a.salary ?? 0)) || (a.age - b.age) || a.name.localeCompare(b.name))
@@ -335,28 +335,43 @@ console.log("Exercise 6.2: Complex data transformation");
 
 function analyzeTeamPerformance(teams: {
     name: string,
-    members: {name: string, score: number}[]
+    members: { name: string, score: number }[]
 }[]): {
     teamName: string,
     averageScore: number,
-    topMember: {name: string, score: number},
+    topMember: { name: string, score: number },
     memberCount: number
 }[] {
     let analysis: {
         teamName: string,
         averageScore: number,
-        topMember: {name: string, score: number},
+        topMember: { name: string, score: number },
         memberCount: number
     }[] = [];
-    for (const team of analysis) {
-        
+    for (let team of teams) {
+        let highest = (team.members[0].score);
+        let highestIndex = 0
+        //team.members.reduce((max, x) => (x > max ? x : max),team.members[0])
+        for (let i = 1; i < team.members.length; i++) {
+            if (team.members[i].score > highest) highestIndex = i;
+
+        }
+
+        let newTeam = {
+            teamName: team.name,
+            averageScore: Math.floor((team.members.reduce((sum, member) => { return sum + member.score }, 0)) / team.members.length),
+            topMember: team.members[highestIndex],
+            memberCount: team.members.length
+        }
+        analysis.push(newTeam)
     }
+
     // For each team:
     // 1. Calculate average score of all members
     // 2. Find the member with highest score
     // 3. Count total members
     // 4. Return analysis for all teams
-    
+
     return analysis;
 }
 
@@ -365,23 +380,191 @@ let teamsData = [
     {
         name: "Alpha Team",
         members: [
-            {name: "John", score: 85},
-            {name: "Sarah", score: 92},
-            {name: "Mike", score: 78}
+            { name: "John", score: 85 },
+            { name: "Sarah", score: 92 },
+            { name: "Mike", score: 78 }
         ]
     },
     {
         name: "Beta Team",
         members: [
-            {name: "Lisa", score: 88},
-            {name: "Tom", score: 95},
-            {name: "Emma", score: 82}
+            { name: "Lisa", score: 88 },
+            { name: "Tom", score: 95 },
+            { name: "Emma", score: 82 }
         ]
     }
 ];
 
 // Test it:
 console.log("Team analysis:", analyzeTeamPerformance(teamsData));
+
+console.log("Exercise 6.3: Algorithm implementation");
+
+function findMostFrequent<T>(items: T[]): { item: T, count: number } | null {
+    if (items.length > 0) {
+        let count: { item: T, count: number }[] = []
+        let highestIndex = 0;
+        for (let item of items) {
+            let inCount = count.findIndex(x => x.item === item)
+            if (inCount != -1) {
+                count[inCount].count++
+                if (count[inCount].count > count[highestIndex].count) {
+                    highestIndex = inCount
+                }
+            }
+            else {
+                let newItem = {
+                    item: item, count: 1
+                }
+                count.push(newItem)
+            }
+        }
+        let frequent = count[highestIndex]
+        return frequent;
+    }
+    // Count how many times each item appears
+    // Return the item that appears most often and its count
+    // Return null if array is empty
+
+    return null;
+}
+
+// Test it:
+console.log("Most frequent number:", findMostFrequent([1, 2, 3, 2, 4, 2, 5]));
+// Should be {item: 2, count: 3}
+
+console.log("Most frequent name:", findMostFrequent(["Alice", "Bob", "Alice", "Charlie", "Alice"]));
+// Should be {item: "Alice", count: 3}
+console.log("🏆 FINAL CHALLENGE: Mini Database");
+interface Student {
+    id: number;
+    name: string;
+    age: number;
+    grades: { courseId: number, grade: number }[];
+}
+
+interface Course {
+    id: number;
+    name: string;
+    credits: number;
+}
+
+// Sample data:
+let studentsDB: Student[] = [
+    { id: 1, name: "Alice", age: 20, grades: [{ courseId: 1, grade: 85 }, { courseId: 2, grade: 92 }] },
+    { id: 2, name: "Bob", age: 22, grades: [{ courseId: 1, grade: 78 }, { courseId: 3, grade: 88 }] },
+    { id: 3, name: "Charlie", age: 21, grades: [{ courseId: 2, grade: 95 }, { courseId: 3, grade: 82 }] }
+];
+
+let coursesDB: Course[] = [
+    { id: 1, name: "Mathematics", credits: 3 },
+    { id: 2, name: "Physics", credits: 4 },
+    { id: 3, name: "Chemistry", credits: 3 }
+];
+
+console.log(' Challenge 1: Calculate GPA for a student');
+
+function calculateGPA(studentId: number, students: Student[], courses: Course[]): number {
+    let index = (students.findIndex(x => x.id === studentId))
+    if (index != -1) {
+        let gradesSum = 0;
+        let cresitSum = 0;
+
+
+        for (let grade of students[index].grades) {
+            let creditIndex = coursesDB.findIndex(x => x.id === grade.courseId)
+            gradesSum += grade.grade * coursesDB[creditIndex].credits;
+            cresitSum += coursesDB[creditIndex].credits;
+        }
+        let gpa = Number((gradesSum / cresitSum).toFixed(1));
+        return gpa;
+
+    }
+    // 1. Find the student by ID
+    // 2. For each grade, multiply grade by course credits
+    // 3. Sum all weighted grades and divide by total credits
+    // 4. Return GPA (0 if student not found)
+    return 0;
+}
+
+// Test it:
+console.log("Alice's GPA:", calculateGPA(1, studentsDB, coursesDB));
+
+
+console.log(" Challenge 2: Find top students in a course");
+
+function getTopStudentsInCourse(
+    courseId: number,
+    students: Student[],
+    limit: number
+): { name: string, grade: number }[] {
+    let studentsInCourse: { name: string, grade: number }[] = []
+    for (let student of students) {
+        for (let course of student.grades) {
+            if (course.courseId === courseId) {
+                let addingStudent = { name: student.name, grade: course.grade }
+                studentsInCourse.push(addingStudent)
+            }
+        }
+    }
+    studentsInCourse.sort((a, b) => b.grade - a.grade)
+
+    // 1. Find all students who took this course
+    // 2. Sort by grade (highest first)
+    // 3. Return top 'limit' students with their names and grades
+    if (limit === 0) return studentsInCourse;
+    else return studentsInCourse.slice(0, limit);
+
+}
+
+// Test it:
+console.log("Top students in Math:", getTopStudentsInCourse(1, studentsDB, 2));
+console.log(' Challenge 3: Comprehensive report function');
+
+function generateAcademicReport(students: Student[], courses: Course[]): {
+    totalStudents: number,
+    totalCourses: number,
+    averageGPAByStudent: { name: string, gpa: number }[],
+    courseStatistics: { courseName: string, averageGrade: number, enrollmentCount: number }[]
+} {
+    // Create a complete academic report with all statistics
+    let gpaArray: { name: string, gpa: number }[] = [];
+    let coursesArray: { courseName: string, averageGrade: number, enrollmentCount: number }[] = []
+    for (let student of students) {
+        gpaArray.push({ name: student.name, gpa: (calculateGPA(student.id, students, courses)) })
+    }
+    for (let course of courses) {
+        let averageSum = 0;
+        let averageArray = getTopStudentsInCourse(course.id, students, 0)
+        for (const x of averageArray) {
+            averageSum += x.grade
+        }
+        coursesArray.push({ courseName: course.name, averageGrade:(averageSum/averageArray.length),enrollmentCount:averageArray.length})
+    }
+     return {
+        totalStudents: students.length,
+        totalCourses: courses.length,
+        averageGPAByStudent: gpaArray,
+        courseStatistics: coursesArray
+    };
+}
+
+// Test it:
+console.log("Academic Report:", generateAcademicReport(studentsDB, coursesDB));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
