@@ -60,6 +60,13 @@ function showCounter() {
             updateTitle("I Love Yo");
                                                 if (count >= 7)
             updateTitle("I Love You");
+            if (count >= 8) updateTitle("أ");
+            if (count >= 9) updateTitle("أنـ");
+            if (count >= 10) updateTitle("أنـا");
+            if (count >= 11) updateTitle("أنـا أ");
+            if (count >= 12) updateTitle("أنـا أحـ");
+            if (count >= 13) updateTitle("أنـا أحـبـ");
+            if (count >= 14) updateTitle("أنـا أحـبـك");
 
 
         }, 1000);
@@ -76,7 +83,3 @@ function showCounter() {
     
 }
 showCounter();
-
-
-
-
