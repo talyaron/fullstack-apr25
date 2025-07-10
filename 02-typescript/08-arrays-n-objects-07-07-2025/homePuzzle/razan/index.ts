@@ -234,14 +234,70 @@ function createPeopleReport(people: {name: string, age: number, city?: string}[]
         },
         cities: {} as {[cityName: string]: number}
     };
-    for (let i = 0; i < )
-    // Calculate all the statistics using loops
-    // Count people in each age range
-    // Count people in each city
-    // Calculate average age
-    
+    let sumAges = 0;
+    report.totalPeople = people.length;
+
+    for (let person of people) {
+        sumAges += person.age;
+        if (person.age < 18) {
+            report.ageRanges.children += 1;
+        } else if (person.age >= 65) {
+            report.ageRanges.seniors += 1;
+        } else {
+            report.ageRanges.adults += 1;
+        }
+        if (person.city) {
+            if (report.cities[person.city]) {
+                report.cities[person.city] += 1;
+            } else {
+                report.cities[person.city] = 1;
+            }
+        }
+    }
+
+    report.averageAge = people.length > 0 ? sumAges / people.length : 0;
+
     return report;
 }
-
+let peopleWithCities = [
+    {name: "Alice", age: 16, city: "New York"},
+    {name: "Bob", age: 30, city: "London"},
+    {name: "Charlie", age: 35, city: "New York"},
+    {name: "Diana", age: 80, city: "Paris"}
+];
 // Test it:
 console.log("People report:", createPeopleReport(peopleWithCities));
+
+//6.1 Advanced sorting with multiple criteria//
+function advancedSort(people: {name: string, age: number, salary: number}[]): {
+    name: string, 
+    age: number, 
+    salary?: number
+}[] {
+    // Sort people by:
+    // 1. First by salary (highest first)
+    // 2. If salaries are equal, then by age (youngest first)
+    // 3. If both salary and age are equal, then by name (alphabetically)
+    
+    let sorted = [...people].sort((b, a) => {
+    if (b.salary !== a.salary) {
+    return a.salary - b.salary;
+    } else if (a.age !== b.age) {
+    return a.age - b.age;
+    }
+    else {return b.name.localeCompare(a.name);
+    }
+    });
+    return sorted;
+}
+
+// Test data:
+let employeesData = [
+    {name: "Alice", age: 25, salary: 50000},
+    {name: "Bob", age: 30, salary: 60000},
+    {name: "Charlie", age: 28, salary: 50000},
+    {name: "Diana", age: 30, salary: 60000},
+];
+
+// Test it:
+console.log("Advanced sorted:", advancedSort(employeesData));
