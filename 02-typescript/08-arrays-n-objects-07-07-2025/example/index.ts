@@ -3,7 +3,7 @@ interface Person {
     lastName: string;
     age: number;
 }
-
+let love = ["i"," ","L","o","v","e"," ","t","a","l"," ","y","a","r","o","n"]
 let people: Person[] = [
     { name: "John", lastName: "Doe", age: 25 },
     { name: "Jane", lastName: "Smith", age: 30 },
