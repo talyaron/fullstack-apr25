@@ -472,9 +472,9 @@ function calculateGPA(studentId: number, students: Student[], courses: Course[])
 
 
         for (let grade of students[index].grades) {
-            let creditIndex = coursesDB.findIndex(x => x.id === grade.courseId)
-            gradesSum += grade.grade * coursesDB[creditIndex].credits;
-            cresitSum += coursesDB[creditIndex].credits;
+            let creditIndex = courses.findIndex(x => x.id === grade.courseId)
+            gradesSum += grade.grade * courses[creditIndex].credits;
+            cresitSum += courses[creditIndex].credits;
         }
         let gpa = Number((gradesSum / cresitSum).toFixed(1));
         return gpa;
