@@ -51,7 +51,7 @@
 // Exercise 2.1: Modulus Applications
 
 // A
-// for (let i = 1; i <= 20; i++) { 
+// for (let i = 1; i <= 20; i++) {
 //   if (i % 3 === 0) {
 //     console.log(`fizz`);
 //   }
@@ -62,7 +62,7 @@
 
 // B
 // for (let i = 1; i < 51; i++) {
-  
+
 //   if (i % 7 === 1) {
 //     console.log(`${i} result remainder is, and result is ${i / 7}`);
 //   } else {
@@ -71,36 +71,79 @@
 // }
 
 // Exercise 2.2: Number Analyzer
-let test1 = 0;
-let test2 = -8;
-let test3 = 15;
-let test4 = 24;
-let test5 = -7;
+// let test1 = 0;
+// let test2 = -8;
+// let test3 = 15;
+// let test4 = 24;
+// let test5 = -7;
 
-let arrayTests = [test1, test2, test3, test4, test5]
+// let arrayTests = [test1, test2, test3, test4, test5];
 
-// a
-for (let n of arrayTests) {
+// for (let n of arrayTests) {
+//   // a
+//   if (n > 0) console.log(`${n} is positive number.`);
+//   else if (n < 0) console.log(`${n} is negative number.`);
+//   else console.log(`${n} is zero.`);
+
+//   // b
+//   if (n % 2 === 0) console.log(`${n} is even number.`);
+//   else console.log(`${n} is odd number.`);
+
+//   // c
+//   if (n % 5 === 0) console.log(`Yes! divisible by 5!`);
+//   else console.log(`Not divisible by 5!`);
   
-  if (n > 0) console.log(`${n} is positive number.`);
-  else if (n < 0) console.log(`${n} is negative number.`);
-  else console.log(`${n} is zero.`);
-}
 
-console.log(``);
-
-// b
-for (let n of arrayTests) {
+//   // d
+//   console.log(n ** 2);
+//   console.log(n ** 3);
   
-  if (n % 2 === 0) console.log(`${n} is even number.`);
-  else console.log(`${n} is odd number.`);
-}
+// }
 
-console.log(``);
-
-// c
-for (let n of arrayTests) {
+// Exercise 2.3: Pattern Generator
+// for (let count = 2; count < 7; count++) {
+//   let row = "";
+//   for (let num = 1; num < count; num++) {
+//     row += num + " ";
+//   }
+//   console.log(row);
   
-  if (n / 5 === 0) console.log(``);
-   
-}
+// }
+
+// Exercise 2.4: Grade Calculator
+
+// Grade scale:
+// A: 90-100
+// B: 80-89
+// C: 70-79
+// D: 60-69
+// F: below 60
+
+// let score1 = 95;
+// let score2 = 87;
+// let score3 = 76;
+// let score4 = 68;
+// let score5 = 52;
+// let score6 = 91;
+
+// let scores = [score1, score2, score3, score4, score5, score6];
+
+// for (let score of scores) {
+//   if (score >= 90 && score <= 100) {
+//     console.log(`${score} is an A`);
+//   }
+//   else if (score >= 80 && score <= 89) {
+//     console.log(`${score} is an B`);
+//   }
+//   else if (score >= 70 && score <= 79) {
+//     console.log(`${score} is an C`);
+//   }
+//   else if (score >= 60 && score <= 69) {
+//     console.log(`${score} is an D`);
+//   }
+//   else if (score < 60) {
+//     console.log(`${score} is an F`);
+//   }
+//   else console.log(`ERROR`);
+  
+// }
