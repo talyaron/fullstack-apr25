@@ -55,23 +55,23 @@
 // console.log(squareFunction(num1Input));
 
 // Challenge 6: Real-World Data Validation
-let nameUserInput = prompt(`Wha'ts your name?`) || "";
-let ageUserInput = Number(prompt(`What's your age?`))
+// let nameUserInput = prompt(`Wha'ts your name?`) || "";
+// let ageUserInput = Number(prompt(`What's your age?`))
 
-function userDetailsCheckValidetion(name , age) {
-  try {
-    if (typeof name !== "string" || name.length === 0 || name.trim().length === 0) throw new Error("Invalid name!");
+// function userDetailsCheckValidetion(name , age) {
+//   try {
+//     if (typeof name !== "string" || name.length === 0 || name.trim().length === 0) throw new Error("Invalid name!");
 
-    if ( typeof age !== "number" || isNaN(age) || !isFinite(age) || age < 0 || age > 150) throw new Error("Invalid age. Please enter a number between 0 and 150.");
+//     if ( typeof age !== "number" || isNaN(age) || !isFinite(age) || age < 0 || age > 150) throw new Error("Invalid age. Please enter a number between 0 and 150.");
     
     
-    return `Hello ${name.trim()}! age...${age}`;
+//     return `Hello ${name.trim()}! age...${age}`;
     
-  } catch (e) {
-    console.error(e);
+//   } catch (e) {
+//     console.error(e);
     
-    return undefined
-  }
-}
+//     return undefined
+//   }
+// }
 
-console.log(userDetailsCheckValidetion(nameUserInput, ageUserInput));
+// console.log(userDetailsCheckValidetion(nameUserInput, ageUserInput));
