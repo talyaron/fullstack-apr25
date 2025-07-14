@@ -1,6 +1,6 @@
 # Project: Home Puzzle
 
-create a code design (look at the following image) like we did in class, but for the home puzzle project.
+Create a code design (look at the following image) like we did in class, but for the home puzzle project.
 
 ## Level 1 - max 85 points
 create a simple game with a ball that moves around the screen when the user presses the arrow keys. The ball should explode (change image to explosion image) each time it is clicked by the mouse. After the explosion, the ball should disappear for 2 seconds and then reappear at a random position on the screen. 
