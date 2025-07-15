@@ -1,0 +1,41 @@
+:root {
+    font-size: 17px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 900;
+    --primary-color: rgb(29, 17, 12);
+    --secondery-color: rgb(241, 210, 174);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.gameWrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 2vh 1vw;
+    background-color: var(--primary-color);
+    border: 0 solid var(--primary-color);
+    width: 98vw;
+    height: 96vh;
+    padding: 2rem 3rem 3rem 3rem;
+}
+
+.score {
+    height: 2rem;
+    font-size: 2rem;
+    position: relative;
+    bottom: 1rem;
+    color: var(--secondery-color);
+}
+
+.bourdgame {
+    height: 100%;
+    width: 100%;
+    background-color: var(--secondery-color);
+}
