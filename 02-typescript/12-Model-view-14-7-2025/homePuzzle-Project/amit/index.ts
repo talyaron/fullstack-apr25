@@ -36,10 +36,10 @@ function renderBaord() {
         if (!boardGame) throw new Error("Board element not found!");
 
         const context = boardGame.getContext("2d");
-        if(!context) throw new Error("2D context not available");
+        if (!context) throw new Error("2D context not available");
 
-        context.clearRect(0,0, boardGame.width, boardGame.height);
-        
+        context.clearRect(0, 0, boardGame.width, boardGame.height);
+
         context.fillStyle = "green";
         context.fillRect(snakeX, snakeY, newBoard.blockSize, newBoard.blockSize);
 
@@ -49,8 +49,21 @@ function renderBaord() {
 }
 
 window.onload = () => {
-    renderBaord();
+    setInterval(update, 100);
 };
+
+function update(): void {
+    try {
+        snakeX += velocityX * newBoard.blockSize;
+        snakeY += velocityY * newBoard.blockSize;
+
+
+        renderBaord();
+
+    } catch (error){
+        console.error("Oops, Somthing went wrong!", error);
+    }
+}
 
 
 
@@ -58,9 +71,9 @@ function resetButton(): void {
     try {
         const buttonClicked = document.getElementById("reset");
         if (!buttonClicked) throw new Error("Reset button not found");
-        
+
         buttonClicked.onclick = resetGame;
-        
+
     } catch (error) {
         console.error("Oops, Something went wrong!", error);
     }
