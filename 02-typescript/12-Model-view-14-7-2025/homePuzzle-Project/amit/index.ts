@@ -48,20 +48,33 @@ function renderBaord() {
     }
 }
 
-window.onload = () => {
-    setInterval(update, 100);
-};
 
 function update(): void {
     try {
         snakeX += velocityX * newBoard.blockSize;
         snakeY += velocityY * newBoard.blockSize;
-
-
+        
+        
         renderBaord();
-
+        
     } catch (error){
         console.error("Oops, Somthing went wrong!", error);
+    }
+}
+
+function initControls(): void {
+    try {
+        document.addEventListener("keydown", changeDirection);
+    } catch (error) {
+        console.error("Error initializing controls", error);
+    }
+}
+
+function changeDirection(e: KeyboardEvent): void {
+    try {
+        
+    } catch {
+        
     }
 }
 
@@ -71,14 +84,20 @@ function resetButton(): void {
     try {
         const buttonClicked = document.getElementById("reset");
         if (!buttonClicked) throw new Error("Reset button not found");
-
+        
         buttonClicked.onclick = resetGame;
-
+        
     } catch (error) {
         console.error("Oops, Something went wrong!", error);
     }
 }
 
+
+
+window.onload = () => {
+    initControls();
+    setInterval(update, 100);
+};
 
 
 function placeFood() { }
