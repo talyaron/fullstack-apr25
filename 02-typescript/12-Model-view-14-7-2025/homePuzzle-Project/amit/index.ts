@@ -1,42 +1,75 @@
-const board = 0;
+// Data Base:
 
-const blockSize = 25
+type Snake = {
+    x: number,
+    y: number,
+};
 
-const snakeX = blockSize * 5
-const snakeY = blockSize * 5
+type Board = {
+    blockSize: number
+    rows: number
+    columns: number
+};
 
-const rows = 20
-const columns = 20
+const newSnake: Snake = {
+    x: 50,
+    y: 50,
+};
+
+const newBoard: Board = {
+    blockSize: 25,
+    rows: 20,
+    columns: 20,
+};
+
+let snakeX: number = newBoard.blockSize * 5;
+let snakeY: number = newBoard.blockSize * 5;
+
+let velocityX = 0
+let velocityY = 0
 
 
 
 function renderBaord() {
     try {
-        const boardGame = document.getElementById("board");
-        if(!boardGame) throw new Error;
+        const boardGame = document.getElementById("board") as HTMLCanvasElement | null;
+        if (!boardGame) throw new Error("Board element not found!");
 
-        board
+        const context = boardGame.getContext("2d");
+        if(!context) throw new Error("2D context not available");
 
-    } catch {
+        context.clearRect(0,0, boardGame.width, boardGame.height);
+        
+        context.fillStyle = "green";
+        context.fillRect(snakeX, snakeY, newBoard.blockSize, newBoard.blockSize);
 
+    } catch (error) {
+        console.error("Oops, Something went wrong", error);
     }
 }
 
-function placeFood() {}
+window.onload = () => {
+    renderBaord();
+};
 
-function resetGame() {
-    console.log("Game reset")
-}
 
 
 function resetButton(): void {
     try {
         const buttonClicked = document.getElementById("reset");
-        if(!buttonClicked) throw new Error("Reset button not found");
-
-        buttonClicked.onclick = resetGame; 
-
+        if (!buttonClicked) throw new Error("Reset button not found");
+        
+        buttonClicked.onclick = resetGame;
+        
     } catch (error) {
         console.error("Oops, Something went wrong!", error);
     }
+}
+
+
+
+function placeFood() { }
+
+function resetGame() {
+    console.log("Game reset")
 }
