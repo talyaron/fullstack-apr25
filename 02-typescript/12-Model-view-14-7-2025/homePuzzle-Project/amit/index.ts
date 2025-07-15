@@ -53,11 +53,11 @@ function update(): void {
     try {
         snakeX += velocityX * newBoard.blockSize;
         snakeY += velocityY * newBoard.blockSize;
-        
-        
+
+
         renderBaord();
-        
-    } catch (error){
+
+    } catch (error) {
         console.error("Oops, Somthing went wrong!", error);
     }
 }
@@ -70,11 +70,39 @@ function initControls(): void {
     }
 }
 
-function changeDirection(e: KeyboardEvent): void {
+function changeDirection(event: KeyboardEvent): void {
     try {
-        
-    } catch {
-        
+        switch (event.code) {
+            case "ArrowUp":
+                if (velocityY !== 1) {
+                    velocityX = 0
+                    velocityY = -1
+                }
+                break;
+            case "ArrowDown":
+                if (velocityY !== -1) {
+                    velocityX = 0
+                    velocityY = 1
+                }
+                break;
+            case "ArrowLeft":
+                if (velocityX !== 1) {
+                    velocityX = -1
+                    velocityY = 0
+                }
+                break;
+            case "ArrowRight":
+                if (velocityX !== -1) {
+                    velocityX = 1
+                    velocityY = 0
+                }
+                break;
+            default:
+                console.log(`Key ${event.code} is not a direction key`);
+                break;
+        }
+    } catch (error) {
+        console.error("Oops, Something went wrong!", error);
     }
 }
 
@@ -84,9 +112,9 @@ function resetButton(): void {
     try {
         const buttonClicked = document.getElementById("reset");
         if (!buttonClicked) throw new Error("Reset button not found");
-        
+
         buttonClicked.onclick = resetGame;
-        
+
     } catch (error) {
         console.error("Oops, Something went wrong!", error);
     }
