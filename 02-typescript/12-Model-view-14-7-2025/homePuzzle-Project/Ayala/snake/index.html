@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./dist/style.css">
+    <script src="./dist/script.js" defer></script>
+    <link rel="shortcut icon" href="./img/snake.png" type="image/x-icon">
+    <title>Game</title>
+</head>
+
+<body onkeydown="handelKey(event)">
+    <div class="game">
+        <div class="game__title">SNAKE GAME</div>
+        <div class="game__points">Points: <span id="score"></span></div>
+        <div class="game__board" >
+            <div id="fruitRoot"></div>
+            <div id="snakeRoot"></div>
+
+        </div>
+        <div class="game__status">
+            <button onclick="handlePlay(event)" id="play">start play</button>
+        </div>
+       
+     
+    </div>
+</body>
+
+</html>
