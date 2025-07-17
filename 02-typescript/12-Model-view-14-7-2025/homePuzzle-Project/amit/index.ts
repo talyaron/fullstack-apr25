@@ -46,12 +46,10 @@ let gameInterval: number;
 function update(ctx: CanvasRenderingContext2D): void {
     try {
         for (let i = snakeBody.length - 1; i > 0; i--) {
-            snakeBody[i].x = snakeBody[i - 1].x;
-            snakeBody[i].y = snakeBody[i - 1].y;
+            snakeBody[i] = { ...snakeBody[i - 1] };
         }
         if (snakeBody.length > 0) {
-            snakeBody[0].x = snake.x;
-            snakeBody[0].y = snake.y;
+            snakeBody[0] = {x: snake.x, y: snake.y };
         }
 
         snake.x += snake.velocityX * board.blockSize;
@@ -68,10 +66,16 @@ function update(ctx: CanvasRenderingContext2D): void {
             return;
         }
 
+        if(checkBodyEating()) {
+            showGameOver();
+            clearInterval(gameInterval);
+            return;
+        }
+
         if (snake.x === food.x && snake.y === food.y) {
-            snakeBody.push({ x: snake.x, y: snake.y });
             score++;
             updateScoreDisplay();
+            snakeBody.push({ x: snake.x, y: snake.y });
             placeNewFood();
         }
 
@@ -80,6 +84,10 @@ function update(ctx: CanvasRenderingContext2D): void {
     } catch (error) {
         console.error("Error, Please check your code!", error);
     }
+}
+
+function checkBodyEating (): boolean {
+    return snakeBody.some(part => part.x === snake.x && part.y === snake.y);
 }
 
 function changeDirection(event: KeyboardEvent): void {
