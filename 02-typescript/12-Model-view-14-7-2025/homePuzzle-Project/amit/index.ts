@@ -14,6 +14,10 @@ type Board = {
     columns: number
 };
 
+type Food = {
+    x: number,
+    y: number,
+};
 
 const board: Board = {
     blockSize: 25,
@@ -26,7 +30,12 @@ let snake: Snake = {
     velocityX: 0,
     velocityY: 0,
 };
+const food: Food = {
+    x: Math.floor(Math.random() * board.columns) * board.blockSize,
+    y: Math.floor(Math.random() * board.rows) * board.blockSize,
+};
 
+let score: number = 0;
 let gameInterval: number;
 
 window.onload = () => {
@@ -48,12 +57,39 @@ window.onload = () => {
 function renderBaord(ctx: CanvasRenderingContext2D, snake: Snake): void {
     try {
         ctx.clearRect(0, 0, 500, 500);
+
+        renderFood(ctx);
+
         ctx.fillStyle = "green";
         ctx.fillRect(snake.x, snake.y, board.blockSize, board.blockSize);
 
     } catch (error) {
         console.error("Error, Please check your code!", error);
     }
+}
+
+function renderFood(ctx: CanvasRenderingContext2D): void {
+    try {
+        ctx.fillStyle = "red";
+        ctx.fillRect(food.x, food.y, board.blockSize, board.blockSize);
+    } catch (error) {
+        console.error("Error, Please check your code!", error);
+    }
+}
+
+function updateScoreDisplay (): void {
+    try {
+        const score = document.getElementById("score");
+        if(!score) throw new Error("score not found");
+        score.textContent = score.toString();
+    } catch (error) {
+        console.error("Error, Please check your code!", error)
+    }
+}
+
+function placeNewFood (): void {
+    food.x = Math.floor(Math.random() * board.columns) * board.blockSize;
+    food.y = Math.floor(Math.random() * board.rows) * board.blockSize;
 }
 
 
@@ -73,6 +109,12 @@ function update(ctx: CanvasRenderingContext2D): void {
 
             clearInterval(gameInterval);
             return;
+        }
+
+        if(snake.x === food.x && snake.y === food.y) {
+            score++;
+            updateScoreDisplay();
+            placeNewFood();
         }
 
         renderBaord(ctx, snake);
@@ -138,6 +180,10 @@ function resetGame(): void {
         snake.y = board.blockSize * 5;
         snake.velocityX = 0;
         snake.velocityY = 0;
+        score = 0
+
+        updateScoreDisplay();
+        placeNewFood();
 
         const gameOver = document.getElementById("game-over");
         if (!gameOver) throw new Error("game-over not found");
