@@ -19,3 +19,12 @@ body {
     border-radius: 1rem;
     cursor: pointer;
 }
+#board{
+    border: 1px solid black;
+}
+
+#game-over{
+    display: none;
+    font-size: 1.5rem;
+    color: red;
+}

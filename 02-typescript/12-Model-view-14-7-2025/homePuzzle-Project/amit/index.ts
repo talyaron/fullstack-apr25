@@ -3,6 +3,9 @@
 type Snake = {
     x: number,
     y: number,
+    velocityX: number,
+    velocityY: number,
+
 };
 
 type Board = {
@@ -11,56 +14,151 @@ type Board = {
     columns: number
 };
 
-const newSnake: Snake = {
-    x: 50,
-    y: 50,
-};
 
-const newBoard: Board = {
+const board: Board = {
     blockSize: 25,
     rows: 20,
     columns: 20,
 };
+let snake: Snake = {
+    x: board.blockSize * 5,
+    y: board.blockSize * 5,
+    velocityX: 0,
+    velocityY: 0,
+};
 
-let snakeX: number = newBoard.blockSize * 5;
-let snakeY: number = newBoard.blockSize * 5;
+let gameInterval: number;
 
-let velocityX = 0
-let velocityY = 0
-
-
-
-function renderBaord() {
+window.onload = () => {
     try {
-        const boardGame = document.getElementById("board") as HTMLCanvasElement | null;
-        if (!boardGame) throw new Error("Board element not found!");
+        const canvas = document.getElementById("board") as HTMLCanvasElement | null;
+        if (!canvas) throw new Error("Canvas not found!");
 
-        const context = boardGame.getContext("2d");
-        if (!context) throw new Error("2D context not available");
+        const ctx = canvas.getContext("2d");
+        if (!ctx) throw new Error("2D context not available");
 
-        context.clearRect(0, 0, boardGame.width, boardGame.height);
-
-        context.fillStyle = "green";
-        context.fillRect(snakeX, snakeY, newBoard.blockSize, newBoard.blockSize);
+        initControls();
+        gameInterval = setInterval(() => update(ctx), 100);
 
     } catch (error) {
-        console.error("Oops, Something went wrong", error);
+        console.error("Error initializing game", error);
+    }
+};
+
+function renderBaord(ctx: CanvasRenderingContext2D, snake: Snake): void {
+    try {
+        ctx.clearRect(0, 0, 500, 500);
+        ctx.fillStyle = "green";
+        ctx.fillRect(snake.x, snake.y, board.blockSize, board.blockSize);
+
+    } catch (error) {
+        console.error("Error, Please check your code!", error);
     }
 }
 
 
-function update(): void {
+function update(ctx: CanvasRenderingContext2D): void {
     try {
-        snakeX += velocityX * newBoard.blockSize;
-        snakeY += velocityY * newBoard.blockSize;
+        snake.x += snake.velocityX * board.blockSize;
+        snake.y += snake.velocityY * board.blockSize;
 
+        if (
+            snake.x < 0 ||
+            snake.y < 0 ||
+            snake.x >= board.columns * board.blockSize ||
+            snake.y >= board.rows * board.blockSize
+        ) {
+            console.warn("Snake hit the wall - Game Over!")
+            showGameOver();
 
-        renderBaord();
+            clearInterval(gameInterval);
+            return;
+        }
+
+        renderBaord(ctx, snake);
 
     } catch (error) {
-        console.error("Oops, Somthing went wrong!", error);
+        console.error("Error, Please check your code!", error);
     }
 }
+
+
+function changeDirection(event: KeyboardEvent): void {
+    try {
+        switch (event.code) {
+            case "ArrowUp":
+                if (snake.velocityY !== 1) {
+                    snake.velocityX = 0
+                    snake.velocityY = -1
+                }
+                break;
+            case "ArrowDown":
+                if (snake.velocityY !== -1) {
+                    snake.velocityX = 0
+                    snake.velocityY = 1
+                }
+                break;
+            case "ArrowLeft":
+                if (snake.velocityX !== 1) {
+                    snake.velocityX = -1
+                    snake.velocityY = 0
+                }
+                break;
+            case "ArrowRight":
+                if (snake.velocityX !== -1) {
+                    snake.velocityX = 1
+                    snake.velocityY = 0
+                }
+                break;
+            default:
+                console.log(`Key ${event.code} is not a direction key`);
+                break;
+        }
+    } catch (error) {
+        console.error("Error, Please check your code!", error);
+    }
+}
+
+function showGameOver(): void {
+    try {
+        const gameOver = document.getElementById("game-over");
+        if (!gameOver) throw new Error("game-over not found");
+
+        gameOver.style.display = "block";
+    } catch (error) {
+        console.error("Error, Please check your code!", error);
+    }
+
+}
+
+
+function resetGame(): void {
+    try {
+        snake.x = board.blockSize * 5;
+        snake.y = board.blockSize * 5;
+        snake.velocityX = 0;
+        snake.velocityY = 0;
+
+        const gameOver = document.getElementById("game-over");
+        if (!gameOver) throw new Error("game-over not found");
+
+        gameOver.style.display = "none";
+
+        const canvas = document.getElementById("board") as HTMLCanvasElement | null;
+        if (!canvas) throw new Error("Canvas not found!");
+
+        const ctx = canvas.getContext("2d");
+        if (!ctx) throw new Error("2D context not available");
+
+        gameInterval = setInterval(() => update(ctx), 100);
+
+        console.log("Game Reset");
+
+    } catch (error) {
+        console.error("Error, Please check your code!", error);
+    }
+}
+
 
 function initControls(): void {
     try {
@@ -70,66 +168,3 @@ function initControls(): void {
     }
 }
 
-function changeDirection(event: KeyboardEvent): void {
-    try {
-        switch (event.code) {
-            case "ArrowUp":
-                if (velocityY !== 1) {
-                    velocityX = 0
-                    velocityY = -1
-                }
-                break;
-            case "ArrowDown":
-                if (velocityY !== -1) {
-                    velocityX = 0
-                    velocityY = 1
-                }
-                break;
-            case "ArrowLeft":
-                if (velocityX !== 1) {
-                    velocityX = -1
-                    velocityY = 0
-                }
-                break;
-            case "ArrowRight":
-                if (velocityX !== -1) {
-                    velocityX = 1
-                    velocityY = 0
-                }
-                break;
-            default:
-                console.log(`Key ${event.code} is not a direction key`);
-                break;
-        }
-    } catch (error) {
-        console.error("Oops, Something went wrong!", error);
-    }
-}
-
-
-
-function resetButton(): void {
-    try {
-        const buttonClicked = document.getElementById("reset");
-        if (!buttonClicked) throw new Error("Reset button not found");
-
-        buttonClicked.onclick = resetGame;
-
-    } catch (error) {
-        console.error("Oops, Something went wrong!", error);
-    }
-}
-
-
-
-window.onload = () => {
-    initControls();
-    setInterval(update, 100);
-};
-
-
-function placeFood() { }
-
-function resetGame() {
-    console.log("Game reset")
-}
