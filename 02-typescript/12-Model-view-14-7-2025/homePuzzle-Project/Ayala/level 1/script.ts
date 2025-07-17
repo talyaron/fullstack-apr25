@@ -14,7 +14,7 @@ const ball: Ball = {
 // view functions
 
 function htmlBall(ball: Ball): string {
-    return `<div id="ball" style="left: ${ball.x}%; top: ${ball.y}%;"></div>`;
+    return `<div id="ball" style="left: ${ball.x}px; top:${ball.y}px;"></div>`;
 }
 
 function renderBall(ball: Ball): void {
@@ -47,7 +47,7 @@ function hendlePressingKey(event: KeyboardEvent): void {
 
 //model functions
 function getNewBallPosition(event: KeyboardEvent): void {
-    const step = 5; // pixels to move
+    const step = 20; // pixels to move
     switch (event.key) {
         case "ArrowUp":
             ball.y -= step;
