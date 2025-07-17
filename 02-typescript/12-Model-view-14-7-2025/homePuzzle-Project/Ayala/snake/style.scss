@@ -1,0 +1,119 @@
+:root {
+    font-size: 17px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 900;
+    --primary-color: rgb(14, 36, 70);
+    --background-color: rgb(12, 77, 82);
+    --background-color-1: rgb(15, 92, 87);
+    --background-color-2: rgb(30, 99, 104);
+    --font: rgb(184, 184, 184);
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--primary-color), var(--background-color-1));
+    align-items: center;
+    justify-content: center;
+}
+
+.game {
+    width: 700px;
+    min-height: 580px;
+    max-height: 580px;
+    background-color: var(--background-color);
+    color: white;
+    box-shadow: 0 0 30px 10px rgba(0, 0, 0, 0.623);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--font);
+
+    // box-shadow:   2px 5px black;\
+    >* {
+        // border: 1px solid;
+        margin: 1%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    &__title {
+        flex: 1;
+        font-size: 2rem;
+
+    }
+
+    &__points {
+        flex: 1;
+        font-size: 1.4rem;
+    }
+
+    &__board {
+        max-height: 420px;
+        min-height: 420px;
+        max-width: 670px;
+        min-width: 670px;
+        flex: 15;
+        background-color: rgb(0, 0, 0);
+        border-radius: 12px;
+        border: 10px solid rgba(49, 49, 49, 0.281);
+        display: grid;
+        grid-template-columns: repeat(33, 1fr);
+        grid-template-rows: repeat(20, 1fr);
+        gap: 1px;
+        position: relative;
+        // overflow: hidden;
+    }
+
+    &__status {
+        flex: 2;
+
+        button {
+            width: 250px;
+            box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.623);
+            border-radius: 10px;
+            background-color: var(--font);
+            border: none;
+            height: 3rem;
+            transition: all 0.5s;
+            font-size: 1.5rem;
+            font-weight: 600;
+
+            &:hover {
+                cursor: pointer;
+                background-color: grey;
+            }
+        }
+    }
+
+}
+
+.fruit {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    z-index: 2;
+}
+
+.snake {
+    position: absolute;
+    border-radius: 5px;
+    width: 50px;
+    height: 50px;
+    z-index: 10;
+    rotate:0deg;
+
+}
