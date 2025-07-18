@@ -61,25 +61,56 @@
 // filterNumbers(numberStorage)
 
 // 4
-const listNamesStorage: Array<string> = [`John`, `Mary`, `Alex`]
-const testError = 2
+// const listNamesStorage: Array<string> = [`John`, `Mary`, `Alex`]
+// const testError = 2
 
-function createEmailList(listNames: Array<string>) {
-  try {
-    // test if is'nt array with strings!
-    if (!listNames || !Array.isArray(listNames)) throw new Error("Missing or not TYPE OF STRING!");
+// function createEmailList(listNames: Array<string>) {
+//   try {
+  //     let emailWorkersList: Array<string> = listNames.map(email => email.toLowerCase() + `@school.edu`)
+//     // test if is'nt array with strings!
+//     if (!listNames || !Array.isArray(listNames)) throw new Error("Missing or not TYPE OF STRING!");
     
-    // lowerCasing and plus ending mail property every name(string)
-    let emailWorkersList: Array<string> = listNames.map(email => email.toLowerCase() + `@school.edu`)
+//     // lowerCasing and plus ending mail property every name(string)
 
-    // seeparate to one string
-    return emailWorkersList.join(`; `)
+//     // seeparate to one string
+//     return emailWorkersList.join(`; `)
+//   }
+
+//   catch (error) {
+//     console.error(error);
+//   }
+// }
+
+// console.log(createEmailList(listNamesStorage));
+// // createEmailList(testError)
+
+// 5 
+let scoresStorage: Array<number> = [85, 92, 45, 67, 105, -5, 78, 55, 90]
+
+function analyzeTestScores(scoresList: Array<number>) {
+  try {
+    if (!scoresList || !Array.isArray(scoresList)) throw new Error("Missing input or not valid!");
+    
+      let validScores: Array<number> = scoresList.filter(score => score >= 0 && score < 100) 
+
+      let passedScores: Array<number>  = scoresList.filter(score => score >= 60 && score <= 100)
+      
+      let highestPassing: number = passedScores.length > 0 ? Math.max(...passedScores) : 0
+      
+      // average of passedScores:
+      let sumOfPassedScores: number = passedScores.reduce((total, score) => total + score, 0)
+  
+      let averageOfPassedScore: number = passedScores.length > 0 ? sumOfPassedScores / passedScores.length : 0
+    
+      let roundedAverage:number = Math.round(averageOfPassedScore * 10) / 10
+      //////////////////////////
+
+    return [`A: ${validScores.length}, B: ${passedScores.length}, C: ${highestPassing}. And average of passed score is: ${roundedAverage}`]
+
   }
-
-  catch (error) {
-    console.error(error);
+  catch (Error) {
+    console.error(Error);
   }
 }
 
-console.log(createEmailList(listNamesStorage));
-// createEmailList(testError)
+console.log(analyzeTestScores(scoresStorage));
