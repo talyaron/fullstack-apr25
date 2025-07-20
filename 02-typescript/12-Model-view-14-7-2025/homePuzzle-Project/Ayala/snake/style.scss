@@ -38,7 +38,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     color: var(--font);
 
     // box-shadow:   2px 5px black;\
@@ -51,13 +51,14 @@ body {
     }
 
     &__title {
-        flex: 1;
+
         font-size: 2rem;
 
     }
 
     &__points {
-        flex: 1;
+        flex-direction: row;
+        height: 1rem;
         font-size: 1.4rem;
     }
 
@@ -66,20 +67,16 @@ body {
         min-height: 420px;
         max-width: 670px;
         min-width: 670px;
-        flex: 15;
+
         background-color: rgb(0, 0, 0);
         border-radius: 12px;
         border: 10px solid rgba(49, 49, 49, 0.281);
-        display: grid;
-        grid-template-columns: repeat(33, 1fr);
-        grid-template-rows: repeat(20, 1fr);
-        gap: 1px;
         position: relative;
-        // overflow: hidden;
+        overflow: hidden;
     }
 
     &__status {
-        flex: 2;
+
 
         button {
             width: 250px;
@@ -87,7 +84,7 @@ body {
             border-radius: 10px;
             background-color: var(--font);
             border: none;
-            height: 3rem;
+            height: 2.5rem;
             transition: all 0.5s;
             font-size: 1.5rem;
             font-weight: 600;
@@ -96,6 +93,26 @@ body {
                 cursor: pointer;
                 background-color: grey;
             }
+        }
+    }
+
+    &__over {
+        display: none;
+        position: fixed;
+        height: 200px;
+        width: 400px;
+        background-color: rgb(41, 41, 41);
+        z-index: 10;
+        border-radius: 15px;
+        box-shadow: 0 0 20px 1px rgb(0, 0, 0);
+        flex-direction: column;
+        margin: auto;
+        align-items: center;
+        justify-content: center;
+        color: rgb(0, 0, 0);
+        font-size: 2rem;
+       .over__title {
+            font-size: 3rem;
         }
     }
 
@@ -114,6 +131,6 @@ body {
     width: 50px;
     height: 50px;
     z-index: 10;
-    rotate:0deg;
+    rotate: 0deg;
 
 }
