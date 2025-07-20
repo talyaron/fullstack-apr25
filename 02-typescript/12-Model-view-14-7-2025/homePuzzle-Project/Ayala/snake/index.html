@@ -13,7 +13,7 @@
 <body onkeydown="handelKey(event)">
     <div class="game">
         <div class="game__title">SNAKE GAME</div>
-        <div class="game__points">Points: <span id="score"></span></div>
+        <div class="game__points">Points: <span id="score">0</span></div>
         <div class="game__board" >
             <div id="fruitRoot"></div>
             <div id="snakeRoot"></div>
@@ -22,7 +22,8 @@
         <div class="game__status">
             <button onclick="handlePlay(event)" id="play">start play</button>
         </div>
-       
+       <div class="game__over" id="over">
+       </div>
      
     </div>
 </body>
