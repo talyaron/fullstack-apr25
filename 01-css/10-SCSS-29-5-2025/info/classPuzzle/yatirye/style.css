@@ -1,0 +1,11 @@
+.nevigation {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.nev__item:hover {
+  background-color: black;
+  cursor: pointer;
+  color: white;
+}/*# sourceMappingURL=style.css.map */

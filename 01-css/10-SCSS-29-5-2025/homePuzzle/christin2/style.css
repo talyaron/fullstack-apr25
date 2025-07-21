@@ -1,0 +1,140 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px;
+  background: linear-gradient(to right, rgb(155, 44, 138), blue);
+  font-style: italic;
+  color: rgb(244, 244, 243);
+}
+
+.portfolio {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+}
+.portfolio__sidebar {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100vh; /* Full height */
+  background-color: rgb(54, 14, 130);
+  padding: 20px;
+  box-sizing: border-box;
+  color: white;
+  gap: 15px;
+}
+.portfolio__sidebar__search {
+  width: 100px;
+  padding: 10px 60px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 25px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+.portfolio__sidebar__nav:hover {
+  background-color: beige;
+  color: black;
+}
+.portfolio__content {
+  margin-left: 350px;
+  flex: 1;
+  padding: 50px;
+  gap: 100px;
+}
+.portfolio__content h3 {
+  margin-top: 50px; /* Space above each header */
+  margin-bottom: 20px;
+  font-size: 170%;
+  border-bottom: 3px solid rgb(85, 85, 215);
+  font-style: oblique;
+}
+.portfolio__content img {
+  border-radius: 30%;
+  width: 600px;
+  margin-top: 50px; /* Space above each header */
+  margin-bottom: 20px;
+}
+.portfolio__content__personal p {
+  margin-top: 50px; /* Space above each header */
+  margin-bottom: 20px;
+}
+.portfolio__content__skills__item {
+  display: flex;
+  padding: 20px;
+  gap: 50px;
+}
+.portfolio__content__experience {
+  display: flex;
+  flex-direction: column;
+}
+.portfolio__content__experience__des {
+  padding: 30px;
+  gap: 50 px;
+}
+.portfolio__content__experience__des__header {
+  font-weight: bolder;
+  font-size: 20px;
+}
+.portfolio__content__experience__des__years {
+  color: gray;
+  font-size: 15px;
+}
+.portfolio__content__footer {
+  text-align: center;
+}
+.portfolio__content__footer__information {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  gap: 50px;
+}
+.portfolio__content__footer__information__email {
+  background-color: rgb(94, 159, 207);
+  border-radius: 10%;
+  border-width: 50px;
+  padding: 50px;
+}
+.portfolio__content__footer__information__email__header {
+  font-size: 30px;
+  color: white;
+}
+.portfolio__content__footer__information__email__des {
+  font-size: 20px;
+  color: gray;
+}
+.portfolio__content__footer__information__email__des:hover {
+  background-color: antiquewhite;
+  color: black;
+}
+.portfolio__content__footer__information__phone {
+  background-color: rgb(94, 159, 207);
+  border-radius: 10%;
+  border-width: 50px;
+  padding: 50px;
+}
+.portfolio__content__footer__information__phone__header {
+  font-size: 30px;
+  color: white;
+}
+.portfolio__content__footer__information__phone__des {
+  font-size: 20px;
+  color: gray;
+}
+.portfolio__content__footer__information__phone__des:hover {
+  background-color: antiquewhite;
+  color: black;
+}/*# sourceMappingURL=style.css.map */

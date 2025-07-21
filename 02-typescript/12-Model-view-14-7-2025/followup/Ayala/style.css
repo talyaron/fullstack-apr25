@@ -1,0 +1,34 @@
+:root {
+  font-size: 17px;
+}
+
+* {
+  box-sizing: border-box;
+  width: 200px;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0 0 0 15px;
+}
+
+.product img {
+  border-radius: 5px;
+  border: 1px solid rgb(167, 165, 165);
+}
+.product h4 {
+  color: rgb(41, 41, 41);
+  font-size: 1.2rem;
+}
+.product h5 {
+  color: rgb(24, 62, 97);
+}
+
+.title {
+  text-align: center;
+  background-color: rgb(224, 224, 224);
+  padding: 0.8rem;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}/*# sourceMappingURL=style.css.map */
