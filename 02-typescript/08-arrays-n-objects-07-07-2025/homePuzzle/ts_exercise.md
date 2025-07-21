@@ -78,6 +78,7 @@ let people = [
     {name: "Bob", age: 30},
     {name: "Charlie", age: 35}
 ];
+
 console.log("Number of people:", countPeople(people)); // Should be 3
 ```
 
