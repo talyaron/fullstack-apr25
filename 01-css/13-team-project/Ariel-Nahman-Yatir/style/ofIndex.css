@@ -1,0 +1,26 @@
+nav {
+  margin: 5vh 20vw;
+}
+nav .nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav .nav__right {
+  width: 50%;
+}
+nav .nav__right-logo {
+  width: 9vw;
+  height: 9vh;
+  background-image: url("../../img/IPB-logo-new.png");
+  display: block;
+  background-size: cover;
+}
+nav .nav__left {
+  width: 50%;
+}
+nav .nav__left-links {
+  display: flex;
+  gap: 2.5rem;
+  justify-content: flex-end;
+}/*# sourceMappingURL=ofIndex.css.map */

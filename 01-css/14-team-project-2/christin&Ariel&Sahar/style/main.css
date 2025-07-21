@@ -1,0 +1,604 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+  color: black;
+  letter-spacing: 0;
+  direction: ltr;
+  --primary-color: rgb(247, 247, 247);
+  --secondary-color: black;
+}
+
+:root {
+  font-size: 16px; /* 1rem = 16px */
+  /* 
+  margin: 2rem;  = 32px
+  padding: 1.5rem; = 24px
+  font-size: 0.875rem;  = 14px
+  */
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+li:hover {
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+body {
+  background-color: var(--primary-color);
+}
+
+#about {
+  margin: 5vh 18vw;
+  width: 65%;
+}
+
+.main__title {
+  margin: 2rem 0;
+  font-weight: 800;
+}
+.main__nav-ul {
+  display: flex;
+  gap: 4rem;
+}
+.main__nav-ul #about-color {
+  color: rgb(88, 156, 165);
+  font-weight: 600;
+}
+.main__paragraphs {
+  font-size: 1.2rem;
+}
+.main__paragraphs-pretxt {
+  margin: 3rem 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.main__paragraphs-pretxt #margin-top {
+  margin-top: 2rem;
+}
+.main__paragraphs-maintxt p {
+  margin-top: 2rem;
+}
+
+.section {
+  margin-top: 6rem;
+}
+.section__nirB {
+  margin-bottom: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.section__nirB-title {
+  font-size: 1.5rem;
+  border-left: #589CA5 4px solid;
+}
+.section__nirB-title h2 {
+  margin-left: 1rem;
+}
+.section__nirB-des {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+.section__nirB-img {
+  background-image: url("../../about pic/Nir-Barkat.png");
+  width: 18.7rem;
+  height: 21rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 1rem;
+  position: relative;
+  filter: grayscale(100%);
+}
+.section__nirB-txt {
+  text-align: center;
+  direction: rtl;
+  font-size: 1rem;
+}
+.section__nirB-txt p {
+  margin-top: 0.6rem;
+}
+.section__people {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  max-width: 1000px;
+  min-height: 600px;
+  gap: 3rem;
+  margin: 0 auto;
+}
+.section__people-img {
+  width: 17.4rem;
+  height: 21rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 1rem;
+  filter: grayscale(100%);
+  filter: grayscale(95%);
+}
+.section__people .img1 {
+  background-image: url("../../about pic/לחדגעח.png");
+}
+.section__people .img2 {
+  background-image: url("../../about pic/Shira-Lev-Ami.png");
+}
+.section__people .img3 {
+  background-image: url("../../about pic/WhatsApp-Image-2022-07-25-at-1.56-2.png");
+}
+.section__people-des {
+  display: flex;
+  flex-direction: column;
+  width: 19.5vw;
+  text-align: center;
+  font-size: 1.2rem;
+  max-width: 300px;
+  align-items: stretch;
+  min-height: 44rem;
+}
+.section__people-txt {
+  display: flex;
+  flex-direction: column;
+  padding: 0.8rem;
+  line-height: 1.7rem;
+}
+.section__people-txt p {
+  margin-top: 0.6rem;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+:root {
+  font-size: 17px;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+}
+.title__header {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #2c2c2c;
+  margin-bottom: 40px;
+  width: 55vw;
+  text-align: left;
+}
+.title__paragraph {
+  font-size: 2rem;
+  color: #4a4a4a;
+  margin: 0;
+  padding-left: 20px;
+  border-left: 5px solid #5bc0de;
+  width: 55vw;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.event {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0px;
+  padding: 20px;
+  width: 60vw;
+}
+.event__item {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  background-color: rgb(42, 39, 39);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 12vw;
+  height: 80vh;
+  cursor: pointer;
+}
+.event__item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+.event__img {
+  width: 100%;
+  margin-bottom: 15px;
+}
+.event__img img {
+  width: 12vw;
+  height: 30vh;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 6px;
+}
+.event__discreption {
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 15px;
+  line-height: 1.4;
+  flex-grow: 1;
+}
+.event__date {
+  font-size: 1rem;
+  color: white;
+  margin-bottom: 5px;
+}
+.event__day {
+  font-size: 1rem;
+  color: white;
+  margin-bottom: 15px;
+}
+.event__btn {
+  background-color: white;
+  color: rgb(42, 39, 39);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+.event__btn:hover {
+  background-color: #7d8085;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  background-color: rgb(251, 251, 251);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+:root {
+  font-size: 17px;
+}
+
+.contact {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 50px;
+}
+.contact__title {
+  border-bottom: solid black;
+}
+.contact__detail {
+  color: gray;
+  border-bottom: solid gray;
+}
+.contact img {
+  width: 20vw;
+  height: 10vh;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: 60%;
+}
+.contact__phone {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 30vw;
+  height: 30vh;
+  cursor: pointer;
+}
+.contact__phone:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.contact__email {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 30vw;
+  height: 30vh;
+  cursor: pointer;
+}
+.contact__email:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.social {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 60px;
+  gap: 200px;
+  background-color: white;
+  width: 64vw;
+  height: 10vh;
+}
+.social:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.social__item {
+  width: 20px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  cursor: pointer;
+}
+.social__item img {
+  width: 12vw;
+  height: 8vh;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: 60%;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  background-color: white;
+  width: 64vw;
+  height: 100vh;
+  margin-top: 50px;
+  gap: 20px;
+}
+.details h1 {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+.details__hours {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-left: 40px;
+}
+.details__phone {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-left: 40px;
+}
+.details__questions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-left: 40px;
+}
+.details__row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.details__field {
+  width: 30vw;
+  height: 5vh;
+  border: solid gray;
+  border-radius: 0%;
+  padding: 0px 20px;
+}
+.details__text {
+  width: 65vw;
+  height: 20vh;
+  border: solid gray;
+  border-radius: 0%;
+  padding: 15px 20px;
+}
+.details__button {
+  display: flex;
+  justify-content: flex-start;
+  border-radius: 0%;
+  width: 10vw;
+  height: 4vh;
+  background-color: #f5a623;
+  color: white;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  font-family: "Assistant";
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.outline {
+  background-image: url(https://campus.gov.il/wp-content/themes/campusnew/images/rtl/vector22.svg), url(https://campus.gov.il/wp-content/themes/campusnew/images/rtl/vector21.svg), url(https://campus.gov.il/wp-content/themes/campusnew/images/info-hero.svg); /* הכי תחתון */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 16rem;
+  background-position: right center, left center, right;
+  background-size: contain, contain, cover;
+  top: 0;
+  left: 0;
+  right: 0;
+  position: static;
+}
+.outline__top-nav {
+  position: sticky;
+  top: 0;
+  height: 3rem;
+  background-color: none;
+  flex-direction: row;
+  display: flex;
+}
+.outline__top-nav--left {
+  position: absolute;
+  left: 0;
+  margin-left: 30px;
+  top: 10px;
+}
+.outline__top-nav--right {
+  height: 40px;
+  position: absolute;
+  right: 0;
+  color: white;
+  margin-right: 30px;
+  top: 10px;
+  flex-direction: row;
+  display: flex;
+  gap: 30px;
+}
+.outline__top-nav--right a {
+  color: white;
+  text-decoration: none;
+  padding: 0.2rem 0.2rem;
+  font-weight: 300;
+}
+.outline__top-nav--right--signin {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 100px;
+  padding: 0.4rem 0.8rem;
+  font-size: 1rem;
+}
+.outline__top-nav--right--language {
+  border-radius: 100px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0 0.4rem;
+  font-size: 0.9rem;
+  font-weight: lighter;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.outline__top-nav--right--language--arrow {
+  width: 7px;
+  height: 7px;
+  margin-left: 5px;
+}
+.outline__top-nav--menu--list {
+  display: flex;
+  position: absolute;
+  left: 0;
+  top: 25px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.outline__top-nav--menu--list ul {
+  list-style: none;
+  flex-direction: row;
+  display: flex;
+}
+.outline__top-nav--menu--list li {
+  margin-right: 1.5rem;
+}
+.outline__top-nav--menu--list a {
+  color: white;
+  text-decoration: none;
+  border-radius: 100px;
+  padding: 0.5rem 1rem;
+}
+.outline__header {
+  color: white;
+  width: 100%;
+  height: auto;
+  top: 85px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 500;
+  position: absolute;
+}
+
+.content {
+  position: relative;
+  top: 16rem;
+  padding: 2rem;
+  background-color: #f8f9fa;
+}
+
+.footer {
+  background-color: rgb(51, 52, 51);
+  position: relative;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  background-image: url(https://campus.gov.il/wp-content/themes/campusnew/images/ltr/back-to-top.svg), url(https://campus.gov.il/wp-content/themes/campusnew/images/footer-bg-mobile.svg);
+  background-repeat: no-repeat, no-repeat;
+  background-position: right 0 bottom 0, bottom 0 left 0;
+  background-size: 50px, 100%;
+}
+.footer__information {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.footer__digital {
+  width: 60vw;
+}
+.footer__digital img {
+  width: 14vw;
+  height: 14vh;
+}
+.footer__education {
+  width: 60vw;
+}
+.footer__education img {
+  width: 14vw;
+  height: 14vh;
+}
+.footer__navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.footer__title {
+  color: white;
+}
+.footer__categories {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  border-left: solid 2px white;
+}/*# sourceMappingURL=main.css.map */

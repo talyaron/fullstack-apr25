@@ -1,0 +1,43 @@
+.wrapper {
+  width: 90vw;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  border: 1px solid black;
+  gap: 1rem;
+}
+
+.card {
+  border-radius: 1rem;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+  width: 30%;
+  padding: 1rem;
+  background-color: white;
+}
+@media screen and (max-width: 1400px) {
+  .card {
+    width: 40%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .card {
+    width: 100%;
+  }
+}
+.card__img {
+  width: 100%;
+  height: 250px;
+}
+.card__text {
+  font-size: 1.2rem;
+  color: rgb(46, 124, 197);
+  text-align: center;
+}
+
+#dog-img {
+  background-image: url("https://images.theconversation.com/files/625049/original/file-20241010-15-95v3ha.jpg?ixlib=rb-4.1.0&rect=12%2C96%2C2671%2C1335&q=45&auto=format&w=1356&h=668&fit=crop");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}/*# sourceMappingURL=style.css.map */
