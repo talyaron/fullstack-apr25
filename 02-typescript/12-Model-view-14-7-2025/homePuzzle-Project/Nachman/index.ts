@@ -1,3 +1,4 @@
+// Data
 interface BallState {
   src: string;
   x: number;
@@ -43,7 +44,7 @@ function explode(): void {
   }, 500);
 
   setTimeout(() => {
-    ballState.src = "imgs/ball.png";
+    ballState.src = "./soccer.png";
     ballState.x = Math.floor(Math.random() * 90);
     ballState.y = Math.floor(Math.random() * 90);
     render();
