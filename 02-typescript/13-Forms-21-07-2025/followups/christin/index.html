@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="./dist/index.js" defer></script>
 </head>
+
 <body>
-    <h1>Hello Student</h1>
-    <div id="studentRoot"></div>
+    <input type="color" onchange="handleColorChange(event)">
+    <input type="text" onchange="handleTextEnter(event)">
+    <input type="datetime-local" onchange="handleDateEnter(event)">
+    <p id="text-output"></p>
 </body>
+
 </html>
