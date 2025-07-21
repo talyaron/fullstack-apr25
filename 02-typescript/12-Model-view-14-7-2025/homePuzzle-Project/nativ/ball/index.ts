@@ -1,3 +1,5 @@
+const BALL_SIZE:number = 50;
+
 interface Ball {
   x: number;
   y: number;
@@ -69,25 +71,25 @@ function handleKeyDown(event: KeyboardEvent) {
 
 //model functions
 function getNewBallPosition(event: KeyboardEvent) {
-  const step = 50;
+  const step = BALL_SIZE;
   const gameZone = document.getElementById("game-zone");
   if (!gameZone) return;
 
   //after using transform: translate(-50%, -50%) in the css, the max X and max Y now correlate with the center of the ball
   //so i need to add half of its size, so that it doesnt go out of the lines
-  const ballSize = 50;
-  const maxX = gameZone.offsetWidth - ballSize + 25;
-  const maxY = gameZone.offsetHeight - ballSize + 25;
+  const ballSize = BALL_SIZE;
+  const maxX = gameZone.offsetWidth - ballSize + BALL_SIZE/2;
+  const maxY = gameZone.offsetHeight - ballSize + BALL_SIZE/2;
 
   switch (event.key) {
     case "ArrowUp":
-      ball.y = Math.max(25, ball.y - step);
+      ball.y = Math.max(BALL_SIZE/2, ball.y - step);
       break;
     case "ArrowDown":
       ball.y = Math.min(maxY, ball.y + step);
       break;
     case "ArrowLeft":
-      ball.x = Math.max(25, ball.x - step);
+      ball.x = Math.max(BALL_SIZE/2, ball.x - step);
       break;
     case "ArrowRight":
       ball.x = Math.min(maxX, ball.x + step);
@@ -99,7 +101,7 @@ function isCollision(ball: Ball, goal: Goal): boolean {
   const dx = ball.x - goal.x;
   const dy = ball.y - goal.y;
   const distanceSquared = dx * dx + dy * dy;
-  const radiusSum = 50;
+  const radiusSum = BALL_SIZE;
 
   return distanceSquared <= radiusSum * radiusSum;
 }
