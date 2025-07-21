@@ -37,4 +37,53 @@ function renderStudents(student: Student): void {
     }
 }
 
+function handelimageUrlChange(ev: Event): void {
+    try {
+        const input = ev.target as HTMLInputElement;
+        const newImageUrl = input.value;
+
+        if (!newImageUrl) {
+            throw new Error("Image URL cannot be empty");
+        }
+
+        student.imageUrl = newImageUrl;
+        renderStudents(student);
+    } catch (error) {
+        console.error("Error handling image URL change:", error);
+    }
+}
+
+function handelNameChange(ev: Event): void {
+    try {  
+        const input = ev.target as HTMLInputElement;
+        const newName = input.value;
+
+        if (!newName) {
+            throw new Error("Name cannot be empty");
+        }
+
+        student.name = newName;
+        renderStudents(student);
+    } catch (error) {
+        console.error("Error handling name change:", error);
+    }
+}
+
+function handelScoreChange(ev: Event): void {
+    try {
+        const input = ev.target as HTMLInputElement;
+        const newAvgScore = parseFloat(input.value);
+
+        if (isNaN(newAvgScore) || newAvgScore < 0 || newAvgScore > 100) {
+            throw new Error("Average score must be a number between 0 and 100");
+        }
+
+        student.avgScore = newAvgScore;
+        renderStudents(student);
+    }
+    catch (error) {
+        console.error("Error handling average score change:", error);
+    }
+}
+
 renderStudents(student);
