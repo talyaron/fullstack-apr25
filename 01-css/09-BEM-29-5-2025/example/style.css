@@ -1,55 +1,53 @@
-.btn{
-    background-color: teal;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    transition: all 150ms ease-in-out;
-}
-
-.btn:hover{
-    background-color: darkcyan;
-}
-
-/* modifier for primary button */
-.btn--danger{
-    background-color: crimson;
-}
-
-.btn--danger:hover{
-    background-color: darkred;
-}
-
-.btn--disabled{
-    background-color: lightgray;
-    color: gray;
-    cursor: not-allowed;
-}
-
-.btn--disabled
-
 * {
-    padding: 0;
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
+  padding: 0;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+.btn {
+  background-color: teal;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 150ms ease-in-out;
+}
+.btn:hover {
+  background-color: darkcyan;
+}
+.btn--danger {
+  background-color: crimson;
+}
+.btn--danger:hover {
+  background-color: darkred;
+}
+.btn--disabled {
+  background-color: lightgray;
+  color: gray;
+  cursor: not-allowed;
+}
+.btn--disabled:hover {
+  background-color: lightgray;
+  /* No change on hover */
+  color: gray;
+  /* No change on hover */
+  cursor: not-allowed;
+  /* Maintain not-allowed cursor */
 }
 
 .categories {
-    background-color: black;
-    display: flex;
-    justify-content: space-between;
-    padding: 1% 5%;
-    margin: 0;
-
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  padding: 1% 5%;
+  margin: 0;
 }
-
 .categories__collection {
-    font-size: 15px;
-    cursor: pointer;
-    color: white;
-    font-weight: 800;
+  font-size: 15px;
+  cursor: pointer;
+  color: white;
+  font-weight: 800;
 }
-
-.highlight {
-    color: rgb(255, 230, 2);
-}
+.categories__collection:hover {
+  background-color: darkgray;
+}/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,21 @@
+.about-page-full-context {
+  font-family: "Playfair Display", serif;
+  padding: 6.5rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+}
+
+.heade-title-in-caps {
+  font-size: 3rem;
+  color: var(--primary-color);
+  width: 40%;
+}
+
+.heade-title-context-top {
+  font-size: 2rem;
+  color: var(--secondary-color);
+  width: 40%;
+}/*# sourceMappingURL=about.css.map */
