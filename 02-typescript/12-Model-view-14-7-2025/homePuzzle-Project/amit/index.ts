@@ -146,7 +146,7 @@ function resetGame(): void {
         if (!ctx) throw new Error("2D context not available");
 
         clearInterval(gameInterval);
-        gameInterval = setInterval(() => update(ctx), 100);
+        gameInterval = setInterval(() => update(ctx), 200);
 
     } catch (error) {
         console.error("Error resetting game", error);
@@ -205,5 +205,5 @@ window.onload = () => {
     if (!ctx) throw new Error("2D context not available");
 
     initControls();
-    gameInterval = setInterval(() => update(ctx), 100);
+    gameInterval = setInterval(() => update(ctx), 200);
 };
