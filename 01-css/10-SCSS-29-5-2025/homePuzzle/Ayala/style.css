@@ -1,0 +1,256 @@
+@charset "UTF-8";
+body {
+  display: block;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  max-width: 100%;
+  box-sizing: border-box;
+  font-family: "Barlow", sans-serif;
+  font-weight: 500;
+  color: black;
+}
+
+a,
+a:hover,
+a:focus,
+a:active,
+a:visited {
+  color: inherit; /* שוב, יורש את הצבע */
+  text-decoration: none; /* ודואג שיישאר בלי קו תחתון */
+}
+
+.header {
+  width: 100%;
+  background-color: black;
+  color: white;
+  padding: 1.5% 0;
+  height: 8%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.header__logo {
+  padding-left: 1.5%;
+  cursor: pointer;
+  flex: 1;
+  display: flex;
+  gap: 15%;
+}
+.header__logo__name {
+  font-weight: 800;
+  font-size: 35px;
+}
+.header__logo img {
+  height: 100%;
+  width: auto;
+}
+.header__nav {
+  flex-wrap: wrap;
+  flex: 5;
+  display: flex;
+  align-items: center;
+  gap: 3%;
+  justify-content: space-evenly;
+}
+.header__nav__ob {
+  cursor: pointer;
+  color: #a8a8a8;
+  font-weight: 400;
+  font-size: 20px;
+  transition: 0.5s;
+}
+.header__nav__ob:hover {
+  color: #f0f0f0;
+  transform: scale(1.08);
+}
+.header__nav__ob button {
+  white-space: nowrap;
+  border-radius: 5px;
+  cursor: pointer;
+  color: black;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  padding: 8% 10%;
+}
+
+.wrapper {
+  display: flex;
+  gap: 1%;
+}
+
+.sidebar {
+  flex: 1;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  box-shadow: inset -10px 0px 8px -3px rgba(0, 0, 0, 0.4);
+}
+.sidebar__ob {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10%;
+  gap: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.329);
+}
+.sidebar__ob__location {
+  font-size: 18px;
+}
+.sidebar__ob i {
+  font-size: 1.5rem;
+}
+.sidebar__ob:hover {
+  transform: scale(1.05);
+}
+
+.main {
+  flex: 10;
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.main__nav {
+  z-index: 1;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  color: #2c2c2c;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1%;
+  box-shadow: 0 0.5px 30px black;
+}
+.main__nav__continent {
+  font-weight: 700;
+  cursor: pointer;
+}
+.main__nav__continent:hover {
+  text-decoration: underline;
+}
+.main__discover {
+  margin: 3% 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5% 0;
+  background-image: url("../img/b.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.main__discover__title {
+  font-size: 50px;
+  font-weight: 800;
+}
+.main__discover__sentence {
+  margin: 3% 0;
+  font-size: 22px;
+  font-weight: 800;
+}
+.main__discover__search {
+  min-width: 50%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5% 5%;
+  color: #2c2c2c;
+  font-size: 19px;
+  background-color: rgba(233, 233, 233, 0.521);
+  border-radius: 25px;
+}
+.main__destination {
+  display: flex;
+  flex-direction: column;
+}
+.main__destination__title {
+  text-align: center;
+  font-size: 35px;
+  background-color: black;
+  color: #a8a8a8;
+  padding: 1% 5%;
+}
+.main__destination__cards {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 1% 0;
+}
+.main__destination__cards__ob {
+  border-radius: 5px;
+  width: 19%;
+  aspect-ratio: 4/5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5%;
+  cursor: pointer;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.main__destination__cards__ob__title {
+  font-size: 40px;
+  font-weight: 700;
+}
+.main__destination__cards__ob__text {
+  font-size: 20px;
+  font-weight: 700;
+}
+.main__destination__cards__ob:hover {
+  z-index: 0;
+  transform: scale(1.02);
+}
+.main__destination__cards__Paris {
+  background-image: url("../img/paris.jpg");
+}
+.main__destination__cards__Tokyo {
+  background-image: url("../img/tokyo.jpg");
+}
+.main__destination__cards__NewYork {
+  background-image: url("../img/NewYork.jpg");
+}
+.main__destination__cards__Sydney {
+  background-image: url("../img/sydney.jpg");
+}
+.main__destination__cards__CapeTown {
+  background-image: url("../img/CapeTown.jpg");
+}
+
+.footer__wrapper {
+  background-color: black;
+  color: #a8a8a8;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 3% 0;
+}
+.footer__wrapper__section {
+  display: flex;
+  flex-direction: column;
+}
+.footer__wrapper__section__title {
+  cursor: pointer;
+  font-size: 25px;
+  margin: 0 0 5% 0;
+}
+.footer__wrapper__section__title:hover {
+  transform: scale(1.02);
+  color: white;
+}
+.footer__wrapper__section__ob {
+  cursor: pointer;
+  font-size: 18px;
+  gap: 2%;
+}
+.footer__wrapper__section__ob:hover {
+  transform: scale(1.02);
+  color: white;
+}
+.footer__rights {
+  background-color: #2c2c2c;
+  color: #000000;
+  padding: 1% 0;
+  text-align: center;
+}/*# sourceMappingURL=style.css.map */

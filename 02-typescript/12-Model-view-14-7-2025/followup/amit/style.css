@@ -1,0 +1,23 @@
+body {
+  background-color: rgb(67, 195, 255);
+}
+
+h1 {
+  text-align: center;
+}
+
+.student {
+  background-color: royalblue;
+  border: 2px solid black;
+  border-radius: 1rem;
+  color: bisque;
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+
+img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}/*# sourceMappingURL=style.css.map */

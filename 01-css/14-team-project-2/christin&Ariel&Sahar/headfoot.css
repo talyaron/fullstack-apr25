@@ -1,0 +1,91 @@
+@charset "UTF-8";
+body {
+  font-family: "Assistant";
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.outline {
+  background-image: url(https://campus.gov.il/wp-content/themes/campusnew/images/rtl/vector22.svg), url(https://campus.gov.il/wp-content/themes/campusnew/images/rtl/vector21.svg), url(https://campus.gov.il/wp-content/themes/campusnew/images/info-hero.svg); /* הכי תחתון */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 16rem;
+  background-position: right center, left center, right;
+  background-size: contain, contain, cover;
+  top: -1px;
+  left: 0;
+  right: 0;
+  position: absolute;
+}
+.outline__top-nav {
+  top: 0;
+  height: 3rem;
+  background-color: none;
+  flex-direction: row;
+  display: flex;
+}
+.outline__top-nav--left {
+  position: absolute;
+  left: 0;
+  margin-left: 10px;
+  top: 10px;
+}
+.outline__top-nav--right {
+  position: absolute;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 100px;
+  color: white;
+  margin-right: 10px;
+  top: 10px;
+}
+.outline__top-nav--right a {
+  color: white;
+  text-decoration: none;
+}
+.outline .menu {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  color: white;
+}
+.outline .menu--list {
+  top: 40px;
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+}
+.outline .menu--list ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.outline .menu--list ul li {
+  margin-right: 1.5rem;
+}
+.outline .menu a {
+  color: white;
+  text-decoration: none;
+}
+
+.content {
+  position: relative;
+  top: 16rem;
+  padding: 2rem;
+  background-color: #f8f9fa;
+}
+
+.footer {
+  top: 50rem;
+  position: relative;
+  width: 100%;
+  height: 40rem;
+  background-image: url(https://campus.gov.il/wp-content/themes/campusnew/images/ltr/back-to-top.svg), url(https://campus.gov.il/wp-content/themes/campusnew/images/footer-bg-mobile.svg);
+  background-repeat: no-repeat, no-repeat;
+  background-position: right 0 bottom 0, left center;
+  background-size: 50px, 100%;
+}/*# sourceMappingURL=headfoot.css.map */
