@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./dist/index.js"defer></script>
+</head>
+<body>
+
+  <label>
+    <input type="checkbox" onchange="handleDarkMode(event)">
+    Dark Mode
+  </label>
+
+
+
+  <label>
+    Font Size:
+    <input type="range" min="12" max="36" value="16" onchange="handleFontSize(event)">
+  </label>
+ 
+
+
+
+  <input type="text" placeholder="Type here..." oninput="handleTextInput(event)">
+
+  <div id="text-output">text will appear here</div>
+
+</body>
+</html>
