@@ -54,7 +54,7 @@ function handleChangeName (ev) {
 function handleChangeAvgScore(ev) {
     try {
         const newAvgScore = ev.target.value;
-        if(!newAvgScore) throw new Error("Error");
+        if(!newAvgScore && isNaN(newAvgScore)) throw new Error("Error");
         student.avgScore = newAvgScore;
 
         renderStudents(student);
