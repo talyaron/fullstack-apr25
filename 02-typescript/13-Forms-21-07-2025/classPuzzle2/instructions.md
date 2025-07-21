@@ -1,0 +1,1 @@
+Based on the example, create a card that can display student information, including their name, average score, and image, and allow for dynamic updates through form inputs. The card should be styled to look visually appealing, and the form inputs should update the card in real-time as the user types.
