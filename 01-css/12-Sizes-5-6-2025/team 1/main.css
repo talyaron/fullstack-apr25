@@ -1,0 +1,110 @@
+body {
+  font-family: "Nunito Sans", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Style the search field */
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 400px;
+  background: #f1f1f1;
+  border-radius: 100px;
+}
+
+/* Style the submit button */
+form.example button {
+  float: left;
+  width: 20%;
+  border-radius: 100px;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #0b7dda;
+}
+
+/* Clear floats */
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.first-navbar {
+  position: relative;
+  flex-direction: row;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.first-navbar__btn {
+  background-color: white;
+  padding: 8px 16px;
+  float: left;
+  width: auto;
+  border: none;
+  display: block;
+  outline: 0;
+}
+.first-navbar__btn:hover {
+  background-color: #04aa6d;
+}
+.first-navbar__logo {
+  height: 3rem;
+  position: relative;
+  right: 100%;
+}
+.first-navbar__search {
+  border-radius: 100px;
+}
+
+.second-navbar {
+  position: relative;
+  flex-direction: row;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: #282a35;
+  max-width: 1750px;
+}
+.second-navbar__btn {
+  background-color: #282a35;
+  color: white;
+  border: none;
+  padding: 5 15px;
+  line-height: 1.5;
+}
+.second-navbar__btn:hover {
+  background-color: black;
+}
+
+.first-div {
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  background-color: #282a35;
+}
+.first-div__h1 {
+  color: white;
+  font-size: 4rem;
+}
+.first-div__h4 {
+  color: #fff4a3;
+}
+.first-div__p {
+  color: white;
+  text-decoration: underline;
+}/*# sourceMappingURL=main.css.map */
