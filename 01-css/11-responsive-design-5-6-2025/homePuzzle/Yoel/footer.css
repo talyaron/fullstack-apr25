@@ -1,0 +1,16 @@
+footer {
+  width: 100%;
+  background-color: gray;
+}
+footer .info {
+  display: none;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  color: black;
+}
+@media (max-width: 1400px) {
+  footer .info {
+    display: flex;
+  }
+}/*# sourceMappingURL=footer.css.map */

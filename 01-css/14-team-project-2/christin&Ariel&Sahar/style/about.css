@@ -1,0 +1,125 @@
+@charset "UTF-8";
+#about {
+  margin: 5vh 18vw;
+  width: 65%;
+}
+
+.main__title {
+  margin: 2rem 0;
+  font-weight: 800;
+}
+.main__nav-ul {
+  display: flex;
+  gap: 4rem;
+}
+.main__nav-ul #about-color {
+  color: rgb(88, 156, 165);
+  font-weight: 600;
+}
+.main__paragraphs {
+  font-size: 1.2rem;
+}
+.main__paragraphs-pretxt {
+  margin: 3rem 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.main__paragraphs-pretxt #margin-top {
+  margin-top: 2rem;
+}
+.main__paragraphs-maintxt p {
+  margin-top: 2rem;
+}
+
+.section {
+  margin-top: 6rem;
+}
+.section__nirB {
+  margin-bottom: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.section__nirB-title {
+  font-size: 1.5rem;
+  border-left: #589CA5 4px solid;
+}
+.section__nirB-title h2 {
+  margin-left: 1rem;
+}
+.section__nirB-des {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+.section__nirB-img {
+  background-image: url("../../about pic/Nir-Barkat.png");
+  width: 18.7rem;
+  height: 21rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 1rem;
+  position: relative;
+  filter: grayscale(100%);
+}
+.section__nirB-txt {
+  text-align: center;
+  direction: rtl;
+  font-size: 1rem;
+}
+.section__nirB-txt p {
+  margin-top: 0.6rem;
+}
+.section__people {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  max-width: 1000px;
+  min-height: 600px;
+  gap: 3rem;
+  margin: 0 auto;
+}
+.section__people-img {
+  width: 17.4rem;
+  height: 21rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 1rem;
+  filter: grayscale(100%);
+  filter: grayscale(95%);
+}
+.section__people .img1 {
+  background-image: url("../../about pic/לחדגעח.png");
+}
+.section__people .img2 {
+  background-image: url("../../about pic/Shira-Lev-Ami.png");
+}
+.section__people .img3 {
+  background-image: url("../../about pic/WhatsApp-Image-2022-07-25-at-1.56-2.png");
+}
+.section__people-des {
+  display: flex;
+  flex-direction: column;
+  width: 19.5vw;
+  text-align: center;
+  font-size: 1.2rem;
+  max-width: 300px;
+  align-items: stretch;
+  min-height: 44rem;
+}
+.section__people-txt {
+  display: flex;
+  flex-direction: column;
+  padding: 0.8rem;
+  line-height: 1.7rem;
+}
+.section__people-txt p {
+  margin-top: 0.6rem;
+}/*# sourceMappingURL=about.css.map */
