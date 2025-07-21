@@ -1,0 +1,33 @@
+:root {
+  font-size: 17px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  font-size: 1.2rem;
+  padding: 0.7rem 1.5rem;
+  border-radius: 100px;
+  background-color: teal;
+  color: white;
+  border: none;
+}
+
+.box {
+  height: 20vh;
+  width: 100vw;
+  background-color: #c94040;
+  font-size: 1.5rem;
+}
+
+.sub-box {
+  background-color: teal;
+  width: 100%;
+}
+
+.paragraph {
+  font-size: 1.2rem;
+}/*# sourceMappingURL=style.css.map */

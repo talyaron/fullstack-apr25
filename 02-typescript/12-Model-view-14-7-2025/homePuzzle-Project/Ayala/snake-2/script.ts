@@ -98,7 +98,7 @@ function moveSnake(event): void {
             console.log("Invalid key pressed");
     }
     renderSnake(snake[0])
-    
+
     if (snake[0].x === fruit.x && snake[0].y === fruit.y) {
         renderFruit()
         score += 10;
@@ -108,12 +108,15 @@ function moveSnake(event): void {
             y: snake[position].y
         };
         snake.push(snakeBody);
+        for (let i = snake.length - 1; i > 0; i--) {
+            snake[i].x = snake[i - 1].x;
+            snake[i].y = snake[i - 1].y;
+        }
         renderScore(score)
     }
 }
 
 //model
-
 function getRandomColor(): string {
     const letters = '0123456789ABCDEF';
     let color = '#';
