@@ -1,0 +1,48 @@
+.container {
+  position: relative;
+  height: 300px; /* or whatever you want */
+}
+
+#game-zone {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url("../assets/grass.png");
+  height: 600px;
+  width: 600px;
+  padding: 1rem;
+  box-sizing: border-box;
+  border: 2px solid black;
+}
+
+#player {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-size: contain;
+  border-radius: 50%;
+  background-image: url("../assets/ball.png");
+  background-repeat: no-repeat;
+  transform: translate(-50%, -50%);
+}
+
+#goal {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-size: contain;
+  border-radius: 80%;
+  background-image: url("../assets/goal.png");
+  background-repeat: no-repeat;
+  transform: translate(-50%, -50%);
+}
+
+#scoreDiv {
+  position: absolute;
+  top: 2%;
+  left: 45%;
+  width: 50px;
+  height: 50px;
+  font-size: x-large;
+}
