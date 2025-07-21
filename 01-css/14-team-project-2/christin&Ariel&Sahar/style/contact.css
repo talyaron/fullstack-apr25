@@ -1,0 +1,165 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  background-color: rgb(251, 251, 251);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+:root {
+  font-size: 17px;
+}
+
+.contact {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 50px;
+}
+.contact__title {
+  border-bottom: solid black;
+}
+.contact__detail {
+  color: gray;
+  border-bottom: solid gray;
+}
+.contact img {
+  width: 20vw;
+  height: 10vh;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: 60%;
+}
+.contact__phone {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 30vw;
+  height: 30vh;
+  cursor: pointer;
+}
+.contact__phone:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.contact__email {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 30vw;
+  height: 30vh;
+  cursor: pointer;
+}
+.contact__email:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.social {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 60px;
+  gap: 200px;
+  background-color: white;
+  width: 64vw;
+  height: 10vh;
+}
+.social:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.social__item {
+  width: 20px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  cursor: pointer;
+}
+.social__item img {
+  width: 12vw;
+  height: 8vh;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: 60%;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  background-color: white;
+  width: 64vw;
+  height: 100vh;
+  margin-top: 50px;
+  gap: 20px;
+}
+.details h1 {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+.details__hours {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-left: 40px;
+}
+.details__phone {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-left: 40px;
+}
+.details__questions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-left: 40px;
+}
+.details__row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.details__field {
+  width: 30vw;
+  height: 5vh;
+  border: solid gray;
+  border-radius: 0%;
+  padding: 0px 20px;
+}
+.details__text {
+  width: 65vw;
+  height: 20vh;
+  border: solid gray;
+  border-radius: 0%;
+  padding: 15px 20px;
+}
+.details__button {
+  display: flex;
+  justify-content: flex-start;
+  border-radius: 0%;
+  width: 10vw;
+  height: 4vh;
+  background-color: #f5a623;
+  color: white;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}/*# sourceMappingURL=contact.css.map */

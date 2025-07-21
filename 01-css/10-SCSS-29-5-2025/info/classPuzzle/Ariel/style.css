@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans Hebrew", "Arial", sans-serif;
+  /* font-size: 1.5rem; */
+  color: black;
+}
+
+:root {
+  font-size: 16px; /* 1rem = 16px */
+  /* 
+  margin: 2rem;  = 32px
+  padding: 1.5rem; = 24px
+  font-size: 0.875rem;  = 14px
+  */
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/******************************/
+.nav-list {
+  display: flex;
+}
+.nav-list__item {
+  margin: 1rem;
+}
+.nav-list__item .btn {
+  background-color: #007bff;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 150ms ease-in-out;
+}
+.nav-list__item .btn:hover {
+  background-color: #0056b3;
+}
+.nav-list__item .btn--danger {
+  background-color: #dc3545;
+}
+.nav-list__item .btn--danger:hover {
+  background-color: #c82333;
+}
+.nav-list__item .btn--disabled {
+  background-color: #6c757d;
+  color: #adb5bd;
+  cursor: not-allowed;
+}
+.nav-list__item .btn--disabled:hover {
+  background-color: #6c757d; /* No change on hover */
+  color: #adb5bd; /* No change on hover */
+  cursor: not-allowed; /* Maintain not-allowed cursor */
+}/*# sourceMappingURL=style.css.map */
