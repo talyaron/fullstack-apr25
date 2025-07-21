@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake</title>
+    <link rel="stylesheet" href="dist/style.css">
+    <script src="dist/index.js" defer></script>
+</head>
+
+<body>
+    <div id="game-container">
+        <div id="board" class="board"></div>
+        <div id="hud">
+            <p>Score: <span id="score">0</span></p>
+            <p id="game-over">Game Over! <button onclick="resetGame()">Play Again</button></p>
+        </div>
+        <div id="controls">
+            <button onclick="setDirection(0, -1)">⬆️</button>
+            <div>
+                <button onclick="setDirection(-1, 0)">⬅️</button>
+                <button onclick="setDirection(1, 0)">➡️</button>
+            </div>
+            <button onclick="setDirection(0, 1)">⬇️</button>
+        </div>
+    </div>
+</body>
+
+</html>
