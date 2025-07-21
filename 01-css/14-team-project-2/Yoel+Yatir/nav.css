@@ -1,0 +1,108 @@
+:root {
+  font-size: 17px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  top: 0;
+}
+.nav__links {
+  position: relative;
+  gap: 10px;
+  display: flex;
+  flex-direction: row;
+  place-items: center;
+  justify-content: center;
+  align-items: center;
+}
+.nav__logo {
+  position: absolute;
+  right: 0;
+}
+.nav__social {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.nav__social .red {
+  background-color: red;
+  color: white;
+  padding: 10px 10px;
+  border-radius: 20px;
+}
+.nav__social .red:hover {
+  background-color: rgb(255, 253, 253);
+  color: red;
+  border: 1px solid red;
+}
+.nav__social .blue {
+  background-color: rgb(17, 104, 233);
+  color: white;
+  padding: 10px 10px;
+  border-radius: 20px;
+}
+.nav__social .blue:hover {
+  background-color: rgb(255, 253, 253);
+  color: rgb(17, 104, 233);
+  border: 1px solid rgb(17, 104, 233);
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  padding: 0 20px;
+  background-color: white;
+  z-index: 1000;
+}
+.nav__social {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.nav__social .red {
+  background-color: red;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+.nav__social .red:hover {
+  background-color: white;
+  color: red;
+  border: 1px solid red;
+}
+.nav__social .blue {
+  background-color: rgb(17, 104, 233);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+.nav__social .blue:hover {
+  background-color: white;
+  color: rgb(17, 104, 233);
+  border: 1px solid rgb(17, 104, 233);
+}
+.nav__links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}/*# sourceMappingURL=nav.css.map */

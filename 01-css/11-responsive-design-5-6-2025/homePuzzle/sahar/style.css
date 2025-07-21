@@ -1,0 +1,122 @@
+@charset "UTF-8";
+body {
+  font-family: "Nunito Sans", sans-serif;
+  color: rgb(72, 72, 72);
+  font-size: 0.9rem;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.eilat {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto; /* ממרכז את התוכן במסך */
+  padding: 0 48px; /* קצת רווח גם במסכים קטנים */
+  max-width: 95rem;
+}
+.eilat__gallery {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 13.75rem;
+  max-width: 90rem;
+}
+.eilat__item {
+  position: relative;
+  display: inline-block;
+  top: 0;
+  text-align: left;
+  margin: 0;
+}
+.eilat__img {
+  border-radius: 20px;
+  height: 10rem;
+  width: 11rem;
+  margin: 0 0.5rem;
+  cursor: pointer;
+}
+.eilat__img:active {
+  transform: scale(0.97);
+}
+.eilat .icon-overlay {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border-radius: 50%;
+  border: none;
+  padding: 4px;
+  font-size: 20px;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+}
+.eilat .icon-overlay:active {
+  transform: scale(0.97);
+}
+.eilat .icon-overlay:hover {
+  scale: 1.1;
+}
+
+.main-nav {
+  background-color: whitesmoke;
+  height: auto;
+  width: 100%;
+  display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.main-nav__logo {
+  top: 0;
+  left: 16px;
+  height: 5rem;
+}
+.main-nav__btn--group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  gap: 1rem;
+}
+.main-nav__btn--group2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-nav__btn {
+  border: 1px solid #ddd;
+  background-color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-family: "Nunito Sans", "Arial", sans-serif;
+  color: #222;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  height: 4rem;
+}
+.main-nav__btn:hover {
+  background-color: #f7f7f7;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+.main-nav__btn:active {
+  transform: scale(0.97);
+}
+
+.footer {
+  background-color: whitesmoke;
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  font-size: 0.8rem;
+  color: #555;
+  position: relative;
+  bottom: 0;
+  flex-direction: row;
+}/*# sourceMappingURL=style.css.map */
