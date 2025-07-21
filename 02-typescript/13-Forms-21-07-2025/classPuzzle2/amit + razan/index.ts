@@ -44,7 +44,6 @@ function handleChangeName (ev) {
         if(!newName) throw new Error("Can't find any value");
         student.name = newName;
 
-        newName.innerHTML = student.name;
         renderStudents(student);
         
     } catch (error) {
@@ -58,7 +57,6 @@ function handleChangeAvgScore(ev) {
         if(!newAvgScore) throw new Error("Error");
         student.avgScore = newAvgScore;
 
-        newAvgScore.innerHTML = student.avgScore;
         renderStudents(student);
         
 
@@ -73,7 +71,6 @@ function handleChangeUrl(ev) {
         if(!newUrl) throw new Error("Error");
         student.imageUrl = newUrl;
 
-        newUrl.innerHTML = student.imageUrl;
         renderStudents(student);
 
     } catch (error) {
