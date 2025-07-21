@@ -1,0 +1,13 @@
+.ball {
+  height: 40px;
+  width: 40px;
+  position: absolute;
+}
+
+#border {
+  border: solid 5px black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}/*# sourceMappingURL=style.css.map */
