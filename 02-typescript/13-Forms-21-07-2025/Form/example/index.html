@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./dist/index.js" defer></script>
+    <link rel="stylesheet" href="./dist/style.css">
+</head>
+<body>
+    <form onsubmit="handleSubmit(event)">
+        <input type="url" name="imageUrl" id="imageUrl" placeholder="Image URL" />
+        <input type="text" name="fullName" id="name" placeholder="Name" />
+        <input type="number" name="avgScore" id="avgScore" placeholder="Average Score" />
+        <button type="submit">Submit</button>
+    </form>
+    <div id="studentRoot"></div>
+</body>
+</html>
