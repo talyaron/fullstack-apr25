@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./dist/index.js" defer></script>
+</head>
+
+<body>
+    <input type="color" onchange="handleColorChange(event)">
+    <input type="text"  onchange="handleTextEnter(event)">
+    <p id="text-output"></p>
+
+    <div class="form-group">
+        <input type="radio" id="red" name="color" value="red" onchange="handleColorChoice(event)">
+        <label for="red">אדום</label><br>
+        
+        <input type="radio" id="blue" name="color" value="blue" onchange="handleColorChoice(event)">
+        <label for="blue">כחול</label><br>
+        
+        <input type="radio" id="green" name="color" value="green" onchange="handleColorChoice(event)">
+        <label for="green">ירוק</label><br>
+        
+        <input type="radio" id="yellow" name="color" value="yellow" onchange="handleColorChoice(event)">
+        <label for="yellow">צהוב</label>
+    </div>
+
+     <div id="result">לא נבחר צבע עדיין</div>
+
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            padding: 20px;
+            background-color: lightblue;
+        }
+        .form-group {
+            margin: 15px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+    </style>
+</body>
+
+</html>
