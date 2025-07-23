@@ -1,3 +1,12 @@
+body {
+  background-color: rgba(
+    213,
+    174,
+    17,
+    0.762
+  ); // or any color like #333, rgb(255, 0, 0), etc.
+}
+
 .container {
   position: relative;
   height: 300px; /* or whatever you want */
@@ -42,7 +51,7 @@
   position: absolute;
   top: 2%;
   left: 45%;
-  width: 50px;
+  width: 100px;
   height: 50px;
   font-size: x-large;
 }
