@@ -499,7 +499,7 @@ function generateAcademicReport(students: Student[], courses: Course[]): {
 // Test it:
 console.log("Academic Report:", generateAcademicReport(studentsDB, coursesDB));
 ```
-
+                                                                                                                                      
 ---
 
 ## 🎯 Difficulty Levels Summary
