@@ -412,3 +412,186 @@ function fighterStatsSummary(fighters: { name: string; style: string; wins: numb
 ];
 
 console.log("Fighter Summary Report:", fighterStatsSummary(fighters));
+
+
+//6.1: Advanced Sorting with Multiple Criteria
+function advancedSort(people: { name: string, age: number, salary: number }[]): { name: string, age: number, salary: number }[] {
+    let sorted = [...people];
+    sorted.sort((a, b) => {
+        if (b.salary !== a.salary) {
+            return b.salary - a.salary;
+        } else if (a.age !== b.age) {
+            return a.age - b.age;
+        } else {
+            return a.name.localeCompare(b.name);
+        }
+    });
+    return sorted;
+}
+
+let employeesData = [
+    { name: "Alice", age: 25, salary: 50000 },
+    { name: "Bob", age: 30, salary: 60000 },
+  { name: "Charlie", age: 25, salary: 50000 },
+  { name: "Diana", age: 30, salary: 60000 }}
+];
+
+console.log("Advanced sorted:", advancedSort(employeesData));
+
+//Exercise 6.2: Complex data transformation
+function analyzeTeamPerformance(teams: {
+    name: string,
+    members: { name: string, score: number }[]
+}[]): {
+    teamName: string,
+    averageScore: number,
+    topMember: { name: string, score: number },
+    memberCount: number
+}[] {
+    let analysis = [];
+
+    for (let i = 0; i < teams.length; i++) {
+        let team = teams[i];
+        let totalScore = 0;
+        let topMember = team.members[0];
+
+        for (let j = 0; j < team.members.length; j++) {
+            let member = team.members[j];
+            totalScore += member.score;
+
+            if (member.score > topMember.score) {
+                topMember = member;
+            }
+        }
+
+        let avgScore = totalScore / team.members.length;
+
+        analysis.push({
+            teamName: team.name,
+            averageScore: avgScore,
+            topMember: topMember,
+            mamberCount: team.members.length
+        });
+    }
+    return analysis;
+}
+
+let teamsData = [
+    {
+        name: "Alpha Team",
+        members: [
+            { name: "John", score: 85 },
+            { name: "Sarah", score: 92 },
+            { name: "Mike", score: 78 }
+        ]
+    },
+    {
+        name: "Beta Team",
+        members: [
+            { name: "Lisa", score: 88 },
+            { name: "Tom", score: 95 },
+            { name: "Emma", score: 82 }
+        ]
+    }
+];
+
+console.log("Team analysis:", analyzeTeamPerformance(teamsData));
+
+// Exercise 6.3: Algorithm implementation
+function findMostFrequent<T>(items: T[]): {item: T, count: number} | null {
+  if (items.length === 0) return null;  
+
+  const counts: Record<string, number> = {};
+
+  for (const item of items) {
+    const key = JSON.stringify(item);
+    counts[key] = (counts[key] || 0) + 1;
+  }
+ 
+  let maxCount = 0;
+  let mostFrequentKey = "";
+
+  for (const key in counts) {
+    if (counts[key] > maxCount) {
+        maxCount = counts[key];
+        mostFrequentKey = key;
+    }
+  }
+
+  return {
+    item: JSON.parse(mostFrequentKey),
+    count: maxCount
+  };
+}
+
+ console.log("Most frequent number:", findMostFrequent([1, 2, 3, 2, 4, 2, 5]));
+// → Should log: { item: 2, count: 3 }
+
+console.log("Most frequent name:", findMostFrequent(["Alice", "Bob", "Alice", "Charlie", "Alice"]));
+// → Should log: { item: "Alice", count: 3 }
+
+console.log("Empty test:", findMostFrequent([]));
+// → Should log: null
+
+
+//Exercise 6.4: Top 2 Most Frequent Elements
+function findTop2Frequent<T>(items: T[]): { item: T; count: number }[] {
+  const counts: Record<string, number> = {};
+
+  for (const item of items) {
+    const key = JSON.stringify(item);
+    counts[key] = (counts[key] || 0) +1;
+  }
+  const entries = Object.entries(counts);
+  entries.sort((a, b) => b[1] - a[1]);
+
+  const top2 = entries.slice(0, 2).map(([key, count]) => ({
+    item: JSON.parse(key),
+    count,
+  }));
+
+  return top2;  
+}
+
+console.log(findTop2Frequent(["cat", "dog", "cat", "fish", "dog", "cat"]));
+// → [ { item: 'cat', count: 3 }, { item: 'dog', count: 2 } ]
+
+console.log(findTop2Frequent([1, 1, 2, 3, 3, 3, 2, 2, 2, 4]));
+// → [ { item: 2, count: 4 }, { item: 3, count: 3 } ]
+
+//Exercise 6.5: Find All Items with the Same Highest Frequency
+function findMostFrequentAll<T>(items: T[]): { item: T; count: number }[] {
+   const counts: Record<string, number> = {};
+
+   for (const item of items) {
+    const key = JSON.stringify(item);
+    counts[key] = (counts[key] || 0) + 1;
+   }
+
+   const entries = Object.entries(counts);
+
+   let maxCount = 0;
+   for (const [_, count] of entries) {
+    if (count > maxCount) {
+        maxCount = count;
+    }
+   }
+
+   const result = entries
+   .filter(([_, count]) => count === maxCount)
+   .map(([key, count]) => ({
+    item: JSON.parse(key),
+    count,
+   }));
+
+   return result;
+}
+
+console.log(findMostFrequentAll(["dog", "cat", "dog", "cat", "fish"]));
+// → [ { item: "dog", count: 2 }, { item: "cat", count: 2 } ]
+
+console.log(findMostFrequentAll(["fish", "fish", "fish"]));
+// → [ { item: "fish", count: 3 } ]
+
+console.log(findMostFrequentAll([]));
+// → []
