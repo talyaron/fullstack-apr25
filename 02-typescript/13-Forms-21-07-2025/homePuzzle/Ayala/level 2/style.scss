@@ -1,0 +1,115 @@
+:root {
+    font-size: 17px;
+    --background-color: rgb(155, 219, 205);
+    --background-card: rgb(212, 248, 240);
+
+}
+
+* {
+    font-family: cursive;
+
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    gap: 2rem;
+}
+
+.title {
+    background-color: var(--background-color);
+    width: 100%;
+    text-align: center;
+    padding: 1.2rem;
+    font-size: 1.5rem;
+    position: fixed;
+    z-index: 10;
+    box-shadow: 0 0 15px 5px grey;
+}
+
+form {
+    margin-top: 6rem;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(236, 236, 236);
+    align-items: start;
+    padding: 1.2rem 2rem;
+
+    justify-content: space-around;
+    width: 500px;
+    height: 250px;
+    border-radius: 15px;
+}
+
+.task {
+    &_title {
+        margin-bottom: 0.2rem;
+    }
+}
+
+.input_box {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 8px;
+    width: 300px;
+    max-width: 300px;
+    min-width: 300px;
+
+
+}
+
+button {
+    box-shadow: 0 0 15px 5px rgb(184, 184, 184);
+    border: 1px solid rgb(97, 97, 97);
+    align-self: center;
+    background-color: var(--background-color);
+    font-size: 1.1rem;
+    transition: all 0.3s;
+    position: relative;
+    top: 5px;
+
+    &:hover {
+        cursor: pointer;
+        transform: translateY(-0.2rem);
+    }
+
+}
+
+.error {
+    color: rgb(185, 0, 0);
+    font-size: 0.9rem
+}
+
+#tasksRoot {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 90%;
+    gap: 1rem;
+}
+
+.taskCard {
+    border: 1px solid black;
+    border: none;
+    background-color: var(--background-card);
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    padding: 0.8rem 1rem 1.5rem 1rem;
+    border-radius: 15px;
+    gap: 1rem;
+
+    &__name {
+        background-color: white;
+        padding: 0.4rem;
+        width: 90%;
+        text-align: center;
+        border-radius: 5px;
+
+    }
+
+}
