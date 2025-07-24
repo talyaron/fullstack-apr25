@@ -52,11 +52,9 @@
 }
 #privateOccasionDiv {
   display: none;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: flex-start;
 }
 #privateOccasions {
+  display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: flex-start;

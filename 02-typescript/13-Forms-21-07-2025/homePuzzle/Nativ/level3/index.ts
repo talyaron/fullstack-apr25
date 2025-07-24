@@ -32,9 +32,26 @@ function handleSubmit(event: Event): void {
       .checked;
     const image = formData.get("fileInput") as File;
 
-    const completedCheckbox = form.elements.namedItem(
-      "checkbox"
-    ) as HTMLInputElement;
+    const selectedDate = new Date(date);
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    if (selectedDate < today) {
+      alert("Date cannot be earlier than today.");
+      return;
+    }
+
+    const start = new Date(`${date}T${startTime}`);
+    const end = new Date(`${date}T${endTime}`);
+    if (end < start) {
+      alert("End time cannot be earlier than start time.");
+      return;
+    }
+
+    if (attendeeNumber < 0 || attendeeNumber > 10) {
+      alert("Attendee number must be between 0 and 10.");
+      return;
+    }
+
     const occasion: Occasion = {
       occasionName,
       date,
@@ -46,9 +63,11 @@ function handleSubmit(event: Event): void {
       isPrivate,
       image,
     };
-    if (occasion.isPrivate === true) {
+
+    if (occasion.isPrivate) {
       console.log("occasion is private");
     }
+
     occasions.push(occasion);
     console.log(occasions);
     renderYourItems(occasions);
@@ -57,7 +76,6 @@ function handleSubmit(event: Event): void {
   }
 }
 
-// View (HTML Generation & DOM Rendering)
 function htmlYourItems(occasions: Occasion[]) {
   try {
     return occasions
@@ -80,7 +98,7 @@ function htmlYourItems(occasions: Occasion[]) {
             <p><strong>Location:</strong> ${occasion.location}</p>
             <p><strong>Attendees:</strong> ${occasion.attendeeNumber}</p>
             <p><strong>Visibility:</strong> ${
-              occasion.isPrivate ? "Public" : "Private"
+              occasion.isPrivate ? "Private" : "Public"
             }</p>
             ${
               imgURL
