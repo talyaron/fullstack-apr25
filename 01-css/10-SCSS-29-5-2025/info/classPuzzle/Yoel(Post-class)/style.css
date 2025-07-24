@@ -1,0 +1,105 @@
+.attractions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border: 1px solid rgb(224, 222, 222);
+  font-size: 14px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  gap: 2px;
+}
+.attractions__Home {
+  padding: 4px;
+}
+.attractions__Home:hover {
+  background-color: gray;
+  color: black;
+  cursor: pointer;
+}
+.attractions__News {
+  padding: 4px;
+}
+.attractions__News:hover {
+  background-color: gray;
+  color: black;
+  cursor: pointer;
+}
+.attractions__Sport {
+  padding: 4px;
+}
+.attractions__Sport:hover {
+  background-color: gray;
+  color: black;
+  cursor: pointer;
+}
+.attractions__Business {
+  padding: 4px;
+}
+.attractions__Business:hover {
+  background-color: gray;
+  color: black;
+  cursor: pointer;
+}
+.attractions__Innovations {
+  padding: 4px;
+}
+.attractions__Innovations:hover {
+  background-color: gray;
+  color: black;
+  cursor: pointer;
+}
+.attractions__Culture {
+  padding: 4px;
+}
+.attractions__Culture:hover {
+  background-color: gray;
+  color: black;
+  cursor: pointer;
+}
+.attractions__Arts {
+  padding: 4px;
+}
+.attractions__Arts:hover {
+  background-color: gray;
+  color: black;
+  cursor: pointer;
+}
+.attractions__Travel {
+  padding: 4px;
+}
+.attractions__Travel:hover {
+  background-color: gray;
+  color: black;
+  cursor: pointer;
+}
+.attractions__Earth {
+  padding: 4px;
+}
+.attractions__Earth:hover {
+  background-color: gray;
+  color: black;
+  cursor: pointer;
+}
+.attractions__Audio {
+  padding: 4px;
+}
+.attractions__Audio:hover {
+  background-color: gray;
+  color: black;
+  cursor: pointer;
+}
+.attractions__Video {
+  padding: 4px;
+}
+.attractions__Video:hover {
+  background-color: gray;
+  color: black;
+  cursor: pointer;
+}
+.attractions__Live {
+  padding: 4px;
+}
+.attractions__Live:hover {
+  background-color: gray;
+  color: black;
+  cursor: pointer;
+}/*# sourceMappingURL=style.css.map */

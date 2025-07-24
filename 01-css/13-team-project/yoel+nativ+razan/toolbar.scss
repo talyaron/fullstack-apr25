@@ -1,0 +1,20 @@
+
+
+.toolbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #ffffff;
+    background-color: var(--colorToolbar);
+    width: 100%;
+
+    p{
+        font-size: 1rem;
+    }
+    &__Instagram{
+//hi
+    }
+    
+    
+}
+

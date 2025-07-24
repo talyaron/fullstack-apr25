@@ -1,0 +1,66 @@
+.circular-recipes {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  font-family: var(--font-font-family);
+}
+.circular-recipes__background {
+  width: 8vw;
+  height: 8vw;
+  background-color: rgb(254, 252, 252);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid gray;
+  margin-right: 13px;
+  cursor: pointer;
+}
+.circular-recipes__background__image {
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+  width: 7vw;
+  height: 7vw;
+  border-radius: 50%;
+  transition: height, width, 0.25s ease;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 150%;
+  border-radius: 50%;
+}
+.circular-recipes__background__image1 {
+  background-image: url("../Images/circular-images/eggs.png");
+}
+.circular-recipes__background__image2 {
+  background-image: url("../Images/circular-images/meatish.png");
+}
+.circular-recipes__background__image3 {
+  background-image: url("../Images/circular-images/octopus.png");
+}
+.circular-recipes__background__image4 {
+  background-image: url("../Images/circular-images/pancake.png");
+}
+.circular-recipes__background__image5 {
+  background-image: url("../Images/circular-images/pasta.png");
+}
+.circular-recipes__background__image6 {
+  background-image: url("../Images/circular-images/pizza.png");
+}
+.circular-recipes__background__image7 {
+  background-image: url("../Images/circular-images/Tacos.png");
+}
+.circular-recipes__background__image8 {
+  background-image: url("../Images/circular-images/Tortia.png");
+}
+.circular-recipes__background__image:hover {
+  width: 8vw;
+  height: 8vw;
+}
+.circular-recipes__background__image__text {
+  position: absolute;
+  transform: translate(0, 10vh);
+  font-size: 0.8rem;
+}/*# sourceMappingURL=circular-recipes.css.map */

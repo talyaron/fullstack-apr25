@@ -1,0 +1,133 @@
+:root{
+    font-size: 17px;
+}
+
+
+.nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width:100%;
+    position: fixed;
+    top: 0;
+
+    &__links{
+        position: relative;
+        gap:10px;
+        display: flex;
+        flex-direction: row;
+        place-items: center;
+        justify-content: center;
+        align-items: center;
+
+        
+    }
+
+    &__logo{
+        position: absolute;
+        right: 0;
+    }
+
+    &__social{
+        display: flex;
+        flex-direction: row;
+        position: absolute;
+        left: 0;
+        justify-content: center;
+        align-items: center;
+        gap:10px;
+        cursor: pointer;
+
+        .red{
+            background-color: red;
+            color:white;
+            padding: 10px 10px;
+            border-radius: 20px;
+            
+
+            &:hover{
+                background-color: rgb(255, 253, 253);
+                color: red;
+                border: 1px solid red;
+
+            }
+        }
+
+        .blue{
+            background-color: rgb(17, 104, 233);
+            color:white;
+             padding: 10px 10px;
+             border-radius: 20px;
+
+            &:hover{
+                background-color: rgb(255, 253, 253);
+                color: rgb(17, 104, 233);
+                border: 1px solid rgb(17, 104, 233);
+            }
+        }
+
+    }
+
+   
+  }
+
+    
+.nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    padding: 0 20px; // Add some padding
+    background-color: white; // Probably want a background
+    z-index: 1000; // Ensure it stays on top
+
+    &__social {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer;
+
+        .red {
+            background-color: red;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease; // Smooth hover effect
+
+            &:hover {
+                background-color: white;
+                color: red;
+                border: 1px solid red;
+            }
+        }
+
+        .blue {
+            background-color: rgb(17, 104, 233);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background-color: white;
+                color: rgb(17, 104, 233);
+                border: 1px solid rgb(17, 104, 233);
+            }
+        }
+    }
+
+    &__links {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+       
+    }
+
+}
+

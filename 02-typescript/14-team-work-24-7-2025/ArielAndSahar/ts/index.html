@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./dist/index.js" defer></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div>
+    <nav class="navbar">
+
+      <ul>
+        <li class="navbar__logo"></li>
+        <li class="navbar__icon"></li>
+        <li class="navbar__icon"></li>
+      </ul>
+
+    </nav>
+  </div>
+  <div class="cardContainer">
+    <div class="cardContainer__item">
+      <img class="cardContainer__photo"></img>
+      <h2 class="cardContainer__title"></h2>
+      <span class="cardContainer__description"></span>
+      <span class="cardContainer__price"></span>
+      <span class="cardContainer__inStock"></span>
+      <button class="cardContainer__delete"></button>
+    </div>
+  </div>
+  <footer class="adminPanel">
+    <form action="">
+      <div class="input-group">
+        <input type="text" class="form-control" aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-sm" placeholder="photo url">
+        <input type="text" class="form-control" aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-sm" placeholder="title">
+        <input type="text" class="form-control" aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-sm" placeholder="description">
+        <span class="input-group-text">$</span>
+        <input type="text" class="form-control" aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-sm" placeholder="price">
+        <input type="text" class="form-control" aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-sm" placeholder="inStock">
+      </div>
+
+    </form>
+  </footer>
+</body>
+
+</html>

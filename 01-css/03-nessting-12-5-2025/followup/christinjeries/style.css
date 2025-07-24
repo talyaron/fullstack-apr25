@@ -1,0 +1,20 @@
+body{
+    background-color: antiquewhite;
+}
+div{
+    width: 300px;
+    border-width: 20px;
+    border-style:dashed;
+    text-align: center;
+    
+}
+
+div > img{
+    width: 200%;
+    border-style: double;
+    
+}
+h1{
+    color:brown;
+   
+}

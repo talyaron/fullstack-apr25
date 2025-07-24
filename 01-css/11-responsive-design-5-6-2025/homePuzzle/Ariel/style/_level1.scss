@@ -1,0 +1,170 @@
+
+.city {
+  &__title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    margin-top: 5vh;
+
+    &-text {
+      display: inline-block;
+    }
+  }
+
+  &__flexer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-left {
+      display: flex;
+      align-items: center;
+      width: 30%;
+
+      svg {
+        margin-top: 0.2rem;
+      }
+    }
+
+    &-right {
+      display: flex;
+      justify-content: flex-end;
+      width: 70%;
+
+      #btn1,
+      #btn2 {
+        margin-left: 0.5rem;
+        padding: 0.5rem 0.5rem;
+        border: none;
+        border-radius: 1.5rem;
+        background-color: rgb(235, 235, 235);
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      #btn1 {
+        background-color: white;
+        color: rgb(235, 235, 235);
+        border: 1px solid rgb(235, 235, 235);
+      }
+      #btn2 {
+        transition: transform 0.3s;
+
+        &:hover {
+          transform: scale(1.08); 
+        }
+      } 
+
+    }
+  }
+
+  ///////////
+
+  &__cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+
+    &-box {
+      width: 17.8vw;
+      position: relative;
+
+      .img {
+        background-size: cover;
+        background-position: center;
+        width: 17.8vw;
+        height: 34vh;
+        border-radius: 2rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        position: relative;
+
+        &::before {
+          content: "Guest favorite";
+          background-color: rgba(232, 232, 231, 0.863);
+          color: #444;
+          font-weight: bold;
+          padding: 0.5rem 0.7rem;
+          position: absolute;
+          top: 1rem;
+          left: 1.2rem;
+          border-radius: 2rem;
+        }
+
+        .like-button {
+          cursor: pointer;
+          position: absolute;
+          top: 1.4rem;
+          right: 1.4rem;
+          background-color: rgba(255, 255, 255, 0);
+          border: none;
+        }
+      }
+    }
+
+    .description {
+      padding: 0.6rem 0;
+
+      &__title {
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+
+      &__date {
+        font-size: 1rem;
+        color: #666;
+      }
+
+      &__price * {
+        color: inherit; // inherit color from parent
+      }
+      &__price {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        // gap: 0.3rem;
+        font-size: 1rem;
+        color: #666;
+
+        .star {
+          margin-right: 0.3rem;
+          color: #666;
+        }
+      }
+    }
+  }
+}
+
+#img1 {
+  background-image: url("../../img/london1.avif");
+}
+#img2 {
+  background-image: url("../../img/london2.avif");
+}
+#img3 {
+  background-image: url("../../img/london3avif.avif");
+}
+#img4 {
+  background-image: url("../../img/london4.avif");
+}
+#img5 {
+  background-image: url("../../img/london5.jpeg");
+}
+
+#img1m {
+  background-image: url("../../img/madrid1.avif");
+}
+#img2m {
+  background-image: url("../../img/madrid2.afiv.webp");
+}
+#img3m {
+  background-image: url("../../img/madrid3.avif");
+}
+#img4m {
+  background-image: url("../../img/madrid4.avif");
+}
+#img5m {
+  background-image: url("../../img/madrid5.avif");
+}

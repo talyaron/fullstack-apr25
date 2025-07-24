@@ -1,0 +1,38 @@
+.message {
+  margin-top: 50px;
+  &__img {
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    width: 98vw;
+    height: 50vh;
+    background-image: url("../Images/war_message.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+header {
+  .header {
+    &__hot {
+      background-color: white;
+
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-font-family);
+      font-family: "Noto Sans Hebrew", sans-serif;
+      width: 90vw;
+      height: 10vh;
+    }
+  }
+}
+
+h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

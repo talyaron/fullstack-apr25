@@ -1,0 +1,168 @@
+
+
+#about {
+  margin: 5vh 18vw;
+  width: 65%;
+}
+
+.main{
+
+  &__title{
+    margin: 2rem 0;
+    font-weight: 800;
+  }
+
+  &__nav{
+
+    &-ul{
+      display: flex;
+      gap: 4rem;
+
+      #about-color{
+        color: rgb(88, 156, 165);
+        font-weight: 600;
+      }
+    }
+  }
+
+  &__paragraphs{
+
+    font-size: 1.2rem;
+
+    &-pretxt{
+      margin: 3rem 0;
+      font-size: 1.2rem;
+      font-weight: bold;
+
+      #margin-top{
+        margin-top: 2rem;
+      }
+    }
+
+    &-maintxt{
+
+      p{
+        margin-top: 2rem;
+      }
+    }
+  }
+}
+
+
+.section{
+  margin-top: 6rem;
+
+
+  &__nirB{
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    &-title{
+      font-size: 1.5rem;
+      border-left: #589CA5 4px solid;
+
+      h2{
+        margin-left: 1rem;
+      }
+    }
+
+    &-des{
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    &-img{
+      background-image: url('../../about pic/Nir-Barkat.png');
+      width: 18.70rem;
+      height: 21rem;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 1rem;
+      position: relative;
+      filter: grayscale(100%);
+    }
+
+    &-txt{
+      text-align: center;
+      direction: rtl;
+      font-size: 1rem;
+
+      p{
+        margin-top: 0.6rem;
+      }
+    }
+  }
+
+  &__people{
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    max-width: 1000px;
+    min-height: 600px;
+    gap: 3rem;
+    margin: 0 auto;
+
+    
+
+    &-img{
+      width: 17.4rem;
+      height: 21rem;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 1rem;
+      filter: grayscale(100%);
+
+      filter: grayscale(95%);
+      
+      // svg {
+      //   width: 100%;
+      //   height: auto;
+      //   filter: none;
+      // }
+    }
+    .img1{
+      background-image: url('../../about pic/לחדגעח.png');
+    }
+    .img2{
+      background-image: url('../../about pic/Shira-Lev-Ami.png');
+    }
+    .img3{
+      background-image: url('../../about pic/WhatsApp-Image-2022-07-25-at-1.56-2.png');
+    }
+
+    &-des{
+      display: flex;
+      flex-direction: column;
+      width: 19.5vw;
+      text-align: center;
+      font-size: 1.2rem;
+      max-width: 300px;
+      // flex: 1 1 300px;
+      align-items: stretch;
+      min-height: 44rem;
+
+    }
+
+    &-txt{
+      display: flex;
+
+      flex-direction: column;
+      padding: 0.8rem;
+      line-height: 1.7rem;
+
+      p{
+        margin-top: 0.6rem;
+      }
+    }
+  }
+}

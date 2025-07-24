@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./dist/script.js" defer></script>
+    <link rel="stylesheet" href="./dist/style.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
+    <title>HomeWork</title>
+</head>
+
+<body>
+    <div class="title">my Tasks meneger</div>
+    <form onsubmit="handleSubmit(event)">
+        <div class="task_name">
+            <div class="task_title">Enter your new task: </div>
+            <input type="text" name="taskName" class="input_box">
+            <div class="error name_error"></div>
+        </div>
+        <div class="task_priority">
+            <div class="task_title">Choose the importance of the task:</div>
+
+            <select name="priority" class="input_box">
+                <option value="">Choose the priority</option>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+            <div class=" error priority_error"></div>
+
+        </div>
+        <div class="checkbox">
+            <div class="task_title">Click if the task has already been done:</div>
+
+            <input type="checkbox" name="complete">done
+        </div>
+        <button type="submit" class="input_box">submit your task</button>
+    </form>
+    <div id="tasksRoot">
+           </div>
+</body>
+
+</html>
