@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./dist/index.js" defer></script>
+    <link rel="stylesheet" href="./dist/style.css" />
+  </head>
+  <body>
+    <h1>Task Manager</h1>
+    <form onsubmit="handleSubmit(event)">
+      <input type="text" name="fullName" id="name" placeholder="Name" />
+      <input type="checkbox" name="checkbox" id="checkbox" />
+      <select name="priority" id="priority">
+        <option value="none">-</option>
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
+      <button type="submit">Submit</button>
+    </form>
+    <div id="taskDiv"></div>
+  </body>
+</html>
