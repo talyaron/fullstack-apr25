@@ -1,3 +1,8 @@
+html, body {
+  // height: 100%;
+  margin: 0;
+  padding: 0;
+}
 * {
   margin: 0;
   padding: 0;
@@ -65,23 +70,23 @@ $btn-color-text-hover: white;
   }
 }
 
-.navBar {  
+.navBar {
   display: flex;
   margin: 1.5rem auto;
   align-content: center;
   justify-content: space-between;
-  max-width: 90vw;
+  // max-width: 90vw;
+  width: 100%;
   padding: 0;
 
-  border-radius: 10px;
+  // border-radius: 10px;
   background-color: #467cd2;
 
   &__item {
     margin: 0 2.5rem;
-
   }
 
-  &__logo{
+  &__logo {
     background-image: url("../../img/logoCompany.png");
     background-size: contain;
     background-repeat: no-repeat;
@@ -89,7 +94,7 @@ $btn-color-text-hover: white;
     width: 80px;
     height: 80px;
     display: inline-block;
-    border-radius: 10px;
+    // border-radius: 10px;
   }
 
   &__flexSeperator {
@@ -97,7 +102,7 @@ $btn-color-text-hover: white;
     justify-content: space-between;
 
     &--left {
-      display: flex; 
+      display: flex;
       align-content: center;
     }
 
@@ -106,14 +111,14 @@ $btn-color-text-hover: white;
       align-items: center;
 
       .textField {
-        width: 15rem; 
+        width: 15rem;
         height: 2.5rem;
-        padding: 0.375rem 0.75rem; 
+        padding: 0.375rem 0.75rem;
         font-size: 1rem;
         margin-right: 1rem;
       }
     }
-  } 
+  }
 }
 
 .form-inline {
@@ -123,17 +128,19 @@ $btn-color-text-hover: white;
 
 ////////////////////////////////
 .cardContainer {
+   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  max-width: 95%;
+  margin: auto;
   &__item {
-    width: 18rem;
+  height: 200px;
   }
 }
 
 .adminPanel {
-  &__form {
-    &--price {
-      color: #a3ef0b;
-      background-color: #467cd2;
-    }
-  }
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
-
