@@ -1,32 +1,139 @@
-$btn-backgroudcolor-before:#d6e2f5;
-$btn-backgroudcolor-hover:#597aaf;
-$btn-color-text-before:#467cd2;
-$btn-color-text-hover:white;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+  color: black;
+  letter-spacing: 0;
+  // direction: rtl; /* Right-to-left text direction */
 
+  // -- Variables for colors
+  --primary-color: rgb(247, 247, 247);
+  --secondary-color: rgb(202, 0, 6);
+  --third-color: rgb(0, 0, 0);
+}
 
-.mystyle{
-  color:$btn-color-text-before
-  }
+:root {
+  font-size: 16px; /* 1rem = 16px */
+  /* 
+  margin: 2rem;  = 32px
+  padding: 1.5rem; = 24px
+  font-size: 0.875rem;  = 14px
+  */
+}
 
-.subBtn{
-  border:none;
-  background-color:$btn-backgroudcolor-before;
+ul {
+  list-style: none;
+}
+
+li {
+  cursor: pointer;
+}
+li:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+a {
+  text-decoration: none;
+}
+a:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+body {
+  background-color: var(--primary-color);
+}
+
+$btn-backgroudcolor-before: #d6e2f5;
+$btn-backgroudcolor-hover: #597aaf;
+$btn-color-text-before: #467cd2;
+$btn-color-text-hover: white;
+
+.mystyle {
   color: $btn-color-text-before;
-  &:hover{
+}
+
+.subBtn {
+  border: none;
+  background-color: $btn-backgroudcolor-before;
+  color: $btn-color-text-before;
+  &:hover {
     background-color: $btn-backgroudcolor-hover;
     color: $btn-color-text-hover;
   }
 }
 
-.cardContainer{
-  &__item{width: 18rem}
+.navBar {  
+  display: flex;
+  margin: 1.5rem auto;
+  align-content: center;
+  justify-content: space-between;
+  max-width: 90vw;
+  padding: 0;
+
+  border-radius: 10px;
+  background-color: #467cd2;
+
+  &__item {
+    margin: 0 2.5rem;
+
+  }
+
+  &__logo{
+    background-image: url("../../img/logoCompany.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 80px;
+    height: 80px;
+    display: inline-block;
+    border-radius: 10px;
+  }
+
+  &__flexSeperator {
+    display: flex;
+    justify-content: space-between;
+
+    &--left {
+      display: flex; 
+      align-content: center;
+    }
+
+    &--right {
+      display: flex;
+      align-items: center;
+
+      .textField {
+        width: 15rem; 
+        height: 2.5rem;
+        padding: 0.375rem 0.75rem; 
+        font-size: 1rem;
+        margin-right: 1rem;
+      }
+    }
+  } 
 }
 
-.adminPanel{
-&__form{
-  &--price{
-    color: #a3ef0b;
-    background-color: #467cd2;
+.form-inline {
+  display: flex;
+  // margin: 4rem;
+}
+
+////////////////////////////////
+.cardContainer {
+  &__item {
+    width: 18rem;
   }
 }
+
+.adminPanel {
+  &__form {
+    &--price {
+      color: #a3ef0b;
+      background-color: #467cd2;
+    }
+  }
 }
+

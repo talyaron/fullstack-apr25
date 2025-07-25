@@ -7,27 +7,40 @@
   <title>Document</title>
   <script src="./dist/index.js" defer></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../style/dist/style.css">
+  <link rel="stylesheet" href="./style/dist/style.css">
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand mystyle" href="#">ArisA</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <img class="nav-link active" aria-current="page" href="#" />
-          <img src="" alt="">
-          <i class="bi bi-geo-alt"></i>
-          <a class="nav-link" href="#">Features</a>
-          <a class="nav-link" href="#">Pricing</a>
+  <nav class="navbar-expand-lg bg-body-tertiary ">
+      <div class="navBar container-fluid">
+        
+        <div class="navBar__flexSeperator--left">
+          <a class="navbar-brand navBar__logo" href="#"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+          <div class="navbar-nav navBar__flexSeperator">
+
+          <!-- <img class="nav-link active" aria-current="page" href="#" /> -->
+          <!-- <img src="" alt=""> -->
+          <!-- <i class="bi bi-geo-alt"></i> -->
+            <a class="nav-link navBar__item" href="#">Waze</a>
+            <a class="nav-link navBar__item" href="#">About Us</a>
+            <a class="nav-link navBar__item" href="#">Contact</a>
+          </div>
+        </div>
+      </div>
+          <div class="navBar__flexSeperator--right">
+            <form class="form-inline">
+            <input class="form-control mr-sm-2 textField" type="search" placeholder="Search" aria-label="Search" id="searchInput">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+          </div>
 
         </div>
-
       </div>
     </div>
   </nav>
@@ -134,7 +147,7 @@
     </div>
   </footer>
 
-  </div>
+</div>
 </body>
 
 </html>
