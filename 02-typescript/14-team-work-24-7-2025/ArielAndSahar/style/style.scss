@@ -17,3 +17,16 @@ $btn-color-text-hover:white;
     color: $btn-color-text-hover;
   }
 }
+
+.cardContainer{
+  &__item{width: 18rem}
+}
+
+.adminPanel{
+&__form{
+  &--price{
+    color: #a3ef0b;
+    background-color: #467cd2;
+  }
+}
+}
