@@ -1,0 +1,19 @@
+$btn-backgroudcolor-before:#d6e2f5;
+$btn-backgroudcolor-hover:#597aaf;
+$btn-color-text-before:#467cd2;
+$btn-color-text-hover:white;
+
+
+.mystyle{
+  color:$btn-color-text-before
+  }
+
+.subBtn{
+  border:none;
+  background-color:$btn-backgroudcolor-before;
+  color: $btn-color-text-before;
+  &:hover{
+    background-color: $btn-backgroudcolor-hover;
+    color: $btn-color-text-hover;
+  }
+}
