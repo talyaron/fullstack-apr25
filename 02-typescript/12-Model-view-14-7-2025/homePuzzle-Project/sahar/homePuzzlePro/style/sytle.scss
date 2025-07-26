@@ -1,0 +1,16 @@
+.ball{
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    transition: all 150ms ease-in-out;
+    border-radius: 50%;
+    z-index:   1;
+}
+
+.gate{
+    height: 60px;
+    width: 80px;
+    position: absolute;
+    border-radius: 10px;
+}
+
