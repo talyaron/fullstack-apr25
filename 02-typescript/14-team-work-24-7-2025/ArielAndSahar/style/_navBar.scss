@@ -1,0 +1,114 @@
+.navBar {
+  display: flex;
+  margin:  auto;
+  align-content: center;
+  justify-content: space-between;
+  // max-width: 90vw;
+  width: 100%;
+  padding: 0;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+
+  &__item {
+    margin: 0 2.5rem;
+    position: relative;
+    text-decoration: none;
+    transition: transform 0.5s ease-in-out;
+    font-weight: bold;
+
+    .fa-waze {
+      font-size: 1.2rem;
+      color: #33ccff;
+    }
+
+    .fa-circle-info {
+      font-size: 1.2rem;
+      color: chocolate;
+    }
+
+    .fa-envelope {
+      font-size: 1.2;
+      color: darkblue;
+    }
+
+  &:hover {
+    text-decoration: none;
+    transform: scale(1.2);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%) scaleX(0);
+    width: 110%;
+    height: 4px;
+    background-color: $btn-backgroudcolor-hover; 
+    border-radius: 2px;
+    transition: transform 0.5s ease-in-out;
+    transform-origin: center;
+  }
+
+  &:hover::after {
+    transform: translateX(-50%) scaleX(1);
+  }
+  }
+
+  &__logo {
+    background-image: url("../../img/logoCompany.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 80px;
+    height: 80px;
+    display: inline-block;
+    // border-radius: 10px;
+  }
+
+  &__flexSeperator {
+    display: flex;
+    justify-content: space-between;
+
+    &--left {
+      display: flex;
+      align-content: center;
+    }
+
+    &--right {
+      display: flex;
+      align-items: center;
+
+      .form-inline {
+        display: flex;
+
+        .textField {
+          width: 15rem;
+          height: 2.5rem;
+          padding: 0.375rem 0.75rem;
+          font-size: 1rem;
+          margin-right: 1.5rem;
+        }
+
+        .searchBtn{
+          margin-right: 1rem;
+          background-color: $btn-backgroudcolor-before;
+          color: $btn-color-text-before; 
+          font-weight: bold;
+          border: none;
+          padding: 0.5rem 1rem;
+          font-size: 1rem;
+          cursor: pointer;
+          transition: transform 0.5s ease-in-out; 
+          background-color: 0.3s, color 0.3s;
+
+          &:hover {
+            transform: scale(1.2);
+            background-color: $btn-backgroudcolor-hover;
+            color: $btn-color-text-hover;
+          }
+        }
+      }
+    }
+  }
+} 
