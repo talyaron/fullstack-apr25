@@ -36,7 +36,7 @@ function renderItems(item: Item): void {
 const form = document.getElementById("adminPanel__form") as HTMLFormElement;
 form.addEventListener("submit", (event: SubmitEvent) => {
   event.preventDefault();
-  console.log("submit pressed");
+  console.log("submit pressed"); 
   const formData = new FormData(form);
   const itemToAdd : Item ={
   url: formData.get("photourl") as string,
