@@ -40,7 +40,7 @@ window.addEventListener("DOMContentLoaded", () => {
         if (!button) throw new Error("addGuitarButton button not found");
         showForm = true
         button.addEventListener("click", () => displayForm(showForm));
-        
+
         const submitButton = document.getElementById("submitButton");
         if (!submitButton) throw new Error("submitButton not found");
         submitButton.addEventListener("submit", (event) => {
@@ -54,14 +54,35 @@ window.addEventListener("DOMContentLoaded", () => {
 
     } catch (error) {
         console.error("error events: ", error)
-
-
     }
 })
 
 
 
+
+
 //model functions
+
+
+function handleSubmit(event) {
+    try {
+        event.preventDefault(); //*
+        console.log('Form submitted');
+        if (!(event.target instanceof HTMLFormElement)) throw new Error('Event target is not a form');
+        const formData = new FormData(event.target);//*
+        const data = Object.fromEntries(formData.entries());//*
+        console.log('Form data:', data);//*
+        const newProduct: Product = {
+            url: data.urlImage as string,
+            name: data.name as string,
+            amountinStock: parseFloat(data.inStock as string) as number ,
+            price: parseInt(data.price as string) as number
+        };
+    } catch (error) {
+        console.error("error sumbiting: ", error);
+   }
+}
+
 function displayForm(isVisable: boolean): void {
     try {
         const addNewGuitar = document.getElementById("addGuitar")
