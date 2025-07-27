@@ -88,6 +88,9 @@ function displayForm(isVisable: boolean): void {
         const addNewGuitar = document.getElementById("addGuitar")
         if (!addNewGuitar) throw new Error("addGuitar element not found");
         addNewGuitar.style.display = isVisable ? "flex" : "none";
+        const addButton = document.getElementById("addGuitar")
+        if (!addButton) throw new Error("addGuitar element not found");
+        addButton.style.display = isVisable ? "flex" : "none";
     } catch (error) {
         console.error("error displayForm", error)
     }
