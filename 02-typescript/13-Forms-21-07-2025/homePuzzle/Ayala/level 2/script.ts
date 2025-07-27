@@ -10,7 +10,7 @@ const taskArray: Array<Task> = []
 //view
 function htmlTask(task: Task): string {
     return `
-     <div class=taskCard>
+     <div class="taskCard">
         <div class="taskCard__name"> ${task.name}</div>
         <div class="taskCard__priority"> task priority: ${task.priority}</div>
         <div class="taskCard__complete"> the task is ${task.complete ? "complete" : "not complete yet"}</div>
@@ -36,7 +36,7 @@ function renderTasks(allTasks: Array<Task>): void {
     }
 }
 //control
-function handleSubmit(event) {
+function handleSubmit(event:Event) {
     try {
 
         event.preventDefault(); //*

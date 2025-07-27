@@ -8,9 +8,15 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+  <title>Guitar-Hero</title>
   <script src="./dist/index.js"></script>
-  <link rel="stylesheet" href="./dist/style.css" />
+  <link rel="stylesheet" href="./dist/styleB.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <link rel="shortcut icon" href="./Images/image-removebg-preview.png" type="image/x-icon">
 </head>
 
 <body>
@@ -25,30 +31,31 @@
   </div>
 
   <div id="addGuitarButton" title="Click here to add a guitar">
-    <div class="addGuitar__image"><img src="./Images/addGuitar.png" alt="add a guitar"></div>
+    Add A Guitar
+    <div class="addGuitar__image"><img src="./Images/addGuitar-removebg-preview.png" alt="add a guitar"></div>
   </div>
 
-  <form class="addGuitar" id="addGuitar" >
+  <form class="addGuitar" id="addGuitar">
     <div class="addGuitar__section">
-      <div class="addGuitar__title"> Guitar name </div>
-      <input  type="text" name="name" class="addGuitar__input" required>
+      <div class="addGuitar__title">Enter Guitar name: </div>
+      <input type="text" name="name" class="addGuitar__input" required>
     </div>
     <div class="addGuitar__section">
-      <div class="addGuitar__title"> Enter Link </div>
-      <input type="text" name="urlImage" class="addGuitar__input" required >
+      <div class="addGuitar__title"> Enter Guitar image URL: </div>
+      <input type="text" name="urlImage" class="addGuitar__input" required>
     </div>
     <div class="addGuitar__section">
-      <div class="addGuitar__title"> How much in stock? </div>
+      <div class="addGuitar__title"> How many Guitars in stock? </div>
       <input type="number" name="inStock" class="addGuitar__input" required>
     </div>
     <div class="addGuitar__section">
-      <div class="addGuitar__title"> What is the price of the guitar? </div>
+      <div class="addGuitar__title"> Enter the price of the Guitar: </div>
       <input type="number" name="price" class="addGuitar__input" required>
     </div>
-    <button  value="Send Form" type="submit" id="submitButton">Add</button >
+    <button value="Send Form" type="submit" id="submitButton">Add The new Guitar</button>
   </form>
 
-  <div id="guitarsRoot" class="guitarsRoot">
+  <div id="guitarsRoot" class="guitarsRoot">  
   </div>
 
 </body>

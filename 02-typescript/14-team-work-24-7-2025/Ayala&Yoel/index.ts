@@ -14,10 +14,10 @@ let showForm = false
 function htmlProduct(product: Product): string {
     return `
     <div class="product">
-        <div class="product__url"><img src="${product.url}" alt="guitarImg"></div>
+        <div class="product__img"><img src="${product.url}" alt="guitarImg"></div>
         <div class="product__name">${product.name}</div> 
-        <div class="product__price">${product.price}$</div> 
-        <div class="product__stock">${product.amountinStock > 0 ? product.amountinStock + " In Stock" : "Out Of Stock"}</div>
+        <div class="product__price">price: ${product.price}$</div> 
+        <div class="product__stock">${product.amountinStock > 0 ? "In Stock: " + product.amountinStock : "Out Of Stock"}</div>
     </div>
     `
 }
