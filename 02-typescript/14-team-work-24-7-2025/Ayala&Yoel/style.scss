@@ -31,9 +31,11 @@ body {
 
 
         &__image {
+
             img {
                 width: 90px;
                 height: 70px;
+                
             }
         }
 
@@ -43,5 +45,16 @@ body {
         display: flex;
         align-items: center;
         font-size: 30px;
+    }
+}
+
+.addGuitar{
+    &__image{
+        img{
+            width: 50px;
+            height: 50px;
+            margin-top: 20px;
+            border-radius: 20%;
+        }
     }
 }
