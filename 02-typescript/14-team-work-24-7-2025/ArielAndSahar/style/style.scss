@@ -3,6 +3,7 @@ body {
   // height: 100%;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 * {
   margin: 0;
@@ -28,6 +29,11 @@ body {
   */
 }
 
+$btn-backgroudcolor-before: #d6e2f5;
+$btn-backgroudcolor-hover: #597aaf;
+$btn-color-text-before: #467cd2;
+$btn-color-text-hover: white;
+
 ul {
   list-style: none;
 }
@@ -52,11 +58,6 @@ body {
   background-color: var(--primary-color);
 }
 
-$btn-backgroudcolor-before: #d6e2f5;
-$btn-backgroudcolor-hover: #597aaf;
-$btn-color-text-before: #467cd2;
-$btn-color-text-hover: white;
-
 .mystyle {
   color: $btn-color-text-before;
 }
@@ -73,7 +74,7 @@ $btn-color-text-hover: white;
 
 .navBar {
   display: flex;
-  margin: 1.5rem auto;
+  margin:  auto;
   align-content: center;
   justify-content: space-between;
   // max-width: 90vw;
@@ -143,7 +144,16 @@ $btn-color-text-hover: white;
 
 .adminPanel {
   position: fixed;
-  bottom: 0;
+  bottom: -16px;
   left: 0;
   width: 100%;
+  
+  &__form {
+    margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  }
 }
