@@ -26,7 +26,7 @@ body {
         text-align: center;
         align-items: center;
         margin-left: 20px;
-        font-size: 30px;
+        font-size: 1.8rem;
         
 
 
@@ -44,7 +44,7 @@ body {
     &__title {
         display: flex;
         align-items: center;
-        font-size: 30px;
+        font-size: 1.8rem;
     }
 }
 
@@ -55,6 +55,7 @@ body {
             height: 50px;
             margin-top: 20px;
             border-radius: 20%;
+            cursor: pointer;
         }
     }
 }
