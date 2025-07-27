@@ -1,22 +1,47 @@
-.header{
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-
-
-    &__logo{
-    display: flex;
-    flex-direction: row;
-    text-align: center;
-    align-items: center;
-
-
-    &__image{
-        img{
-            width: 3vw;
-            height: 6vh;
-        }
-    }
+body {
+    background-color: rgb(216, 197, 197);
+        font-family: "Source Serif 4", serif;
 
 }
+
+.header {
+    display: flex;
+    flex-direction: row;
+    gap: 30vw;
+    background-color: gray;
+    margin: -8px;
+    justify-content: flex-start;
+    
+    padding: 20px 0px 20px 0px;
+    border-bottom: 2px solid rgb(97, 89, 89);
+
+
+
+
+
+
+    &__logo {
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        align-items: center;
+        margin-left: 20px;
+        font-size: 30px;
+        
+
+
+        &__image {
+            img {
+                width: 90px;
+                height: 70px;
+            }
+        }
+
+    }
+
+    &__title {
+        display: flex;
+        align-items: center;
+        font-size: 30px;
+    }
 }
