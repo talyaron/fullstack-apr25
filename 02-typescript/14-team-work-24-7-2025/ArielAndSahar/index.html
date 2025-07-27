@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <script src="./dist/index.js" defer></script>
+  <script src="./ts/dist/index.js" defer></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="./style/dist/style.css">
 </head>
@@ -53,6 +53,8 @@
       <div class="card-body">
         <p class="card-text" id="cardContainerItemText">
           2024 Legion Tower 7i Gen 8</p>
+        <p class="card-text" id="cardContainerItemdiscreption">this is a pc</p>
+
         <p class="card-text" id="cardContainerItemPrice">Price : 50$</p>
         <p class="card-text" id="cardContainerItemStock">In stock : 8</p>
       </div>
@@ -65,26 +67,25 @@
       <form id="adminPanel__form">
         <div class="input-group input-group-sm mb-3">
           <span class="input-group-text adminPanel__form--photo" id="inputGroup-sizing-sm">photo url</span>
-          <input type="text" class="form-control" aria-label="Sizing example input"
+          <input type="text" class="form-control" aria-label="Sizing example input" name="photourl"
             aria-describedby="inputGroup-sizing-sm">
           <span class="input-group-text adminPanel__form--title" id="inputGroup-sizing-sm">title</span>
-          <input type="text" class="form-control" aria-label="Sizing example input"
+          <input type="text" class="form-control" aria-label="Sizing example input" name="title"
             aria-describedby="inputGroup-sizing-sm">
           <span class="input-group-text adminPanel__form--discreption" id="inputGroup-sizing-sm">discreption</span>
-          <input type="text" class="form-control" aria-label="Sizing example input"
+          <input type="text" class="form-control" aria-label="Sizing example input" name="discreption"
             aria-describedby="inputGroup-sizing-sm">
           <span class="input-group-text adminPanel__form--price" id="inputGroup-sizing-sm">price</span>
-          <input type="text" class="form-control" aria-label="Sizing example input"
+          <input type="text" class="form-control" aria-label="Sizing example input" name="price"
             aria-describedby="inputGroup-sizing-sm">
           <span class="input-group-text">$</span>
 
           <span class="input-group-text" id="inputGroup-sizing-sm">stock</span>
-          <input type="text" class="form-control" aria-label="Sizing example input"
+          <input type="text" class="form-control" aria-label="Sizing example input" name="stock"
             aria-describedby="inputGroup-sizing-sm">
 
-          <button type="submit" class="btn btn-primary subBtn" onclick="">Submit</button>
+          <button type="submit" class="btn btn-primary subBtn">Submit</button>
         </div>
-
       </form>
     </div>
   </footer>
