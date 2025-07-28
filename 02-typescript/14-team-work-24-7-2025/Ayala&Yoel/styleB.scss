@@ -8,18 +8,19 @@
     box-sizing: border-box;
 }
 
+
 body {
     font-family: "Poppins", sans-serif;
     font-weight: 500;
     margin: 0;
     padding: 0;
-    width: 100vw;
+    width: 100dvw;
+    overflow-x: hidden;
     height: 100vh;
     display: flex;
     flex-direction: column;
     gap: 1rem;
     background-color: var(--prime-color);
-
 }
 
 .header {
@@ -43,6 +44,10 @@ body {
 
         &__name {
             font-size: 2.5rem;
+
+            @media screen and (max-width:450px) {
+                font-size: 1.8rem;
+            }
         }
 
         &__image {
@@ -57,6 +62,10 @@ body {
         display: flex;
         align-items: center;
         font-size: 2rem;
+
+        @media screen and (max-width:800px) {
+            display: none;
+        }
     }
 }
 
@@ -72,6 +81,7 @@ body {
     margin-left: 4%;
     justify-content: space-between;
     cursor: pointer;
+    transition: all 0.3s;
 
     &:hover {
         transform: scale(1.02);
@@ -114,6 +124,12 @@ body {
         max-width: 50%;
         padding: 0.5rem;
         font-size: 1rem;
+
+        @media screen and (max-width:425px) {
+          width: 95%;
+          min-width:0;
+        max-width: inherit;
+        }
     }
 
     #submitButton {
@@ -133,14 +149,19 @@ body {
             background-color: var(--prime-color);
             transform: translateY(-0.2rem);
         }
+         @media screen and (max-width:350px) {
+         margin: auto;
+         width: fit-content;
+         min-height: fit-content;
+        }
     }
 }
 
 .guitarsRoot {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    gap: 1%;
-    margin: 2%;
+    gap: 0.7rem;
+    margin: 3%;
 
     @media screen and (max-width: 1200px) {
         grid-template-columns: repeat(5, 1fr);
@@ -152,7 +173,7 @@ body {
 
     }
 
-    @media screen and (max-width:700px) {
+    @media screen and (max-width:850px) {
         grid-template-columns: repeat(3, 1fr);
 
     }
