@@ -1,38 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="./dist/index.js" defer></script>
-    <link rel="stylesheet" href="./dist/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./dist/index.js" defer></script>
+  <link rel="stylesheet" href="./dist/style.css">
 </head>
 <body>
 
 
-    <div class="navigation">
-        <div>אודות</div>
-        <div>דלקן</div>
-        <div class="active">מחירון</div>
-        <div>איתור תחנה</div>
-        <div>שאלות ותשובות</div>
-        <div>דרושים</div>
-        <div>צור קשר</div>
-    </div>
+  <div class="navigation">
+    <div>אודות</div>
+    <div>דלקן</div>
+    <div class="active">מחירון</div>
+    <div>איתור תחנה</div>
+    <div>שאלות ותשובות</div>
+    <div>דרושים</div>
+    <div>צור קשר</div>
+  </div>
 
 
-  <!-- <input type="image" onchange="handleimagechange(event)" src="./images/1.png" alt="Image Input"> -->
+  <form class="custom-form">
+    <input type="text" name="name" placeholder="שם של המוצר" required>
+    <input type="text" name="price" placeholder="מחיר של המוצר" required>
+    <input type="text" name="quantity" placeholder="כמות של המוצר" required>
+    <input type="text" name="description" placeholder="תיאור המוצר" required>
+    <input type="file" name="image" accept="image/*" onchange="handleFileChange(event)" required>
+    <button type="button" id="submitBtn">שלח</button>
+  </form>
 
 
-    <form class="customform">
-
-        <input type="text" name="name" placeholder="שם של המוצר"required onchange="handelNameChange(event)">
-        <input type="text" name="name" placeholder="מחיר של המוצר"required onchange="handelPriceChange(event)">
-        <input type="text" name="name" placeholder="כמות של המוצר"required onchange="handelQuantityChange(event)">
-        <input type="text" name="name" placeholder="תיאור המוצר"required onchange="handelDescriptionChange(event)">
-        <input type="file" name="image" accept="image/*" onchange="handleFileChange(event)" required>
-        <button type="button" id="submitBtn">שלח</button>
-    </form>
+  <div class="products-container"></div>
     <div id="cartRoot"></div>
 
 </body>
