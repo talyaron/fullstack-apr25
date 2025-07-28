@@ -19,7 +19,8 @@ function htmlItem(item: Item): string {
       <p class="card-text" id="cardContainerItemPrice">
       <i class="fa-solid fa-dollar-sign"></i>Price :${item.price}$</p>
       <p class="card-text" id="cardContainerItemStock">
-      <i class="fa-solid ${
+      <i class="fa-solid 
+      ${
         item.stock == "out of stock"
           ? "fa-times-circle text-danger"
           : "fa-check-circle text-success"
@@ -55,6 +56,11 @@ form.addEventListener("submit", (event: SubmitEvent) => {
   if (itemToAdd.stock == 0) {
     itemToAdd.stock = "out of stock";
   }
+  if(itemToAdd.price == 0 || isNaN(itemToAdd.price)){
+    alert("the price is not valid")
+    return;
+  }
+  console.log(itemToAdd.price)
   renderItems(itemToAdd);
-  form.reset;
+  form.reset();
 });
