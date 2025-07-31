@@ -44,7 +44,7 @@ const yossi2: PersonInterface = {
     gender: "male"
 };
 
-console.log(yossi2.fullName); // { fullName: '
+console.log(yossi.age); 
 
 
 
