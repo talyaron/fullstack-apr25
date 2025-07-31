@@ -1,0 +1,3 @@
++ this.playerElement.className = "player" //in line27
+
+- class="player" //in line 28
