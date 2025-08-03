@@ -1,0 +1,79 @@
+* {
+    box-sizing: border-box;
+
+}
+
+:root {
+    font-size: 17px;
+    font-family: fantasy;
+    color: rgb(226, 226, 226);
+}
+
+body {
+    background-color: rgb(46, 46, 46);
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    align-self: center;
+    font-size: 3rem;
+}
+
+.gameField {
+
+    position: relative;
+    height: 480px;
+    width: 750px;
+    align-self: center;
+    background-image: url("../images/field.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 5px;
+    box-shadow: 0 0 25px 5px rgba(10, 10, 10, 0.671);
+}
+
+.player {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    color: rgb(0, 0, 0);
+    text-shadow:
+        -1px -1px 0 white,
+        1px -1px 0 white,
+        -1px 1px 0 white,
+        1px 1px 0 white;
+    background-size: 100% 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.ball {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+
+    background-image: url("../images/ball.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 50%;
+    box-shadow: -5px 5px rgba(10, 10, 10, 0.445);
+    z-index: 20;
+}
+
+.gate {
+    height: fit-content;
+    width: fit-content;
+    font-size: 2.5rem;
+    rotate: 90deg;
+    z-index: 10;
+    position: relative;
+    // border:1px solid ;
+    color: rgba(122, 18, 18, 0.699);
+    left: 670px;
+    top: 215px;
+}
