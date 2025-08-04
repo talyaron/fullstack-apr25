@@ -47,6 +47,56 @@ class FootballPlayer {
     }
   }
 
+<<<<<<< HEAD
+    renderImage(): void {
+        try {
+            this.playerElement = document.querySelector(".player") as HTMLElement;
+            if (!this.playerElement) throw new Error("Player element is not defined");
+            
+        } catch (error) {
+            console.error (error)
+        }
+    }
+
+    getInfo(): string {
+        return `${this.name} is ${this.age} years old, plays as ${this.position} for ${this.team}`;
+    }
+
+    get age(): number {
+        return new Date().getFullYear() - this.yearOfBirth;
+    }
+
+    move(direction: "left" | "right" | "up" | "down"): void {
+        try {
+            switch (direction) {
+                case "left":
+                    this.location.x -= 1;
+                    break;
+                case "right":
+                    this.location.x += 1;
+                    break;
+                case "up":
+                    this.location.y -= 1;
+                    break;
+                case "down":
+                    this.location.y += 1;
+                    break;
+                default:
+                    throw new Error("Invalid direction");
+            }
+
+            if(!this.playerElement) throw new Error("Player element is not defined");
+
+            this.playerElement.style.top = `${this.location.y * 100}px`;
+            this.playerElement.style.left = `${this.location.x * 100}px`;
+            this.renderImage();
+            console.log(`Player moved to (${this.location.x}, ${this.location.y})`);
+        } catch (error) {
+            console.error("Error moving player:", error);
+            
+
+        }
+=======
   getInfo(): string {
     return `${this.name} is ${this.age} years old, plays as ${this.position} for ${this.team}`;
   }
@@ -80,6 +130,7 @@ class FootballPlayer {
       console.log(`Player moved to (${this.location.x}, ${this.location.y})`);
     } catch (error) {
       console.error("Error moving player:", error);
+>>>>>>> origin/main
     }
   }
 }
