@@ -21,17 +21,35 @@ class Player {
         <div class="player" style="background-image: url(${this.img});top:${this.position.y * 30}px;left:${this.position.x * 30}px"">
             <div class="player_name">${this.name}</div>
         </div>
-        `
+        `;
+  }
+  renderPlayer() {
+    try {
+      const elementInHTML = document.getElementById("playerRoot");
+      if (!elementInHTML)
+        throw new Error("Element with id 'playerRoot' not found.");
+      this.playerHTML = elementInHTML;
+      this.playerHTML.innerHTML = this.htmlPlayer();
+    } catch (error) {
+      console.error("Error rendering ", error);
     }
-    renderPlayer() {
-        try {
-            const elementInHTML = document.getElementById("playerRoot");
-            if (!elementInHTML) throw new Error("Element with id 'playerRoot' not found.");
-            this.playerHTML = elementInHTML
-            this.playerHTML.innerHTML = this.htmlPlayer()
-        } catch (error) {
-            console.error("Error rendering ", error);
-        }
+  }
+  move(direction: "up" | "down" | "right" | "left") {
+    switch (direction) {
+      case "up":
+        this.position.y -= 1;
+        break;
+      case "down":
+        this.position.y += 1;
+        break;
+      case "right":
+        this.position.x += 1;
+        break;
+      case "left":
+        this.position.x -= 1;
+        break;
+      default:
+        break;
     }
     move(direction: "up" | "down" | "right" | "left" | "still"): void {
         switch (direction) {
