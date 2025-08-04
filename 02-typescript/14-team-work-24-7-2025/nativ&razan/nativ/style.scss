@@ -246,6 +246,26 @@ body {
     font-size: 0.75rem;
     margin-top: 0.3rem;
   }
+  &__delete {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 16px;
+    width: 26px;
+    height: 26px;
+    line-height: 26px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #616161;
+    }
+  }
 }
 .product-form {
   display: flex;
@@ -296,5 +316,23 @@ body {
     &:hover {
       background-color: #333;
     }
+  }
+}
+#sortPriceBtn {
+  display: inline-block;
+  margin: 15px auto;
+  padding: 10px 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #dbdbdb;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #000000;
+    color: white;
   }
 }
