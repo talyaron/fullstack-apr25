@@ -266,6 +266,23 @@ body {
       background-color: #616161;
     }
   }
+  &__edit {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #e8d5af;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 12px;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #ffd88ad5;
+  }
+}
 }
 .product-form {
   display: flex;
