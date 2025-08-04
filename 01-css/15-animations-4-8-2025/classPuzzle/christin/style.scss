@@ -1,0 +1,69 @@
+#flipflop{
+    width: 100px;
+    height: 100px;
+    border: 80px;
+    position: absolute;
+    top: 300px;
+    left: 0px;
+    background-image: url(https://d3en8d2cl9etnr.cloudfront.net/1235031-large_default/fashion-lobster-slippers-men-funny-animal-flip-flops-cute-beach-casual.jpg);
+    background-size: cover;
+    background-position: center;
+    animation-name: move, rotate;
+    animation-duration: 8s;
+    animation-iteration-count: 3;
+    animation-timing-function: linear;
+}
+
+#mom{
+    position: absolute;
+    background-image:url(https://ih1.redbubble.net/image.3305585448.8823/bg,f8f8f8-flat,750x,075,f-pad,750x1000,f8f8f8.jpg);
+    background-size: cover;
+    background-position: center;
+    left: 0px;
+    top: 300px;
+    width: 80px;
+    height: 120px;
+    z-index: 10;
+}
+#son{
+    position: absolute;
+    background-image:url(https://cdn2.vectorstock.com/i/1000x1000/94/56/funny-guy-standing-with-hands-up-and-holding-vector-21309456.jpg);
+    background-size: cover;
+    background-position: center;
+    right: 100px;
+    bottom: 300px;
+    width: 80px;
+    height: 120px;
+    z-index: 10;
+}
+@keyframes move {
+    0% {
+        top: 300px;
+        left: 0px;
+    }
+    35% {
+        top: 0px;
+        left: 650px;
+    }
+    50% {
+        top: 300px;
+        left: calc(100vw - 100px);
+    }
+    85% {
+        top: 300px;
+        left: 0px;
+    }
+    100% {
+        top: 300px;
+        left: 0px;
+    }
+}
+@keyframes rotate {
+    0% {
+        transform: rotate(3600deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+    
+}
