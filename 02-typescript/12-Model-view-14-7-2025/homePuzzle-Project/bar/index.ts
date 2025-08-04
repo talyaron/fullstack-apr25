@@ -29,9 +29,6 @@ function updateBallposition() {
     ball.style.left = ballX + 'px';
 }
 
-const ball = document.getElementById('ball');
-let ballX = 100;
-let ballY = 100;
 const moveStep = 10;
 const screenWidth = window.innerWidth;
 const screenHeight = window.innerHeight;
@@ -71,7 +68,7 @@ ball.addEventListener('click', () => {
       ballY = Math.floor(Math.random() * (screenHeight - 80));
       updateBallPosition();
 
-      ball.src = 'ball.png'; // Reset back to ball image
+      ball.src = 'ball.png.jpeg'; // Reset back to ball image
       ball.style.display = 'block';
     }, 2000);
   }, 200);
