@@ -121,18 +121,18 @@ function handleSubmit(event: Event) {
     console.error("Error submitting form:", error);
   }
 }
-
 function htmlYourItems(products: Product[]) {
   try {
     return products
-      .map((product) => {
+      .map((product, index) => {
         const imgURL =
           typeof product.productImg === "string"
             ? product.productImg
             : URL.createObjectURL(product.productImg);
 
         return `
-          <div class="product-card">
+          <div class="product-card" data-index="${index}">
+            <button class="product-card__delete" data-index="${index}">×</button>
             <div class="product-card__image-wrapper">
               ${
                 imgURL
@@ -172,11 +172,29 @@ function renderYourItems(products: Product[]): void {
 
     const cardsHTML = htmlYourItems(products);
     container.innerHTML = cardsHTML;
+    
+    const deleteButtons = container.querySelectorAll(".product-card__delete");
+    deleteButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const index = parseInt((button as HTMLElement).dataset.index || "-1");
+        if (index >= 0) {
+          products.splice(index, 1);
+          renderYourItems(products); // Re-render updated list
+        }
+      });
+    });
+
   } catch (error) {
     console.error("Error rendering items:", error);
   }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  renderYourItems(products);
+});
+document.getElementById("sortPriceBtn")?.addEventListener("click", () => {
+
+  products.sort((a, b) => a.productPrice - b.productPrice);
+
   renderYourItems(products);
 });

@@ -1,4 +1,4 @@
-const BALL_SIZE:number = 50;
+const BALL_SIZE: number = 50;
 
 interface Ball {
   x: number;
@@ -78,18 +78,18 @@ function getNewBallPosition(event: KeyboardEvent) {
   //after using transform: translate(-50%, -50%) in the css, the max X and max Y now correlate with the center of the ball
   //so i need to add half of its size, so that it doesnt go out of the lines
   const ballSize = BALL_SIZE;
-  const maxX = gameZone.offsetWidth - ballSize + BALL_SIZE/2;
-  const maxY = gameZone.offsetHeight - ballSize + BALL_SIZE/2;
+  const maxX = gameZone.offsetWidth - ballSize + BALL_SIZE / 2;
+  const maxY = gameZone.offsetHeight - ballSize + BALL_SIZE / 2;
 
   switch (event.key) {
     case "ArrowUp":
-      ball.y = Math.max(BALL_SIZE/2, ball.y - step);
+      ball.y = Math.max(BALL_SIZE / 2, ball.y - step);
       break;
     case "ArrowDown":
       ball.y = Math.min(maxY, ball.y + step);
       break;
     case "ArrowLeft":
-      ball.x = Math.max(BALL_SIZE/2, ball.x - step);
+      ball.x = Math.max(BALL_SIZE / 2, ball.x - step);
       break;
     case "ArrowRight":
       ball.x = Math.min(maxX, ball.x + step);
