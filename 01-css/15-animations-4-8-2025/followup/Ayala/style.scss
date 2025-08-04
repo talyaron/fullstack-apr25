@@ -1,0 +1,49 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.clown {
+    align-self: center;
+    height: 100vh;
+    width: 50vw;
+    background-image: url(../images.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+}
+
+.eyeball {
+    width: 30px;
+    height: 30px;
+    background-color: black;
+    position: absolute;
+    border-radius: 50%;
+    top:245px;
+    &_one{
+        left:558px;
+    }&_two{
+        left: 648px;
+    }
+    
+    animation-name: eyes;
+         animation-duration: 2s;
+    animation-iteration-count:infinite;
+    animation-timing-function: linear;
+}
+@keyframes eyes {
+    0% {
+        transform: translate(0 0);
+    }
+    25% {
+        transform: translate(10px);
+    }
+    75% {
+        transform: translate(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+    
+}
