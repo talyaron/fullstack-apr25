@@ -1,0 +1,38 @@
+.ball {
+    width: 100px;
+    height: 100px;
+    background-color: rgb(255, 100, 100);
+    border-radius: 5px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+
+    animation-name:  move, transform;
+    animation-duration: 5s, 2s;
+    animation-iteration-count: infinite;
+        animation-timing-function: linear;
+
+        
+
+
+}
+
+@keyframes move {
+    0%, 100%{
+        top: 50vh;
+        left: 0vw;
+    }
+    50%{
+        
+        left: calc(50vw - 100px);
+    }
+
+
+}
+
+@keyframes transform{
+    0%, 100%{
+        border-radius: 5%;
+    }
+    50%{border-radius: 50%;}
+}
