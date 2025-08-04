@@ -49,12 +49,14 @@ body {
     display: flex;
     align-items: flex-end;
     justify-content: center;
+    z-index: 30;
+    transition: all 0.3s;
 }
 
 .ball {
     position: absolute;
-    height: 30px;
-    width: 30px;
+    height: 20px;
+    width: 20px;
 
     background-image: url("../images/ball.png");
     background-position: center;
@@ -76,4 +78,44 @@ body {
     color: rgba(122, 18, 18, 0.699);
     left: 670px;
     top: 215px;
+}
+
+#goalGifContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); // רקע חצי שקוף
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+
+    img {
+        width: 300px;
+        height: auto;
+    }
+}
+
+#goal {
+    display: none;
+    position: fixed;
+    width: 500px;
+    height: 300px;
+    z-index: 50;
+    align-self: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url("../images/goal.png");
+    background-color: rgba(0, 0, 0, 0.534);
+    border-radius: 15px;
+    transition: transform 0.4s ease;
+}
+#scoreRoot{
+    font-size: 2rem;
 }
