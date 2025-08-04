@@ -8,7 +8,7 @@
         }
         ball.addEventListener('animationend', (e) => {
             const animationEvent = e as AnimationEvent;
-            console.log('Animation ended:', animationEvent.animationName);
+            console.log('Animation ended:', animationEvent);
             ball.classList.add('fade-out');
             ball.addEventListener('transitionend', () => {
                 console.log('Fade out transition ended');
