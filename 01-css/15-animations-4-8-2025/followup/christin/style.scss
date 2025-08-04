@@ -1,0 +1,49 @@
+#ball{
+    width: 100px;
+    height: 100px;
+    border: 80px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-image: url(https://d3en8d2cl9etnr.cloudfront.net/1235031-large_default/fashion-lobster-slippers-men-funny-animal-flip-flops-cute-beach-casual.jpg);
+    background-size: cover;
+    background-position: center;
+    animation-name: move, rotate;
+    animation-duration: 8s;
+    animation-iteration-count: 3;
+    animation-timing-function: linear;
+
+
+}
+@keyframes move {
+    0% { 
+        top: 300px; 
+        left: 20px; 
+    }
+    25% { 
+        top: 30px; 
+        left: 40px; 
+    }
+    50% { 
+        top: 20px; 
+        left: 60px; 
+    }
+    75% { 
+        top: 40px; 
+        left: 40px; 
+    }
+    100% { 
+        top: 300px; 
+        left: 20px; 
+    }
+
+}
+@keyframes rotate {
+    0% {
+        transform: rotate(3600deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+    
+}
