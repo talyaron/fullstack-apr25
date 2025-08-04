@@ -44,14 +44,42 @@ body {
     }
 }
 
-#cube {
+#cube{
     width: 100px;
     height: 100px;
     background-color: yellow;
     border: solid 2px black;
-    border-radius: 2px;
+    border-radius: 5px;
     position: absolute;
-    bottom: 1px;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 0px;
+    left: 0px;
+
+    animation-name: rotate, move;
+    animation-duration: 8s;
+    animation-iteration-count: 2;
+    animation-timing-function: linear;
+  
+}
+
+@keyframes move {
+    0% {
+        top: 0px;
+        left: 0px;
+    }
+    35% {
+        top: 0px;
+        left: calc(100vw - 100px);
+    }
+    50% {
+        top: calc(100vh - 100px);
+        left: calc(100vw - 100px);
+    }
+    85% {
+        top: calc(100vh - 100px);
+        left: 0px;
+    }
+    100% {
+        top: 0px;
+        left: 0px;
+    }
 }
