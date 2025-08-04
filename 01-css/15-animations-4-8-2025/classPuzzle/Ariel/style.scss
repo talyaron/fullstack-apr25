@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+  background: #f0f0f0;
+  overflow: hidden;
+}
+
+.back{
+  background-image: url(./../img.png)
+}
+
+#ball {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-image: url(https://pics.clipartpng.com/Bowling_Ball_PNG_Clip_Art-1362.png);
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 10vw;
+  animation: bounceSteps 13s  infinite;
+}
+
+@keyframes bounceSteps {
+  0%   { transform: translate(-6vw, 0)      rotate(0deg); }
+  10%  { transform: translate(10vw, 10vh) rotate(180deg); }
+  20%  { transform: translate(20vw, 20vh)  rotate(360deg); }
+  30%  { transform: translate(30vw, 30vh) rotate(540deg); }
+  40%  { transform: translate(40vw, 40vh)  rotate(720deg); }
+  50%  { transform: translate(50vw, 50vh) rotate(900deg); }
+  60%  { transform: translate(60vw, 60vh)  rotate(1080deg); }
+  70%  { transform: translate(70vw, 70vh) rotate(1260deg); }
+  80%  { transform: translate(80vw, 80vh)  rotate(1440deg); }
+  90%  { transform: translate(90vw, 90vh) rotate(1620deg); }
+  100% { transform: translate(100vw, 100vh) rotate(1800deg)}
+}
