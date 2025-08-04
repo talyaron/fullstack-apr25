@@ -22,35 +22,20 @@ class Player {
             <div class="player_name">${this.name}</div>
         </div>
         `;
-  }
-  renderPlayer() {
-    try {
-      const elementInHTML = document.getElementById("playerRoot");
-      if (!elementInHTML)
-        throw new Error("Element with id 'playerRoot' not found.");
-      this.playerHTML = elementInHTML;
-      this.playerHTML.innerHTML = this.htmlPlayer();
-    } catch (error) {
-      console.error("Error rendering ", error);
     }
-  }
-  move(direction: "up" | "down" | "right" | "left") {
-    switch (direction) {
-      case "up":
-        this.position.y -= 1;
-        break;
-      case "down":
-        this.position.y += 1;
-        break;
-      case "right":
-        this.position.x += 1;
-        break;
-      case "left":
-        this.position.x -= 1;
-        break;
-      default:
-        break;
+    renderPlayer() {
+        try {
+            const elementInHTML = document.getElementById("playerRoot");
+            if (!elementInHTML)
+                throw new Error("Element with id 'playerRoot' not found.");
+            this.playerHTML = elementInHTML;
+            this.playerHTML.innerHTML = this.htmlPlayer();
+        } catch (error) {
+            console.error("Error rendering ", error);
+        }
     }
+
+
     move(direction: "up" | "down" | "right" | "left" | "still"): void {
         switch (direction) {
             case "up":
