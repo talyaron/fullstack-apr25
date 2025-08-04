@@ -180,3 +180,9 @@ function renderYourItems(products: Product[]): void {
 document.addEventListener("DOMContentLoaded", () => {
   renderYourItems(products);
 });
+document.getElementById("sortPriceBtn")?.addEventListener("click", () => {
+
+  products.sort((a, b) => a.productPrice - b.productPrice);
+
+  renderYourItems(products);
+});
