@@ -1,5 +1,15 @@
 class Field {
+    width: number;
+    height: number;
+    element: HTMLElement;
+    players: FootballPlayer[] = [];
 
+
+    constructor(element: HTMLElement, width: number = 600, height: number = 600, ){
+        this.element = element;
+        this.width = width;
+        this.height = height;
+    }
 }
 
 
@@ -12,7 +22,7 @@ class FootballPlayer {
     playerElement: HTMLElement;
     location: { x: number; y: number; };
 
-    constructor(name: string, year: number, position: string, team: string, imageUrl: string, domElement: HTMLElement, location: { x: number, y: number}) {
+    constructor(name: string, year: number, position: string, team: string, imageUrl: string, fieldContainer: HTMLElement, location: { x: number, y: number }) {
         this.name = name;
         this.yearOfBirth = year;
         this.position = position;
@@ -20,25 +30,33 @@ class FootballPlayer {
         this.imageUrl = imageUrl;
         this.location = location;
 
-        if(domElement){
-            this.render(domElement);
+        if (fieldContainer) {
+            this.render(fieldContainer);
         }
     }
 
 
 
     render(container: HTMLElement) {
+
         this.playerElement = document.createElement("div");
-        if(!this.playerElement) throw new Error("Can't find this player element");
         this.playerElement.classList.add("player");
 
         container.appendChild(this.playerElement);
     }
 
-    move(x: number, y: number) {
-        this.location.x += x;
-        this.location.y += y;
+    move(moveX: number, moveY: number) {
+        this.location.x += moveX;
+        this.location.y += moveY;
+
+        this.updatePosition();
     }
+
+    updatePosition() {
+        this.playerElement.style.left = this.location.x + "px";
+        this.playerElement.style.top = this.location.y + "px";
+    }
+
 
 }
 
