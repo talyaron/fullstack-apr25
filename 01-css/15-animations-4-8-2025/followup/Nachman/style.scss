@@ -1,0 +1,74 @@
+$ball-size: 60px;
+$guy-width: 150px;
+
+body {
+  margin: 0;
+  background-color: #eef;
+  overflow: hidden;
+}
+
+.scene {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.guy {
+  position: absolute;
+  bottom: 0;
+  left: 50px;
+  width: $guy-width;
+  height: auto;
+}
+
+.ball {
+  position: absolute;
+  width: $ball-size;
+  height: $ball-size;
+  left: 160px;
+  bottom: 300px;
+  animation: shootBall 2s ease-in-out 1 forwards, spin 2s linear 1;
+}
+.net {
+  position: absolute;
+  top: 100px;
+  right: 50px;
+  width: 120px;
+  height: auto;
+}
+
+
+@keyframes shootBall {
+  0% {
+    left: 160px;
+    bottom: 300px;
+    opacity: 1;
+  }
+
+  40% {
+    left: 50vw;
+    bottom: 700px;
+  }
+
+  80% {
+    left: calc(100vw - 180px); 
+    bottom: 300px; 
+  }
+
+  100% {
+    left: calc(100vw - 170px);
+    bottom: calc(100vh - 140px); 
+    opacity: 0.9;
+  }
+}
+
+
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(720deg);
+  }
+}
