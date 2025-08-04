@@ -1,3 +1,4 @@
+let editingIndex: number | null = null;
 interface Product {
   productName: string;
   productType: string;
@@ -133,6 +134,7 @@ function htmlYourItems(products: Product[]) {
         return `
           <div class="product-card" data-index="${index}">
             <button class="product-card__delete" data-index="${index}">×</button>
+            <button class="product-card__edit" data-index="${index}">✎</button>
             <div class="product-card__image-wrapper">
               ${
                 imgURL
@@ -172,17 +174,34 @@ function renderYourItems(products: Product[]): void {
 
     const cardsHTML = htmlYourItems(products);
     container.innerHTML = cardsHTML;
-    
+
     const deleteButtons = container.querySelectorAll(".product-card__delete");
     deleteButtons.forEach((button) => {
       button.addEventListener("click", () => {
         const index = parseInt((button as HTMLElement).dataset.index || "-1");
         if (index >= 0) {
           products.splice(index, 1);
-          renderYourItems(products); // Re-render updated list
+          renderYourItems(products); 
         }
       });
     });
+    container.querySelectorAll(".product-card__edit").forEach((button) => {
+      button.addEventListener("click", () => {
+        const index = parseInt((button as HTMLElement).dataset.index || "-1");
+        if (index >= 0) {
+          const product = products[index];
+          editingIndex = index;
+
+          (document.getElementById("productName") as HTMLInputElement).value = product.productName;
+          (document.getElementById("productType") as HTMLInputElement).value = product.productType;
+          (document.getElementById("productDescription") as HTMLInputElement).value = product.productDescription;
+          (document.getElementById("productRating") as HTMLInputElement).value = product.productRating.toString();
+          (document.getElementById("productAmtRaters") as HTMLInputElement).value = product.productAmtRaters.toString();
+          (document.getElementById("productPrice") as HTMLInputElement).value = product.productPrice.toString();
+        }
+      });
+    });
+
 
   } catch (error) {
     console.error("Error rendering items:", error);
@@ -191,7 +210,34 @@ function renderYourItems(products: Product[]): void {
 
 document.addEventListener("DOMContentLoaded", () => {
   renderYourItems(products);
+
+  const form = document.getElementById("productForm") as HTMLFormElement;
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const newProduct: Product = {
+      productName: (document.getElementById("productName") as HTMLInputElement).value,
+      productType: (document.getElementById("productType") as HTMLInputElement).value,
+      productDescription: (document.getElementById("productDescription") as HTMLInputElement).value,
+      productRating: parseFloat((document.getElementById("productRating") as HTMLInputElement).value),
+      productAmtRaters: parseInt((document.getElementById("productAmtRaters") as HTMLInputElement).value),
+      productPrice: parseFloat((document.getElementById("productPrice") as HTMLInputElement).value),
+      productImg: (document.getElementById("productImg") as HTMLInputElement).files?.[0] || ""
+    };
+
+    if (editingIndex !== null) {
+      products[editingIndex] = newProduct;
+      editingIndex = null;
+    } else {
+      products.push(newProduct);
+    }
+
+    form.reset();
+    renderYourItems(products);
+  });
 });
+
 document.getElementById("sortPriceBtn")?.addEventListener("click", () => {
 
   products.sort((a, b) => a.productPrice - b.productPrice);
