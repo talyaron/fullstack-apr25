@@ -318,3 +318,21 @@ body {
     }
   }
 }
+#sortPriceBtn {
+  display: inline-block;
+  margin: 15px auto;
+  padding: 10px 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #dbdbdb;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #000000;
+    color: white;
+  }
+}
