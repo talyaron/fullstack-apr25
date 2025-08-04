@@ -1,0 +1,53 @@
+#ball{
+    width: 100px;
+    height: 100px;
+    
+    border-radius: 100px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-image: url(https://pics.clipartpng.com/Bowling_Ball_PNG_Clip_Art-1362.png);
+    background-size: cover;
+    background-position: center;
+
+    animation-name: bounce;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes bounce {
+    0% {
+      transform: translate(-6vw, 0);
+    }
+    10% {
+      transform: translate(100vw, 10vh);
+    }
+    20% {
+      transform: translate(-6vw, 20vh);
+    }
+    30% {
+      transform: translate(100vw, 30vh);
+    }
+    40% {
+      transform: translate(-6vw, 40vh);
+    }
+    50%{
+      transform: translate(100vw, 50vh);
+    }
+    60%{
+      transform: translate(-6vw, 60vh);
+    }
+    70%{
+      transform: translate(100vw, 70vh);
+    }
+    80%{
+      transform: translate(-6vw, 80vh);
+    }
+    90%{
+      transform: translate(100vw, 90vh);
+    }
+    100%{
+      transform: translate(-6vw, 100vh);
+    }
+}
