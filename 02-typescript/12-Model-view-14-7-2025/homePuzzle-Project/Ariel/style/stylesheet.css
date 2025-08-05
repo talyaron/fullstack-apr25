@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: rgba(167, 16, 16, 0.781);
+}
+
+.bomb {
+  height: 150px;
+  width: 150px;
+  position: absolute;
+}/*# sourceMappingURL=stylesheet.css.map */

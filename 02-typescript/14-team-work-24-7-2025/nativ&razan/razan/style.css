@@ -1,0 +1,148 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+#header {
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 48px;
+  background-color: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 95%;
+  z-index: 1000;
+}
+#header__logo p {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0;
+}
+#header__search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid white;
+  padding-bottom: 4px;
+}
+#header__search p {
+  margin: 0;
+  font-size: 14px;
+}
+#header__search i {
+  font-size: 14px;
+  cursor: pointer;
+}
+#header__search i:hover {
+  color: #ccc;
+}
+#header__icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 18px;
+}
+#header__icons i {
+  cursor: pointer;
+}
+#header__icons i:hover {
+  color: #ccc;
+}
+#header__icons .fi {
+  width: 24px;
+  height: 16px;
+}
+
+.nav-bar {
+  display: flex;
+  gap: 12px;
+  padding: 12px 24px;
+  background-color: black;
+  margin-top: 80px;
+}
+.nav-bar .nav__item {
+  white-space: nowrap;
+  padding: 8px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.675);
+  border-radius: 9999px;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.3s, color 0.3s;
+}
+.nav-bar .nav__item:hover {
+  background-color: rgb(49, 49, 49);
+  color: white;
+}
+
+#footer {
+  background-color: #000;
+  color: white;
+  padding: 60px 48px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+}
+#footer h1 {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+#footer p {
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 8px 0;
+}
+#footer input[type=email] {
+  width: 100%;
+  max-width: 450px;
+  background-color: #333;
+  border: 1px solid #666;
+  padding: 16px;
+  color: white;
+  font-size: 16px;
+  border-radius: 10px;
+  margin-top: 8px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+#footer input[type=email]::-moz-placeholder {
+  color: #bbb;
+}
+#footer input[type=email]::placeholder {
+  color: #bbb;
+}
+#footer #footer__info {
+  flex: 1;
+  min-width: 67vw;
+  max-width: 70vw;
+}
+#footer #footer__info button {
+  background-color: white;
+  color: black;
+  border: none;
+  padding: 16px 32px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+#footer #footer__info button:hover {
+  background-color: #eee;
+}
+#footer #footer__menu {
+  justify-content: flex-end;
+  flex: 1;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+}
+#footer #footer__menu p {
+  cursor: pointer;
+}/*# sourceMappingURL=style.css.map */
