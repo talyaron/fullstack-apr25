@@ -1,0 +1,27 @@
+body {
+  background-color: lightgreen;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+#container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+#field {
+  width: 600px;
+  height: 600px;
+  background-color: green;
+  border: 2px solid white;
+  position: relative;
+}
+
+.player {
+  width: 30px;
+  height: 30px;
+  background-color: blue;
+  border-radius: 50%;
+  position: absolute;
+}/*# sourceMappingURL=style.css.map */

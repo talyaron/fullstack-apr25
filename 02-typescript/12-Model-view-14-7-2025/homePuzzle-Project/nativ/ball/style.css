@@ -1,3 +1,7 @@
+body {
+  background-color: rgba(213, 174, 17, 0.762);
+}
+
 .container {
   position: relative;
   height: 300px; /* or whatever you want */
@@ -42,7 +46,7 @@
   position: absolute;
   top: 2%;
   left: 45%;
-  width: 50px;
+  width: 100px;
   height: 50px;
   font-size: x-large;
 }/*# sourceMappingURL=style.css.map */

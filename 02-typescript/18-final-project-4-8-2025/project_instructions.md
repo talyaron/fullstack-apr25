@@ -29,7 +29,7 @@ Build a **client-side web application** using **TypeScript**, **Model-View-Contr
 **Difficulty**: Light
 
 **Features**:
-- Product catalog display (hardcoded or JSON data)
+- Product catalog display (hardcoded or JSON data)  
 - User shopping cart functionality
 - Admin interface for product management (add/edit/delete products)
 - Data persistence using localStorage
