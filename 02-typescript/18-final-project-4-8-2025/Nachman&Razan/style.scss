@@ -1,0 +1,29 @@
+.game-container {
+  &__background {
+    position: relative;
+    background-color: black;
+    height: 100vh;
+    width: 100%;
+    background-image: url("../imgs/background.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    overflow: hidden;
+  }
+  #cannon {
+  position: absolute;
+  bottom: 15%;
+  left: 0;
+  width: 150px;
+  transition: left 0.1s linear;
+  pointer-events: none;
+  transform: none;
+}
+
+.bullet {
+  position: absolute;
+  width: 5px;
+  height: 15px;
+  background: rgb(92, 45, 6);
+}
+}
