@@ -67,7 +67,7 @@ class GameController {
   const cannonWidth = this.view.cannon.offsetWidth;
 
   // Get mouse X relative to container
-  let x = e.clientX - backgroundRect.left;
+  let x = e.clientX - backgroundRect.left- cannonWidth / 2;
 
   // Clamp so the cannon stays fully inside
   if (x < 0) x = 0;

@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ball Blast Game</title>
-    <link rel="stylesheet" href="./dist/style.css">
-    <script src="./dist/index.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ball Blast Game</title>
+  <link rel="stylesheet" href="./dist/style.css">
+  <script src="./dist/index.js" defer></script>
 </head>
 <body>
 <div class="game-container__wrapper">
   <div class="game-container__background">
     <img id="cannon" src="./imgs/cannon.png" alt="Cannon"/>
-  </div>
-  <div class="game-container__overlay">
-    <button id="pauseButton">⏸</button>
+    <button id="pauseButton">⏸</button> <!-- moved here -->
+   </div>
+   <div class="game-container__overlay">
     <div id="scoreBarContainer">
       <div id="scoreBar"></div>
     </div>
+    <div id="coinBarContainer">
+  <span id="coinIcon">🪙</span>
+  <span id="coinCount">0</span>
+</div>
   </div>
 </div>
 
