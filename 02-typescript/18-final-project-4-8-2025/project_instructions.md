@@ -51,10 +51,9 @@ Build a **client-side web application** using **TypeScript**, **Model-View-Contr
 **Difficulty**: Hard
 
 **Features**:
-- 2D or 3D game environment (Canvas/WebGL)
+- CSS environment
 - Complex animations and visual effects
 - Advanced scoring system with leaderboards
-- Multiple game levels or stages
 - Sound effects and music integration
 - Collision detection and game physics
 - Save/load game progress
