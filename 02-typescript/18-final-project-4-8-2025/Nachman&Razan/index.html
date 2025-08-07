@@ -8,10 +8,17 @@
     <script src="./dist/index.js" defer></script>
 </head>
 <body>
-<div class="game-container">
-    <div class="game-container__background">
-        <img id="cannon" src="./imgs/cannon.png" alt="Cannon"/>
+<div class="game-container__wrapper">
+  <div class="game-container__background">
+    <img id="cannon" src="./imgs/cannon.png" alt="Cannon"/>
+  </div>
+  <div class="game-container__overlay">
+    <button id="pauseButton">⏸</button>
+    <div id="scoreBarContainer">
+      <div id="scoreBar"></div>
     </div>
+  </div>
 </div>
+
 </body>
 </html>
