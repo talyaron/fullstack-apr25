@@ -76,17 +76,18 @@
   background-color: rgba(255, 255, 255, 1);
 }
 
+}
 
 #scoreBarContainer {
   pointer-events: auto;
   position: absolute;
-  top: 120px; /* or whatever you set it to */
+  top: 120px;
   left: 50%;
   transform: translateX(-50%);
   width: 200px;
   height: 25px;
-  background-color: rgba(255, 0, 0, 0.3); /* Light transparent red background */
-  border: 2px solid rgb(255, 166, 0); /* Red border */
+  background-color: rgba(255, 0, 0, 0.3);
+  border: 2px solid rgb(255, 166, 0); 
   border-radius: 12px;
   overflow: hidden;
 }
