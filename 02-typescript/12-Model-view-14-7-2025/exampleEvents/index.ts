@@ -25,7 +25,7 @@ function htmlStudent(student: Student): string {
     `;
 }
 
-function renderStudents(student: Student): void {
+function renderStudent(student: Student): void {
     try {
         const studentRoot = document.getElementById("studentRoot");
         if (!studentRoot) throw new Error("studentRoot element not found");
@@ -37,7 +37,14 @@ function renderStudents(student: Student): void {
     }
 }
 
-renderStudents(amit);
+renderStudent(amit);
+
+//models functions
+function updateStudentScore(student: Student, newScore: number): Student {
+    if (newScore < 0 || newScore > 100) return {...student}; // Validate score range}
+    return { ...student, avgScore: newScore };
+    // student.avgScore = newScore; // Directly update the score
+}
 
 //controller functions
 function handleAdd(): void {
@@ -45,12 +52,12 @@ function handleAdd(): void {
     amit.avgScore = updateStudentScore(amit, amit.avgScore + 1).avgScore // changed amit score
     console.log(amit);
     //re-render view (view)
-    renderStudents(amit);
+    renderStudent(amit);
 }
 
 function handleReduce(): void {
     amit.avgScore = updateStudentScore(amit, amit.avgScore - 1).avgScore; // changed amit score
-    renderStudents(amit);
+    renderStudent(amit);
 }
 
 function handleMouseEnter(): void {
@@ -64,9 +71,3 @@ function handleMouseLeave(): void {
 }
 
 
-//models functions
-function updateStudentScore(student: Student, newScore: number): Student {
-    if (newScore < 0 || newScore > 100) return {...student}; // Validate score range}
-    return { ...student, avgScore: newScore };
-    // student.avgScore = newScore; // Directly update the score
-}
