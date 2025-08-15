@@ -17,7 +17,7 @@ class SoccerPlayer {
     this.location = location;
     this.movementSize = movementSize;
     this.render();
-
+// not sure if this.render is legal here//
     
   }
 
