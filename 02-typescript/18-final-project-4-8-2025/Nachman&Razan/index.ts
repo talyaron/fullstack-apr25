@@ -99,7 +99,8 @@ class GameController {
     ballEl.classList.add("ball");
 
     const radius = 15 + Math.random() * 35;
-    const x = Math.random() * (this.view.background.offsetWidth - radius * 2);
+    const margin = 20;
+    const x = margin + Math.random() * (this.view.background.offsetWidth - radius * 2 - margin * 2);
     let y = 0;
 
     ballEl.style.width = ballEl.style.height = `${radius * 2}px`;

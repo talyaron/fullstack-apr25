@@ -7,8 +7,8 @@
   }
   &__background {
     position: relative;
-    height: 720px;
-    width: 510px;
+    height: 100vh;
+    width: 73vh;
     margin: 0 auto;
     background-image: url("../imgs/background.png");
     background-repeat: no-repeat;
@@ -61,7 +61,7 @@
   pointer-events: auto;
   position: absolute;
   top: 15px;
-  left: 640px; 
+  left: 50px; 
   z-index: 1001; 
   background-color: rgba(255, 132, 0, 0.872);
   border: none;
