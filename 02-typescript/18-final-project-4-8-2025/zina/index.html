@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta charset="UTF-8">
+  <title>חנות קטנה</title>
+  <style>
+    body { font-family: Arial; direction: rtl; padding: 20px; background: #f9f9f9; }
+    input, button { margin: 5px; }
+    .section { margin-bottom: 30px; }
+    .cart { background: #fff; padding: 10px; border: 1px solid #ccc; }
+  </style>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>🛍️ חנות קטנה</h1>
+
+  <div class="section">
+    <h2>הוספת מוצר לחנות </h2>
+    <input type="text" id="adminName" placeholder="שם מוצר">
+    <input type="number" id="adminPrice" placeholder="מחיר">
+    <button onclick="addProductByAdmin()">הוסף לחנות</button>
+  </div>
+
+  <div class="section">
+    <h2>הוספת מוצר לעגלה (משתמש)</h2>
+    <input type="text" id="userProduct" placeholder="שם מוצר">
+    <button onclick="addToCart()">הוסף לעגלה</button>
+  </div>
+
+  <div class="section cart">
+    <h2>📦 עגלת הקניות שלך</h2>
+    <div id="cartView">העגלה ריקה.</div>
+  </div>
+
+  <script>
+    const store = [];
+    const userCart = [];
+
+    function addProductByAdmin() {
+      const name = document.getElementById("adminName").value;
+      const price = parseFloat(document.getElementById("adminPrice").value);
+      if (!name || isNaN(price)) {
+        alert("נא למלא שם ומחיר תקינים");
+        return;
+      }
+      store.push({ name, price });
+      alert(`✅ "${name}" נוסף לחנות`);
+    }
+
+    function addToCart() {
+      const name = document.getElementById("userProduct").value;
+      const product = store.find(p => p.name === name);
+      if (!product) {
+        alert(`⚠️ "${name}" לא נמצא בחנות`);
+        return;
+      }
+      userCart.push(product);
+      updateCartView();
+    }
+
+    function updateCartView() {
+      const cartDiv = document.getElementById("cartView");
+      if (userCart.length === 0) {
+        cartDiv.innerText = "העגלה ריקה.";
+        return;
+      }
+
+      let html = "<ul>";
+      let total = 0;
+      userCart.forEach(item => {
+        html += `<li>${item.name} - ₪${item.price}</li>`;
+        total += item.price;
+      });
+      html += `</ul><strong>סה"כ לתשלום: ₪${total}</strong>`;
+      cartDiv.innerHTML = html;
+    }
+  </script>
+
+</body>
+</html>
