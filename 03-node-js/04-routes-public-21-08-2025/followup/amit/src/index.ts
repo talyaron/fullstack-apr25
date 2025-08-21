@@ -4,7 +4,7 @@ import { students } from "./model/StudentData";
 const app = express();
 const port = 3000;
 
-app.use(express.static("./src/public"))
+app.use(express.static("./public"))
 
 
 app.get("/students", (_, res) => {
@@ -15,7 +15,7 @@ app.get("/students", (_, res) => {
             return;
         }
         const studentsLength = students.length;
-        res.status(200).send({ studentsLength});
+        res.status(200).send({ numberOfStudents: studentsLength});
     } catch (error: any) {
         console.error(`Error, internal server error ${error}`)
         res.status(500).send({error: `Error , ${error.message} `})
