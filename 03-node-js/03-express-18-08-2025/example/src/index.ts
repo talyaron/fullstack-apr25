@@ -4,6 +4,8 @@ const port = 3000
 
 //api
 // /ariel == route
+app.use(express.static('public'))
+
 app.get('/ariel', (_, res) => {
 
   res.send('Hello World!')
