@@ -11,4 +11,7 @@ export const students: Student[] = [
     { id: 8, name: "Sahar", age: 22, email: "sahar@example.com" },
     { id: 9, name: "Ayla", age: 21, email: "ayla@example.com" },
     { id: 10, name: "Native", age: 25, email: "native@example.com" },
+    { id: 11, name: "Zina", age: 23, email: "zina@example.com" },
+    { id: 12, name: "Ori", age: 20, email: "ori@example.com" },
+    { id: 13, name: "Bar", age: 21, email: "bar@example.com" }
 ];
