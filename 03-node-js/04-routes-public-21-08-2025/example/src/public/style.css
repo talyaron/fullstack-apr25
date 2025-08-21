@@ -1,3 +1,45 @@
+/* Student Card Styles */
+.student {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(76, 110, 245, 0.12), 0 1.5px 6px rgba(118, 75, 162, 0.10);
+    padding: 28px 24px 20px 24px;
+    margin: 18px auto;
+    max-width: 340px;
+    transition: transform 0.18s cubic-bezier(.4,2,.6,1), box-shadow 0.18s;
+    border: 1.5px solid #e0e7ff;
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+}
+
+.student:hover {
+    transform: translateY(-6px) scale(1.025);
+    box-shadow: 0 8px 32px rgba(76, 110, 245, 0.18), 0 3px 12px rgba(118, 75, 162, 0.13);
+}
+
+.student h2 {
+    font-size: 1.6rem;
+    color: #4f3ca7;
+    margin-bottom: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.student p {
+    font-size: 1.08rem;
+    color: #3a3a3a;
+    margin-bottom: 6px;
+    line-height: 1.5;
+}
+
+#list-of-students {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 32px;
+}
 * {
     margin: 0;
     padding: 0;
