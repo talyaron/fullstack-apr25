@@ -9,7 +9,7 @@ const PORT = 3000;
 app.use(express.static('./src/public'));
 
 
-//API route
+//API route (for data)
 app.get('/students/number-of-students', (_, res) => {
     try {
 
@@ -25,6 +25,20 @@ app.get('/students/number-of-students', (_, res) => {
 
     } catch (error: any) {
         console.error('Error occurred while fetching student count:', error);
+        res.status(500).send({ error: `Internal Server Error: ${error.message}` });
+    }
+});
+
+app.get("/students/get-all-students", (_, res) => {
+    try {
+        if (!students || students.length === 0) {
+            res.status(404).send({ error: 'No students found' });
+            return;
+        }
+
+        res.status(200).send({ students });
+    } catch (error: any) {
+        console.error('Error occurred while fetching all students:', error);
         res.status(500).send({ error: `Internal Server Error: ${error.message}` });
     }
 });
