@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM input types practice</title>
+    <link rel="stylesheet" href="./dist/style.css">
+    <script src="./dist/index.js" defer> </script>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>🎯 DOM Input Types Practice</h1>
+        <p class="subtitle">Master HTML<input types with interactive challenges!></p>
+    </header>
+
+    <div class="challenge-grid">
+    <!-- Challenge 1: Text Input -->
+    <div class="challenge">
+        <h3> 1️⃣ Text Input</h3>
+    <div class="form-group">
+        <label for="name">Enter your name: </label>
+        <input type="text" id="name" placeholder="Type your name...">
+    </div>
+    <div id="name-output" class="output">Hello there! 👋</div>
+    </div> 
+
+    <!-- Challenge 2: Number Input -->
+     <div class="challenge">
+        <h3>2️⃣ Number Input</h3>
+        <div class="form-group">
+            <label for="age">Enter your age:</label>
+            <input type="number" id="age" min="1" max="120" placeholder="Your age...">
+        </div>
+        <div id="age-output" class="output">Age will appear here! 🎂</div>
+     </div>
+     <!-- Challenge 3: Password Input -->
+      <div class="challenge">
+        <h3>3️⃣ Password Input</h3>
+        <div class="form-group">
+            <label for="password">Enter password:</label>
+            <input type="password" id="password" placeholder="Secret password...">
+        </div>
+        <div class="form-group">
+            <div class="check-box-item">
+                <input type="checkbox" id="show-password">
+                <label for="show-password">Show password</label>
+            </div>
+        </div>
+        <div id="password-output" class="output">Password: Hidden 🔒</div>
+      </div>
+
+      <!-- Challenge 4: Email Input -->
+       <div class="challenge">
+        <h3>4️⃣ Email Input</h3>
+        <div class="form-group">
+            <label for="email">Enter your email:</label>
+            <input type="email" id="email" placeholder="your@email.com">  
+        </div>
+        <div id="email-output" class="output">Email will appear here! 📧</div>
+       </div>
+       <!-- Challenge 5: Range Slider -->
+        <div class="challenge">
+            <h3>6️⃣ Color Picker</h3>
+             <div class="form-group">
+                    <label for="color">Pick a color:</label>
+                    <input type="color" id="color" value="#3498db">
+                </div>
+                <div id="color-output" class="output">Color: #3498db 🎨</div>
+            </div>
+            
+            <!-- Challenge 7: Date Input -->
+            <div class="challenge">
+                <h3>7️⃣ Date Input</h3>
+                <div class="form-group">
+                    <label for="birthday">Pick your birthday:</label>
+                    <input type="date" id="birthday">
+                </div>
+                <div id="birthday-output" class="output">Birthday and age will appear here! 🎉</div>
+            </div>
+            
+            <!-- Challenge 8: Time Input -->
+            <div class="challenge">
+                <h3>8️⃣ Time Input</h3>
+                <div class="form-group">
+                    <label for="alarm">Set alarm time:</label>
+                    <input type="time" id="alarm">
+                </div>
+                <button id="clear-alarm">Clear Alarm</button>
+                <div id="alarm-output" class="output">No alarm set ⏰</div>
+            </div>
+            
+            <!-- Challenge 9: Checkbox List -->
+            <div class="challenge">
+                <h3>9️⃣ Checkbox List</h3>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="pizza" value="Pizza">
+                        <label for="pizza">🍕 Pizza</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="burger" value="Burger">
+                        <label for="burger">🍔 Burger</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="salad" value="Salad">
+                        <label for="salad">🥗 Salad</label>
+                    </div>
+                </div>
+                <div id="food-output" class="output">You like: Nothing selected yet 🤔</div>
+            </div>
+            
+            <!-- Challenge 10: Radio Buttons -->
+            <div class="challenge">
+                <h3>🔟 Radio Buttons</h3>
+                <div class="checkbox-group">
+                    <div class="radio-item">
+                        <input type="radio" id="small" name="size" value="Small">
+                        <label for="small">Small</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="medium" name="size" value="Medium">
+                        <label for="medium">Medium</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" id="large" name="size" value="Large">
+                        <label for="large">Large</label>
+                    </div>
+                </div>
+                <div id="size-output" class="output">Select a size! 📏</div>
+            </div>
+            
+            <!-- Challenge 11: Select Dropdown -->
+            <div class="challenge">
+                <h3>1️⃣1️⃣ Select Dropdown</h3>
+                <div class="form-group">
+                    <label for="country">Choose your country:</label>
+                    <select id="country">
+                        <option value="">Select a country...</option>
+                        <option value="USA">🇺🇸 USA</option>
+                        <option value="Canada">🇨🇦 Canada</option>
+                        <option value="UK">🇬🇧 UK</option>
+                    </select>
+                </div>
+                <div id="country-output" class="output">Choose your country! 🌍</div>
+            </div>
+            
+            <!-- Challenge 12: Textarea -->
+            <div class="challenge">
+                <h3>1️⃣2️⃣ Textarea</h3>
+                <div class="form-group">
+                    <label for="message">Write a message:</label>
+                    <textarea id="message" rows="4" maxlength="100" placeholder="Type your message here..."></textarea>
+                    <div id="char-count" class="char-count">Characters: 0/100</div>
+                </div>
+                <div id="message-output" class="output">Your message will appear here! ✍️</div>
+            </div>
+            
+            <!-- Challenge 13: File Input -->
+            <div class="challenge">
+                <h3>1️⃣3️⃣ File Input</h3>
+                <div class="form-group">
+                    <label for="file">Choose an image:</label>
+                    <input type="file" id="file" accept="image/*">
+                </div>
+                <div id="file-output" class="output">No file chosen 📁</div>
+            </div>
+            
+            <!-- Challenge 14: Search Input -->
+            <div class="challenge">
+                <h3>1️⃣4️⃣ Search Input</h3>
+                <div class="form-group">
+                    <label for="search">Search animals:</label>
+                    <input type="search" id="search" placeholder="Type to search...">
+                </div>
+                <div class="animal-list">
+                    <div class="animal-item">🐱 Cat</div>
+                    <div class="animal-item">🐶 Dog</div>
+                    <div class="animal-item">🐦 Bird</div>
+                    <div class="animal-item">🐠 Fish</div>
+                </div>
+            </div>
+            
+            <!-- Challenge 15: Tel Input -->
+            <div class="challenge">
+                <h3>1️⃣5️⃣ Phone Input</h3>
+                <div class="form-group">
+                    <label for="phone">Enter phone number:</label>
+                    <input type="tel" id="phone" placeholder="(123) 456-7890">
+                </div>
+                <div id="phone-output" class="output">Your phone will appear here! 📞</div>
+            </div>
+            
+            <!-- Challenge 16: URL Input -->
+            <div class="challenge">
+                <h3>1️⃣6️⃣ URL Input</h3>
+                <div class="form-group">
+                    <label for="website">Enter website:</label>
+                    <input type="url" id="website" placeholder="https://example.com">
+                </div>
+                <div id="url-output" class="output">Website will appear here! 🌐</div>
+            </div>
+            
+            <!-- Challenge 17: Week Input -->
+            <div class="challenge">
+                <h3>1️⃣7️⃣ Week Input</h3>
+                <div class="form-group">
+                    <label for="week">Pick a week:</label>
+                    <input type="week" id="week">
+                </div>
+                <div id="week-output" class="output">Pick a week! 📅</div>
+            </div>
+            
+            <!-- Challenge 18: Month Input -->
+            <div class="challenge">
+                <h3>1️⃣8️⃣ Month Input</h3>
+                <div class="form-group">
+                    <label for="month">Pick month and year:</label>
+                    <input type="month" id="month">
+                </div>
+                <div id="month-output" class="output">Pick a month! 📆</div>
+            </div>
+            
+            <!-- Challenge 19: Hidden Input -->
+            <div class="challenge">
+                <h3>1️⃣9️⃣ Hidden Input Fun</h3>
+                <input type="hidden" id="secret" value="🎉 You found the secret! 🎉">
+                <button id="reveal-secret">Reveal Secret</button>
+                <div id="secret-output" class="output">Click to reveal the secret! 🤫</div>
+            </div>
+            
+            <!-- Challenge 20: Mix and Match -->
+            <div class="challenge">
+                <h3>2️⃣0️⃣ Mix and Match</h3>
+                <div class="form-group">
+                    <label for="user-name">Name:</label>
+                    <input type="text" id="user-name" placeholder="Your name">
+                </div>
+                <div class="form-group">
+                    <label for="user-age">Age:</label>
+                    <input type="number" id="user-age" min="1" max="120">
+                </div>
+                <div class="form-group">
+                    <label for="user-color">Favorite Color:</label>
+                    <input type="color" id="user-color">
+                </div>
+                <div id="summary" class="summary-card" style="display: none;">
+                    <h4>📋 Profile Summary</h4>
+                    <div id="summary-content"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>  
+   
+</body>
+</html>
