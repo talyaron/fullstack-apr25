@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome Students</title>
     <link rel="stylesheet" href="style.css">
+    <script src="./dist/index.js" defer></script>
 </head>
 <body>
     <div class="floating-shapes">
@@ -12,19 +13,25 @@
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    
-    <div class="container">
-        <h1>Hello Students!!!!!</h1>
-        <h1 id="username"></h1>
-        <h1 id="password"></h1>
-        <div class="subtitle">Welcome to Our Learning Journey</div>
-        <div class="welcome-message">
+
+    <header class="site-header">
+        <h1>Hello my <span id="number-of-students"></span> Students!!!!!</h1>
+        <p class="subtitle">Welcome to Our Learning Journey</p>
+    </header>
+
+    <main class="container">
+        <article class="welcome-message">
             <span class="sparkle">✨</span>
             Ready to explore, learn, and grow together? 
             Let's make this an amazing experience filled with knowledge, 
             creativity, and endless possibilities!
             <span class="sparkle">✨</span>
-        </div>
-    </div>
+        </article>
+        <article id="list-of-students"></article>
+    </main>
+
+    <footer class="site-footer">
+        <p>© 2025 Student Platform | Built with ❤️ and knowledge</p>
+    </footer>
 </body>
 </html>
