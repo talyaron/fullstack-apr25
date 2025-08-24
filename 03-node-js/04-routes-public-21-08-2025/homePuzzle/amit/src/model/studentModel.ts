@@ -4,4 +4,5 @@ export interface Student {
     age: number;
     email: string;
     grades: number[];
+    imageUrl: string;
 }
