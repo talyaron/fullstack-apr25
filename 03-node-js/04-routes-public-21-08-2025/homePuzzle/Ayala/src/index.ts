@@ -15,13 +15,11 @@ app.get(`/product/get-amount`, (_, res) => {
     }
     const productAmount = products.length;
     res.status(200).send({ productAmount });
-
   } catch (error) {
     console.error("Error occurred while fetching products count:", error);
     res.status(500).send({ error: `Internal Server Error` });
   }
 });
-
 
 app.get(`/product/get-products`, (_, res) => {
   try {
@@ -31,7 +29,6 @@ app.get(`/product/get-products`, (_, res) => {
     }
 
     res.status(200).send({ products });
-
   } catch (error) {
     console.error("Error occurred while fetching products:", error);
     res.status(500).send({ error: `Internal Server Error` });
