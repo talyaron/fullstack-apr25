@@ -1,7 +1,7 @@
 import express from "express";
 import { products } from "./model/productsData";
 const app = express();
-const PORT = 5000;
+const PORT = 6000;
 
 app.use(express.static("./src/public"));
 

@@ -43,7 +43,6 @@ async function getNumberOfStudents():Promise<number> {
         return 0; // Return 0 or handle the error as needed
     }
 }
-<<<<<<< Updated upstream
 
 interface Student {
     id: number;
@@ -99,5 +98,3 @@ function renderStudentList(students: Student[]) {
         listContainer.appendChild(studentElement);
     });
 }
-=======
->>>>>>> Stashed changes

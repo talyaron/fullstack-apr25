@@ -5,11 +5,11 @@ interface Response {
 }
 async function showAmount():Promise<number> {
   try {
-    const response = await fetch("http://localhost:5000/product");
+    const response = await fetch("http://localhost:6000/product");
 
     const data: Response = await response.json() as Response;
     console.log(data);
-    
+
     if (!response.ok || typeof data === "string") throw new Error(data.error || "Error");
 
     return data.amount;
