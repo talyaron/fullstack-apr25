@@ -1,0 +1,93 @@
+:root {
+  --background-color: rgb(133, 111, 83);
+  --dark-grey: rgb(27, 27, 27);
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+.store_wrapper {
+  padding: 1rem 2rem;
+  background-color: var(--background-color);
+}
+
+.header {
+  color: var(--dark-grey);
+  flex-direction: column;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  font-weight: 900;
+}
+h1{
+  font-size: 3rem;
+  margin: 0.5rem;
+}
+#productsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+.product {
+  background-color: var(--dark-grey);
+  padding: 1rem 1rem;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  color: rgb(255, 255, 255);
+  gap: 0.3rem;
+  &_image {
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    aspect-ratio: 1/1;
+    background-image: url("../assests/product-images/bacpack.png");
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.50);
+    transition: 0.5s ease;
+  }
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.74);
+  }
+
+  &_name {
+    font-size: 1.2rem;
+    margin-bottom: 0.2rem;
+    font-weight: 600;
+    color: #ffffff;
+    align-self: center;
+  }
+
+  &_price {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  &_category {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #555;
+  }
+
+  &_stock {
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  // Optional: color change based on stock
+  &_stock.in-stock {
+    color: rgb(255, 255, 255);
+  }
+  &_stock.low-stock {
+    color:var(--background-color);
+  }
+  &_stock.out-of-stock {
+    color: red;
+  }
+}
