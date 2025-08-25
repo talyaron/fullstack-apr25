@@ -49,7 +49,10 @@ interface Student {
     name: string;
     age: number;
     email: string;
+    grade: number;
 }
+
+
 
 interface StudentsResponse {
     students?: Student[];
@@ -94,7 +97,10 @@ function renderStudentList(students: Student[]) {
             <h2>${student.name}</h2>
             <p>Age: ${student.age}</p>
             <p>Email: ${student.email}</p>
+            <p>Grade: ${student.grade}</p>
         `;
         listContainer.appendChild(studentElement);
     });
 }
+
+
