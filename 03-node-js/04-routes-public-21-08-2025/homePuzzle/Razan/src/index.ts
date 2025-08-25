@@ -46,3 +46,19 @@ app.get("/students/get-all-students", (_, res) => {
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
+app.get('/students/average-of-students', (_, res) => {
+    try {
+        if (!students || students.length === 0) {
+            res.status(404).send({ error: 'No students found' });
+            return;
+        }
+
+        const averageOfStudents = students.reduce((sum, s) => sum + s.grade, 0) / students.length;
+        res.status(200).send({ averageGrade: averageOfStudents }); 
+    } catch (error: any) {
+        console.error('Error occurred while fetching student average:', error);
+        res.status(500).send({ error: `Internal Server Error: ${error.message}` });
+    }
+});
+
