@@ -1,50 +1,9 @@
-interface Student {
-    id: number;
-    name: string;
-    age: number;
-    email: string;
-}
-
-interface StudentResponse {
-    numberOfStudents: number;
-    students?: Student[];
-    error?: string;
-}
+import { Student, StudentResponse } from '../model/model.js';
+import { renderStudentList } from '../view/view.js';
 
 
 
-//view
-
-async function renderStudentList(students: Student[]) {
-    const listContainer = document.getElementById('list-of-students');
-    if (!listContainer) throw new Error('List container not found');
-    
-    const averages = await getAverageGrades();
-    
-    // Clear existing content
-    listContainer.innerHTML = '';
-    
-    
-    // Render each student
-    students.forEach(student => {
-        const avgObj = averages.find((a: any) => a.id === student.id);
-        const avgText = avgObj ? avgObj.average.toFixed(2) : 'N/A';
-        const studentElement = document.createElement('div');
-        studentElement.className = 'student';
-        studentElement.innerHTML = `
-        <h2>${student.name}</h2>
-        <p>Age: ${student.age}</p>
-        <p>Email: ${student.email}</p>
-        <p>Average Grade: ${avgText}</p>
-        `;
-        listContainer.appendChild(studentElement);
-    });
-}
-
-
-// main controller
-
-async function getNumberOfStudents(): Promise<number> {
+export async function getNumberOfStudents(): Promise<number> {
     try {
         const response = await fetch('http://localhost:3000/students/number-of-students'); //get from API (on the internet) from the server
         
@@ -63,7 +22,7 @@ async function getNumberOfStudents(): Promise<number> {
 }
 
 
-async function getAllStudents(): Promise<Student[]> {
+export async function getAllStudents(): Promise<Student[]> {
     try {
         const response = await fetch('http://localhost:3000/students/get-all-students');
         
@@ -85,7 +44,7 @@ async function getAllStudents(): Promise<Student[]> {
     }
 }
 
-async function getAverageGrades() {
+export async function getAverageGrades() {
     try {
         const response = await fetch('http://localhost:3000/students/average-grade');
         
@@ -101,7 +60,7 @@ async function getAverageGrades() {
     }
 }
 
-async function main() {
+export async function main() {
     try {
         const studentCount = await getNumberOfStudents();
         
@@ -119,4 +78,3 @@ async function main() {
     }
 }
 
-main();
