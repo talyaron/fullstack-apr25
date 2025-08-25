@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-body {
+.page {
     font-family: 'Arial', sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
@@ -14,28 +14,29 @@ body {
     align-items: center;
     overflow-x: hidden;
     color: #fff;
+    position: relative;
 }
 
-.site-header {
+.header {
     text-align: center;
     padding: 30px 20px;
     animation: fadeInDown 1s ease-out;
 }
 
-.site-header h1 {
+.header__title {
     font-size: 3rem;
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
     animation: bounce 2s infinite;
 }
 
-.subtitle {
+.header__subtitle {
     font-size: 1.5rem;
     color: rgba(255, 255, 255, 0.9);
     margin-top: 10px;
     font-weight: 300;
 }
 
-.container {
+.main {
     text-align: center;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
@@ -48,7 +49,7 @@ body {
     max-width: 1200px;
 }
 
-.welcome-message {
+.welcome {
     font-size: 1.2rem;
     color: rgba(255, 255, 255, 0.85);
     line-height: 1.6;
@@ -56,14 +57,21 @@ body {
     margin: 0 auto 40px;
 }
 
-#list-of-students {
+.welcome__sparkle {
+    display: inline-block;
+    animation: sparkle 1.5s infinite;
+    font-size: 1.8rem;
+    margin: 0 8px;
+}
+
+.students-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 24px;
     justify-items: center;
 }
 
-.student {
+.student-card {
     background: rgba(255, 255, 255, 0.9);
     border-radius: 16px;
     box-shadow: 0 4px 24px rgba(76, 110, 245, 0.15), 0 2px 8px rgba(118, 75, 162, 0.12);
@@ -76,12 +84,12 @@ body {
     text-align: center;
 }
 
-.student:hover {
+.student-card:hover {
     transform: translateY(-8px) scale(1.05);
     box-shadow: 0 8px 32px rgba(76, 110, 245, 0.25), 0 4px 16px rgba(118, 75, 162, 0.2);
 }
 
-.student img {
+.student-card__image {
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -90,26 +98,19 @@ body {
     border: 3px solid #764ba2;
 }
 
-.student h2 {
+.student-card__name {
     font-size: 1.4rem;
     color: #4f3ca7;
     font-weight: 700;
     margin-bottom: 8px;
 }
 
-.student p {
+.student-card__grade {
     font-size: 1rem;
     color: #333;
 }
 
-.sparkle {
-    display: inline-block;
-    animation: sparkle 1.5s infinite;
-    font-size: 1.8rem;
-    margin: 0 8px;
-}
-
-.site-footer {
+.footer {
     text-align: center;
     padding: 20px;
     font-size: 0.9rem;
@@ -117,7 +118,11 @@ body {
     width: 100%;
 }
 
-.floating-shapes {
+.footer__text {
+    margin: 0;
+}
+
+.page__floating-shapes {
     position: absolute;
     top: 0;
     left: 0;
@@ -127,14 +132,14 @@ body {
     z-index: -1;
 }
 
-.shape {
+.page__shape {
     position: absolute;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.1);
     animation: float 6s ease-in-out infinite;
 }
 
-.shape:nth-child(1) {
+.page__shape:nth-child(1) {
     width: 80px;
     height: 80px;
     left: 10%;
@@ -142,7 +147,7 @@ body {
     animation-delay: 0s;
 }
 
-.shape:nth-child(2) {
+.page__shape:nth-child(2) {
     width: 120px;
     height: 120px;
     right: 10%;
@@ -150,7 +155,7 @@ body {
     animation-delay: 2s;
 }
 
-.shape:nth-child(3) {
+.page__shape:nth-child(3) {
     width: 60px;
     height: 60px;
     left: 70%;
