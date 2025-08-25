@@ -48,8 +48,10 @@ app.get("/students/average-grade", (_, res) => {
         const averageGrades = students.map(student => {
             const total = student.grades.reduce((acc, grade) => acc + grade, 0);
             const avg = total / student.grades.length;
-            return { id: student.id, average: avg };
+            const floorAverageGrades = Math.floor(avg);
+            return { id: student.id, average: floorAverageGrades };
         });
+
 
         res.status(200).send({ averageGrades });
 
