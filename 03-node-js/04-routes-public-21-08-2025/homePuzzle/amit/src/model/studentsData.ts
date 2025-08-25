@@ -1,7 +1,7 @@
 import { Student } from "./studentModel";
 
 export const students: Student[] = [
-    { id: 1, name: "Ariel", age: 20, email: "ariel@example.com", grades: [85, 91, 78], imageUrl: "https://picsum.photos/200/300"},
+    { id: 1, name: "Ariel", age: 20, email: "ariel@example.commmmmmmmmmmmmmmmmmmmmmmmmmmmmmm", grades: [85, 91, 78], imageUrl: "https://picsum.photos/200/300"},
     { id: 2, name: "Yatir", age: 22, email: "yatir@example.com", grades: [87, 76, 95], imageUrl: "https://picsum.photos/201/300"},
     { id: 3, name: "Christin", age: 21, email: "christin@example.com", grades: [90, 40, 59], imageUrl: "https://picsum.photos/202/300"},
     { id: 4, name: "Razan", age: 23, email: "razan@example.com", grades: [75, 91, 70, 48], imageUrl: "https://picsum.photos/203/300"},
