@@ -38,8 +38,13 @@ app.get('/students/students-average', (_, res) => {
 
         const totalGrades = students.reduce((sum, student) => sum + student.grade, 0);
         const averageGrade = totalGrades / students.length;
+        if (isNaN(averageGrade)) {
+            res.status(500).send({ error: 'Error calculating average grade' });
+            return;
+        }
+        const roundedAverage = Math.round(averageGrade * 100) / 100;
 
-        res.status(200).send({ averageGrade });
+        res.status(200).send({ averageGrade: roundedAverage });
     } catch (error: any) {
         console.error('Error occurred while fetching student average:', error);
         res.status(500).send({ error: `Internal Server Error: ${error.message}` });

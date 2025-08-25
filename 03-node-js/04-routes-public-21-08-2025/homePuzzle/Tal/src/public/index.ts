@@ -8,6 +8,11 @@ async function main(){
 
         studentCountElement.textContent = studentCount.toString();
 
+        const averageGrade = await getStudentsAverage();
+        const averageGradeElement = document.getElementById('students-average');
+        if (!averageGradeElement) throw new Error('Average grade element not found');
+        averageGradeElement.textContent = averageGrade.toString();
+
         const students = await getAllStudents();
         if (students.length > 0) {
             renderStudentList(students);
@@ -48,10 +53,15 @@ async function getStudentsAverage(): Promise<number> {
     try {
         const response = await fetch('http://localhost:3000/students/students-average');
 
-        const data: StudentResponse = await response.json() as StudentResponse;
+        const data = await response.json();
 
         if (response.ok) {
-            return data.numberOfStudents;
+            const averageGrade = data.averageGrade;
+            if (averageGrade !== undefined) {
+                return averageGrade;
+            } else {
+                throw new Error('Average grade not found');
+            }
         } else {
             throw new Error(data.error || 'Unknown error');
         }
