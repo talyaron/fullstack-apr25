@@ -1,12 +1,17 @@
 // main controller
 async function main(){
     try {
+        
         const studentCount = await getNumberOfStudents();
+        const studentAverage = await getAverageOfStudents();
 
         const studentCountElement = document.getElementById('number-of-students');
+        const studentAverageElement = document.getElementById('average-of-students');
         if (!studentCountElement) throw new Error('Student count element not found');
+        if (!studentAverageElement) throw new Error('Student count element not found');
 
         studentCountElement.textContent = studentCount.toString();
+        studentAverageElement.textContent = studentAverage.toString();
 
         const students = await getAllStudents();
         if (students.length > 0) {
@@ -23,33 +28,49 @@ interface StudentResponse {
     numberOfStudents: number;
     error?: string;
 }
-
+interface StudentAverage {
+    averageGrade: number;
+    error?: string;
+}
 //services
 
-async function getNumberOfStudents():Promise<number> {
-    try {
-        const response = await fetch('http://localhost:3000/students/number-of-students'); //get from API (on the internet) from the server
+async function getNumberOfStudents(): Promise<number> {
+  try {
+    const response = await fetch("http://localhost:3000/students/number-of-students");
+    const data: StudentResponse = await response.json();
 
-        const data: StudentResponse = await response.json() as StudentResponse; // Parse the JSON response to data object, that was returned from the server
-
-
-        if (response.ok) {
-            return data.numberOfStudents;
-        } else {
-            throw new Error(data.error || 'Unknown error');
-        }
-    } catch (error) {
-        console.error('Error occurred while fetching student count:', error);
-        return 0; // Return 0 or handle the error as needed
+    if (response.ok) {
+      return data.numberOfStudents;
+    } else {
+      throw new Error((data as any).error || "Unknown error");
     }
+  } catch (error) {
+    console.error("Error occurred while fetching student count:", error);
+    return 0;
+  }
 }
-<<<<<<< Updated upstream
+async function getAverageOfStudents(): Promise<number> {
+  try {
+    const response = await fetch("http://localhost:3000/students/average-of-students");
+    const data: StudentAverage = await response.json();
+
+    if (response.ok) {
+      return data.averageGrade;
+    } else {
+      throw new Error((data as any).error || "Unknown error");
+    }
+  } catch (error) {
+    console.error("Error occurred while fetching average:", error);
+    return 0;
+  }
+}
 
 interface Student {
     id: number;
     name: string;
     age: number;
     email: string;
+    grade: number;
 }
 
 interface StudentsResponse {
@@ -95,9 +116,8 @@ function renderStudentList(students: Student[]) {
             <h2>${student.name}</h2>
             <p>Age: ${student.age}</p>
             <p>Email: ${student.email}</p>
+            <p>Grade: ${student.grade}</p>
         `;
         listContainer.appendChild(studentElement);
     });
 }
-=======
->>>>>>> Stashed changes
