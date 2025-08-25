@@ -3,5 +3,6 @@ export interface Student {
     name: string;
     age: number;
     email: string;
-    grades: number;
+    grades: number[];
+    imageUrl: string;
 }

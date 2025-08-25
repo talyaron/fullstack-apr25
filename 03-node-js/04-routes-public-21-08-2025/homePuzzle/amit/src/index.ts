@@ -6,7 +6,7 @@ const PORT = 3000;
 
 
 
-app.use(express.static('./src/public'));
+app.use(express.static('.//public'));
 
 
 //API route (for data)
@@ -39,6 +39,22 @@ app.get("/students/get-all-students", (_, res) => {
         res.status(200).send({ students });
     } catch (error: any) {
         console.error('Error occurred while fetching all students:', error);
+        res.status(500).send({ error: `Internal Server Error: ${error.message}` });
+    }
+});
+
+app.get("/students/average-grade", (_, res) => {
+    try {
+        const averageGrades = students.map(student => {
+            const total = student.grades.reduce((acc, grade) => acc + grade, 0);
+            const avg = total / student.grades.length;
+            return { id: student.id, average: avg };
+        });
+
+        res.status(200).send({ averageGrades });
+
+    } catch (error: any) {
+        console.error('Error occurred while calculating average grade:', error);
         res.status(500).send({ error: `Internal Server Error: ${error.message}` });
     }
 });
