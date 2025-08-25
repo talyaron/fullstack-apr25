@@ -1,3 +1,5 @@
+
+
 interface Student {
     id: number;
     name: string;
@@ -12,8 +14,6 @@ interface StudentResponse {
 }
 
 
-
-//view
 
 async function renderStudentList(students: Student[]) {
     const listContainer = document.getElementById('list-of-students');
@@ -42,15 +42,13 @@ async function renderStudentList(students: Student[]) {
 }
 
 
-// main controller
-
 async function getNumberOfStudents(): Promise<number> {
     try {
         const response = await fetch('http://localhost:3000/students/number-of-students'); //get from API (on the internet) from the server
-        
+
         const data: StudentResponse = await response.json() as StudentResponse; // Parse the JSON response to data object, that was returned from the server
-        
-        
+
+
         if (response.ok) {
             return data.numberOfStudents;
         } else {
@@ -66,11 +64,11 @@ async function getNumberOfStudents(): Promise<number> {
 async function getAllStudents(): Promise<Student[]> {
     try {
         const response = await fetch('http://localhost:3000/students/get-all-students');
-        
+
         const data: StudentResponse = await response.json() as StudentResponse;
-        
+
         if (response.ok) {
-            
+
             if (data.students && data.students.length > 0) {
                 return data.students;
             } else {
@@ -88,13 +86,13 @@ async function getAllStudents(): Promise<Student[]> {
 async function getAverageGrades() {
     try {
         const response = await fetch('http://localhost:3000/students/average-grade');
-        
+
         const data: any = await response.json();
-        
+
         if (!response.ok) throw new Error(data.error || 'Unknown error');
         return data.averageGrades;
-        
-        
+
+
     } catch (error) {
         console.error('Error occurred while fetching average grades:', error);
         return [];
@@ -104,12 +102,12 @@ async function getAverageGrades() {
 async function main() {
     try {
         const studentCount = await getNumberOfStudents();
-        
+
         const studentCountElement = document.getElementById('number-of-students');
         if (!studentCountElement) throw new Error('Student count element not found');
-        
+
         studentCountElement.textContent = studentCount.toString();
-        
+
         const students = await getAllStudents();
         if (students.length > 0) {
             await renderStudentList(students);
