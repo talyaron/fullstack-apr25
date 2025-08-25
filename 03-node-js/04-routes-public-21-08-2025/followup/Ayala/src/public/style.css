@@ -1,9 +1,9 @@
-.container{
-    background-color: aquamarine;
-    color: black;
-    font-size: 50px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    font-family: fantasy;
+.container {
+  background-color: aquamarine;
+  color: black;
+  flex-direction: column;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  font-family: fantasy;
 }
