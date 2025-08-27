@@ -11,6 +11,10 @@
     position: relative;
     overflow: hidden;
     text-align: left;
+
+    img{
+        width:100%;
+    }
 }
 
 .student:hover {
@@ -178,5 +182,20 @@ h1 {
     }
     50% {
         transform: translateY(-20px) rotate(180deg);
+    }
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    border:1px solid blue;
+    background-color: white;
+    max-width: 40ch;
+    padding: 2rem;
+    margin: auto;
+    gap:0.3rem;
+    input{
+        padding: 0.5rem;
+        border-radius: 0.2rem;
     }
 }
