@@ -9,7 +9,6 @@ const PORT = 3000;
 app.use(express.static('.//public'));
 
 
-//API route (for data)
 app.get('/students/number-of-students', (_, res) => {
     try {
 
@@ -18,7 +17,6 @@ app.get('/students/number-of-students', (_, res) => {
 
             return;
         }
-        // Simulating some processing
         const numberOfStudents = students.length;
 
         res.status(200).send({ numberOfStudents });
