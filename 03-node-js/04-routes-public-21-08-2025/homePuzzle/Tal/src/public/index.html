@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome Students</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./dist/style.css">
     <script src="./dist/index.js" defer></script>
 </head>
 <body>
@@ -25,6 +25,14 @@
             creativity, and endless possibilities!
             <span class="sparkle">✨</span>
         </div>
+        <form id="add-student">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="number" name="age" placeholder="Age" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="number" name="grade" placeholder="igrade" required>
+            <input type="url" name="imageUrl" placeholder="mage url" required>
+            <button type="submit">ADD</button>
+        </form>
         <div id="list-of-students"></div>
     </div>
 </body>

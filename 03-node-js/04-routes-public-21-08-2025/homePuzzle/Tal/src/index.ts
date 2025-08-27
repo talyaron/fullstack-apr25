@@ -5,7 +5,7 @@ const app = express();
 const PORT = 3000;
 
 
-
+app.use(express.json())
 app.use(express.static('./src/public'));
 
 
@@ -64,6 +64,31 @@ app.get("/students/get-all-students", (_, res) => {
         res.status(500).send({ error: `Internal Server Error: ${error.message}` });
     }
 });
+
+app.post("/students/add-student",(req, res)=>{
+    try {
+        const {body} = req;
+
+        const {age, email, name, grade, imageUrl} = body;
+
+        if(!age || !email || !name || !grade || !imageUrl){
+            console.error("Some of the data is missing")
+            res.status(400).send({error:"Some or all the data is missing"})
+            return;
+        } 
+
+        students.push({
+            age, name, grade, email, imageUrl, id: crypto.randomUUID()
+        })
+
+        res.send({ok:true})
+        
+    } catch (error:any) {
+        console.error(error)
+        res.status(500).send({error:error.message})
+    }
+
+})
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

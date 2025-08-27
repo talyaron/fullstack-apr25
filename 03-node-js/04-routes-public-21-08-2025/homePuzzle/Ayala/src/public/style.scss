@@ -1,5 +1,5 @@
 :root {
-  --background-color: rgb(133, 111, 83);
+  --background-color: rgb(189, 159, 119);
   --dark-grey: rgb(27, 27, 27);
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
@@ -46,7 +46,7 @@ h1{
     background-position: center;
     width: 100%;
     aspect-ratio: 1/1;
-    background-image: url("../assests/product-images/bacpack.png");
+    // background-image: url("../assests/product-images/bacpack.png");
     border-radius: 15px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.50);
     transition: 0.5s ease;
@@ -67,6 +67,7 @@ h1{
   &_price {
     font-size: 1rem;
     font-weight: 500;
+    color: rgba(255, 255, 255, 0.767);
   }
 
   &_category {
@@ -88,6 +89,6 @@ h1{
     color:var(--background-color);
   }
   &_stock.out-of-stock {
-    color: red;
+    color: rgb(107, 89, 66);;
   }
 }
