@@ -4,7 +4,7 @@ async function main() {
   try {
     const form = document.getElementById("add-product");
     if (!form) throw new Error("add-product form element not found");
-    form.addEventListener("submit", handleSubmit);
+    form.addEventListener("submit",await handleSubmit);
 
     const productsAmount = await showAmount();
 
@@ -34,30 +34,27 @@ async function handleSubmit(event: Event) {
     if (!(event.target instanceof HTMLFormElement)) throw new Error("Event target is not a form");
     const formData = new FormData(event.target); //*
     // const data = Object.fromEntries(formData.entries()); //*
-const name = formData.get("name")
-const stock = formData.get("stock")
-const price = formData.get("price")
-const category = formData.get("category")
-const image = formData.get("image")
+    const name = formData.get("name");
+    const stock = (formData.get("stock"));
+    const price = (formData.get("price"));
+    const category = formData.get("category");
+    const img = formData.get("img");
+    console.log(name, stock, price, category, img);
 
-// const response = await fetch("")
+    const response = await fetch("http://localhost:5000/product/add-product", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, stock, price, category, img }),
+    });
+    const data = await response.json();
+    if (!response.ok) throw new Error("Error: ", data.error);
+        event.target.reset();
 
-    // const dataname = String(formData.get("name") ?? "");
-    // const datastock = Number(formData.get("stock"));
-    // const dataprice = Number(formData.get("price"));
-    // const datacategory = String(formData.get("category") ?? "");
-    // const dataimg = String(formData.get("img") ?? "");
-    // if (!dataimg || !dataname || !datacategory || !datastock || isNaN(datastock) || !dataprice || isNaN(dataprice))
-    //   throw new Error("Invalid form data");
 
-    // const newProduct: Product = {
-    //   name: dataname,
-    //   stock: datastock,
-    //   price: dataprice,
-    //   category: datacategory,
-    //   img: dataimg,
-    // };
-
+    const messege = document.getElementById("form-message")
+    if(!messege) throw new Error("form-message element not found");
+    messege.innerHTML = "Product Added sucsessfully!"
+main();
   } catch (error) {
     console.error("Error handeling submit form add-produts: ", error);
   }
@@ -136,11 +133,13 @@ function renderProducts(products: Product[]) {
     const productsContainer = document.getElementById("productsContainer");
     if (!productsContainer) throw new Error("productsContainer element not found.");
     // productsContainer.innerHTML = (products.map((p) => productsHtml(p))).join();
+    productsContainer.innerHTML = "";
     products.forEach((p) => {
       const productelement = document.createElement("div");
       productelement.className = "product";
-      const stockClass = p.stock > 10 ? "in-stock" : p.stock === 0 ? "out-of-stock" : "low-stock";
-      const stock = p.stock > 10 ? "In Stock" : p.stock === 0 ? "Out of Stock" : "Low Stock";
+      const productStock = Number(p.stock)
+      const stockClass = productStock > 10 ? "in-stock" : productStock === 0 ? "out-of-stock" : "low-stock";
+      const stock = productStock > 10 ? "In Stock" : productStock === 0 ? "Out of Stock" : "Low Stock";
       productelement.innerHTML = `
         <div class="product_image" style="background-image: url(${p.img})"></div>
         <div class="product_name">${p.name}</div>
