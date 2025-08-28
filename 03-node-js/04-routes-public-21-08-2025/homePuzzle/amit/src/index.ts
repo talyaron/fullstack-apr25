@@ -64,7 +64,10 @@ app.post("/students/add-student", (req, res) => {
 
     try {
 
-        const { name, age, email, grades, imageUrl } = req.body;
+        const body = req.body;
+        if(!body) throw new Error("Request body is missing or invalid");
+
+        const { name, age, email, grades, imageUrl } = body;
 
         if (!name || !age || !email || !grades || !imageUrl) {
             res.status(400).send({ error: 'All fields are required' });
