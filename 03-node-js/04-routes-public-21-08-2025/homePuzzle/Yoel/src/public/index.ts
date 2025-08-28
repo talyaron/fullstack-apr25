@@ -20,6 +20,20 @@ async function main() {
 
 main();
 
+window.addEventListener("DOMContentLoaded", () => {
+  try {
+    const form = document.getElementById("add-product");
+    if (!form) throw new Error("add-product form element not found");
+    form.addEventListener("submit", (event) => {
+      event.preventDefault;
+      if (!(event.target instanceof HTMLFormElement))
+        throw new Error("add-product element is not a HTMLFormElement");
+      const formData = new FormData(event.target);
+      const data = Object.fromEntries(formData.entries());
+    });
+  } catch (error) {}
+});
+
 interface StudentResponse {
   numberOfStudents: number;
   error?: string;
@@ -59,7 +73,7 @@ interface StudentsResponse {
   students?: Student[];
   error?: string;
 }
-
+ 
 async function getAllStudents(): Promise<Student[]> {
   try {
     const response = await fetch(

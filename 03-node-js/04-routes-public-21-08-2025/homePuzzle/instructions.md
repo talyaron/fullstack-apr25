@@ -34,7 +34,7 @@ A three-level progressive development approach for building a student management
 - **Features**:
  - Create a form interface for adding new students
  - Implement server-side functionality to:
-   - Add new students to the database
+   - Add new students to the database 
    - Update the student list
  - Real-time display of all current students
  - Automatic UI refresh after adding new students
