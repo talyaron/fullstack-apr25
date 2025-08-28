@@ -1,7 +1,7 @@
 {
   "name": "amit-app",
   "version": "1.0.0",
-  "description": "Simple Node.js TypeScript setup with nodemon",
+  "description": "Simple Node.js TypeScript setup with nodemon"
   "main": "dist/index.js",
   "scripts": {
     "start": "node dist/index.js",
