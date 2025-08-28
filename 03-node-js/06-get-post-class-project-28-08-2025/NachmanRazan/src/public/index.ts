@@ -1,7 +1,8 @@
 // main controller
-async function main(){
+async function main() {
     try {
         const movies = await getAllMovies();
+        console.log("movies", movies);
         if (movies.length > 0) {
             renderMoviesList(movies);
         }
@@ -9,6 +10,7 @@ async function main(){
         console.error('Error occurred while fetching movies:', error);
     }
 }
+
 
 main();
 // Add student form logic
@@ -24,9 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const posterInput = document.getElementById('movie-poster') as HTMLInputElement;
         const descriptionInput = document.getElementById('movie-description') as HTMLInputElement;
         const messageDiv = document.getElementById('form-message');
-       
-        if (!titleInput || !yearInput || !genreInput || !ratingInput ||  !posterInput || !descriptionInput || !messageDiv) return;
-       
+
+        if (!titleInput || !yearInput || !genreInput || !ratingInput || !posterInput || !descriptionInput || !messageDiv) return;
+
         const title = titleInput.value.trim();
         const year = parseInt(yearInput.value);
         const genre = genreInput.value.trim();
@@ -89,7 +91,7 @@ async function getAllMovies(): Promise<Movie[]> {
         const response = await fetch('http://localhost:3000/movies/get-all-movies');
 
         const data: MoviesResponse = await response.json() as MoviesResponse;
-console.log(data);
+        console.log(data);
         if (response.ok) {
 
             if (data.movies && data.movies.length > 0) {
@@ -115,19 +117,24 @@ function renderMoviesList(movies: Movie[]) {
     listContainer.innerHTML = '';
 
     // Render each movie
-    movies.forEach(movie => {
-        const movieElement = document.createElement('div');
-        movieElement.className = 'movie';
-        movieElement.innerHTML = `
-            <h2>${movie.title}</h2>
-            <img src="${movie.poster}" alt="${movie.title} poster" style="width:200px;height:auto;"/>
-            <p>Year: ${movie.year}</p>
-            <p>Genre: ${movie.genre}</p>
-            <p>Rating: ${movie.rating}</p>
-            <p>Description: ${movie.description}</p>
-        `;
-        listContainer.appendChild(movieElement);
-    });
+   const moviesHTML=  movies.map(movie => {
+       return createMovieCardHTML(movie);
+   }).join('');
+   console.log(moviesHTML)
+   listContainer.innerHTML = moviesHTML;
+}
+
+function createMovieCardHTML(movie: Movie): string {
+    return `
+                <div class="movie-card">
+                <h2>${movie.title}</h2>
+                <img src="${movie.poster}" alt="${movie.title} poster" style="width:200px;height:auto;"/>
+                <p>Year: ${movie.year}</p>
+                <p>Genre: ${movie.genre}</p>
+                <p>Rating: ${movie.rating}</p>
+                <p>Description: ${movie.description}</p>
+                </div>
+            `;
 }
 
 
