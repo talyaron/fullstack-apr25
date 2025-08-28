@@ -51,15 +51,15 @@ async function renderMoviestList(movie: Movie[]) {
     const listContainer = document.getElementById('list-of-movies');
     if (!listContainer) throw new Error('List container not found');
 
-    // const averages = await getAverageRating();
+    //  const averages = await getAverageRating();
 
     listContainer.innerHTML = '';
 
     movie.forEach(movie => {
-        const avgObj = averages.find((a: any) => a.id === movie.id);
-        const avgText = avgObj ? avgObj.average.toFixed(2) : 'N/A';
+        // const avgObj = averages.find((a: any) => a.id === movie.id);
+        // const avgText = avgObj ? avgObj.average.toFixed(2) : 'N/A';
         const movieElement = document.createElement('div');
-        movieElement.MovieTitle = 'title';
+        movieElement.className = 'movie';
         movieElement.innerHTML = `
         <img src="${movie.imageUrl}" alt="${movie.title}">
         <h2>${movie.title}</h2>
