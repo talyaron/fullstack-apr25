@@ -1,5 +1,6 @@
 type Movie = {
     title: string;
+    director: string;
     year: number;
     genre: string;
     imageUrl: string;
@@ -8,7 +9,8 @@ type Movie = {
 
 async function getAllMovies() {
     try {
-        const response = await fetch("http://localhost:3000/movies");
+        const response = await fetch("http://localhost:3000/movies-all-movies");
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
         const data: any = await response.json();
 
@@ -55,10 +57,11 @@ async function renderMoviestList(movie: Movie[]) {
 
     movie.forEach(movie => {
         const movieElement = document.createElement('div');
-        movieElement.className = 'movie';
+        movieElement.className = 'movie-card';
         movieElement.innerHTML = `
         <img src="${movie.imageUrl}" alt="${movie.title}">
         <h2>${movie.title}</h2>
+        <p>Director: ${movie.director}</p>
         <p>Year: ${movie.year}</p>
         <p>Genre: ${movie.genre}</p>
         `;
@@ -76,7 +79,7 @@ async function main() {
         moviesCountElement.textContent = moviesCount.toString();
 
         const movies = await getAllMovies();
-        if (movies.length < 0) throw new Error('No movies found');
+        if (movies.length === 0) throw new Error('No movies found');
         await renderMoviestList(movies);
 
     } catch (error) {
