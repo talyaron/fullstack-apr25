@@ -3,7 +3,7 @@ async function main() {
     await renderMoviesList(await getMovies());
     const form = document.getElementById("add-movie-form");
     if (!form) throw new Error("add-movie-form form element not found.");
-    form.addEventListener("submit", await handelSubmit);
+    form.addEventListener("submit", await handleSubmit);
   } catch (error) {
     console.error("error in main controller: ", error);
   }
@@ -11,7 +11,7 @@ async function main() {
 main();
 //control functions
 
-async function handelSubmit(event: SubmitEvent) {
+async function handleSubmit(event: SubmitEvent) {
   try {
     event.preventDefault();
     console.log("Form submited");
@@ -32,7 +32,7 @@ async function handelSubmit(event: SubmitEvent) {
       body: JSON.stringify({ title, year, genre, director, rating }),
     });
     const data = await response.json();
-    if (!response.ok) throw new Error("error fetching add-movie", data.error);
+    if (!response.ok) throw new Error("error fetching add-movie", (data.error));
 
     event.target.reset();
   } catch (error) {
