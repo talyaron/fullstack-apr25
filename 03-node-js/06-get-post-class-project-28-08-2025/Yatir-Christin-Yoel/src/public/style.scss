@@ -1,0 +1,151 @@
+// -----------------------------
+// Variables
+// -----------------------------
+$font-stack: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+$bg: #f4f4f4;
+$text: #333;
+$surface: #fff;
+$shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+$brand: #3498db;
+$brand-600: #2980b9;
+$accent: #f39c12;
+
+$radius-sm: 6px;
+$radius-md: 10px;
+
+$container-max: 900px;
+$gap: 1rem;
+
+// -----------------------------
+// Mixins & Utilities
+// -----------------------------
+@mixin card($pad: 1rem) {
+  background: $surface;
+  padding: $pad;
+  border-radius: $radius-md;
+  box-shadow: $shadow;
+}
+
+@mixin button-reset {
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+}
+
+@mixin hover-scale($scale: 1.02) {
+  transition: transform 0.2s ease;
+  &:hover { transform: scale($scale); }
+}
+
+%visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0; border: 0;
+  clip: rect(0 0 0 0); overflow: hidden;
+}
+
+// -----------------------------
+// Base
+// -----------------------------
+* { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: $font-stack;
+  background: $bg;
+  color: $text;
+  line-height: 1.6;
+}
+
+// -----------------------------
+// Layout
+// -----------------------------
+.site-header {
+  background: #222;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+
+  h1 { font-size: 2rem; margin: 0; }
+}
+
+.container {
+  max-width: $container-max;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: $gap;
+}
+
+// -----------------------------
+// Components
+// -----------------------------
+.movie-card {
+  @include card();
+  @include hover-scale();
+
+  &__head {
+    margin-bottom: 0.5rem;
+  }
+
+  &__title {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.25rem;
+  }
+
+  &__rating {
+    margin: 0 0 0.75rem 0;
+    color: $accent;
+    font-weight: 700;
+
+    // Example: reflect numeric rating via data-value (optional)
+    &[data-value]::after {
+      // no visible text added; hook for future styling if you want
+      content: "";
+    }
+  }
+}
+
+.btn {
+  @include button-reset;
+  padding: 0.55rem 1rem;
+  border-radius: $radius-sm;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+
+  &--primary {
+    background: $brand;
+    color: #fff;
+    transition: background 0.2s ease;
+
+    &:hover { background: $brand-600; }
+    &:active { transform: translateY(1px); }
+  }
+}
+
+.site-footer {
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  background: #222;
+  color: #fff;
+}
+
+// -----------------------------
+// Responsive tweaks
+// -----------------------------
+@media (max-width: 480px) {
+  .site-header h1 { font-size: 1.6rem; }
+  .movie-card__title { font-size: 1.1rem; }
+}
