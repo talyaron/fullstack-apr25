@@ -1,5 +1,6 @@
 import express from 'express';
 import { students } from './model/studentsData';
+import { Student } from './model/studentModel';
 
 const app = express();
 const PORT = 3000;
@@ -57,6 +58,35 @@ app.get("/students/average-grade", (_, res) => {
         console.error('Error occurred while calculating average grade:', error);
         res.status(500).send({ error: `Internal Server Error: ${error.message}` });
     }
+});
+
+app.post("/students/add-student", (req, res) => {
+
+    try {
+
+        const { name, age, email, grades, imageUrl } = req.body;
+
+        if (!name || !age || !email || !grades || !imageUrl) {
+            res.status(400).send({ error: 'All fields are required' });
+            return;
+        }
+
+        const newStudent: Student = {
+            id: students.length + 1,
+            name,
+            age,
+            email,
+            grades,
+            imageUrl
+        };
+
+        students.push(newStudent);
+        res.status(201).send({ student: newStudent });
+    } catch (error: any) {
+        console.error('Error occurred while adding student:', error);
+        res.status(500).send({ error: `Internal Server Error: ${error.message}` });
+    }
+
 });
 
 app.listen(PORT, () => {
