@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome Students</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dist/style.css">
     <script src="./dist/index.js" defer></script>
 </head>
 <body class="page">
@@ -22,14 +22,21 @@
     </header>
 
     <main class="main">
-        <section class="welcome">
+        <article class="welcome">
             <span class="welcome__sparkle">✨</span>
             Ready to explore, learn, and grow together? 
             Let's make this an amazing experience filled with knowledge, 
             creativity, and endless possibilities!
             <span class="welcome__sparkle">✨</span>
-        </section>
-        <section id="list-of-students" class="students-list"></section>
+        </article>
+        <form name="add-student-form">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="number" name="age" placeholder="Age" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="imageUrl" placeholder="Image URL" required>
+            <button type="submit">Add Student</button>
+        </form>
+        <article id="list-of-students" class="students-list"></article>
     </main>
 
     <footer class="footer">
