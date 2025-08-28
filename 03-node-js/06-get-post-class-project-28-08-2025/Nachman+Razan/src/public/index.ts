@@ -89,7 +89,7 @@ async function getAllMovies(): Promise<Movie[]> {
         const response = await fetch('http://localhost:3000/movies/get-all-movies');
 
         const data: MoviesResponse = await response.json() as MoviesResponse;
-
+console.log(data);
         if (response.ok) {
 
             if (data.movies && data.movies.length > 0) {
