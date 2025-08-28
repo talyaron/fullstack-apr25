@@ -60,7 +60,7 @@
     text-align: center;
 }
 /* Student Card Styles */
-.movie {
+.movie-card {
     background: rgba(255, 255, 255, 0.85);
     border-radius: 16px;
     box-shadow: 0 4px 24px rgba(246, 255, 7, 0.828), 0 1.5px 6px rgba(246, 255, 7, 0.828);
@@ -75,7 +75,7 @@
     text-align: left;
 }
 
-.movie:hover {
+.movie-card:hover {
     transform: translateY(-6px) scale(1.025);
     box-shadow: 0 8px 32px rgba(76, 110, 245, 0.18), 0 3px 12px rgba(118, 75, 162, 0.13);
 }
@@ -117,7 +117,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
 }
 
 .container {
