@@ -20,6 +20,24 @@ app.get(`/movies/get-movies-list`, (_, res) => {
   }
 });
 
+app.post(`/movies/add-movie`, (req, res) => {
+  try {
+    const body = req.body;
+    const { title, year, genre, director, rating } = body;
+
+    if (!title || !year || !genre || !director || !rating) {
+      res.status(400).send({ error: "missing product information" });
+      console.error("missing movie information");
+      return;
+    }
+    movies.push({ title, year, genre, director, rating });
+    res.status(200).send({ ok: true });
+  } catch (error) {
+    console.error("Error occcured while adding movie: ", error);
+    res.status(500).send({ error: `Internal Server Error` });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
   // console.log(movies);
