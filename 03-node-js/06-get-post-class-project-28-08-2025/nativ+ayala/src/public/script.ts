@@ -1,31 +1,48 @@
 async function main() {
-  await renderMoviesList(await getMovies());
   try {
-    // renderMoviesList(await getMovies());
-
+    await renderMoviesList(await getMovies());
     const form = document.getElementById("add-movie-form");
     if (!form) throw new Error("add-movie-form form element not found.");
-    form.addEventListener("submit",await handelSubmit)
+    form.addEventListener("submit", await handelSubmit);
   } catch (error) {
     console.error("error in main controller: ", error);
-
   }
 }
- main();
+main();
 //control functions
 
-async function handelSubmit(event:SubmitEvent){
-    event.preventDefault()
+async function handelSubmit(event: SubmitEvent) {
+  try {
+    event.preventDefault();
     console.log("Form submited");
-     if (!(event.target instanceof HTMLFormElement)) throw new Error("Event target is not a form");
+    if (!(event.target instanceof HTMLFormElement)) throw new Error("Event target is not a form");
     const formData = new FormData(event.target);
-    const id = formData.get("")
+    const title = formData.get("movieTitle");
+    const year = formData.get("movieYear");
+    const genre = formData.get("movieGenre");
+    const director = formData.get("movieDirector");
+    const rating = 0;
+    //const poster = formData.get("moviePoster")
 
+    console.log(title, year, genre, director, rating);
+
+    const response = await fetch("http://localhost:2000/movies/add-movie", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title, year, genre, director, rating }),
+    });
+    const data = await response.json();
+    if (!response.ok) throw new Error("error fetching add-movie", data.error);
+
+    event.target.reset();
+  } catch (error) {
+    console.error("Error in handel submit fnuction: ", error);
+  }
 }
+
 //services
 
-export interface Movie {
-  id: number;
+interface Movie {
   title: string;
   year: number;
   genre: string[];
@@ -40,12 +57,9 @@ interface MoviesResponse {
 
 async function getMovies(): Promise<Movie[]> {
   try {
-    const response = await fetch(
-      "http://localhost:2000/movies/get-movies-list"
-    );
+    const response = await fetch("http://localhost:2000/movies/get-movies-list");
     const data: MoviesResponse = (await response.json()) as MoviesResponse;
-    if (!response.ok || data.error)
-      throw new Error(data.error || "unknown error");
+    if (!response.ok || data.error) throw new Error(data.error || "unknown error");
     return data.movies;
   } catch (error) {
     console.error("");
