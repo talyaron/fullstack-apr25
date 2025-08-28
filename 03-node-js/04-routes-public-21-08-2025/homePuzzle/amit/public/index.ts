@@ -38,6 +38,43 @@ async function renderStudentList(students: Student[]) {
     });
 }
 
+async function addStudent(e: HTMLFormElement) {
+    e.preventDefault();
+
+    const form = document.getElementById("add-student-form") as HTMLFormElement;
+    if(!form) throw new Error('Form not found');
+
+    const formData = new FormData(form);
+    const newStudent: Student = {
+        id: Date.now(),
+        name: formData.get('name') as string,
+        age: Number(formData.get('age')),
+        email: formData.get('email') as string,
+        imageUrl: formData.get('imageUrl') as string
+    };
+
+    try {
+        const response = await fetch('http://localhost:3000/students/add-student', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newStudent)
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            console.log('Student added successfully:', data);
+            await renderStudentList(await getAllStudents());
+        } else {
+            console.error('Error adding student:', data.error);
+        }
+    } catch (error) {
+        console.error('Error occurred while adding student:', error);
+    }
+}
+
 
 async function getNumberOfStudents(): Promise<number> {
     try {
