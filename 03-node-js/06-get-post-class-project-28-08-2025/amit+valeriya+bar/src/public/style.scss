@@ -1,4 +1,3 @@
-// Base Styles
 * {
   margin: 0;
   padding: 0;
@@ -13,7 +12,6 @@ body {
   overflow-x: hidden;
 }
 
-// Page Block
 .page {
   position: relative;
   min-height: 100vh;
@@ -62,7 +60,6 @@ body {
 
 
 
-// Header Block
 .header {
   text-align: center;
   padding: 4rem 2rem 2rem;
@@ -91,7 +88,6 @@ body {
   }
 }
 
-// Main Block
 .main {
   max-width: 1200px;
   margin: 0 auto;
@@ -100,7 +96,6 @@ body {
   z-index: 10;
 }
 
-// Welcome Block
 .welcome {
   background: linear-gradient(135deg, rgba(229, 9, 20, 0.1), rgba(255, 107, 107, 0.05));
   padding: 2rem;
@@ -120,7 +115,6 @@ body {
 
 
 
-// Form Styles
 form {
   background: #1f1f1f;
   padding: 2rem;
@@ -175,7 +169,6 @@ form {
   }
 }
 
-// Movies List Block
 .movies-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -183,7 +176,6 @@ form {
   padding: 1rem 0;
 }
 
-// Movie Card Block
 .movie-card {
   background: #1f1f1f;
   border-radius: 12px;
@@ -286,7 +278,6 @@ form {
   }
 }
 
-// Footer Block
 .footer {
   text-align: center;
   padding: 2rem;
@@ -301,7 +292,6 @@ form {
   }
 }
 
-// Responsive Design
 @media (max-width: 768px) {
   .header {
     padding: 2rem 1rem 1rem;
