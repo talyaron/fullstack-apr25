@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CinemaHub</title>
+    <link rel="stylesheet" href="dist/style.css">
+    <script src="dist/index.js" defer></script>
+</head>
+<body class="page">
+
+    <header class="header">
+        <h1 class="header__title">
+            Welcome to <span id="number-of-movies" class="header__count"></span> Amazing Movies
+        </h1>
+        <p class="header__subtitle">Discover Your Next Favorite Film</p>
+    </header>
+
+    <main class="main">
+        <article class="welcome">
+            <span class="welcome__sparkle">🎬</span>
+            Ready to explore incredible movies from all genres? 
+            Add your favorite films and create your personal collection!
+            <span class="welcome__sparkle">🍿</span>
+        </article>
+
+        <form name="add-movie-form">
+            <input type="text" name="title" placeholder="Movie Title" required>
+            <input type="number" name="year" placeholder="Year" required>
+            <input type="text" name="genre" placeholder="Genre" required>
+            <input type="text" name="imageUrl" placeholder="Movie Poster URL" required>
+            <button type="submit">Add Movie</button>
+        </form>
+
+        <article id="list-of-movies" class="movies-list"></article>
+    </main>
+
+    <footer class="footer">
+        <p class="footer__text">© 2025 CinemaHub | Built with 🎭 and passion for movies</p>
+    </footer>
+</body>
+</html>
