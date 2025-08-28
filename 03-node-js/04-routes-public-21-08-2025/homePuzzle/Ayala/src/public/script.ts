@@ -86,6 +86,7 @@ interface Product {
   price: number;
   category: string;
   img: string;
+  poster:string;
 }
 
 interface ProductsResponse {
@@ -141,11 +142,13 @@ function renderProducts(products: Product[]) {
       const stockClass = productStock > 10 ? "in-stock" : productStock === 0 ? "out-of-stock" : "low-stock";
       const stock = productStock > 10 ? "In Stock" : productStock === 0 ? "Out of Stock" : "Low Stock";
       productelement.innerHTML = `
+      <div class="product_poster" style="background-image: url(${p.poster})"></div>
         <div class="product_image" style="background-image: url(${p.img})"></div>
         <div class="product_name">${p.name}</div>
         <div class="product_price">${p.price} $</div>
         <div class="product_category">${p.category}</div>
         <div class="product_stock ${stockClass}"> ${stock}</div>
+
         `;
       console.log(p.img);
 
