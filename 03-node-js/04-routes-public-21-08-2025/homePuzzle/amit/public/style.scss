@@ -64,6 +64,37 @@
     margin: 0 8px;
 }
 
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    border: 2px solid black;
+    border-radius: 1rem;
+    padding: 0.3rem;
+    margin: auto;
+    background-color: whitesmoke;
+    color: black;
+    font-size: 1.2rem;
+    max-width: 400px;
+
+    input{
+        border: 1px solid black;
+        border-radius: 0.5rem;
+        padding: 0.3rem;
+        font-size: 1rem;
+    }
+
+    button{
+        border-radius: 1rem;
+
+        &:hover{
+            background-color: darken(whitesmoke, 5%);
+            transform: scale(1.002);
+            cursor: pointer;
+        }
+    }
+}
+
 .students-list {
     display: flex;
     flex-wrap: wrap;
