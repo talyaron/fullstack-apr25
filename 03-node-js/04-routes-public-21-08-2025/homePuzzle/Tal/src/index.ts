@@ -67,7 +67,14 @@ app.get("/students/get-all-students", (_, res) => {
 
 app.post("/students/add-student",(req, res)=>{
     try {
-        const {body} = req;
+        const body = req.body;
+
+        if(!body) {
+            console.error("Request body is missing");
+            res.status(400).send({error:"Request body is missing"});
+            
+            return;
+        }
 
         const {age, email, name, grade, imageUrl} = body;
 
