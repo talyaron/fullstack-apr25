@@ -1,0 +1,238 @@
+/* Variables */
+$primary-color: #ff3d3d;
+$secondary-color: #1c1c1c;
+$accent-color: #f5f5f5;
+$text-color: #ffffff;
+$shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: #121212;
+  color: $text-color;
+  line-height: 1.6;
+}
+
+/* Header */
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: $secondary-color;
+  box-shadow: $shadow;
+
+  #header__logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: $primary-color;
+  }
+
+  #header__search {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: $accent-color;
+    color: #000;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    cursor: pointer;
+
+    i {
+      color: $primary-color;
+    }
+  }
+
+  #header__icons {
+    display: flex;
+    gap: 1rem;
+    font-size: 1.4rem;
+
+    i,
+    span {
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    i:hover,
+    span:hover {
+      transform: scale(1.2);
+      color: $primary-color;
+    }
+  }
+}
+
+/* Navigation */
+.nav-bar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+  background: #1a1a1a;
+
+  .nav__item {
+    padding: 0.5rem 1.2rem;
+    background: $secondary-color;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: $primary-color;
+      color: #fff;
+    }
+  }
+}
+
+/* Sort button */
+#sortPriceBtn {
+  display: block;
+  margin: 1rem auto;
+  padding: 0.6rem 1.2rem;
+  background: $primary-color;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    background: darken($primary-color, 10%);
+  }
+}
+
+/* Movie List */
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+
+  .movie-card {
+    background: $secondary-color;
+    border-radius: 12px;
+    box-shadow: $shadow;
+    overflow: hidden;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.03);
+    }
+
+    img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .movie-info {
+      padding: 1rem;
+
+      h2 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+        color: #ccc;
+        margin-bottom: 0.5rem;
+      }
+
+      .rating {
+        font-weight: bold;
+        color: $primary-color;
+      }
+    }
+  }
+}
+
+/* Form */
+.movie-form {
+  max-width: 600px;
+  margin: 2rem auto;
+  background: $secondary-color;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: $shadow;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 6px;
+    background: #2a2a2a;
+    color: #fff;
+
+    &:focus {
+      outline: 2px solid $primary-color;
+    }
+  }
+
+  button {
+    padding: 0.8rem;
+    background: $primary-color;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      background: darken($primary-color, 10%);
+    }
+  }
+}
+
+/* Footer */
+#footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 2rem;
+  background: #1a1a1a;
+  color: #ccc;
+
+  h1 {
+    color: $primary-color;
+    margin-bottom: 1rem;
+  }
+
+  #footer__info,
+  #footer__menu {
+    flex: 1 1 300px;
+    margin: 1rem;
+
+    input {
+      width: 80%;
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+      border-radius: 6px;
+      border: none;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      border: none;
+      background: $primary-color;
+      color: #fff;
+      border-radius: 6px;
+      cursor: pointer;
+
+      &:hover {
+        background: darken($primary-color, 10%);
+      }
+    }
+  }
+}

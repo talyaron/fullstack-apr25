@@ -18,7 +18,7 @@ export const products: Product[] = [
   },
   {
     name: "Coffee Maker",
-    stock: 8,
+    stock: 0,
     price: 89.99,
     category: "Home Appliances",
     img: "../assests/product-images/coffee-maker.png",

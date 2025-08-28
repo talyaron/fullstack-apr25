@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Students</title>
+    <link rel="stylesheet" href="./dist/style.css">
+    <script src="./dist/index.js" defer></script>
+</head>
+<body>
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    
+    <div class="container">
+        <h1>Hello my <span id="number-of-students"></span> Students!!!!!</h1>
+        <div class="subtitle">Welcome to Our Learning Journey</div>
+        Your average is: <div id="students-average"></div>
+        <div class="welcome-message">
+            <span class="sparkle">✨</span>
+            Ready to explore, learn, and grow together? 
+            Let's make this an amazing experience filled with knowledge, 
+            creativity, and endless possibilities!
+            <span class="sparkle">✨</span>
+        </div>
+        <form id="add-student">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="number" name="age" placeholder="Age" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="number" name="grade" placeholder="igrade" required>
+            <input type="url" name="imageUrl" placeholder="mage url" required>
+            <button type="submit">ADD</button>
+        </form>
+        <div id="list-of-students"></div>
+    </div>
+</body>
+</html>
