@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> Movies DB</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons/css/flag-icons.min.css" />
+    <link rel="stylesheet" href="./dist/style.css" />
+    <script src="./dist/script.js" defer></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <div id="header">
+      <div id="header__logo">
+        <p>MOVIES DB</p>
+      </div>
+      <div id="header__search">
+        <p>Search Movies</p>
+        <i class="fas fa-search"></i>
+      </div>
+      <div id="header__icons">
+        <i class="fas fa-user-circle"></i>
+        <span class="fi fi-us"></span>
+        <i class="fas fa-film"></i>
+      </div>
+    </div>
+
+    <!-- Nav -->
+    <div class="nav-bar">
+      <div class="nav__item">Top Rated</div>
+      <div class="nav__item">New Releases</div>
+      <div class="nav__item">Action</div>
+      <div class="nav__item">Drama</div>
+      <div class="nav__item">Comedy</div>
+      <div class="nav__item">Sci-Fi</div>
+      <div class="nav__item">Romance</div>
+      <div class="nav__item">Classics</div>
+    </div>
+
+    <!-- Sort -->
+    <!-- <button id="sortPriceBtn">Sort by Rating</button> -->
+
+    <!-- Movie list -->
+    <div id="movieList" class="movie-list"></div>
+
+    <!-- Add Movie Form -->
+    <form class="movie-form" id="add-movie-form">
+      <input type="text" name="movieTitle" id="movieTitle" placeholder="Movie Title" required />
+
+      <input type="text" name="movieGenre" id="movieGenre" placeholder="Genre (e.g. Action, Drama)" required />
+
+      <textarea name="movieDescription" id="movieDescription" placeholder="Movie Description" required></textarea>
+
+      <input type="number" name="movieRating" id="movieRating" placeholder="Rating (1–10)" required />
+
+      <input type="number" name="movieYear" id="movieYear" placeholder="Release Year" required />
+
+      <input type="text" name="movieDirector" id="movieDirector" placeholder="Director" required />
+
+      <input type="file" name="moviePoster" id="moviePoster" accept="image/*" required />
+
+      <button type="submit">Add Movie</button>
+    </form>
+
+    <!-- Footer -->
+    <div id="footer">
+      <div id="footer__info">
+        <h1>Want more Movies?</h1>
+        <p>Subscribe to get updates on new releases, reviews, and top-rated films every week.</p>
+        <p>Email Address</p>
+        <input type="email" placeholder="" id="emailAddress" />
+        <button>Sign me up!</button>
+      </div>
+      <div id="footer__menu">
+        <h1>Quick Links</h1>
+        <p>Contact Us</p>
+        <p>FAQs</p>
+        <p>Policies</p>
+      </div>
+    </div>
+  </body>
+</html>
