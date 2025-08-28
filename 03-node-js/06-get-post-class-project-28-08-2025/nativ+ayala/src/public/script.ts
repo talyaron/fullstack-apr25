@@ -1,8 +1,30 @@
 async function main() {
   await renderMoviesList(await getMovies());
+  try {
+    // renderMoviesList(await getMovies());
+
+    const form = document.getElementById("add-movie-form");
+    if (!form) throw new Error("add-movie-form form element not found.");
+    form.addEventListener("submit",await handelSubmit)
+  } catch (error) {
+    console.error("error in main controller: ", error);
+
+  }
 }
-main();
-interface Movie {
+ main();
+//control functions
+
+async function handelSubmit(event:SubmitEvent){
+    event.preventDefault()
+    console.log("Form submited");
+     if (!(event.target instanceof HTMLFormElement)) throw new Error("Event target is not a form");
+    const formData = new FormData(event.target);
+    const id = formData.get("")
+
+}
+//services
+
+export interface Movie {
   id: number;
   title: string;
   year: number;
