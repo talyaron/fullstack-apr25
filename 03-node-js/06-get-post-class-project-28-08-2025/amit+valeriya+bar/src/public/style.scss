@@ -57,6 +57,16 @@ body {
   }
 }
 
+   @keyframes float {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        @keyframes sparkle {
+          0%, 100% { transform: scale(1); opacity: 1; }
+          50% { transform: scale(1.2); opacity: 0.8; }
+        }
+
 
 
 .header {
@@ -237,6 +247,317 @@ form {
     border: 1px solid rgba(229, 9, 20, 0.3);
     white-space: nowrap;
   }
+   /* Star Rating Styles */
+        .star-rating {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          margin: 1rem 0;
+        }
+
+        .star-rating__label {
+          color: #b3b3b3;
+          font-size: 0.9rem;
+          font-weight: 500;
+          min-width: 45px;
+        }
+
+        .star-rating__stars {
+          display: flex;
+          gap: 2px;
+        }
+
+        .star {
+          font-size: 1.2rem;
+          color: #333;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          user-select: none;
+        }
+
+        .star:hover {
+          transform: scale(1.1);
+          filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.6));
+        }
+
+        .star.filled {
+          color: #ffd700;
+          text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .star.hover {
+          color: #ffed4e;
+          transform: scale(1.05);
+        }
+
+        .star-rating__display {
+          color: #b3b3b3;
+          font-size: 0.85rem;
+          margin-left: 0.5rem;
+        }
+
+        /* Form star rating */
+        .form-star-rating {
+          grid-column: 1 / -1;
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          padding: 1rem;
+          background: rgba(255, 255, 255, 0.02);
+          border-radius: 8px;
+          border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-star-rating .star {
+          font-size: 1.5rem;
+        }
+  /* Form star rating */
+        .form-star-rating {
+          grid-column: 1 / -1;
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          padding: 1rem;
+          background: rgba(255, 255, 255, 0.02);
+          border-radius: 8px;
+          border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-star-rating .star {
+          font-size: 1.5rem;
+        }
+
+        /* Movie Grid Styles */
+        .movie-grid {
+          margin-bottom: 4rem;
+        }
+
+        .movie-grid__title {
+          font-size: 2rem;
+          text-align: center;
+          margin-bottom: 3rem;
+          color: #ffffff;
+          font-weight: bold;
+        }
+
+        .movie-grid__container {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+          gap: 2rem;
+          max-width: 1400px;
+          margin: 0 auto;
+        }
+
+        .movie-slot {
+          background: #1f1f1f;
+          border-radius: 12px;
+          overflow: hidden;
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+          transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .movie-slot:hover {
+          transform: translateY(-8px) scale(1.02);
+          box-shadow: 0 20px 40px rgba(229, 9, 20, 0.3);
+          border-color: rgba(229, 9, 20, 0.3);
+        }
+
+        .movie-slot__poster {
+          position: relative;
+          height: 400px;
+          overflow: hidden;
+        }
+
+        .movie-slot__poster img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: all 0.3s ease;
+        }
+
+        .movie-slot__overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(135deg, rgba(229, 9, 20, 0.8), rgba(255, 107, 107, 0.6));
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0;
+          transition: all 0.3s ease;
+        }
+
+        .movie-slot__poster:hover .movie-slot__overlay {
+          opacity: 1;
+        }
+
+        .movie-slot__poster:hover img {
+          transform: scale(1.1);
+        }
+
+        .movie-slot__play {
+          color: white;
+          font-size: 4rem;
+          text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+          animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+          0%, 100% { transform: scale(1); opacity: 1; }
+          50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .movie-slot__info {
+          padding: 1.5rem;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .movie-slot__title {
+          font-size: 1.4rem;
+          font-weight: bold;
+          color: #ffffff;
+          margin-bottom: 0.5rem;
+        }
+
+        .movie-slot__details {
+          color: #b3b3b3;
+          font-size: 0.9rem;
+          margin-bottom: 0.8rem;
+        }
+
+        .movie-slot__description {
+          color: #e0e0e0;
+          font-size: 0.95rem;
+          line-height: 1.4;
+        }
+
+        .movie-slot__rating {
+          padding: 1.5rem;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.8rem;
+          background: rgba(0, 0, 0, 0.2);
+        }
+
+        .rating-label {
+          color: #b3b3b3;
+          font-size: 0.9rem;
+          font-weight: 500;
+        }
+
+        .movie-slot__rating .star-rating__stars {
+          display: flex;
+          gap: 3px;
+        }
+
+        .movie-slot__rating .star {
+          font-size: 1.8rem;
+          color: #333;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          user-select: none;
+        }
+
+        .movie-slot__rating .star:hover {
+          transform: scale(1.15);
+          filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
+        }
+
+        .movie-slot__rating .star.filled {
+          color: #ffd700;
+          text-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+        }
+
+        .movie-slot__rating .star-rating__display {
+          color: #ffffff;
+          font-size: 0.9rem;
+          font-weight: 500;
+          text-align: center;
+        }
+
+        .movie-card__button {
+          flex: 1;
+          padding: 0.75rem;
+          border: none;
+          border-radius: 8px;
+          cursor: pointer;
+          font-weight: 500;
+          transition: all 0.3s ease;
+        }
+
+        .movie-card__button--watch {
+          background: linear-gradient(135deg, #e50914 0%, #ff6b6b 100%);
+          color: white;
+        }
+
+        .movie-card__button--watch:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 5px 15px rgba(229, 9, 20, 0.4);
+        }
+
+        .movie-card__button--delete {
+          background: rgba(255, 255, 255, 0.1);
+          color: #ffffff;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .movie-card__button--delete:hover {
+          background: rgba(255, 107, 107, 0.2);
+          border-color: rgba(255, 107, 107, 0.5);
+        }
+
+        .footer {
+          text-align: center;
+          padding: 2rem;
+          margin-top: 4rem;
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+          position: relative;
+          z-index: 10;
+        }
+
+        .footer__text {
+          color: #b3b3b3;
+          font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+          .header {
+            padding: 2rem 1rem 1rem;
+          }
+          
+          .header__title {
+            font-size: 2rem;
+          }
+          
+          .main {
+            padding: 1rem;
+          }
+          
+          form {
+            grid-template-columns: 1fr;
+            padding: 1.5rem;
+          }
+          
+          .movies-list {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+          }
+          
+          .movie-card__actions {
+            flex-direction: column;
+            gap: 0.5rem;
+          }
+
+          .form-star-rating {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+          }
+        }
   
   &__actions {
     display: flex;
@@ -272,6 +593,7 @@ form {
         background: rgba(255, 107, 107, 0.2);
         border-color: rgba(255, 107, 107, 0.5);
       }
+
     }
   }
 }
