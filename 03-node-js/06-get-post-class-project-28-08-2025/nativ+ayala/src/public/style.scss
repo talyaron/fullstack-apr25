@@ -3,7 +3,7 @@ $primary-color: #ff3d3d;
 $secondary-color: #1c1c1c;
 $accent-color: #f5f5f5;
 $text-color: #ffffff;
-$shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+$shadow: 0 4px 10px rgba(0, 0, 0, 0.404);
 
 /* General Reset */
 * {
@@ -29,12 +29,13 @@ body {
   box-shadow: $shadow;
 
   #header__logo {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: bold;
     color: $primary-color;
   }
 
   #header__search {
+    
     display: flex;
     align-items: center;
     gap: 0.5rem;
