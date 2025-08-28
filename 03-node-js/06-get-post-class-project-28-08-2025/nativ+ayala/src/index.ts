@@ -22,5 +22,5 @@ app.get(`/movies/get-movies-list`, (_, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
-  console.log(movies);
+  // console.log(movies);
 });

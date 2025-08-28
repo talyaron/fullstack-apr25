@@ -2,7 +2,7 @@
 .movie-form {
     background: rgba(255,255,255,0.92);
     border-radius: 16px;
-    box-shadow: 0 2px 12px rgba(76, 110, 245, 0.10);
+    box-shadow: 0 2px 12px rgba(246, 255, 7, 0.828);
     padding: 28px 24px 18px 24px;
     margin: 32px auto 0 auto;
     max-width: 340px;
@@ -15,7 +15,7 @@
 }
 .movie-form h2 {
     font-size: 1.3rem;
-    color: #4f3ca7;
+    color: #c8f115;
     margin-bottom: 8px;
     font-weight: 700;
     text-align: center;
@@ -36,10 +36,10 @@
     transition: border 0.15s;
 }
 .movie-form input:focus {
-    border: 1.5px solid #764ba2;
+    border: 1.5px solid #cfd90e;
 }
 .movie-form button[type="submit"] {
-    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(90deg, #d4e121 0%, #d4e121 100%);
     color: #fff;
     border: none;
     border-radius: 8px;
@@ -51,11 +51,11 @@
     transition: background 0.18s;
 }
 .movie-form button[type="submit"]:hover {
-    background: linear-gradient(90deg, #764ba2 0%, #667eea 100%);
+    background: linear-gradient(90deg, #d4e121 0%, #d4e121 100%);
 }
 #form-message {
     font-size: 0.98rem;
-    color: #4f3ca7;
+    color: #d4e121;
     min-height: 18px;
     text-align: center;
 }
@@ -63,12 +63,13 @@
 .movie {
     background: rgba(255, 255, 255, 0.85);
     border-radius: 16px;
-    box-shadow: 0 4px 24px rgba(76, 110, 245, 0.12), 0 1.5px 6px rgba(118, 75, 162, 0.10);
-    padding: 28px 24px 20px 24px;
-    margin: 18px auto;
-    max-width: 340px;
+    box-shadow: 0 4px 24px rgba(246, 255, 7, 0.828), 0 1.5px 6px rgba(246, 255, 7, 0.828);
+    padding: 32px 28px 24px 28px;
+    margin: 15px 20px 15px 0;
+    width: 420px;
+    height: auto;
     transition: transform 0.18s cubic-bezier(.4,2,.6,1), box-shadow 0.18s;
-    border: 1.5px solid #e0e7ff;
+    border: 1.5px solid #d4e121;
     position: relative;
     overflow: hidden;
     text-align: left;
@@ -81,7 +82,7 @@
 
 .movie h2 {
     font-size: 1.6rem;
-    color: #4f3ca7;
+    color: #d4e121;
     margin-bottom: 10px;
     font-weight: 700;
     letter-spacing: 0.5px;
@@ -89,7 +90,7 @@
 
 .movie p {
     font-size: 1.08rem;
-    color: #3a3a3a;
+    color: #d4e121;
     margin-bottom: 6px;
     line-height: 1.5;
 }
@@ -97,9 +98,11 @@
 #list-of-movies {
     display: flex;
     flex-wrap: wrap;
-    gap: 24px;
-    justify-content: center;
-    margin-top: 32px;
+    gap: 20px;
+    justify-content: flex-start;
+    margin: 32px 0 0 40px;
+    padding: 0;
+    align-items: flex-start;
 }
 * {
     margin: 0;
@@ -109,7 +112,7 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #d4e121 0%, #fc4411 100%);
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -204,9 +207,32 @@ h1 {
 
 .shape {
     position: absolute;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
     animation: float 6s ease-in-out infinite;
+}
+
+.shape::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 20%;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 50px;
+    top: 40%;
+    left: 0;
+    box-shadow: 0 -5px 15px rgba(255, 255, 255, 0.08);
+}
+
+.shape::after {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 30%; /* Reduced from 60% to 30% to show only upper half */
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50% 50% 0 0; /* Only round the top corners */
+    top: 20%;
+    left: 20%;
+    box-shadow: inset 0 -8px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Hide any overflow */
 }
 
 .shape:nth-child(1) {
