@@ -2,7 +2,6 @@ import { Movie } from "./moviesModel";
 
 export const movies: Movie[] = [
   {
-    id: 1,
     title: "The Shawshank Redemption",
     year: 1994,
     genre: ["Drama"],
@@ -10,7 +9,6 @@ export const movies: Movie[] = [
     rating: 9.3,
   },
   {
-    id: 2,
     title: "The Godfather",
     year: 1972,
     genre: ["Crime", "Drama"],
@@ -18,7 +16,6 @@ export const movies: Movie[] = [
     rating: 9.2,
   },
   {
-    id: 3,
     title: "The Dark Knight",
     year: 2008,
     genre: ["Action", "Crime", "Drama"],
@@ -26,7 +23,6 @@ export const movies: Movie[] = [
     rating: 9.0,
   },
   {
-    id: 4,
     title: "Pulp Fiction",
     year: 1994,
     genre: ["Crime", "Drama"],
@@ -34,7 +30,6 @@ export const movies: Movie[] = [
     rating: 8.9,
   },
   {
-    id: 5,
     title: "The Lord of the Rings: The Return of the King",
     year: 2003,
     genre: ["Adventure", "Drama", "Fantasy"],
@@ -42,7 +37,6 @@ export const movies: Movie[] = [
     rating: 9.0,
   },
   {
-    id: 6,
     title: "Forrest Gump",
     year: 1994,
     genre: ["Drama", "Romance"],
@@ -50,7 +44,6 @@ export const movies: Movie[] = [
     rating: 8.8,
   },
   {
-    id: 7,
     title: "Inception",
     year: 2010,
     genre: ["Action", "Sci-Fi", "Thriller"],
@@ -58,7 +51,6 @@ export const movies: Movie[] = [
     rating: 8.8,
   },
   {
-    id: 8,
     title: "Fight Club",
     year: 1999,
     genre: ["Drama"],
@@ -66,7 +58,6 @@ export const movies: Movie[] = [
     rating: 8.8,
   },
   {
-    id: 9,
     title: "The Matrix",
     year: 1999,
     genre: ["Action", "Sci-Fi"],
@@ -74,7 +65,6 @@ export const movies: Movie[] = [
     rating: 8.7,
   },
   {
-    id: 10,
     title: "Goodfellas",
     year: 1990,
     genre: ["Biography", "Crime", "Drama"],
@@ -82,7 +72,6 @@ export const movies: Movie[] = [
     rating: 8.7,
   },
   {
-    id: 11,
     title: "Se7en",
     year: 1995,
     genre: ["Crime", "Drama", "Mystery"],
@@ -90,7 +79,6 @@ export const movies: Movie[] = [
     rating: 8.6,
   },
   {
-    id: 12,
     title: "The Silence of the Lambs",
     year: 1991,
     genre: ["Crime", "Drama", "Thriller"],
@@ -98,7 +86,6 @@ export const movies: Movie[] = [
     rating: 8.6,
   },
   {
-    id: 13,
     title: "Interstellar",
     year: 2014,
     genre: ["Adventure", "Drama", "Sci-Fi"],
@@ -106,7 +93,6 @@ export const movies: Movie[] = [
     rating: 8.6,
   },
   {
-    id: 14,
     title: "The Green Mile",
     year: 1999,
     genre: ["Crime", "Drama", "Fantasy"],
@@ -114,7 +100,6 @@ export const movies: Movie[] = [
     rating: 8.6,
   },
   {
-    id: 15,
     title: "Gladiator",
     year: 2000,
     genre: ["Action", "Adventure", "Drama"],
