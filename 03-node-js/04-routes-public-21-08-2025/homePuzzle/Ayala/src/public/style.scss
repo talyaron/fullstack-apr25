@@ -1,0 +1,171 @@
+:root {
+  --background-color: rgb(189, 159, 119);
+  --background-color-light: rgb(252, 230, 204);
+  --background-color-lighter: rgb(255, 238, 220);
+  --dark-grey: rgb(27, 27, 27);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color);
+}
+.store_wrapper {
+  padding: 1rem 2rem;
+}
+
+.header {
+  color: var(--dark-grey);
+  flex-direction: column;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+h1 {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 800;
+  font-size: 3rem;
+  margin: 0.5rem;
+}
+h2 {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin: 0.5rem;
+}
+#productsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+.product {
+  background-color: var(--dark-grey);
+  padding: 1rem 1rem;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  color: rgb(255, 255, 255);
+  gap: 0.3rem;
+  &_image {
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    aspect-ratio: 1/1;
+    // background-image: url("../assests/product-images/bacpack.png");
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    transition: 0.5s ease;
+  }
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.74);
+  }
+
+  &_name {
+    font-size: 1.2rem;
+    margin-bottom: 0.2rem;
+    font-weight: 600;
+    color: #ffffff;
+    align-self: center;
+  }
+
+  &_price {
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.767);
+  }
+
+  &_category {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #555;
+  }
+
+  &_stock {
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  // Optional: color change based on stock
+  &_stock.in-stock {
+    color: rgb(255, 255, 255);
+  }
+  &_stock.low-stock {
+    color: var(--background-color);
+  }
+  &_stock.out-of-stock {
+    color: rgb(107, 89, 66);
+  }
+}
+.product-form {
+  background: var(--dark-grey);
+  padding: 1rem 5rem 0 3rem;
+  border-radius: 18px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  gap: 1.2rem;
+  margin: 2rem auto;
+
+  .form_title {
+    color: var(--background-color);
+    font-size: 1.7rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1.5px;
+  }
+
+  .form_input {
+    display: flex;
+    flex-direction: column;
+
+    input {
+      padding: 0.7rem 1rem;
+      border-radius: 10px;
+      border: none;
+      font-size: 1rem;
+      background-color: var(--background-color-lighter);
+      color: var(--dark-grey);
+      font-weight: 500;
+      transition: box-shadow 0.3s;
+      box-shadow: 0 1px 4px rgba(27, 27, 27, 0.08);
+
+      &:focus {
+        outline: none;
+        background-color: var(--background-color-light);
+      }
+    }
+  }
+  button#submit-add-product {
+    background-color: var(--background-color);
+    color: var(--dark-grey);
+    font-weight: 700;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 10px;
+    padding: 0.8rem 0;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: background 0.3s, box-shadow 0.3s;
+
+    &:hover {
+      background-color: var(--background-color-light);
+    }
+  }
+
+  #form-message {
+    position: relative;
+    top: -1rem;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color:var(--background-color);
+    text-align: center;
+    min-height: 1.2em;
+  }
+}

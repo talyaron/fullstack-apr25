@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Store</title>
+    <link rel="stylesheet" href="/dist/style.css" />
+    <script src="./dist/script.js" defer></script>
+    <link rel="shortcut icon" href="./assests/favicon.png" type="image/x-icon" />
+  </head>
+  <body>
+    <div class="store_wrapper">
+      <div class="header">
+        <h1>welcome to my store</h1>
+        <h2>we have <span id="products-amount"></span> deferent products</h2>
+        <h2>the average price is <span id="average-price"></span> $</h2>
+      </div>
+      <form id="add-product" class="product-form">
+        <div class="form_title">Add a Product</div>
+        <div class="form_input">
+          <input type="text" id="product-name" name="name" placeholder="product name" required />
+        </div>
+        <div class="form_input">
+          <input type="number" id="product-price" name="price" placeholder="product price" required />
+        </div>
+        <div class="form_input">
+          <input type="number" id="product-stock" name="stock" placeholder="product stock" required />
+        </div>
+        <div class="form_input">
+          <input type="text" id="product-category" name="category" placeholder="product category" required />
+        </div>
+        <div class="form_input">
+          <input type="text" id="product-image" name="img" placeholder="product image" required />
+        </div>
+        <button type="submit" id="submit-add-product">Add</button>
+        <div id="form-message"></div>
+      </form>
+      <div id="productsContainer"></div>
+    </div>
+  </body>
+</html>

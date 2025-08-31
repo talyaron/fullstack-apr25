@@ -1,5 +1,6 @@
 import express from 'express';
 import { students } from './model/studentsData';
+import { Student } from './model/studentModel';
 
 const app = express();
 const PORT = 3000;
@@ -9,7 +10,6 @@ const PORT = 3000;
 app.use(express.static('.//public'));
 
 
-//API route (for data)
 app.get('/students/number-of-students', (_, res) => {
     try {
 
@@ -18,7 +18,6 @@ app.get('/students/number-of-students', (_, res) => {
 
             return;
         }
-        // Simulating some processing
         const numberOfStudents = students.length;
 
         res.status(200).send({ numberOfStudents });
@@ -48,8 +47,10 @@ app.get("/students/average-grade", (_, res) => {
         const averageGrades = students.map(student => {
             const total = student.grades.reduce((acc, grade) => acc + grade, 0);
             const avg = total / student.grades.length;
-            return { id: student.id, average: avg };
+            const floorAverageGrades = Math.floor(avg);
+            return { id: student.id, average: floorAverageGrades };
         });
+
 
         res.status(200).send({ averageGrades });
 
@@ -57,6 +58,38 @@ app.get("/students/average-grade", (_, res) => {
         console.error('Error occurred while calculating average grade:', error);
         res.status(500).send({ error: `Internal Server Error: ${error.message}` });
     }
+});
+
+app.post("/students/add-student", (req, res) => {
+
+    try {
+
+        const body = req.body;
+        if(!body) throw new Error("Request body is missing or invalid");
+
+        const { name, age, email, grades, imageUrl } = body;
+
+        if (!name || !age || !email || !grades || !imageUrl) {
+            res.status(400).send({ error: 'All fields are required' });
+            return;
+        }
+
+        const newStudent: Student = {
+            id: students.length + 1,
+            name,
+            age,
+            email,
+            grades,
+            imageUrl
+        };
+
+        students.push(newStudent);
+        res.status(201).send({ student: newStudent });
+    } catch (error: any) {
+        console.error('Error occurred while adding student:', error);
+        res.status(500).send({ error: `Internal Server Error: ${error.message}` });
+    }
+
 });
 
 app.listen(PORT, () => {
