@@ -41,7 +41,7 @@ app.post("/movies/add-movie", (req, res) => {
             genre, 
             rating, 
             poster, 
-            description 
+            description,
         };
 
         console.log("the new id is", newMovie.id);
@@ -106,6 +106,24 @@ app.patch("/movies/update-movie-rating", (req, res) => {
         res.status(500).send({ error: `Internal Server Error: ${error.message}` });
     }
 });
+
+app.patch("/movies/update-movie-color", (req, res) => {
+    try {
+        const { id, color} = req.body;
+        if (!id || !color) throw new Error("Invalid movie ID or color");
+
+        const movie = movies.find(movie => movie.id === id);
+        if (!movie) throw new Error("Movie not found");
+
+
+        movie.color = color;
+        res.status(200).send({ message: "Movie color updated successfully" });
+
+    } catch (error: any) {
+        console.error('Error occurred while updating movie color:', error);
+        res.status(500).send({ error: `Internal Server Error: ${error.message}` });
+    }
+})
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
