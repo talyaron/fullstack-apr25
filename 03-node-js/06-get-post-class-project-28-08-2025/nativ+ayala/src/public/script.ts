@@ -69,7 +69,7 @@ async function getMovies(): Promise<Movie[]> {
     return [];
   }
 }
-
+//view functions
 async function renderMoviesList(movies: Movie[]) {
   const movieListEl = document.getElementById("movieList");
   if (!movieListEl) throw new Error();
