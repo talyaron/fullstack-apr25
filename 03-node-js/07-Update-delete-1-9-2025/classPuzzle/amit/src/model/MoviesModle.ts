@@ -6,4 +6,5 @@ export interface Movie {
     rating: number;
     poster: string;
     description: string;
+    color?: string;
 }
