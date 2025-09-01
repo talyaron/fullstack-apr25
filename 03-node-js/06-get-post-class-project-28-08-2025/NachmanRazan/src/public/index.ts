@@ -136,5 +136,3 @@ function createMovieCardHTML(movie: Movie): string {
                 </div>
             `;
 }
-
-
