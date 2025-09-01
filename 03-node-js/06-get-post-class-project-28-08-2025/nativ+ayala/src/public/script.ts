@@ -21,20 +21,21 @@ async function handleSubmit(event: SubmitEvent) {
     const year = formData.get("movieYear");
     const genre = formData.get("movieGenre");
     const director = formData.get("movieDirector");
-    const rating = 0;
-    //const poster = formData.get("moviePoster")
+    const rating = 1;
+    const poster = formData.get("moviePoster")
 
-    console.log(title, year, genre, director, rating);
+    console.log(title, year, genre, director, rating, poster);
 
     const response = await fetch("http://localhost:2000/movies/add-movie", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title, year, genre, director, rating }),
+      body: JSON.stringify({ title, year, genre, director, rating, poster }),
     });
     const data = await response.json();
     if (!response.ok) throw new Error("error fetching add-movie", (data.error));
 
     event.target.reset();
+    main()
   } catch (error) {
     console.error("Error in handel submit fnuction: ", error);
   }
@@ -48,7 +49,9 @@ interface Movie {
   genre: string[];
   director: string;
   rating: number;
+  poster: string;
 }
+
 
 interface MoviesResponse {
   movies: Movie[];
@@ -75,6 +78,7 @@ async function renderMoviesList(movies: Movie[]) {
       .map((m) => {
         return `
           <div class="movie-card">
+            <div class="movie-poster" style="background-image: url(${m.poster});"></div>
             <div class="movie-info">
               <h2>${m.title}</h2>
               <p>${m.genre}</p>

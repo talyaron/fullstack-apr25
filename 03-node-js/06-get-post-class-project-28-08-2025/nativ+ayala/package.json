@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Simple Node.js TypeScript setup with nodemon",
   "main": "dist/index.js",
-"type":"module",
+  "type": "module",
   "scripts": {
     "start": "node dist/index.js",
     "dev": "nodemon",

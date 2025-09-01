@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movies DB</title>
+    <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons/css/flag-icons.min.css" />
     <link rel="stylesheet" href="./dist/style.css" />
@@ -42,7 +43,9 @@
     <!-- <button id="sortPriceBtn">Sort by Rating</button> -->
 
     <!-- Movie list -->
-    <div id="movieList" class="movie-list"></div>
+    <div id="movieList" class="movie-list">
+
+    </div>
 
     <!-- Add Movie Form -->
     <form class="movie-form" id="add-movie-form">
@@ -53,7 +56,7 @@
 
       <input type="text" name="movieDirector" id="movieDirector" placeholder="Director" required />
 
-      <input type="url" name="moviePoster" id="moviePoster"placeholder="Poster" required />
+      <input type="string" name="moviePoster" id="moviePoster"placeholder="Poster" required />
 
       <button type="submit">Add Movie</button>
     </form>
