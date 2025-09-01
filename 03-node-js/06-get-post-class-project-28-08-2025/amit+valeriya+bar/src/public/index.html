@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +8,13 @@
     <link rel="stylesheet" href="dist/style.css">
     <script src="dist/index.js" defer></script>
 </head>
+
 <body class="page">
-<div class="page_floating-shapes">
-    <div class="page_shape"></div>
-    <div class="page__shape"></div>
-    <div class="page__shape"></div>
-</div>
+    <div class="page__floating-shapes">
+        <div class="page__shape"></div>
+        <div class="page__shape"></div>
+        <div class="page__shape"></div>
+    </div>
     <header class="header">
         <h1 class="header__title">
             Welcome to <span id="number-of-movies" class="header__count"></span> Amazing Movies
@@ -23,36 +25,25 @@
     <main class="main">
         <article class="welcome">
             <span class="welcome__sparkle">🎬</span>
-            Ready to explore incredible movies from all genres? 
+            Ready to explore incredible movies from all genres?
             Add your favorite films and create your personal collection!
             <span class="welcome__sparkle">🍿</span>
         </article>
-
-        <form name="add-movie-form">
-            <input type="text" name="title" placeholder="Movie Title" required>
-            <input type="number" name="year" placeholder="Year" required>
-            <input type="text" name="genre" placeholder="Genre" required>
-            <input type="text" name="imageUrl" placeholder="Movie Poster URL" required>
-            <button type="submit">Add Movie</button>
-        </form>
-
-        <article id="list-of-movies" class="movies-list"></article>
-    </main> 
-       <!-- Movie Review Grid - 6 Containers -->
+          <!-- Movie Review Grid - 6 Containers -->
         <section class="movie-grid">
             <h2 class="movie-grid__title">Rate These Amazing Movies</h2>
             <div class="movie-grid__container">
                 <div class="movie-slot" data-slot="1">
                     <div class="movie-slot__poster">
-                        <img src="https://image.tmdb.org/t/p/w500/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg" alt="The Shawshank Redemption">
+                        <img src="https://image.tmdb.org/t/p/w500/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg" alt="Spider-Man: Across the Spider-Verse">
                         <div class="movie-slot__overlay">
                             <span class="movie-slot__play">▶</span>
                         </div>
                     </div>
                     <div class="movie-slot__info">
-                        <h3 class="movie-slot__title">The Shawshank Redemption</h3>
-                        <p class="movie-slot__details">1994 • Drama</p>
-                        <p class="movie-slot__description">Two imprisoned men bond over years, finding solace and redemption.</p>
+                        <h3 class="movie-slot__title">Spider-Man: Across the Spider-Verse</h3>
+                        <p class="movie-slot__details">2023 • Action</p>
+                        <p class="movie-slot__description">It's how you wear the mask that matters.</p>
                     </div>
                     <div class="movie-slot__rating">
                         <span class="rating-label">Your Rating:</span>
@@ -92,17 +83,17 @@
                     </div>
                 </div>
 
-                <div class="movie-slot" data-slot="3">
+                 <div class="movie-slot" data-slot="3">
                     <div class="movie-slot__poster">
-                        <img src="https://image.tmdb.org/t/p/w500/rSPw7tgCH9c6NqICZef4kZjFOQ5.jpg" alt="Pulp Fiction">
+                        <img src="https://image.tmdb.org/t/p/w1280/q5pXRYTycaeW6dEgsCrd4mYPmxM.jpg" alt="How To Train Your Dragon">
                         <div class="movie-slot__overlay">
                             <span class="movie-slot__play">▶</span>
                         </div>
                     </div>
                     <div class="movie-slot__info">
-                        <h3 class="movie-slot__title">Pulp Fiction</h3>
-                        <p class="movie-slot__details">1994 • Crime</p>
-                        <p class="movie-slot__description">Interwoven stories of crime and redemption in Los Angeles.</p>
+                        <h3 class="movie-slot__title">How To Train Your Dragon</h3>
+                        <p class="movie-slot__details">2025 • Fantasy</p>
+                        <p class="movie-slot__description">The legend is real</p>
                     </div>
                     <div class="movie-slot__rating">
                         <span class="rating-label">Your Rating:</span>
@@ -117,6 +108,7 @@
                     </div>
                 </div>
 
+                
                 <div class="movie-slot" data-slot="4">
                     <div class="movie-slot__poster">
                         <img src="https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg" alt="The Dark Knight">
@@ -144,7 +136,7 @@
 
                 <div class="movie-slot" data-slot="5">
                     <div class="movie-slot__poster">
-                        <img src="https://image.tmdb.org/t/p/w500/3cxixDgHUoq2xlNOQSBRVSXr8gR.jpg" alt="Inception">
+                        <img src="https://image.tmdb.org/t/p/original/ljsZTbVsrQSqZgWeep2B1QiDKuh.jpg" alt="Inception">
                         <div class="movie-slot__overlay">
                             <span class="movie-slot__play">▶</span>
                         </div>
@@ -169,7 +161,7 @@
 
                 <div class="movie-slot" data-slot="6">
                     <div class="movie-slot__poster">
-                        <img src="https://image.tmdb.org/t/p/w500/k7eYdcdYEZhKkAoiwJnAajxZrtN.jpg" alt="Interstellar">
+                        <img src="https://image.tmdb.org/t/p/w1280/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg" alt="Interstellar">
                         <div class="movie-slot__overlay">
                             <span class="movie-slot__play">▶</span>
                         </div>
@@ -215,9 +207,13 @@
             <button type="submit">Add Movie</button>
         </form>
 
+        <article id="list-of-movies" class="movies-list" style="display: none;"></article>
+    </main>
+
 
     <footer class="footer">
         <p class="footer__text">© 2025 CinemaHub | Built with 🎭 and passion for movies</p>
     </footer>
 </body>
+
 </html>
