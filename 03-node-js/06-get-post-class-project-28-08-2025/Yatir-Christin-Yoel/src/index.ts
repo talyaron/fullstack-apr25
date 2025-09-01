@@ -21,6 +21,33 @@ app.get("/movies/get-all-movies", (_, res) =>{
     }
 })
 
+app.post("/movies/add-movie",(req, res) =>{
+    try {
+        const body = req.body;
+        if (!body) {
+            console.error ("request body is missing");
+            res.status(400).send({error: "request body is missing"})
+            return;
+        }
+        const {name, image, genre, rating} = body;
+
+        if (!name || !image || !genre || !rating) {
+            console.error ("some or all of the needed information is missing!")
+            res.status(400).send ({error: "Some or all the data is missing"})
+            return;
+        }
+
+        movies.push({
+            name, image, genre, rating, id:crypto.randomUUID()
+        })
+        res.send({ok:true})
+
+    } catch (error:any) {
+        console.error (error)
+        res.status(500).send({error:error.message})
+    }
+})
+
 
 
 

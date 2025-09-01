@@ -19,6 +19,7 @@ app.get("/movies/get-all-movies", (_, res) => {
 
         res.status(200).send({ movies });
     } catch (error: any) {
+        
         console.error('Error occurred while fetching all movies:', error);
         res.status(500).send({ error: `Internal Server Error: ${error.message}` });
     }
