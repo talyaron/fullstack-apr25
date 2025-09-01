@@ -20,7 +20,6 @@
     "typescript": "^5.5.3"
   },
   "dependencies": {
-    "express": "^5.1.0",
-    "exprss": "^0.0.1-security"
+    "express": "^5.1.0"
   }
 }
