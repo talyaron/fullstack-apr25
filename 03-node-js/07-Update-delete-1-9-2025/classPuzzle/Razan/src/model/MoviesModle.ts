@@ -1,5 +1,6 @@
 export interface Movie {
     id: string ;
+    backgroundColor: string;
     title: string;
     year: number;
     genre: string;
