@@ -4,4 +4,5 @@ export interface Movie {
   genre: string[];
   director: string;
   rating: number;
+  poster: string;
 }

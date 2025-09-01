@@ -1,0 +1,1 @@
+Use the movies app, and change the color of the movie card to a color preferred by the user. Add to each card Color input.

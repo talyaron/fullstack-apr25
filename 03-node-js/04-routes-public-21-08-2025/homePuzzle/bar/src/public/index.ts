@@ -16,7 +16,7 @@ async function main(){
         console.error('Error occurred while fetching student count:', error);
     }
 }
-
+ 
 main();
 
 interface StudentResponse {
@@ -28,7 +28,7 @@ interface StudentResponse {
 
 async function getNumberOfStudents():Promise<number> {
     try {
-        const response = await fetch('http://localhost:3000/students/number-of-students'); //get from API (on the internet) from the server
+        const response = await fetch('http://localhost:3001/students/number-of-students'); //get from API (on the internet) from the server
 
         const data: StudentResponse = await response.json() as StudentResponse; // Parse the JSON response to data object, that was returned from the server
 

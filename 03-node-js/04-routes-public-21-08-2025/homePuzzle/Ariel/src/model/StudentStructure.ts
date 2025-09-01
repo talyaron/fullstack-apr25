@@ -4,5 +4,5 @@ export interface StudentStructure {
   lastName: string;
   age: number;
   email: string;
-  grades: number[];
-}
+  grade: number;
+} 
