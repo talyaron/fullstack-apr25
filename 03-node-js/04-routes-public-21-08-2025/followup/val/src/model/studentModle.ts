@@ -4,3 +4,4 @@ export interface Student {
     age: number;
     email: string;
 }
+ 

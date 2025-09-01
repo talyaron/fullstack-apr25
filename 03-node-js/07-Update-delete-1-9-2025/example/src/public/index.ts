@@ -2,7 +2,7 @@
 async function main() {
     try {
         const movies = await getAllMovies();
-        console.log("movies", movies);
+     
         if (movies.length > 0) {
             renderMoviesList(movies);
         }
@@ -70,9 +70,65 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+//controllers
+
+async function handleDeleteMovie(movieId: string) {
+    try {
+        console.log(movieId);
+
+        if (!movieId) throw new Error('Invalid movie ID');
+
+        // Call the API to delete the movie
+        const res = await fetch(`http://localhost:3000/movies/delete-movie`, {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: movieId }) //data
+        });
+
+        const data = await res.json();
+
+        console.log(data);
+
+        if (res.ok) {
+            console.log('Movie deleted successfully');
+            main(); // Refresh the movie list
+        } else {
+            const data = await res.json();
+            console.error('Failed to delete movie:', data.error);
+        }
+    } catch (error) {
+        console.error('Error occurred while deleting movie:', error);
+    }
+}
+
+async function handleRatingChange(id:string, newRating:string) {
+    try {
+        console.log(id, newRating);
+
+        const res = await fetch('http://localhost:3000/movies/update-movie-rating', {
+            method: 'PATCH', // put is used for updating the entire resource, and patch is used for updating partial resources
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id, rating: newRating }) //data
+        });
+
+        const data = await res.json();
+
+        console.log(data);
+
+        if (res.ok) {
+            console.log('Movie rating updated successfully');
+          
+        } else {
+            console.error('Failed to update movie rating:', data.error);
+        }
+    } catch (error) {
+        console.error('Error occurred while updating movie rating:', error);
+    }
+}
 
 //services
 interface Movie {
+    id?: string;
     title: string;
     year: number;
     genre: string;
@@ -91,10 +147,10 @@ async function getAllMovies(): Promise<Movie[]> {
         const response = await fetch('http://localhost:3000/movies/get-all-movies');
 
         const data: MoviesResponse = await response.json() as MoviesResponse;
-        console.log(data);
+      
         if (response.ok) {
 
-            if (data.movies && data.movies.length > 0) {
+            if (data.movies) {
                 return data.movies;
             } else {
                 throw new Error('No movie found');
@@ -120,7 +176,7 @@ function renderMoviesList(movies: Movie[]) {
    const moviesHTML=  movies.map(movie => {
        return createMovieCardHTML(movie);
    }).join('');
-   console.log(moviesHTML)
+ 
    listContainer.innerHTML = moviesHTML;
 }
 
@@ -133,6 +189,8 @@ function createMovieCardHTML(movie: Movie): string {
                 <p>Genre: ${movie.genre}</p>
                 <p>Rating: ${movie.rating}</p>
                 <p>Description: ${movie.description}</p>
+                <button class="delete-movie" onclick="handleDeleteMovie('${movie.id}')">Delete</button>
+                <input type="range" min="0" max="5" step="1" value="${movie.rating}" onchange="handleRatingChange('${movie.id}', this.value)">
                 </div>
             `;
 }

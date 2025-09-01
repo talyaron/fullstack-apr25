@@ -1,7 +1,7 @@
 import { Student } from "./studentModle";
 
 export const students: Student[] = [
-    { id: 1, name: "Ariel", age: 20, email: "ariel@example.com" },
+    { id: 1, name: "Ariel", age: 24, email: "ariel@example.com" },
     { id: 2, name: "Yatir", age: 22, email: "yatir@example.com" },
     { id: 3, name: "Christin", age: 21, email: "christin@example.com" },
     { id: 4, name: "Razan", age: 23, email: "razan@example.com" },

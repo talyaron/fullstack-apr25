@@ -2,8 +2,7 @@ import express from 'express';
 import { students } from './model/studentsData';
 
 const app = express();
-const PORT = 3000;
-
+const PORT = 3001;
 
 
 app.use(express.static('./src/public'));

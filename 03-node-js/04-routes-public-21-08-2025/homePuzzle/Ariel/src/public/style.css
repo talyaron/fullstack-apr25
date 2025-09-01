@@ -19,7 +19,11 @@ h1 {
     margin-bottom: 30px;
 }
 
-.student-card {
+#list-of-students {
+    text-align: center;
+}
+
+.student {
     background-color: white;
     padding: 15px;
     margin-bottom: 15px;
@@ -31,14 +35,19 @@ h1 {
     vertical-align: top;
 }
 
-.student-card h2 {
+.student h2 {
     color: #2c3e50;
     margin-bottom: 8px;
     font-size: 1.1em;
 }
 
-.student-card p {
+.student p {
     margin: 3px 0;
     color: #666;
     font-size: 0.9em;
+}
+
+#number-of-students {
+    color: #2c3e50;
+    font-weight: bold;
 }
