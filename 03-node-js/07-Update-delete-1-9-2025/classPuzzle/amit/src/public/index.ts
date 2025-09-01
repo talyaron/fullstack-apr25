@@ -126,6 +126,28 @@ async function handleRatingChange(id:string, newRating:string) {
     }
 }
 
+async function handleColorChange(id:string, newColor:string) {
+    try {
+
+        const res = await fetch('http://localhost:3000/movies/update-movie-color', {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id, color: newColor })
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+            console.log('Movie color updated successfully');
+            main();
+        } else {
+            console.error('Failed to update movie color:', data.error);
+        }
+    } catch (error) {
+        console.error('Error occurred while updating movie color:', error);
+    }
+}
+
 //services
 interface Movie {
     id?: string;
@@ -135,6 +157,7 @@ interface Movie {
     rating: number;
     poster: string;
     description: string;
+    color: string;
 }
 
 interface MoviesResponse {
@@ -181,8 +204,9 @@ function renderMoviesList(movies: Movie[]) {
 }
 
 function createMovieCardHTML(movie: Movie): string {
+    const bg = movie.color || '#ffffff';
     return `
-                <div class="movie-card">
+                <div class="movie-card" style="background-color: ${bg};">
                 <h2>${movie.title}</h2>
                 <img src="${movie.poster}" alt="${movie.title} poster" style="width:200px;height:auto;"/>
                 <p>Year: ${movie.year}</p>
@@ -191,6 +215,7 @@ function createMovieCardHTML(movie: Movie): string {
                 <p>Description: ${movie.description}</p>
                 <button class="delete-movie" onclick="handleDeleteMovie('${movie.id}')">Delete</button>
                 <input type="range" min="0" max="5" step="1" value="${movie.rating}" onchange="handleRatingChange('${movie.id}', this.value)">
+                <input type="color" value="${bg}" onchange="handleColorChange('${movie.id}', this.value)">
                 </div>
             `;
 }
