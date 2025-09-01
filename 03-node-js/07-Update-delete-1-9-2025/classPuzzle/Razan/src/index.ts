@@ -19,7 +19,6 @@ app.get("/movies/get-all-movies", (_, res) => {
 
         res.status(200).send({ movies });
     } catch (error: any) {
-        
         console.error('Error occurred while fetching all movies:', error);
         res.status(500).send({ error: `Internal Server Error: ${error.message}` });
     }
@@ -36,12 +35,13 @@ app.post("/movies/add-movie", (req, res) => {
 
         const newMovie: Movie = { 
             id: crypto.randomUUID(),
+            backgroundColor: crypto.randomUUID(),
             title, 
             year, 
             genre, 
             rating, 
             poster, 
-            description,
+            description 
         };
 
         console.log("the new id is", newMovie.id);
@@ -107,23 +107,35 @@ app.patch("/movies/update-movie-rating", (req, res) => {
     }
 });
 
-app.patch("/movies/update-movie-color", (req, res) => {
+app.patch("/movies/update-movie-background", (req, res) => {
     try {
-        const { id, color} = req.body;
-        if (!id || !color) throw new Error("Invalid movie ID or color");
+        const { id, background } = req.body;
+
+        if (!id || background === undefined) {
+            res.status(400).send({ error: 'Invalid movie ID or background Color' });
+            return;
+        }
 
         const movie = movies.find(movie => movie.id === id);
-        if (!movie) throw new Error("Movie not found");
+        if (!movie) {
+            res.status(404).send({ error: 'Movie not found' });
+            return;
+        }
 
+        const _backgroundColor = background;
+        if (typeof _backgroundColor !== 'string') {
+            res.status(400).send({ error: 'Invalid color.' });
+            return;
+        }
 
-        movie.color = color;
-        res.status(200).send({ message: "Movie color updated successfully" });
+        movie.backgroundColor = _backgroundColor;
 
+        res.status(200).send({ message: 'Background color updated successfully' });
     } catch (error: any) {
-        console.error('Error occurred while updating movie color:', error);
+        console.error('Error occurred while updating cards background color:', error);
         res.status(500).send({ error: `Internal Server Error: ${error.message}` });
     }
-})
+});
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
