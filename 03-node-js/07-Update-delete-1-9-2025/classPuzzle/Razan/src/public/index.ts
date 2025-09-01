@@ -126,38 +126,42 @@ async function handleRatingChange(id:string, newRating:string) {
     }
 }
 
-async function handleColorChange(id:string, newColor:string) {
+async function handleBackgroundChange(id:string, newColor:string) {
     try {
+        console.log(id, newColor);
 
-        const res = await fetch('http://localhost:3000/movies/update-movie-color', {
-            method: 'PATCH',
+        const res = await fetch('http://localhost:3000/movies/update-movie-background', {
+            method: 'PATCH', // put is used for updating the entire resource, and patch is used for updating partial resources
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ id, color: newColor })
+            body: JSON.stringify({ id, background: newColor }) //data
         });
 
         const data = await res.json();
 
+        console.log(data);
+
         if (res.ok) {
-            console.log('Movie color updated successfully');
-            main();
+            console.log('Background Color updated successfully');
+            main(); 
+          
         } else {
-            console.error('Failed to update movie color:', data.error);
+            console.error('Failed to update movie background color:', data.error);
         }
     } catch (error) {
-        console.error('Error occurred while updating movie color:', error);
+        console.error('Error occurred while updating movie rating:', error);
     }
 }
 
 //services
 interface Movie {
     id?: string;
+    backgroundColor?: string,
     title: string;
     year: number;
     genre: string;
     rating: number;
     poster: string;
     description: string;
-    color: string;
 }
 
 interface MoviesResponse {
@@ -204,18 +208,23 @@ function renderMoviesList(movies: Movie[]) {
 }
 
 function createMovieCardHTML(movie: Movie): string {
-    const bg = movie.color || '#ffffff';
     return `
-                <div class="movie-card" style="background-color: ${bg};">
-                <h2>${movie.title}</h2>
-                <img src="${movie.poster}" alt="${movie.title} poster" style="width:200px;height:auto;"/>
-                <p>Year: ${movie.year}</p>
-                <p>Genre: ${movie.genre}</p>
-                <p>Rating: ${movie.rating}</p>
-                <p>Description: ${movie.description}</p>
-                <button class="delete-movie" onclick="handleDeleteMovie('${movie.id}')">Delete</button>
-                <input type="range" min="0" max="5" step="1" value="${movie.rating}" onchange="handleRatingChange('${movie.id}', this.value)">
-                <input type="color" value="${bg}" onchange="handleColorChange('${movie.id}', this.value)">
-                </div>
-            `;
+        <div class="movie-card" style="background-color:${movie.backgroundColor || 'white'}">
+            <h2>${movie.title}</h2>
+            <img src="${movie.poster}" alt="${movie.title} poster" style="width:200px;height:auto;"/>
+            <p>Year: ${movie.year}</p>
+            <p>Genre: ${movie.genre}</p>
+            <p>Rating: ${movie.rating}</p>
+            <p>Description: ${movie.description}</p>
+
+            <button class="delete-movie" onclick="handleDeleteMovie('${movie.id}')">Delete</button>
+            <input type="range" min="0" max="5" step="1" value="${movie.rating}" onchange="handleRatingChange('${movie.id}', this.value)">
+            
+            <!-- Hidden color input -->
+            <input type="color" id="colorPicker-${movie.id}" style="display:none" onchange="handleBackgroundChange('${movie.id}', this.value)">
+            
+            <!-- Button triggers the color input -->
+            <button onclick="document.getElementById('colorPicker-${movie.id}').click()">Change Background Color</button>
+        </div>
+    `;
 }
