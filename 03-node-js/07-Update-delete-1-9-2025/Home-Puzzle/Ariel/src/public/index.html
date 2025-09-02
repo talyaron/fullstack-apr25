@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>רשימת משימות</title>
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="./dist/index.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>רשימת המשימות שלי</h1>
+
+      <button class="refresh-btn" onclick="loadTasks()">רענן רשימה</button>
+
+      <form id="add-task-form">
+        <input
+          type="text"
+          id="task-title"
+          placeholder="כותרת המשימה"
+          required
+        />
+        <textarea
+          id="task-description"
+          placeholder="תיאור (אופציונלי)"
+        ></textarea>
+        <button type="submit">הוסף משימה</button>
+        <div id="form-message"></div>
+      </form>
+
+      <div id="loading" class="loading">טוען משימות...</div>
+      <div id="error" class="error" style="display: none"></div>
+      <div id="task-count" class="task-count" style="display: none"></div>
+      <div id="tasks-container"></div>
+    </div>
+  </body>
+</html>
