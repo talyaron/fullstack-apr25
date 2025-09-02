@@ -1,7 +1,7 @@
 # Task Management API - Progressive Exercise
 
 ## Overview
-Build a Task Management REST API through three progressive levels, each introducing new concepts and complexity. This exercise is designed for students who have learned basic CRUD operations with vanilla TypeScript and Node.js/Express.
+Build a Task Management REST API through two progressive levels, each introducing new concepts and complexity. This exercise is designed for students who have learned basic CRUD operations with vanilla TypeScript and Node.js/Express.
 
 ---
 
