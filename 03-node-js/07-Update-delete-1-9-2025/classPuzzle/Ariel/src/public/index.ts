@@ -5,7 +5,7 @@ async function main() {
 
     if (movies.length > 0) {
       renderMoviesList(movies);
-    }
+    }x
   } catch (error) {
     console.error("Error occurred while fetching movies:", error);
   }
