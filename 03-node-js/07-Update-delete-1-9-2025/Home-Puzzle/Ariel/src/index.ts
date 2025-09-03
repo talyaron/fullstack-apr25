@@ -13,7 +13,7 @@ app.use(express.static("./src/public"));
 //API route (for data)
 
 // GET /tasks - Retrieve all tasks - דואג להציג הכל באתר
-app.get('/tasks/tasks', (_, res) => {
+app.get('/tasks/get-all-tasks', (_, res) => {
   try {
     res.status(200).json({
       success: true,
@@ -95,6 +95,89 @@ app.post('/tasks/create-task', (req, res) => {
     });
   }
 });
+
+// DELETE /tasks/delete-task/:id - Delete a task
+app.delete('/tasks/delete-task/:id', (req: any, res: any) => {
+  try {
+    const { id } = req.params;
+    
+    // Find task index
+    const taskIndex = tasks.findIndex(t => t.id === id);
+    
+    if (taskIndex === -1) {
+      return res.status(404).json({
+        success: false,
+        message: 'Task not found'
+      });
+    }
+    
+    // Remove task from array
+    tasks.splice(taskIndex, 1);
+    
+    res.status(200).json({
+      success: true,
+      message: 'Task deleted successfully'
+    });
+  } catch (error) {
+    console.error('Error occurred while deleting task:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Internal server error'
+    });
+  }
+});
+
+
+    // PUT /tasks/update-task/:id - Update an existing task
+app.put('/tasks/update-task/:id', (req:any, res:any) => {
+  try {
+    const { id } = req.params;
+    const { title, description, completed } = req.body;
+    
+    // Find task
+    const task = tasks.find(t => t.id === id);
+    
+    if (!task) {
+      return res.status(404).json({
+        success: false,
+        message: 'Task not found'
+      });
+    }
+    
+    // Update fields if provided
+    if (title !== undefined) {
+      if (!title || typeof title !== 'string' || title.trim().length === 0) {
+        return res.status(400).json({
+          success: false,
+          message: 'Title must be a non-empty string'
+        });
+      }
+      task.title = title.trim();
+    }
+    
+    if (description !== undefined) {
+      task.description = description ? description.trim() : undefined;
+    }
+    
+    if (completed !== undefined) {
+      task.completed = Boolean(completed);
+    }
+    
+    res.status(200).json({
+      success: true,
+      data: task,
+      message: 'Task updated successfully'
+    });
+  } catch (error) {
+    console.error('Error occurred while updating task:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Internal server error'
+    });
+  }
+});
+
+
 
 // Start the server
 app.listen(PORT, () => {
