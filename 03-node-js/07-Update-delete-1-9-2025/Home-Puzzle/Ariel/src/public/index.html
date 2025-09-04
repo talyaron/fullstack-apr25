@@ -10,29 +10,42 @@
   </head>
   <body>
     <div class="container">
-      <h1>רשימת המשימות שלי</h1>
+      <!-- Main header - centered across entire width -->
+      <div class="main-header">
+        <h1>רשימת המשימות שלי</h1>
+      </div>
 
-      <button class="refresh-btn" onclick="loadTasks()">רענן רשימה</button>
+      <!-- Content wrapper for side-by-side layout -->
+      <div class="content-wrapper">
+        <!-- Left side - Tasks area (75% width) -->
+        <div class="tasks-section">
+          <button class="refresh-btn" onclick="loadTasks()">רענן רשימה</button>
 
-      <form id="add-task-form">
-        <input
-          type="text"
-          id="task-title"
-          placeholder="כותרת המשימה"
-          required
-        />
-        <textarea
-          id="task-description"
-          placeholder="תיאור (אופציונלי)"
-        ></textarea>
-        <button type="submit">הוסף משימה</button>
-        <div id="form-message"></div>
-      </form>
+          <div id="loading" class="loading">טוען משימות...</div>
+          <div id="error" class="error" style="display: none"></div>
+          <div id="task-count" class="task-count" style="display: none"></div>
+          <div id="tasks-container"></div>
+        </div>
 
-      <div id="loading" class="loading">טוען משימות...</div>
-      <div id="error" class="error" style="display: none"></div>
-      <div id="task-count" class="task-count" style="display: none"></div>
-      <div id="tasks-container"></div>
+        <!-- Right side - Add task form (25% width) -->
+        <div class="form-section">
+          <form id="add-task-form">
+            <div class="form-title">הוסף משימה חדשה</div>
+            <input
+              type="text"
+              id="task-title"
+              placeholder="כותרת המשימה"
+              required
+            />
+            <textarea
+              id="task-description"
+              placeholder="תיאור (אופציונלי)"
+            ></textarea>
+            <button type="submit">הוסף משימה</button>
+            <div id="form-message"></div>
+          </form>
+        </div>
+      </div>
     </div>
   </body>
 </html>
