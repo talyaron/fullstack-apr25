@@ -351,9 +351,13 @@ function createTaskCardHTML(task: Task): string {
           <button class="delete-btn" onclick="handleDeleteTask('${task.id}')">🗑️</button>
         </div>
       </div>
+      
       ${task.description ? `<p class="task-description">${task.description}</p>` : ''}
-      <div class="task-status ${statusClass}">${statusText}</div>
-      <div class="task-date">נוצרה ב: ${createdDate}</div>
+      
+      <div class="task-footer">
+        <div class="task-status ${statusClass}">${statusText}</div>
+        <div class="task-date">נוצרה ב: ${createdDate}</div>
+      </div>
     </div>
   `;
 }
