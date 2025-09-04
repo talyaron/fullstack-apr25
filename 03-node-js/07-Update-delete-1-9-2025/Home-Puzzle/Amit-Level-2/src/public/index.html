@@ -4,18 +4,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
+  <title>Tasks</title>
   <link rel="stylesheet" href="dist/style.css">
   <script src="dist/index.js" defer></script>
 </head>
 
-<body>
-  <header>
-
+<body class="page">
+  <header class="header">
+    <h1 class="header__title">Tasks</h1>
+    <p class="header__subtitle">Manage your tasks easily</p>
   </header>
 
-  <main>
+  <main class="main">
+    <article class="form">
+      <h2 class="form__title">Create New Task</h2>
+      <form id="task-form" class="form__body">
+        <div class="form__group">
+          <label for="task-title" class="form__label">Title</label>
+          <input type="text" id="task-title" class="form__input" placeholder="Task Title" required>
+        </div>
 
+        <div class="form__group">
+          <label for="task-description" class="form__label">Description</label>
+          <textarea id="task-description" class="form__textarea" placeholder="Task Description" required></textarea>
+        </div>
+
+        <button type="submit" class="form__button">Add Task</button>
+      </form>
+    </article>
+
+    <article class="task-list">
+      <h2 class="task-list__title">Task List</h2>
+      <div id="task-list" class="task-list__container"></div>
+    </article>
   </main>
 
   <footer class="footer">
