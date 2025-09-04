@@ -38,7 +38,7 @@ app.post("/tasks/add-task", (req, res) => {
         }
 
         const newTask = {
-            id: String(tasks.length + 1),
+            id: crypto.randomUUID().slice(0, 8).replaceAll("-", ""),
             title,
             description,
             completed,

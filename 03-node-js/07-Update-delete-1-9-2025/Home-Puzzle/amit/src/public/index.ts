@@ -60,15 +60,15 @@ function initForm() {
     }
 
     const newTask: Task = {
-      id: Date.now().toString(),
+      id: "",
       title: titleInput.value,
       description: descriptionInput.value,
       completed: false,
       createdAt: new Date(),
     };
     addTask(newTask);
+    taskForm.reset();
 
-    console.log("New Task Created:", newTask);
   });
 }
 
@@ -83,8 +83,11 @@ async function addTask(task: Task) {
       console.error("Failed to add task, status:", res.status);
       return;
     }
+
+    const data = await res.json();
+    console.log("Added Task:", data.task);
+
     main();
-    console.log("Task added successfully");
   } catch (error) {
     console.error("Error adding task:", error);
   }
