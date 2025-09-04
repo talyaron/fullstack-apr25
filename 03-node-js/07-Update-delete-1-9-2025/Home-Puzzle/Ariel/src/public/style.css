@@ -89,10 +89,9 @@ h1 {
     transition: all 0.2s ease;
     cursor: pointer;
     border: 1px solid #e0e0e0;
-    height: 200px; /* גובה קבוע */
+    height: 220px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 
 .task-card:hover {
@@ -100,48 +99,28 @@ h1 {
     transform: translateY(-1px);
 }
 
-.task-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 8px;
-}
-
-.task-buttons {
-    display: flex;
-    gap: 4px;
-    flex-shrink: 0;
-}
-
 .task-title {
     font-size: 16px;
     font-weight: 500;
     color: #202124;
+    margin-bottom: 8px;
     word-wrap: break-word;
     line-height: 1.4;
-    flex: 1;
-    margin-left: 8px;
 }
 
 .task-description {
     font-size: 14px;
     color: #5f6368;
+    margin-bottom: 12px;
+    flex-grow: 1;
     word-wrap: break-word;
     line-height: 1.4;
-    flex-grow: 1;
     overflow: hidden;
-    /* הגבלת טקסט ל-3 שורות */
     display: -webkit-box;
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
     -webkit-box-orient: vertical;
-    /* פתרון נוסף לדפדפנים שלא תומכים */
-    max-height: 4.2em; /* 3 שורות * 1.4 line-height = 4.2em */
-}
-
-.task-footer {
-    margin-top: auto;
-    padding-top: 8px;
+    text-overflow: ellipsis;
 }
 
 .task-status {
@@ -152,7 +131,16 @@ h1 {
     padding: 4px 8px;
     border-radius: 12px;
     margin-bottom: 8px;
+    margin-top: auto;
     width: fit-content;
+}
+
+.task-details {
+    font-size: 13px;
+    color: #9aa0a6;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .completed {
@@ -170,8 +158,11 @@ h1 {
 .task-date {
     font-size: 11px;
     color: #9aa0a6;
-    padding-top: 4px;
+    padding-top: 8px;
     border-top: 1px solid #f1f3f4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .empty-state {
@@ -215,7 +206,19 @@ h1 {
     border-color: #f8bbd9;
 }
 
-.delete-btn, .edit-btn, .toggle-btn {
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.task-buttons {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.delete-btn {
     background: none;
     border: none;
     cursor: pointer;
@@ -226,7 +229,39 @@ h1 {
     border-radius: 4px;
 }
 
-.delete-btn:hover, .edit-btn:hover, .toggle-btn:hover {
+.delete-btn:hover {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.edit-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 4px;
+    opacity: 0.7;
+    transition: all 0.2s;
+    border-radius: 4px;
+}
+
+.edit-btn:hover {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 4px;
+    opacity: 0.7;
+    transition: all 0.2s;
+    border-radius: 4px;
+}
+
+.toggle-btn:hover {
     opacity: 1;
     background: rgba(0, 0, 0, 0.05);
 }
@@ -312,21 +347,6 @@ h1 {
     margin-top: 12px;
     padding-top: 8px;
     border-top: 1px solid #f1f3f4;
-}
-
-.toggle-btn {
-    background: #1a73e8;
-    color: white;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 4px;
-    font-size: 12px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.toggle-btn:hover {
-    background: #1557b0;
 }
 
 .modal-overlay {
@@ -430,28 +450,9 @@ h1 {
     background: #e8eaed;
 }
 
-@media (max-width: 1024px) {
-    .content-wrapper {
-        flex-direction: column;
-    }
-    
-    .form-section {
-        order: -1;
-        position: static;
-    }
-    
-    #add-task-form {
-        position: static;
-    }
-}
-
 @media (max-width: 768px) {
     .container {
         padding: 10px;
-    }
-    
-    .content-wrapper {
-        gap: 20px;
     }
     
     #tasks-container {
@@ -466,8 +467,6 @@ h1 {
     
     .task-card {
         padding: 14px;
-        height: auto;
-        min-height: 180px;
     }
     
     #add-task-form {
@@ -492,11 +491,6 @@ h1 {
     
     .task-description {
         font-size: 13px;
-    }
-    
-    .task-card {
-        height: auto;
-        min-height: 160px;
     }
     
     #add-task-form {

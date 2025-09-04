@@ -50,6 +50,8 @@ interface Task {
   description?: string;
   completed: boolean;
   createdAt: Date;
+  priority: "low" | "medium" | "high";
+  dueDate?: Date;
 }
 
 interface TasksResponse {
@@ -61,7 +63,11 @@ interface TasksResponse {
 
 async function getAllTasks(): Promise<Task[]> {
   try {
-    const response = await fetch("http://localhost:3000/tasks/get-all-tasks");
+    const response = await fetch("http://localhost:3000/tasks/get-all-tasks", {
+      headers: {
+        "x-api-key": "your-secret-key-123",
+      },
+    });
 
     const data: TasksResponse = (await response.json()) as TasksResponse;
 
@@ -334,30 +340,55 @@ function renderTasksList(tasks: Task[]) {
   tasksContainer.innerHTML = tasksHTML;
 }
 
+// עדכון לפונקציה createTaskCardHTML ב-src/public/index.ts
 function createTaskCardHTML(task: Task): string {
-  const statusClass = task.completed ? 'completed' : 'pending';
-  const statusText = task.completed ? 'הושלמה ✅' : 'ממתינה ⏳';
-  const createdDate = new Date(task.createdAt).toLocaleDateString('he-IL');
-  
+  const statusClass = task.completed ? "completed" : "pending";
+  const statusText = task.completed ? "הושלמה ✅" : "ממתינה ⏳";
+  const createdDate = new Date(task.createdAt).toLocaleDateString("he-IL");
+
+  const priorityEmoji = {
+    high: "🔴",
+    medium: "🟡",
+    low: "🟢",
+  };
+  const priorityText = {
+    high: "גבוהה",
+    medium: "בינונית",
+    low: "נמוכה",
+  };
+
   return `
     <div class="task-card" data-task-id="${task.id}">
       <div class="task-header">
         <h3 class="task-title">${task.title}</h3>
         <div class="task-buttons">
-          <button class="edit-btn" onclick="openEditModal('${task.id}')">✏️</button>
-          <button class="toggle-btn" onclick="toggleTaskComplete('${task.id}', ${!task.completed})">
-            ${task.completed ? '↩️' : '✅'}
+          <button class="edit-btn" onclick="openEditModal('${
+            task.id
+          }')">✏️</button>
+          <button class="toggle-btn" onclick="toggleTaskComplete('${
+            task.id
+          }', ${!task.completed})">
+            ${task.completed ? "↩️" : "✅"}
           </button>
-          <button class="delete-btn" onclick="handleDeleteTask('${task.id}')">🗑️</button>
+          <button class="delete-btn" onclick="handleDeleteTask('${
+            task.id
+          }')">🗑️</button>
         </div>
       </div>
-      
-      ${task.description ? `<p class="task-description">${task.description}</p>` : ''}
-      
-      <div class="task-footer">
-        <div class="task-status ${statusClass}">${statusText}</div>
-        <div class="task-date">נוצרה ב: ${createdDate}</div>
-      </div>
+      ${
+        task.description
+          ? `<p class="task-description">${task.description}</p>`
+          : ""
+      }
+      <div class="task-status ${statusClass}">${statusText}</div>
+      <div class="task-date">נוצרה ב: ${createdDate}</div>
+      <div class="task-details">${priorityEmoji[task.priority]} ${
+    priorityText[task.priority]
+  }${
+    task.dueDate
+      ? ` • מועד יעד: ${new Date(task.dueDate).toLocaleDateString("he-IL")}`
+      : ""
+  }</div>
     </div>
   `;
 }
