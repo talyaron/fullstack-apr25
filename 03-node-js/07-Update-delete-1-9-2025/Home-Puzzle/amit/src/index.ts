@@ -51,6 +51,48 @@ app.post("/tasks/add-task", (req, res) => {
     }
 });
 
+app.put("/tasks/update-task/:id", (req, res) => {
+    try {
+        const { id } = req.params;
+        const { title, description, completed } = req.body;
+
+        const taskIndex = tasks.findIndex(t => t.id === id);
+        if (taskIndex === -1) {
+            res.status(404).send({ error: "Task not found" });
+            return;
+        }
+
+        const updatedTask = {
+            ...tasks[taskIndex],
+            title,
+            description,
+            completed
+        };
+        tasks[taskIndex] = updatedTask;
+        res.status(200).send({ updatedTask });
+    } catch (error) {
+        res.status(500).send({ error: "Internal Server Error" });
+    }
+});
+
+app.patch("/tasks/toggle-status/:id", (req, res) => {
+    try {
+        const { id } = req.params;
+        const { completed } = req.body;
+
+        const taskIndex = tasks.findIndex(t => t.id === id);
+        if (taskIndex === -1) {
+            res.status(404).send({ error: "Task not found" });
+            return;
+        }
+
+        tasks[taskIndex].completed = completed;
+        res.status(200).send({ updatedTask: tasks[taskIndex] });
+    } catch (error) {
+        res.status(500).send({ error: "Internal Server Error" });
+    }
+});
+
 app.delete("/tasks/:id", (req, res) => {
     try {
         const { id } = req.params;
