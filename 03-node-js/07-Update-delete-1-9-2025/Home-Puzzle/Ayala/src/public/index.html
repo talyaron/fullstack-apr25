@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./dist/style.css">
+  <script src="./dist/script.js" defer></script>
+  <link rel="shortcut icon" href="./assets/" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>My Tasks</title>
+</head>
+
+<body>
+  <div class="header">
+    <div class="header_title">My Tasks</div>
+    <div class="header_search"><i class="fa fa-search"></i></div>
+
+      <button class="header_add-task" id="add-task">Add A Task</button>
+
+  </div>
+  <div id="addTaskModal" class="modal">
+  <div class="modal__content">
+    <div class="modal__header">
+      <h3>Add New Task</h3>
+      <button class="modal__close" id="closeModal" onclick="handleCloseAddTask">&times;</button>
+    </div>
+    <form class="task-form" id="taskForm">
+      <div class="form-group">
+        <label for="taskTitle">Task Title</label>
+        <input type="text" id="taskTitle" name="title" required>
+      </div>
+      <div class="form-group">
+        <label for="taskDescription">Description</label>
+        <textarea id="taskDescription" name="description" rows="3"></textarea>
+      </div>
+      <div class="form-actions">
+        <button type="button" class="btn btn--secondary" id="cancelTask">Cancel</button>
+        <button type="submit" class="btn btn--primary">Add Task</button>
+      </div>
+    </form>
+  </div>
+</div>
+  <div id="tasksListRoot" class="tasks-list">
+    <div class="task-card">
+      <div class="task-card__actions">
+        <label class="task-card__complete">
+          mark as complete
+          <input type="checkbox" name="complete">
+        </label>
+        <button class="task-card__delete">delete</button>
+      </div>
+
+      <div class="task-card__info">
+        <div class="task-card__date">creation date: 12/05/2025</div>
+        <h2 class="task-card__title">clean</h2>
+        <p class="task-card__description">my room</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer"></div>
+</body>
+
+</html>
