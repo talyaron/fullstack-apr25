@@ -5,6 +5,8 @@ const app = express();
 const PORT = 2500;
 app.use(express.json());
 app.use(express.static("./src/public"));
+
+
 app.get('/tasks/get-all-tasks', (_, res) => {
   try {
     if (!tasks) {
@@ -41,7 +43,7 @@ app.post("/tasks/add-task", (req, res) => {
     const body = req.body
 
     const { title, description, completed, createdAt } = body
-    // const cuurentDate = new Date().toLocaleDateString();
+    // const cuurentDate = new Date();
     const id = uuidv4()
     if (!id || !title || !createdAt) {
       res.status(400).send({ error: "missing task information" });
@@ -49,7 +51,7 @@ app.post("/tasks/add-task", (req, res) => {
       return;
     }
     tasks.push({ id, title, description, completed, createdAt })
-    res.status(200).send({ ok: true })
+    res.status(201).send({ ok: true })
   } catch (error) {
     console.error("Server: Error while adding a new task", error);
     res.status(500).send({ error: 'Internal server error' })
@@ -81,7 +83,7 @@ app.patch('/tasks/mark-complete', (req, res) => {
 
 })
 
-app.delete('tasks/delete-task', (req, res) => {
+app.delete('/tasks/delete-task', (req, res) => {
   try {
     const { id } = req.body;
     if (!id) {
@@ -89,7 +91,7 @@ app.delete('tasks/delete-task', (req, res) => {
       return;
     }
     const taskIndex = tasks.findIndex(task => task.id === id || task.id === String(id));
-    if (!taskIndex) {
+    if (taskIndex===-1) {
       res.status(404).send({ error: 'task not found' });
       return;
     }
