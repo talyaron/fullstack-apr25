@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 
-const API_KEY = "your-secret-key-123";
+const API_KEY = "SECRET";
 
 export function authenticateApiKey(req: Request, res: Response, next: NextFunction) {
     const apiKey = req.headers["x-api-key"];

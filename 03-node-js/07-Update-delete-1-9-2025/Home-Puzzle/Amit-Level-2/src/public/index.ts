@@ -3,6 +3,7 @@
 ////////////////////////
 
 
+
 type Task = {
   id: string;
   title: string;
@@ -18,7 +19,7 @@ let currentEditingId: string | null = null;
 async function getAllTasks(): Promise<Task[]> {
   try {
     const res = await fetch("http://localhost:3000/tasks/all-tasks", {
-      headers: { "x-api-key": "your-secret-key-123" },
+      headers: { "x-api-key": "SECRET" },
     });
     if (!res.ok) return [];
     const data = await res.json();
@@ -158,7 +159,7 @@ function initForm() {
 async function addTask(task: Task) {
   const res = await fetch("http://localhost:3000/tasks/add-task", {
     method: "POST",
-    headers: { "Content-Type": "application/json", "x-api-key": "your-secret-key-123" },
+    headers: { "Content-Type": "application/json", "x-api-key": "SECRET" },
     body: JSON.stringify(task),
   });
   if (!res.ok) return;
@@ -171,7 +172,7 @@ async function addTask(task: Task) {
 async function toggleTaskStatus(id: string, newStatus: boolean) {
   const res = await fetch(`http://localhost:3000/tasks/toggle-status/${id}`, {
     method: "PATCH",
-    headers: { "Content-Type": "application/json", "x-api-key": "your-secret-key-123" },
+    headers: { "Content-Type": "application/json", "x-api-key": "SECRET" },
     body: JSON.stringify({ completed: newStatus }),
   });
   if (!res.ok) return;
@@ -193,11 +194,11 @@ async function saveEdit(id: string) {
   const description = (document.getElementById(`edit-desc-${id}`) as HTMLTextAreaElement).value;
   const priority = (document.getElementById(`edit-priority-${id}`) as HTMLSelectElement).value as "low" | "medium" | "high";
 
-  const body = { title, description, priority, completed: prev.completed };
+  const body = { title, description, priority, completed: false };
 
   const res = await fetch(`http://localhost:3000/tasks/update-task/${id}`, {
     method: "PUT",
-    headers: { "Content-Type": "application/json", "x-api-key": "your-secret-key-123" },
+    headers: { "Content-Type": "application/json", "x-api-key": "SECRET" },
     body: JSON.stringify(body),
   });
 
@@ -236,7 +237,7 @@ function cancelEdit(id: string) {
 async function deleteTask(id: string) {
   const res = await fetch(`http://localhost:3000/tasks/${id}`, {
     method: "DELETE",
-    headers: { "x-api-key": "your-secret-key-123" },
+    headers: { "x-api-key": "SECRET" },
   });
   if (!res.ok) return;
 
