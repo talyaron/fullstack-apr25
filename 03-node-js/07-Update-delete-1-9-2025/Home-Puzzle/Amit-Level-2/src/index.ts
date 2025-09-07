@@ -1,11 +1,14 @@
 import express from "express";
 import { tasks } from "./model/TaskData";
+import { authenticateApiKey } from "./middlewares/authentication";
+import crypto from "crypto";
 
 const app = express();
 const port = 3000;
 
 app.use(express.json());
 app.use(express.static("./src/public"));
+app.use(authenticateApiKey);
 
 app.get("/tasks/all-tasks", (_, res) => {
     try {
@@ -31,8 +34,8 @@ app.get("/tasks/:id", (req, res) => {
 
 app.post("/tasks/add-task", (req, res) => {
     try {
-        const { title, description, completed } = req.body;
-        if (!title || !description || typeof completed !== "boolean") {
+        const { title, description, completed, priority } = req.body;
+        if (!title || !description || typeof completed !== "boolean" || !priority) {
             res.status(400).send({ error: "Invalid task data" });
             return;
         }
@@ -42,6 +45,7 @@ app.post("/tasks/add-task", (req, res) => {
             title,
             description,
             completed,
+            priority: priority ?? "medium",
             createdAt: new Date()
         };
         tasks.push(newTask);
@@ -54,7 +58,7 @@ app.post("/tasks/add-task", (req, res) => {
 app.put("/tasks/update-task/:id", (req, res) => {
     try {
         const { id } = req.params;
-        const { title, description, completed } = req.body;
+        const { title, description, completed, priority } = req.body;
 
         const taskIndex = tasks.findIndex(t => t.id === id);
         if (taskIndex === -1) {
@@ -66,6 +70,7 @@ app.put("/tasks/update-task/:id", (req, res) => {
             ...tasks[taskIndex],
             title,
             description,
+            priority: priority ?? "medium",
             completed
         };
         tasks[taskIndex] = updatedTask;
