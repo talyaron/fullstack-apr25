@@ -83,9 +83,11 @@ app.patch('/tasks/mark-complete', (req, res) => {
 
 })
 
-app.delete('/tasks/delete-task', (req, res) => {
+app.delete("/tasks/delete-task", (req, res) => {
   try {
     const { id } = req.body;
+    console.log(id);
+
     if (!id) {
       res.status(400).send({ error: 'Invalid task id' });
       return;
@@ -103,6 +105,8 @@ app.delete('/tasks/delete-task', (req, res) => {
     res.status(500).send({ error: `Internal Server Error: ${error}` });
   }
 })
+
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
   // console.log(movies);

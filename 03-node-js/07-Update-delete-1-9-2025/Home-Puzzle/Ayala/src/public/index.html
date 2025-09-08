@@ -16,14 +16,14 @@
     <div class="header_title">My Tasks</div>
     <div class="header_search"><i class="fa fa-search"></i></div>
 
-      <button class="header_add-task" id="add-task">Add A Task</button>
+      <button class="header_add-task" id="add-task" onclick="handleShowForm()">Add A Task</button>
 
   </div>
   <div id="addTaskForm" class="modal">
   <div class="modal__content">
     <div class="modal__header">
       <h3>Add New Task</h3>
-      <button class="modal__close" id="closeModal" onclick="handleCloseAddTask">&times;</button>
+      <button class="modal__close" id="closeModal" onclick="handleHideForm()">&times;</button>
     </div>
     <form class="task-form" id="taskForm">
       <div class="form-group">
@@ -35,7 +35,7 @@
         <textarea id="taskDescription" name="description" rows="3"></textarea>
       </div>
       <div class="form-actions">
-        <button type="button" class="btn btn--secondary" id="cancelTask">Cancel</button>
+        <button type="button" class="btn btn--secondary" id="cancelTask" onclick="handleHideForm()">Cancel</button>
         <button type="submit" class="btn btn--primary">Add Task</button>
       </div>
     </form>
