@@ -37,8 +37,11 @@ router.get("/student/:id", (req, res) => {
 router.patch("/update-age/:id", (req, res) => {
     try {
         const { id } = req.params;
-        const age = req.body.age;
-        if (!id) res.status(404).send({ error: "id not found" });
+        const age = req.body;
+        if (!id) {
+            res.status(404).send({ error: "id not found" });
+            return
+        }
 
         const numericId = Number(id);
         const student = students.find(student => student.id === numericId)
