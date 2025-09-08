@@ -1,0 +1,18 @@
+import express from 'express'
+import { Student, students } from '../model/student.model';
+const router = express.Router();
+
+router.get("/all-students", (_req, res) => {
+    res.status(200).send({ students });
+});
+
+router.post("/add-student", (req, res) => {
+    console.log("Request Body:", req.body);
+    const newStudent = req.body as Student;
+    newStudent.id = students.length + 1; // Simple ID assignment
+
+    students.push(newStudent);
+    res.status(201).send(`Student ${newStudent.name} added successfully`);
+});
+
+export default router;  
