@@ -1,63 +1,19 @@
 import express from "express";
 import { tasks } from "./model/TaskData";
-import { authenticateApiKey } from "./middlewares/authentication";
-import crypto from "crypto";
 
 const app = express();
 const port = 3000;
 
 app.use(express.json());
 app.use(express.static("./src/public"));
-app.use(authenticateApiKey);
 
-app.get("/tasks", (req, res) => {
-  try {
-    let filteredTasks = [...tasks];
-
-    if (req.query.completed) {
-      const isCompleted = req.query.completed === "true";
-      filteredTasks = filteredTasks.filter(task => task.completed === isCompleted);
+app.get("/tasks/all-tasks", (_, res) => {
+    try {
+        res.status(200).send({ tasks });
+    } catch (error) {
+        res.status(500).send({ error: "Internal Server Error" });
     }
-
-    if (req.query.priority) {
-      const requestedPriority = req.query.priority as "low" | "medium" | "high";
-      filteredTasks = filteredTasks.filter(task => task.priority === requestedPriority);
-    }
-
-    if (req.query.search) {
-      const searchKeyword = (req.query.search as string).toLowerCase();
-      filteredTasks = filteredTasks.filter(
-        task =>
-          task.title.toLowerCase().includes(searchKeyword) ||
-          task.description.toLowerCase().includes(searchKeyword)
-      );
-    }
-
-    if (req.query.sortBy) {
-      const sortField = req.query.sortBy as string;
-      const sortOrder = req.query.order === "asc" ? 1 : -1;
-
-      filteredTasks.sort((taskOne, taskTwo) => {
-        if (sortField === "priority") {
-          const priorityLevels: Record<string, number> = { low: 1, medium: 2, high: 3 };
-          return (priorityLevels[taskOne.priority] - priorityLevels[taskTwo.priority]) * sortOrder;
-        }
-
-        const valueOne = (taskOne as any)[sortField];
-        const valueTwo = (taskTwo as any)[sortField];
-        return (valueOne > valueTwo ? 1 : -1) * sortOrder;
-      });
-    } else {
-      filteredTasks.sort((taskOne, taskTwo) => (taskOne.createdAt > taskTwo.createdAt ? -1 : 1));
-    }
-
-    res.status(200).json({ tasks: filteredTasks });
-  } catch (error) {
-    res.status(500).json({ error: "Internal Server Error" });
-  }
 });
-
-
 
 app.get("/tasks/:id", (req, res) => {
     try {
@@ -75,8 +31,8 @@ app.get("/tasks/:id", (req, res) => {
 
 app.post("/tasks/add-task", (req, res) => {
     try {
-        const { title, description, completed, priority } = req.body;
-        if (!title || !description || typeof completed !== "boolean" || !priority) {
+        const { title, description, completed } = req.body;
+        if (!title || !description || typeof completed !== "boolean") {
             res.status(400).send({ error: "Invalid task data" });
             return;
         }
@@ -86,7 +42,6 @@ app.post("/tasks/add-task", (req, res) => {
             title,
             description,
             completed,
-            priority: priority ?? "medium",
             createdAt: new Date()
         };
         tasks.push(newTask);
@@ -99,7 +54,7 @@ app.post("/tasks/add-task", (req, res) => {
 app.put("/tasks/update-task/:id", (req, res) => {
     try {
         const { id } = req.params;
-        const { title, description, completed, priority } = req.body;
+        const { title, description, completed } = req.body;
 
         const taskIndex = tasks.findIndex(t => t.id === id);
         if (taskIndex === -1) {
@@ -111,7 +66,6 @@ app.put("/tasks/update-task/:id", (req, res) => {
             ...tasks[taskIndex],
             title,
             description,
-            priority: priority ?? "medium",
             completed
         };
         tasks[taskIndex] = updatedTask;
