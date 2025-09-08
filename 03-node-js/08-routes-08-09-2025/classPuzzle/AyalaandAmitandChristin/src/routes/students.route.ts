@@ -1,11 +1,9 @@
 import express from 'express'
 import { Student, students } from '../model/student.model';
 const router = express.Router();
+import {getAllStudents} from '../controllers/students.controllers';
 
-router.get("/all-students", (_req, res) => {
-    console.log("GET /all-students called");
-    res.status(200).send({ students });
-});
+router.get("/all-students", getAllStudents);
 
 router.post("/add-student", (req, res) => {
     console.log("Request Body:", req.body);
@@ -25,9 +23,9 @@ router.get("/student/:id", (req, res) => {
         if(!studentId) {
             throw new Error("student id not found");
         }
-    
+
         res.status(200).send({ studentId })
-        
+
     } catch (error) {
         console.error(error, "initial server error");
         res.status(500).send({ error })
