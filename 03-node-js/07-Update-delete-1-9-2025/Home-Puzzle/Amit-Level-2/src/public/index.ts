@@ -18,7 +18,7 @@ let currentEditingId: string | null = null;
 
 async function getAllTasks(): Promise<Task[]> {
   try {
-    const res = await fetch("http://localhost:3000/tasks/all-tasks", {
+    const res = await fetch("http://localhost:3000/tasks", {
       headers: { "x-api-key": "SECRET" },
     });
     if (!res.ok) return [];
@@ -42,6 +42,7 @@ function renderTasksList(tasks: Task[]) {
 
   tasks.forEach((task) => {
     const card = createTaskCard(task);
+    card.classList.add("task-card--animated");
     taskContainer.appendChild(card);
   });
 }
@@ -127,6 +128,36 @@ function enableEdit(task: Task) {
 document.addEventListener("DOMContentLoaded", () => {
   initForm();
   main();
+
+  document.getElementById("apply-filters")?.addEventListener("click", async () => {
+    const searchInput = (document.getElementById("search-input") as HTMLInputElement).value;
+    const prioritySelect = (document.getElementById("filter-priority") as HTMLSelectElement).value;
+    const completedSelect = (document.getElementById("filter-completed") as HTMLSelectElement).value;
+    const sortSelect = (document.getElementById("sort-tasks") as HTMLSelectElement).value;
+
+    const queryParams = new URLSearchParams();
+
+    if (searchInput) queryParams.append("search", searchInput);
+    if (prioritySelect) queryParams.append("priority", prioritySelect);
+    if (completedSelect) queryParams.append("completed", completedSelect);
+
+    if (sortSelect) {
+      const [sortBy, order] = sortSelect.split("-");
+      queryParams.append("sortBy", sortBy);
+      queryParams.append("order", order === "asc" ? "asc" : "desc");
+    }
+
+    const res = await fetch(`http://localhost:3000/tasks?${queryParams.toString()}`, {
+      headers: { "x-api-key": "SECRET" }
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      tasksCache = data.tasks;
+      renderTasksList(tasksCache);
+    }
+  });
+
 });
 
 function initForm() {
@@ -163,7 +194,7 @@ async function addTask(task: Task) {
     body: JSON.stringify(task),
   });
   if (!res.ok) return;
-  const {task: created} = await res.json();
+  const { task: created } = await res.json();
   const container = document.getElementById("task-list");
   if (container) container.prepend(createTaskCard(created));
 
