@@ -29,9 +29,52 @@
           <textarea id="task-description" class="form__textarea" placeholder="Task Description" required></textarea>
         </div>
 
+        <div class="form__group">
+          <label for="task-priority" class="form__label">Priority</label>
+          <select id="task-priority" class="form__select" required>
+            <option value="" disabled selected>Select Priority</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+
         <button type="submit" class="form__button">Add Task</button>
       </form>
     </article>
+
+    <article class="filter-bar">
+      <div class="filter-bar__group">
+        <input type="text" id="search-input" placeholder="Search tasks..." class="filter-bar__input" />
+      </div>
+
+      <div class="filter-bar__group">
+        <select id="filter-priority" class="filter-bar__select">
+          <option value="">Priority: Default</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
+
+        <select id="filter-completed" class="filter-bar__select">
+          <option value="">Completed: Default</option>
+          <option value="true">Completed</option>
+          <option value="false">Pending</option>
+        </select>
+      </div>
+
+      <div class="filter-bar__group">
+        <select id="sort-tasks" class="filter-bar__select">
+          <option value="createdAt-desc">Newest First</option>
+          <option value="createdAt-asc">Oldest First</option>
+          <option value="priority-desc">Hardest → Easiest</option>
+          <option value="priority-asc">Easiest → Hardest</option>
+        </select>
+
+        <button id="apply-filters" class="filter-bar__button">Apply</button>
+      </div>
+    </article>
+
 
     <article class="task-list">
       <h2 class="task-list__title">Task List</h2>
