@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
   <link rel="stylesheet" href="dist/style.css">
   <script src="dist/index.js" defer></script>
 </head>
+
 <body class="page">
   <header class="header">
     <h1 class="header__title">Tasks</h1>
@@ -41,6 +43,39 @@
       </form>
     </article>
 
+    <article class="filter-bar">
+      <div class="filter-bar__group">
+        <input type="text" id="search-input" placeholder="Search tasks..." class="filter-bar__input" />
+      </div>
+
+      <div class="filter-bar__group">
+        <select id="filter-priority" class="filter-bar__select">
+          <option value="">Priority: Default</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
+
+        <select id="filter-completed" class="filter-bar__select">
+          <option value="">Completed: Default</option>
+          <option value="true">Completed</option>
+          <option value="false">Pending</option>
+        </select>
+      </div>
+
+      <div class="filter-bar__group">
+        <select id="sort-tasks" class="filter-bar__select">
+          <option value="createdAt-desc">Newest First</option>
+          <option value="createdAt-asc">Oldest First</option>
+          <option value="priority-desc">Hardest → Easiest</option>
+          <option value="priority-asc">Easiest → Hardest</option>
+        </select>
+
+        <button id="apply-filters" class="filter-bar__button">Apply</button>
+      </div>
+    </article>
+
+
     <article class="task-list">
       <h2 class="task-list__title">Task List</h2>
       <div id="task-list" class="task-list__container"></div>
@@ -51,4 +86,5 @@
     <p class="footer__text">&copy; All rights reserved 2025</p>
   </footer>
 </body>
+
 </html>

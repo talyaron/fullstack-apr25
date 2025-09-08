@@ -100,6 +100,52 @@ $shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   }
 }
 
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  background: $card-bg;
+  padding: 0.8rem 1rem;
+  border-radius: $border-radius;
+  box-shadow: $shadow;
+
+  &__group {
+    display: flex;
+    gap: 0.8rem;
+    flex: 1;
+    min-width: 250px;
+  }
+
+  &__input,
+  &__select {
+    flex: 1;
+    min-width: 120px;
+    padding: 0.5rem 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: $border-radius;
+    font-size: 0.9rem;
+  }
+
+  &__button {
+    background: $primary;
+    color: white;
+    border: none;
+    border-radius: $border-radius;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+
+    &:hover {
+      background: darken($primary, 8%);
+    }
+  }
+}
+
+
+
 .task-list {
   &__title {
     margin: 0 0 1rem;
@@ -176,6 +222,7 @@ $shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
       font-weight: 600;
     }
   }
+
   &__button {
     background: none;
     border: 1px solid #ddd;
@@ -255,22 +302,51 @@ $shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
+
 @keyframes fadeOut {
-  from { opacity: 1; transform: translateY(0); }
-  to   { opacity: 0; transform: translateY(10px); }
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(10px);
+  }
 }
 
 @keyframes slideIn {
-  from { transform: scale(0.98) translateY(-8px); opacity: 0; }
-  to   { transform: scale(1) translateY(0); opacity: 1; }
+  from {
+    transform: scale(0.98) translateY(-8px);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
 }
 
 @keyframes slideOut {
-  from { transform: scale(1) translateY(0); opacity: 1; }
-  to   { transform: scale(0.98) translateY(-8px); opacity: 0; }
+  from {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(0.98) translateY(-8px);
+    opacity: 0;
+  }
 }
 
 
@@ -285,5 +361,22 @@ $shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 
   &--closing {
     animation: slideOut 0.35s ease forwards;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.task-card {
+  &.task-card--animated {
+    animation: fadeInUp 0.35s ease forwards;
   }
 }

@@ -10,13 +10,54 @@ app.use(express.json());
 app.use(express.static("./src/public"));
 app.use(authenticateApiKey);
 
-app.get("/tasks/all-tasks", (_, res) => {
-    try {
-        res.status(200).send({ tasks });
-    } catch (error) {
-        res.status(500).send({ error: "Internal Server Error" });
+app.get("/tasks", (req, res) => {
+  try {
+    let filteredTasks = [...tasks];
+
+    if (req.query.completed) {
+      const isCompleted = req.query.completed === "true";
+      filteredTasks = filteredTasks.filter(task => task.completed === isCompleted);
     }
+
+    if (req.query.priority) {
+      const requestedPriority = req.query.priority as "low" | "medium" | "high";
+      filteredTasks = filteredTasks.filter(task => task.priority === requestedPriority);
+    }
+
+    if (req.query.search) {
+      const searchKeyword = (req.query.search as string).toLowerCase();
+      filteredTasks = filteredTasks.filter(
+        task =>
+          task.title.toLowerCase().includes(searchKeyword) ||
+          task.description.toLowerCase().includes(searchKeyword)
+      );
+    }
+
+    if (req.query.sortBy) {
+      const sortField = req.query.sortBy as string;
+      const sortOrder = req.query.order === "asc" ? 1 : -1;
+
+      filteredTasks.sort((taskOne, taskTwo) => {
+        if (sortField === "priority") {
+          const priorityLevels: Record<string, number> = { low: 1, medium: 2, high: 3 };
+          return (priorityLevels[taskOne.priority] - priorityLevels[taskTwo.priority]) * sortOrder;
+        }
+
+        const valueOne = (taskOne as any)[sortField];
+        const valueTwo = (taskTwo as any)[sortField];
+        return (valueOne > valueTwo ? 1 : -1) * sortOrder;
+      });
+    } else {
+      filteredTasks.sort((taskOne, taskTwo) => (taskOne.createdAt > taskTwo.createdAt ? -1 : 1));
+    }
+
+    res.status(200).json({ tasks: filteredTasks });
+  } catch (error) {
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 });
+
+
 
 app.get("/tasks/:id", (req, res) => {
     try {
