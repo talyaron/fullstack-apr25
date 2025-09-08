@@ -15,11 +15,29 @@ router.post("/add-student", (req, res) => {
     students.push(newStudent);
     res.status(201).send(`Student ${newStudent.name} added successfully`);
 });
+router.get("/student/:id", (req, res) => {
+    try {
+        const { id } = req.params;
+        if (!id) throw new Error("can't find id");
+
+        const numericId = Number(id);
+        const studentId = students.find(s => s.id === numericId);
+        if(!studentId) {
+            throw new Error("student id not found");
+        }
+    
+        res.status(200).send({ studentId })
+        
+    } catch (error) {
+        console.error(error, "initial server error");
+        res.status(500).send({ error })
+    }
+})
 
 router.patch("/update-age/:id", (req, res) => {
     try {
         const { id } = req.params;
-        const age = req.body;
+        const age = req.body.age;
         if (!id) res.status(404).send({ error: "id not found" });
 
         const numericId = Number(id);
@@ -28,9 +46,10 @@ router.patch("/update-age/:id", (req, res) => {
             res.status(404).send({ error: "student not found" })
             return;
         };
-
+        console.log(age);
         student.age = Number(age);
-        res.status(200).send({ ok: true })
+
+        res.status(200).send({ ok: true, student })
 
     } catch (error) {
         console.error(error, "initial server error")
