@@ -2,7 +2,6 @@ import { Student, students } from "../model/student.model";
 import { Response, Request } from "express";
 
 export function getAllStudents(_req:Request, res:Response) {
-    console.log("GET /all-students called");
     res.status(200).send({ students });
 }
 
@@ -36,9 +35,9 @@ export function getStudentId  (req: Request, res: Response) {
 export function updateStudent (req: Request, res: Response) {
     try {
         const { id } = req.params;
-        const age = req.body;
-        if (!id) {
-            res.status(404).send({ error: "id not found" });
+        const { age } = req.body;
+        if (!id && !age) {
+            res.status(404).send({ error: "id or age not found" });
             return
         }
 
@@ -48,7 +47,8 @@ export function updateStudent (req: Request, res: Response) {
             res.status(404).send({ error: "student not found" })
             return;
         };
-        console.log(age);
+
+
         student.age = Number(age);
 
         res.status(200).send({ ok: true, student })
