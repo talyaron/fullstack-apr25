@@ -1,3 +1,6 @@
+// API password middleware
+const API_KEY = "your-secret-key-123";
+
 // main controller
 async function main() {
   try {
@@ -44,6 +47,8 @@ function hideLoading() {
 }
 
 //services
+
+
 interface Task {
   id?: string;
   title: string;
@@ -65,7 +70,7 @@ async function getAllTasks(): Promise<Task[]> {
   try {
     const response = await fetch("http://localhost:3000/tasks/get-all-tasks", {
       headers: {
-        "x-api-key": "your-secret-key-123",
+        "x-api-key": API_KEY,
       },
     });
 
@@ -89,7 +94,12 @@ async function getAllTasks(): Promise<Task[]> {
 async function getTaskById(taskId: any): Promise<Task | null> {
   try {
     const response = await fetch(
-      `http://localhost:3000/tasks/get-task/${taskId}`
+      `http://localhost:3000/tasks/get-task/${taskId}`,
+      {
+        headers: {
+          "x-api-key": API_KEY,
+        },
+      }
     );
     const data = await response.json();
 
@@ -136,7 +146,10 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const res = await fetch("http://localhost:3000/tasks/create-task", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": API_KEY,
+        },
         body: JSON.stringify({ title, description }),
       });
 
@@ -170,6 +183,9 @@ async function handleDeleteTask(taskId: any): Promise<void> {
       `http://localhost:3000/tasks/delete-task/${taskId}`,
       {
         method: "DELETE",
+        headers: {
+          "x-api-key": API_KEY,
+        },
       }
     );
 
@@ -193,7 +209,10 @@ async function toggleTaskComplete(taskId: any, completed: any) {
       `http://localhost:3000/tasks/update-task/${taskId}`,
       {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": API_KEY,
+        },
         body: JSON.stringify({ completed }),
       }
     );
@@ -287,7 +306,10 @@ async function handleEditTask(e: any, taskId: any) {
       `http://localhost:3000/tasks/update-task/${taskId}`,
       {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": API_KEY,
+        },
         body: JSON.stringify({ title, description, completed }),
       }
     );
