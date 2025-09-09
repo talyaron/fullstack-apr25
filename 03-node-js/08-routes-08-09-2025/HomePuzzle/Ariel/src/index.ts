@@ -7,8 +7,8 @@ const port = 3000;
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../public')));
 
-import studentRoutes from './routes/students.route';
-app.use('/api/students', studentRoutes);
+import router from './routes/cars.route';
+app.use('/api/Cars', router);
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
