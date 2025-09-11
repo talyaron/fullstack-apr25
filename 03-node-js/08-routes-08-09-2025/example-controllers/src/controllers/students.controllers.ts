@@ -19,6 +19,7 @@ export function updateStudentById(req: any, res: any) {
 
         const { age, id } = req.body;
 
+        //validations
         if (typeof id !== 'number' || typeof age !== 'number') {
             return res.status(400).send("Invalid request data, id and age must be numbers");
         }
@@ -30,7 +31,7 @@ export function updateStudentById(req: any, res: any) {
 
         students[studentIndex] = { ...students[studentIndex], age };
 
-        res.status(200).send(`Student ${id} updated successfully`);
+        res.status(200).send({message: `Student ${id} updated successfully`});
     } catch (error: any) {
         res.status(500).send({ error: `Internal Server Error: ${error.message}` });
     }
