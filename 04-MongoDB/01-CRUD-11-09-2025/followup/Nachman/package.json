@@ -1,6 +1,5 @@
 {
   "name": "example",
-  "type": "module",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -14,7 +13,6 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@types/mongoose": "^5.11.96",
     "express": "^5.1.0",
     "mongoose": "^8.18.1"
   },
@@ -23,7 +21,6 @@
     "@types/node": "^24.3.1",
     "nodemon": "^3.1.10",
     "ts-node": "^10.9.2",
-    "tsx": "^4.20.5",
     "typescript": "^5.9.2"
   }
 }
