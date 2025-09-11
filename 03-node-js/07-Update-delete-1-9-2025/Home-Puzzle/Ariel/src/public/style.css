@@ -89,7 +89,7 @@ h1 {
     transition: all 0.2s ease;
     cursor: pointer;
     border: 1px solid #e0e0e0;
-    min-height: 120px;
+    height: 220px;
     display: flex;
     flex-direction: column;
 }
@@ -115,6 +115,12 @@ h1 {
     flex-grow: 1;
     word-wrap: break-word;
     line-height: 1.4;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
 }
 
 .task-status {
@@ -125,7 +131,16 @@ h1 {
     padding: 4px 8px;
     border-radius: 12px;
     margin-bottom: 8px;
+    margin-top: auto;
     width: fit-content;
+}
+
+.task-details {
+    font-size: 13px;
+    color: #9aa0a6;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .completed {
@@ -143,9 +158,11 @@ h1 {
 .task-date {
     font-size: 11px;
     color: #9aa0a6;
-    margin-top: auto;
     padding-top: 8px;
     border-top: 1px solid #f1f3f4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .empty-state {
@@ -330,21 +347,6 @@ h1 {
     margin-top: 12px;
     padding-top: 8px;
     border-top: 1px solid #f1f3f4;
-}
-
-.toggle-btn {
-    background: #1a73e8;
-    color: white;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 4px;
-    font-size: 12px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.toggle-btn:hover {
-    background: #1557b0;
 }
 
 .modal-overlay {

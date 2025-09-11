@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Management</title>
+  <link rel="stylesheet" href="dist/style.css">
+  <script src="dist/index.js" defer></script>
+</head>
+<body class="page">
+  <header class="header">
+    <h1 class="header__title">Task Manager</h1>
+    <p class="header__subtitle">Organize your tasks efficiently</p>
+  </header>
+
+  <main class="main">
+    <article class="form">
+      <h2 class="form__title">Create New Task</h2>
+      <form id="task-form" class="form__body">
+        <div class="form__group">
+          <label for="task-title" class="form__label">Title *</label>
+          <input 
+            type="text" 
+            id="task-title" 
+            class="form__input" 
+            placeholder="Enter task title..." 
+            required
+            maxlength="100"
+          >
+        </div>
+
+        <div class="form__group">
+          <label for="task-description" class="form__label">Description</label>
+          <textarea 
+            id="task-description" 
+            class="form__textarea" 
+            placeholder="Enter task description (optional)..."
+            maxlength="500"
+          ></textarea>
+        </div>
+
+        <button type="submit" class="form__button">
+          <span class="form__button-text">Add Task</span>
+        </button>
+      </form>
+    </article>
+
+    <article class="task-list">
+      <h2 class="task-list__title">Your Tasks</h2>
+      <div id="task-list" class="task-list__container">
+        <div class="task-list__empty" id="empty-state">
+          <p>No tasks yet. Create your first task above!</p>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__text">&copy; 2025 Task Manager. All rights reserved.</p>
+  </footer>
+</body>
+</html>
