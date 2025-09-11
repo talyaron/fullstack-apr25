@@ -5,15 +5,21 @@ export interface Student {
     age: number;
 }
 
-// Create the Mongoose schema
-import mongoose, { Schema, Document } from 'mongoose';
+// export const students: Student[] = [
+//     { id: 1, name: "Alice", age: 20 },
+//     { id: 2, name: "Bob", age: 22 },
+// ];
 
-export interface IStudent extends Document {
-    name: string;
-    age: number;
-}
+import { model, Schema } from "mongoose";
 
-const StudentSchema: Schema = new Schema({
+
+const studentSchema = new Schema({
     name: { type: String, required: true },
     age: { type: Number, required: true }
 });
+
+const IStudent = model('Student', studentSchema); //collection name will be 'students' and the schema is studentSchema
+
+export default IStudent;
+
+// export const { Student } = module.exports;
