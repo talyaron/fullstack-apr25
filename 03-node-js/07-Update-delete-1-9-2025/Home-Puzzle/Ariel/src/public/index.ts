@@ -1,3 +1,6 @@
+// API password middleware
+const API_KEY = "your-secret-key-123";
+
 // main controller
 async function main() {
   try {
@@ -44,12 +47,16 @@ function hideLoading() {
 }
 
 //services
+
+
 interface Task {
   id?: string;
   title: string;
   description?: string;
   completed: boolean;
   createdAt: Date;
+  priority: "low" | "medium" | "high";
+  dueDate?: Date;
 }
 
 interface TasksResponse {
@@ -61,7 +68,11 @@ interface TasksResponse {
 
 async function getAllTasks(): Promise<Task[]> {
   try {
-    const response = await fetch("http://localhost:3000/tasks/get-all-tasks");
+    const response = await fetch("http://localhost:3000/tasks/get-all-tasks", {
+      headers: {
+        "x-api-key": API_KEY,
+      },
+    });
 
     const data: TasksResponse = (await response.json()) as TasksResponse;
 
@@ -83,7 +94,12 @@ async function getAllTasks(): Promise<Task[]> {
 async function getTaskById(taskId: any): Promise<Task | null> {
   try {
     const response = await fetch(
-      `http://localhost:3000/tasks/get-task/${taskId}`
+      `http://localhost:3000/tasks/get-task/${taskId}`,
+      {
+        headers: {
+          "x-api-key": API_KEY,
+        },
+      }
     );
     const data = await response.json();
 
@@ -130,7 +146,10 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const res = await fetch("http://localhost:3000/tasks/create-task", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": API_KEY,
+        },
         body: JSON.stringify({ title, description }),
       });
 
@@ -164,6 +183,9 @@ async function handleDeleteTask(taskId: any): Promise<void> {
       `http://localhost:3000/tasks/delete-task/${taskId}`,
       {
         method: "DELETE",
+        headers: {
+          "x-api-key": API_KEY,
+        },
       }
     );
 
@@ -187,7 +209,10 @@ async function toggleTaskComplete(taskId: any, completed: any) {
       `http://localhost:3000/tasks/update-task/${taskId}`,
       {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": API_KEY,
+        },
         body: JSON.stringify({ completed }),
       }
     );
@@ -281,7 +306,10 @@ async function handleEditTask(e: any, taskId: any) {
       `http://localhost:3000/tasks/update-task/${taskId}`,
       {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": API_KEY,
+        },
         body: JSON.stringify({ title, description, completed }),
       }
     );
@@ -334,26 +362,55 @@ function renderTasksList(tasks: Task[]) {
   tasksContainer.innerHTML = tasksHTML;
 }
 
+// עדכון לפונקציה createTaskCardHTML ב-src/public/index.ts
 function createTaskCardHTML(task: Task): string {
-  const statusClass = task.completed ? 'completed' : 'pending';
-  const statusText = task.completed ? 'הושלמה ✅' : 'ממתינה ⏳';
-  const createdDate = new Date(task.createdAt).toLocaleDateString('he-IL');
-  
+  const statusClass = task.completed ? "completed" : "pending";
+  const statusText = task.completed ? "הושלמה ✅" : "ממתינה ⏳";
+  const createdDate = new Date(task.createdAt).toLocaleDateString("he-IL");
+
+  const priorityEmoji = {
+    high: "🔴",
+    medium: "🟡",
+    low: "🟢",
+  };
+  const priorityText = {
+    high: "גבוהה",
+    medium: "בינונית",
+    low: "נמוכה",
+  };
+
   return `
     <div class="task-card" data-task-id="${task.id}">
       <div class="task-header">
         <h3 class="task-title">${task.title}</h3>
         <div class="task-buttons">
-          <button class="edit-btn" onclick="openEditModal('${task.id}')">✏️</button>
-          <button class="toggle-btn" onclick="toggleTaskComplete('${task.id}', ${!task.completed})">
-            ${task.completed ? '↩️' : '✅'}
+          <button class="edit-btn" onclick="openEditModal('${
+            task.id
+          }')">✏️</button>
+          <button class="toggle-btn" onclick="toggleTaskComplete('${
+            task.id
+          }', ${!task.completed})">
+            ${task.completed ? "↩️" : "✅"}
           </button>
-          <button class="delete-btn" onclick="handleDeleteTask('${task.id}')">🗑️</button>
+          <button class="delete-btn" onclick="handleDeleteTask('${
+            task.id
+          }')">🗑️</button>
         </div>
       </div>
-      ${task.description ? `<p class="task-description">${task.description}</p>` : ''}
+      ${
+        task.description
+          ? `<p class="task-description">${task.description}</p>`
+          : ""
+      }
       <div class="task-status ${statusClass}">${statusText}</div>
       <div class="task-date">נוצרה ב: ${createdDate}</div>
+      <div class="task-details">${priorityEmoji[task.priority]} ${
+    priorityText[task.priority]
+  }${
+    task.dueDate
+      ? ` • מועד יעד: ${new Date(task.dueDate).toLocaleDateString("he-IL")}`
+      : ""
+  }</div>
     </div>
   `;
 }

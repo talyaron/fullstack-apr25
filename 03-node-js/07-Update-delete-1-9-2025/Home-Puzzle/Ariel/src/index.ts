@@ -1,11 +1,38 @@
-import express from "express";
+import express, { Request, Response, NextFunction } from "express";
 import { randomUUID } from 'crypto';
 // import { Task } from "./model/taskModle";
+// import { EnhancedTask } from "./model/taskModle";
 import { tasks } from "./model/taskData";
 const app = express();
 const PORT = 3000;
 app.use(express.json()); // use this line to parse request body
 app.use(express.static("./src/public"));
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////
+// Level 2: API Key Authentication
+/////////////////////////////////////////////////////
+
+// Authentication middleware
+const authenticateApiKey = (req: Request, res: Response, next: NextFunction) => {
+  const apiKey = req.headers['x-api-key'];
+  const validApiKey = 'your-secret-key-123';
+  
+  if (!apiKey || apiKey !== validApiKey) {
+    return res.status(401).json({ 
+      error: 'Unauthorized',
+      message: 'Invalid or missing API key'
+    });
+  }
+  
+  return next();
+};
+
+// Apply authentication to all API routes
+app.use('/tasks', authenticateApiKey);
+
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////////
@@ -28,7 +55,6 @@ app.get('/tasks/get-all-tasks', (_, res) => {
     });
   }
 });
-
 
 // GET /tasks/get-task/:id - Retrieve a single task by ID
 app.get('/tasks/get-task/:id', (req, res) => {
@@ -61,9 +87,8 @@ app.get('/tasks/get-task/:id', (req, res) => {
 // POST /tasks/create-task - Create a new task
 app.post('/tasks/create-task', (req, res) => {
   try {
-    const { title, description } = req.body;
+    const { title, description, priority, dueDate } = req.body;
     
-    // Title validation - required and non-empty
     if (!title || typeof title !== 'string' || title.trim().length === 0) {
       return res.status(400).json({
         success: false,
@@ -71,12 +96,27 @@ app.post('/tasks/create-task', (req, res) => {
       });
     }
     
-    // Create new task
+    if (priority && !['low', 'medium', 'high'].includes(priority)) {
+      return res.status(400).json({
+        success: false,
+        message: 'Priority must be one of: low, medium, high'
+      });
+    }
+    
+    if (dueDate && isNaN(Date.parse(dueDate))) {
+      return res.status(400).json({
+        success: false,
+        message: 'Due date must be a valid date format'
+      });
+    }
+    
     const newTask = {
       id: randomUUID(),
       title: title.trim(),
       description: description ? description.trim() : undefined,
       completed: false,
+      priority: priority || 'medium',
+      dueDate: dueDate ? new Date(dueDate) : undefined,
       createdAt: new Date()
     };
     
@@ -126,7 +166,6 @@ app.delete('/tasks/delete-task/:id', (req: any, res: any) => {
     });
   }
 });
-
 
     // PUT /tasks/update-task/:id - Update an existing task
 app.put('/tasks/update-task/:id', (req:any, res:any) => {
