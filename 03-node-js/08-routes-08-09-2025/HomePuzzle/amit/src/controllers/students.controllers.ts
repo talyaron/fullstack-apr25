@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import * as studentService from "../services/service.js";
+import * as studentService from "../services/services";
 
 export function getAllStudents(_req: Request, res: Response) {
   const list = studentService.findAll();
