@@ -3,7 +3,7 @@ import { StudentAPI } from './api.js';
 
 class StudentApp {
     private students: Student[] = [];
-    private editingStudentId: string | null = null;
+    private editingStudentId: number | null = null;
 
     constructor() {
         this.init();
@@ -49,25 +49,25 @@ class StudentApp {
         }
 
         const studentsHTML = this.students.map(student => `
-            <div class="student-card" data-student-id="${student._id}">
+            <div class="student-card" data-student-id="${student.id}">
                 <div class="student-info">
                     <h3>${student.name}</h3>
                     <div class="student-age">
-                        ${this.editingStudentId === student._id ? 
-                            `<input type="number" id="edit-age-${student._id}" value="${student.age}" min="1" max="120" />` :
+                        ${this.editingStudentId === student.id ? 
+                            `<input type="number" id="edit-age-${student.id}" value="${student.age}" min="1" max="120" />` :
                             `Age: <span>${student.age}</span>`
                         }
                     </div>
                 </div>
                 <div class="student-actions">
-                    ${this.editingStudentId === student._id ?
+                    ${this.editingStudentId === student.id ?
                         `
-                        <button class="btn btn-success" onclick="app.saveStudent('${student._id}')">Save</button>
+                        <button class="btn btn-success" onclick="app.saveStudent(${student.id})">Save</button>
                         <button class="btn btn-secondary" onclick="app.cancelEdit()">Cancel</button>
                         ` :
                         `
-                        <button class="btn btn-primary" onclick="app.editStudent('${student._id}')">Edit</button>
-                        <button class="btn btn-danger" onclick="app.deleteStudent('${student._id}')">Delete</button>
+                        <button class="btn btn-primary" onclick="app.editStudent(${student.id})">Edit</button>
+                        <button class="btn btn-danger" onclick="app.deleteStudent(${student.id})">Delete</button>
                         `
                     }
                 </div>
@@ -104,7 +104,7 @@ class StudentApp {
         }
     }
 
-    public editStudent(id: string): void {
+    public editStudent(id: number): void {
         this.editingStudentId = id;
         this.renderStudents();
     }
@@ -114,7 +114,7 @@ class StudentApp {
         this.renderStudents();
     }
 
-    public async saveStudent(id: string): Promise<void> {
+    public async saveStudent(id: number): Promise<void> {
         const input = document.getElementById(`edit-age-${id}`) as HTMLInputElement;
         if (!input) return;
 
@@ -134,7 +134,7 @@ class StudentApp {
         }
     }
 
-    public async deleteStudent(id: string): Promise<void> {
+    public async deleteStudent(id: number): Promise<void> {
         if (!confirm('Are you sure you want to delete this student?')) {
             return;
         }
