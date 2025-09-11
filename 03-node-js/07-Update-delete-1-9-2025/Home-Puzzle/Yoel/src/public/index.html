@@ -1,0 +1,50 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Simple To-Do — Structure Only</title>
+    <link rel="stylesheet" href="./dist/style.css" />
+  </head>
+  <body>
+    <main class="app" role="application" aria-label="To-do app structure">
+      <header>
+        <div class="logo">TD</div>
+        <div>
+          <h1>Simple To-Do</h1>
+          <p class="lead">
+            Structure only — add items and behaviour with JavaScript.
+          </p>
+        </div>
+      </header>
+
+      <section class="create" aria-label="Create task">
+        <input
+          id="new-task-input"
+          type="text"
+          placeholder="Add a new task..."
+          aria-label="New task title"
+        />
+        <button id="add-task-btn" type="button">Add</button>
+      </section>
+
+      <div class="toolbar">
+        <div class="filters" role="tablist" aria-label="Filter tasks">
+          <button data-filter="all" type="button">All</button>
+          <button data-filter="active" type="button">Active</button>
+          <button data-filter="completed" type="button">Completed</button>
+        </div>
+        <div class="counts" aria-live="polite">
+          <span id="remaining-count">0</span> items
+        </div>
+      </div>
+
+      <ul id="task-list" class="task-list" aria-label="Tasks">
+        <li class="empty" id="empty-placeholder">
+          No tasks yet — add something above.
+        </li>
+      </ul>
+    </main>
+  </body>
+</html>
