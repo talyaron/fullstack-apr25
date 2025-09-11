@@ -38,7 +38,7 @@ export class StudentAPI {
         }
     }
 
-    static async updateStudent(id: string, age: number): Promise<string> {
+    static async updateStudent(id: number, age: number): Promise<string> {
         try {
             const response = await fetch(`${API_BASE_URL}/update-student?id=${id}`, {
                 method: 'PUT',
@@ -59,7 +59,7 @@ export class StudentAPI {
         }
     }
 
-    static async deleteStudent(id: string): Promise<string> {
+    static async deleteStudent(id: number): Promise<string> {
         try {
             const response = await fetch(`${API_BASE_URL}/delete-student?id=${id}`, {
                 method: 'DELETE',
