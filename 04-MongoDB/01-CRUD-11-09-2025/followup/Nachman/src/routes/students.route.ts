@@ -1,6 +1,9 @@
 import express from 'express'
-import { Student, students } from '../model/student.model';
+import { Student } from '../model/student.model';
 const router = express.Router();
+
+// In-memory students array
+const students: Student[] = [];
 
 router.get("/all-students", (_req, res) => {
     res.status(200).send({ students });
