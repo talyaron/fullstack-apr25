@@ -1,11 +1,18 @@
 import express, { Express } from 'express';
 import path from 'path';
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+dotenv.config();
+
+const mongooseUri = process.env.mongodbUri;
+if(!mongooseUri) {
+  throw new Error("MongoDB connection string is not defined in environment variables");
+}
 
 const app: Express = express();
 const port = 3000;
 
-mongoose.connect("mongodb+srv://Amit:Amitr585585467@atlascluster.ttupk.mongodb.net/Test").then(() => {
+mongoose.connect(mongooseUri).then(() => {
   console.log("Connected to MongoDB");
 }).catch(err => {
   console.error("Failed to connect to MongoDB", err);
