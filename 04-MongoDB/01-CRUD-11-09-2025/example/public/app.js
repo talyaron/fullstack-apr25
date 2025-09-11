@@ -42,24 +42,24 @@ class StudentApp {
             return;
         }
         const studentsHTML = this.students.map(student => `
-            <div class="student-card" data-student-id="${student.id}">
+            <div class="student-card" data-student-id="${student._id}">
                 <div class="student-info">
                     <h3>${student.name}</h3>
                     <div class="student-age">
-                        ${this.editingStudentId === student.id ?
-            `<input type="number" id="edit-age-${student.id}" value="${student.age}" min="1" max="120" />` :
+                        ${this.editingStudentId === student._id ?
+            `<input type="number" id="edit-age-${student._id}" value="${student.age}" min="1" max="120" />` :
             `Age: <span>${student.age}</span>`}
                     </div>
                 </div>
                 <div class="student-actions">
-                    ${this.editingStudentId === student.id ?
+                    ${this.editingStudentId === student._id ?
             `
-                        <button class="btn btn-success" onclick="app.saveStudent(${student.id})">Save</button>
+                        <button class="btn btn-success" onclick="app.saveStudent('${student._id}')">Save</button>
                         <button class="btn btn-secondary" onclick="app.cancelEdit()">Cancel</button>
                         ` :
             `
-                        <button class="btn btn-primary" onclick="app.editStudent(${student.id})">Edit</button>
-                        <button class="btn btn-danger" onclick="app.deleteStudent(${student.id})">Delete</button>
+                        <button class="btn btn-primary" onclick="app.editStudent('${student._id}')">Edit</button>
+                        <button class="btn btn-danger" onclick="app.deleteStudent('${student._id}')">Delete</button>
                         `}
                 </div>
             </div>
