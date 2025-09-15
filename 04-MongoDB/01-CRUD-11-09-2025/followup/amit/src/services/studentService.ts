@@ -5,6 +5,11 @@ export const getAllStudents = async (): Promise<Student[]> => {
     return await StudentModel.find();
 };
 
+export const olderThan20 = async (age: number): Promise<Student[]> => {
+    const students = await StudentModel.find({ age: { $gt: age } });
+    return students;
+}
+
 export const addStudent = async (student: Student): Promise<Student> => {
     const newStudent = new StudentModel(student);
     return await newStudent.save();

@@ -10,6 +10,15 @@ export const getAllStudents = async (_req: Request, res: Response) => {
     }
 };
 
+export const getOlderThan20 = async (_req: Request, res: Response) => {
+    try {
+        const students = await studentService.olderThan20(20);
+        res.status(200).send({ students });
+    } catch (error: any) {
+        console.error("Error, Can't find students with age 20 please check olderThan20 function", error.message);
+    }
+}
+
 export const addStudent = async (req: Request, res: Response) => {
     try {
         const newStudent = await studentService.addStudent(req.body);
