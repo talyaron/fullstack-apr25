@@ -6,7 +6,10 @@ const router = express.Router();
 router.get('/tasks', async (req, res) => {
   try {
     const { userId } = req.query;
+    console.log('userId:', userId);
     const query = userId ? { userId } : {};
+    const _tasks = await Task.find(query);
+    console.log('_tasks:', _tasks);
     const tasks = await Task.find(query).populate('userId', 'name email');
     res.json(tasks);
   } catch (error) {
@@ -58,6 +61,8 @@ router.delete('/tasks/:id', async (req, res) => {
 
 router.get('/users/:userId/tasks', async (req, res) => {
   try {
+    const _tasks = await Task.find({ userId: req.params.userId }).populate('userId', 'name email');
+    console.log('_tasks for user:', _tasks);
     const tasks = await Task.find({ userId: req.params.userId }).populate('userId', 'name email');
     res.json(tasks);
   } catch (error) {

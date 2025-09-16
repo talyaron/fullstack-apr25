@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import path from 'path';
 import userRoutes from './routes/userRoutes';
 import taskRoutes from './routes/taskRoutes';
+import bookRoutes from './routes/bookRoutes';
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 app.use('/api', userRoutes);
 app.use('/api', taskRoutes);
+app.use('/api/books', bookRoutes);
 
 mongoose.connect(MONGODB_URI)
   .then(() => {

@@ -31,7 +31,7 @@ const TaskSchema: Schema = new Schema({
     default: 1
   },
   userId: {
-    type: Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId, // reference to User model
     ref: 'User',
     required: true
   },
@@ -41,4 +41,4 @@ const TaskSchema: Schema = new Schema({
   }
 });
 
-export default mongoose.model<ITask>('Task', TaskSchema);
+export default mongoose.model<ITask>('Task', TaskSchema); //collection name 'tasks'
