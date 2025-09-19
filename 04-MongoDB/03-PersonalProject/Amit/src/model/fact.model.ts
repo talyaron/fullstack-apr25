@@ -1,31 +1,18 @@
-import { Schema, model } from "mongoose";
-
-export type User = {
-    _id: string;
-    name: string;
-    email: string;
-    password: string;
-}
+import { Schema, Types, model } from "mongoose";
 
 export type Fact = {
     _id: string;
     title: string;
     description: string;
     category: string;
+    userId: Types.ObjectId;
 }
 
 const FactSchema = new Schema<Fact>({
     title: { type: String, required: true },
     description: { type: String, required: true },
     category: { type: String, required: true },
+    userId: { type: Schema.Types.ObjectId, ref: "user", required: true },
 }, { timestamps: true });
-
-const userSchema = new Schema<User>({
-    name: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
-}, { timestamps: true });
-
 
 export const FactModel = model("Fact", FactSchema);
-export const UserModel = model("User", userSchema);
