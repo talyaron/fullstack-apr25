@@ -1,0 +1,1 @@
+import { Fact } from "../model/fact.model";
