@@ -1,8 +1,9 @@
 import express, { Express } from 'express';
-import path from 'path';
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-import factRoutes from './routes/fact.routes';
+import path from "path";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+import factRoutes from "./routes/fact.routes";
+import userRoutes from "./routes/user.routes"
 dotenv.config();
 
 const app: Express = express();
@@ -24,7 +25,8 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '../public')));
 
 
-app.use('/api/facts', factRoutes);
+app.use('/api/fact', factRoutes);
+app.use("/api/user", userRoutes);
 
 
 app.listen(port, () => {
