@@ -1,25 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Share your facts</title>
-    <link rel="stylesheet" href="dist/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Share Your Facts</title>
+  <link rel="stylesheet" href="dist/style.css" />
 </head>
-<body>
-    <header>
-        <button>Back</button>
-        <h1>Share Your Facts</h1>
-        <button>Settings</button>
-    </header>
+<body class="page">
 
-    <main>
-        <div id="fact-container"></div>
-    </main>
+  <header class="header">
+    <h1 class="header__title">Share Your Facts</h1>
+    <div class="header__user">
+      <!-- אם מחובר: שם משתמש + Logout -->
+      <!-- אם לא מחובר: קישורי Login/Register -->
+      <a href="./login/login.html" class="header__link">Login</a>
+      <a href="./register/register.html" class="header__link">Register</a>
+    </div>
+  </header>
 
-    <footer>
-        <p>&copy; 2025 All rights reserved.</p>
-    </footer>
+  <main class="main">
+    <section class="fact-input">
+      <h2 class="fact-input__title">Add a new fact</h2>
+      <form class="fact-input__form">
+        <input type="text" class="fact-input__field" placeholder="Fact title" required />
+        <textarea class="fact-input__field fact-input__field--textarea" placeholder="Write your fact..." required></textarea>
+        <button type="submit" class="fact-input__btn">Post Fact</button>
+      </form>
+    </section>
+
+    <section class="fact-list">
+      <h2 class="fact-list__title">All Facts</h2>
+      <div class="fact-list__container">
+        <!-- כרטיסי עובדות -->
+        <article class="fact-card">
+          <h3 class="fact-card__title">Cats sleep 70% of their lives</h3>
+          <p class="fact-card__desc">Fun fact about cats...</p>
+          <span class="fact-card__author">Posted by Amit</span>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__copy">&copy; 2025 Share Your Facts</p>
+  </footer>
 
 </body>
 </html>
