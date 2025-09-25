@@ -10,33 +10,14 @@
 
   <header class="header">
     <h1 class="header__title">Share Your Facts</h1>
-    <div class="header__user">
-      <!-- אם מחובר: שם משתמש + Logout -->
-      <!-- אם לא מחובר: קישורי Login/Register -->
-      <a href="./login/login.html" class="header__link">Login</a>
-      <a href="./register/register.html" class="header__link">Register</a>
+    <div class="header__actions" id="headerActions">
     </div>
   </header>
 
   <main class="main">
-    <section class="fact-input">
-      <h2 class="fact-input__title">Add a new fact</h2>
-      <form class="fact-input__form">
-        <input type="text" class="fact-input__field" placeholder="Fact title" required />
-        <textarea class="fact-input__field fact-input__field--textarea" placeholder="Write your fact..." required></textarea>
-        <button type="submit" class="fact-input__btn">Post Fact</button>
-      </form>
-    </section>
-
     <section class="fact-list">
       <h2 class="fact-list__title">All Facts</h2>
       <div class="fact-list__container">
-        <!-- כרטיסי עובדות -->
-        <article class="fact-card">
-          <h3 class="fact-card__title">Cats sleep 70% of their lives</h3>
-          <p class="fact-card__desc">Fun fact about cats...</p>
-          <span class="fact-card__author">Posted by Amit</span>
-        </article>
       </div>
     </section>
   </main>
@@ -45,5 +26,6 @@
     <p class="footer__copy">&copy; 2025 Share Your Facts</p>
   </footer>
 
+  <script src="dist/index.js"></script>
 </body>
 </html>
