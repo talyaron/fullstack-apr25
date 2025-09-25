@@ -11,7 +11,7 @@ export type Fact = {
     title: string;
     description: string;
     category: string;
-    userId: string;
+    userId: string | { _id: string; name: string };
 }
 
 export type Comment = {

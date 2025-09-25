@@ -32,30 +32,40 @@ $transition: 0.25s ease;
     font-weight: 700;
   }
 
-  &__link {
-    color: white;
-    margin-left: 1rem;
-    text-decoration: none;
-    font-weight: 600;
-    transition: $transition;
-
-    &:hover {
-      text-decoration: underline;
-    }
+  &__actions {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
   }
 
-  &__btn {
+  &__user {
+    font-weight: 700;
+  }
+
+  &__btn,
+  &__link {
     background: white;
     color: $primary;
     border: none;
     padding: 0.5rem 1rem;
     border-radius: $radius;
     cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
     box-shadow: $shadow;
     transition: $transition;
 
     &:hover {
-      background: #f0f0f0;
+      background: darken(white, 5%);
+    }
+  }
+
+  &__btn--logout {
+    background: #ff5a5f;
+    color: white;
+
+    &:hover {
+      background: darken(#ff5a5f, 8%);
     }
   }
 }
@@ -63,97 +73,91 @@ $transition: 0.25s ease;
 .main {
   flex: 1;
   padding: 2rem;
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
   animation: slideUp 0.8s ease;
 }
 
-.fact-input {
-  background: $card-bg;
-  padding: 1.5rem;
-  border-radius: $radius;
-  box-shadow: $shadow;
-  margin-bottom: 2rem;
-
-  &__title {
-    margin-bottom: 1rem;
-  }
-
-  &__form {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  &__field {
-    padding: 0.75rem;
-    border: 1px solid #ddd;
-    border-radius: $radius;
-    font-size: 1rem;
-    transition: $transition;
-    resize: none;
-
-    &:focus {
-      border-color: $primary;
-      box-shadow: 0 0 0 3px rgba($primary, 0.2);
-      outline: none;
-    }
-  }
-
-  &__btn {
-    background: $primary;
-    color: white;
-    border: none;
-    padding: 0.75rem;
-    border-radius: $radius;
-    cursor: pointer;
-    font-weight: bold;
-    transition: $transition;
-
-    &:hover {
-      background: darken($primary, 10%);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-    }
-  }
-}
-
 .fact-list {
   &__title {
-    margin-bottom: 1rem;
+    margin: 0 0 1rem;
   }
 
   &__container {
     display: grid;
     gap: 1rem;
   }
+}
 
-  .fact-card {
-    background: $card-bg;
-    padding: 1rem;
+.fact-card {
+  background: $card-bg;
+  padding: 1rem 1.25rem;
+  border-radius: $radius;
+  box-shadow: $shadow;
+  transition: $transition;
+
+  &__title {
+    margin: 0 0 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+  &__desc {
+    margin: 0 0 0.5rem;
+    color: $text-light;
+    line-height: 1.5;
+  }
+
+  &__meta {
+    display: flex;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    color: $text-light;
+
+    .fact-card__author {
+      color: $primary;
+      font-weight: 600;
+    }
+    .fact-card__category {
+      font-style: italic;
+    }
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  }
+}
+
+.fact-cta {
+  margin-top: 1rem;
+  padding: 1rem 1.25rem;
+  border-radius: $radius;
+  background: #eaf3ff;
+  border: 1px dashed rgba(74, 144, 226, 0.5);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+
+  &__text {
+    margin: 0;
+    color: $text-dark;
+  }
+
+  &__link {
+    background: $primary;
+    color: white;
+    padding: 0.5rem 1rem;
     border-radius: $radius;
+    text-decoration: none;
+    font-weight: 700;
     box-shadow: $shadow;
     transition: $transition;
 
-    &__title {
-      margin: 0 0 0.5rem;
-      font-size: 1.2rem;
-      font-weight: 600;
-    }
-
-    &__desc {
-      margin: 0 0 0.5rem;
-      color: $text-light;
-    }
-
-    &__author {
-      font-size: 0.9rem;
-      color: $primary;
-    }
-
     &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+      background: darken($primary, 8%);
+      transform: translateY(-1px);
     }
   }
 }
