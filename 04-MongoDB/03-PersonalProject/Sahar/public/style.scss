@@ -1,0 +1,50 @@
+$primary-color: #4CAF50;
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background: #f9f9f9;
+}
+
+form {
+  margin-bottom: 20px;
+
+  input, textarea {
+    display: block;
+    margin: 10px 0;
+    padding: 8px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  button {
+    background: $primary-color;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+
+    &:hover {
+      background: darken($primary-color, 10%);
+    }
+  }
+}
+
+#recipes {
+  border-top: 2px solid $primary-color;
+  padding-top: 10px;
+
+  div {
+    background: white;
+    border: 1px solid #ddd;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 4px;
+
+    h3 {
+      margin: 0;
+      color: $primary-color;
+    }
+  }
+}
