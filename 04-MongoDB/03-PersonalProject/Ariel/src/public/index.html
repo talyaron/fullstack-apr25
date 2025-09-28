@@ -3,92 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IDigitaly - Login System</title>
-    <link rel="stylesheet" href="dist/style.css">
+    <title>IDigitaly - Digital Store</title>
+    <link rel="stylesheet" href="/dist/shop.css">
 </head>
-<body class="auth-page">
-    <div class="auth-container" id="authContainer">
-        <div class="logo">IDigitaly</div>
-        
-        <div id="authForms">
-            <!-- Messages -->
-            <div class="message message--error" id="errorMessage"></div>
-            <div class="message message--success" id="successMessage"></div>
-            
-            <!-- Login Form -->
-            <form class="form form--active" id="loginForm">
-                <h2 class="form__title">Sign In</h2>
-                
-                <div class="form-group">
-                    <label class="form-group__label" for="loginEmail">Email Address</label>
-                    <input class="form-group__input" type="email" id="loginEmail" name="email" required placeholder="Enter your email">
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header__content">
+                <div class="logo">
+                    <h1>IDigitaly</h1>
                 </div>
-                
-                <div class="form-group">
-                    <label class="form-group__label" for="loginPassword">Password</label>
-                    <input class="form-group__input" type="password" id="loginPassword" name="password" required placeholder="Enter your password">
+                <nav class="nav">
+                    <ul class="nav__list">
+                        <li><a href="#home" class="nav__link nav__link--active">Home</a></li>
+                        <li><a href="#products" class="nav__link">Products</a></li>
+                        <li><a href="#about" class="nav__link">About</a></li>
+                        <li><a href="#contact" class="nav__link">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="header__actions">
+                    <button class="btn-cart" id="cartBtn">
+                        <span class="cart-icon">🛒</span>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </button>
+                    <button class="btn btn--secondary" id="loginBtn">Login</button>
+                    <div class="user-menu hidden" id="userMenu">
+                        <span class="user-name" id="userName"></span>
+                        <button class="btn btn--outline" id="logoutBtn">Logout</button>
+                    </div>
                 </div>
-                
-                <button type="submit" class="btn btn--primary">Sign In</button>
-                
-                <div class="divider">
-                    <span class="divider__text">or</span>
-                </div>
-                
-                <button type="button" class="btn btn--secondary" id="showRegister">Create New Account</button>
-            </form>
-
-            <!-- Register Form -->
-            <form class="form" id="registerForm">
-                <h2 class="form__title">Create Account</h2>
-                
-                <div class="form-group">
-                    <label class="form-group__label" for="registerName">Full Name</label>
-                    <input class="form-group__input" type="text" id="registerName" name="name" required placeholder="Enter your full name">
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-group__label" for="registerEmail">Email Address</label>
-                    <input class="form-group__input" type="email" id="registerEmail" name="email" required placeholder="Enter your email">
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-group__label" for="registerPassword">Password</label>
-                    <input class="form-group__input" type="password" id="registerPassword" name="password" required minlength="6" placeholder="Create a password">
-                    <div class="form-group__helper" id="passwordStrength"></div>
-                </div>
-                
-                <div class="form-group">
-                    <label class="form-group__label" for="confirmPassword">Confirm Password</label>
-                    <input class="form-group__input" type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm your password">
-                </div>
-                
-                <button type="submit" class="btn btn--primary">Create Account</button>
-                
-                <div class="divider">
-                    <span class="divider__text">or</span>
-                </div>
-                
-                <button type="button" class="btn btn--secondary" id="showLogin">Already have an account?</button>
-            </form>
+            </div>
         </div>
+    </header>
 
-        <!-- Dashboard -->
-        <div class="dashboard" id="dashboard">
-            <h2 class="dashboard__title">Welcome to IDigitaly!</h2>
-            
-            <div class="dashboard__user-info">
-                <h3>User Information</h3>
-                <p><strong>Name:</strong> <span id="userName"></span></p>
-                <p><strong>Email:</strong> <span id="userEmail"></span></p>
-                <p><strong>Member since:</strong> <span id="userDate"></span></p>
-                <p><strong>Last login:</strong> <span id="lastLogin"></span></p>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero__content">
+                <h1 class="hero__title">Latest Digital Products</h1>
+                <p class="hero__subtitle">Discover the newest iPhones, iPads, and Apple accessories</p>
+                <button class="btn btn--primary btn--large" id="shopNowBtn">Shop Now</button>
+            </div>
+            <div class="hero__image">
+                <div class="product-showcase">
+                    <div class="showcase-item">📱</div>
+                    <div class="showcase-item">💻</div>
+                    <div class="showcase-item">🎧</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Products</h2>
+                <div class="filters">
+                    <button class="filter-btn filter-btn--active" data-category="all">All</button>
+                    <button class="filter-btn" data-category="iphone">iPhone</button>
+                    <button class="filter-btn" data-category="ipad">iPad</button>
+                    <button class="filter-btn" data-category="accessories">Accessories</button>
+                </div>
             </div>
             
-            <button class="btn btn--secondary" id="logoutBtn">Sign Out</button>
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be loaded here -->
+            </div>
+            
+            <div class="loading hidden" id="productsLoading">
+                <div class="spinner"></div>
+                <p>Loading products...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar hidden" id="cartSidebar">
+        <div class="cart-overlay" id="cartOverlay"></div>
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>Shopping Cart</h3>
+                <button class="cart-close" id="cartClose">×</button>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <div class="cart-empty" id="cartEmpty">
+                    <p>Your cart is empty</p>
+                </div>
+            </div>
+            <div class="cart-footer hidden" id="cartFooter">
+                <div class="cart-total">
+                    <span>Total: $<span id="cartTotal">0</span></span>
+                </div>
+                <div style="display: flex; gap: 10px; margin-top: 15px;">
+                    <button class="btn btn--secondary" onclick="clearCart()" style="flex: 1;">Clear</button>
+                    <button class="btn btn--primary" id="checkoutBtn" style="flex: 1;">Checkout</button>
+                </div>
+            </div>
         </div>
     </div>
 
-    <script src="dist/script.js"></script>
+    <!-- Product Modal -->
+    <div class="modal hidden" id="productModal">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">×</button>
+            <div class="modal-body" id="modalBody">
+                <!-- Product details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="/dist/shop.js"></script>
+    <script>
+        // Simple clear cart function that actually works
+        function clearCart() {
+            if (confirm('Clear all items from cart?')) {
+                // Clear localStorage
+                localStorage.removeItem('cart');
+                
+                // If user is logged in, also clear server cart
+                const token = localStorage.getItem('token');
+                if (token) {
+                    fetch('/api/auth/cart/clear', {
+                        method: 'DELETE',
+                        headers: { 'Authorization': 'Bearer ' + token }
+                    }).then(() => {
+                        // Force update the cart UI
+                        if (window.shop) {
+                            window.shop.forceUpdateCart([]);
+                        }
+                    });
+                } else {
+                    // Force update the cart UI for non-logged users
+                    if (window.shop) {
+                        window.shop.forceUpdateCart([]);
+                    }
+                }
+            }
+        }
+    </script>
 </body>
 </html>

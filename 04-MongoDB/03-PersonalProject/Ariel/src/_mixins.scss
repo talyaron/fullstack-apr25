@@ -19,7 +19,7 @@
     cursor: not-allowed;
   }
 }
-
+ 
 @mixin button-primary {
   @include button-base;
   background-color: $primary-color;
