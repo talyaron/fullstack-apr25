@@ -1,0 +1,157 @@
+// Main Website Styles
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+$bg-main: #1a1a2e;
+$bg-card: #16213e;
+$accent-color: #e94560;
+$secondary-color: #2ed573;
+$text-primary: #ffffff;
+$text-secondary: #a8b2d1;
+$border-color: #0f3460;
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(135deg, $bg-main 0%, #0f3460 100%);
+  margin: 0;
+  color: $text-primary;
+  min-height: 100vh;
+}
+
+// Header
+.main-header {
+  background: rgba(22, 33, 62, 0.9);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $border-color;
+
+  &__logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, $accent-color, #ff6b9d);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  &__username { color: $secondary-color; font-weight: 600; }
+
+  &__button, &__link {
+    color: $text-secondary;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: 0.3s ease;
+  }
+
+  &__button {
+    background: linear-gradient(45deg, $secondary-color, #26d0ce);
+    color: white;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+
+    &--logout { background: linear-gradient(45deg, $accent-color, #ff6b9d); }
+  }
+
+  &__link:hover { color: $accent-color; }
+}
+
+// Discovery Grid
+.discovery-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.discovery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.discovery-card {
+  background: $bg-card;
+  border: 1px solid $border-color;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: $secondary-color;
+  }
+
+  &__title {
+    color: $text-primary;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  &__content {
+    color: $text-secondary;
+    margin-bottom: 1rem;
+  }
+
+  &__meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: $text-secondary;
+  }
+
+  &__topic, &__difficulty {
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  &__topic {
+    background: rgba(46, 213, 115, 0.2);
+    color: $secondary-color;
+  }
+
+  &__difficulty {
+    background: rgba(233, 69, 96, 0.2);
+    color: $accent-color;
+  }
+}
+
+// Join Prompt
+.join-prompt {
+  background: $bg-card;
+  border: 2px solid $secondary-color;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  margin-top: 2rem;
+
+  &__text {
+    color: $text-primary;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  &__link {
+    background: linear-gradient(45deg, $secondary-color, #26d0ce);
+    color: white;
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    display: inline-block;
+  }
+}
