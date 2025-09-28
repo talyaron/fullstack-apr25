@@ -1,7 +1,3 @@
-import { User } from "../types";
-
-
-
 async function loginUser(email: string, password: string) {
   try {
     const response = await fetch("http://localhost:3000/api/user/login", {
@@ -11,18 +7,16 @@ async function loginUser(email: string, password: string) {
         "x-api-key": "SECRET",
       },
       body: JSON.stringify({ email, password }),
+      credentials: "include",
     });
 
     const data = await response.json();
     if (!response.ok) throw new Error(data.message || "Login failed");
 
-    localStorage.setItem("userId", data.userId);
-    localStorage.setItem("userName", data.name);
-
     alert("Login successful!");
     window.location.href = "../index.html";
   } catch (error: any) {
-    alert(error.message);
+    console.error("Login error:", error);
   }
 }
 
