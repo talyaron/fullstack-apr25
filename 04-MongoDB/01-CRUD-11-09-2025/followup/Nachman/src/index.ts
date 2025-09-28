@@ -1,7 +1,7 @@
 import express, { Express, Request, Response } from 'express';
 import path from 'path';
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://matania1231:thevigil10@cluster0.ajj8bmb.mongodb.net/test').then(() => {
+mongoose.connect('mongodb+srv://tal:jbzulqpuzkB0PZKB@cluster0.0hzknon.mongodb.net/fs-apr25').then(() => {
     console.log("Connected to MongoDB");
 }).catch((err: Error) => {
     console.error("Error connecting to MongoDB:", err);
