@@ -1,7 +1,7 @@
 // User signin function
 async function authenticateUser(emailAddress: string, userPassword: string): Promise<void> {
   try {
-    const loginRequest = await fetch("http://localhost:3000/api/auth/signin", {
+    const loginRequest = await fetch("http://localhost:3000/api/user/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
