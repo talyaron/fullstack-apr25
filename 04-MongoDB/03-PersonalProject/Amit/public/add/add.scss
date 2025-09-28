@@ -1,0 +1,171 @@
+$page-bg: #f4f6f9;
+$card-bg: #ffffff;
+$primary: #4a90e2;
+$text-dark: #222;
+$text-light: #666;
+$shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+$radius: 0.75rem;
+$transition: 0.25s ease;
+
+.page {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: $page-bg;
+  margin: 0;
+  color: $text-dark;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background: $primary;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__title {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  &__btn,
+  &__link {
+    background: white;
+    color: $primary;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: $radius;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: $shadow;
+    transition: $transition;
+
+    &:hover {
+      background: darken(white, 5%);
+    }
+  }
+
+  &__btn--logout {
+    background: #ff5a5f;
+    color: white;
+
+    &:hover {
+      background: darken(#ff5a5f, 8%);
+    }
+  }
+}
+
+.user {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 3rem 1rem;
+
+  &__box {
+    background: $card-bg;
+    padding: 2rem;
+    border-radius: $radius;
+    box-shadow: $shadow;
+    max-width: 550px;
+    width: 100%;
+    text-align: center;
+    animation: fadeIn 0.6s ease;
+  }
+
+  &__title {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $primary;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__field {
+    padding: 0.85rem;
+    border: 1px solid #ccc;
+    border-radius: $radius;
+    font-size: 1rem;
+    resize: none;
+    transition: border $transition, box-shadow $transition;
+
+    &:focus {
+      border-color: $primary;
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+    }
+  }
+
+  &__btn {
+    background: $primary;
+    color: white;
+    border: none;
+    padding: 0.85rem;
+    border-radius: $radius;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: $transition;
+
+    &:hover {
+      background: darken($primary, 8%);
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  &__back {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid $primary;
+    border-radius: $radius;
+    color: $primary;
+    font-weight: 600;
+    text-decoration: none;
+    transition: $transition;
+
+    &:hover {
+      background: $primary;
+      color: white;
+      box-shadow: $shadow;
+      transform: translateY(-2px);
+    }
+  }
+}
+
+.footer {
+  background: $primary;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+
+  &__copy {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

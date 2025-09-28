@@ -2,8 +2,11 @@ import express, { Express } from 'express';
 import path from "path";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
+
 import factRoutes from "./routes/fact.routes";
 import userRoutes from "./routes/user.routes"
+
 dotenv.config();
 
 const app: Express = express();
@@ -23,7 +26,7 @@ mongoose.connect(`${mongooseUri}/Fact`).then(() => {
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../public')));
-
+app.use(cookieParser());
 
 app.use('/api/fact', factRoutes);
 app.use("/api/user", userRoutes);

@@ -1,7 +1,3 @@
-import { User } from "../types";
-
-
-
 async function registerUser(name: string, email: string, password: string) {
   try {
     const response = await fetch("http://localhost:3000/api/user/register", {
@@ -11,6 +7,7 @@ async function registerUser(name: string, email: string, password: string) {
         "x-api-key": "SECRET",
       },
       body: JSON.stringify({ name, email, password }),
+      credentials: "include",
     });
 
     const data = await response.json();
@@ -19,7 +16,7 @@ async function registerUser(name: string, email: string, password: string) {
     alert("Registration successful! You can now login.");
     window.location.href = "../login/login.html";
   } catch (error: any) {
-    alert(error.message);
+    console.error("Register error:", error);
   }
 }
 
