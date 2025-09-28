@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In</title>
+  <link rel="stylesheet" href="dist/login.css" />
+</head>
+<body class="page">
+  <header class="header">
+    <h1 class="header__title">KnowledgeShare</h1>
+    <div class="header__actions">
+      <a href="../register/register.html" class="header__link">Need account?</a>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="login-container">
+      <h1 class="login__title">Welcome Back</h1>
+      <p class="login__subtitle">Sign in to continue sharing</p>
+      <form id="signinForm" class="login-form">
+        <input type="email" id="email" class="login__field" placeholder="Your Email" required />
+        <input type="password" id="password" class="login__field" placeholder="Your Password" required />
+        <button type="submit" class="login__btn">Sign In</button>
+      </form>
+      <div class="login__footer">
+        <p class="login__text">New to KnowledgeShare?</p>
+        <a href="../register/register.html" class="login__link">Create Account</a>
+      </div>
+      <a href="../index.html" class="back-link">← Back to Home</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__text">&copy; 2025 KnowledgeShare</p>
+  </footer>
+
+  <script src="../dist/main.js"></script>
+  <script src="dist/login.js"></script>
+</body>
+</html>
