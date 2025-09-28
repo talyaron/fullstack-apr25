@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import * as userService from "../services/user.services";
 
 export const register = async (req: Request, res: Response) => {
+  console.log("REGISTER CALLED:", req.body); // Debug line
   try {
     const { name, email, password } = req.body;
     if (!name || !email || !password) {
@@ -11,7 +12,7 @@ export const register = async (req: Request, res: Response) => {
     const user = await userService.register(name, email, password);
     if (!user) throw new Error("Something went wrong, user not created");
 
-    res.cookie("userId", user._id.toString(), {
+    res.cookie("userId", user._id?.toString(), {
       httpOnly: true,
       sameSite: "strict",
       maxAge: 1000 * 60 * 60 * 24,
@@ -19,12 +20,13 @@ export const register = async (req: Request, res: Response) => {
 
     res.status(201).json({ message: "User registered successfully", name: user.name });
   } catch (error: any) {
+    console.log("REGISTER ERROR:", error); // Debug line
     res.status(400).json({ message: error.message || "User registration failed" });
   }
 };
 
 export const login = async (req: Request, res: Response) => {
-  
+  console.log("LOGIN CALLED:", req.body); // Debug line
   try {
     const { email, password } = req.body;
     if (!email || !password) {
@@ -36,7 +38,7 @@ export const login = async (req: Request, res: Response) => {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
-    res.cookie("userId", user._id.toString(), {
+    res.cookie("userId", user._id?.toString(), {
       httpOnly: true,
       sameSite: "strict",
       maxAge: 1000 * 60 * 60 * 24,
@@ -44,6 +46,7 @@ export const login = async (req: Request, res: Response) => {
 
     res.status(200).json({ message: "Login successful", name: user.name });
   } catch (error: any) {
+    console.log("LOGIN ERROR:", error); // Debug line
     res.status(500).json({ message: "Error logging in" });
   }
 };
