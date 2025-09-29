@@ -19,11 +19,10 @@
     <div class="user__box">
       <h1 class="user__title">Add a New Fact</h1>
       <form id="addFactForm" class="user__form">
-        <input type="text" id="title" class="user__field" placeholder="Title" required />
+        <input type="text" id="title" class="user__field" placeholder="Title" required autofocus />
         <textarea id="description" class="user__field" placeholder="Description" required></textarea>
         <select name="category" id="category" class="user__field" required>
           <option value="">Select Category</option>
-          <option value="category-btn">All</option>
           <option value="science">Science</option>
           <option value="history">History</option>
           <option value="technology">Technology</option>
@@ -32,7 +31,7 @@
           <option value="entertainment">Entertainment</option>
           <option value="health">Health</option>
           <option value="nature">Nature</option>
-          <option value="travel">Animals</option>
+          <option value="animals">Animals</option>
           <option value="food">Food</option>
           <option value="other">Other</option>
         </select>
