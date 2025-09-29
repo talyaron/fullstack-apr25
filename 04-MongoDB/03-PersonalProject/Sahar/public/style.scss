@@ -31,20 +31,44 @@ form {
   }
 }
 
+// #recipes {
+//   border-top: 2px solid $primary-color;
+//   padding-top: 10px;
+
+//   div {
+//     background: white;
+//     border: 1px solid #ddd;
+//     margin: 10px 0;
+//     padding: 10px;
+//     border-radius: 4px;
+
+//     h3 {
+//       margin: 0;
+//       color: $primary-color;
+//     }
+//   }
+// }
 #recipes {
-  border-top: 2px solid $primary-color;
-  padding-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin: auto;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  background: rgba(183, 239, 233, 0.6);
 
-  div {
-    background: white;
-    border: 1px solid #ddd;
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 4px;
+  .recipe-card {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(5px);
 
-    h3 {
-      margin: 0;
-      color: $primary-color;
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
   }
 }

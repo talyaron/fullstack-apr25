@@ -18,14 +18,14 @@ try {
 
 export const deleteRecipe = async (req:Request,res:Response)=>{
     try {
-        const {id} = req.body;
+        const { id } = req.params;
         const deletedRecipe = await Recipe.findByIdAndDelete(id);
         if(!deletedRecipe){
             return res.status(404).json({message: "Recipe not found"});
         }
         res.status(200).json({message: "Recipe deleted successfully"});
     } catch (error:any) {
-    res.status(500).json({ message: "Error creating user", error });
+    res.status(500).json({ message: "Error deleting recipe", error });
   }
 }
 
