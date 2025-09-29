@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 
 import factRoutes from "./routes/fact.routes";
-import userRoutes from "./routes/user.routes"
+import userRoutes from "./routes/user.routes";
 
 dotenv.config();
 
@@ -24,12 +24,19 @@ mongoose.connect(`${mongooseUri}/Fact`).then(() => {
   console.error("Failed to connect to MongoDB", err);
 });
 
+app.use('/api/facts', factRoutes);
+app.use("/api/user", userRoutes);
+
+app.use((req, _, next) => {
+    console.log(new Date(), req.method, req.url);
+    next();
+});
+
+
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(cookieParser());
 
-app.use('/api/fact', factRoutes);
-app.use("/api/user", userRoutes);
 
 
 app.listen(port, () => {
