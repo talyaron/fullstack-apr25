@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Account</title>
+  <link rel="stylesheet" href="dist/register.css" />
+</head>
+<body class="page">
+  <header class="header">
+    <h1 class="header__title">KnowledgeShare</h1>
+    <div class="header__actions">
+      <a href="../login/login.html" class="header__link">Already a member?</a>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="register-container">
+      <h1 class="register__title">Join Our Community</h1>
+      <p class="register__subtitle">Start sharing your discoveries today</p>
+      <form id="signupForm" class="register-form">
+        <input type="text" id="fullName" class="register__field" placeholder="Full Name" required />
+        <input type="email" id="email" class="register__field" placeholder="Email Address" required />
+        <input type="password" id="password" class="register__field" placeholder="Create Password" required />
+        <button type="submit" class="register__btn">Create Account</button>
+      </form>
+      <div class="register__footer">
+        <p class="register__text">Already have an account?</p>
+        <a href="../login/login.html" class="register__link">Sign In</a>
+      </div>
+      <a href="../index.html" class="back-link">← Back to Home</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__text">&copy; 2025 KnowledgeShare</p>
+  </footer>
+
+  <script src="../dist/main.js"></script>
+  <script src="dist/register.js"></script>
+</body>
+</html>

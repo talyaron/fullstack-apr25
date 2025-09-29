@@ -1,0 +1,129 @@
+// ADD PAGE - Minimalist Card Design
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+// Colors
+$mint: #00d4aa;
+$coral: #ff6b9d;
+$cream: #fff8e7;
+$charcoal: #333333;
+$soft-gray: #f5f7fa;
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: $cream;
+  line-height: 1.6;
+}
+
+.page {
+  min-height: 100vh;
+}
+
+.header {
+  border-bottom: 3px solid $mint;
+  padding: 20px 40px;
+  background: white;
+  
+  .header__title {
+    color: $coral;
+    font-weight: 700;
+    font-size: 24px;
+    margin: 0;
+  }
+}
+
+.main {
+  padding: 60px 20px;
+  display: grid;
+  place-items: center;
+}
+
+.form-container {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  width: 90%;
+  max-width: 550px;
+  box-shadow: 0 20px 40px rgba(0, 212, 170, 0.1);
+  border-top: 5px solid $mint;
+}
+
+.form__title {
+  color: $charcoal;
+  font-size: 28px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form {
+  display: grid;
+  gap: 20px;
+}
+
+.form__field {
+  border: none;
+  border-bottom: 2px solid #e0e0e0;
+  padding: 15px 5px;
+  font-size: 16px;
+  background: transparent;
+  outline: none;
+  transition: border-color 0.3s;
+  
+  &:focus {
+    border-bottom-color: $mint;
+  }
+  
+  &::placeholder {
+    color: #999;
+  }
+}
+
+textarea.form__field {
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 15px;
+  min-height: 100px;
+  
+  &:focus {
+    border-color: $mint;
+  }
+}
+
+.form__btn {
+  background: linear-gradient(45deg, $mint, $coral);
+  color: white;
+  border: none;
+  padding: 18px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(255, 107, 157, 0.3);
+  }
+}
+
+.back-link {
+  display: block;
+  text-align: center;
+  margin-top: 25px;
+  color: $charcoal;
+  text-decoration: none;
+  
+  &:hover {
+    color: $coral;
+  }
+}
+
+.footer {
+  background: $charcoal;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: auto;
+}

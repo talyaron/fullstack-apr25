@@ -1,0 +1,195 @@
+// REGISTER PAGE - Modern Glass Design
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600;800&display=swap');
+
+:root {
+  --neon-green: #39ff14;
+  --deep-purple: #6a0572;
+  --glass-bg: rgba(255, 255, 255, 0.15);
+  --text-bright: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.7);
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Rubik', sans-serif;
+  background: linear-gradient(45deg, var(--deep-purple), #1a1a2e, #16213e);
+  background-size: 400% 400%;
+  animation: gradientShift 6s ease infinite;
+  height: 100%;
+  color: var(--text-bright);
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  backdrop-filter: blur(20px);
+  background: var(--glass-bg);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 25px 35px;
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  &__title {
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--neon-green);
+    text-shadow: 0 0 20px var(--neon-green);
+    margin: 0;
+  }
+  
+  &__link {
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 12px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+    
+    &:hover {
+      color: var(--text-bright);
+      border-color: var(--neon-green);
+      box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
+    }
+  }
+}
+
+.main {
+  flex: 1;
+  padding: 50px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.register-container {
+  backdrop-filter: blur(25px);
+  background: var(--glass-bg);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  padding: 50px 45px;
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+.register__title {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: var(--neon-green);
+  text-shadow: 0 0 15px var(--neon-green);
+}
+
+.register__subtitle {
+  color: var(--text-muted);
+  font-size: 16px;
+  margin-bottom: 35px;
+  font-weight: 300;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.register__field {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  padding: 18px 20px;
+  color: var(--text-bright);
+  font-size: 16px;
+  backdrop-filter: blur(10px);
+  
+  &::placeholder {
+    color: var(--text-muted);
+  }
+  
+  &:focus {
+    outline: none;
+    border-color: var(--neon-green);
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+.register__btn {
+  background: linear-gradient(45deg, var(--neon-green), #00ff88);
+  color: var(--deep-purple);
+  border: none;
+  padding: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 15px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(57, 255, 20, 0.4);
+  }
+}
+
+.register__footer {
+  margin-bottom: 25px;
+  
+  .register__text {
+    color: var(--text-muted);
+    margin-right: 8px;
+    display: inline;
+  }
+  
+  .register__link {
+    color: var(--neon-green);
+    text-decoration: none;
+    font-weight: 600;
+  }
+}
+
+.back-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 12px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  
+  &:hover {
+    color: var(--text-bright);
+    border-color: var(--neon-green);
+  }
+}
+
+.footer {
+  backdrop-filter: blur(20px);
+  background: var(--glass-bg);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  padding: 20px;
+  
+  &__text {
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+}

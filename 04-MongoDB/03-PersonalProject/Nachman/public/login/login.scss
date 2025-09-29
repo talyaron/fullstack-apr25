@@ -1,0 +1,154 @@
+// LOGIN PAGE - Split Screen Design
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+// Colors
+$ocean: #0077be;
+$sunset: #ff8c42;
+$cloud: #f8f9fa;
+$midnight: #1a1a1a;
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: $cloud;
+}
+
+.header {
+  background: $midnight;
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  .header__title {
+    font-size: 22px;
+    font-weight: 700;
+    color: $sunset;
+    margin: 0;
+  }
+  
+  .header__link {
+    color: #ccc;
+    text-decoration: none;
+    padding: 8px 16px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    
+    &:hover {
+      background: #333;
+      color: white;
+    }
+  }
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+}
+
+.login-container {
+  flex: 1;
+  max-width: 450px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+}
+
+.login__title {
+  font-size: 36px;
+  font-weight: 700;
+  color: $midnight;
+  margin-bottom: 8px;
+}
+
+.login__subtitle {
+  color: #666;
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
+.login-form {
+  appearance : 25px;
+}
+
+.login__field {
+  width: 100%;
+  padding: 20px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  
+  &:focus {
+    outline: none;
+    border-color: $ocean;
+    box-shadow: 0 0 0 3px rgba(0, 119, 190, 0.1);
+  }
+}
+
+.login__btn {
+  width: 100%;
+  background: $ocean;
+  color: white;
+  border: none;
+  padding: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 25px;
+  
+  &:hover {
+    background: darken($ocean, 10%);
+  }
+}
+
+.login__footer {
+  text-align: center;
+  margin-bottom: 20px;
+  
+  .login__text {
+    color: #666;
+    display: inline;
+    margin-right: 5px;
+  }
+  
+  .login__link {
+    color: $ocean;
+    text-decoration: none;
+    font-weight: 600;
+  }
+}
+
+.back-link {
+  color: #666;
+  text-decoration: none;
+  text-align: center;
+  
+  &:hover {
+    color: $ocean;
+  }
+}
+
+.footer {
+  background: $midnight;
+  color: #ccc;
+  text-align: center;
+  padding: 15px;
+  font-size: 14px;
+}
