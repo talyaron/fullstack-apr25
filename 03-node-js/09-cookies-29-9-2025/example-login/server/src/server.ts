@@ -25,10 +25,10 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(cookieParser());
 
-app.use(anonymousUserMiddleware);
+
 app.use('/api', userRoutes);
-app.use('/api', taskRoutes);
-app.use('/api/books', bookRoutes);
+app.use('/api', anonymousUserMiddleware, taskRoutes);
+app.use('/api/books', anonymousUserMiddleware, bookRoutes);
 
 mongoose.connect(MONGODB_URI)
   .then(() => {
