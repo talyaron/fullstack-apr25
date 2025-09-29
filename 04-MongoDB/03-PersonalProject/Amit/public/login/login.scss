@@ -1,17 +1,22 @@
-$page-bg: #f4f6f9;
+$page-bg: #eef1f5;
 $card-bg: #ffffff;
-$primary: #4a90e2;
-$text-dark: #222;
-$text-light: #666;
+$primary: #1e3a8a;
+$secondary: #16a34a;
+$danger: #dc2626;
+$text-dark: #111827;
+$text-light: #6b7280;
 $shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 $radius: 0.75rem;
 $transition: 0.25s ease;
 
-.page--user {
+.page {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: $page-bg;
+  margin: 0;
+  color: $text-dark;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  background: $page-bg;
 }
 
 .user {
@@ -19,7 +24,6 @@ $transition: 0.25s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: fadeIn 0.6s ease;
 
   &__box {
     background: $card-bg;
@@ -29,14 +33,13 @@ $transition: 0.25s ease;
     width: 100%;
     max-width: 400px;
     text-align: center;
-    animation: slideUp 0.6s ease;
   }
 
   &__title {
     margin-bottom: 1.5rem;
-    font-size: 1.75rem;
+    font-size: 1.6rem;
+    font-weight: 700;
     color: $primary;
-    font-weight: bold;
   }
 
   &__form {
@@ -46,16 +49,15 @@ $transition: 0.25s ease;
   }
 
   &__field {
-    padding: 0.75rem;
+    padding: 0.85rem;
     border: 1px solid #ddd;
     border-radius: $radius;
     font-size: 1rem;
-    transition: $transition;
 
     &:focus {
       border-color: $primary;
-      box-shadow: 0 0 0 3px rgba($primary, 0.2);
       outline: none;
+      box-shadow: 0 0 0 3px rgba($primary, 0.2);
     }
   }
 
@@ -63,16 +65,15 @@ $transition: 0.25s ease;
     background: $primary;
     color: white;
     border: none;
-    padding: 0.75rem;
+    padding: 0.9rem;
     border-radius: $radius;
     cursor: pointer;
-    font-weight: bold;
-    transition: $transition;
+    font-weight: 600;
+    font-size: 1rem;
 
     &:hover {
       background: darken($primary, 8%);
       transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
     }
   }
 
@@ -81,7 +82,7 @@ $transition: 0.25s ease;
     color: $text-light;
 
     .user__link {
-      color: $primary;
+      color: $secondary;
       font-weight: 600;
       text-decoration: none;
 
@@ -94,35 +95,25 @@ $transition: 0.25s ease;
   &__back {
     display: inline-block;
     margin-top: 1rem;
-    padding: 0.5rem 1rem;
-    border: 1px solid $primary;
-    border-radius: $radius;
+    font-size: 0.95rem;
     color: $primary;
     font-weight: 600;
     text-decoration: none;
-    transition: $transition;
 
     &:hover {
-      background: $primary;
-      color: white;
-      box-shadow: $shadow;
-      transform: translateY(-2px);
+      text-decoration: underline;
     }
   }
 }
 
 .footer {
+  background: $primary;
+  color: white;
   text-align: center;
   padding: 1rem;
-  color: $text-light;
-}
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideUp {
-  from { transform: translateY(20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  &__copy {
+    margin: 0;
+    font-size: 0.9rem;
+  }
 }

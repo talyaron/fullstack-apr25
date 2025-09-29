@@ -15,8 +15,8 @@ router.get("/:id", factController.getFactById);
 
 router.post("/add-fact", requireAuth, factController.createFact);
 
-router.patch("/:id", factController.updateFact);
+router.patch("/:id", requireAuth, factController.updateFact);
 
-router.delete("/:id", factController.deleteFact);
+router.delete("/:id", requireAuth, factController.deleteFact);
 
 export default router;
