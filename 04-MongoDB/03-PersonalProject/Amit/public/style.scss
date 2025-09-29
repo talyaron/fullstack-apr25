@@ -10,6 +10,7 @@ $radius: 0.75rem;
 $transition: 0.25s ease;
 
 $categories-colors: (science: #3b82f6,
+  all: #374151,
   history: #f59e0b,
   technology: #6366f1,
   art: #ec4899,
@@ -19,8 +20,7 @@ $categories-colors: (science: #3b82f6,
   nature: #22c55e,
   animals: #8b5cf6,
   food: #eab308,
-  general: #9ca3af,
-  all: #374151);
+  other: #9ca3af);
 
 .page {
   font-family: "Segoe UI", Arial, sans-serif;
@@ -191,6 +191,7 @@ $color in $categories-colors {
     width: 100%;
   }
 }
+
 .facts__add-btn {
   background: $secondary;
   color: white;

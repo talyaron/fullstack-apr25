@@ -37,7 +37,7 @@ function buildFactCard(fact: Fact): HTMLElement {
 
   const catVal = normalize(fact.category);
   const categoryClass = catVal ? `fact-card__category fact-card__category--${catVal}` : "";
-  const categoryTag = fact.category ? `<span class="${categoryClass}">#${fact.category}</span>` : "";
+  const categoryTag = catVal ? `<span class="${categoryClass}">#${catVal}</span>` : "";
 
   card.innerHTML = `
     <h3 class="fact-card__title">${fact.title}</h3>
