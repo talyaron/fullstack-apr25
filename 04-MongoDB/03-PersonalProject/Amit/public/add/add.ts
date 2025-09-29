@@ -1,6 +1,6 @@
 async function addFact(title: string, description: string, category: string) {
   try {
-    const response = await fetch("http://localhost:3000/api/fact/add-fact", {
+    const response = await fetch("http://localhost:3000/api/facts/add-fact", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

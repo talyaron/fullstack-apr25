@@ -1,83 +1,45 @@
-type Fact = {
-    _id: string;
-    title: string;
-    description: string;
-    category: string;
-    userId: string | { _id: string; name: string };
-}
-
-const GUEST_LIMIT = 3;
-
-function buildFactCard(fact: Fact): HTMLElement {
-  const card = document.createElement("article");
-  card.className = "fact-card";
-
-  let authorName = "Unknown";
-  if (typeof fact.userId === "object" && "name" in fact.userId) {
-    authorName = (fact.userId as any).name;
-  }
-
-  const category = fact.category ? `#${fact.category}` : "";
-
-  card.innerHTML = `
-    <h3 class="fact-card__title">${fact.title}</h3>
-    <p class="fact-card__desc">${fact.description}</p>
-    <div class="fact-card__meta">
-      <span class="fact-card__author">Posted by ${authorName}</span>
-      ${category ? `<span class="fact-card__category">${category}</span>` : ""}
-    </div>
-  `;
-  return card;
-}
-
-function appendRegisterBox(totalCount: number) {
-  const container = document.querySelector(".fact-list");
-  if (!container) return;
-
-  if (totalCount <= GUEST_LIMIT) return;
-
-  const oldBox = container.querySelector(".fact-register");
-  if (oldBox) oldBox.remove();
-
-  const box = document.createElement("div");
-  box.className = "fact-register";
-  box.innerHTML = `
-    <p class="fact-register__text">Want to read more facts and join the conversation?</p>
-    <a class="fact-register__link" href="./register/register.html">Register now</a>
-  `;
-  container.appendChild(box);
-}
-
-async function getAllFacts(): Promise<Fact[]> {
+async function getCurrentUser() {
   try {
-    const response = await fetch("http://localhost:3000/api/facts/all-facts", {
+    const response = await fetch("http://localhost:3000/api/user/me", {
       headers: { "x-api-key": "SECRET" },
+      credentials: "include",
     });
-    if (!response.ok) throw new Error("Failed to fetch facts");
+    if (!response.ok) return null;
     return await response.json();
-  } catch (error: any) {
-    console.error("Error fetching facts:", error.message);
-    return [];
+  } catch {
+    return null;
   }
 }
 
-async function renderFactsSection() {
-  const listContainer = document.querySelector(".fact-list__container");
-  if (!listContainer) return;
+async function setupHeader() {
+  const headerActions = document.getElementById("headerActions");
+  const headerUser = document.getElementById("headerUser");
+  if (!headerActions || !headerUser) return;
 
-  const facts: Fact[] = await getAllFacts();
+  const user = await getCurrentUser();
 
-  listContainer.innerHTML = "";
+  if (user) {
+    headerUser.innerHTML = `Hi, ${user.name}`;
+    headerActions.innerHTML = `
+      <a href="./add/add.html" class="facts__add-btn">+ Add Fact</a>
+      <button id="logoutBtn" class="header__btn header__btn--logout">Logout</button>
+    `;
 
-  const response = await fetch("http://localhost:3000/api/user/me", { credentials: "include" });
-  const isUser = response.ok;
-
-  const visibleFacts = isUser ? facts : facts.slice(0, GUEST_LIMIT);
-  visibleFacts.forEach((fact) => listContainer.appendChild(buildFactCard(fact)));
-
-  if (!isUser) {
-    appendRegisterBox(facts.length);
+    document.getElementById("logoutBtn")?.addEventListener("click", async () => {
+      await fetch("http://localhost:3000/api/user/logout", {
+        method: "POST",
+        headers: { "x-api-key": "SECRET" },
+        credentials: "include",
+      });
+      window.location.href = "index.html";
+    });
+  } else {
+    headerUser.innerHTML = ``;
+    headerActions.innerHTML = `
+      <a href="./login/login.html" class="header__link">Login</a>
+      <a href="./register/register.html" class="header__link">Register</a>
+    `;
   }
 }
 
-renderFactsSection();
+setupHeader();
