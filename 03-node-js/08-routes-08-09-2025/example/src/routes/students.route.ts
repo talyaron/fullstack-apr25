@@ -1,12 +1,12 @@
-import express from 'express'
+import express from 'express';
 import { Student, students } from '../model/student.model';
 const router = express.Router();
 
-router.get("/all-students", (_req, res) => {
+router.get("/all-students", (_req: express.Request, res: express.Response) => {
     res.status(200).send({ students });
 });
 
-router.post("/add-student", (req, res) => {
+router.post("/add-student", (req: express.Request, res: express.Response) => {
     console.log("Request Body:", req.body);
     const newStudent = req.body as Student;
     newStudent.id = students.length + 1; // Simple ID assignment
