@@ -12,6 +12,7 @@ dotenv.config();
 const app: Express = express();
 const port = 3000;
 
+
 const mongooseUri = process.env.mongodbUri;
 
 if (!mongooseUri) {
@@ -24,20 +25,17 @@ mongoose.connect(`${mongooseUri}/Fact`).then(() => {
   console.error("Failed to connect to MongoDB", err);
 });
 
-app.use('/api/facts', factRoutes);
-app.use("/api/user", userRoutes);
-
-app.use((req, _, next) => {
-    console.log(new Date(), req.method, req.url);
-    next();
-});
-
-
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(cookieParser());
 
+app.use((req, _, next) => {
+  console.log("➡️", req.method, req.url);
+  next();
+});
 
+app.use('/api/facts', factRoutes);
+app.use("/api/user", userRoutes);
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
