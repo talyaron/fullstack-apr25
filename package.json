@@ -4,11 +4,13 @@
     "@emotion/styled": "^11.14.1",
     "@mui/material": "^7.2.0",
     "bootstrap": "^5.3.7",
+    "cookie-parser": "^1.4.7",
     "express": "^5.1.0",
     "mongoose": "^8.18.1",
     "source-map": "^0.7.6"
   },
   "devDependencies": {
+    "@types/cookie-parser": "^1.4.9",
     "@types/web": "^0.0.262"
   }
 }
