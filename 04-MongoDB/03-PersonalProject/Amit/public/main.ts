@@ -1,30 +1,38 @@
+// ==========================
+// 💾 MODEL
+// ==========================
+
 type Fact = {
   _id: string;
   title: string;
   description: string;
   category: string;
+  source: string
   userId: string | { _id: string; name: string };
   createdAt?: string;
 };
 
-const API_BASE = "http://localhost:3000";
 
 let ALL_FACTS: Fact[] = [];
-let currentSearch = "";
+let currentSearch = ""
 let currentSort: "newest" | "oldest" | "az" | "za" = "newest";
 let currentCategory = "All";
 
-function $(selector: string): HTMLElement | null {
+function selector(selector: string): HTMLElement | null {
   return document.querySelector(selector);
 }
 
-function $all(selector: string): NodeListOf<HTMLElement> {
+function allSelectors(selector: string): NodeListOf<HTMLElement> {
   return document.querySelectorAll(selector);
 }
 
-function normalize(s: string | undefined | null): string {
-  return (s || "").toLowerCase();
+function normalize(text: string | undefined | null): string {
+  return (text || "").trim().toLowerCase();
 }
+
+// ==========================
+// 🎨 VIEW
+// ==========================
 
 function buildFactCard(fact: Fact): HTMLElement {
   const card = document.createElement("article");
@@ -35,13 +43,16 @@ function buildFactCard(fact: Fact): HTMLElement {
     authorName = (fact.userId as any).name;
   }
 
-  const catVal = normalize(fact.category);
-  const categoryClass = catVal ? `fact-card__category fact-card__category--${catVal}` : "";
-  const categoryTag = catVal ? `<span class="${categoryClass}">#${catVal}</span>` : "";
+  const normalizedCategoryValue = normalize(fact.category);
+  const categoryClass = normalizedCategoryValue ? `fact-card__category fact-card__category--${normalizedCategoryValue}` : "";
+  const categoryTag = normalizedCategoryValue ? `<span class="${categoryClass}">#${normalizedCategoryValue}</span>` : "";
 
   card.innerHTML = `
     <h3 class="fact-card__title">${fact.title}</h3>
-    <p class="fact-card__desc">${fact.description}</p>
+    <p class="fact-card__description">${fact.description}</p>
+    <p class="fact-card__source">
+      Source:<a href="${fact.source}" target="_blank" class="fact-card__link">${fact.source}</a>
+    </p>
     <div class="fact-card__meta">
       <span class="fact-card__author">Posted by ${authorName}</span>
       ${categoryTag}
@@ -51,7 +62,7 @@ function buildFactCard(fact: Fact): HTMLElement {
 }
 
 function renderFacts(facts: Fact[]): void {
-  const listContainer = $(".facts__list");
+  const listContainer = selector(".facts__list");
   if (!listContainer) return;
 
   listContainer.innerHTML = "";
@@ -61,21 +72,25 @@ function renderFacts(facts: Fact[]): void {
     return;
   }
 
-  facts.forEach((f) => listContainer.appendChild(buildFactCard(f)));
+  facts.forEach((fact) => listContainer.appendChild(buildFactCard(fact)));
 }
+
+// ==========================
+// 🧠 CONTROLLER
+// ==========================
 
 function applyFiltersAndRender(): void {
   let results = [...ALL_FACTS];
 
   if (currentCategory !== "All") {
-    const cat = normalize(currentCategory);
-    results = results.filter((f) => normalize(f.category) === cat);
+    const category = normalize(currentCategory);
+    results = results.filter((fact) => normalize(fact.category) === category);
   }
 
   if (currentSearch) {
     const q = normalize(currentSearch);
     results = results.filter(
-      (f) => normalize(f.title).includes(q) || normalize(f.description).includes(q)
+      (fact) => normalize(fact.title).includes(q) || normalize(fact.description).includes(q)
     );
   }
 
@@ -106,9 +121,8 @@ function applyFiltersAndRender(): void {
 }
 
 async function loadFactsOnce(): Promise<void> {
-  const url = `${API_BASE}/api/facts/all-facts`;
   try {
-    const res = await fetch(url, {
+    const res = await fetch(`http://localhost:3000/api/facts/all-facts`, {
       headers: { "x-api-key": "SECRET" },
       credentials: "include",
     });
@@ -121,47 +135,54 @@ async function loadFactsOnce(): Promise<void> {
 
     const data = await res.json();
     ALL_FACTS = Array.isArray(data?.facts) ? data.facts : [];
+
     applyFiltersAndRender();
-  } catch {
+
+  } catch (error: any) {
+    console.error(`Can't load the facts something went wrong ${error}`)
+
     ALL_FACTS = [];
     applyFiltersAndRender();
   }
 }
 
 function wireEvents(): void {
-  const sidebar = $(".categories-sidebar");
+  const sidebar = selector(".categories-sidebar");
+
   sidebar?.addEventListener("click", (e) => {
     const target = (e.target as HTMLElement).closest(".category-btn") as HTMLElement | null;
     if (!target) return;
+
     currentCategory = target.dataset.category || "All";
-    $all(".category-btn").forEach((b) => b.classList.remove("active"));
+    allSelectors(".category-btn").forEach((b) => b.classList.remove("active"));
     target.classList.add("active");
+
     applyFiltersAndRender();
   });
 
-  const searchBtn = $("#searchBtn");
-  const searchInput = $("#searchInput") as HTMLInputElement | null;
+
+  const searchBtn = document.querySelector("#searchBtn");
+  const searchInput = document.querySelector("#searchInput") as HTMLInputElement | null;
 
   searchBtn?.addEventListener("click", () => {
     currentSearch = (searchInput?.value || "").trim();
     applyFiltersAndRender();
   });
 
-  searchInput?.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-      currentSearch = (searchInput.value || "").trim();
-      applyFiltersAndRender();
-    }
+  searchInput?.addEventListener("input", () => {
+    currentSearch = (searchInput?.value || "").trim();
+    applyFiltersAndRender();
   });
 
-  const sortGroup = $(".facts__sort-group");
+
+  const sortGroup = selector(".facts__sort-group");
   sortGroup?.addEventListener("click", (e) => {
     const btn = (e.target as HTMLElement).closest(".sort-btn") as HTMLElement | null;
     if (!btn) return;
     const sortVal = btn.dataset.sort as "newest" | "oldest" | "az" | "za" | undefined;
     if (!sortVal) return;
     currentSort = sortVal;
-    $all(".sort-btn").forEach((b) => b.classList.remove("active"));
+    allSelectors(".sort-btn").forEach((b) => b.classList.remove("active"));
     btn.classList.add("active");
     applyFiltersAndRender();
   });

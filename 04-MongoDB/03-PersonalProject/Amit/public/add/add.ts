@@ -1,4 +1,4 @@
-async function addFact(title: string, description: string, category: string) {
+async function addFact(title: string, description: string, source: string, category: string) {
   try {
     const response = await fetch("http://localhost:3000/api/facts/add-fact", {
       method: "POST",
@@ -6,7 +6,7 @@ async function addFact(title: string, description: string, category: string) {
         "Content-Type": "application/json",
         "x-api-key": "SECRET",
       },
-      body: JSON.stringify({ title, description, category }),
+      body: JSON.stringify({ title, description, source, category}),
       credentials: "include",
     });
 
@@ -26,5 +26,6 @@ document.getElementById("addFactForm")?.addEventListener("submit", (e) => {
   const title = (document.getElementById("title") as HTMLInputElement).value;
   const description = (document.getElementById("description") as HTMLInputElement).value;
   const category = (document.getElementById("category") as HTMLInputElement).value;
-  addFact(title, description, category);
+  const source = (document.getElementById("source") as HTMLInputElement).value;
+  addFact(title, description, source, category);
 });

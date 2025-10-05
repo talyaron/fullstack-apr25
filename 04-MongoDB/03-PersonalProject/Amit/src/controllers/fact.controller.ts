@@ -30,15 +30,15 @@ export const getFactById = async (req: Request, res: Response) => {
 
 export const createFact = async (req: Request, res: Response) => {
     try {
-        const { title, description, category } = req.body;
+        const { title, description, source, category } = req.body;
         // @ts-ignore
         const userId = req.userId;
 
-        if (!title || !description || !category) {
+        if (!title || !description || !source || !category) {
             return res.status(400).json({ message: "All fields are required" });
         }
 
-        const fact = await factService.createFact(title, description, category, userId);
+        const fact = await factService.createFact(title, description, source, category, userId);
         res.status(201).json({ fact });
         console.log("Created Fact:", req.body);
     } catch (error: any) {
