@@ -57,6 +57,10 @@ class ShopManager {
     modalOverlay: document.getElementById('modalOverlay') as HTMLElement | null,
     modalClose: document.getElementById('modalClose') as HTMLButtonElement | null,
     modalBody: document.getElementById('modalBody') as HTMLElement | null,
+    confirmModal: document.getElementById('confirmModal') as HTMLElement | null,
+    confirmOverlay: document.getElementById('confirmOverlay') as HTMLElement | null,
+    confirmOk: document.getElementById('confirmOk') as HTMLButtonElement | null,
+    confirmCancel: document.getElementById('confirmCancel') as HTMLButtonElement | null,
     toastContainer: document.getElementById('toastContainer') as HTMLElement | null,
     loginBtn: document.getElementById('loginBtn') as HTMLButtonElement | null,
     userMenu: document.getElementById('userMenu') as HTMLElement | null,
@@ -83,6 +87,8 @@ class ShopManager {
     this.elements.checkoutBtn?.addEventListener('click', () => this.checkout());
     this.elements.modalOverlay?.addEventListener('click', () => this.closeModal());
     this.elements.modalClose?.addEventListener('click', () => this.closeModal());
+    this.elements.confirmOverlay?.addEventListener('click', () => this.closeConfirmModal());
+    this.elements.confirmCancel?.addEventListener('click', () => this.closeConfirmModal());
     this.elements.loginBtn?.addEventListener('click', () => this.goToLogin());
     this.elements.logoutBtn?.addEventListener('click', () => this.logout());
     this.elements.shopNowBtn?.addEventListener('click', () => this.scrollToProducts());
@@ -215,6 +221,30 @@ class ShopManager {
     
     this.renderProducts(this.products);
     this.showLoading(false);
+    
+    // Transfer pending cart after login
+    await this.transferPendingCart();
+  }
+
+  private async transferPendingCart(): Promise<void> {
+    if (!this.isLoggedIn) return;
+    
+    const pendingCart = localStorage.getItem('pendingCart');
+    if (!pendingCart) return;
+    
+    try {
+      const cartItems: CartItem[] = JSON.parse(pendingCart);
+      for (const item of cartItems) {
+        const product = this.products.find(p => p.id === item.productId);
+        if (product) {
+          await this.addToCartServer(product);
+        }
+      }
+      localStorage.removeItem('pendingCart');
+      this.showToast('Cart items transferred', 'success');
+    } catch (error) {
+      console.error('Failed to transfer cart:', error);
+    }
   }
 
   private renderProducts(products: Product[]): void {
@@ -332,10 +362,12 @@ class ShopManager {
     const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
     this.elements.cartCount.textContent = totalItems.toString();
+    this.elements.cartTotal.textContent = totalPrice.toFixed(2);
 
     if (cart.length === 0) {
       this.elements.cartEmpty.style.display = 'block';
       this.elements.cartFooter.classList.add('hidden');
+      this.elements.cartItems.innerHTML = '<div class="cart-empty"><p>Your cart is empty</p></div>';
     } else {
       this.elements.cartEmpty.style.display = 'none';
       this.elements.cartFooter.classList.remove('hidden');
@@ -356,8 +388,6 @@ class ShopManager {
         </div>
       `).join('');
     }
-
-    this.elements.cartTotal.textContent = totalPrice.toFixed(2);
   }
 
   public updateQuantity(productId: string, quantity: number): void {
@@ -414,11 +444,35 @@ class ShopManager {
     this.updateQuantity(productId, 0);
   }
 
-  public forceUpdateCart(cart: CartItem[]): void {
-    this.updateCartUI(cart);
-    if (this.currentUser) {
-      this.currentUser.cart = cart;
-    }
+  public async clearAllCart(): Promise<void> {
+    this.showConfirmModal();
+  }
+
+  private showConfirmModal(): void {
+    if (!this.elements.confirmModal || !this.elements.confirmOk) return;
+    
+    this.elements.confirmModal.classList.remove('hidden');
+    
+    const newOkBtn = this.elements.confirmOk.cloneNode(true) as HTMLButtonElement;
+    this.elements.confirmOk.parentNode?.replaceChild(newOkBtn, this.elements.confirmOk);
+    this.elements.confirmOk = newOkBtn;
+    
+    this.elements.confirmOk.addEventListener('click', async () => {
+      this.closeConfirmModal();
+      
+      if (this.isLoggedIn) {
+        await this.clearCartServer();
+      } else {
+        localStorage.removeItem('cart');
+        this.updateCartUI([]);
+      }
+
+      this.showToast('Cart cleared successfully', 'success');
+    });
+  }
+
+  private closeConfirmModal(): void {
+    this.elements.confirmModal?.classList.add('hidden');
   }
 
   private toggleCart(): void {
@@ -519,6 +573,11 @@ class ShopManager {
   private showToast(message: string, type: 'success' | 'error'): void {
     if (!this.elements.toastContainer) return;
 
+    const existingToasts = this.elements.toastContainer.querySelectorAll('.toast');
+    if (existingToasts.length >= 3) {
+      existingToasts[0].remove();
+    }
+
     const toast = document.createElement('div');
     toast.className = `toast toast--${type}`;
     toast.textContent = message;
@@ -527,7 +586,7 @@ class ShopManager {
 
     setTimeout(() => {
       toast.remove();
-    }, 3000);
+    }, 4500);
   }
 
   private delay(ms: number): Promise<void> {
@@ -545,5 +604,5 @@ document.addEventListener('DOMContentLoaded', () => {
   addToCart: (productId: string) => shop.addToCart(productId),
   removeItem: (productId: string) => shop.removeItem(productId),
   updateQuantity: (productId: string, quantity: number) => shop.updateQuantity(productId, quantity),
-  forceUpdateCart: (cart: any[]) => shop.forceUpdateCart(cart)
+  clearAllCart: () => shop.clearAllCart()
 };

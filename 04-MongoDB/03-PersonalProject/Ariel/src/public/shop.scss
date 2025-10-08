@@ -1,8 +1,17 @@
 @import './../variables';
 @import './../mixins';
-@import 'cart-model'; 
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+@import './cart-model';
 
-// Base styles
+// ===================================
+// עיצוב מינימליסטי שחור-לבן 
+// Apple / Vercel Style
+// ===================================
+
+// Base styles - נקי ומינימליסטי
 * {
   box-sizing: border-box;
   margin: 0;
@@ -13,60 +22,65 @@ body {
   font-family: $font-family-base;
   font-size: $font-size-base;
   line-height: $line-height-normal;
-  color: $gray-900;
-  background-color: $gray-50;
+  color: #171717;
+  background-color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 $spacing-md;
+  padding: 0 $spacing-lg;
   
   @include mobile {
-    padding: 0 $spacing-sm;
+    padding: 0 $spacing-md;
   }
 }
 
-// Header
+// ===================================
+// Header - נקי וצף
+// ===================================
 .header {
-  background-color: $white;
-  box-shadow: $shadow-sm;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid #f0f0f0;
   position: sticky;
   top: 0;
   z-index: 100;
   
   &__content {
     @include flex-between;
-    padding: $spacing-md 0;
+    padding: $spacing-lg 0;
     
     @include mobile {
-      padding: $spacing-sm 0;
+      padding: $spacing-md 0;
     }
   }
   
   &__actions {
     @include flex-center;
     gap: $spacing-md;
-    
-    @include mobile {
-      gap: $spacing-sm;
-    }
   }
-}
+} 
 
 .logo {
   h1 {
-    font-size: $font-size-2xl;
-    font-weight: $font-weight-bold;
-    color: $primary-color;
+    font-size: 26px;
+    font-weight: 700;
+    color: #000000;
+    letter-spacing: -0.5px;
     
     @include mobile {
-      font-size: $font-size-xl;
+      font-size: 22px;
     }
   }
 }
 
-// Navigation
+// ===================================
+// Navigation - מינימליסטי
+// ===================================
 .nav {
   @include mobile {
     display: none;
@@ -74,85 +88,126 @@ body {
   
   &__list {
     @include flex-center;
-    gap: $spacing-xl;
+    gap: $spacing-2xl;
     list-style: none;
   }
-  
+   
   &__link {
     text-decoration: none;
-    color: $gray-600;
-    font-weight: $font-weight-medium;
-    transition: color $transition-fast;
+    color: #666666;
+    font-weight: 500;
+    font-size: 15px;
+    transition: color 0.2s ease;
+    position: relative;
+    padding-bottom: 4px; 
     
-    &:hover,
+    &:hover {
+      color: #000000;
+    }
+    
     &--active {
-      color: $primary-color;
+      color: #000000;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: #000000;
+      }
     }
   }
 }
 
-// Buttons
+// ===================================
+// Buttons - נקי ומודרני
+// ===================================
 .btn {
   @include button-base;
+  font-size: 14px;
+  font-weight: 600;
   
   &--primary {
-    @include button-primary;
+    background-color: #000000;
+    color: #ffffff;
+    border: 1px solid #000000;
+    
+    &:hover:not(:disabled) {
+      background-color: #1a1a1a;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    &:active:not(:disabled) {
+      transform: translateY(0);
+    }
   }
   
   &--secondary {
-    @include button-secondary;
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #e5e5e5;
+    
+    &:hover:not(:disabled) {
+      background-color: #fafafa;
+      border-color: #d4d4d4;
+    }
   }
   
   &--outline {
-    @include button-base;
     background: transparent;
-    color: $gray-600;
-    border: 1px solid $gray-300;
+    color: #666666;
+    border: 1px solid #e5e5e5;
     
-    &:hover {
-      background-color: $gray-50;
+    &:hover:not(:disabled) {
+      background-color: #fafafa;
+      border-color: #000000;
+      color: #000000;
     }
   }
   
   &--large {
-    padding: $spacing-lg $spacing-2xl;
-    font-size: $font-size-lg;
-  }
-  
-  &--full {
-    width: 100%;
+    padding: 14px 32px;
+    font-size: 16px;
   }
 }
 
-// Cart Button
+// ===================================
+// Cart Button - עיגול מינימליסטי
+// ===================================
 .btn-cart {
   @include button-base;
   background: transparent;
-  color: $gray-600;
+  color: #000000;
   position: relative;
-  padding: $spacing-sm;
+  padding: 10px;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
   
   &:hover {
-    background-color: $gray-100;
+    background-color: #f5f5f5;
   }
 }
 
 .cart-icon {
-  font-size: $font-size-xl;
+  font-size: 20px;
 }
 
 .cart-count {
   position: absolute;
-  top: -8px;
-  right: -8px;
-  background-color: $error-color;
-  color: $white;
-  border-radius: $border-radius-full;
-  width: 20px;
-  height: 20px;
+  top: 4px;
+  right: 4px;
+  background-color: #000000;
+  color: #ffffff;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
   @include flex-center;
-  font-size: 12px;
-  font-weight: $font-weight-bold;
+  font-size: 11px;
+  font-weight: 700;
 }
 
 // User Menu
@@ -162,187 +217,345 @@ body {
 }
 
 .user-name {
-  color: $gray-700;
-  font-weight: $font-weight-medium;
+  color: #404040;
+  font-weight: 500;
+  font-size: 14px;
 }
 
-// Hero Section
+// ===================================
+// Hero Section - Apple Style משופר
+// ===================================
 .hero {
-  background: linear-gradient(135deg, $primary-color 0%, $primary-dark 100%);
-  color: $white;
-  padding: $spacing-3xl 0;
+  position: relative;
+  height: 692px;
+  width: 100%;
+  overflow: hidden;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   
   @include mobile {
-    padding: $spacing-2xl 0;
+    height: 580px;
   }
   
-  .container {
-    @include flex-between;
-    align-items: center;
-    
-    @include mobile {
-      flex-direction: column;
-      text-align: center;
-      gap: $spacing-xl;
-    }
+  // Video Background
+  &__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
   }
   
+  // Overlay - שכבה כהה לקריאות
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.3) 0%,
+      rgba(0, 0, 0, 0.5) 50%,
+      rgba(0, 0, 0, 0.6) 100%
+    );
+    z-index: 2;
+  }
+  
+  // Content - ממורכז מעל הכל
   &__content {
-    flex: 1;
-    
-    @include mobile {
-      order: 2;
-    }
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 0 24px;
+    max-width: 980px;
+    margin: 0 auto;
+    animation: fadeInUp 1.2s ease-out;
   }
   
   &__title {
-    font-size: 3rem;
-    font-weight: $font-weight-bold;
-    margin-bottom: $spacing-md;
+    font-size: 72px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+    line-height: 1.0625;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
     
     @include mobile {
-      font-size: 2rem;
+      font-size: 44px;
+      line-height: 1.1;
     }
   }
   
   &__subtitle {
-    font-size: $font-size-lg;
-    margin-bottom: $spacing-2xl;
-    opacity: 0.9;
+    font-size: 24px;
+    font-weight: 400;
+    color: #ffffff;
+    margin-bottom: 32px;
+    letter-spacing: 0.004em;
+    line-height: 1.4;
+    opacity: 0.95;
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.8);
     
     @include mobile {
-      font-size: $font-size-base;
-      margin-bottom: $spacing-xl;
+      font-size: 19px;
+      line-height: 1.3;
+      margin-bottom: 28px;
     }
   }
   
-  &__image {
-    flex: 1;
-    @include flex-center;
+  &__buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  // כפתור מיוחד להירו
+  .btn--hero {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: 2px solid #ffffff !important;
+    font-weight: 600 !important;
+    padding: 14px 36px !important;
+    font-size: 17px !important;
+    border-radius: 50px !important;
+    transition: all 0.3s ease !important;
+    
+    &:hover {
+      background: transparent !important;
+      color: #ffffff !important;
+      transform: translateY(-3px) !important;
+      box-shadow: 0 12px 35px rgba(255, 255, 255, 0.35) !important;
+    }
+    
+    &:active {
+      transform: translateY(-1px) !important;
+    }
     
     @include mobile {
-      order: 1;
+      padding: 12px 28px !important;
+      font-size: 15px !important;
     }
   }
 }
 
-// Product Showcase
+// אנימציית כניסה
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Buttons - Apple Style
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 22px;
+  border-radius: 980px;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.17648;
+  letter-spacing: -0.022em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  
+  &--primary {
+    background: #0071e3;
+    color: #fff;
+    
+    &:hover {
+      background: #0077ed;
+    }
+  }
+  
+  &--secondary {
+    background: transparent;
+    color: #2997ff;
+    border: 1px solid #2997ff;
+    
+    &:hover {
+      background: #2997ff;
+      color: #ffffff;
+    }
+  }
+  
+  @include mobile {
+    font-size: 14px;
+    padding: 10px 18px;
+  }
+}
+
+// תיקון כפתור Login
+#loginBtn {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border: 1px solid #000000 !important;
+  
+  &:hover {
+    background-color: #1a1a1a !important;
+    border-color: #1a1a1a !important;
+  }
+}
+
+// Product Showcase - גריד נקי
 .product-showcase {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: $spacing-lg;
+  gap: $spacing-md;
   
   @include mobile {
-    gap: $spacing-md;
+    gap: $spacing-sm;
   }
 }
 
 .showcase-item {
-  width: 80px;
-  height: 80px;
-  background-color: rgba($white, 0.1);
-  border-radius: $border-radius-lg;
+  width: 100px;
+  height: 100px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
   @include flex-center;
-  font-size: 2rem;
-  backdrop-filter: blur(10px);
+  font-size: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
   
   @include mobile {
-    width: 60px;
-    height: 60px;
-    font-size: 1.5rem;
+    width: 80px;
+    height: 80px;
+    font-size: 28px;
   }
 }
 
+// ===================================
 // Products Section
+// ===================================
 .products {
-  padding: $spacing-3xl 0;
+  padding: 80px 0;
+  background: #ffffff;
+  
+  @include mobile {
+    padding: 60px 0;
+  }
 }
 
 .section-header {
   text-align: center;
-  margin-bottom: $spacing-3xl;
+  margin-bottom: 60px;
   
   @include mobile {
-    margin-bottom: $spacing-2xl;
+    margin-bottom: 40px;
   }
 }
 
 .section-title {
-  font-size: 2.5rem;
-  font-weight: $font-weight-bold;
-  color: $gray-800;
+  font-size: 42px;
+  font-weight: 700;
+  color: #000000;
   margin-bottom: $spacing-xl;
+  letter-spacing: -1px;
   
   @include mobile {
-    font-size: 2rem;
+    font-size: 32px;
   }
 }
 
-// Filters
+// ===================================
+// Filters - כפתורים נקיים
+// ===================================
 .filters {
   @include flex-center;
-  gap: $spacing-md;
+  gap: $spacing-sm;
   flex-wrap: wrap;
 }
 
 .filter-btn {
   @include button-base;
-  background: transparent;
-  color: $gray-600;
-  border: 1px solid $gray-300;
+  background: #ffffff;
+  color: #666666;
+  border: 1px solid #e5e5e5;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
   
   &:hover,
   &--active {
-    background-color: $primary-color;
-    color: $white;
-    border-color: $primary-color;
+    background-color: #000000;
+    color: #ffffff;
+    border-color: #000000;
+  }
+  
+  &--active {
+    font-weight: 600;
   }
 }
 
-// Products Grid
+// ===================================
+// Products Grid - רספונסיבי ונקי
+// ===================================
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: $spacing-xl;
   
   @include mobile {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: 1fr;
     gap: $spacing-lg;
   }
 }
 
-// Product Card
+// ===================================
+// Product Card - מינימליסטי מקסימום
+// ===================================
 .product-card {
-  @include card;
-  transition: transform $transition-fast, box-shadow $transition-fast;
+  background: #ffffff;
+  border: 1px solid #f0f0f0;
+  border-radius: 16px;
+  padding: $spacing-xl;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   
   &:hover {
     transform: translateY(-4px);
-    box-shadow: $shadow-xl;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+    border-color: #e5e5e5;
   }
   
   &__image {
     width: 100%;
     height: 200px;
-    background-color: $gray-100;
-    border-radius: $border-radius-md;
+    background-color: #fafafa;
+    border-radius: 12px;
     @include flex-center;
-    font-size: 3rem;
+    font-size: 64px;
     margin-bottom: $spacing-lg;
   }
   
   &__title {
-    font-size: $font-size-lg;
-    font-weight: $font-weight-semibold;
-    color: $gray-800;
+    font-size: 20px;
+    font-weight: 600;
+    color: #000000;
     margin-bottom: $spacing-sm;
+    letter-spacing: -0.3px;
   }
   
   &__description {
-    color: $gray-600;
+    color: #666666;
     margin-bottom: $spacing-lg;
-    line-height: $line-height-loose;
+    line-height: 1.5;
+    font-size: 15px;
   }
   
   &__footer {
@@ -351,24 +564,42 @@ body {
   }
   
   &__price {
-    font-size: $font-size-xl;
-    font-weight: $font-weight-bold;
-    color: $primary-color;
+    font-size: 24px;
+    font-weight: 700;
+    color: #000000;
+    letter-spacing: -0.5px;
   }
   
   &__button {
-    @include button-primary;
-    padding: $spacing-sm $spacing-md;
-    font-size: $font-size-sm;
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    
+    &:hover {
+      background-color: #1a1a1a;
+      transform: scale(1.05);
+    }
+    
+    &:active {
+      transform: scale(0.98);
+    }
   }
 }
 
-// Loading
+// ===================================
+// Loading State
+// ===================================
 .loading {
   @include flex-center;
   @include flex-column;
   gap: $spacing-md;
-  padding: $spacing-3xl;
+  padding: 60px;
   
   &.hidden {
     display: none;
@@ -378,13 +609,20 @@ body {
 .spinner {
   width: 40px;
   height: 40px;
-  border: 4px solid $gray-200;
-  border-top: 4px solid $primary-color;
+  border: 3px solid #f0f0f0;
+  border-top: 3px solid #000000;
   border-radius: 50%;
-  animation: spin 1s linear infinite;
+  animation: spin 0.8s linear infinite;
 }
 
-// Cart Sidebar
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+// ===================================
+// Cart Sidebar - מודרני ונקי
+// ===================================
 .cart-sidebar {
   position: fixed;
   top: 0;
@@ -404,7 +642,8 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba($gray-900, 0.5);
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
   cursor: pointer;
 }
 
@@ -412,10 +651,12 @@ body {
   position: absolute;
   top: 0;
   right: 0;
-  width: 400px;
+  width: 420px;
+  max-width: 100%;
   height: 100%;
-  background-color: $white;
+  background-color: #ffffff;
   @include flex-column;
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.12);
   
   @include mobile {
     width: 100%;
@@ -425,23 +666,28 @@ body {
 .cart-header {
   @include flex-between;
   padding: $spacing-xl;
-  border-bottom: 1px solid $gray-200;
+  border-bottom: 1px solid #f0f0f0;
   
   h3 {
-    font-size: $font-size-xl;
-    font-weight: $font-weight-semibold;
+    font-size: 20px;
+    font-weight: 600;
+    color: #000000;
   }
 }
 
 .cart-close {
   @include button-base;
   background: transparent;
-  font-size: $font-size-2xl;
-  color: $gray-500;
-  padding: $spacing-xs;
+  font-size: 28px;
+  color: #666666;
+  padding: 8px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   
   &:hover {
-    color: $gray-700;
+    background-color: #f5f5f5;
+    color: #000000;
   }
 }
 
@@ -454,22 +700,27 @@ body {
 .cart-empty {
   @include flex-center;
   height: 100%;
-  color: $gray-500;
+  color: #999999;
+  font-size: 15px;
 }
 
 .cart-footer {
   padding: $spacing-xl;
-  border-top: 1px solid $gray-200;
+  border-top: 1px solid #f0f0f0;
+  background: #fafafa;
 }
 
 .cart-total {
-  font-size: $font-size-lg;
-  font-weight: $font-weight-semibold;
+  font-size: 20px;
+  font-weight: 600;
   text-align: center;
   margin-bottom: $spacing-lg;
+  color: #000000;
 }
 
-// Modal
+// ===================================
+// Modal - נקי ומרכזי
+// ===================================
 .modal {
   position: fixed;
   top: 0;
@@ -490,17 +741,21 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba($gray-900, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
   cursor: pointer;
 }
 
 .modal-content {
-  @include card;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: $spacing-2xl;
   max-width: 600px;
-  max-height: 80vh;
+  max-height: 85vh;
   overflow-y: auto;
   position: relative;
   margin: $spacing-lg;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
   
   @include mobile {
     margin: $spacing-md;
@@ -513,59 +768,219 @@ body {
   top: $spacing-md;
   right: $spacing-md;
   @include button-base;
-  background: transparent;
-  font-size: $font-size-xl;
-  color: $gray-500;
-  padding: $spacing-xs;
+  background: #f5f5f5;
+  font-size: 24px;
+  color: #666666;
+  padding: 8px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
   
   &:hover {
-    color: $gray-700;
+    background-color: #e5e5e5;
+    color: #000000;
   }
 }
 
-// Toast Notifications
+// ===================================
+// Toast Notifications - פשוט ויפה
+// ===================================
 .toast-container {
   position: fixed;
-  top: $spacing-lg;
-  right: $spacing-lg;
+  bottom: $spacing-xl;
+  right: $spacing-xl;
   z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
   
   @include mobile {
-    top: $spacing-md;
+    bottom: $spacing-md;
     right: $spacing-md;
     left: $spacing-md;
   }
 }
 
 .toast {
-  @include card;
-  margin-bottom: $spacing-md;
-  max-width: 300px;
-  @include slide-up;
+  background: #000000;
+  color: #ffffff;
+  padding: 14px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  animation: slideUp 0.3s ease-out;
+  max-width: 400px;
   
   @include mobile {
     max-width: none;
   }
   
   &--success {
-    border-left: 4px solid $success-color;
+    background: #000000;
   }
   
   &--error {
-    border-left: 4px solid $error-color;
+    background: #ef4444;
   }
 }
 
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ===================================
 // Utility classes
+// ===================================
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .text-center {
   text-align: center;
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+// ===================================
+// Responsive adjustments
+// ===================================
+@include mobile {
+  .hero__title {
+    font-size: 32px;
+  }
+  
+  .section-title {
+    font-size: 28px;
+  }
+  
+  .product-card {
+    padding: $spacing-lg;
+  }
+}
+
+// ===================================
+// Footer - מינימליסטי ומקצועי
+// ===================================
+.footer {
+  background: #000000;
+  color: #ffffff;
+  padding: 80px 0 32px;
+  border-top: 1px solid #1a1a1a;
+  
+  @include mobile {
+    padding: 60px 0 24px;
+  }
+  
+  &__content {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+    
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      margin-bottom: 32px;
+    }
+  }
+  
+  &__column {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  &__logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+  
+  &__tagline {
+    font-size: 14px;
+    color: #999999;
+    line-height: 1.5;
+    max-width: 280px;
+  }
+  
+  &__title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  
+  &__links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    
+    li {
+      line-height: 1;
+    }
+    
+    a {
+      color: #999999;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s ease;
+      
+      &:hover {
+        color: #ffffff;
+      }
+    }
+  }
+  
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 32px;
+    border-top: 1px solid #1a1a1a;
+    
+    @include mobile {
+      flex-direction: column;
+      gap: 20px;
+      text-align: center;
+    }
+  }
+  
+  &__copyright {
+    font-size: 13px;
+    color: #666666;
+  }
+  
+  &__social {
+    display: flex;
+    gap: 20px;
+    
+    a {
+      color: #999999;
+      transition: color 0.2s ease;
+      display: flex;
+      align-items: center;
+      
+      &:hover {
+        color: #ffffff;
+      }
+      
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
 }

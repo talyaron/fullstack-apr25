@@ -1,64 +1,65 @@
+@import 'variables';
+
+// Button Base - Clean & Simple
 @mixin button-base {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: $spacing-sm $spacing-md;
-  border: none;
-  border-radius: $border-radius-md;
+  padding: 12px 24px;
+  border: 1px solid transparent;
+  border-radius: $border-radius-full;
   font-family: $font-family-base;
   font-weight: $font-weight-medium;
   font-size: $font-size-base;
-  line-height: $line-height-tight;
+  line-height: 1;
   text-decoration: none;
   cursor: pointer;
   transition: all $transition-fast;
   user-select: none;
+  white-space: nowrap;
   
-  &:disabled { 
-    opacity: 0.5;
+  &:disabled {
+    opacity: 0.4;
     cursor: not-allowed;
   }
 }
- 
+
+// Primary Button - Black
 @mixin button-primary {
   @include button-base;
   background-color: $primary-color;
   color: $white;
   
   &:hover:not(:disabled) {
-    background-color: $primary-dark;
-    transform: translateY(-1px);
-    box-shadow: $shadow-lg;
+    background-color: $primary-light;
   }
   
   &:active:not(:disabled) {
-    transform: translateY(0);
-    box-shadow: $shadow-md;
+    transform: scale(0.98);
   }
 }
 
+// Secondary Button - Outline
 @mixin button-secondary {
   @include button-base;
-  background-color: transparent;
+  background-color: $white;
   color: $primary-color;
-  border: 1px solid $primary-color;
+  border-color: $gray-200;
   
   &:hover:not(:disabled) {
-    background-color: $primary-color;
-    color: $white;
-    transform: translateY(-1px);
-    box-shadow: $shadow-md;
+    background-color: $gray-50;
+    border-color: $gray-300;
   }
 }
 
+// Input Field - Minimal
 @mixin form-input {
   width: 100%;
-  padding: $spacing-sm $spacing-md;
+  padding: 12px 16px;
   border: 1px solid $input-border-color;
   border-radius: $border-radius-md;
   font-family: $font-family-base;
   font-size: $font-size-base;
-  line-height: $line-height-normal;
   color: $input-text-color;
   background-color: $input-bg;
   transition: all $transition-fast;
@@ -70,21 +71,23 @@
   &:focus {
     outline: none;
     border-color: $input-border-color-focus;
-    box-shadow: 0 0 0 3px rgba($primary-color, 0.1);
   }
   
-  &:invalid {
-    border-color: $error-color;
+  &:disabled {
+    background-color: $gray-50;
+    cursor: not-allowed;
   }
 }
 
+// Card - Clean Shadow
 @mixin card {
   background-color: $white;
   border-radius: $border-radius-lg;
-  box-shadow: $shadow-lg;
-  padding: $spacing-2xl;
+  border: 1px solid $gray-100;
+  padding: $spacing-xl;
 }
 
+// Media Queries
 @mixin mobile {
   @media (max-width: #{$breakpoint-sm - 1px}) {
     @content;
@@ -103,6 +106,7 @@
   }
 }
 
+// Layout Helpers
 @mixin flex-center {
   display: flex;
   align-items: center;
@@ -115,36 +119,35 @@
   justify-content: space-between;
 }
 
-@mixin flex-column {
-  display: flex;
-  flex-direction: column;
+@mixin container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $spacing-lg;
+  
+  @include mobile {
+    padding: 0 $spacing-md;
+  }
 }
 
+// Text Utilities
 @mixin text-truncate {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-@mixin sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
+// Animations
 @mixin fade-in($duration: $transition-normal) {
-  animation: fadeIn $duration ease-in-out;
+  animation: fadeIn $duration ease-out;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @mixin slide-up($duration: $transition-normal) {
@@ -154,37 +157,10 @@
 @keyframes slideUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
-
-@mixin message-base {
-  padding: $spacing-md;
-  border-radius: $border-radius-md;
-  font-weight: $font-weight-medium;
-  margin-bottom: $spacing-md;
-  display: none;
-  
-  &.show {
-    display: block;
-    @include fade-in;
-  }
-}
-
-@mixin message-error {
-  @include message-base;
-  background-color: rgba($error-color, 0.1);
-  color: $error-color;
-  border: 1px solid rgba($error-color, 0.2);
-}
-
-@mixin message-success {
-  @include message-base;
-  background-color: rgba($success-color, 0.1);
-  color: $success-color;
-  border: 1px solid rgba($success-color, 0.2);
-} 
