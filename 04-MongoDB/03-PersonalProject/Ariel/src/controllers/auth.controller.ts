@@ -1,7 +1,7 @@
 // src/controllers/auth.controller.ts
 import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
-import { User, IUser, CartItem } from '../model/user.model';
+import { User } from '../model/user.model';
 
 const JWT_SECRET = 'your-super-secret-jwt-key-2024';
 
@@ -9,7 +9,16 @@ const generateToken = (userId: string) => {
   return jwt.sign({ userId }, JWT_SECRET, { expiresIn: '7d' });
 };
 
-// Register user
+const setTokenCookie = (res: Response, token: string) => {
+  res.cookie('token', token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    maxAge: 7 * 24 * 60 * 60 * 1000
+  });
+};
+
+// ✅ Register user
 export const register = async (req: Request, res: Response) => {
   try {
     const { name, email, password, confirmPassword } = req.body;
@@ -46,6 +55,8 @@ export const register = async (req: Request, res: Response) => {
     await user.save();
     const token = generateToken(String(user._id));
 
+    setTokenCookie(res, token);
+
     res.status(201).json({
       success: true,
       message: 'User created successfully',
@@ -68,7 +79,7 @@ export const register = async (req: Request, res: Response) => {
   }
 };
 
-// Login user
+// ✅ Login user
 export const login = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
@@ -100,6 +111,7 @@ export const login = async (req: Request, res: Response) => {
     await user.save();
 
     const token = generateToken(String(user._id));
+    setTokenCookie(res, token);
 
     res.json({
       success: true,
@@ -124,27 +136,65 @@ export const login = async (req: Request, res: Response) => {
   }
 };
 
-// Get user profile
+// ✅ Logout
+export const logout = async (req: Request, res: Response) => {
+  try {
+    res.clearCookie('token');
+    
+    res.json({
+      success: true,
+      message: 'Logged out successfully'
+    });
+  } catch (error: any) {
+    res.status(500).json({ 
+      success: false, 
+      message: 'Server error during logout' 
+    });
+  }
+};
+
+// ✅ Get user profile
 export const getMe = async (req: Request, res: Response) => {
   try {
-    const token = req.headers.authorization?.replace('Bearer ', '');
+    // 🔍 Debug
+    console.log('━━━━━━━━━━━━━━━━━━━━');
+    console.log('🍪 Cookies:', req.cookies);
+    console.log('📋 Headers:', req.headers.authorization);
+    console.log('━━━━━━━━━━━━━━━━━━━━');
+    
+    let token = req.cookies.token;
     
     if (!token) {
+      const authHeader = req.headers.authorization;
+      if (authHeader) {
+        token = authHeader.replace('Bearer ', '');
+      }
+    }
+    
+    if (!token) {
+      console.log('❌ No token found');
       return res.status(401).json({ 
         success: false, 
         message: 'No token provided' 
       });
     }
 
+    console.log('🎫 Token:', token.substring(0, 20) + '...');
+
     const decoded: any = jwt.verify(token, JWT_SECRET);
+    console.log('✅ Token decoded:', decoded.userId);
+    
     const user = await User.findById(decoded.userId).select('-password');
 
     if (!user) {
+      console.log('❌ User not found');
       return res.status(404).json({ 
         success: false, 
         message: 'User not found' 
       });
     }
+
+    console.log('✅ User found:', user.email);
 
     res.json({
       success: true,
@@ -159,6 +209,7 @@ export const getMe = async (req: Request, res: Response) => {
     });
 
   } catch (error: any) {
+    console.error('❌ GetMe error:', error.message);
     res.status(401).json({ 
       success: false, 
       message: 'Invalid token' 
@@ -166,10 +217,17 @@ export const getMe = async (req: Request, res: Response) => {
   }
 };
 
-// Add item to cart
+// ✅ Add to cart
 export const addToCart = async (req: Request, res: Response) => {
   try {
-    const token = req.headers.authorization?.replace('Bearer ', '');
+    let token = req.cookies.token;
+    
+    if (!token) {
+      const authHeader = req.headers.authorization;
+      if (authHeader) {
+        token = authHeader.replace('Bearer ', '');
+      }
+    }
     
     if (!token) {
       return res.status(401).json({ 
@@ -197,14 +255,11 @@ export const addToCart = async (req: Request, res: Response) => {
       });
     }
 
-    // Check if item already exists in cart
     const existingItemIndex = user.cart.findIndex(item => item.productId === productId);
 
     if (existingItemIndex > -1) {
-      // Update quantity if item exists
       user.cart[existingItemIndex].quantity += quantity;
     } else {
-      // Add new item to cart
       user.cart.push({
         productId,
         name,
@@ -232,10 +287,17 @@ export const addToCart = async (req: Request, res: Response) => {
   }
 };
 
-// Update cart item quantity
+// ✅ Update cart item
 export const updateCartItem = async (req: Request, res: Response) => {
   try {
-    const token = req.headers.authorization?.replace('Bearer ', '');
+    let token = req.cookies.token;
+    
+    if (!token) {
+      const authHeader = req.headers.authorization;
+      if (authHeader) {
+        token = authHeader.replace('Bearer ', '');
+      }
+    }
     
     if (!token) {
       return res.status(401).json({ 
@@ -273,10 +335,8 @@ export const updateCartItem = async (req: Request, res: Response) => {
     }
 
     if (quantity === 0) {
-      // Remove item from cart
       user.cart.splice(itemIndex, 1);
     } else {
-      // Update quantity
       user.cart[itemIndex].quantity = quantity;
     }
 
@@ -297,10 +357,17 @@ export const updateCartItem = async (req: Request, res: Response) => {
   }
 };
 
-// Remove item from cart
+// ✅ Remove from cart
 export const removeFromCart = async (req: Request, res: Response) => {
   try {
-    const token = req.headers.authorization?.replace('Bearer ', '');
+    let token = req.cookies.token;
+    
+    if (!token) {
+      const authHeader = req.headers.authorization;
+      if (authHeader) {
+        token = authHeader.replace('Bearer ', '');
+      }
+    }
     
     if (!token) {
       return res.status(401).json({ 
@@ -339,10 +406,17 @@ export const removeFromCart = async (req: Request, res: Response) => {
   }
 };
 
-// Clear cart
+// ✅ Clear cart
 export const clearCart = async (req: Request, res: Response) => {
   try {
-    const token = req.headers.authorization?.replace('Bearer ', '');
+    let token = req.cookies.token;
+    
+    if (!token) {
+      const authHeader = req.headers.authorization;
+      if (authHeader) {
+        token = authHeader.replace('Bearer ', '');
+      }
+    }
     
     if (!token) {
       return res.status(401).json({ 
@@ -377,4 +451,4 @@ export const clearCart = async (req: Request, res: Response) => {
       message: 'Server error clearing cart' 
     });
   }
-};
+}; 
