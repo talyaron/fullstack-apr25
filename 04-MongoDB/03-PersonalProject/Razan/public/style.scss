@@ -1,0 +1,9 @@
+* { box-sizing: border-box; font-family: system-ui, Arial, sans-serif; }
+body { margin: 0; padding: 1rem; background: #0f172a; color: #e2e8f0; }
+header { display:flex; align-items:center; justify-content:space-between; }
+nav a { color:#93c5fd; margin-left:1rem; text-decoration:none; }
+.toolbar { margin:1rem 0; display:flex; gap:.5rem; }
+.cards { list-style:none; padding:0; display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1rem; }
+.card { background:#111827; border:1px solid #1f2937; padding:1rem; border-radius:12px; }
+input,textarea,button { border-radius:10px; border:1px solid #1f2937; padding:.6rem .8rem; background:#0b1220; color:#e5e7eb; }
+button { cursor:pointer; }
