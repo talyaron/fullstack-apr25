@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Add Event</title></head>
+<body>
+  <h2>Create Event</h2>
+  <form id="f">
+    <input name="title" placeholder="Title" required />
+    <input name="date" type="datetime-local" required />
+    <input name="location" placeholder="Location" required />
+    <input name="seats" type="number" min="1" value="50" required />
+    <input name="tags" placeholder="Tags (comma separated)" />
+    <textarea name="notes" placeholder="Notes"></textarea>
+    <button>Create</button>
+  </form>
+  <script type="module">
+    const f=document.getElementById('f');
+    f?.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const fd=new FormData(f as HTMLFormElement);
+      const payload={
+        title:fd.get('title'),
+        date:fd.get('date'),
+        location:fd.get('location'),
+        seats:Number(fd.get('seats')),
+        tags:String(fd.get('tags')||'').split(',').map(t=>t.trim()).filter(Boolean),
+        notes:fd.get('notes')
+      };
+      const res=await fetch('/api/events',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+      if(res.ok) location.href='/';
+      else alert('Failed to create');
+    });
+  </script>
+</body>
+</html>
