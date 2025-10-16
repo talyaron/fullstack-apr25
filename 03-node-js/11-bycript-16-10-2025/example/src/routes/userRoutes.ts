@@ -4,6 +4,7 @@ import { anonymousUserMiddleware } from '../middleware/userMiddlware';
 import jwt from "jwt-simple";
 import dotenv from 'dotenv';
 dotenv.config();
+import bcrypt from 'bcrypt';
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
@@ -27,11 +28,16 @@ router.post('/register', async (req, res) => {
       return res.status(400).json({ error: 'User already exists' });
     }
 
+// Hash password
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+    console.log("Hashed password:", hashedPassword);
+
     // Create new user
     const user = new User({
       name,
       email,
-      password
+      password: hashedPassword
     });
 
     await user.save();
@@ -68,7 +74,11 @@ router.post('/login', async (req, res) => {
     }
 
     // Check password
-    if (password !== user.password) {
+
+    // use bcrypt to compare hashed passwords
+    const passwordMatch = await bcrypt.compare(password, user.password);
+    console.log("Password match:", passwordMatch);
+    if (!passwordMatch) {
       return res.status(401).json({ error: 'User or password incorrect' });
     }
 
