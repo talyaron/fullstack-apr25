@@ -13,12 +13,7 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/todo-app';
-
 //add cookie parser
-
-
-
-
 app.use(cors());
 app.use(express.json());
 

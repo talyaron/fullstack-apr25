@@ -8,7 +8,7 @@ dotenv.config();
 
 const MONGODB = process.env.mongodburl
 const app: Express = express();
-const port = 3000;
+const port = 3005;
 
 mongoose.connect(`${MONGODB}fs-apr25`).then(() => {
   console.log("Connected to MongoDB");

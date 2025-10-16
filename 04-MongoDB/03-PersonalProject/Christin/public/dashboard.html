@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>לוח בקרה - מערכת ניהול מלאי</title>
+    <link rel="stylesheet" href="./dist/style.css">
+    <script src="./dist/dashboard.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-info">
+            <h2>📦 מערכת ניהול מלאי</h2>
+            <div class="user-info">
+                שלום, <span id="username"></span>
+            </div>
+        </div>
+        <button onclick="logout()" class="btn btn-danger">יציאה</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="dashboard-container">
+        <div id="message" class="message"></div>
+
+        <!-- Statistics -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3 id="totalProducts">0</h3>
+                <p>סך מוצרים</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="totalValue">₪0</h3>
+                <p>שווי מלאי</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="lowStock">0</h3>
+                <p>מלאי נמוך</p>
+            </div>
+        </div>
+
+        <!-- Add Product Button -->
+        <div style="margin-bottom: 20px;">
+            <button onclick="openModal()" class="btn btn-success">➕ הוסף מוצר חדש</button>
+        </div>
+
+        <!-- Products Grid -->
+        <div id="productsGrid" class="products-grid"></div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="empty-state" style="display: none;">
+            <div class="empty-state-icon">📦</div>
+            <h3>אין מוצרים במלאי</h3>
+            <p>לחץ על "הוסף מוצר חדש" כדי להתחיל</p>
+        </div>
+    </div>
+
+    <!-- Modal for Add/Edit Product -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle">הוסף מוצר חדש</h2>
+            
+            <form id="productForm">
+                <input type="hidden" id="productId">
+                
+                <div class="form-group">
+                    <label for="productName">שם המוצר</label>
+                    <input type="text" id="productName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="productDescription">תיאור</label>
+                    <textarea id="productDescription"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="productPrice">מחיר (₪)</label>
+                    <input type="number" id="productPrice" step="0.01" min="0" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="productQuantity">כמות</label>
+                    <input type="number" id="productQuantity" min="0" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="productCategory">קטגוריה</label>
+                    <input type="text" id="productCategory" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%;">שמור</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/dashboard.js"></script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -28,5 +28,120 @@
 <div class="footer"></div>
 
 
+</body>
+</html>
+
+ -->
+
+<!DOCTYPE html>
+<html lang="he">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rina Recipes</title>
+  <link rel="stylesheet" href="./dist/style.css" />
+</head>
+<body>
+
+  <!-- ===== עמוד LOGIN & REGISTER ===== -->
+  <section id="auth-page" class="page active">
+    <div class="auth-container">
+      <h1>ברוכים הבאים ל־Rina Recipes 🍲</h1>
+      <div class="auth-box">
+        <h2>התחברות</h2>
+        <input type="text" placeholder="אימייל">
+        <input type="password" placeholder="סיסמה">
+        <button class="btn">כניסה</button>
+      </div>
+      <div class="auth-box">
+        <h2>הרשמה</h2>
+        <input type="text" placeholder="שם מלא">
+        <input type="email" placeholder="אימייל">
+        <input type="password" placeholder="סיסמה">
+        <button class="btn">צור חשבון</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HEADER (אחרי כניסה) ===== -->
+  <header id="main-header" class="hidden">
+    <div class="logo">🍴 Rina Recipes</div>
+    <div class="search-bar">
+      <input type="text" placeholder="חפש מתכון...">
+    </div>
+    <nav>
+      <button class="fav-btn">❤️ מתכונים אהובים</button>
+      <button class="logout-btn">התנתק</button>
+    </nav>
+  </header>
+
+  <!-- ===== עמוד הבית ===== -->
+  <section id="home-page" class="page hidden">
+    <h1>ברוכים הבאים למאגר המתכונים שלנו!</h1>
+    <div class="categories">
+      <div class="category-card">עוגות</div>
+      <div class="category-card">בשרים</div>
+      <div class="category-card">צמחוני</div>
+      <div class="category-card">מרקים</div>
+    </div>
+  </section>
+
+  <!-- ===== עמוד קטגוריה ===== -->
+  <section id="category-page" class="page hidden">
+    <h2>קטגוריה: עוגות 🍰</h2>
+    <div class="recipes-list">
+      <div class="recipe-card">
+        <img src="https://picsum.photos/200" alt="cake">
+        <h3>עוגת שוקולד נמסה</h3>
+      </div>
+      <div class="recipe-card">
+        <img src="https://picsum.photos/201" alt="cake">
+        <h3>עוגת גבינה קלאסית</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== עמוד מתכון ===== -->
+  <section id="recipe-page" class="page hidden">
+    <div class="recipe-header">
+      <h2>עוגת שוקולד נמסה</h2>
+      <div class="recipe-actions">
+        <button>✏️ עריכה</button>
+        <button>🗑️ מחיקה</button>
+        <button>❤️ הוסף למועדפים</button>
+      </div>
+    </div>
+    <div class="recipe-body">
+      <img src="https://picsum.photos/400" alt="cake">
+      <h3>מצרכים:</h3>
+      <ul>
+        <li>2 כוסות קמח</li>
+        <li>1 כוס סוכר</li>
+        <li>3 ביצים</li>
+        <li>100 גרם שוקולד מריר</li>
+      </ul>
+      <h3>אופן הכנה:</h3>
+      <p>
+        ממיסים שוקולד, מוסיפים את שאר החומרים ומערבבים עד בלילה אחידה.
+        אופים בתנור שחומם מראש ל־180 מעלות למשך 40 דקות.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer id="main-footer" class="hidden">
+    <p>© 2025 Rina Recipes | כל הזכויות שמורות</p>
+  </footer>
+
+  <script>
+    // הדמיה של כניסה
+    const loginBtn = document.querySelector("#auth-page .btn");
+    loginBtn.addEventListener("click", () => {
+      document.querySelector("#auth-page").classList.add("hidden");
+      document.querySelector("#main-header").classList.remove("hidden");
+      document.querySelector("#main-footer").classList.remove("hidden");
+      document.querySelector("#home-page").classList.remove("hidden");
+    });
+  </script>
 </body>
 </html>
