@@ -1,11 +1,12 @@
 import express from "express";
 import * as recipeController from '../controllers/recipeControllers'
-import * as userController from '../controllers/usersControllers'
-
 const router = express.Router();
 
-router.get("/get-recipes", recipeController.aa);
-router.get("/get-favorite-recipes", recipeController.aa);
-router.post("/add-recipe", recipeController.aa);
-router.patch("/update-recipe", recipeController.aa);
-router.delete("/delete-recipe", recipeController.aa);
+router.get("/get-recipes-by-category", recipeController.getRecipesByCategory)
+    .get("/get-recipe/:id", recipeController.getRecipe)
+    .get("/get-favorite-recipes", recipeController.getFavoriteRecipes)
+    .post("/add-recipe/", recipeController.addRecipe)
+    // .patch("/edit-recipe", recipeController.editRecipe)
+    // .patch("/mark-as-favorite", recipeController.markAsFavorite)
+    // .delete("/delete-recipe", recipeController.deleteRecipe)
+
