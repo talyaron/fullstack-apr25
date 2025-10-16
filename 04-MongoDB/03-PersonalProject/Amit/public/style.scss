@@ -246,10 +246,31 @@ $color in $categories-colors {
     color: $primary;
   }
 
-  &__desc {
+  &__description {
     margin: 0 0 0.75rem;
     color: $text-light;
     line-height: 1.5;
+  }
+
+  &__source {
+    margin: 0 0 0.75rem;
+    color: $text-light;
+    font-weight: 400;
+    line-height: 1.5;
+    word-break: break-word;
+  }
+
+  &__link {
+    color: $primary;
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+    text-decoration: underline;
+    display: inline-block;
+    max-width: 100%;
+
+    &:hover {
+      color: darken($primary, 10%);
+    }
   }
 
   &__meta {

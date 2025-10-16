@@ -9,8 +9,8 @@ export const getFactById = async (id: string): Promise<Fact | null> => {
     return FactModel.findById(id).populate("userId", "name");
 };
 
-export const createFact = async (title: string, description: string, category: string, userId: string): Promise<Fact> => {
-    const newFact = new FactModel({ title, description, category, userId });
+export const createFact = async (title: string, description: string, source: string, category: string, userId: string): Promise<Fact> => {
+    const newFact = new FactModel({ title, description, source, category, userId });
     const savedFact = await newFact.save();
     return savedFact.populate("userId", "name");
 };

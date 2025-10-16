@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function(): void {
     const errorMessage = document.getElementById('errorMessage') as HTMLElement | null;
     const successMessage = document.getElementById('successMessage') as HTMLElement | null;
 
-    // Check if user is already logged in
+    // 🔥 בדיקה מתונה - לא עושה redirect אוטומטי
     const token: string | null = localStorage.getItem('token');
     if (token) {
         checkAuthStatus(token);
@@ -93,6 +93,7 @@ document.addEventListener('DOMContentLoaded', function(): void {
                     headers: {
                         'Content-Type': 'application/json'
                     },
+                    credentials: 'include',  // 🍪 Cookies
                     body: JSON.stringify({ email, password })
                 });
 
@@ -160,6 +161,7 @@ document.addEventListener('DOMContentLoaded', function(): void {
                     headers: {
                         'Content-Type': 'application/json'
                     },
+                    credentials: 'include',  // 🍪 Cookies
                     body: JSON.stringify({ name, email, password, confirmPassword })
                 });
 
@@ -192,13 +194,14 @@ document.addEventListener('DOMContentLoaded', function(): void {
         });
     }
 
-    // Check auth status
+    // Check auth status - 🔥 לא עושה redirect אוטומטי
     async function checkAuthStatus(token: string): Promise<void> {
         try {
             const response: Response = await fetch('/api/auth/me', {
                 headers: {
                     'Authorization': `Bearer ${token}`
-                }
+                },
+                credentials: 'include'
             });
 
             const data: AuthResponse = await response.json();
@@ -219,7 +222,8 @@ document.addEventListener('DOMContentLoaded', function(): void {
     // Show dashboard
     function showDashboard(user: User): void {
         if (authContainer) {
-            authContainer.style.display = 'none';
+            const authForms = document.getElementById('authForms');
+            if (authForms) authForms.style.display = 'none';
         }
         if (dashboard) {
             dashboard.style.display = 'block';
@@ -242,8 +246,9 @@ document.addEventListener('DOMContentLoaded', function(): void {
 
     // Show auth forms
     function showAuthForms(): void {
-        if (authContainer) {
-            authContainer.style.display = 'block';
+        const authForms = document.getElementById('authForms');
+        if (authForms) {
+            authForms.style.display = 'block';
         }
         if (dashboard) {
             dashboard.style.display = 'none';
