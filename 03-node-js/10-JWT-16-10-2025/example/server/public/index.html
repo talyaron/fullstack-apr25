@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App with Users</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Todo List Manager</h1>
+        </header>
+
+        <div class="main-content">
+            <section class="user-section">
+                <h2>Users</h2>
+                <div class="user-form">
+                    <input type="text" id="userName" placeholder="Name">
+                    <input type="email" id="userEmail" placeholder="Email">
+                    <button id="addUserBtn">Add User</button>
+                </div>
+                <div id="usersList" class="users-list"></div>
+            </section>
+
+            <section class="task-section">
+                <h2>Tasks</h2>
+                <div id="selectedUser" class="selected-user"></div>
+                <div class="task-form" id="taskForm" style="display: none;">
+                    <input type="text" id="taskTitle" placeholder="Task Title">
+                    <textarea id="taskDescription" placeholder="Task Description"></textarea>
+                    <select id="taskLevel">
+                        <option value="1">Level 1 - Low</option>
+                        <option value="2">Level 2 - Medium-Low</option>
+                        <option value="3">Level 3 - Medium</option>
+                        <option value="4">Level 4 - Medium-High</option>
+                        <option value="5">Level 5 - High</option>
+                    </select>
+                    <button id="addTaskBtn">Add Task</button>
+                </div>
+                <div class="filter-controls">
+                    <label>
+                        <input type="checkbox" id="showCompleted" checked> Show Completed
+                    </label>
+                </div>
+                <div id="tasksList" class="tasks-list"></div>
+            </section>
+        </div>
+    </div>
+    <script src="dist/app.js"></script>
+</body>
+</html>
