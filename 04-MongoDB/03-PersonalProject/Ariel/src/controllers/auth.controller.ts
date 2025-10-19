@@ -9,7 +9,7 @@ const generateToken = (userId: string) => {
   return jwt.sign({ userId }, JWT_SECRET, { expiresIn: '7d' });
 };
 
-// Register - ללא שינוי
+// Register
 export const register = async (req: Request, res: Response) => {
   try {
     const { name, email, password } = req.body;
@@ -48,7 +48,7 @@ export const register = async (req: Request, res: Response) => {
   }
 };
 
-// Login - ללא שינוי
+// Login
 export const login = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
@@ -96,10 +96,9 @@ export const login = async (req: Request, res: Response) => {
   }
 };
 
-// ✅ מעודכן - עכשיו משתמש ב-req.userId מה-Middleware
+// Get Me - Updated to use req.userId from middleware
 export const getMe = async (req: Request, res: Response) => {
   try {
-    // ה-Middleware כבר אימת את ה-token ושמר את userId
     const user = await User.findById(req.userId).select('-password');
 
     if (!user) {
@@ -121,14 +120,14 @@ export const getMe = async (req: Request, res: Response) => {
       }
     });
   } catch (error: any) {
-    res.status(401).json({ 
+    res.status(500).json({ 
       success: false, 
-      message: 'Invalid token' 
+      message: 'Server error' 
     });
   }
 };
 
-// ✅ מעודכן - משתמש ב-req.userId
+// Add to Cart - Updated to use req.userId
 export const addToCart = async (req: Request, res: Response) => {
   try {
     const user = await User.findById(req.userId);
@@ -173,7 +172,7 @@ export const addToCart = async (req: Request, res: Response) => {
   }
 };
 
-// ✅ מעודכן - משתמש ב-req.userId
+// Update Cart Item - Updated to use req.userId
 export const updateCartItem = async (req: Request, res: Response) => {
   try {
     const user = await User.findById(req.userId);
@@ -225,7 +224,7 @@ export const updateCartItem = async (req: Request, res: Response) => {
   }
 };
 
-// ✅ מעודכן - משתמש ב-req.userId
+// Remove from Cart - Updated to use req.userId
 export const removeFromCart = async (req: Request, res: Response) => {
   try {
     const user = await User.findById(req.userId);
@@ -256,7 +255,7 @@ export const removeFromCart = async (req: Request, res: Response) => {
   }
 };
 
-// ✅ מעודכן - משתמש ב-req.userId
+// Clear Cart - Updated to use req.userId
 export const clearCart = async (req: Request, res: Response) => {
   try {
     const user = await User.findById(req.userId);

@@ -1,57 +1,18 @@
 // src/model/user.model.ts
 import mongoose, { Document, Schema } from 'mongoose';
 import bcrypt from 'bcryptjs';
+import { cartItemSchema, ICartItem } from './cart.model';
 
-// Cart item interface
-export interface CartItem {
-  productId: string;
-  name: string;
-  price: number;
-  quantity: number;
-  image?: string;
-  addedAt: Date;
-}
-
-// User interface
 export interface IUser extends Document {
   name: string;
   email: string;
   password: string;
-  cart: CartItem[];
+  cart: ICartItem[];
   createdAt: Date;
   lastLogin?: Date;
   comparePassword(password: string): Promise<boolean>;
 }
 
-// Cart item schema
-const cartItemSchema = new Schema({
-  productId: {
-    type: String,
-    required: true
-  },
-  name: {
-    type: String,
-    required: true
-  },
-  price: {
-    type: Number,
-    required: true
-  },
-  quantity: {
-    type: Number,
-    required: true,
-    min: 1
-  },
-  image: {
-    type: String
-  },
-  addedAt: {
-    type: Date,
-    default: Date.now
-  }
-});
-
-// User schema
 const userSchema: Schema = new Schema({
   name: {
     type: String,
