@@ -105,14 +105,23 @@ class ShopManager {
     });
   }
 
-  // 🍪 עדכון checkAuth עם Cookies
   private async checkAuth(): Promise<void> {
     const token = localStorage.getItem('token');
     
-    // נסה קודם עם Cookie
+    // No token - use local cart
+    if (!token) {
+      this.updateAuthUI(false);
+      this.loadLocalCart();
+      return;
+    }
+
     try {
       const response = await fetch('/api/auth/me', {
-        credentials: 'include'  // 🔥 שליחת Cookies
+        method: 'GET',
+        headers: { 
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
       });
       
       const data = await response.json();
@@ -122,38 +131,15 @@ class ShopManager {
         this.isLoggedIn = true;
         this.updateAuthUI(true);
         this.updateCartUI(data.user.cart);
-        return;
-      }
-    } catch (error) {
-      console.log('Cookie auth failed, trying localStorage...');
-    }
-    
-    // Fallback ל-localStorage
-    if (token) {
-      try {
-        const response = await fetch('/api/auth/me', {
-          headers: { 'Authorization': `Bearer ${token}` },
-          credentials: 'include'
-        });
-        
-        const data = await response.json();
-        
-        if (data.success && data.user) {
-          this.currentUser = data.user;
-          this.isLoggedIn = true;
-          this.updateAuthUI(true);
-          this.updateCartUI(data.user.cart);
-        } else {
-          localStorage.removeItem('token');
-          this.updateAuthUI(false);
-          this.loadLocalCart();
-        }
-      } catch (error) {
+      } else {
+        // Invalid token - clear and use local cart
         localStorage.removeItem('token');
         this.updateAuthUI(false);
         this.loadLocalCart();
       }
-    } else {
+    } catch (error) {
+      // Network error - clear and use local cart
+      localStorage.removeItem('token');
       this.updateAuthUI(false);
       this.loadLocalCart();
     }
@@ -179,6 +165,8 @@ class ShopManager {
       } catch (error) {
         this.updateCartUI([]);
       }
+    } else {
+      this.updateCartUI([]);
     }
   }
 
@@ -246,6 +234,7 @@ class ShopManager {
     this.renderProducts(this.products);
     this.showLoading(false);
     
+    // Transfer pending cart after login
     await this.transferPendingCart();
   }
 
@@ -266,7 +255,7 @@ class ShopManager {
       localStorage.removeItem('pendingCart');
       this.showToast('Cart items transferred', 'success');
     } catch (error) {
-      console.error('Failed to transfer cart:', error);
+      // Silent fail
     }
   }
 
@@ -318,17 +307,19 @@ class ShopManager {
     this.showToast(`${product.name} added to cart`, 'success');
   }
 
-  // 🍪 עדכון addToCartServer עם Cookies
   private async addToCartServer(product: Product): Promise<void> {
     try {
       const token = localStorage.getItem('token');
+      if (!token) {
+        throw new Error('No token available');
+      }
+
       const response = await fetch('/api/auth/cart/add', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          ...(token && { 'Authorization': `Bearer ${token}` })
+          'Authorization': `Bearer ${token}`
         },
-        credentials: 'include',  // 🔥 שליחת Cookies
         body: JSON.stringify({
           productId: product.id,
           name: product.name,
@@ -425,7 +416,6 @@ class ShopManager {
     }
   }
 
-  // 🍪 עדכון updateQuantityServer עם Cookies
   private async updateQuantityServer(productId: string, quantity: number): Promise<void> {
     try {
       const token = localStorage.getItem('token');
@@ -433,9 +423,8 @@ class ShopManager {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
-          ...(token && { 'Authorization': `Bearer ${token}` })
+          'Authorization': `Bearer ${token}`
         },
-        credentials: 'include',  // 🔥 שליחת Cookies
         body: JSON.stringify({ productId, quantity })
       });
 
@@ -541,16 +530,12 @@ class ShopManager {
     }, 1500);
   }
 
-  // 🍪 עדכון clearCartServer עם Cookies
   private async clearCartServer(): Promise<void> {
     try {
       const token = localStorage.getItem('token');
       const response = await fetch('/api/auth/cart/clear', {
         method: 'DELETE',
-        headers: {
-          ...(token && { 'Authorization': `Bearer ${token}` })
-        },
-        credentials: 'include'  // 🔥 שליחת Cookies
+        headers: { 'Authorization': `Bearer ${token}` }
       });
 
       const data = await response.json();
@@ -624,12 +609,9 @@ class ShopManager {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  // 🔥 פונקציה חדשה לעדכון מאולץ של העגלה
+  // Public method to force update cart
   public forceUpdateCart(cart: CartItem[]): void {
     this.updateCartUI(cart);
-    if (this.currentUser) {
-      this.currentUser.cart = cart;
-    }
   }
 }
 
