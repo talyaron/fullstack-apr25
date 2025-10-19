@@ -34,11 +34,23 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
+// CRITICAL: Set correct MIME types
+app.use((req, res, next) => {
+  if (req.path.endsWith('.css')) {
+    res.type('text/css');
+  } else if (req.path.endsWith('.js')) {
+    res.type('application/javascript');
+  }
+  next();
+});
+
 // Static files
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public/dist')));
-app.use('/auth', express.static(path.join(__dirname, 'auth')));
 app.use('/auth', express.static(path.join(__dirname, 'auth/dist')));
+
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/auth', express.static(path.join(__dirname, 'auth')));
 
 // Routes
 import authRouter from './routes/auth.route';
@@ -75,3 +87,5 @@ app.use((err: any, req: Request, res: Response, next: any): void => {
 app.listen(port, (): void => {
   console.log(`🚀 Server is running on http://localhost:${port}`);
 });
+
+
