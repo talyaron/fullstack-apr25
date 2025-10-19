@@ -1,0 +1,364 @@
+@import './variables';
+@import './mixins';
+
+// ==========================
+// נגישות בסיסית - Accessibility
+// ==========================
+
+// Skip to main content link
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: $primary-color;
+  color: $white;
+  padding: $spacing-md $spacing-lg;
+  text-decoration: none;
+  font-weight: $font-weight-semibold;
+  z-index: 9999;
+  border-radius: 0 0 $border-radius-md 0;
+  
+  &:focus {
+    top: 0;
+  }
+}
+
+// Focus visible styles - ניגודיות ברורה לפוקוס
+*:focus-visible {
+  outline: 3px solid $accent-color;
+  outline-offset: 2px;
+  border-radius: $border-radius-sm;
+}
+
+// Remove outline for mouse users
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+// Accessibility toolbar
+.accessibility-toolbar {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background: $white;
+  border: 2px solid $gray-200;
+  border-right: none;
+  border-radius: $border-radius-lg 0 0 $border-radius-lg;
+  padding: $spacing-sm;
+  box-shadow: $shadow-lg;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+  
+  &__toggle {
+    width: 48px;
+    height: 48px;
+    @include flex-center;
+    background: $primary-color;
+    color: $white;
+    border: none;
+    border-radius: $border-radius-md;
+    cursor: pointer;
+    font-size: $font-size-xl;
+    transition: all $transition-fast;
+    
+    &:hover {
+      background: $primary-light;
+      transform: scale(1.05);
+    }
+    
+    &:focus-visible {
+      outline: 3px solid $accent-color;
+      outline-offset: 2px;
+    }
+  }
+  
+  &__button {
+    width: 44px;
+    height: 44px;
+    @include flex-center;
+    background: $gray-100;
+    color: $gray-700;
+    border: 1px solid $gray-300;
+    border-radius: $border-radius-sm;
+    cursor: pointer;
+    font-size: $font-size-base;
+    transition: all $transition-fast;
+    position: relative;
+    
+    &:hover {
+      background: $gray-200;
+      color: $primary-color;
+    }
+    
+    &.active {
+      background: $primary-color;
+      color: $white;
+      border-color: $primary-color;
+    }
+    
+    // Tooltip
+    &::after {
+      content: attr(aria-label);
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      background: $gray-900;
+      color: $white;
+      padding: $spacing-xs $spacing-sm;
+      border-radius: $border-radius-sm;
+      font-size: $font-size-xs;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity $transition-fast;
+      margin-right: $spacing-sm;
+    }
+    
+    &:hover::after,
+    &:focus::after {
+      opacity: 1;
+    }
+  }
+  
+  &__content {
+    display: none;
+    
+    &.active {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-xs;
+    }
+  }
+}
+
+// High contrast mode
+body.high-contrast {
+  background: $white !important;
+  color: $gray-900 !important;
+  
+  * {
+    background-color: transparent !important;
+    color: inherit !important;
+    border-color: $gray-900 !important;
+  }
+  
+  .btn--primary {
+    background: $gray-900 !important;
+    color: $white !important;
+    border: 2px solid $gray-900 !important;
+  }
+  
+  .btn--secondary,
+  .btn--outline {
+    background: $white !important;
+    color: $gray-900 !important;
+    border: 2px solid $gray-900 !important;
+  }
+  
+  img {
+    filter: contrast(1.2);
+  }
+}
+
+// Large text mode
+body.large-text {
+  font-size: 18px !important;
+  
+  * {
+    font-size: inherit !important;
+  }
+  
+  h1 { font-size: 2.5em !important; }
+  h2 { font-size: 2em !important; }
+  h3 { font-size: 1.5em !important; }
+  
+  .btn {
+    padding: 16px 28px !important;
+  }
+}
+
+// Underline links mode
+body.underline-links {
+  a {
+    text-decoration: underline !important;
+  }
+}
+
+// Readable font mode
+body.readable-font {
+  font-family: Arial, sans-serif !important;
+  
+  * {
+    font-family: inherit !important;
+  }
+}
+
+// Screen reader only content
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Screen reader only, but focusable
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+// Keyboard navigation indicators
+.keyboard-user {
+  *:focus {
+    outline: 3px solid $accent-color !important;
+    outline-offset: 2px !important;
+  }
+}
+
+// Reduced motion
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// High contrast preference
+@media (prefers-contrast: high) {
+  body {
+    border: 3px solid $primary-color;
+  }
+  
+  .btn {
+    border-width: 2px !important;
+  }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  body:not(.force-light-mode) {
+    background: $gray-900;
+    color: $gray-100;
+  }
+}
+
+// Touch target size - minimum 44x44px for mobile
+@include mobile {
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .btn {
+    min-height: 44px;
+    padding: 12px 20px;
+  }
+}
+
+// Aria live regions styling
+[aria-live] {
+  position: relative;
+}
+
+// Disabled state
+[disabled],
+[aria-disabled="true"] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+// Error states for forms
+[aria-invalid="true"] {
+  border-color: $error-color !important;
+  
+  &:focus {
+    outline-color: $error-color !important;
+  }
+}
+
+.error-message {
+  color: $error-color;
+  font-size: $font-size-sm;
+  margin-top: $spacing-xs;
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  
+  &::before {
+    content: '⚠';
+    font-size: $font-size-base;
+  }
+}
+
+// Success states
+[aria-invalid="false"] {
+  border-color: $success-color !important;
+}
+
+// Loading states
+[aria-busy="true"] {
+  opacity: 0.7;
+  pointer-events: none;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    border: 3px solid $gray-300;
+    border-top-color: $primary-color;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+}
+
+// Print styles for accessibility
+@media print {
+  .skip-link,
+  .accessibility-toolbar,
+  .nav,
+  .btn-cart,
+  .header__actions {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  a {
+    text-decoration: underline !important;
+    
+    &[href]::after {
+      content: " (" attr(href) ")";
+      font-size: 0.8em;
+    }
+  }
+}

@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>IDigitaly - Digital Store</title>
 
-    <link rel="stylesheet" href="/dist/shop.css" />
-    <script src="/dist/shop.js" defer></script>
+    <link rel="stylesheet" href="/styles/dist/shop.css" />
 
     <link
       rel="icon"
@@ -20,10 +19,7 @@
         <div class="header__content">
           <div class="logo">
             <h1>
-              <a
-                href="javascript:void(0)"
-                onclick="scrollToTop()"
-                style="text-decoration: none; color: inherit; cursor: pointer"
+              <a href="#home" style="text-decoration: none; color: inherit"
                 >IDigitaly</a
               >
             </h1>
@@ -31,41 +27,11 @@
           <nav class="nav">
             <ul class="nav__list">
               <li>
-                <a
-                  href="javascript:void(0)"
-                  onclick="scrollToTop()"
-                  class="nav__link nav__link--active"
-                  data-target="home"
-                  >Home</a
-                >
+                <a href="#home" class="nav__link nav__link--active">Home</a>
               </li>
-              <li>
-                <a
-                  href="javascript:void(0)"
-                  onclick="scrollToSection('products')"
-                  class="nav__link"
-                  data-target="products"
-                  >Products</a
-                >
-              </li>
-              <li>
-                <a
-                  href="javascript:void(0)"
-                  onclick="scrollToSection('about')"
-                  class="nav__link"
-                  data-target="about"
-                  >About</a
-                >
-              </li>
-              <li>
-                <a
-                  href="javascript:void(0)"
-                  onclick="scrollToSection('contact')"
-                  class="nav__link"
-                  data-target="contact"
-                  >Contact</a
-                >
-              </li>
+              <li><a href="#products" class="nav__link">Products</a></li>
+              <li><a href="#about" class="nav__link">About</a></li>
+              <li><a href="#contact" class="nav__link">Contact</a></li>
             </ul>
           </nav>
           <div class="header__actions">
@@ -97,10 +63,7 @@
           Discover the newest iPhones, iPads, and Apple accessories
         </p>
         <div class="hero__buttons">
-          <button
-            class="btn btn--primary btn--hero"
-            onclick="scrollToSection('products')"
-          >
+          <button class="btn btn--primary btn--hero" id="shopNowBtn">
             Shop Now
           </button>
         </div>
@@ -314,6 +277,7 @@
     <!-- Toast Notifications -->
     <div class="toast-container" id="toastContainer"></div>
 
+    <script src="/dist/shop.js"></script>
     <script>
       // Simple clear cart function that actually works
       function clearCart() {
@@ -371,50 +335,6 @@
           });
         });
       });
-
-      // Smooth Scroll to Top
-      function scrollToTop() {
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
-
-        const navLinks = document.querySelectorAll(".nav__link");
-        navLinks.forEach((l) => l.classList.remove("nav__link--active"));
-
-        const homeLink = document.querySelector(
-          '.nav__link[data-target="home"]'
-        );
-        if (homeLink) {
-          homeLink.classList.add("nav__link--active");
-        }
-
-        history.pushState(null, null, "#home");
-      }
-
-      // Smooth Scroll to Section
-      function scrollToSection(sectionId) {
-        const section = document.getElementById(sectionId);
-
-        if (section) {
-          section.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-
-          const navLinks = document.querySelectorAll(".nav__link");
-          navLinks.forEach((l) => l.classList.remove("nav__link--active"));
-
-          const clickedLink = document.querySelector(
-            `.nav__link[data-target="${sectionId}"]`
-          );
-          if (clickedLink) {
-            clickedLink.classList.add("nav__link--active");
-          }
-
-          history.pushState(null, null, `#${sectionId}`);
-        }
-      }
     </script>
   </body>
 </html>
