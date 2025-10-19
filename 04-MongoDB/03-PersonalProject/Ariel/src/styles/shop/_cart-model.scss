@@ -1,6 +1,9 @@
 @import './../variables';
 @import './../mixins';
-
+ @mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
 // Cart Item Styles
 .cart-item {
   @include flex-between;
@@ -10,7 +13,7 @@
   &:last-child {
     border-bottom: none;
   }
-  
+   
   &__image {
     width: 60px;
     height: 60px;
@@ -21,12 +24,12 @@
     margin-right: $spacing-md;
     flex-shrink: 0;
   }
-  
+   
   &__details {
     flex: 1;
     margin-right: $spacing-md; 
   }
-  
+   
   &__name {
     font-size: $font-size-base;
     font-weight: $font-weight-semibold;
@@ -85,7 +88,7 @@
   
   &:active {
     transform: scale(0.95);
-  }
+  } 
 }
 
 // Product Modal Styles
@@ -97,7 +100,7 @@
     @include flex-center;
     align-items: flex-start;
     gap: $spacing-2xl;
-  }
+  } 
   
   &__image {
     width: 100%;

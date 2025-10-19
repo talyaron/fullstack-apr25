@@ -1,5 +1,5 @@
-@import './../variables';
-@import './../mixins';
+@import './variables';
+@import './mixins';
 
 * {
   box-sizing: border-box;
@@ -24,7 +24,7 @@ body {
   border-radius: $border-radius-xl;
   padding: $spacing-2xl $spacing-3xl;
   width: 100%;
-  max-width: 420px;
+  max-width: 420px; 
   border: 1px solid $gray-100;
   box-shadow: $shadow-sm;
   
