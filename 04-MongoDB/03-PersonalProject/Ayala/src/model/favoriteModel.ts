@@ -1,13 +1,11 @@
-export interface Favorite{
-    id:string;
-   recipeId:string;
-   userId:string;
+import { Document, model, Schema } from "mongoose";
+export interface Favorite extends Document {
+   userId: string;
+   recipeId: string;
 }
 
-import { model, Schema } from "mongoose";
 export const favoriteSchema = new Schema({
-    id:{type: String, required: true},
-    recipeId:{type:String,  required: true},
-    userId:{type:String,  required: true}
+    recipeId: { type: String, required: true, ref: 'Recipe' },
+    userId:{type:String,  required: true, ref:'User' }
 })
 export const IFavorite = model('Favorite', favoriteSchema)

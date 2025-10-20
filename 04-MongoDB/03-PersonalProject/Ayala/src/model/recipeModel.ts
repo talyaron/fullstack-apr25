@@ -1,24 +1,23 @@
-export interface Recipe {
-    id: string;
+import { Document, model, Schema } from "mongoose";
+
+export interface Recipe extends Document {
     name: string;
     ingredients: string[];
     instructions: string;
-    amountRanks: number;
-    rank: number;
+    amountRanks?: number;
+    rank?: number;
     categoryId: string;
     creatorId: string;
 }
 
-import { model, Schema } from "mongoose";
 export const recipeSchema = new Schema({
-    id: { type: String, required: true },
     name: { type: String, required: true },
     ingredients: { type: [String], required: true },
     instructions: { type: String, required: true },
-    amountRanks: { type: Number, required: true },
-    rank: { type: Number, required: true },
-    categoryId: { type: String, required: true },
-    creatorId: { type: String, required: true }
+    amountRanks: { type: Number, required: false, default: 0 },
+    rank: { type: Number, required: false, default: 0 },
+    categoryId: { type: String, required: true, ref: 'Category' },
+    creatorId: { type: String, required: true, ref: 'User' }
 })
 
 export const IRecipe = model('Recipe', recipeSchema)

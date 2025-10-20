@@ -1,17 +1,24 @@
 {
-  "name": "example",
+  "name": "idigitaly",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "IDigitaly - Accessible Digital Store with MongoDB and TypeScript",
+  "main": "dist/index.js",
   "scripts": {
     "dev": "nodemon",
     "build": "tsc",
     "start": "node dist/index.js",
+    "sass": "sass src/styles:src/public/dist --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "ecommerce",
+    "typescript",
+    "express",
+    "mongodb",
+    "accessibility"
+  ],
+  "author": "Ariel",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "@types/mongoose": "^5.11.96",
     "bcryptjs": "^3.0.2",

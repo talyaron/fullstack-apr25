@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>EventSpark</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="/style.scss">
+</head>
+<body>
+  <header>
+    <h1>EventSpark</h1>
+    <nav>
+      <a href="/add/">Add</a>
+      <a href="/login/">Login</a>
+      <a href="/register/">Register</a>
+    </nav>
+  </header>
+
+  <section class="toolbar">
+    <input id="q" placeholder="Search title/location/tag" />
+    <button id="search">Search</button>
+  </section>
+
+  <main>
+    <ul id="list" class="cards"></ul>
+  </main>
+
+  <script src="/main.ts" type="module"></script>
+</body>
+</html>
