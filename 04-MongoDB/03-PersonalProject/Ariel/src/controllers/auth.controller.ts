@@ -1,7 +1,7 @@
-// src/controllers/auth.controller.ts
+// src/controllers/auth.controller.ts - מעודכן
 import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
-import { User, IUser, CartItem } from '../model/user.model';
+import { User } from '../model/user.model';
 
 const JWT_SECRET = 'your-super-secret-jwt-key-2024';
 
@@ -9,24 +9,10 @@ const generateToken = (userId: string) => {
   return jwt.sign({ userId }, JWT_SECRET, { expiresIn: '7d' });
 };
 
-// Register user
+// Register
 export const register = async (req: Request, res: Response) => {
   try {
-    const { name, email, password, confirmPassword } = req.body;
-
-    if (!name || !email || !password || !confirmPassword) {
-      return res.status(400).json({ 
-        success: false, 
-        message: 'All fields are required' 
-      });
-    }
-
-    if (password !== confirmPassword) {
-      return res.status(400).json({ 
-        success: false, 
-        message: 'Passwords do not match' 
-      });
-    }
+    const { name, email, password } = req.body;
 
     const existingUser = await User.findOne({ email });
     if (existingUser) {
@@ -36,14 +22,9 @@ export const register = async (req: Request, res: Response) => {
       });
     }
 
-    const user = new User({
-      name,
-      email,
-      password,
-      cart: []
-    });
-
+    const user = new User({ name, email, password, cart: [] });
     await user.save();
+    
     const token = generateToken(String(user._id));
 
     res.status(201).json({
@@ -58,7 +39,6 @@ export const register = async (req: Request, res: Response) => {
         createdAt: user.createdAt
       }
     });
-
   } catch (error: any) {
     console.error('Register error:', error);
     res.status(500).json({ 
@@ -68,17 +48,10 @@ export const register = async (req: Request, res: Response) => {
   }
 };
 
-// Login user
+// Login - ללא שינוי
 export const login = async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
-
-    if (!email || !password) {
-      return res.status(400).json({ 
-        success: false, 
-        message: 'Email and password are required' 
-      });
-    }
 
     const user = await User.findOne({ email });
     if (!user) {
@@ -114,7 +87,6 @@ export const login = async (req: Request, res: Response) => {
         lastLogin: user.lastLogin
       }
     });
-
   } catch (error: any) {
     console.error('Login error:', error);
     res.status(500).json({ 
@@ -124,20 +96,11 @@ export const login = async (req: Request, res: Response) => {
   }
 };
 
-// Get user profile
+// ✅ מעודכן - עכשיו משתמש ב-req.userId מה-Middleware
 export const getMe = async (req: Request, res: Response) => {
   try {
-    const token = req.headers.authorization?.replace('Bearer ', '');
-    
-    if (!token) {
-      return res.status(401).json({ 
-        success: false, 
-        message: 'No token provided' 
-      });
-    }
-
-    const decoded: any = jwt.verify(token, JWT_SECRET);
-    const user = await User.findById(decoded.userId).select('-password');
+    // ה-Middleware כבר אימת את ה-token ושמר את userId
+    const user = await User.findById(req.userId).select('-password');
 
     if (!user) {
       return res.status(404).json({ 
@@ -157,7 +120,6 @@ export const getMe = async (req: Request, res: Response) => {
         lastLogin: user.lastLogin
       }
     });
-
   } catch (error: any) {
     res.status(401).json({ 
       success: false, 
@@ -166,20 +128,10 @@ export const getMe = async (req: Request, res: Response) => {
   }
 };
 
-// Add item to cart
+// ✅ מעודכן - משתמש ב-req.userId
 export const addToCart = async (req: Request, res: Response) => {
   try {
-    const token = req.headers.authorization?.replace('Bearer ', '');
-    
-    if (!token) {
-      return res.status(401).json({ 
-        success: false, 
-        message: 'No token provided' 
-      });
-    }
-
-    const decoded: any = jwt.verify(token, JWT_SECRET);
-    const user = await User.findById(decoded.userId);
+    const user = await User.findById(req.userId);
 
     if (!user) {
       return res.status(404).json({ 
@@ -190,21 +142,11 @@ export const addToCart = async (req: Request, res: Response) => {
 
     const { productId, name, price, quantity = 1, image } = req.body;
 
-    if (!productId || !name || !price) {
-      return res.status(400).json({
-        success: false,
-        message: 'Product ID, name, and price are required'
-      });
-    }
-
-    // Check if item already exists in cart
     const existingItemIndex = user.cart.findIndex(item => item.productId === productId);
 
     if (existingItemIndex > -1) {
-      // Update quantity if item exists
       user.cart[existingItemIndex].quantity += quantity;
     } else {
-      // Add new item to cart
       user.cart.push({
         productId,
         name,
@@ -222,7 +164,6 @@ export const addToCart = async (req: Request, res: Response) => {
       message: 'Item added to cart',
       cart: user.cart
     });
-
   } catch (error: any) {
     console.error('Add to cart error:', error);
     res.status(500).json({ 
@@ -232,20 +173,10 @@ export const addToCart = async (req: Request, res: Response) => {
   }
 };
 
-// Update cart item quantity
+// ✅ מעודכן - משתמש ב-req.userId
 export const updateCartItem = async (req: Request, res: Response) => {
   try {
-    const token = req.headers.authorization?.replace('Bearer ', '');
-    
-    if (!token) {
-      return res.status(401).json({ 
-        success: false, 
-        message: 'No token provided' 
-      });
-    }
-
-    const decoded: any = jwt.verify(token, JWT_SECRET);
-    const user = await User.findById(decoded.userId);
+    const user = await User.findById(req.userId);
 
     if (!user) {
       return res.status(404).json({ 
@@ -273,10 +204,8 @@ export const updateCartItem = async (req: Request, res: Response) => {
     }
 
     if (quantity === 0) {
-      // Remove item from cart
       user.cart.splice(itemIndex, 1);
     } else {
-      // Update quantity
       user.cart[itemIndex].quantity = quantity;
     }
 
@@ -287,7 +216,6 @@ export const updateCartItem = async (req: Request, res: Response) => {
       message: 'Cart updated',
       cart: user.cart
     });
-
   } catch (error: any) {
     console.error('Update cart error:', error);
     res.status(500).json({ 
@@ -297,20 +225,10 @@ export const updateCartItem = async (req: Request, res: Response) => {
   }
 };
 
-// Remove item from cart
+// ✅ מעודכן - משתמש ב-req.userId
 export const removeFromCart = async (req: Request, res: Response) => {
   try {
-    const token = req.headers.authorization?.replace('Bearer ', '');
-    
-    if (!token) {
-      return res.status(401).json({ 
-        success: false, 
-        message: 'No token provided' 
-      });
-    }
-
-    const decoded: any = jwt.verify(token, JWT_SECRET);
-    const user = await User.findById(decoded.userId);
+    const user = await User.findById(req.userId);
 
     if (!user) {
       return res.status(404).json({ 
@@ -329,7 +247,6 @@ export const removeFromCart = async (req: Request, res: Response) => {
       message: 'Item removed from cart',
       cart: user.cart
     });
-
   } catch (error: any) {
     console.error('Remove from cart error:', error);
     res.status(500).json({ 
@@ -339,20 +256,10 @@ export const removeFromCart = async (req: Request, res: Response) => {
   }
 };
 
-// Clear cart
+// ✅ מעודכן - משתמש ב-req.userId
 export const clearCart = async (req: Request, res: Response) => {
   try {
-    const token = req.headers.authorization?.replace('Bearer ', '');
-    
-    if (!token) {
-      return res.status(401).json({ 
-        success: false, 
-        message: 'No token provided' 
-      });
-    }
-
-    const decoded: any = jwt.verify(token, JWT_SECRET);
-    const user = await User.findById(decoded.userId);
+    const user = await User.findById(req.userId);
 
     if (!user) {
       return res.status(404).json({ 
@@ -369,7 +276,6 @@ export const clearCart = async (req: Request, res: Response) => {
       message: 'Cart cleared',
       cart: user.cart
     });
-
   } catch (error: any) {
     console.error('Clear cart error:', error);
     res.status(500).json({ 

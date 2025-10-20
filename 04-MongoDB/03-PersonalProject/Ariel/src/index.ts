@@ -1,14 +1,24 @@
 import express, { Express, Request, Response } from 'express';
 import path from 'path';
 import mongoose from 'mongoose';
+import cookieParser from 'cookie-parser';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app: Express = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // MongoDB Connection
 const connectDB = async (): Promise<void> => {
-  try {
-    await mongoose.connect('mongodb+srv://Ari7:newpassword123@cluster0.y0awkmn.mongodb.net/idigitaly?retryWrites=true&w=majority');
+   try {
+    const mongoUri = process.env.MONGODB_URI;
+    
+    if (!mongoUri) {
+      throw new Error('MONGODB_URI is not defined in .env file');
+    }
+    
+    await mongoose.connect(mongoUri);
     console.log('✅ MongoDB connected successfully');
   } catch (error) {
     console.error('❌ MongoDB connection failed:', error);
@@ -20,11 +30,13 @@ const connectDB = async (): Promise<void> => {
 connectDB();
 
 // Middleware
+app.use(cookieParser()); 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Static files
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public/dist')));
-// Static files for auth
 app.use('/auth', express.static(path.join(__dirname, 'auth')));
 app.use('/auth', express.static(path.join(__dirname, 'auth/dist')));
 
@@ -37,7 +49,7 @@ app.get('/', (req: Request, res: Response): void => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Routes לתיקיית public (פתרון לבעיית ההפניה)
+// Routes לתיקיית public
 app.get('/public/', (req: Request, res: Response): void => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
