@@ -9,7 +9,7 @@ const generateToken = (userId: string) => {
   return jwt.sign({ userId }, JWT_SECRET, { expiresIn: '7d' });
 };
 
-// Register - ללא שינוי
+// Register
 export const register = async (req: Request, res: Response) => {
   try {
     const { name, email, password } = req.body;

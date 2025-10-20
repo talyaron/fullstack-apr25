@@ -1,5 +1,5 @@
-@import "./variables";
-@import "./mixins";
+@import "./../variables";
+@import "./../mixins";
 @mixin flex-column {
   display: flex;
   flex-direction: column;
@@ -14,7 +14,7 @@
 * {
   box-sizing: border-box;
   margin: 0;
-  padding: 0;
+  padding: 0; 
 }
 
 body {
