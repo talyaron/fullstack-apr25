@@ -2,7 +2,7 @@ import path from "path";
 import express, { Request, Response } from "express";
 import dotenv from "dotenv";
 import connectDB from "./config/db";
-import shiftRoutes from "./routes/shiftRoutes";
+import * as shiftRoutesModule from "./routes/shiftRoutes";
 
 dotenv.config();
 
@@ -16,13 +16,20 @@ app.use(express.urlencoded({ extended: true }));
 // Static frontend
 app.use(express.static(path.join(process.cwd(), "public")));
 
+// Resolve router whether exported as default or named
+const shiftsRouter = (shiftRoutesModule as any).default || (shiftRoutesModule as any);
+if (typeof shiftsRouter !== "function") {
+  console.error("[Boot] shiftRoutes is not a Router function. Ensure routes/shiftRoutes exports a Router (default export).\nExample: export default router;");
+  process.exit(1);
+}
+
 // Healthcheck
 app.get("/api/health", (_req: Request, res: Response) => {
   res.json({ status: "ok", time: new Date().toISOString() });
 });
 
 // API routes
-app.use("/api/shifts", shiftRoutes);
+app.use("/api/shifts", shiftsRouter as any);
 
 // Start server
 (async () => {
