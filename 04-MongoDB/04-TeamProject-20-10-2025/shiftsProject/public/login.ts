@@ -1,5 +1,5 @@
 // ===============================================
-// LOGIN PAGE TYPESCRIPT
+// LOGIN PAGE TYPESCRIPT - BEM Methodology
 // ===============================================
 
 // Types
@@ -11,7 +11,7 @@ interface LoginFormData {
 
 type MessageType = 'success' | 'error';
 
-// Form elements
+// Form elements - BEM class names
 const loginForm = document.getElementById('loginForm') as HTMLFormElement;
 const loginBtn = document.getElementById('loginBtn') as HTMLButtonElement;
 const message = document.getElementById('message') as HTMLDivElement;
@@ -88,22 +88,22 @@ const simulateLogin = (formData: LoginFormData): void => {
 // Show message function
 const showMessage = (text: string, type: MessageType): void => {
   message.textContent = text;
-  message.className = `message ${type} show`;
+  message.className = `login__message ${type} show`;
 
   setTimeout(() => {
     message.classList.remove('show');
   }, 5000);
 };
 
-// Handle forgot password
-const forgotPasswordLink = document.querySelector('.forgot-password') as HTMLAnchorElement;
+// Handle forgot password - BEM class
+const forgotPasswordLink = document.querySelector('.login__forgot') as HTMLAnchorElement;
 forgotPasswordLink.addEventListener('click', (e: Event): void => {
   e.preventDefault();
   showMessage('בקשה לאיפוס סיסמה נשלחה למפקד', 'success');
 });
 
-// Remove error state on input
-const inputs = document.querySelectorAll<HTMLInputElement>('input[type="text"], input[type="password"]');
+// Remove error state on input - BEM class
+const inputs = document.querySelectorAll<HTMLInputElement>('.login__input');
 inputs.forEach((input: HTMLInputElement) => {
   input.addEventListener('input', function (this: HTMLInputElement): void {
     this.classList.remove('error');
