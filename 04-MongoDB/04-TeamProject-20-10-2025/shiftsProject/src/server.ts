@@ -7,7 +7,7 @@ import * as shiftRoutesModule from "./routes/shiftRoutes";
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
 // Middlewares
 app.use(express.json());
@@ -21,7 +21,7 @@ app.use(express.static(path.join(process.cwd(), "public"), {
     } else if (filePath.endsWith('.css')) {
       res.setHeader('Content-Type', 'text/css; charset=utf-8');
     } else if (filePath.endsWith('.html')) {
-      res.setHeader('Content-Type', 'text/html; charset=utf-8');
+     res.setHeader('Content-Type', 'text/html; charset=utf-8');
     }
   }
 }));
@@ -33,13 +33,9 @@ if (typeof shiftsRouter !== "function") {
   process.exit(1);
 }
 
-// Healthcheck
-app.get("/api/health", (_req: Request, res: Response) => {
-  res.json({ status: "ok", time: new Date().toISOString() });
-});
 
 // API routes
-app.use("/api/shifts", shiftsRouter as any);
+app.use("/api", shiftsRouter as any);
 
 // Start server
 (async () => {
