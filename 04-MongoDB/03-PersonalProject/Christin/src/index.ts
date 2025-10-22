@@ -5,7 +5,7 @@ import { connectDB } from './config/ database';
 import authRoutes from './routes/authRoutes';
 import productRoutes from './routes/productRoutes';
 
-// טעינת משתני סביבה - חייב להיות לפני כל דבר אחר!
+// טעינת משתני סביבה
 dotenv.config();
 
 // התחברות למסד נתונים
@@ -17,9 +17,9 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// הגשת קבצים סטטיים
-app.use('/css', express.static(path.join(__dirname, '../dist/public/css')));
-app.use('/js', express.static(path.join(__dirname, '../dist/public/js')));
+// הגשת קבצים סטטיים מתיקיית public
+app.use('/dist', express.static(path.join(__dirname, '../public/dist')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 // נתיבי API
 app.use('/api/auth', authRoutes);
@@ -27,19 +27,19 @@ app.use('/api/products', productRoutes);
 
 // נתיבי HTML
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/html/index.html'));
+  res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
 app.get('/login', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/html/login.html'));
+  res.sendFile(path.join(__dirname, '../public/login.html'));
 });
 
 app.get('/register', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/html/register.html'));
+  res.sendFile(path.join(__dirname, '../public/register.html'));
 });
 
 app.get('/dashboard', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/html/dashboard.html'));
+  res.sendFile(path.join(__dirname, '../public/dashboard.html'));
 });
 
 // טיפול בשגיאות 404

@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>הרשמה - מערכת ניהול מלאי</title>
-    <link rel="stylesheet" href="./dist/style.css">
-    <script src="./dist/register.js"></script>
+    <link rel="stylesheet" href="/dist/style.css">
 </head>
 <body>
     <div class="container">
@@ -38,49 +37,12 @@
         </form>
         
         <div class="link">
-            <p>כבר יש לך חשבון? <!DOCTYPE html>
-<html lang="he" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>הרשמה - מערכת ניהול מלאי</title>
-    <link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
-    <div class="container">
-        <h1>📝 הרשמה</h1>
-        
-        <div id="message" class="message"></div>
-        
-        <form id="registerForm">
-            <div class="form-group">
-                <label for="username">שם משתמש</label>
-                <input type="text" id="username" name="username" required placeholder="בחר שם משתמש">
-            </div>
-            
-            <div class="form-group">
-                <label for="email">אימייל</label>
-                <input type="email" id="email" name="email" required placeholder="example@email.com">
-            </div>
-            
-            <div class="form-group">
-                <label for="password">סיסמה</label>
-                <input type="password" id="password" name="password" required minlength="6" placeholder="לפחות 6 תווים">
-            </div>
-            
-            <div class="form-group">
-                <label for="confirmPassword">אימות סיסמה</label>
-                <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="הזן סיסמה שוב">
-            </div>
-            
-            <button type="submit" class="btn btn-primary" style="width: 100%;">הירשם</button>
-        </form>
-        
-        <div class="link">
-            <p>כבר יש לך חשבון? <a href="login.html">התחבר כאן</a></p>
+            <p>כבר יש לך חשבון? <a href="/login">התחבר כאן</a></p>
         </div>
     </div>
 
-    <script src="../js/register.js"></script>
+    <!-- ⚠️ חשוב: טען את utils.js לפני register.js -->
+    <script src="/dist/utils.js"></script>
+    <script src="/dist/register.js"></script>
 </body>
 </html>
