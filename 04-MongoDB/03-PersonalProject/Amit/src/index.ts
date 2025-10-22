@@ -19,7 +19,7 @@ if (!mongooseUri) {
   throw new Error("MongoDB connection string is not defined in environment variables");
 }
 
-mongoose.connect(`${mongooseUri}/Fact`).then(() => {
+mongoose.connect(`${mongooseUri}Fact`).then(() => {
   console.log("Connected to MongoDB");
 }).catch(err => {
   console.error("Failed to connect to MongoDB", err);
