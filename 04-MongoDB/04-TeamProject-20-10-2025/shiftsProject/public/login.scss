@@ -1,5 +1,5 @@
 // ===============================================
-// LOGIN PAGE STYLES
+// LOGIN PAGE STYLES - BEM Methodology
 // ===============================================
 
 @import 'variables';
@@ -12,7 +12,7 @@
   box-sizing: border-box;
 }
 
-/* Body - Light gradient background */
+/* Body */
 body {
   font-family: $font-primary;
   background: linear-gradient(135deg, #f5f7fa 0%, #e8f5e9 100%);
@@ -21,8 +21,8 @@ body {
   padding: $spacing-lg;
 }
 
-/* Container - Clean white card */
-.login-container {
+/* Block: login */
+.login {
   background: $bg-primary;
   border-radius: $radius-lg;
   box-shadow: $shadow-md;
@@ -39,58 +39,95 @@ body {
     display: flex;
     flex-direction: column;
   }
-}
 
-/* Header - Minimal and light */
-.login-header {
-  padding: 40px 32px 32px;
-  text-align: center;
-  background: $bg-secondary;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  // Element: header
+  &__header {
+    padding: 40px 32px 32px;
+    text-align: center;
+    background: $bg-secondary;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 
-  @include mobile {
-    padding: 32px 24px 24px;
+    @include mobile {
+      padding: 32px 24px 24px;
+    }
   }
-}
 
-.login-icon {
-  width: 64px;
-  height: 64px;
-  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
-  border-radius: $radius-md;
-  margin: 0 auto $spacing-lg;
-  @include flex-center;
-  font-size: 32px;
-}
-
-.login-header h1 {
-  font-size: $font-2xl;
-  margin-bottom: 6px;
-  font-weight: $font-semibold;
-  color: $color-black;
-}
-
-.login-header p {
-  font-size: $font-sm;
-  color: $color-dark-gray;
-  font-weight: $font-normal;
-}
-
-/* Body - Clean spacing */
-.login-body {
-  padding: 32px;
-
-  @include mobile {
-    padding: $spacing-lg;
-    flex: 1;
+  // Element: logo
+  &__logo {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto $spacing-lg;
+    @include flex-center;
   }
-}
 
-/* Input group - Minimal style */
-.input-group {
-  margin-bottom: $spacing-lg;
+  // Element: logo-image
+  &__logo-image {
+    width: 200%;
+    height: 100%;
+    object-fit: contain;
+  }
 
-  label {
+  // Element: title
+  &__title {
+    font-size: $font-2xl;
+    margin-bottom: 6px;
+    font-weight: $font-semibold;
+    color: $color-black;
+  }
+
+  // Element: subtitle
+  &__subtitle {
+    font-size: $font-sm;
+    color: $color-dark-gray;
+    font-weight: $font-normal;
+  }
+
+  // Element: body
+  &__body {
+    padding: 32px;
+
+    @include mobile {
+      padding: $spacing-lg;
+      flex: 1;
+    }
+  }
+
+  // Element: message
+  &__message {
+    padding: 12px 16px;
+    border-radius: $radius-sm;
+    margin-bottom: $spacing-lg;
+    font-size: 13px;
+    font-weight: $font-medium;
+    display: none;
+    @include slide-in-down(0.3s);
+
+    &.show {
+      display: flex;
+      align-items: center;
+      gap: $spacing-sm;
+    }
+
+    &.success {
+      background: rgba(52, 168, 83, 0.08);
+      color: $color-success;
+      border: 1px solid rgba(52, 168, 83, 0.2);
+    }
+
+    &.error {
+      background: rgba(234, 67, 53, 0.08);
+      color: $color-error;
+      border: 1px solid rgba(234, 67, 53, 0.2);
+    }
+  }
+
+  // Element: input-group
+  &__input-group {
+    margin-bottom: $spacing-lg;
+  }
+
+  // Element: label
+  &__label {
     display: block;
     margin-bottom: $spacing-sm;
     color: $color-darker-gray;
@@ -98,105 +135,151 @@ body {
     font-size: $font-sm;
   }
 
-  input {
-    @include input-base;
+  // Element: input
+  &__input {
+    width: 100%;
     padding: 12px 14px;
     border: 1.5px solid $color-light-gray;
     border-radius: $radius-sm;
+    font-family: $font-primary;
+    font-size: $font-md;
+    color: $color-black;
+    background: $bg-primary;
+    transition: $transition-all;
+    outline: none;
+
+    &::placeholder {
+      color: $color-gray;
+    }
+
+    &:focus {
+      border: 2px solid $color-primary;
+      box-shadow: 0 0 0 3px rgba(107, 144, 128, 0.1);
+    }
+
+    &:disabled {
+      background: $color-light-gray;
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
 
     &:hover:not(:focus) {
       border-color: #d0d0d0;
     }
 
+    // Modifier: error
     &.error {
-      @include input-error;
+      border-color: $color-error;
+
+      &:focus {
+        border-color: $color-error;
+        box-shadow: 0 0 0 3px rgba(234, 67, 53, 0.1);
+      }
     }
   }
-}
 
-/* Options row - Clean layout */
-.options-row {
-  @include flex-between;
-  margin-bottom: $spacing-xl;
-  font-size: 13px;
+  // Element: options
+  &__options {
+    @include flex-between;
+    margin-bottom: $spacing-xl;
+    font-size: 13px;
 
-  @include mobile {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-  }
-}
-
-.remember-me {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  cursor: pointer;
-  user-select: none;
-  color: $color-dark-gray;
-  font-weight: $font-normal;
-
-  &:hover {
-    color: $color-darker-gray;
+    @include mobile {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
   }
 
-  input[type="checkbox"] {
+  // Element: remember
+  &__remember {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    user-select: none;
+    color: $color-dark-gray;
+    font-weight: $font-normal;
+
+    &:hover {
+      color: $color-darker-gray;
+    }
+  }
+
+  // Element: checkbox
+  &__checkbox {
     width: 16px;
     height: 16px;
     cursor: pointer;
     accent-color: $color-primary;
   }
-}
 
-.forgot-password {
-  color: $color-primary;
-  text-decoration: none;
-  font-weight: $font-medium;
-  transition: $transition-color;
+  // Element: forgot
+  &__forgot {
+    color: $color-primary;
+    text-decoration: none;
+    font-weight: $font-medium;
+    transition: $transition-color;
 
-  &:hover {
-    color: $color-primary-dark;
-  }
-}
-
-/* Login button - Light and clean */
-.login-button {
-  @include button-primary;
-  width: 100%;
-  padding: 13px 24px;
-  font-size: $font-md;
-  border-radius: $radius-sm;
-  box-shadow: $shadow-primary;
-
-  &:hover:not(:disabled) {
-    background: $color-primary-dark;
-    transform: translateY(-1px);
-  }
-
-  &.loading {
-    @include loading-spinner;
-    color: transparent;
-
-    &::after {
-      width: 18px;
-      height: 18px;
-      margin-left: -9px;
-      margin-top: -9px;
-      border-width: 2px;
+    &:hover {
+      color: $color-primary-dark;
     }
   }
-}
 
-/* Signup link - Minimal */
-.signup-link {
-  text-align: center;
-  color: $color-dark-gray;
-  font-size: 13px;
-  margin-top: $spacing-xl;
-  padding-top: $spacing-xl;
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  // Element: button
+  &__button {
+    @include button-primary;
+    width: 100%;
+    padding: 13px 24px;
+    font-size: $font-md;
+    border-radius: $radius-sm;
+    box-shadow: $shadow-primary;
 
-  a {
+    &:hover:not(:disabled) {
+      background: $color-primary-dark;
+      box-shadow: 0 6px 20px rgba(107, 144, 128, 0.3);
+      transform: translateY(-1px);
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0);
+    }
+
+    // Modifier: loading
+    &.loading {
+      position: relative;
+      pointer-events: none;
+      color: transparent;
+
+      &::after {
+        content: '';
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        top: 50%;
+        left: 50%;
+        margin-left: -9px;
+        margin-top: -9px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-top-color: $color-white;
+        border-radius: 50%;
+        animation: spin 0.8s linear infinite;
+      }
+    }
+  }
+
+  // Element: footer
+  &__footer {
+    text-align: center;
+    color: $color-dark-gray;
+    font-size: 13px;
+    margin-top: $spacing-xl;
+    padding-top: $spacing-xl;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  // Element: footer-link
+  &__footer-link {
     color: $color-primary;
     text-decoration: none;
     font-weight: $font-semibold;
@@ -208,31 +291,9 @@ body {
   }
 }
 
-/* Message - Light notifications */
-.message {
-  padding: 12px 16px;
-  border-radius: $radius-sm;
-  margin-bottom: $spacing-lg;
-  font-size: 13px;
-  font-weight: $font-medium;
-  display: none;
-  @include slide-in-down(0.3s);
-
-  &.show {
-    display: flex;
-    align-items: center;
-    gap: $spacing-sm;
-  }
-
-  &.success {
-    background: rgba(52, 168, 83, 0.08);
-    color: $color-success;
-    border: 1px solid rgba(52, 168, 83, 0.2);
-  }
-
-  &.error {
-    background: rgba(234, 67, 53, 0.08);
-    color: $color-error;
-    border: 1px solid rgba(234, 67, 53, 0.2);
+// Keyframes
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
 }

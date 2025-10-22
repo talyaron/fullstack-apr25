@@ -4,64 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>כניסה למערכת - משימות צבאיות</title>
-    <link rel="stylesheet" href="./dist/login.css">
-    <script src="./dist/login.js" defer></script>
+    <link rel="icon" type="image/png" href="images/tzahal.png">
+    <link rel="stylesheet" href="dist/login.css">
 </head>
 <body>
-    <div class="login-container">
-        <div class="login-header">
-            <div class="login-icon">🎖️</div>
-            <h1>מערכת משימות צבאיות</h1>
-            <p>כניסת חיילים למערכת</p>
+    <div class="login">
+        <div class="login__header">
+            <div class="login__logo">
+                <img src="images/tzahal.png" alt="צה״ל" class="login__logo-image">
+            </div>
+            <h1 class="login__title">מערכת משימות צבאיות</h1>
+            <p class="login__subtitle">כניסת חיילים למערכת</p>
         </div>
 
-        <div class="login-body">
-            <div id="message" class="message"></div>
+        <div class="login__body">
+            <div id="message" class="login__message"></div>
 
-            <form id="loginForm">
-                <div class="input-group">
-                    <label for="militaryId">מספר אישי</label>
+            <form id="loginForm" class="login__form">
+                <div class="login__input-group">
+                    <label for="militaryId" class="login__label">מספר אישי</label>
                     <input 
                         type="text" 
                         id="militaryId" 
                         name="militaryId" 
+                        class="login__input"
                         placeholder="הכנס מספר אישי"
                         required
                         autocomplete="username"
                     >
                 </div>
 
-                <div class="input-group">
-                    <label for="password">סיסמה</label>
+                <div class="login__input-group">
+                    <label for="password" class="login__label">סיסמה</label>
                     <input 
                         type="password" 
                         id="password" 
                         name="password" 
+                        class="login__input"
                         placeholder="הכנס סיסמה"
                         required
                         autocomplete="current-password"
                     >
                 </div>
 
-                <div class="options-row">
-                    <label class="remember-me">
-                        <input type="checkbox" id="remember">
-                        <span>זכור אותי</span>
+                <div class="login__options">
+                    <label class="login__remember">
+                        <input type="checkbox" id="remember" class="login__checkbox">
+                        <span class="login__remember-text">זכור אותי</span>
                     </label>
-                    <a href="#" class="forgot-password">שכחת סיסמה?</a>
+                    <a href="#" class="login__forgot">שכחת סיסמה?</a>
                 </div>
 
-                <button type="submit" class="login-button" id="loginBtn">
+                <button type="submit" class="login__button" id="loginBtn">
                     כניסה למערכת
                 </button>
             </form>
 
-            <div class="signup-link">
-                צריך גישה? <a href="#">פנה למפקד</a>
+            <div class="login__footer">
+                צריך גישה? <a href="#" class="login__footer-link">פנה למפקד</a>
             </div>
         </div>
     </div>
 
-    <script src="login.js" defer></script>
+    <script src="dist/login.js"></script>
 </body>
 </html>
