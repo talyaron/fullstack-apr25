@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>כניסה למערכת - משימות צבאיות</title>
+    <link rel="stylesheet" href="login.css">
+    <script src="./dist/login.js" defer></script>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <div class="login-icon">🎖️</div>
+            <h1>מערכת משימות צבאיות</h1>
+            <p>כניסת חיילים למערכת</p>
+        </div>
+
+        <div class="login-body">
+            <div id="message" class="message"></div>
+
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="militaryId">מספר אישי</label>
+                    <input 
+                        type="text" 
+                        id="militaryId" 
+                        name="militaryId" 
+                        placeholder="הכנס מספר אישי"
+                        required
+                        autocomplete="username"
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label for="password">סיסמה</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        placeholder="הכנס סיסמה"
+                        required
+                        autocomplete="current-password"
+                    >
+                </div>
+
+                <div class="options-row">
+                    <label class="remember-me">
+                        <input type="checkbox" id="remember">
+                        <span>זכור אותי</span>
+                    </label>
+                    <a href="#" class="forgot-password">שכחת סיסמה?</a>
+                </div>
+
+                <button type="submit" class="login-button" id="loginBtn">
+                    כניסה למערכת
+                </button>
+            </form>
+
+            <div class="signup-link">
+                צריך גישה? <a href="#">פנה למפקד</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="login.js" defer></script>
+</body>
+</html>

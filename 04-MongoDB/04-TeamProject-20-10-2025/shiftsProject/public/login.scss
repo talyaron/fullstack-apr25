@@ -1,0 +1,238 @@
+// ===============================================
+// LOGIN PAGE STYLES
+// ===============================================
+
+@import 'variables';
+@import 'mixins';
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body - Light gradient background */
+body {
+  font-family: $font-primary;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e8f5e9 100%);
+  min-height: 100vh;
+  @include flex-center;
+  padding: $spacing-lg;
+}
+
+/* Container - Clean white card */
+.login-container {
+  background: $bg-primary;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-md;
+  overflow: hidden;
+  max-width: 420px;
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  @include fade-in(0.4s);
+
+  @include mobile {
+    border-radius: 0;
+    max-width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* Header - Minimal and light */
+.login-header {
+  padding: 40px 32px 32px;
+  text-align: center;
+  background: $bg-secondary;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+  @include mobile {
+    padding: 32px 24px 24px;
+  }
+}
+
+.login-icon {
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, $color-primary 0%, $color-primary-light 100%);
+  border-radius: $radius-md;
+  margin: 0 auto $spacing-lg;
+  @include flex-center;
+  font-size: 32px;
+}
+
+.login-header h1 {
+  font-size: $font-2xl;
+  margin-bottom: 6px;
+  font-weight: $font-semibold;
+  color: $color-black;
+}
+
+.login-header p {
+  font-size: $font-sm;
+  color: $color-dark-gray;
+  font-weight: $font-normal;
+}
+
+/* Body - Clean spacing */
+.login-body {
+  padding: 32px;
+
+  @include mobile {
+    padding: $spacing-lg;
+    flex: 1;
+  }
+}
+
+/* Input group - Minimal style */
+.input-group {
+  margin-bottom: $spacing-lg;
+
+  label {
+    display: block;
+    margin-bottom: $spacing-sm;
+    color: $color-darker-gray;
+    font-weight: $font-medium;
+    font-size: $font-sm;
+  }
+
+  input {
+    @include input-base;
+    padding: 12px 14px;
+    border: 1.5px solid $color-light-gray;
+    border-radius: $radius-sm;
+
+    &:hover:not(:focus) {
+      border-color: #d0d0d0;
+    }
+
+    &.error {
+      @include input-error;
+    }
+  }
+}
+
+/* Options row - Clean layout */
+.options-row {
+  @include flex-between;
+  margin-bottom: $spacing-xl;
+  font-size: 13px;
+
+  @include mobile {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  user-select: none;
+  color: $color-dark-gray;
+  font-weight: $font-normal;
+
+  &:hover {
+    color: $color-darker-gray;
+  }
+
+  input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: $color-primary;
+  }
+}
+
+.forgot-password {
+  color: $color-primary;
+  text-decoration: none;
+  font-weight: $font-medium;
+  transition: $transition-color;
+
+  &:hover {
+    color: $color-primary-dark;
+  }
+}
+
+/* Login button - Light and clean */
+.login-button {
+  @include button-primary;
+  width: 100%;
+  padding: 13px 24px;
+  font-size: $font-md;
+  border-radius: $radius-sm;
+  box-shadow: $shadow-primary;
+
+  &:hover:not(:disabled) {
+    background: $color-primary-dark;
+    transform: translateY(-1px);
+  }
+
+  &.loading {
+    @include loading-spinner;
+    color: transparent;
+
+    &::after {
+      width: 18px;
+      height: 18px;
+      margin-left: -9px;
+      margin-top: -9px;
+      border-width: 2px;
+    }
+  }
+}
+
+/* Signup link - Minimal */
+.signup-link {
+  text-align: center;
+  color: $color-dark-gray;
+  font-size: 13px;
+  margin-top: $spacing-xl;
+  padding-top: $spacing-xl;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+
+  a {
+    color: $color-primary;
+    text-decoration: none;
+    font-weight: $font-semibold;
+    transition: $transition-color;
+
+    &:hover {
+      color: $color-primary-dark;
+    }
+  }
+}
+
+/* Message - Light notifications */
+.message {
+  padding: 12px 16px;
+  border-radius: $radius-sm;
+  margin-bottom: $spacing-lg;
+  font-size: 13px;
+  font-weight: $font-medium;
+  display: none;
+  @include slide-in-down(0.3s);
+
+  &.show {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+  }
+
+  &.success {
+    background: rgba(52, 168, 83, 0.08);
+    color: $color-success;
+    border: 1px solid rgba(52, 168, 83, 0.2);
+  }
+
+  &.error {
+    background: rgba(234, 67, 53, 0.08);
+    color: $color-error;
+    border: 1px solid rgba(234, 67, 53, 0.2);
+  }
+}
