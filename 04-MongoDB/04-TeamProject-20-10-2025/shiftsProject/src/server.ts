@@ -13,8 +13,18 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Static frontend
-app.use(express.static(path.join(process.cwd(), "public")));
+// Static frontend with correct MIME types
+app.use(express.static(path.join(process.cwd(), "public"), {
+  setHeaders: (res, filePath) => {
+    if (filePath.endsWith('.js')) {
+      res.setHeader('Content-Type', 'application/javascript; charset=utf-8');
+    } else if (filePath.endsWith('.css')) {
+      res.setHeader('Content-Type', 'text/css; charset=utf-8');
+    } else if (filePath.endsWith('.html')) {
+      res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    }
+  }
+}));
 
 // Resolve router whether exported as default or named
 const shiftsRouter = (shiftRoutesModule as any).default || (shiftRoutesModule as any);
