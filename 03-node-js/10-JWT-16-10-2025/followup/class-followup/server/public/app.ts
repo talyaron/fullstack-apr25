@@ -27,7 +27,7 @@ class TodoApp {
 
     private async init(): Promise<void> {
         this.setupEventListeners();
-        await this.loadUsers();
+        await this.loadUser();
     }
 
     private setupEventListeners(): void {
@@ -59,6 +59,23 @@ class TodoApp {
             this.renderUsers();
         } catch (error) {
             console.error('Error loading users:', error);
+        }
+    }
+
+    private async loadUser(): Promise<void> {
+        try {
+            console.log("Loading user from cookie...");
+            const response = await fetch(`${this.apiUrl}/users/userId`);
+            if (!response.ok) throw new Error('Failed to fetch user');
+            const user = await response.json();
+            console.log("user from cookie:", user);
+            this.selectedUser = user;
+            this.updateSelectedUserDisplay();
+            this.loadTasks(user._id);
+            // this.loadUserTasks();
+
+        } catch (error) {
+            console.error('Error loading user:', error);
         }
     }
 

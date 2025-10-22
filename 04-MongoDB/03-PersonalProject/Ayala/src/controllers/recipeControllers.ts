@@ -63,11 +63,21 @@ export async function addRecipe(req: Request, res: Response) {
       res.status(500).json({ message: "Server error, in getRecipesByCategory controller function" })
    }
 }
-export async function editRecipe(){
-   try{
+export async function editRecipe(req: Request, res: Response) {
+   try {
+const { name, ingredients, instructions, categoryId } = req.body;
+      if (!name || !ingredients || !instructions || !categoryId) {
+         return res.status(400).json({ message: "Missing required fields" });
+      }
+
+      const updatedRecipe = await IRecipe.findByIdAndUpdate(
+         req.params.id,
+         { name, ingredients, instructions, categoryId },
+      )
+      res.status(200).json(updatedRecipe);
 
    }
-   catch{
-      
+   catch {
+      res.status(500).json({ message: "Server error, in editRecipe controller function" })
    }
 }
