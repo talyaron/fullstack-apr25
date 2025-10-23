@@ -6,8 +6,8 @@
 // WAIT FOR DOM TO BE READY
 // ===============================================
 
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('🚀 DOM loaded - Starting dashboard...');
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("🚀 DOM loaded - Starting dashboard...");
 
   // ===============================================
   // STATE MANAGEMENT
@@ -15,14 +15,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   class DashboardState {
     private currentUser: User | null = null;
-    private currentView: string = 'overview';
+    private currentView: string = "overview";
     private stats: DashboardStats = {
       totalMissions: 0,
       activeMissions: 0,
       pendingMissions: 0,
       completedMissions: 0,
       totalSoldiers: 0,
-      totalTeams: 0
+      totalTeams: 0,
     };
 
     setUser(user: User): void {
@@ -58,42 +58,58 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const elements = {
     // Navigation
-    navItems: document.querySelectorAll<HTMLAnchorElement>('.dashboard__nav-item'),
-    
+    navItems: document.querySelectorAll<HTMLAnchorElement>(
+      ".dashboard__nav-item"
+    ),
+
     // Views
-    views: document.querySelectorAll<HTMLElement>('.dashboard__view'),
-    overviewView: document.getElementById('overviewView') as HTMLElement,
-    createMissionView: document.getElementById('createMissionView') as HTMLElement,
-    
+    views: document.querySelectorAll<HTMLElement>(".dashboard__view"),
+    overviewView: document.getElementById("overviewView") as HTMLElement,
+    createMissionView: document.getElementById(
+      "createMissionView"
+    ) as HTMLElement,
+
     // Stats
-    totalMissionsEl: document.getElementById('totalMissions') as HTMLElement,
-    pendingMissionsEl: document.getElementById('pendingMissions') as HTMLElement,
-    activeMissionsEl: document.getElementById('activeMissions') as HTMLElement,
-    totalSoldiersEl: document.getElementById('totalSoldiers') as HTMLElement,
-    
+    totalMissionsEl: document.getElementById("totalMissions") as HTMLElement,
+    pendingMissionsEl: document.getElementById(
+      "pendingMissions"
+    ) as HTMLElement,
+    activeMissionsEl: document.getElementById("activeMissions") as HTMLElement,
+    totalSoldiersEl: document.getElementById("totalSoldiers") as HTMLElement,
+
     // User
-    userNameEl: document.getElementById('userName') as HTMLElement,
-    userRoleEl: document.getElementById('userRole') as HTMLElement,
-    logoutBtn: document.getElementById('logoutBtn') as HTMLButtonElement,
-    
+    userNameEl: document.getElementById("userName") as HTMLElement,
+    userRoleEl: document.getElementById("userRole") as HTMLElement,
+    logoutBtn: document.getElementById("logoutBtn") as HTMLButtonElement,
+
     // Modal
-    createMissionModal: document.getElementById('createMissionModal') as HTMLElement,
-    closeMissionModal: document.getElementById('closeMissionModal') as HTMLButtonElement,
-    
+    createMissionModal: document.getElementById(
+      "createMissionModal"
+    ) as HTMLElement,
+    closeMissionModal: document.getElementById(
+      "closeMissionModal"
+    ) as HTMLButtonElement,
+
     // Forms
-    createMissionForm: document.getElementById('createMissionFormModal') as HTMLFormElement,
-    cancelMissionBtn: document.getElementById('cancelMissionBtn') as HTMLButtonElement,
-    
+    createMissionForm: document.getElementById(
+      "createMissionFormModal"
+    ) as HTMLFormElement,
+    cancelMissionBtn: document.getElementById(
+      "cancelMissionBtn"
+    ) as HTMLButtonElement,
+
     // Quick Actions
-    quickActions: document.querySelectorAll<HTMLButtonElement>('.quick-action'),
-    
+    quickActions: document.querySelectorAll<HTMLButtonElement>(".quick-action"),
+
     // Tables
-    recentMissionsTable: document.getElementById('recentMissionsTable') as HTMLElement
+    recentMissionsTable: document.getElementById(
+      "recentMissionsTable"
+    ) as HTMLElement,
   };
 
-  console.log('✅ Elements loaded:', {
+  console.log("✅ Elements loaded:", {
     modal: !!elements.createMissionModal,
-    buttons: elements.quickActions.length
+    buttons: elements.quickActions.length,
   });
 
   // ===============================================
@@ -103,20 +119,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const navigateToView = (viewName: string): void => {
     // Hide all views
     elements.views.forEach((view) => {
-      view.classList.add('dashboard__view--hidden');
+      view.classList.add("dashboard__view--hidden");
     });
 
     // Show selected view
     const targetView = document.getElementById(`${viewName}View`);
     if (targetView) {
-      targetView.classList.remove('dashboard__view--hidden');
+      targetView.classList.remove("dashboard__view--hidden");
     }
 
     // Update navigation active state
     elements.navItems.forEach((item) => {
-      item.classList.remove('dashboard__nav-item--active');
+      item.classList.remove("dashboard__nav-item--active");
       if (item.dataset.view === viewName) {
-        item.classList.add('dashboard__nav-item--active');
+        item.classList.add("dashboard__nav-item--active");
       }
     });
 
@@ -129,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Navigation click handlers
   elements.navItems.forEach((item) => {
-    item.addEventListener('click', (e) => {
+    item.addEventListener("click", (e) => {
       e.preventDefault();
       const viewName = item.dataset.view;
       if (viewName) {
@@ -143,31 +159,31 @@ document.addEventListener('DOMContentLoaded', () => {
   // ===============================================
 
   const openModal = (): void => {
-    console.log('📂 Opening modal...');
+    console.log("📂 Opening modal...");
     if (elements.createMissionModal) {
-      elements.createMissionModal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-      console.log('✅ Modal opened!');
+      elements.createMissionModal.classList.add("active");
+      document.body.style.overflow = "hidden";
+      console.log("✅ Modal opened!");
     } else {
-      console.error('❌ Modal element not found!');
+      console.error("❌ Modal element not found!");
     }
   };
 
   const closeModal = (): void => {
-    console.log('📁 Closing modal...');
+    console.log("📁 Closing modal...");
     if (elements.createMissionModal) {
-      elements.createMissionModal.classList.remove('active');
-      document.body.style.overflow = '';
+      elements.createMissionModal.classList.remove("active");
+      document.body.style.overflow = "";
       if (elements.createMissionForm) {
         elements.createMissionForm.reset();
       }
-      console.log('✅ Modal closed!');
+      console.log("✅ Modal closed!");
     }
   };
 
   // Close modal on overlay click
   if (elements.createMissionModal) {
-    elements.createMissionModal.addEventListener('click', (e) => {
+    elements.createMissionModal.addEventListener("click", (e) => {
       if (e.target === elements.createMissionModal) {
         closeModal();
       }
@@ -176,17 +192,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Close modal button
   if (elements.closeMissionModal) {
-    elements.closeMissionModal.addEventListener('click', closeModal);
+    elements.closeMissionModal.addEventListener("click", closeModal);
   }
 
   // Cancel button
   if (elements.cancelMissionBtn) {
-    elements.cancelMissionBtn.addEventListener('click', closeModal);
+    elements.cancelMissionBtn.addEventListener("click", closeModal);
   }
 
   // ESC key to close modal
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && elements.createMissionModal?.classList.contains('active')) {
+  document.addEventListener("keydown", (e) => {
+    if (
+      e.key === "Escape" &&
+      elements.createMissionModal?.classList.contains("active")
+    ) {
       closeModal();
     }
   });
@@ -195,41 +214,45 @@ document.addEventListener('DOMContentLoaded', () => {
   // QUICK ACTIONS
   // ===============================================
 
-  console.log('🔗 Attaching quick action listeners...');
+  console.log("🔗 Attaching quick action listeners...");
   elements.quickActions.forEach((btn, index) => {
     console.log(`  Button ${index}:`, btn.dataset.action);
-    
-    btn.addEventListener('click', () => {
+
+    btn.addEventListener("click", () => {
       const action = btn.dataset.action;
-      console.log('🖱️ Quick action clicked:', action);
-      
+      console.log("🖱️ Quick action clicked:", action);
+
       switch (action) {
-        case 'create-mission':
-          console.log('➡️ Opening modal...');
+        case "create-mission":
+          console.log("➡️ Opening modal...");
           openModal();
           break;
-        case 'view-missions':
-          navigateToView('missions');
+        case "view-missions":
+          navigateToView("missions");
           break;
-        case 'manage-personnel':
-          navigateToView('personnel');
+        case "manage-personnel":
+          navigateToView("personnel");
           break;
       }
     });
   });
 
-  console.log('✅ Quick action listeners attached');
+  console.log("✅ Quick action listeners attached");
 
   // ===============================================
   // STATS
   // ===============================================
 
   const updateStats = (stats: DashboardStats): void => {
-    if (elements.totalMissionsEl) elements.totalMissionsEl.textContent = stats.totalMissions.toString();
-    if (elements.pendingMissionsEl) elements.pendingMissionsEl.textContent = stats.pendingMissions.toString();
-    if (elements.activeMissionsEl) elements.activeMissionsEl.textContent = stats.activeMissions.toString();
-    if (elements.totalSoldiersEl) elements.totalSoldiersEl.textContent = stats.totalSoldiers.toString();
-    
+    if (elements.totalMissionsEl)
+      elements.totalMissionsEl.textContent = stats.totalMissions.toString();
+    if (elements.pendingMissionsEl)
+      elements.pendingMissionsEl.textContent = stats.pendingMissions.toString();
+    if (elements.activeMissionsEl)
+      elements.activeMissionsEl.textContent = stats.activeMissions.toString();
+    if (elements.totalSoldiersEl)
+      elements.totalSoldiersEl.textContent = stats.totalSoldiers.toString();
+
     state.setStats(stats);
   };
 
@@ -238,20 +261,64 @@ document.addEventListener('DOMContentLoaded', () => {
       // TODO: Replace with actual API call
       // const response = await fetch('/api/stats');
       // const data: ApiResponse<DashboardStats> = await response.json();
-      
       // Mock data for now
-      const mockStats: DashboardStats = {
-        totalMissions: 42,
-        activeMissions: 15,
-        pendingMissions: 8,
-        completedMissions: 19,
-        totalSoldiers: 156,
-        totalTeams: 12
+      // const mockStats: DashboardStats = {
+      //   totalMissions: 42,
+      //   activeMissions: 15,
+      //   pendingMissions: 8,
+      //   completedMissions: 19,
+      //   totalSoldiers: 156,
+      //   totalTeams: 12
+      // };
+      // updateStats(mockStats);
+      const missionsResponse = await fetch("api/get/missions-amount", {
+        headers: { Accept: "aplication/json" },
+      });
+      const peopleResponse = await fetch("api/get/people-amount", {
+        headers: { Accept: "aplication/json" },
+      });
+      const missionWaitingResponse = await fetch("/api/get/missions-waiting", {
+        headers: { Accept: "aplication/json" },
+      });
+      const missiondDoneResponse = await fetch("/api/get/missions-waiting", {
+        headers: { Accept: "aplication/json" },
+      });
+      if (!missiondDoneResponse.ok) {
+        throw new Error(
+          `failed to fetch done missions amount${missiondDoneResponse.status}`
+        );
+      }
+      if (!missionWaitingResponse.ok) {
+        throw new Error(
+          `failed to fetch waiting missions amount${missionWaitingResponse.status}`
+        );
+      }
+      if (!missionsResponse.ok) {
+        throw new Error(
+          `failed to fetch missons amount${missionsResponse.status}`
+        );
+      }
+      if (!peopleResponse.ok) {
+        throw new Error(
+          `failed to fetch people amount${peopleResponse.status}`
+        );
+      }
+      const totalMissions = (await missionsResponse.json()) as number;
+      const totalSoldiers = (await peopleResponse.json()) as number;
+      const pendingMissions = (await missionWaitingResponse.json()) as number;
+      const activeMissions = (await missiondDoneResponse.json()) as number;
+
+      const current = state.getStats();
+      const updated: DashboardState = {
+        ...current,
+        totalMissions,
+        totalSoldiers,
+        pendingMissions,
+        activeMissions
       };
-      
-      updateStats(mockStats);
+      updateStats(updated);
     } catch (error) {
-      console.error('Error fetching stats:', error);
+      console.error("Error fetching stats:", error);
     }
   };
 
@@ -261,23 +328,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const handleCreateMission = async (e: Event): Promise<void> => {
     e.preventDefault();
-    
-    const missionType = document.getElementById('missionType') as HTMLSelectElement;
-    const missionDate = document.getElementById('missionDate') as HTMLInputElement;
-    const controlCenter = document.getElementById('controlCenter') as HTMLSelectElement;
-    const amountOfPeople = document.getElementById('amountOfPeople') as HTMLSelectElement;
-    const missionNote = document.getElementById('missionNote') as HTMLTextAreaElement;
-    
+
+    const missionType = document.getElementById(
+      "missionType"
+    ) as HTMLSelectElement;
+    const missionDate = document.getElementById(
+      "missionDate"
+    ) as HTMLInputElement;
+    const controlCenter = document.getElementById(
+      "controlCenter"
+    ) as HTMLSelectElement;
+    const amountOfPeople = document.getElementById(
+      "amountOfPeople"
+    ) as HTMLSelectElement;
+    const missionNote = document.getElementById(
+      "missionNote"
+    ) as HTMLTextAreaElement;
+
     const missionData: CreateMissionFormData = {
       mission_type: missionType.value as any,
       date: missionDate.value,
       control_center_number: controlCenter.value,
       amount_people: Number(amountOfPeople.value),
-      notes: missionNote.value
+      notes: missionNote.value,
     };
-    
-    console.log('Creating mission:', missionData);
-    
+
+    console.log("Creating mission:", missionData);
+
     try {
       // TODO: Replace with actual API call
       // const response = await fetch('/api/missions', {
@@ -286,21 +363,21 @@ document.addEventListener('DOMContentLoaded', () => {
       //   body: JSON.stringify(missionData)
       // });
       // const result: ApiResponse<Mission> = await response.json();
-      
+
       // Mock success
-      alert('המשימה נוצרה בהצלחה! ✅');
+      alert("המשימה נוצרה בהצלחה! ✅");
       closeModal();
-      
+
       // Refresh stats
       await fetchStats();
     } catch (error) {
-      console.error('Error creating mission:', error);
-      alert('שגיאה ביצירת המשימה ❌');
+      console.error("Error creating mission:", error);
+      alert("שגיאה ביצירת המשימה ❌");
     }
   };
 
   if (elements.createMissionForm) {
-    elements.createMissionForm.addEventListener('submit', handleCreateMission);
+    elements.createMissionForm.addEventListener("submit", handleCreateMission);
   }
 
   // ===============================================
@@ -308,10 +385,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // ===============================================
 
   if (elements.logoutBtn) {
-    elements.logoutBtn.addEventListener('click', () => {
-      if (confirm('האם אתה בטוח שברצונך להתנתק?')) {
+    elements.logoutBtn.addEventListener("click", () => {
+      if (confirm("האם אתה בטוח שברצונך להתנתק?")) {
         // TODO: Clear session/token
-        window.location.href = '/index.html';
+        window.location.href = "/index.html";
       }
     });
   }
@@ -325,25 +402,27 @@ document.addEventListener('DOMContentLoaded', () => {
       // TODO: Replace with actual API call
       // const response = await fetch('/api/control-centers');
       // const data: ApiResponse<ControlCenter[]> = await response.json();
-      
+
       // Mock data
       const mockCenters = [
-        { id: '1', control_center_number: '001', name: 'מרכז בקרה צפון' },
-        { id: '2', control_center_number: '002', name: 'מרכז בקרה דרום' },
-        { id: '3', control_center_number: '003', name: 'מרכז בקרה מרכז' }
+        { id: "1", control_center_number: "001", name: "מרכז בקרה צפון" },
+        { id: "2", control_center_number: "002", name: "מרכז בקרה דרום" },
+        { id: "3", control_center_number: "003", name: "מרכז בקרה מרכז" },
       ];
-      
-      const select = document.getElementById('controlCenter') as HTMLSelectElement;
+
+      const select = document.getElementById(
+        "controlCenter"
+      ) as HTMLSelectElement;
       if (select) {
         mockCenters.forEach((center) => {
-          const option = document.createElement('option');
+          const option = document.createElement("option");
           option.value = center.control_center_number;
           option.textContent = center.name;
           select.appendChild(option);
         });
       }
     } catch (error) {
-      console.error('Error loading control centers:', error);
+      console.error("Error loading control centers:", error);
     }
   };
 
@@ -352,43 +431,40 @@ document.addEventListener('DOMContentLoaded', () => {
   // ===============================================
 
   const initDashboard = async (): Promise<void> => {
-    console.log('🎯 Initializing dashboard...');
-    
+    console.log("🎯 Initializing dashboard...");
+
     // TODO: Check authentication
     // const token = localStorage.getItem('token');
     // if (!token) {
     //   window.location.href = '/index.html';
     //   return;
     // }
-    
+
     // Mock user
     const mockUser: User = {
-      id: '1',
-      role: 'manager',
-      username: 'manager1',
-      password: '',
-      control_center: '001',
+      id: "1",
+      role: "manager",
+      username: "manager1",
+      password: "",
+      control_center: "001",
       createdAt: new Date(),
-      updatedAt: new Date()
+      updatedAt: new Date(),
     };
-    
+
     state.setUser(mockUser);
-    if (elements.userNameEl) elements.userNameEl.textContent = 'מפקד ראשי';
-    if (elements.userRoleEl) elements.userRoleEl.textContent = 'מפקד עליון';
-    
+    if (elements.userNameEl) elements.userNameEl.textContent = "מפקד ראשי";
+    if (elements.userRoleEl) elements.userRoleEl.textContent = "מפקד עליון";
+
     // Load initial data
-    await Promise.all([
-      fetchStats(),
-      loadControlCenters()
-    ]);
-    
+    await Promise.all([fetchStats(), loadControlCenters()]);
+
     // Handle initial route
     const hash = window.location.hash.slice(1);
     if (hash) {
       navigateToView(hash);
     }
-    
-    console.log('✅ Dashboard initialized successfully!');
+
+    console.log("✅ Dashboard initialized successfully!");
   };
 
   // Start the dashboard

@@ -28,7 +28,7 @@ declare global {
 
   interface DashboardStats {
     totalMissions: number;
-    activeMissions: number;
+    doneMissons: number;
     pendingMissions: number;
     completedMissions: number;
     totalSoldiers: number;

@@ -45,6 +45,28 @@ export const getAmountOfMissions = async (req: Request, res: Response) => {
     res.status(200).json(amountMissions);
   } catch (error) {}
 };
+export const getMissionsWaiting = async (req: Request, res: Response) => {
+  try {
+    const amountWaiting = await Mission.aggregate([
+      { $match: { status: "waiting" } },
+      { $count: "totalWaiting" },
+    ]);
+
+    const waitingMissions = amountWaiting[0]?.totalWaiting || 0;
+    res.status(200).json(waitingMissions);
+  } catch (error) {}
+};
+export const getMissionsDone= async (req: Request, res: Response) => {
+  try {
+    const amountWaiting = await Mission.aggregate([
+      { $match: { status: "done" } },
+      { $count: "totalDone" },
+    ]);
+
+    const doneMissons = amountWaiting[0]?.totalDone || 0;
+    res.status(200).json(doneMissons);
+  } catch (error) {}
+};
 
 export const getAssignesPeopleAmount = async (req: Request,res: Response) => {
   try {
