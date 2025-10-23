@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>דשבורד - מערכת משימות צבאיות</title>
+    <link rel="icon" type="image/png" href="/images/tzahal.png" />
+    <link rel="stylesheet" href="dist/dashboard.css" />
+  </head>
+  <body>
+    <!-- Main Container -->
+    <div class="dashboard">
+      <!-- Header -->
+      <header class="dashboard__header">
+        <div class="dashboard__header-content">
+          <div class="dashboard__logo">
+            <img
+              src="/images/tzahal.png"
+              alt="צה״ל"
+              class="dashboard__logo-image"
+            />
+            <span class="dashboard__logo-text">מערכת משימות</span>
+          </div>
+
+          <div class="dashboard__user">
+            <div class="dashboard__user-info">
+              <span class="dashboard__user-name" id="userName">מפקד ראשי</span>
+              <span class="dashboard__user-role" id="userRole">מפקד עליון</span>
+            </div>
+            <button class="dashboard__logout" id="logoutBtn">
+              <span>התנתק</span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Sidebar -->
+      <aside class="dashboard__sidebar">
+        <nav class="dashboard__nav">
+          <a
+            href="#overview"
+            class="dashboard__nav-item dashboard__nav-item--active"
+            data-view="overview"
+          >
+            <span class="dashboard__nav-icon">📊</span>
+            <span class="dashboard__nav-text">סקירה כללית</span>
+          </a>
+          <a
+            href="#create-mission"
+            class="dashboard__nav-item"
+            data-view="create-mission"
+          >
+            <span class="dashboard__nav-icon">➕</span>
+            <span class="dashboard__nav-text">יצירת משימה</span>
+          </a>
+          <a href="#missions" class="dashboard__nav-item" data-view="missions">
+            <span class="dashboard__nav-icon">📋</span>
+            <span class="dashboard__nav-text">כל המשימות</span>
+          </a>
+          <a
+            href="#personnel"
+            class="dashboard__nav-item"
+            data-view="personnel"
+          >
+            <span class="dashboard__nav-icon">👥</span>
+            <span class="dashboard__nav-text">אנשי הכוח</span>
+          </a>
+          <a href="#teams" class="dashboard__nav-item" data-view="teams">
+            <span class="dashboard__nav-icon">🔷</span>
+            <span class="dashboard__nav-text">צוותים</span>
+          </a>
+          <a
+            href="#control-centers"
+            class="dashboard__nav-item"
+            data-view="control-centers"
+          >
+            <span class="dashboard__nav-icon">🏢</span>
+            <span class="dashboard__nav-text">מרכזי בקרה</span>
+          </a>
+        </nav>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="dashboard__main">
+        <!-- Overview Section -->
+        <section class="dashboard__view" id="overviewView">
+          <!-- Page Header -->
+          <div class="dashboard__page-header">
+            <h1 class="dashboard__page-title">סקירה כללית</h1>
+            <p class="dashboard__page-subtitle">מבט על על פעילות המערכת</p>
+          </div>
+
+          <!-- Stats Grid -->
+          <div class="dashboard__stats">
+            <div class="stat-card">
+              <div class="stat-card__icon stat-card__icon--primary">📋</div>
+              <div class="stat-card__content">
+                <div class="stat-card__value" id="totalMissions">0</div>
+                <div class="stat-card__label">סה״כ משימות</div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-card__icon stat-card__icon--warning">⏳</div>
+              <div class="stat-card__content">
+                <div class="stat-card__value" id="pendingMissions">0</div>
+                <div class="stat-card__label">ממתינות להקצאה</div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-card__icon stat-card__icon--success">✅</div>
+              <div class="stat-card__content">
+                <div class="stat-card__value" id="activeMissions">0</div>
+                <div class="stat-card__label">משימות פעילות</div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-card__icon stat-card__icon--info">👥</div>
+              <div class="stat-card__content">
+                <div class="stat-card__value" id="totalSoldiers">0</div>
+                <div class="stat-card__label">אנשי כוח</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Actions -->
+          <div class="dashboard__section">
+            <h2 class="dashboard__section-title">פעולות מהירות</h2>
+            <div class="quick-actions">
+              <button class="quick-action" data-action="create-mission">
+                <span class="quick-action__icon">➕</span>
+                <span class="quick-action__text">יצירת משימה חדשה</span>
+              </button>
+              <button class="quick-action" data-action="view-missions">
+                <span class="quick-action__icon">📋</span>
+                <span class="quick-action__text">צפייה בכל המשימות</span>
+              </button>
+              <button class="quick-action" data-action="manage-personnel">
+                <span class="quick-action__icon">👥</span>
+                <span class="quick-action__text">ניהול אנשי כוח</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Recent Missions -->
+          <div class="dashboard__section">
+            <div class="dashboard__section-header">
+              <h2 class="dashboard__section-title">משימות אחרונות</h2>
+              <a href="#missions" class="dashboard__section-link">צפה בהכל</a>
+            </div>
+
+            <div class="missions-table" id="recentMissionsTable">
+              <!-- Missions will be loaded here by JS -->
+              <div class="empty-state">
+                <div class="empty-state__icon">📋</div>
+                <div class="empty-state__text">אין משימות להצגה</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Create Mission Section (Hidden by default) -->
+        <section
+          class="dashboard__view dashboard__view--hidden"
+          id="createMissionView"
+        >
+          <div class="dashboard__page-header">
+            <h1 class="dashboard__page-title">יצירת משימה חדשה</h1>
+            <p class="dashboard__page-subtitle">מלא את הפרטים ליצירת משימה</p>
+          </div>
+
+          <div class="form-container">
+            <form class="mission-form" id="createMissionForm">
+              <div class="mission-form__group">
+                <label for="missionType" class="mission-form__label"
+                  >סוג משימה</label
+                >
+                <select
+                  id="missionType"
+                  name="mission_type"
+                  class="mission-form__select"
+                  required
+                >
+                  <option value="">בחר סוג משימה</option>
+                  <option value="guard_duty">שמירה</option>
+                  <option value="patrol">סיור</option>
+                  <option value="training">אימון</option>
+                  <option value="maintenance">תחזוקה</option>
+                  <option value="operation">מבצע</option>
+                  <option value="other">אחר</option>
+                </select>
+              </div>
+
+              <div class="mission-form__group">
+                <label for="missionDate" class="mission-form__label"
+                  >תאריך</label
+                >
+                <input
+                  type="date"
+                  id="missionDate"
+                  name="date"
+                  class="mission-form__input"
+                  required
+                />
+              </div>
+
+              <div class="mission-form__group">
+                <label for="controlCenter" class="mission-form__label"
+                  >מרכז בקרה</label
+                >
+                <select
+                  id="controlCenter"
+                  name="control_center_number"
+                  class="mission-form__select"
+                  required
+                >
+                  <option value="">בחר מרכז בקרה</option>
+                  <!-- Options will be loaded by JS -->
+                </select>
+              </div>
+
+              <div class="mission-form__group">
+                <label for="amountPeople" class="mission-form__label"
+                  >כמות אנשים</label
+                >
+                <input
+                  type="number"
+                  id="amountPeople"
+                  name="amount_people"
+                  class="mission-form__input"
+                  min="1"
+                  required
+                />
+              </div>
+
+              <div class="mission-form__group">
+                <label for="notes" class="mission-form__label">הערות</label>
+                <textarea
+                  id="notes"
+                  name="notes"
+                  class="mission-form__textarea"
+                  rows="4"
+                  placeholder="הוסף הערות למשימה..."
+                ></textarea>
+              </div>
+
+              <div class="mission-form__actions">
+                <button type="submit" class="mission-form__submit">
+                  <span class="mission-form__submit-text">יצירת משימה</span>
+                </button>
+                <button
+                  type="button"
+                  class="mission-form__cancel"
+                  id="cancelMissionBtn"
+                >
+                  ביטול
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- Other views will be added here -->
+      </main>
+    </div>
+
+    <script type="module" src="dist/dashboard.js"></script>
+  </body>
+</html>
