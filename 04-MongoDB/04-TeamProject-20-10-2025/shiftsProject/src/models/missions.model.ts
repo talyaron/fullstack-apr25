@@ -14,6 +14,7 @@ export interface Imission extends Document {
         controlCenter:string;
     }[];
     shiftType: string;
+    status : string;
 }
 
 const misssionSchema = new Schema({
@@ -29,7 +30,8 @@ const misssionSchema = new Schema({
         personId:{type: String , required : false},
         controlCenter:{type: String , required : false}
     }],
-    shiftType:{type: String , required : true}
+    shiftType:{type: String , required : true},
+    status : {type : String}
 });
 
 const Mission = model<Imission>("Mission", misssionSchema, "missions");
