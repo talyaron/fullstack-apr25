@@ -201,4 +201,15 @@ document.addEventListener("DOMContentLoaded", async () => {
   await getRandomWord();
   createBoard();
   createKeyboard();
+// ====== Give Up button ======
+  const giveUpBtn = document.getElementById("giveUpBtn");
+  if (giveUpBtn) {
+    giveUpBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      errorDiv.textContent = `💡 You gave up! The word was ${SECRET}.`;
+      errorDiv.style.display = "block";
+      isGameOver = true;
+      setTimeout(resetGame, 2500);
+    });
+  }
 });
