@@ -1,6 +1,8 @@
 import { Router } from "express";
 import { deleteMissions, getMissions, postMissions } from "../controllers/missionsContrtollers";
 import { deleteTeam, getTeams, postTeams } from "../controllers/teamsControllers";
+import { deletePeople, getPeople, postPeople } from "../controllers/peopleControlles";
+import { deleteControlCenter, getControlCenter, postControlCenter } from "../controllers/controlCenterController";
 const router = Router();
 
 // Example route (placeholder)
@@ -16,20 +18,23 @@ router.get("/get/teams",getTeams)
 router.post("/post/teams",postTeams)
 router.delete("/delete/teams/:id", deleteTeam)
 
-//get api
-// router.get("/api/get/people",getPeople)
-// router.get("/api/get/controlCenter",getControlCenter)
+
+
+//people
+router.get("/get/people",getPeople)
+router.post("/post/people",postPeople)
+router.delete("/delete/people/:id", deletePeople)
+
+
+//controlCenter
+router.get("/api/get/controlCenter",getControlCenter)
+router.post("/api/post/controlCenter",postControlCenter)
+router.delete("/api/delete/controlCenter/:id", deleteControlCenter)
+
+
+//users
 // router.get("/api/get/users",getUsers)
-
-
-// //post api
-// router.post("/api/post/people",postPeople)
-// router.post("/api/post/controlCenter",postControlCenter)
 // router.post("/api/post/users",postUsers)
-
-// //delete api
-// router.delete("/api/delete/people", deletePeople)
-// router.delete("/api/delete/controlCenter", deleteControlCenter)
 // router.delete("/api/delete/users", deleteUsers)
 
 
