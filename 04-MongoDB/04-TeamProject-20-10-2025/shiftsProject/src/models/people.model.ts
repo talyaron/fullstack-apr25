@@ -12,7 +12,7 @@ const peopleSchema = new Schema({
   lastName: { type: String, required: true },
   phoneNumber: { type: String, required: true, unique: true },
   personId: { type: Number, required: true, unique: true },
-  controlCenter: { type: Number, required: true },
+  controlCenter: { type: String, required: true },
 });
 
 const People = model <Ipeople>("People",peopleSchema,"people");
