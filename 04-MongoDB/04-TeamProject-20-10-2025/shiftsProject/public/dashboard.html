@@ -63,19 +63,11 @@
             data-view="personnel"
           >
             <span class="dashboard__nav-icon">👥</span>
-            <span class="dashboard__nav-text">אנשי הכוח</span>
+            <span class="dashboard__nav-text">אנשי כוח</span>
           </a>
-          <a href="#teams" class="dashboard__nav-item" data-view="teams">
-            <span class="dashboard__nav-icon">🔷</span>
-            <span class="dashboard__nav-text">צוותים</span>
-          </a>
-          <a
-            href="#control-centers"
-            class="dashboard__nav-item"
-            data-view="control-centers"
-          >
-            <span class="dashboard__nav-icon">🏢</span>
-            <span class="dashboard__nav-text">מרכזי בקרה</span>
+          <a href="#reports" class="dashboard__nav-item" data-view="reports">
+            <span class="dashboard__nav-icon">📈</span>
+            <span class="dashboard__nav-text">דוחות</span>
           </a>
         </nav>
       </aside>
@@ -87,7 +79,9 @@
           <!-- Page Header -->
           <div class="dashboard__page-header">
             <h1 class="dashboard__page-title">סקירה כללית</h1>
-            <p class="dashboard__page-subtitle">מבט על על פעילות המערכת</p>
+            <p class="dashboard__page-subtitle">
+              מבט על על המשימות והאנשים במערכת
+            </p>
           </div>
 
           <!-- Stats Grid -->
@@ -104,7 +98,7 @@
               <div class="stat-card__icon stat-card__icon--warning">⏳</div>
               <div class="stat-card__content">
                 <div class="stat-card__value" id="pendingMissions">0</div>
-                <div class="stat-card__label">ממתינות להקצאה</div>
+                <div class="stat-card__label">משימות ממתינות</div>
               </div>
             </div>
 
@@ -148,7 +142,12 @@
           <div class="dashboard__section">
             <div class="dashboard__section-header">
               <h2 class="dashboard__section-title">משימות אחרונות</h2>
-              <a href="#missions" class="dashboard__section-link">צפה בהכל</a>
+              <a
+                href="#missions"
+                class="dashboard__section-link"
+                data-view="missions"
+                >צפה בהכל</a
+              >
             </div>
 
             <div class="missions-table" id="recentMissionsTable">
@@ -171,16 +170,14 @@
             <p class="dashboard__page-subtitle">מלא את הפרטים ליצירת משימה</p>
           </div>
 
-          <div class="form-container">
-            <form class="mission-form" id="createMissionForm">
-              <div class="mission-form__group">
-                <label for="missionType" class="mission-form__label"
-                  >סוג משימה</label
-                >
+          <form class="form" id="createMissionForm">
+            <div class="form__grid">
+              <div class="form__group">
+                <label class="form__label" for="mission_type">סוג משימה</label>
                 <select
-                  id="missionType"
+                  class="form__select"
+                  id="mission_type"
                   name="mission_type"
-                  class="mission-form__select"
                   required
                 >
                   <option value="">בחר סוג משימה</option>
@@ -193,77 +190,217 @@
                 </select>
               </div>
 
-              <div class="mission-form__group">
-                <label for="missionDate" class="mission-form__label"
-                  >תאריך</label
-                >
+              <div class="form__group">
+                <label class="form__label" for="date">תאריך</label>
                 <input
                   type="date"
-                  id="missionDate"
+                  class="form__input"
+                  id="date"
                   name="date"
-                  class="mission-form__input"
                   required
                 />
               </div>
 
-              <div class="mission-form__group">
-                <label for="controlCenter" class="mission-form__label"
+              <div class="form__group">
+                <label class="form__label" for="control_center_number"
                   >מרכז בקרה</label
                 >
                 <select
-                  id="controlCenter"
+                  class="form__select"
+                  id="control_center_number"
                   name="control_center_number"
-                  class="mission-form__select"
                   required
                 >
                   <option value="">בחר מרכז בקרה</option>
-                  <!-- Options will be loaded by JS -->
                 </select>
               </div>
 
-              <div class="mission-form__group">
-                <label for="amountPeople" class="mission-form__label"
+              <div class="form__group">
+                <label class="form__label" for="amount_people"
                   >כמות אנשים</label
                 >
                 <input
                   type="number"
-                  id="amountPeople"
+                  class="form__input"
+                  id="amount_people"
                   name="amount_people"
-                  class="mission-form__input"
                   min="1"
+                  max="50"
                   required
                 />
               </div>
 
-              <div class="mission-form__group">
-                <label for="notes" class="mission-form__label">הערות</label>
+              <div class="form__group form__group--full">
+                <label class="form__label" for="notes">הערות</label>
                 <textarea
+                  class="form__textarea"
                   id="notes"
                   name="notes"
-                  class="mission-form__textarea"
                   rows="4"
-                  placeholder="הוסף הערות למשימה..."
+                  placeholder="הוסף הערות נוספות..."
                 ></textarea>
               </div>
+            </div>
 
-              <div class="mission-form__actions">
-                <button type="submit" class="mission-form__submit">
-                  <span class="mission-form__submit-text">יצירת משימה</span>
-                </button>
-                <button
-                  type="button"
-                  class="mission-form__cancel"
-                  id="cancelMissionBtn"
-                >
-                  ביטול
-                </button>
-              </div>
-            </form>
+            <div class="form__actions">
+              <button type="submit" class="form__submit">צור משימה</button>
+              <button type="button" class="form__cancel" id="cancelMissionBtn">
+                ביטול
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <!-- Missions Section (Hidden by default) -->
+        <section
+          class="dashboard__view dashboard__view--hidden"
+          id="missionsView"
+        >
+          <div class="dashboard__page-header">
+            <h1 class="dashboard__page-title">כל המשימות</h1>
+            <p class="dashboard__page-subtitle">
+              רשימה מלאה של כל המשימות במערכת
+            </p>
+          </div>
+
+          <div class="missions-table">
+            <div class="empty-state">
+              <div class="empty-state__icon">📋</div>
+              <div class="empty-state__text">אין משימות להצגה</div>
+            </div>
           </div>
         </section>
 
-        <!-- Other views will be added here -->
+        <!-- Personnel Section (Hidden by default) -->
+        <section
+          class="dashboard__view dashboard__view--hidden"
+          id="personnelView"
+        >
+          <div class="dashboard__page-header">
+            <h1 class="dashboard__page-title">אנשי כוח</h1>
+            <p class="dashboard__page-subtitle">ניהול כל אנשי הכוח במערכת</p>
+          </div>
+
+          <div class="missions-table">
+            <div class="empty-state">
+              <div class="empty-state__icon">👥</div>
+              <div class="empty-state__text">אין אנשי כוח להצגה</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Reports Section (Hidden by default) -->
+        <section
+          class="dashboard__view dashboard__view--hidden"
+          id="reportsView"
+        >
+          <div class="dashboard__page-header">
+            <h1 class="dashboard__page-title">דוחות</h1>
+            <p class="dashboard__page-subtitle">צפייה בדוחות ואנליזות</p>
+          </div>
+
+          <div class="missions-table">
+            <div class="empty-state">
+              <div class="empty-state__icon">📈</div>
+              <div class="empty-state__text">אין דוחות להצגה</div>
+            </div>
+          </div>
+        </section>
       </main>
+    </div>
+
+    <!-- Create Mission Modal -->
+    <div class="create-mission-modal" id="createMissionModal">
+      <div class="create-mission-modal__overlay"></div>
+      <div class="create-mission-modal__container">
+        <div class="create-mission-modal__header">
+          <h2 class="create-mission-modal__title">יצירת משימה חדשה</h2>
+          <button class="create-mission-modal__close" id="closeMissionModal">
+            ✕
+          </button>
+        </div>
+
+        <form class="create-mission-modal__form" id="createMissionFormModal">
+          <div class="form-group">
+            <label class="form-group__label" for="missionType">סוג משימה</label>
+            <select class="form-group__select" id="missionType" required>
+              <option value="">בחר סוג משימה</option>
+              <option value="guard_duty">שמירה</option>
+              <option value="patrol">סיור</option>
+              <option value="training">אימון</option>
+              <option value="maintenance">תחזוקה</option>
+              <option value="operation">מבצע</option>
+              <option value="other">אחר</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-group__label" for="missionDate">תאריך</label>
+            <input
+              type="date"
+              class="form-group__input"
+              id="missionDate"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-group__label" for="controlCenter"
+              >מרכז בקרה</label
+            >
+            <select class="form-group__select" id="controlCenter" required>
+              <option value="">בחר מרכז בקרה</option>
+              <option value="center_001">מרכז בקרה 001</option>
+              <option value="center_002">מרכז בקרה 002</option>
+              <option value="center_003">מרכז בקרה 003</option>
+              <option value="center_004">מרכז בקרה 004</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-group__label" for="amountOfPeople"
+              >כמות אנשים</label
+            >
+            <select class="form-group__select" id="amountOfPeople" required>
+              <option value="">בחר כמות מבצעים</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-group__label" for="missionNote">הערות</label>
+            <textarea
+              class="form-group__textarea"
+              id="missionNote"
+              rows="4"
+              placeholder="הוסף הערות למשימה..."
+            ></textarea>
+          </div>
+
+          <div class="create-mission-modal__actions">
+            <button type="submit" class="btn btn--primary">
+              <span class="btn__icon">➕</span>
+              <span class="btn__text">צור משימה</span>
+            </button>
+            <button
+              type="button"
+              class="btn btn--secondary"
+              id="cancelMissionBtn"
+            >
+              <span class="btn__text">ביטול</span>
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
 
     <script type="module" src="dist/dashboard.js"></script>
