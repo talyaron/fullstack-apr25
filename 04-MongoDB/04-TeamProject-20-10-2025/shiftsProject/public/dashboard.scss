@@ -283,6 +283,7 @@ body {
   gap: $spacing-lg;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   transition: $transition-all;
+  cursor: pointer;
 
   &:hover {
     box-shadow: 0 2px 12px rgba(107, 144, 128, 0.15);
