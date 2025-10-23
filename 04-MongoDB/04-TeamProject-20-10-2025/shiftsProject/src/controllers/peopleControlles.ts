@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import mongoose from "mongoose";
 import People from "../models/people.model";
+import { REPLCommand } from "repl";
 
 export const getPeople = async (req:Request,res:Response) =>{
     try {
@@ -12,6 +13,7 @@ export const getPeople = async (req:Request,res:Response) =>{
 
     }
 }
+
 
 export const postPeople = async (req:Request, res:Response)=>{
     try {
@@ -40,3 +42,15 @@ export const deletePeople = async (req: Request, res: Response) => {
         res.status(500).json({ message: "Error deleting person", error });
     }
 };
+
+export const getAmountOfPeople = async (req:Request,res:Response)=>{
+    try {
+        
+        const amountPeople = await People.countDocuments({})
+        res.status(200).json(amountPeople)
+
+    } catch (error) {
+        
+    }
+}
+

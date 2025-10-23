@@ -1,8 +1,9 @@
 import { Router } from "express";
-import { deleteMissions, getMissions, postMissions } from "../controllers/missionsContrtollers";
+import { deleteMissions, getAmountOfMissions, getAssignesPeopleAmount, getMissions, postMissions } from "../controllers/missionsContrtollers";
 import { deleteTeam, getTeams, postTeams } from "../controllers/teamsControllers";
-import { deletePeople, getPeople, postPeople } from "../controllers/peopleControlles";
+import { deletePeople, getAmountOfPeople, getPeople, postPeople } from "../controllers/peopleControlles";
 import { deleteControlCenter, getControlCenter, postControlCenter } from "../controllers/controlCenterController";
+import { addShiftTypes, getShiftTypes } from "../controllers/shiftOptionsControlles";
 const router = Router();
 
 // Example route (placeholder)
@@ -12,25 +13,28 @@ const router = Router();
 router.get("/get/missions",getMissions)
 router.post("/post/missions",postMissions)
 router.delete("/delete/missions/:id", deleteMissions)
+router.get("/get/missions-amount",getAmountOfMissions)
+router.get("/get/assignesPeople-amount",getAssignesPeopleAmount)
 
 //teams
 router.get("/get/teams",getTeams)
 router.post("/post/teams",postTeams)
 router.delete("/delete/teams/:id", deleteTeam)
 
-
-
 //people
 router.get("/get/people",getPeople)
+router.get("/get/people-amount",getAmountOfPeople)
 router.post("/post/people",postPeople)
 router.delete("/delete/people/:id", deletePeople)
 
-
 //controlCenter
-router.get("/api/get/controlCenter",getControlCenter)
-router.post("/api/post/controlCenter",postControlCenter)
-router.delete("/api/delete/controlCenter/:id", deleteControlCenter)
+router.get("/get/controlCenter",getControlCenter)
+router.post("/post/controlCenter",postControlCenter)
+router.delete("/delete/controlCenter/:id", deleteControlCenter)
 
+//shifts
+router.get("/get/shiftTypes",getShiftTypes)
+router.post("/post/shiftTypes",addShiftTypes)
 
 //users
 // router.get("/api/get/users",getUsers)

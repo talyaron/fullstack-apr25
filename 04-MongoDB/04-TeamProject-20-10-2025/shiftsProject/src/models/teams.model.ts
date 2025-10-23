@@ -1,6 +1,6 @@
 import mongoose, { Document, model, Schema } from "mongoose";
 export interface Iteams extends Document {
-    teamNumber : number;
+    teamName : string;
     controlCenter: string;
     personId :{
         idNumber: number;
@@ -8,7 +8,7 @@ export interface Iteams extends Document {
 }
 
 const teamsSchema = new Schema ({
-    teamNumber : {type: Number , required : true},
+    teamName : {type: String , required : true},
     controlCenter : {type : String,required : true},
     personId:[{
         idNumber: {type : Number ,required : true}
