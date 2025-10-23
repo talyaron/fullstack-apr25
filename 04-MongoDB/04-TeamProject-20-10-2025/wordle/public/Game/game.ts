@@ -186,6 +186,7 @@ function checkGuess(): void {
 
 // ====== Physical keyboard support ======
 window.addEventListener("keydown", (e: KeyboardEvent) => {
+  console.log("Key pressed:", e.key);
   const key = e.key.toUpperCase();
 
   if (["ENTER", "BACKSPACE"].includes(key)) e.preventDefault();
