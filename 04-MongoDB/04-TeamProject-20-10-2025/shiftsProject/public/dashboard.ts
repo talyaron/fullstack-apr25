@@ -2,15 +2,6 @@
 // DASHBOARD TYPESCRIPT - Manager View
 // ===============================================
 
-import type {
-  User,
-  UserRole,
-  Mission,
-  DashboardStats,
-  CreateMissionFormData,
-  ApiResponse
-} from './types';
-
 // ===============================================
 // WAIT FOR DOM TO BE READY
 // ===============================================
