@@ -7,3 +7,11 @@ function showPage(pageId: string) {
 
 // הפעלת עמוד התחברות בהתחלה
 showPage("login-page");
+
+function log(params:string) {
+  try {
+
+  } catch (error) {
+
+  }
+}
