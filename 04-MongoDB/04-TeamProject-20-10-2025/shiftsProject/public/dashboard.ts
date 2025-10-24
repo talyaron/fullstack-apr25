@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     private currentView: string = "overview";
     private stats: DashboardStats = {
       totalMissions: 0,
-      activeMissions: 0,
+      doneMissions: 0,
       pendingMissions: 0,
       completedMissions: 0,
       totalSoldiers: 0,
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
     pendingMissionsEl: document.getElementById(
       "pendingMissions"
     ) as HTMLElement,
-    activeMissionsEl: document.getElementById("activeMissions") as HTMLElement,
+    doneMissionsEl: document.getElementById("doneMissions") as HTMLElement,
     totalSoldiersEl: document.getElementById("totalSoldiers") as HTMLElement,
 
     // User
@@ -248,8 +248,8 @@ document.addEventListener("DOMContentLoaded", () => {
       elements.totalMissionsEl.textContent = stats.totalMissions.toString();
     if (elements.pendingMissionsEl)
       elements.pendingMissionsEl.textContent = stats.pendingMissions.toString();
-    if (elements.activeMissionsEl)
-      elements.activeMissionsEl.textContent = stats.activeMissions.toString();
+    if (elements.doneMissionsEl)
+      elements.doneMissionsEl.textContent = stats.doneMissions.toString();
     if (elements.totalSoldiersEl)
       elements.totalSoldiersEl.textContent = stats.totalSoldiers.toString();
 
@@ -264,7 +264,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Mock data for now
       // const mockStats: DashboardStats = {
       //   totalMissions: 42,
-      //   activeMissions: 15,
+      //   doneMissions: 15,
       //   pendingMissions: 8,
       //   completedMissions: 19,
       //   totalSoldiers: 156,
@@ -280,7 +280,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const missionWaitingResponse = await fetch("/api/get/missions-waiting", {
         headers: { Accept: "aplication/json" },
       });
-      const missiondDoneResponse = await fetch("/api/get/missions-waiting", {
+      const missiondDoneResponse = await fetch("/api/get/missions-done", {
         headers: { Accept: "aplication/json" },
       });
       if (!missiondDoneResponse.ok) {
@@ -306,7 +306,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const totalMissions = (await missionsResponse.json()) as number;
       const totalSoldiers = (await peopleResponse.json()) as number;
       const pendingMissions = (await missionWaitingResponse.json()) as number;
-      const activeMissions = (await missiondDoneResponse.json()) as number;
+      const doneMissions = (await missiondDoneResponse.json()) as number;
+      console.log(doneMissions)
 
       const current = state.getStats();
       const updated: DashboardState = {
@@ -314,7 +315,7 @@ document.addEventListener("DOMContentLoaded", () => {
         totalMissions,
         totalSoldiers,
         pendingMissions,
-        activeMissions
+        doneMissions
       };
       updateStats(updated);
     } catch (error) {
