@@ -258,31 +258,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const fetchStats = async (): Promise<void> => {
     try {
-      // TODO: Replace with actual API call
-      // const response = await fetch('/api/stats');
-      // const data: ApiResponse<DashboardStats> = await response.json();
-      // Mock data for now
-      // const mockStats: DashboardStats = {
-      //   totalMissions: 42,
-      //   doneMissions: 15,
-      //   pendingMissions: 8,
-      //   completedMissions: 19,
-      //   totalSoldiers: 156,
-      //   totalTeams: 12
-      // };
-      // updateStats(mockStats);
       const missionsResponse = await fetch("api/get/missions-amount", {
-        headers: { Accept: "aplication/json" },
+        headers: { Accept: "application/json" },
       });
       const peopleResponse = await fetch("api/get/people-amount", {
-        headers: { Accept: "aplication/json" },
+        headers: { Accept: "application/json" },
       });
       const missionWaitingResponse = await fetch("/api/get/missions-waiting", {
-        headers: { Accept: "aplication/json" },
+        headers: { Accept: "application/json" },
       });
       const missiondDoneResponse = await fetch("/api/get/missions-done", {
-        headers: { Accept: "aplication/json" },
+        headers: { Accept: "application/json" },
       });
+      
       if (!missiondDoneResponse.ok) {
         throw new Error(
           `failed to fetch done missions amount${missiondDoneResponse.status}`
@@ -295,7 +283,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       if (!missionsResponse.ok) {
         throw new Error(
-          `failed to fetch missons amount${missionsResponse.status}`
+          `failed to fetch missions amount${missionsResponse.status}`
         );
       }
       if (!peopleResponse.ok) {
@@ -303,20 +291,24 @@ document.addEventListener("DOMContentLoaded", () => {
           `failed to fetch people amount${peopleResponse.status}`
         );
       }
+      
       const totalMissions = (await missionsResponse.json()) as number;
       const totalSoldiers = (await peopleResponse.json()) as number;
       const pendingMissions = (await missionWaitingResponse.json()) as number;
       const doneMissions = (await missiondDoneResponse.json()) as number;
-      console.log(doneMissions)
+      console.log(doneMissions);
 
+      // תיקון: יצירת אובייקט DashboardStats חדש במקום להשתמש ב-spread של DashboardState
       const current = state.getStats();
-      const updated: DashboardState = {
-        ...current,
-        totalMissions,
-        totalSoldiers,
-        pendingMissions,
-        doneMissions
+      const updated: DashboardStats = {
+        totalMissions: totalMissions,
+        totalSoldiers: totalSoldiers,
+        pendingMissions: pendingMissions,
+        doneMissions: doneMissions,
+        completedMissions: current.completedMissions, // שומר על הערך הקיים
+        totalTeams: current.totalTeams // שומר על הערך הקיים
       };
+      
       updateStats(updated);
     } catch (error) {
       console.error("Error fetching stats:", error);
