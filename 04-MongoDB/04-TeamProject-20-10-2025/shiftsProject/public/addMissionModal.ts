@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!host) {
     console.warn("createMissionModal host not found in DOM");
     return;
-  }
-
+  } 
+  
   // Inject basic HTML for the popup (kept very small for the experiment)
   host.innerHTML = `
   <div class="create-mission-modal__overlay" data-action="close"></div>
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="create-mission-modal__header">
           <h2 class="create-mission-modal__title">יצירת משימה חדשה</h2>
           <button class="create-mission-modal__close" id="closeMissionModal">
-            ✕
+            ✕ 
           </button>
         </div>
           <form class="create-mission-modal__form" id="createMissionFormModal">
@@ -153,7 +153,8 @@ document.addEventListener("DOMContentLoaded", () => {
   async function populateControlCenters() {
     if (!controlCenterSelect) return;
     try {
-      const data = await fetchJsonWithFallback('/get/controlCenter', '/api/get/controlCenter');
+      // תיקון: הוספת הפרמטר השני (fallback)
+      const data = await fetchJsonWithFallback('/api/get/controlCenter', '/api/get/controlCenter');
 
       // Normalize to an array of strings (names only)
       let centers: string[] = [];

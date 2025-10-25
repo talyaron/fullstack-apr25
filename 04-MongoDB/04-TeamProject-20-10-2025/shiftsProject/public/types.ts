@@ -28,7 +28,7 @@ declare global {
 
   interface DashboardStats {
     totalMissions: number;
-    doneMissons: number;
+    doneMissions: number;
     pendingMissions: number;
     completedMissions: number;
     totalSoldiers: number;
@@ -50,4 +50,4 @@ declare global {
   }
 }
 
-export {}; // זה הופך את הקובץ ל-module בלי לייצא כלום
+export {}; 
