@@ -68,6 +68,24 @@ export const getMissionsDone= async (req: Request, res: Response) => {
   } catch (error) {}
 };
 
+export const patchNewStatus = async (req:Request,res:Response)=>{
+  try {
+
+    const { id } = req.params;
+    const { status } = req.body;
+    const newMission = await  Mission.findByIdAndUpdate(id,{status})
+    if (newMission) {
+      res.status(200).json(newMission);
+    } else {
+      res.status(404).json({ message: "Mission not found" });
+    }
+  } catch (error) {
+    res.status(500).json({ message: "Error update status mission", error });
+
+  }
+
+};
+
 export const getAssignesPeopleAmount = async (req: Request,res: Response) => {
   try {
     const result = await Mission.aggregate([
