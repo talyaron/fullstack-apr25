@@ -9,8 +9,8 @@
 </head>
 <body>
      <div class="container">
-        <h1>Sign Up</h1>
-        <form id="registerForm">
+        <h1>Sign in</h1>
+        <form id="LoginForm">
            
             <div class="form_group">
                 <label for="email">Email</label>
@@ -21,17 +21,7 @@
                     required
                     placeholder="Enter your email"
                 >
-            </div>
-             <div class="form_group">
-                <label for="user">User</label>
-                <input
-                    type="text"
-                    id="user"
-                    name="user"
-                    required
-                    placeholder="Enter your user name"
-                >
-            </div>
+
             <div class="form_group">
                 <label for="password">Password</label>
                 <input
@@ -42,23 +32,13 @@
                     placeholder="Enter your password"
                 >
             </div>
-            <div class="form_group">
-                <label for="confirmPassword">Confirm Password</label>
-                <input
-                    type="password"
-                    id="confirmPassword"
-                    name="confirmPassword"
-                    required
-                    placeholder="Confirm your password"
-                >
-            </div>
-            <button type="submit" id="submitBtn">Register</button>
+            <button type="submit" id="submitBtn">Login</button>
             <div class="loading" id="loading"></div>
             <div class="error" id="error"></div>
             <div class="success" id="success"></div>
         </form>
         <div class="link">
-            Already have an account? Click Here to Sign in! <a href="login.html">Sign in</a>
+            Don't have an account? Click Here to Sign up! <a href="../register/register.html">Sign Up</a>
         </div>
     </div>
     
