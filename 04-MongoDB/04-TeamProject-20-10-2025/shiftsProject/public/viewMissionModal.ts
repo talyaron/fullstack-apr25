@@ -38,18 +38,24 @@ type Mission = {
   status?: string;
 };
 
-function statusBadge(status?: string) {
-  const s = (status || "").toLowerCase();
-  let cls = "secondary";
-  if (s === "waiting" || s === "pending") cls = "warning";
-  else if (s === "in-progress" || s === "progress" || s === "ongoing")
-    cls = "info";
-  else if (s === "done" || s === "completed" || s === "success")
-    cls = "success";
-  else if (s === "cancelled" || s === "canceled" || s === "failed")
-    cls = "secondary";
-  const text = status || "";
-  return `<span class="badge text-bg-${cls}">${text}</span>`;
+// function statusBadge(status?: string) {
+//   const s = (status || "").toLowerCase();
+//   let cls = "secondary";
+//   if (s === "ממתין" || s === "pending") cls = "warning";
+//   else if (s === "בביצוע") cls = "info";
+//   else if (s === "בוצע") cls = "success";
+//   else if (s === "בוטל") cls = "secondary";
+//   const text = status || "";
+//   return `<span class="badge text-bg-${cls}">${text}</span>`;
+// }
+
+function statusForClass(status: any) {
+  if (status === "בוצע") return "table-success";
+  else if (status === "בוטל") return "table-danger";
+  else if (status === "ממתין") return "table-warning";
+  else if (status === "בביצוע") return "table-primary";
+
+  return;
 }
 
 function formatDate(iso: string) {
@@ -107,24 +113,29 @@ function renderMissionsTable(items: Mission[]) {
   for (const m of items) {
     const tr = document.createElement("tr");
     tr.innerHTML = `
-      <td class="text-end">${formatDate(m.shiftDate)}</td>
-      <td class="text-end">${m.missionType ?? ""}</td>
-      <td class="text-end">${m.controlCenter ?? ""}</td>
-      <td class="text-center">${Number(m.amountPeople) || 0}</td>
-      <td class="text-end">
-      <select class="form-select" data-id="${m._id}">
-      ${options(m.status)}
-      </select>
-      </td>
-      
-      <td class="text-end">${m.notes ?? ""}</td>
-      <td><button class="btn btn-outline-secondary editBtn" data-id="${
-        m._id
-      }" type="button">edit</button></td>
-      <td><button class="btn btn-outline-danger deleteBtn" data-id="${
-        m._id
-      }" type="button">delete</button></td>
-      `;
+    <td class=${statusForClass(m.status)}>${formatDate(m.shiftDate)}</td>
+    <td class=${statusForClass(m.status)}>${m.missionType ?? ""}</td>
+    <td class=${statusForClass(m.status)}>${m.controlCenter ?? ""}</td>
+    <td class=${statusForClass(m.status)}>${Number(m.amountPeople) || 0}</td>
+    <td class=${statusForClass(m.status)}>
+    <select class="form-select" data-id="${m._id}">
+    ${options(m.status)}
+    </select>
+    </td>
+    
+    <td class=${statusForClass(m.status)}>${m.notes ?? ""}</td>
+    <td class=${statusForClass(
+      m.status
+    )}><button class="btn btn-outline-secondary editBtn" data-id="${
+      m._id
+    }" type="button">edit</button></td>
+  <td class=${statusForClass(
+    m.status
+  )}><button class="btn btn-outline-danger deleteBtn" data-id="${
+      m._id
+    }" type="button">delete</button></td>
+    `;
+
     // <td class="text-end">${statusBadge(m.status)}</td>
     tbody.appendChild(tr);
   }
@@ -138,6 +149,18 @@ function renderMissionsTable(items: Mission[]) {
     const id = (btn as HTMLButtonElement).dataset.id;
     if (!id) return;
     handleDeleteMission(id);
+  });
+
+  tbody.addEventListener("click", (event) => {
+    const target = event.target as HTMLElement;
+    if (!target) return;
+    const btn = target.closest("button");
+    if (!btn) return;
+    const isEdit = btn.classList.contains("editBtn");
+    if (!isEdit) return;
+    const id = (btn as HTMLButtonElement).dataset.id;
+    if (!id) return;
+    handleEditMission(id);
   });
 
   tbody.addEventListener("change", (event) => {
@@ -157,10 +180,12 @@ function renderMissionsTable(items: Mission[]) {
   area.appendChild(wrapper);
 }
 function options(current?: string) {
-  const values = ["waiting", "in-progress", "done", "cancelled"];
+  const values = ["ממתין", "בביצוע", "בוצע", "בוטל"];
   const cur = (current || "").toLowerCase();
   return values
-    .map((v) => `<option value="${v}" ${cur === v ? "selected" : ""}>${v}</option>`)
+    .map(
+      (v) => `<option value="${v}" ${cur === v ? "selected" : ""}>${v}</option>`
+    )
     .join("");
 }
 async function handleDeleteMission(missionId: any) {
@@ -175,12 +200,17 @@ async function handleDeleteMission(missionId: any) {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
   } catch (error) {}
 }
+
+async function handleEditMission(missionId: any) {
+  const host = document.getElementById("editMissionModal");
+}
 async function handleStatusChange(missionId: any, newStatus: any) {
   const req = await fetch(`api/patch/mission-newStatus/${missionId}`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json", Accept: "application/json" },
     body: JSON.stringify({ status: newStatus }),
   });
+  await missionsToView();
   const res = await req.json();
   console.log(res);
 }
