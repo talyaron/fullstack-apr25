@@ -5,6 +5,6 @@ const router = express.Router();
 
 
 router.get("/get-user-data", dataControllers.getUserData)
-      .patch("//update-data", dataControllers.updateUserData);
+      .patch("/update-data", dataControllers.updateUserData);
 
 export default router;
