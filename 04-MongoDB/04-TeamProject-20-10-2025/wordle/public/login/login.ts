@@ -40,7 +40,7 @@ class LoginModel {
 
   async login(): Promise<{ ok: boolean; error?: string }> {
     try {
-      const response = await fetch('/user/login', {
+      const response = await fetch('http://localhost:3000/user/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
