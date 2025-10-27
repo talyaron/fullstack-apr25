@@ -186,7 +186,6 @@ function checkGuess(): void {
 
 // ====== Physical keyboard support ======
 window.addEventListener("keydown", (e: KeyboardEvent) => {
-  console.log("Key pressed:", e.key);
   const key = e.key.toUpperCase();
 
   if (["ENTER", "BACKSPACE"].includes(key)) e.preventDefault();
@@ -201,7 +200,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   await getRandomWord();
   createBoard();
   createKeyboard();
-// ====== Give Up button ======
+
+  // ====== Give Up button ======
   const giveUpBtn = document.getElementById("giveUpBtn");
   if (giveUpBtn) {
     giveUpBtn.addEventListener("click", (e) => {
@@ -210,6 +210,15 @@ document.addEventListener("DOMContentLoaded", async () => {
       errorDiv.style.display = "block";
       isGameOver = true;
       setTimeout(resetGame, 2500);
+    });
+  }
+
+  // ====== Logout button ======
+  const logoutLink = document.querySelector('.link a[href="login.html"]') as HTMLAnchorElement | null;
+  if (logoutLink) {
+    logoutLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.location.href = "../index.html";
     });
   }
 });
