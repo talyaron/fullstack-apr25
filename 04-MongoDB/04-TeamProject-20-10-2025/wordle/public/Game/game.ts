@@ -43,7 +43,7 @@ function createBoard(): void {
 }
 
 // ====== Build keyboard ======
-const keyRows = ["QWERTYUIOP", "ASDFGHJKL", "ENTERZXCVBNM⌫"];
+const keyRows = ["QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM⌫"];
 
 function createKeyboard(): void {
   keyRows.forEach((row) => {
