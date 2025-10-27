@@ -82,10 +82,9 @@ function renderMissionsTable(items: Mission[]) {
   // בונה טבלת HTML בסיסית
   const table = document.createElement("table");
   table.className = "table table-sm table-hover align-middle mb-0";
-
+  console.log("items---->",items)
   // thead
   table.innerHTML = `
-
   <thead class="table-light">
   <tr>
   <th class="text-end">תאריך</th>
