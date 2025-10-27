@@ -6,6 +6,7 @@ import { userModel , User} from "../model/userModel";
 export const register = async (req: Request, res: Response) => {
   try {
     const { name, email, password } = req.body;
+    console.log( { name, email, password })
     const existing = await userModel.findOne({ email });
     if (existing) return res.status(400).json({ message: "Email already exists" });
 
@@ -13,8 +14,9 @@ export const register = async (req: Request, res: Response) => {
     const user = await userModel.create({ name, email, password: hashed });
 
     res.status(201).json({ message: "User registered successfully", user });
-  } catch {
-    res.status(500).json({ message: "Server error in register" });
+  } catch (error:any){
+    console.error(error)
+    res.status(500).json({ message:   `Server error in register: ${error.message}` });
   }
 };
 
@@ -30,7 +32,7 @@ export const login = async (req: Request, res: Response) => {
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET as string, { expiresIn: "7d" });
     res.cookie("token", token, { httpOnly: true, secure: false });
     res.json({ message: "Logged in successfully", user });
-  } catch {
+  } catch (error){
     res.status(500).json({ message: "Server error inlogin" });
   }
 };
