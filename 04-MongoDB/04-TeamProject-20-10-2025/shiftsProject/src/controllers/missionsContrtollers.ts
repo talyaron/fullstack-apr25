@@ -48,7 +48,7 @@ export const getAmountOfMissions = async (req: Request, res: Response) => {
 export const getMissionsWaiting = async (req: Request, res: Response) => {
   try {
     const amountWaiting = await Mission.aggregate([
-      { $match: { status: "waiting" } },
+      { $match: { status: "ממתין" } },
       { $count: "totalWaiting" },
     ]);
 
@@ -59,7 +59,7 @@ export const getMissionsWaiting = async (req: Request, res: Response) => {
 export const getMissionsDone= async (req: Request, res: Response) => {
   try {
     const amountWaiting = await Mission.aggregate([
-      { $match: { status: "done" } },
+      { $match: { status: "בוצע" } },
       { $count: "totalDone" },
     ]);
 
