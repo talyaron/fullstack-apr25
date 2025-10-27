@@ -7,6 +7,7 @@ import userRoutes from './routes/userRoutes';
 import dataRoutes from './routes/dataRoutes';
 import wordsRoutes from './routes/wordsRoutes'
 
+
 dotenv.config();
 const MONGODB = process.env.mongodburl
 const app: Express = express();
