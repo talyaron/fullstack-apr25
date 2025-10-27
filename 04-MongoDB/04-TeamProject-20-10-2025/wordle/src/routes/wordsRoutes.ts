@@ -1,9 +1,9 @@
 import express from "express";
-import * as userControllers from '../controllers/user.controller'
+import * as wordsControlles from "../controllers/wordsControllers";
+
 const router = express.Router();
 
+router.get("/get-random-word", wordsControlles.getRandomWord);
+router.put("/check-if-exist", wordsControlles.checkIfExist);
 
-router.get("/get-all-users", userControllers.getAllUsers)
-      .get("/get-leaders", userControllers.getLeaders)
 export default router;
-
