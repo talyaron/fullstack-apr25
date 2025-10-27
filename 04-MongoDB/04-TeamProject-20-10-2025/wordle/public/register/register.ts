@@ -1,4 +1,3 @@
-// Type definitions
 interface RegisterData {
     name: string;
     email: string;
@@ -20,44 +19,38 @@ document.addEventListener('DOMContentLoaded', (): void => {
     registerForm.addEventListener('submit', async (e: Event): Promise<void> => {
         e.preventDefault();
 
-        // Clear previous messages
         errorDiv.style.display = 'none';
         successDiv.style.display = 'none';
 
-        // Get form data - updated to match your HTML field names
         const user = (document.getElementById('user') as HTMLInputElement).value;
         const email = (document.getElementById('email') as HTMLInputElement).value;
         const password = (document.getElementById('password') as HTMLInputElement).value;
         const confirmPassword = (document.getElementById('confirmPassword') as HTMLInputElement).value;
 
-        // Validate inputs
         if (!user || !email || !password || !confirmPassword) {
             errorDiv.textContent = 'Please fill in all fields';
             errorDiv.style.display = 'block';
             return;
         }
 
-        // Validate password match
         if (password !== confirmPassword) {
             errorDiv.textContent = 'Passwords do not match';
             errorDiv.style.display = 'block';
             return;
         }
 
-        // Show loading state
         submitBtn.style.display = 'none';
         loadingDiv.style.display = 'block';
 
         try {
-            // Send register request
             const response = await fetch('http://localhost:3000/api/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                credentials: 'include', // Important for cookies
+                credentials: 'include', 
                 body: JSON.stringify({
-                    name: user, // Using 'user' field from your HTML
+                    name: user, 
                     email,
                     password
                 } as RegisterData)
@@ -65,40 +58,32 @@ document.addEventListener('DOMContentLoaded', (): void => {
 
             const data: ApiResponse = await response.json();
 
-            // Hide loading state
             submitBtn.style.display = 'block';
             loadingDiv.style.display = 'none';
 
             if (response.ok) {
-                // Show success message
                 successDiv.textContent = 'Registration successful! Redirecting to login...';
                 successDiv.style.display = 'block';
 
-                // Clear form
                 registerForm.reset();
 
-                // Redirect to login page after a short delay
                 setTimeout((): void => {
                     window.location.href = 'login.html';
                 }, 2000);
             } else {
-                // Show error message
                 errorDiv.textContent = data.error || 'Registration failed';
                 errorDiv.style.display = 'block';
             }
         } catch (error) {
-            // Hide loading state
             submitBtn.style.display = 'block';
             loadingDiv.style.display = 'none';
 
-            // Show error message
             errorDiv.textContent = 'Network error. Please try again.';
             errorDiv.style.display = 'block';
             console.error('Registration error:', error);
         }
     });
 
-    // Add real-time password match validation
     const passwordInput = document.getElementById('password') as HTMLInputElement;
     const confirmPasswordInput = document.getElementById('confirmPassword') as HTMLInputElement;
 
@@ -117,7 +102,6 @@ document.addEventListener('DOMContentLoaded', (): void => {
     passwordInput.addEventListener('input', validatePasswordMatch);
     confirmPasswordInput.addEventListener('input', validatePasswordMatch);
 
-    // Add input validation feedback
     const userInput = document.getElementById('user') as HTMLInputElement; // Changed from 'name' to 'user'
     const emailInput = document.getElementById('email') as HTMLInputElement;
 
@@ -149,7 +133,6 @@ document.addEventListener('DOMContentLoaded', (): void => {
         }
     });
 
-    // Clear border colors on blur if empty
     [userInput, emailInput, passwordInput, confirmPasswordInput].forEach((input: HTMLInputElement): void => {
         input.addEventListener('blur', (): void => {
             if (!input.value) {
