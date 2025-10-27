@@ -1,9 +1,10 @@
 import { Router } from "express";
-import { deleteMissions, getAmountOfMissions, getAssignesPeopleAmount, getMissions, getMissionsDone, getMissionsWaiting, postMissions } from "../controllers/missionsContrtollers";
+import { deleteMissions, getAmountOfMissions, getAssignesPeopleAmount, getMissions, getMissionsDone, getMissionsWaiting, patchNewStatus, postMissions } from "../controllers/missionsContrtollers";
 import { deleteTeam, getTeams, postTeams } from "../controllers/teamsControllers";
 import { deletePeople, getAmountOfPeople, getPeople, postPeople } from "../controllers/peopleControlles";
 import { deleteControlCenter, getControlCenter, postControlCenter } from "../controllers/controlCenterController";
 import { addShiftTypes, getShiftTypes } from "../controllers/shiftOptionsControlles";
+import { patch } from "@mui/material";
 const router = Router();
 
 // Example route (placeholder)
@@ -17,6 +18,7 @@ router.get("/get/missions-amount",getAmountOfMissions)
 router.get("/get/assignesPeople-amount",getAssignesPeopleAmount)
 router.get("/get/missions-waiting",getMissionsWaiting)
 router.get("/get/missions-done",getMissionsDone)
+router.patch("/patch/mission-newStatus/:id",patchNewStatus)
 
 // router.put
 

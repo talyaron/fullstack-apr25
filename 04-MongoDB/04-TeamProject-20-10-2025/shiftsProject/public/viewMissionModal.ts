@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   host.innerHTML = `
     <div class="container py-3">
       <div class="d-flex justify-content-between align-items-center mb-3">
+      
         <h1 class="h3 m-0">כל המשימות</h1>
         <div id="missionsMeta" class="text-muted small"></div>
       </div>
@@ -82,7 +83,7 @@ function renderMissionsTable(items: Mission[]) {
   // בונה טבלת HTML בסיסית
   const table = document.createElement("table");
   table.className = "table table-sm table-hover align-middle mb-0";
-  console.log("items---->",items)
+  console.log("items---->", items);
   // thead
   table.innerHTML = `
   <thead class="table-light">
@@ -101,6 +102,7 @@ function renderMissionsTable(items: Mission[]) {
   `;
 
   // tbody
+  // const option = ['done','in-progress','waiting','cancelled']
   const tbody = table.querySelector("tbody")!;
   for (const m of items) {
     const tr = document.createElement("tr");
@@ -109,7 +111,12 @@ function renderMissionsTable(items: Mission[]) {
       <td class="text-end">${m.missionType ?? ""}</td>
       <td class="text-end">${m.controlCenter ?? ""}</td>
       <td class="text-center">${Number(m.amountPeople) || 0}</td>
-      <td class="text-end">${statusBadge(m.status)}</td>
+      <td class="text-end">
+      <select class="form-select" data-id="${m._id}">
+      ${options(m.status)}
+      </select>
+      </td>
+      
       <td class="text-end">${m.notes ?? ""}</td>
       <td><button class="btn btn-outline-secondary editBtn" data-id="${
         m._id
@@ -117,7 +124,8 @@ function renderMissionsTable(items: Mission[]) {
       <td><button class="btn btn-outline-danger deleteBtn" data-id="${
         m._id
       }" type="button">delete</button></td>
-    `;
+      `;
+    // <td class="text-end">${statusBadge(m.status)}</td>
     tbody.appendChild(tr);
   }
   tbody.addEventListener("click", (event) => {
@@ -131,6 +139,14 @@ function renderMissionsTable(items: Mission[]) {
     if (!id) return;
     handleDeleteMission(id);
   });
+
+  tbody.addEventListener("change", (event) => {
+    const selection = event.target as HTMLSelectElement;
+    const id = selection.dataset.id;
+    const newStatus = selection.value;
+    console.log(`id: ${id} \nvalue: ${selection.value}`);
+    handleStatusChange(id, newStatus);
+  });
   // מנקה תוכן קודם (אם תבצע רענון) ומזריק את הטבלה
   // משאיר את ה־<h1> בחוץ כי הוא מחוץ לאזור
   const wrapper = document.createElement("div");
@@ -140,7 +156,13 @@ function renderMissionsTable(items: Mission[]) {
   area.querySelectorAll("table, .table-responsive").forEach((t) => t.remove());
   area.appendChild(wrapper);
 }
-
+function options(current?: string) {
+  const values = ["waiting", "in-progress", "done", "cancelled"];
+  const cur = (current || "").toLowerCase();
+  return values
+    .map((v) => `<option value="${v}" ${cur === v ? "selected" : ""}>${v}</option>`)
+    .join("");
+}
 async function handleDeleteMission(missionId: any) {
   const confirmed = window.confirm("האם אתה בטוח שברצונך למחוק את המשימה?");
   if (!confirmed) return;
@@ -152,6 +174,15 @@ async function handleDeleteMission(missionId: any) {
     await missionsToView();
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
   } catch (error) {}
+}
+async function handleStatusChange(missionId: any, newStatus: any) {
+  const req = await fetch(`api/patch/mission-newStatus/${missionId}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify({ status: newStatus }),
+  });
+  const res = await req.json();
+  console.log(res);
 }
 
 async function missionsToView() {
