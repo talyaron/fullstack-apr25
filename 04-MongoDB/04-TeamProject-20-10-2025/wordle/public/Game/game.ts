@@ -218,6 +218,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (logoutLink) {
     logoutLink.addEventListener("click", (e) => {
       e.preventDefault();
+      // Redirect to main page (like register does)
       window.location.href = "../index.html";
     });
   }

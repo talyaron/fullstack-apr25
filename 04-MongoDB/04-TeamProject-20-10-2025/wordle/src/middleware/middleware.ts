@@ -9,6 +9,7 @@ if (!JWT_SECRET) {
     process.exit(1); // Exit the application if JWT secret is not configured
 }
 
+
 export function anonymousUserMiddleware(req: any, res: any, next: any) {
 
     try {
