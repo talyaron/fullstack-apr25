@@ -1,0 +1,27 @@
+import { Request, Response } from "express";
+import { dataModel } from "../model/dataModel";
+
+export const getUserData = async (req: Request, res: Response) => {
+  try {
+const { userId } = req.query;
+    const data = await dataModel.findOne({ userId });
+    res.json(data);
+  } catch {
+    res.status(500).json({ message: "Error fetching data" });
+  }
+};
+
+export const updateUserData = async (req: Request, res: Response) => {
+  try {
+const { userId } = req.query;
+    const { amountOfGames, amountOfVictories } = req.body;
+    const updated = await dataModel.findOneAndUpdate(
+      { userId },
+      { amountOfGames, amountOfVictories },
+      { new: true, upsert: true }
+    );
+    res.json(updated);
+  } catch {
+    res.status(500).json({ message: "Error updating data" });
+  }
+};
