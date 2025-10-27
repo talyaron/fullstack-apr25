@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-<script src="./dist/register.js" defer></script>
+    <script src="./dist/register.js" defer></script>
     <link rel="stylesheet" href="./dist/register.css">
 </head>
 <body>
@@ -22,7 +22,7 @@
                     placeholder="Enter your email"
                 >
             </div>
-             <div class="form_group">
+            <div class="form_group">
                 <label for="user">User</label>
                 <input
                     type="text"
@@ -52,11 +52,18 @@
                     placeholder="Confirm your password"
                 >
             </div>
+            
             <button type="submit" id="submitBtn">Register</button>
-            <div class="loading" id="loading"></div>
-            <div class="error" id="error"></div>
-            <div class="success" id="success"></div>
+            
+            
+            <div id="loading" style="display: none; margin-top: 10px; color: #3498db;">
+                Loading...
+            </div>
+            
+            <div id="error" style="display: none; margin-top: 10px; color: #e74c3c;"></div>
+            <div id="success" style="display: none; margin-top: 10px; color: #27ae60;"></div>
         </form>
+        
         <div class="link">
             Already have an account? Click Here to Sign in! <a href="../login/login.html">Sign in</a>
         </div>
