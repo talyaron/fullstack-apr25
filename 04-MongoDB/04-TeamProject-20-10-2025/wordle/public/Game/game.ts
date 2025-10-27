@@ -19,24 +19,26 @@ let currentRow = 0;
 let currentCol = 0;
 let isGameOver = false;
 
-// ====== Fetch random word (Wordle official list) ======
+// ====== Fetch random word ======
 async function getRandomWord(): Promise<void> {
   try {
-    const res = await fetch("https://raw.githubusercontent.com/tabatkins/wordle-list/main/words");
-    const data: string[] = await res.json();
-
-    if (Array.isArray(data) && data.length > 0) {
-      const randomIndex = Math.floor(Math.random() * data.length);
-      SECRET = data[randomIndex].toUpperCase();
+    const res = await fetch("https://random-word-api.herokuapp.com/word?length=5");
+    const data = await res.json();
+    if (Array.isArray(data) && data[0]) {
+      SECRET = data[0].toUpperCase();
       console.log("🔤 New word:", SECRET);
-    } else {
-      console.warn("⚠️ Empty or invalid word list. Using default.");
-      SECRET = "PLANT";
     }
-
   } catch (err) {
-    console.warn("⚠️ Failed to fetch official Wordle list. Using default.");
-    SECRET = "PLANT";
+    console.warn("⚠️ Failed to fetch word. Using default.");
+  }
+}
+
+// ====== Build board ======
+function createBoard(): void {
+  for (let i = 0; i < ROWS * COLS; i++) {
+    const tile = document.createElement('div');
+    tile.classList.add('tile');
+    board.appendChild(tile);
   }
 }
 
@@ -216,6 +218,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (logoutLink) {
     logoutLink.addEventListener("click", (e) => {
       e.preventDefault();
+      // Redirect to main page (like register does)
       window.location.href = "../index.html";
     });
   }
