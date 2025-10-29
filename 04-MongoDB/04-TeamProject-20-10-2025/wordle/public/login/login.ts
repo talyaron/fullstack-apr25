@@ -40,6 +40,7 @@ class LoginModel {
 
   async login(): Promise<{ ok: boolean; error?: string }> {
     try {
+      console.log('Attempting login with', this.email, this.password);
       const response = await fetch('http://localhost:3000/user/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', },
@@ -118,7 +119,7 @@ class LoginView {
   }
 
   redirectToGame(): void {
-    window.location.href = '/index.html';
+    window.location.href = '../Game/game.html';
   }
 }
 
