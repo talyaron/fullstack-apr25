@@ -42,20 +42,19 @@ class LoginModel {
     try {
       const response = await fetch('http://localhost:3000/user/login', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: this.email,
-          password: this.password,
-        }),
+        headers: { 'Content-Type': 'application/json', },
+        body: JSON.stringify({ email: this.email, password: this.password, }),
         credentials: 'include',
       });
 
       const data = await response.json();
-      return data;
+
+      if (!response.ok) {
+        return { ok: false, error: data?.error || data?.message || 'Login failed' };
+      }
+
+      return { ok: true };
     } catch (error) {
-      console.error('Login error:', error);
       return { ok: false, error: 'Connection error. Please try again.' };
     }
   }
