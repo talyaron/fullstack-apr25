@@ -30,16 +30,16 @@ export const login = async (req: Request, res: Response) => {
     if (!isMatch) return res.status(400).json({ message: "Invalid credentials" });
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET as string, { expiresIn: "7d" });
-    res.cookie("token", token, { httpOnly: true, secure: false });
+    res.cookie("token", token, { httpOnly: true, sameSite: "lax", secure: false });
     res.json({ message: "Logged in successfully", user });
   } catch (error){
-    res.status(500).json({ message: "Server error inlogin" });
+    res.status(500).json({ message: "Server error in login" });
   }
 };
 
 export const logout = async (_req: Request, res: Response) => {
     try{
-         res.clearCookie('userId');
+         res.clearCookie('token');
   res.json({ message: 'Logout successful' });}
 catch{    res.status(500).json({ message: "Server error in logout" });
 }
