@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', (): void => {
                 registerForm.reset();
 
                 setTimeout((): void => {
-                    window.location.href = 'login.html';
+                    window.location.href = '../login/login.html';
                 }, 2000);
             } else {
                 errorDiv.textContent = data.error || 'Registration failed';
