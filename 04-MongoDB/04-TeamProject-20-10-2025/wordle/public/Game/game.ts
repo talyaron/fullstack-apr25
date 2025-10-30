@@ -35,7 +35,6 @@ async function getRandomWord(): Promise<void> {
     }
     
     const data = await response.json();
-    console.log("data:", data[0].word);
     const newword = data[0].word.toUpperCase();
     SECRET = newword;
   } catch (err) {
@@ -125,6 +124,7 @@ async function resetGame(): Promise<void> {
     el.textContent = "";
     el.style.backgroundColor = "";
     el.style.color = "";
+    el.style.animation = ""; // Clear animation
   });
 
   // Reset keyboard colors
@@ -205,36 +205,52 @@ function checkGuess(): void {
     }
   }
 
-  // Apply colors to tiles
+  // Apply colors to tiles with flip animation
   tiles.forEach((tile, i) => {
-    tile.style.backgroundColor =
-      colorArr[i] === "green"
-        ? "#6aaa64"
-        : colorArr[i] === "gold"
-        ? "#c9b458"
-        : "#787c7e";
-    tile.style.color = "white";
-    tile.style.transition = "background-color 0.3s ease";
+    setTimeout(() => {
+      // Start flip animation
+      tile.style.animation = "flip 0.6s ease";
+      
+      // Change color halfway through flip (at 0.3s)
+      setTimeout(() => {
+        tile.style.backgroundColor =
+          colorArr[i] === "green"
+            ? "#6aaa64"
+            : colorArr[i] === "gold"
+            ? "#c9b458"
+            : "#787c7e";
+        tile.style.color = "white";
+        tile.style.borderColor = colorArr[i] === "green" ? "#6aaa64" : colorArr[i] === "gold" ? "#c9b458" : "#787c7e";
+      }, 300); // Halfway through the 600ms flip
+      
+    }, i * 200); // Stagger each tile by 200ms
   });
 
-  // Update keyboard colors
-  updateKeyboardColors(guess, colorArr);
+  // Calculate total animation time (last tile starts + flip duration)
+  const totalAnimationTime = (COLS - 1) * 200 + 600;
 
-  // Game result
-  if (guess === SECRET) {
-    successDiv.textContent = `🎉 Correct! The word was ${SECRET}`;
-    successDiv.style.display = "block";
-    isGameOver = true;
-    setTimeout(resetGame, 3000);
-  } else if (currentRow === ROWS - 1) {
-    errorDiv.textContent = `❌ Wrong! The word was ${SECRET}. Try again!`;
-    errorDiv.style.display = "block";
-    isGameOver = true;
-    setTimeout(resetGame, 3000);
-  } else {
-    currentRow++;
-    currentCol = 0;
-  }
+  // Update keyboard colors after all tiles finish flipping
+  setTimeout(() => {
+    updateKeyboardColors(guess, colorArr);
+  }, totalAnimationTime);
+
+  // Game result - check after all animations complete
+  setTimeout(() => {
+    if (guess === SECRET) {
+      successDiv.textContent = `🎉 Correct! The word was ${SECRET}`;
+      successDiv.style.display = "block";
+      isGameOver = true;
+      setTimeout(resetGame, 3000);
+    } else if (currentRow === ROWS - 1) {
+      errorDiv.textContent = `❌ Wrong! The word was ${SECRET}. Try again!`;
+      errorDiv.style.display = "block";
+      isGameOver = true;
+      setTimeout(resetGame, 3000);
+    } else {
+      currentRow++;
+      currentCol = 0;
+    }
+  }, totalAnimationTime);
 }
 
 // ====== Physical keyboard support ======
@@ -271,7 +287,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (logoutLink) {
     logoutLink.addEventListener("click", (e) => {
       e.preventDefault();
-      // Redirect to main page (like register does)
+      // redirect 
       window.location.href = "../index.html";
     });
   }
