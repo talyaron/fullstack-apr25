@@ -1,6 +1,6 @@
 async function fetchLeaderBoard() {
     try {
-        const response = await fetch('/api/data/leaderboard');
+        const response = await fetch('/data/leaderboard');
         if (!response.ok) {
             throw new Error(`Network response was not ok can't find leaderboard data`);
         }
