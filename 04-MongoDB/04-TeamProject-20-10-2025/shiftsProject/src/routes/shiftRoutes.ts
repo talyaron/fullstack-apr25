@@ -4,12 +4,42 @@ import { deleteTeam, getTeams, postTeams } from "../controllers/teamsControllers
 import { deletePeople, getAmountOfPeople, getPeople, postPeople } from "../controllers/peopleControlles";
 import { deleteControlCenter, getControlCenter, postControlCenter } from "../controllers/controlCenterController";
 import { addShiftTypes, getShiftTypes } from "../controllers/shiftOptionsControlles";
+import { authenticate, authorize } from "../middleware/auth.middleware"; // ✅ חדש!
+
 import { patch } from "@mui/material";
 const router = Router();
+// ========================================
+// 🔐 MISSIONS
+// ========================================
+router.get("/get/missions", authenticate, getMissions);
+router.post("/post/missions", authenticate, authorize("admin", "manager"), postMissions);
+router.delete("/delete/missions/:id", authenticate, authorize("admin"), deleteMissions);
+router.get("/get/missions-amount", authenticate, getAmountOfMissions);
+router.get("/get/assignesPeople-amount", authenticate, getAssignesPeopleAmount);
+router.get("/get/missions-waiting", authenticate, getMissionsWaiting);
+router.get("/get/missions-done", authenticate, getMissionsDone);
 
-// Example route (placeholder)
+// ========================================
+// 👥 TEAMS
+// ========================================
+router.get("/get/teams", authenticate, getTeams);
+router.post("/post/teams", authenticate, authorize("admin", "manager"), postTeams);
+router.delete("/delete/teams/:id", authenticate, authorize("admin"), deleteTeam);
 
+// ========================================
+// 👤 PEOPLE
+// ========================================
+router.get("/get/people", authenticate, getPeople);
+router.get("/get/people-amount", authenticate, getAmountOfPeople);
+router.post("/post/people", authenticate, authorize("admin", "manager"), postPeople);
+router.delete("/delete/people/:id", authenticate, authorize("admin"), deletePeople);
 
+// ========================================
+// 🏢 CONTROL CENTER
+// ========================================
+router.get("/get/controlCenter", authenticate, getControlCenter);
+router.post("/post/controlCenter", authenticate, authorize("admin"), postControlCenter);
+router.delete("/delete/controlCenter/:id", authenticate, authorize("admin"), deleteControlCenter);
 //missions
 router.get("/get/missions",getMissions)
 router.post("/post/missions",postMissions)
@@ -20,32 +50,10 @@ router.get("/get/missions-waiting",getMissionsWaiting)
 router.get("/get/missions-done",getMissionsDone)
 router.patch("/patch/mission-newStatus/:id",patchNewStatus)
 
-// router.put
-
-//teams
-router.get("/get/teams",getTeams)
-router.post("/post/teams",postTeams)
-router.delete("/delete/teams/:id", deleteTeam)
-
-//people
-router.get("/get/people",getPeople)
-router.get("/get/people-amount",getAmountOfPeople)
-router.post("/post/people",postPeople)
-router.delete("/delete/people/:id", deletePeople)
-
-//controlCenter
-router.get("/get/controlCenter",getControlCenter)
-router.post("/post/controlCenter",postControlCenter)
-router.delete("/delete/controlCenter/:id", deleteControlCenter)
-
-//shifts
-router.get("/get/shiftTypes",getShiftTypes)
-router.post("/post/shiftTypes",addShiftTypes)
-
-//users
-// router.get("/api/get/users",getUsers)
-// router.post("/api/post/users",postUsers)
-// router.delete("/api/delete/users", deleteUsers)
-
+// ========================================
+// ⏰ SHIFTS
+// ========================================
+router.get("/get/shiftTypes", authenticate, getShiftTypes);
+router.post("/post/shiftTypes", authenticate, authorize("admin", "manager"), addShiftTypes);
 
 export default router;
