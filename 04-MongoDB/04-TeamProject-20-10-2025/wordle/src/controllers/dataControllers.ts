@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { dataModel } from "../model/dataModel";
+import { populate } from "dotenv";
 
 export const getUserData = async (req: Request, res: Response) => {
   try {
@@ -28,7 +29,7 @@ export const updateUserData = async (req: Request, res: Response) => {
 
 export const getLeaderBoard = async (req: Request, res: Response) => {
   try {
-    const data = await dataModel.find();
+    const data = await dataModel.find().populate("userId", "name").lean();
 
     const list = data.sort((a, b) => {
       const scoreA = a.amountOfVictories / a.amountOfGames;
