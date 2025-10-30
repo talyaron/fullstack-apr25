@@ -1,53 +1,31 @@
-// ===============================================
-// TYPE DEFINITIONS - Global Types
-// ===============================================
-
-declare global {
-  type UserRole = 'manager' | 'soldier';
-
-  interface User {
-    id: string;
-    role: UserRole;
-    username: string;
-    password: string;
-    control_center: string;
-    createdAt: Date;
-    updatedAt: Date;
-  }
-
-  interface Mission {
-    id: string;
-    mission_type: string;
-    date: string;
-    control_center_number: string;
-    amount_people: number;
-    notes?: string;
-    status: 'pending' | 'active' | 'completed';
-    createdAt: Date;
-  }
-
-  interface DashboardStats {
-    totalMissions: number;
-    doneMissions: number;
-    pendingMissions: number;
-    completedMissions: number;
-    totalSoldiers: number;
-    totalTeams: number;
-  }
-
-  interface CreateMissionFormData {
-    mission_type: string;
-    date: string;
-    control_center_number: string;
-    amount_people: number;
-    notes?: string;
-  }
-
-  interface ApiResponse<T> {
-    success: boolean;
-    data?: T;
-    error?: string;
-  }
+export interface User {
+  _id: string;
+  username: string;
+  firstName: string;
+  lastName: string;
+  phoneNumber?: string;
+  rank?: string;
+  unit?: string;
+  role: "soldier" | "commander" | "admin";
 }
 
-export {}; 
+export interface LoginResponse {
+  accessToken: string;
+  user: User;
+}
+
+export interface RegisterData {
+  username: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  phoneNumber?: string;
+  rank?: string;
+  unit?: string;
+  controlCenter?: string;
+}
+
+export interface ApiError {
+  message: string;
+  status?: number;
+}

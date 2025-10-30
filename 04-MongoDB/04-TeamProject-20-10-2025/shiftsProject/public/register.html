@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>הרשמה למערכת</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .register-container {
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      width: 450px;
+      max-width: 100%;
+    }
+    .logo {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .logo img {
+      width: 80px;
+      height: 80px;
+      border-radius: 12px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 10px;
+      font-size: 24px;
+    }
+    .subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 30px;
+      font-size: 14px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #333;
+      font-weight: 500;
+      font-size: 14px;
+    }
+    input, select {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: border 0.3s;
+    }
+    input:focus, select:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+    input.error, select.error {
+      border-color: #e74c3c;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+    button {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s;
+      margin-top: 10px;
+    }
+    button:hover {
+      transform: translateY(-2px);
+    }
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .message {
+      padding: 12px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      text-align: center;
+      display: none;
+    }
+    .message.show {
+      display: block;
+    }
+    .message.error {
+      background: #fee;
+      color: #c33;
+      border: 1px solid #fcc;
+    }
+    .message.success {
+      background: #efe;
+      color: #3c3;
+      border: 1px solid #cfc;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #666;
+    }
+    a {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="register-container">
+    <div class="logo">
+      <img src="/images/tzahal.png" alt="לוגו">
+    </div>
+    <h1>הרשמה למערכת</h1>
+    <p class="subtitle">יצירת חשבון חייל חדש</p>
+    
+    <div id="message" class="message"></div>
+    
+    <form id="registerForm">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstName">שם פרטי *</label>
+          <input type="text" id="firstName" placeholder="שם פרטי" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="lastName">שם משפחה *</label>
+          <input type="text" id="lastName" placeholder="שם משפחה" required>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="militaryId">מספר אישי (אימייל) *</label>
+        <input type="email" id="militaryId" placeholder="example@example.com" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="password">סיסמה *</label>
+        <input type="password" id="password" placeholder="לפחות 6 תווים" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="confirmPassword">אימות סיסמה *</label>
+        <input type="password" id="confirmPassword" placeholder="הזן סיסמה שוב" required>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="phoneNumber">טלפון</label>
+          <input type="tel" id="phoneNumber" placeholder="050-1234567">
+        </div>
+        
+        <div class="form-group">
+          <label for="rank">דרגה</label>
+          <select id="rank">
+            <option value="">בחר דרגה</option>
+            <option value="טוראי">טוראי</option>
+            <option value="רב״ט">רב״ט</option>
+            <option value="סמל">סמל</option>
+            <option value="סמל ראשון">סמל ראשון</option>
+            <option value="רס״ן">רס״ן</option>
+            <option value="סרן">סרן</option>
+            <option value="רב סרן">רב סרן</option>
+            <option value="סא״ל">סא״ל</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="unit">יחידה</label>
+        <input type="text" id="unit" placeholder="שם היחידה">
+      </div>
+      
+      <button type="submit" id="registerBtn">הרשם למערכת</button>
+    </form>
+    
+    <div class="footer">
+      כבר יש לך חשבון? <a href="/index.html">התחבר כאן</a>
+    </div>
+  </div>
+
+  <script type="module" src="/dist/register.js"></script>
+</body>
+</html>

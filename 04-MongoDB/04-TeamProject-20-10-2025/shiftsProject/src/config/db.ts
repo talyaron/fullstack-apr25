@@ -1,13 +1,30 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-const connectDB = async () => {
-  const uri = process.env.MONGODB_URI;
-  if (!uri) {
-    throw new Error("MONGODB_URI is not set in .env");
+export const connectDB = async (): Promise<void> => {
+  try {
+    const mongoUri = process.env.MONGODB_URI;
+    
+    if (!mongoUri) {
+      throw new Error('MONGODB_URI is not defined in environment variables');
+    }
+
+    const conn = await mongoose.connect(mongoUri);
+    
+    console.log(`✅ MongoDB Connected: ${conn.connection.host}`);
+    console.log(`📊 Database: ${conn.connection.name}`);
+  } catch (error) {
+    console.error('❌ MongoDB Connection Error:', error);
+    process.exit(1);
   }
-  mongoose.set("strictQuery", true);
-  await mongoose.connect(uri);
-  console.log("✅ MongoDB connected");
 };
+
+// Handle connection events
+mongoose.connection.on('disconnected', () => {
+  console.log('⚠️ MongoDB disconnected');
+});
+
+mongoose.connection.on('error', (err) => {
+  console.error('❌ MongoDB error:', err);
+});
 
 export default connectDB;
