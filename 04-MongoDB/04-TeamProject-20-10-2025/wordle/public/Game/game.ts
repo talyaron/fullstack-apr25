@@ -22,11 +22,22 @@ let isGameOver = false;
 // ====== Fetch random word ======
 async function getRandomWord(): Promise<void> {
   try {
-    const res = await fetch("https://random-word-api.herokuapp.com/word?length=5");
-    const data = await res.json();
-    if (Array.isArray(data) && data[0]) {
-      SECRET = data[0].toUpperCase();
+    const response = await fetch(`http://localhost:3000/words/get-random-word`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.message || 'Failed to get random word');
     }
+    
+    const data = await response.json();
+    console.log("data:", data[0].word);
+    const newword = data[0].word.toUpperCase();
+    SECRET = newword;
   } catch (err) {
     console.warn("⚠️ Failed to fetch word. Using default.");
   }
@@ -62,6 +73,39 @@ function createKeyboard(): void {
   });
 }
 
+// ====== Update keyboard colors ======
+function updateKeyboardColors(guess: string, colorArr: string[]): void {
+  const guessArr = guess.split("");
+  
+  guessArr.forEach((letter, index) => {
+    const keyButton = Array.from(keyboard.querySelectorAll('.key')).find(
+      (btn) => btn.textContent === letter
+    ) as HTMLButtonElement;
+    
+    if (!keyButton) return;
+    
+    const currentColor = keyButton.style.backgroundColor;
+    const newColor = colorArr[index];
+    
+    // Priority: green > gold > dark gray (wrong letter)
+    // Don't downgrade a green key to gold or gray
+    if (currentColor === 'rgb(106, 170, 100)') return; // Already green
+    if (currentColor === 'rgb(201, 180, 88)' && newColor === 'gray') return; // Don't downgrade gold to gray
+    
+    if (newColor === 'green') {
+      keyButton.style.backgroundColor = '#6aaa64';
+      keyButton.style.color = 'white';
+    } else if (newColor === 'gold') {
+      keyButton.style.backgroundColor = '#c9b458';
+      keyButton.style.color = 'white';
+    } else if (newColor === 'gray') {
+      // Dark gray for wrong letters (not in word at all)
+      keyButton.style.backgroundColor = '#3a3a3c';
+      keyButton.style.color = 'white';
+    }
+  });
+}
+
 // ====== Helpers ======
 function getRowTiles(row: number): HTMLElement[] {
   const start = row * COLS;
@@ -75,12 +119,19 @@ function showMessage(msg: string, color = "red"): void {
   setTimeout(() => (errorDiv.style.display = "none"), 2000);
 }
 
-function resetGame(): void {
+async function resetGame(): Promise<void> {
   Array.from(board.children).forEach((tile) => {
     const el = tile as HTMLElement;
     el.textContent = "";
-    el.style.backgroundColor = "#fff";
-    el.style.color = "#000";
+    el.style.backgroundColor = "";
+    el.style.color = "";
+  });
+
+  // Reset keyboard colors
+  Array.from(keyboard.querySelectorAll('.key')).forEach((key) => {
+    const btn = key as HTMLButtonElement;
+    btn.style.backgroundColor = '';
+    btn.style.color = '';
   });
 
   currentRow = 0;
@@ -89,7 +140,7 @@ function resetGame(): void {
   successDiv.style.display = "none";
   errorDiv.style.display = "none";
 
-  getRandomWord(); // new random word every time
+  await getRandomWord(); // Fetch new random word
 }
 
 // ====== Main logic ======
@@ -154,7 +205,7 @@ function checkGuess(): void {
     }
   }
 
-  // Apply colors
+  // Apply colors to tiles
   tiles.forEach((tile, i) => {
     tile.style.backgroundColor =
       colorArr[i] === "green"
@@ -165,6 +216,9 @@ function checkGuess(): void {
     tile.style.color = "white";
     tile.style.transition = "background-color 0.3s ease";
   });
+
+  // Update keyboard colors
+  updateKeyboardColors(guess, colorArr);
 
   // Game result
   if (guess === SECRET) {
