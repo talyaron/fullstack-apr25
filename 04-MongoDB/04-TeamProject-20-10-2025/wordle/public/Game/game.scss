@@ -90,6 +90,70 @@
   }
 }
 
+.newGameWrapper{
+  display: none;
+  
+}
+
+.end-game-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  padding: 2.5rem 3rem;
+  border-radius: 15px;
+  border: 2px solid $primary-color;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  min-width: 300px;
+  animation: slideIn 0.3s ease-out;
+
+  .end-game-box_message {
+    color: $text-color;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+  }
+
+  .end-game-box_button {
+    background-color: $primary-color;
+    color: #ffffff;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
 @keyframes flip {
   0% {
     transform: rotateX(0deg);
