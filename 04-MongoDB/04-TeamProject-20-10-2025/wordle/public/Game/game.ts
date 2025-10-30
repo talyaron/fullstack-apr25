@@ -19,7 +19,9 @@ let currentRow = 0;
 let currentCol = 0;
 let isGameOver = false;
 
-// ====== Fetch random word ======
+// ====== API Functions ======
+
+// Fetch random word
 async function getRandomWord(): Promise<void> {
   try {
     const response = await fetch(`http://localhost:3000/words/get-random-word`, {
@@ -28,17 +30,89 @@ async function getRandomWord(): Promise<void> {
         'Content-Type': 'application/json',
       },
     });
-    
+
     if (!response.ok) {
       const error = await response.json();
       throw new Error(error.message || 'Failed to get random word');
     }
-    
+
     const data = await response.json();
     const newword = data[0].word.toUpperCase();
     SECRET = newword;
   } catch (err) {
     console.warn("⚠️ Failed to fetch word. Using default.");
+  }
+}
+
+// Check if a word exists in the dictionary
+async function checkWordExists(word: string): Promise<boolean> {
+  try {
+    const response = await fetch(`http://localhost:3000/words/check-if-exist`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ word: word.toLowerCase() }),
+    });
+
+    if (!response.ok) {
+      return false;
+    }
+
+    const data = await response.json();
+    return data.exists === true;
+  } catch (err) {
+    console.warn("⚠️ Failed to check word validity.");
+    return true; // Allow word if API fails
+  }
+}
+
+// Get user statistics
+async function getUserData(userId: string): Promise<{ amountOfGames: number; amountOfVictories: number } | null> {
+  try {
+    const response = await fetch(`http://localhost:3000/data/get-user-data?userId=${userId}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to get user data');
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.error("Error fetching user data:", err);
+    return null;
+  }
+}
+
+// Update user statistics
+async function updateUserData(
+  userId: string,
+  amountOfGames: number,
+  amountOfVictories: number
+): Promise<boolean> {
+  try {
+    const response = await fetch(`http://localhost:3000/data/update-user-data?userId=${userId}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ amountOfGames, amountOfVictories }),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to update user data');
+    }
+
+    await response.json();
+    return true;
+  } catch (err) {
+    console.error("Error updating user data:", err);
+    return false;
   }
 }
 
@@ -75,22 +149,22 @@ function createKeyboard(): void {
 // ====== Update keyboard colors ======
 function updateKeyboardColors(guess: string, colorArr: string[]): void {
   const guessArr = guess.split("");
-  
+
   guessArr.forEach((letter, index) => {
     const keyButton = Array.from(keyboard.querySelectorAll('.key')).find(
       (btn) => btn.textContent === letter
     ) as HTMLButtonElement;
-    
+
     if (!keyButton) return;
-    
+
     const currentColor = keyButton.style.backgroundColor;
     const newColor = colorArr[index];
-    
+
     // Priority: green > gold > dark gray (wrong letter)
     // Don't downgrade a green key to gold or gray
     if (currentColor === 'rgb(106, 170, 100)') return; // Already green
     if (currentColor === 'rgb(201, 180, 88)' && newColor === 'gray') return; // Don't downgrade gold to gray
-    
+
     if (newColor === 'green') {
       keyButton.style.backgroundColor = '#6aaa64';
       keyButton.style.color = 'white';
@@ -175,12 +249,19 @@ function handleKeyInput(key: string): void {
 }
 
 // ====== Check guess ======
-function checkGuess(): void {
+async function checkGuess(): Promise<void> {
   const tiles = getRowTiles(currentRow);
   const guess = tiles.map((t) => t.textContent || "").join("");
 
   if (guess.length < COLS) {
     showMessage("Not enough letters!");
+    return;
+  }
+
+  // Check if word exists in dictionary
+  const wordExists = await checkWordExists(guess);
+  if (!wordExists) {
+    showMessage("Not in word list!");
     return;
   }
 
@@ -230,26 +311,47 @@ function checkGuess(): void {
   const totalAnimationTime = (COLS - 1) * 200 + 600;
 
   // Update keyboard colors after all tiles finish flipping
-  setTimeout(() => {
     updateKeyboardColors(guess, colorArr);
+  setTimeout(() => {
   }, totalAnimationTime);
 
-  // Game result - check after all animations complete
-  setTimeout(() => {
-    if (guess === SECRET) {
-      successDiv.textContent = `🎉 Correct! The word was ${SECRET}`;
-      successDiv.style.display = "block";
-      isGameOver = true;
-      setTimeout(resetGame, 3000);
-    } else if (currentRow === ROWS - 1) {
-      errorDiv.textContent = `❌ Wrong! The word was ${SECRET}. Try again!`;
-      errorDiv.style.display = "block";
-      isGameOver = true;
-      setTimeout(resetGame, 3000);
-    } else {
-      currentRow++;
-      currentCol = 0;
+  // Get userId (you should replace this with your actual auth logic)
+  const userId = localStorage.getItem('userId') || 'guest';
+
+  // Game result
+  if (guess === SECRET) {
+    successDiv.textContent = `🎉 Correct! The word was ${SECRET}`;
+    successDiv.style.display = "block";
+    isGameOver = true;
+
+    // Update user statistics (win)
+    const currentStats = await getUserData(userId);
+    if (currentStats) {
+      await updateUserData(
+        userId,
+        currentStats.amountOfGames + 1,
+      );
+        currentStats.amountOfVictories + 1
     }
+
+    setTimeout(resetGame, 3000);
+  } else if (currentRow === ROWS - 1) {
+    errorDiv.textContent = `❌ Wrong! The word was ${SECRET}. Try again!`;
+    errorDiv.style.display = "block";
+    isGameOver = true;
+    const currentStats = await getUserData(userId);
+    if (currentStats) {
+      await updateUserData(
+        userId,
+        currentStats.amountOfGames + 1,
+        currentStats.amountOfVictories
+      );
+    }
+
+    setTimeout(resetGame, 3000);
+  } else {
+    currentRow++;
+    currentCol = 0;
   }, totalAnimationTime);
 }
 
