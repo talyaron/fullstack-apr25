@@ -15,7 +15,7 @@ export const checkIfExist = async (req: Request, res: Response) => {
   try {
     const { word } = req.body;
     const existing = await wordModel.findOne({ word });
-    if (!existing) return res.status(440).json({ message: "Word doesn't exists" });
+    if (!existing) return res.status(200).json({ exist:false});
 
     res.status(200).json({exist:true});
   } catch {
