@@ -19,10 +19,10 @@ document.addEventListener("DOMContentLoaded", () => {
 <div id="missionsLoading" class="p-4 text-center text-muted">טוען משימות…</div>
 <div id="missionsEmpty" class="p-4 text-center text-muted" style="display:none;">אין נתונים להצגה</div>
 </div>
+</div> 
+</div> 
 </div>
-</div>
-</div>
-
+ 
 
   `;
   missionsToView();
