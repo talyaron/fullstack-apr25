@@ -26,7 +26,6 @@ async function getRandomWord(): Promise<void> {
     const data = await res.json();
     if (Array.isArray(data) && data[0]) {
       SECRET = data[0].toUpperCase();
-      console.log("🔤 New word:", SECRET);
     }
   } catch (err) {
     console.warn("⚠️ Failed to fetch word. Using default.");
