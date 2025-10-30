@@ -10,7 +10,7 @@ async function fetchLeaderBoard() {
         console.error('Error fetching leaderboard:', error);
     }
 }
-function renderLeaderBoard(data : Array<{ username: string; score: number; attempts: number; date: string; }>) {
+function renderLeaderBoard(data : Array<{ username: string; amountOfWins: string; attempts: number; }>) {
     const list = document.getElementById('leaderboard-list');
     if (!list) return;
 
@@ -18,7 +18,7 @@ function renderLeaderBoard(data : Array<{ username: string; score: number; attem
 
     data.forEach(player => {
         const listItem = document.createElement('li');
-        listItem.textContent = `${player.username} - Score: ${player.score}, Attempts: ${player.attempts}, Date: ${player.date}`;
+        listItem.textContent = `${player.username} - AmountsOfWins: ${player.amountOfWins}, Attempts: ${player.attempts}, `;
         list.appendChild(listItem);
     });
 
