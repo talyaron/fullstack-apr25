@@ -2,27 +2,25 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Leader Board 🏆</title>
-    <link rel="stylesheet" href="dist/leaderBoard.css">
+    <link rel="stylesheet" href="dist/leaderBoard.css" />
 </head>
 
 <body>
-    <header>
-        <h1>Leader Board 🏆</h1>
-    </header>
-    <main>
-        <div class="game-container">
-            <div class="leaderboard">
-                <h2>Top Players</h2>
-                <ul id="leaderboard-list">
-                </ul>
-            </div>
+    <main class="leaderboard-page">
+        <div class="leaderboard-card">
+            <h1 class="leaderboard-card__title">Leader Board 🏆</h1>
+
+            <div id="lb-loading" class="leaderboard-card__loading">Loading…</div>
+            <div id="lb-error" class="leaderboard-card__error" style="display:none"></div>
+
+            <ol id="leaderboard-list" class="leaderboard-list">
+            </ol>
         </div>
     </main>
-    <footer></footer>
-
 </body>
+<script src="dist/leaderBoard.js"></script>
 
 </html>

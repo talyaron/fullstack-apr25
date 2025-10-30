@@ -5,6 +5,7 @@ const router = express.Router();
 
 
 router.get("/get-user-data", dataControllers.getUserData)
-      .patch("/update-data", dataControllers.updateUserData);
+      .patch("/update-data", dataControllers.updateUserData)
+      .get("/leaderboard", dataControllers.getLeaderBoard);
 
 export default router;
