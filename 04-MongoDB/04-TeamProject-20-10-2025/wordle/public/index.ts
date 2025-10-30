@@ -1,3 +1,6 @@
+// ====== port =======
+
+
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', (): void => {
     // Check if user is already logged in
@@ -24,7 +27,7 @@ function isUserLoggedIn(): boolean {
     for (let cookie of cookies) {
         const [name, value] = cookie.trim().split('=');
         // Check for your specific cookie name (adjust 'userToken' to match your actual cookie name)
-        if (name === 'userToken' && value) {
+        if (name === 'token' && value) {
             return true;
         }
     }
