@@ -4,10 +4,17 @@ interface ApiResponse {
   message?: string;
 }
 
+interface UserData {
+  userId: string;
+  amountOfGames: number;
+  amountOfVictories: number;
+}
+
 // ====== DOM references ======
 const board = document.getElementById('board') as HTMLDivElement;
 const keyboard = document.getElementById('keyboard') as HTMLDivElement;
 const errorDiv = document.getElementById('error') as HTMLDivElement;
+const newboard = document.getElementById("newGameWrapper") as HTMLDivElement
 const successDiv = document.getElementById('success') as HTMLDivElement;
 
 // ====== Constants ======
@@ -18,10 +25,58 @@ let SECRET = "PLANT";
 let currentRow = 0;
 let currentCol = 0;
 let isGameOver = false;
+let userId: string | null = null;
 
-// ====== API Functions ======
+// ====== User Data API Functions ======
+async function getUserData(userIdParam: string): Promise<UserData | null> {
+  try {
+    const response = await fetch(`http://localhost:3000/data/get-user-data?userId=${userIdParam}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.message || 'Failed to get user data');
+    }
+    
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.error("Failed to fetch user data:", err);
+    return null;
+  }
+}
 
-// Fetch random word
+async function updateUserData(userIdParam: string, amountOfGames: number, amountOfVictories: number): Promise<UserData | null> {
+  try {
+    const response = await fetch(`http://localhost:3000/data/update-data?userId=${userIdParam}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        amountOfGames,
+        amountOfVictories
+      }),
+    });
+    
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.message || 'Failed to update user data');
+    }
+    
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.error("Failed to update user data:", err);
+    return null;
+  }
+}
+
+// ====== Fetch random word ======
 async function getRandomWord(): Promise<void> {
   try {
     const response = await fetch(`http://localhost:3000/words/get-random-word`, {
@@ -30,89 +85,17 @@ async function getRandomWord(): Promise<void> {
         'Content-Type': 'application/json',
       },
     });
-
+    
     if (!response.ok) {
       const error = await response.json();
       throw new Error(error.message || 'Failed to get random word');
     }
-
+    
     const data = await response.json();
     const newword = data[0].word.toUpperCase();
     SECRET = newword;
   } catch (err) {
     console.warn("⚠️ Failed to fetch word. Using default.");
-  }
-}
-
-// Check if a word exists in the dictionary
-async function checkWordExists(word: string): Promise<boolean> {
-  try {
-    const response = await fetch(`http://localhost:3000/words/check-if-exist`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ word: word.toLowerCase() }),
-    });
-
-    if (!response.ok) {
-      return false;
-    }
-
-    const data = await response.json();
-    return data.exists === true;
-  } catch (err) {
-    console.warn("⚠️ Failed to check word validity.");
-    return true; // Allow word if API fails
-  }
-}
-
-// Get user statistics
-async function getUserData(userId: string): Promise<{ amountOfGames: number; amountOfVictories: number } | null> {
-  try {
-    const response = await fetch(`http://localhost:3000/data/get-user-data?userId=${userId}`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error('Failed to get user data');
-    }
-
-    const data = await response.json();
-    return data;
-  } catch (err) {
-    console.error("Error fetching user data:", err);
-    return null;
-  }
-}
-
-// Update user statistics
-async function updateUserData(
-  userId: string,
-  amountOfGames: number,
-  amountOfVictories: number
-): Promise<boolean> {
-  try {
-    const response = await fetch(`http://localhost:3000/data/update-user-data?userId=${userId}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ amountOfGames, amountOfVictories }),
-    });
-
-    if (!response.ok) {
-      throw new Error('Failed to update user data');
-    }
-
-    await response.json();
-    return true;
-  } catch (err) {
-    console.error("Error updating user data:", err);
-    return false;
   }
 }
 
@@ -149,22 +132,22 @@ function createKeyboard(): void {
 // ====== Update keyboard colors ======
 function updateKeyboardColors(guess: string, colorArr: string[]): void {
   const guessArr = guess.split("");
-
+  
   guessArr.forEach((letter, index) => {
     const keyButton = Array.from(keyboard.querySelectorAll('.key')).find(
       (btn) => btn.textContent === letter
     ) as HTMLButtonElement;
-
+    
     if (!keyButton) return;
-
+    
     const currentColor = keyButton.style.backgroundColor;
     const newColor = colorArr[index];
-
+    
     // Priority: green > gold > dark gray (wrong letter)
     // Don't downgrade a green key to gold or gray
     if (currentColor === 'rgb(106, 170, 100)') return; // Already green
     if (currentColor === 'rgb(201, 180, 88)' && newColor === 'gray') return; // Don't downgrade gold to gray
-
+    
     if (newColor === 'green') {
       keyButton.style.backgroundColor = '#6aaa64';
       keyButton.style.color = 'white';
@@ -193,19 +176,26 @@ function showMessage(msg: string, color = "red"): void {
 }
 
 async function resetGame(): Promise<void> {
+// clear board color from previous game
   Array.from(board.children).forEach((tile) => {
     const el = tile as HTMLElement;
     el.textContent = "";
     el.style.backgroundColor = "";
     el.style.color = "";
+    el.style.borderColor = ""; // ✅ Clear border color
     el.style.animation = ""; // Clear animation
+    el.style.removeProperty('background-color');
+    el.style.removeProperty('color');
+    el.style.removeProperty('border-color');
   });
 
-  // Reset keyboard colors
+  // Reset keyboard colors completely
   Array.from(keyboard.querySelectorAll('.key')).forEach((key) => {
     const btn = key as HTMLButtonElement;
     btn.style.backgroundColor = '';
     btn.style.color = '';
+    btn.style.removeProperty('background-color');
+    btn.style.removeProperty('color');
   });
 
   currentRow = 0;
@@ -213,7 +203,7 @@ async function resetGame(): Promise<void> {
   isGameOver = false;
   successDiv.style.display = "none";
   errorDiv.style.display = "none";
-
+  newboard.style.display = "none";
   await getRandomWord(); // Fetch new random word
 }
 
@@ -255,13 +245,6 @@ async function checkGuess(): Promise<void> {
 
   if (guess.length < COLS) {
     showMessage("Not enough letters!");
-    return;
-  }
-
-  // Check if word exists in dictionary
-  const wordExists = await checkWordExists(guess);
-  if (!wordExists) {
-    showMessage("Not in word list!");
     return;
   }
 
@@ -311,47 +294,41 @@ async function checkGuess(): Promise<void> {
   const totalAnimationTime = (COLS - 1) * 200 + 600;
 
   // Update keyboard colors after all tiles finish flipping
-    updateKeyboardColors(guess, colorArr);
   setTimeout(() => {
+    updateKeyboardColors(guess, colorArr);
   }, totalAnimationTime);
 
-  // Get userId (you should replace this with your actual auth logic)
-  const userId = localStorage.getItem('userId') || 'guest';
+  // Game result - check after all animations complete
+  setTimeout(async () => {
+    const isWin = guess === SECRET;
+    const isGameEnd = isWin || currentRow === ROWS - 1;
 
-  // Game result
-  if (guess === SECRET) {
-    successDiv.textContent = `🎉 Correct! The word was ${SECRET}`;
-    successDiv.style.display = "block";
-    isGameOver = true;
-
-    // Update user statistics (win)
-    const currentStats = await getUserData(userId);
-    if (currentStats) {
-      await updateUserData(
-        userId,
-        currentStats.amountOfGames + 1,
-      );
-        currentStats.amountOfVictories + 1
+    if (isGameEnd && userId) {
+      // Fetch current user data
+      const userData = await getUserData(userId);
+      if (userData) {
+        const newGamesCount = userData.amountOfGames + 1;
+        const newVictoriesCount = isWin ? userData.amountOfVictories + 1 : userData.amountOfVictories;
+        
+        // Update user data
+        await updateUserData(userId, newGamesCount, newVictoriesCount);
+      }
     }
 
-    setTimeout(resetGame, 3000);
-  } else if (currentRow === ROWS - 1) {
-    errorDiv.textContent = `❌ Wrong! The word was ${SECRET}. Try again!`;
-    errorDiv.style.display = "block";
-    isGameOver = true;
-    const currentStats = await getUserData(userId);
-    if (currentStats) {
-      await updateUserData(
-        userId,
-        currentStats.amountOfGames + 1,
-        currentStats.amountOfVictories
-      );
+    if (isWin) {
+      // successDiv.textContent =
+      // successDiv.style.display = "block";
+      isGameOver = true;
+      newGame( `🎉 Correct! The word was ${SECRET}`);
+    } else if (currentRow === ROWS - 1) {
+      // errorDiv.textContent = `❌ Wrong! The word was ${SECRET}. Try again!`;
+      // errorDiv.style.display = "block";
+      isGameOver = true;
+      newGame(`❌ Wrong! The word was ${SECRET}. Try again!`);
+    } else {
+      currentRow++;
+      currentCol = 0;
     }
-
-    setTimeout(resetGame, 3000);
-  } else {
-    currentRow++;
-    currentCol = 0;
   }, totalAnimationTime);
 }
 
@@ -368,6 +345,9 @@ window.addEventListener("keydown", (e: KeyboardEvent) => {
 
 // ====== Start game ======
 document.addEventListener("DOMContentLoaded", async () => {
+  // Get userId from localStorage or session
+  userId = localStorage.getItem('userId');
+  
   await getRandomWord();
   createBoard();
   createKeyboard();
@@ -375,12 +355,21 @@ document.addEventListener("DOMContentLoaded", async () => {
   // ====== Give Up button ======
   const giveUpBtn = document.getElementById("giveUpBtn");
   if (giveUpBtn) {
-    giveUpBtn.addEventListener("click", (e) => {
+    giveUpBtn.addEventListener("click", async (e) => {
       e.preventDefault();
-      errorDiv.textContent = `💡 You gave up! The word was ${SECRET}.`;
-      errorDiv.style.display = "block";
+      // errorDiv.textContent = ;
+      // errorDiv.style.display = "block";
       isGameOver = true;
-      setTimeout(resetGame, 2500);
+      
+      // Update stats for giving up (counts as a game played, not a victory)
+      if (userId) {
+        const userData = await getUserData(userId);
+        if (userData) {
+          await updateUserData(userId, userData.amountOfGames + 1, userData.amountOfVictories);
+        }
+      }
+      
+      newGame(`💡 You gave up! The word was ${SECRET}.`);
     });
   }
 
@@ -394,3 +383,22 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 });
+function newGame(message: string): void {
+  try {
+
+    newboard.style.display = "flex"
+    newboard.innerHTML = newGameHtml(message)
+
+  } catch (error) {
+    console.error("error in new game function:", error)
+  }
+}
+function newGameHtml(mamessage: string): string {
+  return` 
+    <div class="end-game-box">
+    <div class="end-game-box_message">${mamessage}
+    </div>
+    <button class="end-game-box_button"  onclick="resetGame()">NEW GAME</button>
+  </div>
+`
+}
