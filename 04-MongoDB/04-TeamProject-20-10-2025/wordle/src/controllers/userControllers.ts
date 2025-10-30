@@ -32,7 +32,7 @@ export const login = async (req: Request, res: Response) => {
     console.log(isMatch)
     if (!isMatch) return res.status(400).json({ message: "Invalid credentials" });
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET as string, { expiresIn: "7d" });
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET as string, { expiresIn: "30m" });
     res.cookie("token", token, { httpOnly: true, sameSite: "lax", secure: false });
     res.status(200).json({ message: "Logged in successfully", user });
   } catch (error) {
