@@ -3,7 +3,7 @@ import { dataModel } from "../model/dataModel";
 
 export const getUserData = async (req: Request, res: Response) => {
   try {
-const { userId } = req.query;
+    const { userId } = req.query;
     const data = await dataModel.findOne({ userId });
     res.json(data);
   } catch {
@@ -13,7 +13,7 @@ const { userId } = req.query;
 
 export const updateUserData = async (req: Request, res: Response) => {
   try {
-const { userId } = req.query;
+    const { userId } = req.query;
     const { amountOfGames, amountOfVictories } = req.body;
     const updated = await dataModel.findOneAndUpdate(
       { userId },
@@ -23,5 +23,22 @@ const { userId } = req.query;
     res.json(updated);
   } catch {
     res.status(500).json({ message: "Error updating data" });
+  }
+};
+
+export const getLeaderBoard = async (req: Request, res: Response) => {
+  try {
+    const data = await dataModel.find();
+
+    const list = data.sort((a, b) => {
+      const scoreA = a.amountOfVictories / a.amountOfGames;
+      const scoreB = b.amountOfVictories / b.amountOfGames;
+      return scoreB - scoreA;
+    });
+    res.json(list.slice(0, 10));
+
+  } catch (error: any) {
+    res.status(500).json({ message: error.message });
+    console.error("Error fetching leaderboard:", error);
   }
 };
