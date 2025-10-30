@@ -87,3 +87,5 @@ app.use((err: any, req: Request, res: Response, next: any): void => {
 app.listen(port, (): void => {
   console.log(`🚀 Server is running on http://localhost:${port}`);
 });
+
+
