@@ -4,6 +4,6 @@ import * as wordsControlles from "../controllers/wordsControllers";
 const router = express.Router();
 
 router.get("/get-random-word", wordsControlles.getRandomWord);
-router.put("/check-if-exist", wordsControlles.checkIfExist);
+router.post("/check-if-exist", wordsControlles.checkIfExist);
 
 export default router;
