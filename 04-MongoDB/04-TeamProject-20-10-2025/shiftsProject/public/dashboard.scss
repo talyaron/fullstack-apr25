@@ -277,9 +277,9 @@ body {
   background: $bg-primary;
   border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: $radius-lg;
-  padding: $spacing-lg;
-  display: flex;
-  align-items: center;
+  padding: $spacing-lg; 
+  display: flex;  
+  align-items: center; 
   gap: $spacing-lg;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   transition: $transition-all;

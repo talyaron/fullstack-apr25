@@ -1,465 +1,178 @@
-// ===============================================
-// DASHBOARD TYPESCRIPT - Manager View
-// ===============================================
+import api from './api.js';
 
-// ===============================================
-// WAIT FOR DOM TO BE READY
-// ===============================================
+// Elements
+const userName = document.getElementById('userName') as HTMLSpanElement;
+const userRole = document.getElementById('userRole') as HTMLSpanElement;
+const userWelcome = document.getElementById('userWelcome') as HTMLSpanElement;
+const logoutBtn = document.getElementById('logoutBtn') as HTMLButtonElement;
+const addMissionBtn = document.getElementById('addMissionBtn') as HTMLButtonElement;
+const missionsContainer = document.getElementById('missionsContainer') as HTMLDivElement;
+const totalMissions = document.getElementById('totalMissions') as HTMLDivElement;
+const activeMissions = document.getElementById('activeMissions') as HTMLDivElement;
+const completedMissions = document.getElementById('completedMissions') as HTMLDivElement;
 
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("🚀 DOM loaded - Starting dashboard...");
+// Check authentication
+if (!api.isAuthenticated()) {
+  window.location.href = '/index.html';
+}
 
-  // ===============================================
-  // STATE MANAGEMENT
-  // ===============================================
-
-  class DashboardState {
-    private currentUser: User | null = null;
-    private currentView: string = "overview";
-    private stats: DashboardStats = {
-      totalMissions: 0,
-      doneMissions: 0,
-      pendingMissions: 0,
-      completedMissions: 0,
-      totalSoldiers: 0,
-      totalTeams: 0,
+// Load user data
+async function loadUserData(): Promise<void> {
+  try {
+    const user = await api.getMe();
+    userName.textContent = `${user.firstName} ${user.lastName}`;
+    userWelcome.textContent = user.firstName;
+    
+    // Set role display
+    const roleMap: Record<string, string> = {
+      'soldier': 'חייל',
+      'commander': 'מפקד',
+      'admin': 'מנהל'
     };
-
-    setUser(user: User): void {
-      this.currentUser = user;
-    }
-
-    getUser(): User | null {
-      return this.currentUser;
-    }
-
-    setView(view: string): void {
-      this.currentView = view;
-    }
-
-    getView(): string {
-      return this.currentView;
-    }
-
-    setStats(stats: DashboardStats): void {
-      this.stats = stats;
-    }
-
-    getStats(): DashboardStats {
-      return this.stats;
-    }
+    userRole.textContent = roleMap[user.role] || 'חייל';
+    
+    console.log('✅ User loaded:', user);
+  } catch (error) {
+    console.error('❌ Failed to load user:', error);
+    api.logout();
   }
+}
 
-  const state = new DashboardState();
+// Load missions
+async function loadMissions(): Promise<void> {
+  try {
+    missionsContainer.innerHTML = `
+      <div class="loading">
+        <div class="spinner"></div>
+        <div>טוען משימות...</div>
+      </div>
+    `;
 
-  // ===============================================
-  // DOM ELEMENTS
-  // ===============================================
-
-  const elements = {
-    // Navigation
-    navItems: document.querySelectorAll<HTMLAnchorElement>(
-      ".dashboard__nav-item"
-    ),
-
-    // Views
-    views: document.querySelectorAll<HTMLElement>(".dashboard__view"),
-    overviewView: document.getElementById("overviewView") as HTMLElement,
-    createMissionView: document.getElementById(
-      "createMissionView"
-    ) as HTMLElement,
-
-    // Stats
-    totalMissionsEl: document.getElementById("totalMissions") as HTMLElement,
-    pendingMissionsEl: document.getElementById(
-      "pendingMissions"
-    ) as HTMLElement,
-    doneMissionsEl: document.getElementById("doneMissions") as HTMLElement,
-    totalSoldiersEl: document.getElementById("totalSoldiers") as HTMLElement,
-
-    // User
-    userNameEl: document.getElementById("userName") as HTMLElement,
-    userRoleEl: document.getElementById("userRole") as HTMLElement,
-    logoutBtn: document.getElementById("logoutBtn") as HTMLButtonElement,
-
-    // Modal
-    createMissionModal: document.getElementById(
-      "createMissionModal"
-    ) as HTMLElement,
-    closeMissionModal: document.getElementById(
-      "closeMissionModal"
-    ) as HTMLButtonElement,
-
-    // Forms
-    createMissionForm: document.getElementById(
-      "createMissionFormModal"
-    ) as HTMLFormElement,
-    cancelMissionBtn: document.getElementById(
-      "cancelMissionBtn"
-    ) as HTMLButtonElement,
-
-    // Quick Actions
-    quickActions: document.querySelectorAll<HTMLButtonElement>(".quick-action"),
-
-    // Tables
-    recentMissionsTable: document.getElementById(
-      "recentMissionsTable"
-    ) as HTMLElement,
-  };
-
-  console.log("✅ Elements loaded:", {
-    modal: !!elements.createMissionModal,
-    buttons: elements.quickActions.length,
-  });
-
-  // ===============================================
-  // NAVIGATION
-  // ===============================================
-
-  const navigateToView = (viewName: string): void => {
-    // Hide all views
-    elements.views.forEach((view) => {
-      view.classList.add("dashboard__view--hidden");
-    });
-
-    // Show selected view
-    const targetView = document.getElementById(`${viewName}View`);
-    if (targetView) {
-      targetView.classList.remove("dashboard__view--hidden");
-    }
-
-    // Update navigation active state
-    elements.navItems.forEach((item) => {
-      item.classList.remove("dashboard__nav-item--active");
-      if (item.dataset.view === viewName) {
-        item.classList.add("dashboard__nav-item--active");
-      }
-    });
-
-    // Update state
-    state.setView(viewName);
-
-    // Update URL hash
-    window.location.hash = viewName;
-  };
-
-  // Navigation click handlers
-  elements.navItems.forEach((item) => {
-    item.addEventListener("click", (e) => {
-      e.preventDefault();
-      const viewName = item.dataset.view;
-      if (viewName) {
-        navigateToView(viewName);
-      }
-    });
-  });
-
-  // ===============================================
-  // MODAL CONTROLS
-  // ===============================================
-
-  const openModal = (): void => {
-    console.log("📂 Opening modal...");
-    if (elements.createMissionModal) {
-      elements.createMissionModal.classList.add("active");
-      document.body.style.overflow = "hidden";
-      console.log("✅ Modal opened!");
-    } else {
-      console.error("❌ Modal element not found!");
-    }
-  };
-
-  const closeModal = (): void => {
-    console.log("📁 Closing modal...");
-    if (elements.createMissionModal) {
-      elements.createMissionModal.classList.remove("active");
-      document.body.style.overflow = "";
-      if (elements.createMissionForm) {
-        elements.createMissionForm.reset();
-      }
-      console.log("✅ Modal closed!");
-    }
-  };
-
-  // Close modal on overlay click
-  if (elements.createMissionModal) {
-    elements.createMissionModal.addEventListener("click", (e) => {
-      if (e.target === elements.createMissionModal) {
-        closeModal();
-      }
-    });
-  }
-
-  // Close modal button
-  if (elements.closeMissionModal) {
-    elements.closeMissionModal.addEventListener("click", closeModal);
-  }
-
-  // Cancel button
-  if (elements.cancelMissionBtn) {
-    elements.cancelMissionBtn.addEventListener("click", closeModal);
-  }
-
-  // ESC key to close modal
-  document.addEventListener("keydown", (e) => {
-    if (
-      e.key === "Escape" &&
-      elements.createMissionModal?.classList.contains("active")
-    ) {
-      closeModal();
-    }
-  });
-
-  // ===============================================
-  // QUICK ACTIONS
-  // ===============================================
-
-  console.log("🔗 Attaching quick action listeners...");
-  elements.quickActions.forEach((btn, index) => {
-    console.log(`  Button ${index}:`, btn.dataset.action);
-
-    btn.addEventListener("click", () => {
-      const action = btn.dataset.action;
-      console.log("🖱️ Quick action clicked:", action);
-
-      switch (action) {
-        case "create-mission":
-          console.log("➡️ Opening modal...");
-          openModal();
-          break;
-        case "view-missions":
-          navigateToView("missions");
-          break;
-        case "manage-personnel":
-          navigateToView("personnel");
-          break;
-      }
-    });
-  });
-
-  console.log("✅ Quick action listeners attached");
-
-  // ===============================================
-  // STATS
-  // ===============================================
-
-  const updateStats = (stats: DashboardStats): void => {
-    if (elements.totalMissionsEl)
-      elements.totalMissionsEl.textContent = stats.totalMissions.toString();
-    if (elements.pendingMissionsEl)
-      elements.pendingMissionsEl.textContent = stats.pendingMissions.toString();
-    if (elements.doneMissionsEl)
-      elements.doneMissionsEl.textContent = stats.doneMissions.toString();
-    if (elements.totalSoldiersEl)
-      elements.totalSoldiersEl.textContent = stats.totalSoldiers.toString();
-
-    state.setStats(stats);
-  };
-
-  const fetchStats = async (): Promise<void> => {
-    try {
-      const missionsResponse = await fetch("api/get/missions-amount", {
-        headers: { Accept: "application/json" },
-      });
-      const peopleResponse = await fetch("api/get/people-amount", {
-        headers: { Accept: "application/json" },
-      });
-      const missionWaitingResponse = await fetch("/api/get/missions-waiting", {
-        headers: { Accept: "application/json" },
-      });
-      const missiondDoneResponse = await fetch("/api/get/missions-done", {
-        headers: { Accept: "application/json" },
-      });
+    // TODO: Replace with actual API call when missions endpoint is ready
+    // const missions = await api.get('/api/missions', true);
+    
+    // For now, show empty state
+    setTimeout(() => {
+      const missions: any[] = [];
       
-      if (!missiondDoneResponse.ok) {
-        throw new Error(
-          `failed to fetch done missions amount${missiondDoneResponse.status}`
-        );
+      if (missions.length === 0) {
+        missionsContainer.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-icon">📋</div>
+            <h3>אין משימות כרגע</h3>
+            <p>לחץ על "הוסף משימה חדשה" כדי להתחיל</p>
+          </div>
+        `;
+        
+        // Update stats
+        totalMissions.textContent = '0';
+        activeMissions.textContent = '0';
+        completedMissions.textContent = '0';
+      } else {
+        renderMissions(missions);
       }
-      if (!missionWaitingResponse.ok) {
-        throw new Error(
-          `failed to fetch waiting missions amount${missionWaitingResponse.status}`
-        );
-      }
-      if (!missionsResponse.ok) {
-        throw new Error(
-          `failed to fetch missions amount${missionsResponse.status}`
-        );
-      }
-      if (!peopleResponse.ok) {
-        throw new Error(
-          `failed to fetch people amount${peopleResponse.status}`
-        );
-      }
-      
-      const totalMissions = (await missionsResponse.json()) as number;
-      const totalSoldiers = (await peopleResponse.json()) as number;
-      const pendingMissions = (await missionWaitingResponse.json()) as number;
-      const doneMissions = (await missiondDoneResponse.json()) as number;
-      console.log(doneMissions);
-
-      // תיקון: יצירת אובייקט DashboardStats חדש במקום להשתמש ב-spread של DashboardState
-      const current = state.getStats();
-      const updated: DashboardStats = {
-        totalMissions: totalMissions,
-        totalSoldiers: totalSoldiers,
-        pendingMissions: pendingMissions,
-        doneMissions: doneMissions,
-        completedMissions: current.completedMissions, // שומר על הערך הקיים
-        totalTeams: current.totalTeams // שומר על הערך הקיים
-      };
-      
-      updateStats(updated);
-    } catch (error) {
-      console.error("Error fetching stats:", error);
-    }
-  };
-
-  // ===============================================
-  // CREATE MISSION FORM
-  // ===============================================
-
-  const handleCreateMission = async (e: Event): Promise<void> => {
-    e.preventDefault();
-
-    const missionType = document.getElementById(
-      "missionType"
-    ) as HTMLSelectElement;
-    const missionDate = document.getElementById(
-      "missionDate"
-    ) as HTMLInputElement;
-    const controlCenter = document.getElementById(
-      "controlCenter"
-    ) as HTMLSelectElement;
-    const amountOfPeople = document.getElementById(
-      "amountOfPeople"
-    ) as HTMLSelectElement;
-    const missionNote = document.getElementById(
-      "missionNote"
-    ) as HTMLTextAreaElement;
-
-    const missionData: CreateMissionFormData = {
-      mission_type: missionType.value as any,
-      date: missionDate.value,
-      control_center_number: controlCenter.value,
-      amount_people: Number(amountOfPeople.value),
-      notes: missionNote.value,
-    };
-
-    console.log("Creating mission:", missionData);
-
-    try {
-      // TODO: Replace with actual API call
-      // const response = await fetch('/api/missions', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(missionData)
-      // });
-      // const result: ApiResponse<Mission> = await response.json();
-
-      // Mock success
-      alert("המשימה נוצרה בהצלחה! ✅");
-      closeModal();
-
-      // Refresh stats
-      await fetchStats();
-    } catch (error) {
-      console.error("Error creating mission:", error);
-      alert("שגיאה ביצירת המשימה ❌");
-    }
-  };
-
-  if (elements.createMissionForm) {
-    elements.createMissionForm.addEventListener("submit", handleCreateMission);
+    }, 500);
+  } catch (error: any) {
+    console.error('❌ Failed to load missions:', error);
+    missionsContainer.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-icon">⚠️</div>
+        <h3>שגיאה בטעינת משימות</h3>
+        <p>${error.message || 'נסה לרענן את הדף'}</p>
+      </div>
+    `;
   }
+}
 
-  // ===============================================
-  // LOGOUT
-  // ===============================================
+// Render missions
+function renderMissions(missions: any[]): void {
+  const html = missions.map(mission => `
+    <div class="mission-card" data-id="${mission._id}">
+      <div class="mission-header">
+        <div>
+          <h4 class="mission-title">${mission.title}</h4>
+          <p class="mission-description">${mission.description || 'אין תיאור'}</p>
+        </div>
+      </div>
+      
+      <div class="mission-meta">
+        <div class="meta-item">
+          <span class="meta-icon">📅</span>
+          <span>${formatDate(mission.deadline)}</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-icon">👤</span>
+          <span>${mission.assignedTo?.firstName || 'לא משויך'}</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-icon">📍</span>
+          <span>${mission.location || 'לא צוין'}</span>
+        </div>
+      </div>
+      
+      <div class="mission-footer">
+        <span class="mission-status status-${mission.status}">
+          ${getStatusText(mission.status)}
+        </span>
+        <span class="mission-priority priority-${mission.priority}">
+          ${getPriorityText(mission.priority)}
+        </span>
+      </div>
+    </div>
+  `).join('');
+  
+  missionsContainer.innerHTML = `<div class="missions-grid">${html}</div>`;
+  
+  // Update stats
+  totalMissions.textContent = missions.length.toString();
+  activeMissions.textContent = missions.filter(m => m.status === 'in-progress').length.toString();
+  completedMissions.textContent = missions.filter(m => m.status === 'completed').length.toString();
+}
 
-  if (elements.logoutBtn) {
-    elements.logoutBtn.addEventListener("click", () => {
-      if (confirm("האם אתה בטוח שברצונך להתנתק?")) {
-        // TODO: Clear session/token
-        window.location.href = "/index.html";
-      }
-    });
+// Format date
+function formatDate(date: string): string {
+  const d = new Date(date);
+  return d.toLocaleDateString('he-IL', { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  });
+}
+
+// Get status text
+function getStatusText(status: string): string {
+  const statusMap: Record<string, string> = {
+    'pending': 'ממתין',
+    'in-progress': 'בביצוע',
+    'completed': 'הושלם'
+  };
+  return statusMap[status] || status;
+}
+
+// Get priority text
+function getPriorityText(priority: string): string {
+  const priorityMap: Record<string, string> = {
+    'low': 'נמוכה',
+    'medium': 'בינונית',
+    'high': 'גבוהה' 
+  };
+  return priorityMap[priority] || priority;
+}
+
+// Logout
+logoutBtn.addEventListener('click', () => {
+  if (confirm('האם אתה בטוח שברצונך להתנתק?')) {
+    api.logout();
   }
-
-  // ===============================================
-  // LOAD CONTROL CENTERS
-  // ===============================================
-
-  const loadControlCenters = async (): Promise<void> => {
-    try {
-      // TODO: Replace with actual API call
-      // const response = await fetch('/api/control-centers');
-      // const data: ApiResponse<ControlCenter[]> = await response.json();
-
-      // Mock data
-      const mockCenters = [
-        { id: "1", control_center_number: "001", name: "מרכז בקרה צפון" },
-        { id: "2", control_center_number: "002", name: "מרכז בקרה דרום" },
-        { id: "3", control_center_number: "003", name: "מרכז בקרה מרכז" },
-      ];
-
-      const select = document.getElementById(
-        "controlCenter"
-      ) as HTMLSelectElement;
-      if (select) {
-        mockCenters.forEach((center) => {
-          const option = document.createElement("option");
-          option.value = center.control_center_number;
-          option.textContent = center.name;
-          select.appendChild(option);
-        });
-      }
-    } catch (error) {
-      console.error("Error loading control centers:", error);
-    }
-  };
-
-  // ===============================================
-  // INITIALIZATION
-  // ===============================================
-
-  const initDashboard = async (): Promise<void> => {
-    console.log("🎯 Initializing dashboard...");
-
-    // TODO: Check authentication
-    // const token = localStorage.getItem('token');
-    // if (!token) {
-    //   window.location.href = '/index.html';
-    //   return;
-    // }
-
-    // Mock user
-    const mockUser: User = {
-      id: "1",
-      role: "manager",
-      username: "manager1",
-      password: "",
-      control_center: "001",
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    };
-
-    state.setUser(mockUser);
-    if (elements.userNameEl) elements.userNameEl.textContent = "מפקד ראשי";
-    if (elements.userRoleEl) elements.userRoleEl.textContent = "מפקד עליון";
-
-    // Load initial data
-    await Promise.all([fetchStats(), loadControlCenters()]);
-
-    // Handle initial route
-    const hash = window.location.hash.slice(1);
-    if (hash) {
-      navigateToView(hash);
-    }
-
-    console.log("✅ Dashboard initialized successfully!");
-  };
-
-  // Start the dashboard
-  initDashboard();
 });
+
+// Add mission
+addMissionBtn.addEventListener('click', () => {
+  alert('פיצ\'ר הוספת משימה יתווסף בקרוב! 🚀');
+  // TODO: Open add mission modal
+});
+
+// Initialize
+console.log('🚀 Dashboard initializing...');
+loadUserData();
+loadMissions(); 
