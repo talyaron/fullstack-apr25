@@ -1,99 +1,61 @@
-import { Request, Response, NextFunction } from "express";
-import { verifyAccessToken } from "../utils/jwt.utils";
+import { Request, Response, NextFunction } from 'express';
+import jwt from 'jsonwebtoken';
+
+interface JwtPayload {
+  userId: string;
+  role: string;
+}
 
 declare global {
   namespace Express {
     interface Request {
-      user?: {
-        userId: string;
-        username: string;
-        role: string;
-        controlCenter: string;
-      };
+      userId?: string;
+      userRole?: string;
     }
   }
 }
 
+// ✅ שם מקורי: authenticate (לא authenticateToken)
 export const authenticate = (
   req: Request,
   res: Response,
   next: NextFunction
-) => {
+): void => {
   try {
-    const authHeader = req.headers.authorization;
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1]; // Bearer TOKEN
 
-    if (!authHeader || !authHeader.startsWith("Bearer ")) {
-      return res.status(401).json({
-        success: false,
-        message: "❌ No token provided. Please login.",
-      });
+    if (!token) {
+      res.status(401).json({ message: 'Access token required' });
+      return;
     }
 
-    const token = authHeader.substring(7);
+    const decoded = jwt.verify(
+      token,
+      process.env.JWT_SECRET || 'your-secret-key'
+    ) as JwtPayload;
 
-    const decoded = verifyAccessToken(token);
-
-    req.user = decoded;
+    req.userId = decoded.userId;
+    req.userRole = decoded.role;
 
     next();
-  } catch (error: any) {
-    if (error.name === "TokenExpiredError") {
-      return res.status(401).json({
-        success: false,
-        message: "⏰ Token expired. Please refresh your token.",
-      });
-    }
-
-    res.status(401).json({
-      success: false,
-      message: "❌ Invalid token",
-      error: error.message,
-    });
+  } catch (error) {
+    console.error('❌ Token verification failed:', error);
+    res.status(403).json({ message: 'Invalid or expired token' });
   }
 };
 
+// ✅ שם מקורי: authorize (לא authorizeRoles)
 export const authorize = (...allowedRoles: string[]) => {
-  return (req: Request, res: Response, next: NextFunction) => {
-    if (!req.user) {
-      return res.status(401).json({
-        success: false,
-        message: "❌ User not authenticated",
-      });
+  return (req: Request, res: Response, next: NextFunction): void => {
+    if (!req.userRole || !allowedRoles.includes(req.userRole)) {
+      res.status(403).json({ message: 'Access denied' });
+      return;
     }
-
-    if (!allowedRoles.includes(req.user.role)) {
-      return res.status(403).json({
-        success: false,
-        message: `🚫 Access denied. Required roles: ${allowedRoles.join(", ")}`,
-        yourRole: req.user.role,
-      });
-    }
-
     next();
   };
 };
 
-export const checkControlCenter = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-
-  const targetControlCenter = 
-    req.body.controlCenter || 
-    req.params.controlCenter || 
-    req.query.controlCenter;
-
-  if (
-    req.user?.role !== "admin" &&
-    targetControlCenter &&
-    req.user?.controlCenter !== targetControlCenter
-  ) {
-    return res.status(403).json({
-      success: false,
-      message: "🚫 You can only access data from your control center",
-    });
-  }
-
-  next();
-};
+// ✅ גם אקספורט את השמות החלופיים למקרה שצריך
+export const authenticateToken = authenticate;
+export const authorizeRoles = authorize;
