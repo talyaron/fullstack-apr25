@@ -76,16 +76,34 @@ registerForm.addEventListener('submit', async (e: Event) => {
       unit: unit || undefined,
     };
     
-    await api.register(registerData);
+    console.log('📤 Sending registration data:', { ...registerData, password: '****' });
     
-    showMessage('נרשמת בהצלחה! מעביר אותך להתחברות...', 'success');
+    const response = await api.register(registerData);
+    
+    console.log('✅ Registration successful:', response);
+    
+    showMessage('נרשמת בהצלחה! מעביר אותך...', 'success');
 
     setTimeout(() => {
-      window.location.href = '/index.html';
-    }, 2000);
+      window.location.href = '/dashboard.html';
+    }, 1500);
   } catch (error: any) {
     console.error('❌ Registration error:', error);
-    showMessage(error.message || 'שגיאה בהרשמה, נסה שוב', 'error');
+    
+    // הצגת הודעת שגיאה ברורה
+    let errorMessage = 'שגיאה בהרשמה';
+    
+    if (error.message) {
+      if (error.message.includes('User already exists')) {
+        errorMessage = 'משתמש עם אימייל זה כבר קיים במערכת';
+      } else if (error.message.includes('Missing required fields')) {
+        errorMessage = 'נא למלא את כל השדות החובה';
+      } else {
+        errorMessage = error.message;
+      }
+    }
+    
+    showMessage(errorMessage, 'error');
   } finally {
     registerBtn.disabled = false;
     registerBtn.textContent = 'הרשם למערכת';
@@ -105,7 +123,7 @@ function clearErrors(): void {
 
 // Remove error on input
 const inputs = registerForm.querySelectorAll<HTMLInputElement | HTMLSelectElement>('input, select');
-inputs.forEach((input) => {
+inputs.forEach((input) => { 
   input.addEventListener('input', function (this: HTMLInputElement | HTMLSelectElement) {
     this.classList.remove('error');
   });

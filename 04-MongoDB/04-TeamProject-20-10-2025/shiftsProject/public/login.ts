@@ -58,7 +58,7 @@ loginForm.addEventListener('submit', async (e: Event): Promise<void> => {
   setLoadingState(true);
 
   try {
-    // ✅ התחברות אמיתית לשרת
+    // ✅ שליחת username במקום militaryId
     const response = await api.login(formData.militaryId, formData.password);
 
     console.log('✅ Login successful:', response);
@@ -72,10 +72,21 @@ loginForm.addEventListener('submit', async (e: Event): Promise<void> => {
 
   } catch (error: any) {
     console.error('❌ Login error:', error);
-    showMessage(
-      error.message || 'מספר אישי או סיסמה שגויים',
-      'error'
-    );
+    
+    // הצגת הודעת שגיאה ברורה
+    let errorMessage = 'שגיאה בהתחברות';
+    
+    if (error.message) {
+      if (error.message.includes('Invalid credentials')) {
+        errorMessage = 'מספר אישי או סיסמה שגויים';
+      } else if (error.message.includes('User not found')) {
+        errorMessage = 'המשתמש לא קיים במערכת';
+      } else {
+        errorMessage = error.message;
+      }
+    }
+    
+    showMessage(errorMessage, 'error');
   } finally {
     setLoadingState(false);
   }
@@ -123,4 +134,4 @@ inputs.forEach((input: HTMLInputElement) => {
   input.addEventListener('input', function (this: HTMLInputElement): void {
     this.classList.remove('error');
   });
-});
+}); 
