@@ -14,15 +14,15 @@ export function anonymousUserMiddleware(req: any, res: any, next: any) {
         console.log('Anonymous User Middleware Invoked');
         //search user cookie
         const userCookie = req.cookies.token;
-        console.log('User cookie:', userCookie);
+        // console.log('User cookie:', userCookie);
         if (!JWT_SECRET) throw new Error("JWT secret is missing!");
 
 
         const userIdJSON = jwt.decode(userCookie, JWT_SECRET); // <= back to JSON
-        console.log("userIdJSON:", userIdJSON)
+        // console.log("userIdJSON:", userIdJSON)
 
         const { id } = userIdJSON;
-        console.log("userId:", id)
+        // console.log("userId:", id)
 
         if (!id) {
             //if not found, create a new anonymous user id

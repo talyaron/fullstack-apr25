@@ -96,67 +96,94 @@ body {
 }
 
 .leaderboard-item {
-    counter-increment: rank;
+  counter-increment: rank;
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  background: rgba(255, 255, 255, .04);
+  border: 1px solid $border-color;
+  border-radius: 12px;
+  padding: .8rem 1rem;
+  transition: transform .2s ease, box-shadow .2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .25);
+  }
+
+  &__rank {
+    flex: 0 0 2.2rem;
+    width: 2.2rem;
+    height: 2.2rem;
     display: grid;
-    grid-template-columns: 3rem 1fr auto;
-    align-items: center;
-    gap: .75rem;
-    background: rgba(255, 255, 255, .04);
+    place-items: center;
+    font-weight: 800;
+    border-radius: 10px;
+    background: $input-bg;
     border: 1px solid $border-color;
-    border-radius: 12px;
-    padding: .8rem 1rem;
-    transition: transform .2s ease, box-shadow .2s ease;
 
-    &:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 18px rgba(0, 0, 0, .25);
+    &--1 {
+      background: linear-gradient(135deg, #ffd54f, #ffa000);
+      color: #1b1b1b;
+    }
+    &--2 {
+      background: linear-gradient(135deg, #e0e0e0, #bdbdbd);
+      color: #1b1b1b;
+    }
+    &--3 {
+      background: linear-gradient(135deg, #f9a825, #ef6c00);
+      color: #1b1b1b;
+    }
+  }
+
+  &__user {
+    flex: 1 1 auto;
+    min-width: 0;
+
+    &-name {
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
-    &__rank {
-        width: 2.2rem;
-        height: 2.2rem;
-        display: grid;
-        place-items: center;
-        font-weight: 800;
-        border-radius: 10px;
-        background: $input-bg;
-        border: 1px solid $border-color;
-
-        &--1 {
-            background: linear-gradient(135deg, #ffd54f, #ffa000);
-            color: #1b1b1b;
-        }
-
-        &--2 {
-            background: linear-gradient(135deg, #e0e0e0, #bdbdbd);
-            color: #1b1b1b;
-        }
-
-        &--3 {
-            background: linear-gradient(135deg, #f9a825, #ef6c00);
-            color: #1b1b1b;
-        }
+    &-meta {
+      font-size: .85rem;
+      color: #ccc;
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
+  }
 
-    &__user {
-        text-align: left;
+  &__score {
+    flex: 0 0 auto;
+    font-weight: 800;
+    color: $secondary-color;
+    white-space: nowrap;
+    margin-left: auto;
+  }
 
-        &-name {
-            font-weight: 700;
-        }
+  &--empty {
+    justify-content: center;
+    color: #ddd;
+    background: rgba(255,255,255,.03);
+    border-style: dashed;
+  }
+}
 
-        &-meta {
-            font-size: .85rem;
-            color: #ccc;
-            margin-top: 2px;
-        }
-    }
+@media (max-width: 480px) {
+  .leaderboard-item {
+    flex-wrap: wrap;
 
     &__score {
-        font-weight: 800;
-        color: $secondary-color;
+      margin-left: auto;
     }
+
+  }
 }
+
 
 @media (max-width: 480px) {
     .leaderboard-item {
