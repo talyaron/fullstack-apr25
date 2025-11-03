@@ -1,39 +1,29 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg';
-import Flower from './assets/flower.jpg';
+import viteLogo from '/vite.svg'
 import './App.scss'
-<<<<<<< Updated upstream
-import Card from './view/components/card/Card';
-=======
-import Card from './View/Components/Card/Card'
->>>>>>> Stashed changes
+import dogLogo from './assets/dog.jpg'
+import Card from './View/components/card/Card'
+
 
 function App() {
   const [count, setCount] = useState(0)
 
-  return ( //JSX
+  return (
     <>
       <div>
-        <Hi />
-        <Card />
-<<<<<<< Updated upstream
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-=======
->>>>>>> Stashed changes
+        <Card/>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
         <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
+           </a>
+           <a href="https://react.dev" target="_blank">
+          <img src={dogLogo} className="logo dog" alt="Dog logo" />
         </a>
       </div>
-      <img src={Flower} className="flower" alt="Flower" />
-      <h1>Tal's App</h1>
+      <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
@@ -50,8 +40,3 @@ function App() {
 }
 
 export default App
-
-
-function Hi() {
-  return <h1>Hola!</h1>
-}
