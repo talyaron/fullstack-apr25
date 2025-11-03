@@ -3,7 +3,7 @@ import styles from './Card.module.scss';
 const Card = () => {
   return (
     <div className={styles.card}>
-        <h1>1234</h1>
+        <h1>rterte</h1>
     </div>
   )
 }
