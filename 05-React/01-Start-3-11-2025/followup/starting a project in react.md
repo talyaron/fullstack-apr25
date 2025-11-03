@@ -52,3 +52,10 @@ my-react-app/
 ├── index.html
 └── package.json
 ```
+
+
+To work with scss files, you can install sass:
+
+```bash
+npm install sass
+```
