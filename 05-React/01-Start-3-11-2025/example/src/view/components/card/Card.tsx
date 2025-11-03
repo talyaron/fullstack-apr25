@@ -1,9 +1,9 @@
-import "./Card.scss";
+import styles from './Card.module.scss';
 
 const Card = () => {
   return (
-    <div>
-        <h1>1234</h1>
+    <div className={styles.card}>
+        <h1>rterte</h1>
     </div>
   )
 }
