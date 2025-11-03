@@ -4,6 +4,9 @@
   padding: 2rem;
   text-align: center;
 }
+.App{
+  background-color: #888;
+}
 
 .logo {
   height: 6em;
@@ -39,4 +42,17 @@
 
 .read-the-docs {
   color: #888;
+}
+.view{
+  animation:view-spin infinite 20s linear;
+  z-index: -100;
+}
+
+@keyframes view-spin {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
 }
