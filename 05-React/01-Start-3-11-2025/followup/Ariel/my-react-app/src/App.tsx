@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
+import itsMeMario from './assets/itsMeMario.jpg'
 import viteLogo from '/vite.svg'
-import './App.css'
+import './App.scss'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -11,6 +12,9 @@ function App() {
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://wa.me/972548114905" target="_blank">
+          <img src={itsMeMario} className="logo its-me-mario" alt="Picture of Ariel Izraelov" />
         </a>
         <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
