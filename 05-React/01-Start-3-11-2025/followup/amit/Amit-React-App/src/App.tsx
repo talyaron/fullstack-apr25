@@ -2,11 +2,10 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import reactLogo2 from './assets/image.png'
 import viteLogo from '/vite.svg'
-import './view/components/card/Card.scss'
 import './App.scss'
 import Card from './view/components/card/Card'
 
-function App() {
+export function App() {
   const [count, setCount] = useState(0)
 
   return (
