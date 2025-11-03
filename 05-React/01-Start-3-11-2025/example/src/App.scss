@@ -1,21 +1,30 @@
+// Variables
+$primary-color: #646cffaa;
+$react-color: #61dafbaa;
+$text-muted: #888;
+$max-width: 1280px;
+$logo-size: 6em;
+
 #root {
-  max-width: 1280px;
+  max-width: $max-width;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
 
 .logo {
-  height: 6em;
+  height: $logo-size;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+
+  &:hover {
+    filter: drop-shadow(0 0 2em $primary-color);
+  }
+
+  &.react:hover {
+    filter: drop-shadow(0 0 2em $react-color);
+  }
 }
 
 @keyframes logo-spin {
@@ -38,5 +47,5 @@
 }
 
 .read-the-docs {
-  color: #888;
+  color: $text-muted;
 }
