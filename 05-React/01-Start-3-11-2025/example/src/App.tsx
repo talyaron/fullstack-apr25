@@ -3,7 +3,11 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg';
 import Flower from './assets/flower.jpg';
 import './App.scss'
+<<<<<<< Updated upstream
 import Card from './view/components/card/Card';
+=======
+import Card from './View/Components/Card/Card'
+>>>>>>> Stashed changes
 
 function App() {
   const [count, setCount] = useState(0)
@@ -13,11 +17,14 @@ function App() {
       <div>
         <Hi />
         <Card />
+<<<<<<< Updated upstream
         <Card />
         <Card />
         <Card />
         <Card />
         <Card />
+=======
+>>>>>>> Stashed changes
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
