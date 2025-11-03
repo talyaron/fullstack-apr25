@@ -12,6 +12,8 @@
   },
   "devDependencies": {
     "@types/cookie-parser": "^1.4.9",
-    "@types/web": "^0.0.262"
+    "@types/node": "^24.10.0",
+    "@types/web": "^0.0.262",
+    "vite": "^7.1.12"
   }
 }
