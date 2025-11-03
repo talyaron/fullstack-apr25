@@ -52,6 +52,22 @@ async function getUserData(): Promise<UserData | null> {
   }
 }
 
+async function reportGameResult(won: boolean): Promise<void> {
+  try {
+    await fetch("/data/report-result", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ won }),
+    });
+
+    localStorage.setItem("lb-refresh", String(Date.now()));
+  } catch (error) {
+    console.error("Failed to report game result:", error);
+  }
+}
+
+
 async function updateUserData(amountOfGames: number, amountOfVictories: number): Promise<UserData | null> {
   try {
     const response = await fetch("http://localhost:3000/data/update-data", {
@@ -310,15 +326,7 @@ async function checkGuess(): Promise<void> {
     const isGameEnd = isWin || currentRow === ROWS - 1;
 
     if (isGameEnd) {
-      // Fetch current user data
-      const userData = await getUserData();
-      if (userData) {
-        const newGamesCount = userData.amountOfGames + 1;
-        const newVictoriesCount = isWin ? userData.amountOfVictories + 1 : userData.amountOfVictories;
-
-        // Update user data
-        await updateUserData(newGamesCount, newVictoriesCount);
-      }
+      await reportGameResult(isWin);
     }
 
     if (isWin) {
@@ -362,18 +370,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (giveUpBtn) {
     giveUpBtn.addEventListener("click", async (e) => {
       e.preventDefault();
-      // errorDiv.textContent = ;
-      // errorDiv.style.display = "block";
+
       isGameOver = true;
-
-      // Update stats for giving up (counts as a game played, not a victory)
-
-        const userData = await getUserData();
-        if (userData) {
-          await updateUserData(userData.amountOfGames + 1, userData.amountOfVictories);
-        }
-
-
+      await reportGameResult(false);
       newGame(`💡 You gave up! The word was ${SECRET}.`);
     });
   }

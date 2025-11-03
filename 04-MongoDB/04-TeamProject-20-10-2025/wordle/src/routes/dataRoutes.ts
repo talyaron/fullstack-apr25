@@ -6,6 +6,7 @@ const router = express.Router();
 
 router.get("/get-user-data",anonymousUserMiddleware,  dataControllers.getUserData)
       .patch("/update-data", anonymousUserMiddleware, dataControllers.updateUserData)
-      .get("/leaderboard", anonymousUserMiddleware, dataControllers.getLeaderBoard);
+      .post("/report-result", anonymousUserMiddleware, dataControllers.reportResult)
+      .get("/leaderboard", dataControllers.getLeaderBoard);
 
 export default router;
