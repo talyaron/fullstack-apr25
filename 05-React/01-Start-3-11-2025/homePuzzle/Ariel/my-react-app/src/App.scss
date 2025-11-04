@@ -1,42 +1,103 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
+@import './../styles/mixins';    
+@import './../styles/variables';
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.app {
+  min-height: 100vh;
+  position: relative;
+  @include flex-center;
+  padding: $spacing-xl;
+  overflow: hidden;
+  
+  &__video-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
   }
-  to {
-    transform: rotate(360deg);
+  
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba($gray-900, 0.3);
+    z-index: -1;
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  
+  &__container {
+    @include container;
+    position: relative;
+    z-index: 1;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+  
+  &__title {
+    text-align: center;
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-3xl;
+    color: $white;
+    text-shadow: 0 2px 10px rgba($black, 0.3);
+    @include fade-in;
+  }
+  
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: $spacing-xl;
+    
+    @include tablet {
+      grid-template-columns: 1fr;
+      gap: $spacing-lg;
+    }
+    
+    @include mobile {
+      gap: $spacing-md;
+    }
+  }
+  
+  &__profile {
+    grid-row: 1 / 3;
+    grid-column: 2 / 3;
+    @include flex-center;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    border: none !important;
+    padding: 0 !important;
+    
+    @include tablet {
+      grid-row: auto;
+      grid-column: auto;
+    }
+    
+    &:hover {
+      transform: scale(1.05) !important;
+      box-shadow: none !important;
+    }
+    
+    &-img {
+      width: 320px;
+      height: 320px;
+      border-radius: $border-radius-full;
+      object-fit: cover;
+      border: 5px solid $primary-color;
+      box-shadow: $shadow-xl;
+      transition: all $transition-normal;
+      
+      @include mobile {
+        width: 250px;
+        height: 250px;
+      }
+      
+      &:hover {
+        border-color: $primary-dark;
+        box-shadow: 0 20px 60px rgba($primary-color, 0.7);
+      }
+    }
+  }
 }

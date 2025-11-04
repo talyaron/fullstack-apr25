@@ -1,0 +1,49 @@
+@import './../../../../styles/variables';
+@import './../../../../styles/mixins';
+
+.business-card {
+  @include card;
+  
+  &__title {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    margin-bottom: $spacing-lg;
+    color: $gray-900;
+  }
+  
+  &__email,
+  &__phone {
+    margin: $spacing-sm 0;
+    font-size: $font-size-base;
+    color: $gray-700;
+  }
+  
+  &__social {
+    display: flex;
+    gap: $spacing-lg;
+    justify-content: center;
+    margin-top: $spacing-xl;
+  }
+  
+  &__social-link {
+    transition: transform $transition-fast;
+    
+    &:hover {
+      transform: scale(1.15);
+    }
+  }
+  
+  &__icon {
+    &--github {
+      color: #181717;
+    }
+    
+    &--linkedin {
+      color: #0A66C2;
+    }
+    
+    &--whatsapp {
+      color: #25D366;
+    }
+  }
+}
