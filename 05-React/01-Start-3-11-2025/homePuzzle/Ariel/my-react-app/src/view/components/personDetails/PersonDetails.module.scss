@@ -1,0 +1,26 @@
+@import './../../../../styles/variables';
+@import './../../../../styles/mixins';
+
+.person-details {
+  @include card;
+  
+  &__text {
+    margin: $spacing-md 0;
+    line-height: $line-height-relaxed;
+    font-size: $font-size-base;
+    color: $gray-900;
+    
+    &:last-child {
+      margin-top: $spacing-lg;
+    }
+  }
+  
+  &__highlight {
+    font-weight: $font-weight-semibold;
+    color: $gray-900;
+    background: $primary-color;
+    padding: 0.1rem 0.4rem;
+    border-radius: $border-radius-md;
+    @include pulse;
+  }
+}
