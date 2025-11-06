@@ -3,7 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import view from './assets/download.jpg'
 import './App.scss'
-
+import Card from './view/components/card/Card'
 function App() {
   const [count, setCount] = useState(0)
 
@@ -18,6 +18,10 @@ function App() {
           <img src={view} className="view" alt="view"  />
         </a>
       </div>
+    <Card/>
+    <Card/>
+    <Card/>
+
       <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
