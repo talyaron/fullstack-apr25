@@ -1,0 +1,1 @@
+Create an app, with a input-color component. when you change the color in the input, the background color of the app changes to that color. Use state to store the color value.
