@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Kermit from './assets/Kermit.avif'
 import './App.scss'
+import Card from './View/Components/Card/Card'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -12,6 +13,7 @@ function App() {
           <img src={Kermit} className="logo" alt="Kermit the frog" />
         </a>
       </div>
+      <Card />
       <h1>Kermit Site</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>

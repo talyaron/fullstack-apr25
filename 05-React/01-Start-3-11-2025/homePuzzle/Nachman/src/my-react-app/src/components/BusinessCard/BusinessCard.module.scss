@@ -1,0 +1,65 @@
+$radius: 14px;
+
+
+.sideAccent {
+position: absolute;
+left: 0;
+top: 0;
+bottom: 0;
+width: 8px;
+background: linear-gradient(180deg, var(--accent-1), var(--accent-2));
+}
+
+
+.inner {
+display: flex;
+gap: 1rem;
+padding: 1rem 1.2rem;
+align-items: center;
+}
+
+
+.avatar {
+width: 84px;
+height: 84px;
+border-radius: 12px;
+object-fit: cover;
+box-shadow: 0 6px 18px rgba(99,102,241,0.08);
+border: 2px solid rgba(255,255,255,0.6);
+}
+
+
+.info { flex: 1; }
+
+
+.name { margin: 0; font-size: 1.1rem; color: #16323a; }
+.role { margin: 0.25rem 0 0; color: #55707a; font-size: 0.92rem; }
+
+
+.tags { margin-top: 0.6rem; display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.tag {
+background: linear-gradient(90deg, rgba(255,255,255,0.9), rgba(255,255,255,0.8));
+padding: 0.28rem 0.6rem;
+border-radius: 999px;
+font-size: 0.8rem;
+color: #55707a;
+box-shadow: 0 4px 10px rgba(15,23,42,0.03) inset;
+}
+
+
+.actions { margin-top: 0.8rem; display: flex; gap: 0.6rem; }
+.primary {
+background: linear-gradient(90deg, #ffdedd, #e7f7ff);
+border: none;
+padding: 0.5rem 0.9rem;
+border-radius: 10px;
+font-weight: 600;
+cursor: pointer;
+}
+.ghost {
+background: transparent;
+border: 1px solid rgba(82, 95, 111, 0.12);
+padding: 0.45rem 0.8rem;
+border-radius: 10px;
+cursor: pointer;
+}
