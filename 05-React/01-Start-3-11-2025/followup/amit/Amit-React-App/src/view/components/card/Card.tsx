@@ -1,10 +1,10 @@
-import "./Card.scss";
+import styles from "./Card.module.scss";
 
 export function Card() {
   return (
-    <div className="card">
-      <h3 className="card-title">My Card</h3>
-      <p className="card-description">lorem ipsum dolor sit amet</p>
+    <div className={styles.card}>
+      <h3 className={styles.cardTitle}>My Card</h3>
+      <p className={styles.cardDescription}>lorem ipsum dolor sit amet</p>
     </div>
   )
 }

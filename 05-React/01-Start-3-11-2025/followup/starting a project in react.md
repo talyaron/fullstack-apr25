@@ -12,7 +12,7 @@
     ```
 
     choose `react` when prompted for a template.
-
+np,
     choose TypeScript + Compiler
 
     choose No (without rollback)
