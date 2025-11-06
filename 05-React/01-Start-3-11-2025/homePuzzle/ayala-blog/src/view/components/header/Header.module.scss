@@ -1,0 +1,20 @@
+.header {
+  &Link {
+    cursor: pointer;
+  }
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  /* or any color you want */
+  color: #000;
+  text-align: center;
+  padding: 1rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+  z-index: 1000;
+  /* keeps it above other content */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
