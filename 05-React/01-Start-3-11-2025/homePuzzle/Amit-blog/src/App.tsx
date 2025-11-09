@@ -8,14 +8,14 @@ function App() {
       <img src={image} alt="amit photo"></img>
 
       <p>
-        Hi! My name is <strong>Amit</strong>, I’m 24 years old. I’ve been in a
-        relationship for two years with my girlfriend, <strong>Maya</strong>.
-        We currently live together in <strong>Kfar Yona</strong>, but I
-        originally come from <strong>Jerusalem</strong>.
+        Hi! My name is Amit, I’m 24 years old. I’ve been in a
+        relationship for two years with my girlfriend, Maya.
+        We currently live together in Kfar Yona, but I
+        originally come from Jerusalem.
       </p>
 
       <p>
-        I work at a café called <strong>“Nomi”</strong> located in Emek Hefer.
+        I work at a café called “Nomi” located in Emek Hefer.
       </p>
 
       <p>
