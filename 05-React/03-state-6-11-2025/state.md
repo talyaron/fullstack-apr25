@@ -1,0 +1,1 @@
+A state is a data inside a component that can change over time. When the state changes, the component re-renders to reflect the new state.
