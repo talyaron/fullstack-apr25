@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import styles from './Game.module.scss';
 
 const Game = ({ number }: { number: number }) => {
-    const [parity, setParity] = useState<'Even' | 'Odd'>(number % 2 === 0 ? 'Even' : 'Odd');
+    // const [parity, setParity] = useState<'Even' | 'Odd'>(number % 2 === 0 ? 'Even' : 'Odd');
     const [backgroundColor, setBackgroundColor] = useState<'green' | 'red'| 'white'>('white');
   
   
