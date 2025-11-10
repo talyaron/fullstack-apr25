@@ -3,23 +3,31 @@ import balonPic from "./pics/image.png";
 import explode from "./pics/image copy.png";
 import "./App.module.scss";
 import { IconButton } from "@mui/material";
-import AcUnitIcon from "@mui/icons-material/AcUnit";
+
 function App() {
-  const [timer, setTimer] = useState(0);
   const [exploded, setExploded] = useState(false);
 
-
-
-
+  const handleClick = () => {
+    setExploded((prev) => !prev);
+    if (!exploded) {
+      console.log("boom");
+    }
+  };
 
   return (
-    <>
-      <div>
-        <IconButton>
-          <img src={balonPic} alt="" />{" "}
-        </IconButton>
-      </div>
-    </>
+    <div>
+      <IconButton
+        style={{ height: "50px", width: "50px" }}
+        onClick={handleClick}
+        aria-label="Balloon"
+      >
+        <img
+          src={exploded ? explode : balonPic}
+          alt={exploded ? "Exploded balloon" : "Balloon"}
+          style={{ height: "50px", width: "50px" }}
+        />
+      </IconButton>
+    </div>
   );
 }
 
