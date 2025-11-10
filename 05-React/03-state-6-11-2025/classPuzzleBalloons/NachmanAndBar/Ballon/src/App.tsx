@@ -24,7 +24,7 @@ function App() {
         <img
           src={exploded ? explode : balonPic}
           alt={exploded ? "Exploded balloon" : "Balloon"}
-          style={{ height: "50px", width: "50px" }}
+          style={{ height: "50px", width: "50px", position: "fixed"}}
         />
       </IconButton>
     </div>
