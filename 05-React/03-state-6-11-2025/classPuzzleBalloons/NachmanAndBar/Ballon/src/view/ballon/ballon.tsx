@@ -24,9 +24,9 @@ function Balloon({ id, x, y, onPop }: BalloonProps) {
     <button
       className={`balloon ${isExploded ? 'exploded' : ''}`}
       style={{ 
-        left: `${x}%`,
-        top: `${y}%`,
-      }}
+        '--balloon-y': `${y}%`,
+        '--balloon-delay': `${x * 0.05}s`
+      } as React.CSSProperties}
       onClick={handleClick}
     >
       {isExploded ? '💥' : '🎈'}
