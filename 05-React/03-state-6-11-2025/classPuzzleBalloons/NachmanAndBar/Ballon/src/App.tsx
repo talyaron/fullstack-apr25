@@ -1,36 +1,11 @@
 import { useState } from "react";
-import balloonImg from "./pics/ballon.png";
+import Balloon from "./pics/ballon.png";
 import styles from "./App.module.scss";
 
 interface BalloonType {
   id: number;
   x: number;
   y: number;
-}
-
-interface BalloonProps {
-  id: number;
-  x: number;
-  y: number;
-  onPop: (id: number) => void;
-}
-
-function Balloon({ id, x, y, onPop }: BalloonProps) {
-  return (
-    <img
-      src={balloonImg}
-      alt="balloon"
-      style={{
-        position: "absolute",
-        left: `${x}%`,
-        top: `${y}%`,
-        cursor: "pointer",
-        transform: "translate(-50%, -50%)",
-      }}
-      onClick={() => onPop(id)}
-      className={styles.balloon}
-    />
-  );
 }
 
 function App() {
