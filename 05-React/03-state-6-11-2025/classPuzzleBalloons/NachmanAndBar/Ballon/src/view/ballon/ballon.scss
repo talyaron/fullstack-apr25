@@ -1,0 +1,58 @@
+// Balloon specific styles and animations
+.balloon {
+  position: absolute;
+  cursor: pointer;
+  transition: filter 0.2s ease;
+  animation: floatAcross 8s ease-in-out infinite;
+  z-index: 10;
+  
+  &:hover {
+    filter: brightness(1.2);
+    transform: scale(1.05);
+  }
+  
+  img {
+    height: 60px;
+    width: 60px;
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
+    transition: all 0.3s ease;
+  }
+  
+  &.exploded {
+    animation: explodeEffect 0.5s ease-out forwards;
+    
+    img {
+      filter: drop-shadow(0 0 10px rgba(255, 100, 0, 0.8));
+    }
+  }
+}
+
+@keyframes floatAcross {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(30px, -20px) rotate(5deg);
+  }
+  50% {
+    transform: translate(-20px, 15px) rotate(-5deg);
+  }
+  75% {
+    transform: translate(40px, -10px) rotate(3deg);
+  }
+}
+
+@keyframes explodeEffect {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.3) rotate(10deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0.5) rotate(20deg);
+    opacity: 0;
+  }
+}
