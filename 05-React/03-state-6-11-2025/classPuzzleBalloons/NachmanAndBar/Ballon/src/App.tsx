@@ -1,25 +1,81 @@
 import { useState } from "react";
-import ballonSrc from "./pics/ballon.png";
+import balloonImg from "./pics/ballon.png";
 import styles from "./App.module.scss";
 
+interface BalloonType {
+  id: number;
+  x: number;
+  y: number;
+}
+
+interface BalloonProps {
+  id: number;
+  x: number;
+  y: number;
+  onPop: (id: number) => void;
+}
+
+function Balloon({ id, x, y, onPop }: BalloonProps) {
+  return (
+    <img
+      src={balloonImg}
+      alt="balloon"
+      style={{
+        position: "absolute",
+        left: `${x}%`,
+        top: `${y}%`,
+        cursor: "pointer",
+        transform: "translate(-50%, -50%)",
+      }}
+      onClick={() => onPop(id)}
+      className={styles.balloon}
+    />
+  );
+}
+
 function App() {
-  const [balloonPosition] = useState({
-    x: Math.random() * 70 + 15, // 15% to 85%
-    y: Math.random() * 50 + 20, // 20% to 70%
-  });
+  const [balloons, setBalloons] = useState<BalloonType[]>([]);
+  const [score, setScore] = useState(0);
+  const [nextId, setNextId] = useState(0);
+
+  const addBalloon = () => {
+    const newBalloon: BalloonType = {
+      id: nextId,
+      x: Math.random() * 85, // 0% to 85% to keep balloons visible
+      y: Math.random() * 70 + 10, // 10% to 80% to keep away from button
+    };
+    
+    setBalloons([...balloons, newBalloon]);
+    setNextId(nextId + 1);
+  };
+
+  const handlePop = (balloonId: number) => {
+    setScore(score + 1);
+    // Remove balloon after explosion animation
+    setTimeout(() => {
+      setBalloons(balloons.filter(b => b.id !== balloonId));
+    }, 100);
+  };
 
   return (
     <div className={styles.container}>
-      <button onClick={() => console.log("Balloon clicked!")}>
-        
- <img
-        src={ballonSrc}
-        alt="balloon"
-        className={styles.balloon}
-        style={{ position: "absolute", left: `${balloonPosition.x}%`, top: `${balloonPosition.y}%`, cursor: "pointer" }}
-      />
+      <div className={styles.scoreDisplay}>
+        🎯 Score: {score}
+      </div>
+
+      {balloons.map(balloon => (
+        <Balloon
+          key={balloon.id}
+          id={balloon.id}
+          x={balloon.x}
+          y={balloon.y}
+          onPop={handlePop}
+        />
+      ))}
+
+      <button className={styles.addBalloonBtn} onClick={addBalloon}>
+        + Add Balloon 🎈
       </button>
-     
     </div>
   );
 }

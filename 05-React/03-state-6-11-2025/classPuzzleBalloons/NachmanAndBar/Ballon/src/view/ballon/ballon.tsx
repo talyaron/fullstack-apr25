@@ -1,16 +1,14 @@
 import { useState } from "react";
-import { IconButton } from "@mui/material";
-import balonPic from "../pics/ballon.png";
-import explode from "../pics/image copy.png";
-import "./ballon.scss";
+import "./Balloon.scss";
 
 interface BalloonProps {
+  id: number;
   x: number;
   y: number;
-  onPop?: () => void;
+  onPop: (id: number) => void;
 }
 
-function Balloon({ x, y, onPop }: BalloonProps) {
+function Balloon({ id, x, y, onPop }: BalloonProps) {
   const [isExploded, setIsExploded] = useState(false);
 
   const handleClick = () => {
@@ -18,27 +16,21 @@ function Balloon({ x, y, onPop }: BalloonProps) {
       setIsExploded(true);
       console.log("💥 BOOM!");
       
-      if (onPop) {
-        setTimeout(() => onPop(), 500);
-      }
+      setTimeout(() => onPop(id), 500);
     }
   };
 
   return (
-    <IconButton
+    <button
       className={`balloon ${isExploded ? 'exploded' : ''}`}
       style={{ 
         left: `${x}%`,
         top: `${y}%`,
       }}
       onClick={handleClick}
-      disableRipple
     >
-      <img
-        src={isExploded ? explode : balonPic}
-        alt={isExploded ? "💥" : "🎈"}
-      />
-    </IconButton>
+      {isExploded ? '💥' : '🎈'}
+    </button>
   );
 }
 
