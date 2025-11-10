@@ -1,5 +1,5 @@
-@import './../../../../styles/variables';
 @import './../../../../styles/mixins';
+@import '../../../../styles/variables';
 
 .favorite-movies {
   @include card;
@@ -13,7 +13,6 @@
   }
   
   &__list {
-    list-style: none;
     padding: 0;
     margin: 0;
   }
@@ -35,7 +34,7 @@
     &:nth-child(4) { animation-delay: 0.4s; }
     
     &:hover {
-      transform: translateX(10px);
+      transform: scale(1.05);
       background: $primary-dark;
       box-shadow: $shadow-md;
     }

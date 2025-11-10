@@ -1,5 +1,5 @@
-@import './../../../../styles/variables';
 @import './../../../../styles/mixins';
+@import './../../../../styles/variables';
 
 .business-card {
   @include card;
@@ -20,7 +20,7 @@
   
   &__social {
     display: flex;
-    gap: $spacing-lg;
+    gap: $spacing-2xl;
     justify-content: center;
     margin-top: $spacing-xl;
   }
@@ -35,15 +35,15 @@
   
   &__icon {
     &--github {
-      color: #181717;
+      color: #181717; // black
     }
     
     &--linkedin {
-      color: #0A66C2;
+      color: #0A66C2; // blue
     }
     
     &--whatsapp {
-      color: #25D366;
+      color: #25D366; // green
     }
   }
 }

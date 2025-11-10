@@ -1,20 +1,19 @@
 @import './variables';
 
-// Card Component
+// Card Component with Glass Effect
 @mixin card {
-  background-color: rgba($white, 0.85);
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba($primary-color, 0.5);
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid rgba(59, 130, 246, 0.5);
   border-radius: $border-radius-xl;
   padding: $spacing-xl;
-  box-shadow: $shadow-md;
-  transition: all $transition-normal;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
   
   &:hover {
-    transform: translateY(-8px);
-    background-color: rgba($white, 0.95);
-    border-color: $primary-color;
-    box-shadow: $shadow-xl;
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.95);
+    border-color: #3b82f6;
+    box-shadow: 0 12px 48px rgba(59, 130, 246, 0.3);
   }
 }
 
