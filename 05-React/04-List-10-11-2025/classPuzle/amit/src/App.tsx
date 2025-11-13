@@ -3,7 +3,7 @@ import styles from "./App.module.scss"
 import { useState } from "react";
 
 function App() {
-  const initialBooks: BookProps[] = [
+  const firstBooks: BookProps[] = [
     {
       id: "1",
       title: "The Lion Who Loved Strawberries",
@@ -24,7 +24,7 @@ function App() {
     },
   ]
 
-  const [books, setBooks] = useState<BookProps[]>(initialBooks);
+  const [books, setBooks] = useState<BookProps[]>(firstBooks);
   const [title, setTitle] = useState("")
   const [imageUrl, setImageUrl] = useState("")
   const [yearOfPublication, setYearOfPublication] = useState("")
@@ -33,15 +33,15 @@ function App() {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
-    const parsedYear = Number(yearOfPublication);
+    const parsed = Number(yearOfPublication);
     const currentYear = new Date().getFullYear();
 
 
     if (!title.trim()) return alert("Please enter a title.");
     if (!imageUrl.trim()) return alert("Please enter an image URL.");
     if (!Number) return alert("Year must be a whole number.");
-    if (!Number.isInteger(parsedYear)) return alert("Year must be a whole number.");
-    if (parsedYear < 0 || parsedYear > currentYear)
+    if (!Number.isInteger(parsed)) return alert("Year must be a whole number.");
+    if (parsed < 0 || parsed > currentYear)
       return alert(`Year must be between 0 and ${currentYear}.`);
 
 
@@ -49,7 +49,7 @@ function App() {
       id: crypto.randomUUID(),
       title: title.trim(),
       imageUrl: imageUrl.trim(),
-      yearOfPublication: parsedYear,
+      yearOfPublication: parsed,
     };
 
 
