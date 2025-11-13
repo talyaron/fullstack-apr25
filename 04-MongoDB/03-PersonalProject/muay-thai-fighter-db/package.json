@@ -6,6 +6,8 @@
   "scripts": {
        "start": "ts-node src/test-insert.ts",
     "test:echo": "echo \"Error: no test specified\" && exit 1"
+    "start": "ts-node src/test-insert.ts",
+    "seed": "ts-node src/seed-fighters.ts"
   }, 
   "keywords": [],
   "author": "",
