@@ -5,18 +5,18 @@ import mongoose from 'mongoose';
 // Get all books for the authenticated user
 export const getBooks = async (req: Request, res: Response): Promise<void> => {
   try {
-    // const userId = req.user?._id;
+    const userId = req.user?._id;
 
-    // if (!userId) {
-    //   res.status(401).json({
-    //     success: false,
-    //     message: 'User not authenticated'
-    //   });
-    //   return;
-    // }
+    if (!userId) {
+      res.status(401).json({
+        success: false,
+        message: 'User not authenticated'
+      });
+      return;
+    }
 
     // Find all books for the user, sorted by creation date (newest first)
-    const books = await Book.find({  }).sort({ createdAt: -1 });
+    const books = await Book.find({ userId }).sort({ createdAt: -1 });
 
     res.status(200).json({
       success: true,
