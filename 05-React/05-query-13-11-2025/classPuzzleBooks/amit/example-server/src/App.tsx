@@ -139,7 +139,7 @@ function App() {
           title: bookData.title,
           author: bookData.author,
           description: bookData.description,
-          year,
+          year: bookData.yearOfPublication,
         }),
       });
 
@@ -152,7 +152,7 @@ function App() {
       setBooks((prev) => [data.book, ...prev]);
       setServerMessage("Book created successfully.");
       (e.currentTarget as HTMLFormElement).reset();
-      
+
     } catch (error) {
       console.error(`Error:, ${error}`)
       setServerMessage(`An error occurred during fetching books. ${(error as Error).message}`);
