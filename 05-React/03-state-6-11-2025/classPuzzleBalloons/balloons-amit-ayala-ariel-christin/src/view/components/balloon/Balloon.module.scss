@@ -1,0 +1,21 @@
+
+.image {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 0;
+
+    animation: moveUpDownFull 3s ease-in-out infinite;
+}
+
+@keyframes moveUpDownFull {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-100vh);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

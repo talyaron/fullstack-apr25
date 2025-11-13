@@ -6,11 +6,16 @@
     "bootstrap": "^5.3.7",
     "cookie-parser": "^1.4.7",
     "express": "^5.1.0",
+    "i": "^0.3.7",
     "mongoose": "^8.18.1",
     "source-map": "^0.7.6"
   },
   "devDependencies": {
     "@types/cookie-parser": "^1.4.9",
-    "@types/web": "^0.0.262"
+    "@types/node": "^24.10.0",
+    "@types/react-dom": "^19.2.2",
+    "@types/web": "^0.0.262",
+    "sass": "^1.94.0",
+    "vite": "^7.1.12"
   }
 }

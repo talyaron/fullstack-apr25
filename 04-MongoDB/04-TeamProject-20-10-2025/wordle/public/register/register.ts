@@ -1,3 +1,4 @@
+
 interface RegisterData {
     name: string;
     email: string;
@@ -43,14 +44,14 @@ document.addEventListener('DOMContentLoaded', (): void => {
         loadingDiv.style.display = 'block';
 
         try {
-            const response = await fetch('http://localhost:3000/user/register', {
+            const response = await fetch("http://localhost:3000/user/register", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                credentials: 'include', 
+                credentials: 'include',
                 body: JSON.stringify({
-                    name: user, 
+                    name: user,
                     email,
                     password
                 } as RegisterData)

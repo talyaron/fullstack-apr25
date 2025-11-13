@@ -1,5 +1,6 @@
 // Login.ts - MVC Architecture
 
+
 // ========== MODEL ==========
 class LoginModel {
   private email: string = '';
@@ -41,10 +42,10 @@ class LoginModel {
   async login(): Promise<{ ok: boolean; error?: string }> {
     try {
       console.log('Attempting login with', this.email, this.password);
-      const response = await fetch('http://localhost:3000/user/login', {
+      const response = await fetch("http://localhost:3000/user/login", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', },
-        body: JSON.stringify({ email: this.email, password: this.password, }),
+        body: JSON.stringify({ email: this.email, password: this.password}),
         credentials: 'include',
       });
 

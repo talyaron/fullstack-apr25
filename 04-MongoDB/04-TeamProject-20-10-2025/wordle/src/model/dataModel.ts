@@ -11,6 +11,6 @@ const dataSchema = new Schema<Data>({
   userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
   amountOfGames: { type: Number, required: true, default: 0 },
   amountOfVictories: { type: Number, required: true, default: 0 },
-}, { timestamps: true });
+});
 
 export const dataModel = model("Data", dataSchema);

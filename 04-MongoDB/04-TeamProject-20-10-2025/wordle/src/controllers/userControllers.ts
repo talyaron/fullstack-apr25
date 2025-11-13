@@ -32,7 +32,7 @@ export const login = async (req: Request, res: Response) => {
     console.log(isMatch)
     if (!isMatch) return res.status(400).json({ message: "Invalid credentials" });
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET as string, { expiresIn: "7d" });
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET as string, { expiresIn: "30m" });
     res.cookie("token", token, { httpOnly: true, sameSite: "lax", secure: false });
     res.status(200).json({ message: "Logged in successfully", user });
   } catch (error) {
@@ -57,39 +57,3 @@ export const getAllUsers = async (_: Request, res: Response) => {
     res.status(500).json({ message: "Failed to fetch users" });
   }
 };
-
-
-export const getLeaders = async (_req: Request, res: Response) => {
-  try {
-    const users = await userModel.find().lean() as Array<User & { gamesPlayed?: number; gamesWon?: number }>;
-
-    if (!users || users.length === 0) {
-      return res.status(404).json({ message: "No users found" });
-    }
-
-    // Calculate success rate for each user
-    const usersWithSuccess = users.map(user => {
-      const gamesPlayed = user.gamesPlayed || 0;
-      const gamesWon = user.gamesWon || 0;
-      const successRate = gamesPlayed > 0 ? (gamesWon / gamesPlayed) * 100 : 0;
-
-      return {
-        ...user,
-        successRate,
-      };
-    });
-
-    // Sort by success rate (descending) and take top 10
-    const topTen = usersWithSuccess
-      .sort((a, b) => b.successRate - a.successRate)
-      .slice(0, 10);
-
-    return res.status(200).json(topTen);
-
-  } catch (error: any) {
-    console.error(error);
-    res.status(500).json({ message: "Error getting top users" });
-  }
-};
-
-

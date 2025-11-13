@@ -54,13 +54,13 @@ body {
 
   // Element: logo
   &__logo {
-    width: 80px;
+    width: 80px; 
     height: 80px;
     margin: 0 auto $spacing-lg;
     @include flex-center;
   }
-
-  // Element: logo-image
+ 
+  // Element: logo-image  
   &__logo-image {
     width: 200%;
     height: 100%;
@@ -77,7 +77,7 @@ body {
 
   // Element: subtitle
   &__subtitle {
-    font-size: $font-sm;
+    font-size: $font-sm; 
     color: $color-dark-gray;
     font-weight: $font-normal;
   }

@@ -1,6 +1,4 @@
-// ===============================================
-// LOGIN PAGE TYPESCRIPT - BEM Methodology
-// ===============================================
+import api from './api.js';  
 
 // Types
 interface LoginFormData {
@@ -11,7 +9,7 @@ interface LoginFormData {
 
 type MessageType = 'success' | 'error';
 
-// Form elements - BEM class names
+// Form elements
 const loginForm = document.getElementById('loginForm') as HTMLFormElement;
 const loginBtn = document.getElementById('loginBtn') as HTMLButtonElement;
 const message = document.getElementById('message') as HTMLDivElement;
@@ -19,8 +17,17 @@ const militaryIdInput = document.getElementById('militaryId') as HTMLInputElemen
 const passwordInput = document.getElementById('password') as HTMLInputElement;
 const rememberCheckbox = document.getElementById('remember') as HTMLInputElement;
 
-// Handle form submission
-loginForm.addEventListener('submit', (e: Event): void => {
+// ===============================================
+// REDIRECT IF ALREADY LOGGED IN
+// ===============================================
+if (api.isAuthenticated()) {
+  window.location.href = '/dashboard.html';
+}
+
+// ===============================================
+// FORM SUBMISSION
+// ===============================================
+loginForm.addEventListener('submit', async (e: Event): Promise<void> => {
   e.preventDefault();
 
   const formData: LoginFormData = {
@@ -33,7 +40,7 @@ loginForm.addEventListener('submit', (e: Event): void => {
   militaryIdInput.classList.remove('error');
   passwordInput.classList.remove('error');
 
-  // Validate military ID
+  // Validate military ID (username)
   if (!formData.militaryId) {
     militaryIdInput.classList.add('error');
     showMessage('נא להזין מספר אישי', 'error');
@@ -50,42 +57,57 @@ loginForm.addEventListener('submit', (e: Event): void => {
   // Show loading state
   setLoadingState(true);
 
-  // Simulate API call
-  simulateLogin(formData);
+  try {
+    // ✅ שליחת username במקום militaryId
+    const response = await api.login(formData.militaryId, formData.password);
+
+    console.log('✅ Login successful:', response);
+
+    showMessage('התחברת בהצלחה! מעביר אותך...', 'success');
+
+    // Redirect after short delay
+    setTimeout(() => {
+      window.location.href = '/dashboard.html';
+    }, 1000);
+
+  } catch (error: any) {
+    console.error('❌ Login error:', error);
+    
+    // הצגת הודעת שגיאה ברורה
+    let errorMessage = 'שגיאה בהתחברות';
+    
+    if (error.message) {
+      if (error.message.includes('Invalid credentials')) {
+        errorMessage = 'מספר אישי או סיסמה שגויים';
+      } else if (error.message.includes('User not found')) {
+        errorMessage = 'המשתמש לא קיים במערכת';
+      } else {
+        errorMessage = error.message;
+      }
+    }
+    
+    showMessage(errorMessage, 'error');
+  } finally {
+    setLoadingState(false);
+  }
 });
 
-// Set loading state
+// ===============================================
+// HELPER FUNCTIONS
+// ===============================================
+
 const setLoadingState = (isLoading: boolean): void => {
   if (isLoading) {
     loginBtn.classList.add('loading');
     loginBtn.disabled = true;
+    loginBtn.textContent = 'מתחבר...';
   } else {
     loginBtn.classList.remove('loading');
     loginBtn.disabled = false;
+    loginBtn.textContent = 'כניסה למערכת';
   }
 };
 
-// Simulate login API call
-const simulateLogin = (formData: LoginFormData): void => {
-  setTimeout(() => {
-    setLoadingState(false);
-
-    // Success simulation
-    if (formData.militaryId && formData.password.length >= 6) {
-      showMessage('התחברת בהצלחה! מעביר אותך...', 'success');
-
-      setTimeout(() => {
-        console.log('Login successful:', formData);
-        // Redirect to dashboard
-        // window.location.href = '/dashboard';
-      }, 1500);
-    } else {
-      showMessage('מספר אישי או סיסמה שגויים', 'error');
-    }
-  }, 1200);
-};
-
-// Show message function
 const showMessage = (text: string, type: MessageType): void => {
   message.textContent = text;
   message.className = `login__message ${type} show`;
@@ -95,17 +117,21 @@ const showMessage = (text: string, type: MessageType): void => {
   }, 5000);
 };
 
-// Handle forgot password - BEM class
+// ===============================================
+// FORGOT PASSWORD
+// ===============================================
 const forgotPasswordLink = document.querySelector('.login__forgot') as HTMLAnchorElement;
-forgotPasswordLink.addEventListener('click', (e: Event): void => {
+forgotPasswordLink?.addEventListener('click', (e: Event): void => {
   e.preventDefault();
   showMessage('בקשה לאיפוס סיסמה נשלחה למפקד', 'success');
 });
 
-// Remove error state on input - BEM class
+// ===============================================
+// REMOVE ERROR ON INPUT
+// ===============================================
 const inputs = document.querySelectorAll<HTMLInputElement>('.login__input');
 inputs.forEach((input: HTMLInputElement) => {
   input.addEventListener('input', function (this: HTMLInputElement): void {
     this.classList.remove('error');
   });
-});
+}); 
