@@ -1,0 +1,75 @@
+
+
+.headtitle {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    width: 92vw;
+    height: 14vh;
+    background-color: white;
+    border-radius: 15px;
+    margin: 0 auto;
+    margin-top: 4vh;
+  font-family: "Noto Sans Hebrew", sans-serif;
+  z-index: 5;
+    //font -- combine with the general font//
+
+    &__subject {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        text-align: right;
+        margin-right: 6vw;
+
+        &__location {
+            display: flex;
+            flex-direction: row-reverse;
+            gap: 4px;
+            font-size: 0.7rem;
+            margin-top: -2vh;
+
+            &__way {
+                border-bottom: 1px solid transparent;
+                cursor: pointer;
+
+                &:hover {
+                    border-bottom: 1px solid black;
+
+
+                }
+            }
+        }
+
+    }
+
+    &__image {
+        width: 50%;
+        height: 100%;
+        background-color: darkgray;
+        background-image: url(../Images/pizza.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 120%;
+        border-radius: 15px 0px 0px 15px;
+        transition: background-size 1.5s ease, filter 1.5s ease;
+
+
+
+        &:hover {
+            background-size: 140%;
+            filter: brightness(0.6);
+
+
+        }
+
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+    .headtitle {
+        width: 100vw;
+
+    }
+}

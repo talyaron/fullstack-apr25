@@ -1,0 +1,44 @@
+{
+  "name": "wordle-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --exec ts-node src/index.ts",
+    "build": "tsc",
+    "build:frontend": "npm run build:ts:frontend && npm run build:scss",
+    "build:ts:frontend": "tsc public/index.ts --outDir public/dist --target ES2020 --lib ES2020,DOM --skipLibCheck && tsc public/login/login.ts --outDir public/login/dist --target ES2020 --lib ES2020,DOM --skipLibCheck && tsc public/register/register.ts --outDir public/register/dist --target ES2020 --lib ES2020,DOM --skipLibCheck && tsc public/Game/game.ts --outDir public/Game/dist --target ES2020 --lib ES2020,DOM --skipLibCheck",
+    "build:scss": "sass public/style.scss public/dist/style.css && sass public/login/login.scss public/login/dist/login.css && sass public/register/register.scss public/register/dist/register.css && sass public/Game/game.scss public/Game/dist/game.css",
+    "build:all": "npm run build && npm run build:frontend",
+    "start": "node dist/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@types/jsonwebtoken": "^9.0.10",
+    "bcrypt": "^6.0.0",
+    "bcryptjs": "^3.0.2",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "finalhandler": "^1.1.2",
+    "jsonwebtoken": "^9.0.2",
+    "jwt-simple": "^0.5.6",
+    "mongoose": "^8.19.2"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cookie-parser": "^1.4.9",
+    "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/jwt-simple": "^0.5.36",
+    "@types/node": "^24.3.1",
+    "nodemon": "^3.1.10",
+    "sass": "^1.93.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  }
+}

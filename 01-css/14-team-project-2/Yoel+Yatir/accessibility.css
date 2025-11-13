@@ -1,0 +1,12 @@
+.accessibility__image {
+  position: fixed;
+  top: 6vh;
+  right: 13px;
+  z-index: 9999;
+}
+.accessibility__image img {
+  width: 31px;
+  height: auto;
+  background-color: var(--webpage-color);
+  border-radius: 50%;
+}/*# sourceMappingURL=accessibility.css.map */

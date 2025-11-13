@@ -1,0 +1,178 @@
+@import "../style.scss";
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  width: 100%;
+  max-width: 600px;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 2rem;
+  border-radius: 15px;
+  backdrop-filter: blur(4px);
+
+  h1 {
+    color: $primary-color;
+    font-size: 2.5rem;
+  }
+
+  .board {
+    display: grid;
+    grid-template-columns: repeat(5, 60px);
+    grid-template-rows: repeat(6, 60px);
+    gap: 0.5rem;
+
+    .tile {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid #3a3a3c;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: $text-color;
+      background-color: $input-bg;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+      border-radius: 6px;
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+    }
+  }
+
+  .keyboard {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin-top: 1rem;
+
+    .k-row {
+      display: flex;
+      justify-content: center;
+      gap: 0.3rem;
+
+      .key {
+        background-color: #818384;
+        border: none;
+        color: #ffffff;
+        font-weight: bold;
+        padding: 0.6rem 0.8rem;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background-color 0.2s ease;
+
+        &:hover {
+          background-color: #d3d3d3b9;
+        }
+
+        &.wide {
+          width: 80px;
+        }
+      }
+    }
+  }
+
+  .link {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+
+    a {
+      color: $secondary-color;
+      font-weight: bold;
+
+      &:hover {
+        color: $primary-color;
+      }
+    }
+  }
+}
+
+.newGameWrapper{
+  display: none;
+
+}
+
+.end-game-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  padding: 2.5rem 3rem;
+  border-radius: 15px;
+  border: 2px solid $secondary-color;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  min-width: 300px;
+  animation: slideIn 0.3s ease-out;
+
+  .end-game-box_message {
+    color: $text-color;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+  }
+
+  .end-game-box_button {
+    background-color: $secondary-color;
+    color: #ffffff;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    &:hover {
+      background-color: darken($secondary-color, 10%);
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes flip {
+  0% {
+    transform: rotateX(0deg);
+  }
+  50% {
+    transform: rotateX(90deg);
+  }
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 50% {
+    transform: translateX(-8px);
+  }
+  25%, 75% {
+    transform: translateX(8px);
+  }
+}

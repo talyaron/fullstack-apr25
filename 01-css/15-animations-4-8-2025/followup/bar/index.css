@@ -1,0 +1,17 @@
+.pepe {
+  width: 200px;
+  position: relative;
+  animation: bounceUpDown 4s infinite;
+}
+
+@keyframes bounceUpDown {
+  0% {
+    top: 0;
+  }
+  50% {
+    top: -65px;
+  }
+  100% {
+    top: 10;
+  }
+}/*# sourceMappingURL=index.css.map */

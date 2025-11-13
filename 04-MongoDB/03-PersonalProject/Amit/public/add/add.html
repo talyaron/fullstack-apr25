@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Fact</title>
+  <link rel="stylesheet" href="dist/add.css" />
+</head>
+
+<body class="page page--user">
+
+  <header class="header">
+    <h1 class="header__title">Share Your Facts</h1>
+    <div class="header__actions" id="headerActions"></div>
+  </header>
+
+  <main class="user">
+    <div class="user__box">
+      <h1 class="user__title">Add a New Fact</h1>
+      <form id="addFactForm" class="user__form">
+        <input type="text" id="title" class="user__field" placeholder="Title" required autofocus />
+        <textarea id="description" class="user__field" placeholder="Description" required></textarea>
+        <input type="text" id="source" name="source" class="user__field" placeholder="Source" required>
+        <select name="category" id="category" class="user__field" required>
+          <option value="">Select Category</option>
+          <option value="science">Science</option>
+          <option value="history">History</option>
+          <option value="technology">Technology</option>
+          <option value="art">Art</option>
+          <option value="sports">Sports</option>
+          <option value="entertainment">Entertainment</option>
+          <option value="health">Health</option>
+          <option value="nature">Nature</option>
+          <option value="animals">Animals</option>
+          <option value="food">Food</option>
+          <option value="other">Other</option>
+        </select>
+        <button type="submit" class="user__btn">Submit</button>
+      </form>
+      <a href="../index.html" class="user__back">← Back to Home</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__copy">&copy; 2025 Share Your Facts</p>
+  </footer>
+
+  <script src="../dist/main.js"></script>
+  <script src="dist/add.js"></script>
+</body>
+
+</html>

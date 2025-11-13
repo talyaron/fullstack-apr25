@@ -1,0 +1,65 @@
+// Balloon specific styles and animations
+.balloon {
+  position: absolute;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 60px;
+  transition: filter 0.2s ease;
+  z-index: 10;
+  filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.2));
+  
+  // Use CSS variable for Y position
+  top: var(--balloon-y, 50%);
+  
+  // Make balloons float across the screen
+  animation: floatAcross 12s linear infinite;
+  animation-delay: var(--balloon-delay, 0s);
+  
+  &:hover {
+    filter: drop-shadow(2px 4px 10px rgba(0, 0, 0, 0.3)) brightness(1.2);
+  }
+  
+  &.exploded {
+    animation: explodeEffect 0.5s ease-out forwards !important;
+  }
+}
+
+// Float from left to right across the entire screen
+@keyframes floatAcross {
+  0% {
+    left: -100px;
+    transform: translateY(0px) rotate(-5deg);
+  }
+  25% {
+    left: 25%;
+    transform: translateY(-15px) rotate(3deg);
+  }
+  50% {
+    left: 50%;
+    transform: translateY(10px) rotate(-3deg);
+  }
+  75% {
+    left: 75%;
+    transform: translateY(-10px) rotate(5deg);
+  }
+  100% {
+    left: calc(100% + 100px);
+    transform: translateY(0px) rotate(-5deg);
+  }
+}
+
+@keyframes explodeEffect {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5) rotate(10deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0.3) rotate(20deg);
+    opacity: 0;
+  }
+}

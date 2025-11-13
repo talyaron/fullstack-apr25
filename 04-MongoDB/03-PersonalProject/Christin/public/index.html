@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ברוכים הבאים - מערכת ניהול מלאי</title>
+    <link rel="stylesheet" href="/dist/style.css">
+</head>
+<body>
+    <div class="container welcome-page">
+        <div class="welcome-container">
+            <h1>📦 מערכת ניהול מלאי</h1>
+            <p>נהל את המלאי שלך בצורה פשוטה ויעילה</p>
+            
+            <div class="buttons">
+                <a href="/login" class="btn btn-primary">התחבר</a>
+                <a href="/register" class="btn btn-success">הירשם</a>
+            </div>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">👤</div>
+                    <h3>ניהול משתמשים</h3>
+                    <p>מערכת הרשמה והתחברות מאובטחת</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>מעקב מלאי</h3>
+                    <p>עקוב אחר המוצרים והכמויות בזמן אמת</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">✏️</div>
+                    <h3>עריכה קלה</h3>
+                    <p>הוסף, ערוך ומחק מוצרים בקלות</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const token = localStorage.getItem('token');
+        if (token) {
+            window.location.href = '/dashboard';
+        }
+    </script>
+</body>
+</html>

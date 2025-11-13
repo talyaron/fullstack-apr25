@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wordle Game</title>
+  <link rel="stylesheet" href="./dist/game.css">
+</head>
+<body>
+
+  <div class="container game-container">
+    <h1>Wordle Game</h1>
+
+    <div id="board" class="board"></div>
+    <div id="keyboard" class="keyboard"></div>
+
+    <div class="game-messages">
+      <div class="loading" id="loading"></div>
+      <div class="error" id="error"></div>
+      <div class="success" id="success"></div>
+    </div>
+
+    <div class="link">
+        <a href="#" id="giveUpBtn">Give Up!</a>
+        <a href="../login/login.html">Log out</a>
+        <a href="../leaderBoard/leaderBoard.html">LeaderBoard</a>
+    </div>
+
+  </div>
+  <div class="newGameWrapper" id="newGameWrapper"></div>
+  <script src="./dist/game.js"></script>
+</body>
+</html>

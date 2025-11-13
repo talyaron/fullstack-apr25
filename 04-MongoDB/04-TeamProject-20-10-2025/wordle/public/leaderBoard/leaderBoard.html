@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LeaderBoard 🏆</title>
+    <link rel="stylesheet" href="dist/leaderBoard.css" />
+</head>
+
+<body>
+    <main class="leaderboard-page">
+        <div class="leaderboard-card">
+            <div class="leaderboard-card__nav">
+                <a href="../game/game.html" class="leaderboard-card__home-btn">Back to the game</a>
+            </div>
+            <h1 class="leaderboard-card__title">LeaderBoard 🏆</h1>
+
+            <div id="lb-loading" class="leaderboard-card__loading">Loading…</div>
+            <div id="lb-error" class="leaderboard-card__error" style="display:none"></div>
+
+            <ol id="leaderboard-list" class="leaderboard-list">
+            </ol>
+        </div>
+    </main>
+</body>
+<script src="dist/leaderBoard.js"></script>
+
+</html>

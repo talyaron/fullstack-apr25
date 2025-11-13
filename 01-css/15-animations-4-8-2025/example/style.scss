@@ -1,0 +1,48 @@
+#ball{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    border-radius: 5px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+
+    animation-name: rotate, move;
+    animation-duration: 8s;
+    animation-iteration-count: 2;
+    animation-timing-function: linear;
+  
+}
+
+@keyframes move {
+    0% {
+        top: 0px;
+        left: 0px;
+    }
+    35% {
+        top: 0px;
+        left: calc(100vw - 100px);
+    }
+    50% {
+        top: calc(100vh - 100px);
+        left: calc(100vw - 100px);
+    }
+    85% {
+        top: calc(100vh - 100px);
+        left: 0px;
+    }
+    100% {
+        top: 0px;
+        left: 0px;
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(3600deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+    
+}

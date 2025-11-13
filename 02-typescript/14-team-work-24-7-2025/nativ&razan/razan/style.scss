@@ -1,0 +1,166 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+#header {
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 48px;
+  background-color: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 95%;
+  z-index: 1000;
+
+  &__logo {
+    p {
+      font-size: 28px;
+      font-weight: bold;
+      margin: 0;
+    }
+  }
+
+  &__search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid white;
+    padding-bottom: 4px;
+
+    p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    i {
+      font-size: 14px;
+      cursor: pointer;
+
+      &:hover {
+        color: #ccc;
+      }
+    }
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 18px;
+
+    i {
+      cursor: pointer;
+
+      &:hover {
+        color: #ccc;
+      }
+    }
+
+    .fi {
+      width: 24px;
+      height: 16px;
+    }
+  }
+}
+.nav-bar {
+  display: flex;
+  gap: 12px;
+  padding: 12px 24px;
+  background-color: black;
+  margin-top: 80px;
+
+  .nav__item {
+    white-space: nowrap;
+    padding: 8px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.675);
+    border-radius: 9999px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.3s, color 0.3s;
+
+    &:hover {
+      background-color: rgb(49, 49, 49);
+      color: white;
+    }
+  }
+}
+
+#footer {
+  background-color: #000;
+  color: white;
+  padding: 60px 48px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+
+  h1 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 8px 0;
+  }
+
+  input[type="email"] {
+    width: 100%;
+    max-width: 450px;
+    background-color: #333;
+    border: 1px solid #666;
+    padding: 16px;
+    color: white;
+    font-size: 16px;
+    border-radius: 10px;
+    margin-top: 8px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+
+    &::placeholder {
+      color: #bbb;
+    }
+  }
+
+  #footer__info {
+    flex: 1;
+    min-width: 67vw;
+    max-width: 70vw;
+
+    button {
+      background-color: white;
+      color: black;
+      border: none;
+      padding: 16px 32px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s ease;
+
+      &:hover {
+        background-color: #eee;
+      }
+    }
+  }
+
+  #footer__menu {
+    justify-content: flex-end;
+    flex: 1;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+
+    p {
+      cursor: pointer;
+    }
+  }
+}

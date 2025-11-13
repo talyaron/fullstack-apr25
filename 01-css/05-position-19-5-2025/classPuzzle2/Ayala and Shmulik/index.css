@@ -1,0 +1,50 @@
+.wapper {
+    display: flex;
+
+}
+
+.logo {
+    color: white;
+    background-color: black;
+    width: 19%;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 10%;
+}
+
+.box {
+    position: fixed;
+    top: 50%;
+    font-size: 50px;
+    color: white;
+
+}
+
+.box>* {
+    background-color: black;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+.content {
+    width: 30%;
+    position: relative;
+    left: 20%;
+    top: 300px;
+    border: 5px solid black;
+    border-radius: 5%;
+    padding: 20px;
+    margin: 5%;
+}
+
+.video {
+    position: sticky;
+    top: 50%;
+    width: 200%;
+    height: 300px;
+    color: white;
+    font-size: 100px;
+    background-color: black;
+    
+}

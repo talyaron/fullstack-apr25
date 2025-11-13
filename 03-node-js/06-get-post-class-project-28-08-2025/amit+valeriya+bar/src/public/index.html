@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CinemaHub</title>
+    <link rel="stylesheet" href="dist/style.css">
+    <script src="dist/index.js" defer></script>
+</head>
+
+<body class="page">
+    <div class="page__floating-shapes">
+        <div class="page__shape"></div>
+        <div class="page__shape"></div>
+        <div class="page__shape"></div>
+    </div>
+    <header class="header">
+        <h1 class="header__title">
+            Welcome to <span id="number-of-movies" class="header__count"></span> Amazing Movies
+        </h1>
+        <p class="header__subtitle">Discover Your Next Favorite Film</p>
+    </header>
+
+    <main class="main">
+        <article class="welcome">
+            <span class="welcome__sparkle">🎬</span>
+            Ready to explore incredible movies from all genres?
+            Add your favorite films and create your personal collection!
+            <span class="welcome__sparkle">🍿</span>
+        </article>
+          <!-- Movie Review Grid - 6 Containers -->
+        <section class="movie-grid">
+            <h2 class="movie-grid__title">Rate These Amazing Movies</h2>
+            <div class="movie-grid__container">
+                <div class="movie-slot" data-slot="1">
+                    <div class="movie-slot__poster">
+                        <img src="https://image.tmdb.org/t/p/w500/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg" alt="Spider-Man: Across the Spider-Verse">
+                        <div class="movie-slot__overlay">
+                            <span class="movie-slot__play">▶</span>
+                        </div>
+                    </div>
+                    <div class="movie-slot__info">
+                        <h3 class="movie-slot__title">Spider-Man: Across the Spider-Verse</h3>
+                        <p class="movie-slot__details">2023 • Action</p>
+                        <p class="movie-slot__description">It's how you wear the mask that matters.</p>
+                    </div>
+                    <div class="movie-slot__rating">
+                        <span class="rating-label">Your Rating:</span>
+                        <div class="star-rating__stars" data-rating="0">
+                            <span class="star" data-value="1">★</span>
+                            <span class="star" data-value="2">★</span>
+                            <span class="star" data-value="3">★</span>
+                            <span class="star" data-value="4">★</span>
+                            <span class="star" data-value="5">★</span>
+                        </div>
+                        <span class="star-rating__display">Not rated</span>
+                    </div>
+                </div>
+
+                <div class="movie-slot" data-slot="2">
+                    <div class="movie-slot__poster">
+                        <img src="https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg" alt="The Godfather">
+                        <div class="movie-slot__overlay">
+                            <span class="movie-slot__play">▶</span>
+                        </div>
+                    </div>
+                    <div class="movie-slot__info">
+                        <h3 class="movie-slot__title">The Godfather</h3>
+                        <p class="movie-slot__details">1972 • Crime</p>
+                        <p class="movie-slot__description">The aging patriarch transfers control to his reluctant son.</p>
+                    </div>
+                    <div class="movie-slot__rating">
+                        <span class="rating-label">Your Rating:</span>
+                        <div class="star-rating__stars" data-rating="0">
+                            <span class="star" data-value="1">★</span>
+                            <span class="star" data-value="2">★</span>
+                            <span class="star" data-value="3">★</span>
+                            <span class="star" data-value="4">★</span>
+                            <span class="star" data-value="5">★</span>
+                        </div>
+                        <span class="star-rating__display">Not rated</span>
+                    </div>
+                </div>
+
+                 <div class="movie-slot" data-slot="3">
+                    <div class="movie-slot__poster">
+                        <img src="https://image.tmdb.org/t/p/w1280/q5pXRYTycaeW6dEgsCrd4mYPmxM.jpg" alt="How To Train Your Dragon">
+                        <div class="movie-slot__overlay">
+                            <span class="movie-slot__play">▶</span>
+                        </div>
+                    </div>
+                    <div class="movie-slot__info">
+                        <h3 class="movie-slot__title">How To Train Your Dragon</h3>
+                        <p class="movie-slot__details">2025 • Fantasy</p>
+                        <p class="movie-slot__description">The legend is real</p>
+                    </div>
+                    <div class="movie-slot__rating">
+                        <span class="rating-label">Your Rating:</span>
+                        <div class="star-rating__stars" data-rating="0">
+                            <span class="star" data-value="1">★</span>
+                            <span class="star" data-value="2">★</span>
+                            <span class="star" data-value="3">★</span>
+                            <span class="star" data-value="4">★</span>
+                            <span class="star" data-value="5">★</span>
+                        </div>
+                        <span class="star-rating__display">Not rated</span>
+                    </div>
+                </div>
+
+                
+                <div class="movie-slot" data-slot="4">
+                    <div class="movie-slot__poster">
+                        <img src="https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg" alt="The Dark Knight">
+                        <div class="movie-slot__overlay">
+                            <span class="movie-slot__play">▶</span>
+                        </div>
+                    </div>
+                    <div class="movie-slot__info">
+                        <h3 class="movie-slot__title">The Dark Knight</h3>
+                        <p class="movie-slot__details">2008 • Action</p>
+                        <p class="movie-slot__description">Batman faces his greatest challenge with the Joker's chaos.</p>
+                    </div>
+                    <div class="movie-slot__rating">
+                        <span class="rating-label">Your Rating:</span>
+                        <div class="star-rating__stars" data-rating="0">
+                            <span class="star" data-value="1">★</span>
+                            <span class="star" data-value="2">★</span>
+                            <span class="star" data-value="3">★</span>
+                            <span class="star" data-value="4">★</span>
+                            <span class="star" data-value="5">★</span>
+                        </div>
+                        <span class="star-rating__display">Not rated</span>
+                    </div>
+                </div>
+
+                <div class="movie-slot" data-slot="5">
+                    <div class="movie-slot__poster">
+                        <img src="https://image.tmdb.org/t/p/original/ljsZTbVsrQSqZgWeep2B1QiDKuh.jpg" alt="Inception">
+                        <div class="movie-slot__overlay">
+                            <span class="movie-slot__play">▶</span>
+                        </div>
+                    </div>
+                    <div class="movie-slot__info">
+                        <h3 class="movie-slot__title">Inception</h3>
+                        <p class="movie-slot__details">2010 • Sci-Fi</p>
+                        <p class="movie-slot__description">A mind-bending journey through dreams within dreams.</p>
+                    </div>
+                    <div class="movie-slot__rating">
+                        <span class="rating-label">Your Rating:</span>
+                        <div class="star-rating__stars" data-rating="0">
+                            <span class="star" data-value="1">★</span>
+                            <span class="star" data-value="2">★</span>
+                            <span class="star" data-value="3">★</span>
+                            <span class="star" data-value="4">★</span>
+                            <span class="star" data-value="5">★</span>
+                        </div>
+                        <span class="star-rating__display">Not rated</span>
+                    </div>
+                </div>
+
+                <div class="movie-slot" data-slot="6">
+                    <div class="movie-slot__poster">
+                        <img src="https://image.tmdb.org/t/p/w1280/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg" alt="Interstellar">
+                        <div class="movie-slot__overlay">
+                            <span class="movie-slot__play">▶</span>
+                        </div>
+                    </div>
+                    <div class="movie-slot__info">
+                        <h3 class="movie-slot__title">Interstellar</h3>
+                        <p class="movie-slot__details">2014 • Sci-Fi</p>
+                        <p class="movie-slot__description">A journey through space and time to save humanity.</p>
+                    </div>
+                    <div class="movie-slot__rating">
+                        <span class="rating-label">Your Rating:</span>
+                        <div class="star-rating__stars" data-rating="0">
+                            <span class="star" data-value="1">★</span>
+                            <span class="star" data-value="2">★</span>
+                            <span class="star" data-value="3">★</span>
+                            <span class="star" data-value="4">★</span>
+                            <span class="star" data-value="5">★</span>
+                        </div>
+                        <span class="star-rating__display">Not rated</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <form name="add-movie-form" id="add-movie-form" style="display: none;">
+            <input type="text" name="title" placeholder="Movie Title" required>
+            <input type="number" name="year" placeholder="Year" required>
+            <input type="text" name="genre" placeholder="Genre" required>
+            <input type="text" name="imageUrl" placeholder="Movie Poster URL" required>
+            
+            <div class="form-star-rating">
+                <label class="star-rating__label">Rating:</label>
+                <div class="star-rating__stars" data-rating="0">
+                    <span class="star" data-value="1">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                </div>
+                <span class="star-rating__display">No rating</span>
+            </div>
+            
+            <button type="submit">Add Movie</button>
+        </form>
+
+        <article id="list-of-movies" class="movies-list" style="display: none;"></article>
+    </main>
+
+
+    <footer class="footer">
+        <p class="footer__text">© 2025 CinemaHub | Built with 🎭 and passion for movies</p>
+    </footer>
+</body>
+
+</html>

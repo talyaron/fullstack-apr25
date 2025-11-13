@@ -1,0 +1,88 @@
+.rain{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    gap: 40px;
+}
+#drop1{
+    translate: 0% 1150%;
+}
+#drop2{
+    translate: 0% 950%;
+}
+#drop3{
+    translate: 0% 150%;
+}
+#drop4{
+    translate: 0% 250%;
+}
+#drop5{
+    translate: 0% 850%;
+}
+#drop6{
+    translate: 0% 450%;
+}   
+#drop7{
+    translate: 0% 650%;
+}
+#drop8{
+    translate: 0% 350%;
+}
+#drop9{
+    translate: 0% 1050%;
+}
+#drop10{
+    translate: 0% 550%;
+}
+
+
+
+.rain__raindrop {
+    width: 5px;
+    height: 10px;
+    background-color: blue;
+    border-radius: 5px;
+    animation: fall 0.3s infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(100vh);
+    }
+}
+
+@keyframes run{
+    0%, 100% {
+        transform: translateX(0);
+        transform: rotateY(0deg);
+    }
+    50% {
+        transform: translateX(80vw);
+        
+    }
+}
+
+
+
+.running {
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    animation-name :  run;
+    animation-duration: 5s, 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    
+    img{
+        width: 100px;
+        height: 100px;
+        
+    }
+
+}

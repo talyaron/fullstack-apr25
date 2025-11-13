@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>רשימת משימות</title>
+    <link rel="icon" type="image/x-icon" href="./img/letter-k.svg">
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="./dist/index.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Main header - centered across entire width -->
+      <div class="main-header">
+        <h1>רשימת המשימות שלי</h1>
+      </div>
+
+      <!-- Content wrapper for side-by-side layout -->
+      <div class="content-wrapper">
+        <!-- Left side - Tasks area (75% width) -->
+        <div class="tasks-section">
+          <button class="refresh-btn" onclick="loadTasks()">רענן רשימה</button>
+
+          <div id="loading" class="loading">טוען משימות...</div>
+          <div id="error" class="error" style="display: none"></div>
+          <div id="task-count" class="task-count" style="display: none"></div>
+          <div id="tasks-container"></div>
+        </div>
+
+        <!-- Right side - Add task form (25% width) -->
+        <div class="form-section">
+          <form id="add-task-form">
+            <div class="form-title">הוסף משימה חדשה</div>
+            <input
+              type="text"
+              id="task-title"
+              placeholder="כותרת המשימה"
+              required
+            />
+            <textarea
+              id="task-description"
+              placeholder="תיאור (אופציונלי)"
+            ></textarea>
+            <button type="submit">הוסף משימה</button>
+            <div id="form-message"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

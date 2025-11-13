@@ -1,0 +1,365 @@
+$page-bg: #eef1f5;
+$card-bg: #ffffff;
+$primary: #1e3a8a;
+$secondary: #16a34a;
+$danger: #dc2626;
+$text-dark: #111827;
+$text-light: #6b7280;
+$shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+$radius: 0.75rem;
+$transition: 0.25s ease;
+
+$categories-colors: (science: #3b82f6,
+  all: #374151,
+  history: #f59e0b,
+  technology: #6366f1,
+  art: #ec4899,
+  sports: #16a34a,
+  entertainment: #ef4444,
+  health: #10b981,
+  nature: #22c55e,
+  animals: #8b5cf6,
+  food: #eab308,
+  other: #9ca3af);
+
+.page {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: $page-bg;
+  margin: 0;
+  color: $text-dark;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background: $primary;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  &__user {
+    margin-top: 0.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #d1d5db;
+  }
+
+  &__btn,
+  &__link {
+    background: white;
+    color: $primary;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: $radius;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: $shadow;
+    transition: $transition;
+
+    &:hover {
+      background: #f9fafb;
+    }
+  }
+
+  &__btn--logout {
+    background: $danger;
+    color: white;
+
+    &:hover {
+      background: darken($danger, 8%);
+    }
+  }
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  padding: 2rem;
+}
+
+.categories-sidebar {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+
+  &__title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: $primary;
+    margin-bottom: 0.75rem;
+  }
+}
+
+.category-btn {
+  display: block;
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border-radius: $radius;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: 0.2s;
+
+  &:hover {
+    transform: translateX(4px);
+  }
+
+  &.active {
+    outline: 2px solid darken($primary, 10%);
+  }
+}
+
+@each $name,
+$color in $categories-colors {
+  .category-btn.#{$name} {
+    background: $color;
+    color: #fff;
+    border: none;
+  }
+}
+
+.facts {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: $primary;
+    text-align: center;
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+
+  &__sort-group {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  &__sort-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: $primary;
+  }
+
+  &__list {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+  }
+}
+
+.facts__add-btn {
+  background: $secondary;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: $radius;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: $shadow;
+  transition: $transition;
+  display: inline-block;
+
+  &:hover {
+    background: darken($secondary, 8%);
+    transform: translateY(-2px);
+  }
+}
+
+
+
+.sort-btn {
+  padding: 0.5rem 1rem;
+  border-radius: $radius;
+  border: 1px solid $primary;
+  background: #fff;
+  color: $primary;
+  font-weight: 600;
+  cursor: pointer;
+  transition: $transition;
+
+  &:hover {
+    background: lighten($primary, 45%);
+  }
+
+  &.active {
+    background: $primary;
+    color: #fff;
+  }
+}
+
+.fact-card {
+  background: $card-bg;
+  padding: 1.2rem 1.4rem;
+  border-radius: $radius;
+  box-shadow: $shadow;
+  border: 1px solid #e5e7eb;
+  transition: $transition;
+
+  &__title {
+    margin: 0 0 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: $primary;
+  }
+
+  &__description {
+    margin: 0 0 0.75rem;
+    color: $text-light;
+    line-height: 1.5;
+  }
+
+  &__source {
+    margin: 0 0 0.75rem;
+    color: $text-light;
+    font-weight: 400;
+    line-height: 1.5;
+    word-break: break-word;
+  }
+
+  &__link {
+    color: $primary;
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+    text-decoration: underline;
+    display: inline-block;
+    max-width: 100%;
+
+    &:hover {
+      color: darken($primary, 10%);
+    }
+  }
+
+  &__meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: $text-light;
+
+    .fact-card__author {
+      color: $secondary;
+      font-weight: 600;
+    }
+  }
+}
+
+.fact-card__category {
+  padding: 0.2rem 0.6rem;
+  border-radius: $radius;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: white;
+}
+
+@each $name,
+$color in $categories-colors {
+  .fact-card__category--#{$name} {
+    background: $color;
+  }
+}
+
+.fact-register {
+  margin-top: 1rem;
+  padding: 1.2rem;
+  border-radius: $radius;
+  background: #e0f2fe;
+  border: 1px dashed #38bdf8;
+  text-align: center;
+
+  &__text {
+    margin: 0 0 0.5rem;
+    color: $text-dark;
+  }
+
+  &__link {
+    background: $primary;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: $radius;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: $shadow;
+    transition: $transition;
+
+    &:hover {
+      background: darken($primary, 8%);
+    }
+  }
+}
+
+.facts__empty {
+  font-size: 1rem;
+  font-weight: 600;
+  color: $text-light;
+  text-align: center;
+  margin-top: 2rem;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.footer {
+  background: $primary;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: auto;
+
+  &__copy {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+}

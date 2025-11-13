@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Share Your Facts</title>
+  <link rel="stylesheet" href="dist/style.css" />
+</head>
+
+<body class="page">
+
+  <header class="header">
+    <div class="header__top">
+      <h1 class="header__title">Share Your Facts</h1>
+      <div class="header__actions" id="headerActions"></div>
+    </div>
+    <div class="header__user" id="headerUser"></div>
+  </header>
+
+  <main class="main">
+    <aside class="categories-sidebar">
+      <h3 class="categories-sidebar__title">Categories</h3>
+      <button class="category-btn all active" data-category="All">All</button>
+      <button class="category-btn science" data-category="science">Science</button>
+      <button class="category-btn history" data-category="history">History</button>
+      <button class="category-btn technology" data-category="technology">Technology</button>
+      <button class="category-btn art" data-category="art">Art</button>
+      <button class="category-btn sports" data-category="sports">Sports</button>
+      <button class="category-btn entertainment" data-category="entertainment">Entertainment</button>
+      <button class="category-btn health" data-category="health">Health</button>
+      <button class="category-btn nature" data-category="nature">Nature</button>
+      <button class="category-btn animals" data-category="animals">Animals</button>
+      <button class="category-btn food" data-category="food">Food</button>
+      <button class="category-btn other" data-category="other">Other</button>
+    </aside>
+
+    <article class="facts">
+      <div class="facts__header">
+        <h2 class="facts__title">All Facts</h2>
+
+        <div class="facts__controls">
+          <div class="facts__sort-group">
+            <span class="facts__sort-title">Sort by:</span>
+            <button class="sort-btn" data-sort="newest">Newest</button>
+            <button class="sort-btn" data-sort="oldest">Oldest</button>
+            <button class="sort-btn" data-sort="az">A-Z</button>
+            <button class="sort-btn" data-sort="za">Z-A</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="facts__list"></div>
+    </article>
+
+  </main>
+
+  <footer class="footer">
+    <p class="footer__copy">&copy; 2025 Share Your Facts</p>
+  </footer>
+
+  <script src="dist/public.js"></script>
+  <script src="dist/main.js"></script>
+</body>
+
+</html>

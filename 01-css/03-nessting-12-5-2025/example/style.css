@@ -1,0 +1,22 @@
+div {
+    width: 200px;
+    border: 1px solid black;
+    color: blue
+}
+
+div>img {
+    width: 100%;
+
+}
+
+div > p {
+    color: green;
+}
+
+div > p {
+    color: orange;
+}
+
+img {
+    width: 300px;
+}

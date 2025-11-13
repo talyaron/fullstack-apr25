@@ -1,0 +1,15 @@
+.sizes {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+.sizes__img {
+  height: 10rem;
+  width: 10rem;
+}
+.sizes__text {
+  font-size: 1rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}/*# sourceMappingURL=style.css.map */

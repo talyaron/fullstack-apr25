@@ -1,0 +1,1 @@
+Create a box that looks like the image. make the box width, 50% of the whole screen (do not use percentage, use viewport width). make the fonts response to :root font size. make the image response to the box size.

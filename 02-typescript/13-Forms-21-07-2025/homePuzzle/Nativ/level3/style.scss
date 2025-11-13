@@ -1,0 +1,61 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+.occasion-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: #f9f9f9;
+  max-width: 200px;
+
+  &__header {
+    margin-bottom: 0.5rem;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 1.2rem;
+  }
+
+  &__date {
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  &__body p {
+    margin: 0.3rem 0;
+  }
+
+  &__image {
+    margin-top: 0.5rem;
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+}
+
+#publicOccasionDiv {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: flex-start;
+}
+#privateOccasionDiv {
+  display: none;
+}
+#privateOccasions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: flex-start;
+}

@@ -1,0 +1,50 @@
+@import './../../../../styles/mixins';
+@import './../../../../styles/variables';
+
+.hobby-list {
+  padding: 2rem;
+  
+  &__title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #1e293b;
+  }
+  
+  &__list {
+    padding: 0;
+    margin: 0;
+  }
+  
+  &__item {
+    padding: 0.8rem 1rem;
+    margin: 0.5rem 0;
+    background: #3b82f6;
+    color: white;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    animation: slideIn 0.5s ease backwards;
+    
+    &:nth-child(1) { animation-delay: 0.1s; }
+    &:nth-child(2) { animation-delay: 0.2s; }
+    &:nth-child(3) { animation-delay: 0.3s; }
+    
+    &:hover {
+      transform: translateX(10px);
+      background: #2563eb;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+    }
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

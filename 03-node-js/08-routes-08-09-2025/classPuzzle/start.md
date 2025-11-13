@@ -1,0 +1,1 @@
+Generate a route to update user age by id.

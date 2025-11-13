@@ -1,0 +1,93 @@
+@import "../style.scss";
+
+.container {
+  h1 {
+    color: $secondary-color;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .form_group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+
+      label {
+        font-weight: 600;
+        text-align: left;
+        color: $text-color;
+        font-size: 0.95rem;
+      }
+
+      input {
+        width: 100%;
+        background-color: $input-bg;
+        border: 1px solid $border-color;
+        border-radius: 6px;
+        padding: 0.75rem;
+        color: $text-color;
+        font-size: 1rem;
+
+        &:focus {
+          outline: none;
+          border-color: $secondary-color;
+        }
+
+        &::placeholder {
+          color: rgba(255, 255, 255, 0.4);
+        }
+      }
+    }
+
+    button {
+      background-color: $primary-color;
+      border: none;
+      color: #fff;
+      padding: 0.8rem;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 0.5rem;
+      width: 100%;
+
+      &:hover {
+        background-color: $secondary-color;
+      }
+    }
+
+    .login__error {
+      color: #e74c3c;
+      font-weight: bold;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+  }
+
+  .link {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    text-align: center;
+
+    a {
+      color: $secondary-color;
+      text-decoration: none;
+      font-weight: 600;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

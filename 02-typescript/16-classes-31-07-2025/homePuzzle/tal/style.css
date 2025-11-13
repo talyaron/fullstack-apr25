@@ -1,0 +1,17 @@
+.player {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px 0;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  transition: all 1s ease;
+  top: 0px;
+  left: 0px;
+}
+
+.player img {
+  border-radius: 50%;
+  margin-right: 16px;
+}/*# sourceMappingURL=style.css.map */

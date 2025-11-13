@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <script src="./dist/login.js" defer></script>
+    <link rel="stylesheet" href="./dist/login.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Sign in</h1>
+        <form id="loginForm" method="post" novalidate>
+            <div class="form_group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email" autofocus>
+            </div>
+
+            <div class="form_group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required placeholder="Enter your password">
+            </div>
+
+            <button type="submit" id="submitBtn">Login</button>
+
+            <div class="login__error" id="errorMessage" style="display:none"></div>
+        </form>
+        
+        <div class="link">
+            Don't have an account? Click Here to Sign up! <a href="../register/register.html">Sign Up</a>
+        </div>
+    </div>
+</body>
+
+</html>

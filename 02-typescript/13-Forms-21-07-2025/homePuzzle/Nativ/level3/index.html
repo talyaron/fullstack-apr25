@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./dist/index.js" defer></script>
+    <link rel="stylesheet" href="./dist/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Task Manager</h1>
+      <input
+        type="checkbox"
+        id="showPrivateToggle"
+        onclick="showPrivateOccasions()"
+      />
+      <label for="showPrivateToggle">Show Private Events</label>
+      <form onsubmit="handleSubmit(event)">
+        <input
+          type="text"
+          name="occasionName"
+          id="name"
+          placeholder="Occasion Name"
+        />
+        <input type="date" name="date" id="date" />
+        <input type="time" name="startTime" id="startTime" />
+        <input type="time" name="endTime" id="endTime" />
+        <textarea name="description" id="textArea"></textarea>
+        <input
+          type="text"
+          name="location"
+          id="location"
+          placeholder="Occasion Location"
+        />
+        <input
+          type="number"
+          name="attendeeNumber"
+          id="attendeeNumber"
+          placeholder="Number of atendees"
+        />
+        <p>Private event</p>
+        <input type="checkbox" name="checkbox" id="checkbox" />
+        <input type="file" name="fileInput" id="fileInput" />
+        <button type="submit">Submit</button>
+      </form>
+      <div id="publicOccasionDiv"></div>
+      <div id="privateOccasionDiv">
+        <h1>Private Occasions</h1>
+        <br />
+        <div id="privateOccasions"></div>
+      </div>
+    </div>
+  </body>
+</html>

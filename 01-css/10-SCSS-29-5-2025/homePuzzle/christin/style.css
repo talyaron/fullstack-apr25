@@ -1,0 +1,114 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+.discount {
+  text-align: center;
+  border: 1px dotted black;
+  background-color: beige;
+  font-weight: bold;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+.navigation__logo {
+  margin-right: auto;
+}
+.navigation__search {
+  width: 300px;
+  padding: 12px 70px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 25px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+.navigation__personal {
+  padding: 12px 20px;
+}
+.navigation__personal:hover {
+  background-color: rgb(211, 198, 198);
+}
+.navigation__location {
+  display: flex;
+  justify-content: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  align-items: center;
+  padding: 12px 10px;
+}
+.navigation__location:hover {
+  background-color: rgb(211, 198, 198);
+}
+
+.categories {
+  position: sticky;
+  top: 0;
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  padding: 1% 5%;
+}
+.categories__collection {
+  font-size: 15px;
+  cursor: pointer;
+  color: white;
+  font-weight: 800;
+}
+.categories__collection:hover {
+  background-color: beige;
+}
+.categories__collection__highlight {
+  color: rgb(255, 230, 2);
+}
+.categories__collection__highlight:hover {
+  background-color: beige;
+}
+
+.topsales {
+  padding: 20px;
+}
+.topsales__header {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 200%;
+  margin-bottom: 20px;
+}
+.topsales__top3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 20px;
+}
+.topsales__top3__item {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  max-width: 300px;
+}
+.topsales__top3__pic img {
+  width: 100%;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 8px;
+}
+.topsales__top3__description {
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: center;
+}
+.topsales__top3__price {
+  margin-top: 5px;
+  font-weight: bold;
+  text-align: center;
+}/*# sourceMappingURL=style.css.map */

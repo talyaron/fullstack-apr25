@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: rgb(69, 129, 166);
+    position: relative;
+}
+
+#rootBall {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.ball {
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    transition: all 150ms ease-in-out;
+    
+}
+
+.ball.snake {
+    border: 3px solid #00ff00;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+    
+}
+
+.ball.food {
+    border: 3px solid #ff6b00;
+    box-shadow: 0 0 15px rgba(255, 107, 0, 0.8);
+    animation: pulse 1s ease-in-out infinite;
+    
+}
+
+.ball.snake:first-of-type {
+    border-color: #ff0000;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+}

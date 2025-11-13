@@ -1,0 +1,128 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: black;
+
+}
+
+.clown {
+    position: relative;
+    top: 150px;
+    align-self: center;
+    height: 500px;
+    width: 400px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    background-image: url(../1.png);
+
+}
+
+.ball {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    border-radius: 50%;
+    top: 260px;
+    left: 620px;
+
+    &_one {
+        background-color: rgb(255, 149, 0);
+        animation-delay: 0s;
+    }
+
+    &_two {
+        background-color: rgb(150, 33, 33);
+        animation-delay: 0.25s;
+    }
+
+    &_three {
+        background-color: rgb(0, 255, 76);
+        animation-delay: 0.5s;
+    }
+
+    &_four {
+        background-color: rgb(248, 219, 4);
+        animation-delay: 0.75s;
+    }
+
+    &_five {
+        background-color: rgb(255, 0, 0);
+        animation-delay: 1s;
+    }
+
+    &_six {
+        background-color: rgb(0, 13, 255);
+        animation-delay: 1.25s;
+    }
+
+    &_seven {
+        background-color: rgb(255, 0, 234);
+        animation-delay: 1.5s;
+    }
+
+    &_eight {
+        background-color: rgb(0, 238, 255);
+        animation-delay: 1.75s;
+    }
+
+    animation-name: juggling;
+    animation-duration: 2s;
+    animation-iteration-count:infinite;
+    animation-timing-function: ease;
+}
+
+@keyframes juggling {
+    0% {
+        transform: translate(0 0);
+    }
+
+    15% {
+        transform: translate(50px, -150px);
+    }
+
+    20% {
+        transform: translate(100px, -200px);
+    }
+
+    30% {
+        transform: translate(180px, -230px);
+    }
+
+    38% {
+        transform: translate(250px, -200px);
+    }
+
+    45% {
+        transform: translate(300px, -180px);
+    }
+
+    53% {
+        transform: translate(350px, -100px);
+    }
+
+    60% {
+        transform: translate(350px, -50px);
+    }
+
+    68% {
+        transform: translate(310px, 20px);
+    }
+
+    75% {
+        transform: translate(290px, 50px);
+    }
+
+    90% {
+        transform: translate(250px, 150px);
+    }
+
+    95% {
+        transform: translate(100px, 50px);
+    }
+
+    100% {
+        transform: translate(0, 0);
+    }
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Students</title>
+    <link rel="stylesheet" href="dist/style.css">
+    <script src="./dist/index.js" defer></script>
+</head>
+<body class="page">
+    <div class="page__floating-shapes">
+        <div class="page__shape"></div>
+        <div class="page__shape"></div>
+        <div class="page__shape"></div>
+    </div>
+
+    <header class="header">
+        <h1 class="header__title">
+            Hello my <span id="number-of-students" class="header__count"></span> Students!!!!!
+        </h1>
+        <p class="header__subtitle">Welcome to Our Learning Journey</p>
+    </header>
+
+    <main class="main">
+        <article class="welcome">
+            <span class="welcome__sparkle">✨</span>
+            Ready to explore, learn, and grow together? 
+            Let's make this an amazing experience filled with knowledge, 
+            creativity, and endless possibilities!
+            <span class="welcome__sparkle">✨</span>
+        </article>
+        <form name="add-student-form">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="number" name="age" placeholder="Age" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="text" name="imageUrl" placeholder="Image URL" required>
+            <button type="submit">Add Student</button>
+        </form>
+        <article id="list-of-students" class="students-list"></article>
+    </main>
+
+    <footer class="footer">
+        <p class="footer__text">© 2025 Student Platform | Built with ❤️ and knowledge</p>
+    </footer>
+</body>
+</html>
