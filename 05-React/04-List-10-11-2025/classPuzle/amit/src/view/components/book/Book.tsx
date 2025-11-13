@@ -1,7 +1,7 @@
 import styles from "./Book.module.scss";
 
 export type BookProps = {
-  id: number;
+  id: string;
   imageUrl: string;
   title: string;
   yearOfPublication: number;
@@ -20,7 +20,7 @@ const Book = ({ id, imageUrl, title, yearOfPublication }: BookProps) => {
 
       <header className={styles.header}>
         <h3 className={styles.title}>{title}</h3>
-        <p>Published {yearsAgo} years ago</p>
+        <p>Published {yearsAgo} {yearsAgo === 1 ? "year" : "years"} ago</p>
       </header>
     </article>
   );
