@@ -9,12 +9,12 @@ function App() {
 
       const data = await response.json()
       if (data.status !== "success") {
-        throw new Error("failed to fetch image")
+        throw new Error("failed to fetch image");
       }
       setImage(data.message);
 
     } catch (error) {
-      console.error(`${error}, Error, Can't find any image`)
+      console.error(`${error}, Error, Can't find any image`);
     }
   }
 
