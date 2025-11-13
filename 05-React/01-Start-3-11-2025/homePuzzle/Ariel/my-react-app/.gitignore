@@ -39,3 +39,14 @@ coverage/
 
 # Optional
 .eslintcache
+
+# Video files
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+
+# Large media files
+src/assets/*.mp4
+src/assets/*.mov
