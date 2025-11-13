@@ -6,6 +6,7 @@ import connectDB from './config/database';
 import authRoutes from './routes/authRoutes';
 import bookRoutes from './routes/bookRoutes';
 
+
 // Load environment variables
 dotenv.config();
 
@@ -19,10 +20,9 @@ connectDB();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-
 // CORS configuration
 const corsOptions = {
-  origin: process.env.CLIENT_URL || 'http://localhost:5173',
+  origin: ["http://localhost:5173", "http://localhost:5174"],
   credentials: true,
   optionsSuccessStatus: 200
 };
