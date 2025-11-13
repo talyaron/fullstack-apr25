@@ -1,21 +1,114 @@
-import Book from "./view/components/book/Book";
+import Book, { type BookProps } from "./view/components/book/Book";
 import styles from "./App.module.scss"
+import { useState } from "react";
 
 function App() {
-  const books = [
-    { id: 0, title: "", shortDesc: "", imageUrl: "", yearOfPublication: 0 }
+  const initialBooks: BookProps[] = [
+    {
+      id: "1",
+      title: "The Lion Who Loved Strawberries",
+      imageUrl: "https://picsum.photos/300/450?random=11",
+      yearOfPublication: 2024,
+    },
+    {
+      id: "2",
+      title: "Moonlight Over Tel Aviv",
+      imageUrl: "https://picsum.photos/300/450?random=22",
+      yearOfPublication: 2012,
+    },
+    {
+      id: "3",
+      title: "Algorithms for Humans",
+      imageUrl: "https://picsum.photos/300/450?random=33",
+      yearOfPublication: 2009,
+    },
   ]
+
+  const [books, setBooks] = useState<BookProps[]>(initialBooks);
+  const [title, setTitle] = useState("")
+  const [imageUrl, setImageUrl] = useState("")
+  const [yearOfPublication, setYearOfPublication] = useState("")
+
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+
+    const parsedYear = Number(yearOfPublication);
+    const currentYear = new Date().getFullYear();
+
+
+    if (!title.trim()) return alert("Please enter a title.");
+    if (!imageUrl.trim()) return alert("Please enter an image URL.");
+    if (!Number) return alert("Year must be a whole number.");
+    if (!Number.isInteger(parsedYear)) return alert("Year must be a whole number.");
+    if (parsedYear < 0 || parsedYear > currentYear)
+      return alert(`Year must be between 0 and ${currentYear}.`);
+
+
+    const newBook: BookProps = {
+      id: crypto.randomUUID(),
+      title: title.trim(),
+      imageUrl: imageUrl.trim(),
+      yearOfPublication: parsedYear,
+    };
+
+
+    setBooks((prev) => [newBook, ...prev]);
+
+    setTitle("");
+    setImageUrl("");
+    setYearOfPublication("");
+
+
+  }
 
   return (
     <>
-      <header>
-        <h1 className={styles.title}>Books</h1>
-      </header>
-      <div className={styles.container}>
-        <Book id={0} imageUrl={"https://ik.imagekit.io/storybird/images/01af5014-6a0b-4c0d-ad1d-237099ad2265/7_583686947.webp?tr=q-80"} title={"lion"} yearOfPublication={1987} {...books} />
-        <Book id={0} imageUrl={"https://www.shutterstock.com/image-vector/cartoon-dog-animated-character-full-600nw-2506326479.jpg"} title={"dog"} yearOfPublication={2022} {...books} />
-        <Book id={0} imageUrl={"https://png.pngtree.com/png-vector/20230906/ourmid/pngtree-cute-cartoon-cat-png-image_10004760.png"} title={"cat"} yearOfPublication={2013} {...books} />
-        <Book id={0} imageUrl={"https://www.shutterstock.com/image-vector/clownfish-vibrant-small-marine-fish-600nw-2488428137.jpg"} title={"fish"} yearOfPublication={2003} {...books} />
+
+
+      <form name="bookForm" onSubmit={handleSubmit}>
+        <label htmlFor="title">Title </label>
+        <input
+          id="title"
+          placeholder="Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <label htmlFor="imageUrl">ImageUrl</label>
+        <input
+          id="imageUrl"
+          placeholder="ImageUrl"
+          value={imageUrl}
+          onChange={(e) => setImageUrl(e.target.value)}
+        />
+        <label htmlFor="year">Year of Publication</label>
+        <input
+          id="year"
+          placeholder="Year of publication"
+          inputMode="numeric"
+          value={yearOfPublication}
+          onChange={(e) => setYearOfPublication(e.target.value)}
+        />
+
+
+        <button type="submit">
+          Add Book
+        </button>
+      </form>
+
+
+      <h1 className={styles.title}>Books</h1>
+
+      <div>
+        {books.map((book) => (
+          <Book
+            key={book.id}
+            id={book.id}
+            imageUrl={book.imageUrl}
+            title={book.title}
+            yearOfPublication={book.yearOfPublication}
+          />
+        ))}
       </div>
     </>
   )
