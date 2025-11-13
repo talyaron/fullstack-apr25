@@ -11,7 +11,7 @@ import { authenticate } from '../middleware/authMiddleware';
 const router = Router();
 
 // All routes require authentication
-router.use(authenticate);
+// router.use(authenticate);
 
 // Book routes
 router.get('/', getBooks);
