@@ -49,4 +49,4 @@ coverage/
 
 # Large media files
 src/assets/*.mp4
-src/assets/*.mov
+src/assets/*.mov*.mp4
