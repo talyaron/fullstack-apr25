@@ -1,0 +1,98 @@
+// Calculator.scss
+.calculator {
+  max-width: 600px;  // ← יותר רחב!
+  width: 100%;
+  background: linear-gradient(135deg, #a8b5ff 0%, #d4a5ff 100%);
+  padding: 50px;  // ← יותר padding
+  border-radius: 30px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  &__title {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    font-size: 2.5rem;  // ← יותר גדול
+    color: #7c88ff;
+    margin: 0 0 30px 0;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  input[type="number"] {
+    width: 100%;
+    padding: 25px;  // ← יותר גדול
+    margin-bottom: 25px;
+    border: none;
+    border-radius: 20px;
+    font-size: 1.5rem;  // ← יותר גדול
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    font-weight: 500;
+    color: #666;
+
+    &::placeholder {
+      color: #bbb;
+    }
+
+    &:focus {
+      outline: none;
+      background-color: white;
+      transform: scale(1.02);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;  // ← יותר רווח
+    margin-bottom: 30px;
+
+    button {
+      width: 80px;  // ← יותר גדול
+      height: 80px;  // ← יותר גדול
+      border: none;
+      border-radius: 18px;
+      font-size: 2rem;  // ← יותר גדול
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background-color: #2d3436;
+      color: white;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        background-color: #1a1d1f;
+      }
+
+      &:active {
+        transform: translateY(0);
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+      }
+    }
+  }
+
+  &__result {
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 2rem;  // ← יותר גדול
+    color: white;
+    margin: 0;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+}
