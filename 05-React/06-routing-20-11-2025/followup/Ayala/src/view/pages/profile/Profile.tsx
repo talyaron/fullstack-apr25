@@ -1,3 +1,4 @@
+import { Link } from 'react-router'
 import styles from './Profile.module.scss'
 const Profile = () => {
   return (
@@ -6,6 +7,8 @@ const Profile = () => {
         <p className={styles.bio}>Welcome to your profile page!</p>
         <button className={styles.editButton}>Edit Profile</button>
         <button className={styles.logoutButton}>Logout</button>
+        <Link to="/about"><button>About</button></Link>
+        <Link to="/"><button>Home</button></Link>
 
     </div>
   )
