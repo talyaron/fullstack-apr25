@@ -1,0 +1,71 @@
+// TodoApp.scss
+.todo-app {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 24px;
+
+  &__input {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+
+    input {
+      flex: 1;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+
+    button {
+      padding: 12px 24px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #45a049;
+      }
+    }
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    margin-bottom: 8px;
+
+    &--completed {
+      opacity: 0.6;
+      text-decoration: line-through;
+    }
+
+    span {
+      flex: 1;
+    }
+
+    button {
+      padding: 6px 12px;
+      background-color: #f44336;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #da190b;
+      }
+    }
+  }
+}
