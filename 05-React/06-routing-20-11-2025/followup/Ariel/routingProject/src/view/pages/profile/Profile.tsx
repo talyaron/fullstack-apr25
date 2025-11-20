@@ -1,6 +1,13 @@
+import { Link } from "react-router"
+
 const Profile = () => {
   return (
-    <div>Profile</div>
+    <div>
+      <h1>Profile page</h1>
+      <Link to="/">
+        <button>Go To Home</button>
+      </Link>
+    </div>
   )
 }
 
