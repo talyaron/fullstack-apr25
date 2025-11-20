@@ -1,4 +1,4 @@
-import { Link } from "react-router"
+import { Link, Outlet } from "react-router"
 
 const About = () => {
     return (
@@ -7,6 +7,8 @@ const About = () => {
             <Link to="/">
                 <button>Go To Home</button>
             </Link>
+            <Outlet />
+
         </div>
     )
 }
