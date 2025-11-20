@@ -1,0 +1,1 @@
+follow the instructor's example, and add another page Profile that will be accessible via the /profile route.]
