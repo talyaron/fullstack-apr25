@@ -8,6 +8,7 @@ import Login from './view/pages/login/Login.tsx';
 import Team from './view/components/Team.tsx';
 import Tal from './view/components/Tal.tsx';
 import Chrisitin from './view/components/Chrisitin.tsx';
+import Book from './view/pages/book/Book.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -19,6 +20,8 @@ createRoot(document.getElementById('root')!).render(
           <Route path="tal" element={<Tal />} />
           <Route path="chrisitin" element={<Chrisitin />} />
         </Route>
+        <Route path="/book/:bookId" element= {<Book />} />
+        <Route path="*" element={<div>404 Not Found</div>} />
         <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>
