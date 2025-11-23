@@ -1,39 +1,54 @@
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-
-}
-
-body{
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f5f5f5;
-}
-
-.app{
-  max-width: 1200px;
+/* ===========================
+   HOME PAGE WRAPPER
+   =========================== */
+.app {
+  max-width: 800px;
   margin: 0 auto;
-  padding: 20px;
-}
-
-h1{
+  padding: 40px 20px;
   text-align: center;
-  margin-bottom: 20px;
-  color: #333;
+
+  h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #333;
+  }
 }
 
-.goToBtn{
-  display: block;
-  margin: 0 auto;
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #007bff;
+/* ===========================
+   BUTTON (MATCHES BREEDS STYLE)
+   =========================== */
+.goToBtn {
+  padding: 12px 22px;
+  font-size: 18px;
+  font-weight: 600;
+
+  background: #4a90e2;
   color: white;
+
   border: none;
-  border-radius: 5px;
+  border-radius: 12px;
   cursor: pointer;
+
+  transition: 0.25s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+
+  &:hover {
+    background: #357ac8;
+    transform: scale(1.05);
+  }
 }
 
-.goToBtn:hover{
-  background-color: #0056b3;
+/* ===========================
+   RESPONSIVE
+   =========================== */
+@media (max-width: 600px) {
+  .app h1 {
+    font-size: 26px;
+  }
+
+  .goToBtn {
+    width: 80%;
+    font-size: 16px;
+  }
 }

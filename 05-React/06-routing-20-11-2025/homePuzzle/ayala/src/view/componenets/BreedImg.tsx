@@ -4,8 +4,8 @@ import style from '../pages/breeds/Breeds.module.scss'
 
 
 const BreedImg = () => {
-const [imgUrl, setImgUrl] = useState<string>("");
     const { breedId } = useParams();
+    const [imgUrl, setImgUrl] = useState<string>("");
     async function fetchBreedImage(breedId: string | undefined) {
         const response = await fetch(`https://dog.ceo/api/breed/${breedId}/images/random`);
         const data = await response.json();
@@ -18,8 +18,21 @@ const [imgUrl, setImgUrl] = useState<string>("");
     return (
         <div className={style.breedImgContainer}>
             <img src={imgUrl} alt="dog image" />
-            <Link to="/Breed"> <button className={style.backButton}>Back to Breeds List</button></Link>
+
+            <div className={style.buttonsRow}>
+                <Link to="/Breed">
+                    <button className={style.backButton}>Back to Breeds List</button>
+                </Link>
+
+                <button
+                    className={style.backButton}
+                    onClick={() => fetchBreedImage(breedId)}
+                >
+                    Change image
+                </button>
+            </div>
         </div>
+
     )
 }
 

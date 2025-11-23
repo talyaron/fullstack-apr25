@@ -4,10 +4,13 @@ const BreedsList = () => {
     return (
         <div className={style.breedsWrapper}>
             <ul className={style.breedsList}>
-                <Link to="/Breed/hound"><li>Hound</li></Link>
-                <Link to="/Breed/retriever"><li>Retriever</li></Link>
-                <Link to="/Breed/terrier"><li>Terrier</li></Link>
-                <Link to="/Breed/poodle"><li>Poodle</li></Link>
+                <Link to="/Breed/akita"><li>Akita</li></Link>
+                <Link to="/Breed/chow"><li>Chow</li></Link>
+                <Link to="/Breed/doberman"><li>Doberman</li></Link>
+                <Link to="/Breed/eskimo"><li>Eskimo</li></Link>
+                <Link to="/Breed/boxer"><li>Boxer</li></Link>
+                <Link to="/Breed/beagle"><li>Beagle</li></Link>
+
             </ul>
         </div>
     )
