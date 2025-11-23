@@ -4,7 +4,8 @@
 // import Calculetor from "./view/components/calculator/Calculetor";
 // import ProductList from "./view/components/contactList/ContactList";
 // import FilteredList from "./view/components/fruitListFilter/FriutListFilter";
-import StudentList from "./view/components/sortingLists/SortingLists";
+// import StudentList from "./view/components/sortingLists/SortingLists";
+// import ContactList from './view/components/contact/Contact';
 
 import "./App.scss";
 
@@ -12,7 +13,7 @@ function App() {
   return (
     <>
       <div className="app">
-        <StudentList />
+
       </div>
     </>
   );
