@@ -1,0 +1,60 @@
+.gummybears-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #fef9c3, #fecaca);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.gummybears-card {
+  max-width: 42rem;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+.gummybears-image-container {
+  position: relative;
+  height: 20rem;
+  overflow: hidden;
+}
+
+.gummybears-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gummybears-content {
+  padding: 2rem;
+}
+
+.gummybears-title {
+  font-size: 2.25rem;
+  font-weight: bold;
+  color: #dc2626;
+  margin-bottom: 1rem;
+}
+
+.gummybears-description {
+  color: #374151;
+  line-height: 1.75;
+  font-size: 1.125rem;
+}
+
+.gummybears-tags {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.tag {
+  padding: 0.5rem 1rem;
+  background-color: #fee2e2;
+  color: #991b1b;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}

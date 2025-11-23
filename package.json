@@ -9,9 +9,13 @@
     "i": "^0.3.7",
     "mongoose": "^8.18.1",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+>>>>>>> Stashed changes
+=======
+    "react-router": "^7.9.6",
 >>>>>>> Stashed changes
     "react-router-dom": "^7.9.6",
     "source-map": "^0.7.6"
@@ -21,7 +25,7 @@
     "@types/node": "^24.10.0",
     "@types/react-dom": "^19.2.2",
     "@types/web": "^0.0.262",
-    "sass": "^1.94.0",
+    "sass": "^1.94.2",
     "vite": "^7.2.4"
   }
 }
