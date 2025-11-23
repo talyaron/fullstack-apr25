@@ -1,0 +1,26 @@
+.breedsWrapper {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+.backButton {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 10px 15px;
+  font-size: 14px;
+  color: #007bff;
+  text-decoration: none;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+}
+.backButton:hover {
+  background-color: #007bff;
+  color: white;
+}
+.breedList {
+  list-style: none;
+  padding: 0;
+}
+.breedImgContainer {
+  text-align: center;
+  margin-top: 20px;
+}
