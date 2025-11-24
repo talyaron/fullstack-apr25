@@ -1,0 +1,112 @@
+.Shop {
+  padding: 20px;
+  text-align: center;
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #ff6f91;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .flavors-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+}
+
+/* ---------- Add Flavor Form ---------- */
+.add-flavor-form {
+  margin: 40px auto;
+  max-width: 400px;
+  background: #fff6fb;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+
+  h2 {
+    margin-bottom: 15px;
+    color: #ff5f8d;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    input {
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      font-size: 16px;
+
+      &:focus {
+        border-color: #ff6f91;
+        outline: none;
+        box-shadow: 0 0 6px rgba(255, 110, 145, 0.4);
+      }
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      font-size: 18px;
+      background: #ff6f91;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        background: #ff507c;
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
+
+/* ---------- Flavor Card ---------- */
+.flavor-card {
+  width: 220px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: 0.25s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.17);
+  }
+
+  img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 14px;
+    margin-bottom: 12px;
+  }
+
+  .flavor-info {
+    text-align: center;
+
+    .flavor-name {
+      font-size: 1.3rem;
+      color: #ff6f91;
+      margin-bottom: 6px;
+    }
+
+    .flavor-description {
+      font-size: 1rem;
+      color: #444;
+    }
+  }
+}
