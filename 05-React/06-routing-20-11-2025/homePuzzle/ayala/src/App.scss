@@ -1,0 +1,54 @@
+/* ===========================
+   HOME PAGE WRAPPER
+   =========================== */
+.app {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
+
+  h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #333;
+  }
+}
+
+/* ===========================
+   BUTTON (MATCHES BREEDS STYLE)
+   =========================== */
+.goToBtn {
+  padding: 12px 22px;
+  font-size: 18px;
+  font-weight: 600;
+
+  background: #4a90e2;
+  color: white;
+
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+
+  transition: 0.25s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+
+  &:hover {
+    background: #357ac8;
+    transform: scale(1.05);
+  }
+}
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+@media (max-width: 600px) {
+  .app h1 {
+    font-size: 26px;
+  }
+
+  .goToBtn {
+    width: 80%;
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,203 @@
+.contactList {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  &__title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 40px;
+  }
+
+  // טופס הוספה
+  &__form {
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  &__formTitle {
+    margin: 0 0 20px 0;
+    font-size: 1.5rem;
+    color: #34495e;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s;
+    box-sizing: border-box;
+
+    &:focus {
+      outline: none;
+      border-color: #3498db;
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    }
+
+    &::placeholder {
+      color: #95a5a6;
+    }
+  }
+
+  &__addButton {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  // חיפוש
+  &__search {
+    margin-bottom: 20px;
+  }
+
+  &__searchInput {
+    width: 100%;
+    padding: 14px 20px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    transition: all 0.3s;
+    box-sizing: border-box;
+
+    &:focus {
+      outline: none;
+      border-color: #9b59b6;
+      box-shadow: 0 0 0 3px rgba(155, 89, 182, 0.1);
+    }
+  }
+
+  // כפתורי מיון
+  &__controls {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+
+  &__sortButton {
+    flex: 1;
+    padding: 12px 24px;
+    background-color: #ecf0f1;
+    color: #34495e;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: #d5dbdb;
+    }
+
+    &--active {
+      background-color: #27ae60;
+      color: white;
+      border-color: #27ae60;
+
+      &:hover {
+        background-color: #229954;
+      }
+    }
+  }
+
+  // רשימת אנשי קשר
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  &__info {
+    flex: 1;
+  }
+
+  &__name {
+    margin: 0 0 10px 0;
+    font-size: 1.4rem;
+    color: #2c3e50;
+  }
+
+  &__phone,
+  &__email {
+    margin: 6px 0;
+    font-size: 1rem;
+    color: #7f8c8d;
+  }
+
+  &__deleteButton {
+    padding: 10px 20px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: #c0392b;
+      transform: scale(1.05);
+    }
+  }
+
+  &__empty {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #95a5a6;
+    padding: 60px 20px;
+  }
+
+  // Responsive
+  @media (max-width: 768px) {
+    &__card {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    &__deleteButton {
+      width: 100%;
+    }
+  }
+}
