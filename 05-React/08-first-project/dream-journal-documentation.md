@@ -416,6 +416,84 @@ npm start
 
 ---
 
+## UI Screens Description
+
+### 1. Login Page (`Login.jsx`)
+- Email input field
+- Password input field
+- Login button
+- Link to Register page
+- Dark mode compatible design
+
+### 2. Register Page (`Register.jsx`)
+- Name input field
+- Email input field
+- Password input field
+- Register button
+- Link to Login page
+
+### 3. Home Page (`Home.jsx`)
+- **Navbar** with navigation links and dark mode toggle
+- **SearchBar** component for full-text search
+- **Filter controls** (by tags, date range, mood, clarity)
+- **DreamList** displaying DreamCard components
+- Timeline/chronological view of dreams
+- Quick access to add new dream
+
+### 4. Add Dream Page (`AddDream.jsx`)
+- **DreamForm** with:
+  - Title input (max 100 chars)
+  - Content/description textarea
+  - Date picker
+  - **ClarityRating** component (1-5 stars/scale)
+  - **MoodSelector** component (8 mood options: happy, sad, scared, confused, peaceful, anxious, excited, neutral)
+  - **TagInput** component with auto-suggestions
+- Save button
+
+### 5. Edit Dream Page (`EditDream.jsx`)
+- Same form as Add Dream, pre-filled with existing data
+- Update and Delete buttons
+
+### 6. Dream Detail Page (`DreamDetail.jsx`)
+- Full dream title and content
+- Date, clarity rating, mood display
+- Tags displayed as chips/badges
+- Favorite toggle button (star/heart icon)
+- Edit and Delete action buttons
+
+### 7. Favorites Page (`Favorites.jsx`)
+- List of dreams marked as favorite
+- Same DreamCard layout as Home
+- Quick unfavorite option
+
+### 8. Statistics Page (`Statistics.jsx`)
+- **Stats** component showing:
+  - Total dreams count
+  - Dreams this month
+  - Average clarity score
+  - **Top tags** visualization (bar chart or cloud)
+  - **Mood distribution** chart (pie/donut chart)
+  - **Dreams by month** timeline chart
+  - Dream frequency patterns
+
+---
+
+### Shared Components
+
+| Component | Purpose |
+|-----------|---------|
+| `Navbar` | Navigation, dark mode toggle, user info |
+| `DreamCard` | Card preview with title, date, mood, tags, favorite icon |
+| `DreamList` | Container rendering multiple DreamCards |
+| `SearchBar` | Search input with filter options |
+| `DreamForm` | Reusable form for Add/Edit pages |
+| `TagInput` | Tag input with auto-suggestions from existing tags |
+| `MoodSelector` | Dropdown or icon selector for 8 mood options |
+| `ClarityRating` | 1-5 star/scale rating component |
+| `Stats` | Statistics display with charts |
+
+---
+
 ## Future Enhancements
 
 - [ ] **Dream Interpretation AI** - Integrate AI to suggest possible dream meanings
