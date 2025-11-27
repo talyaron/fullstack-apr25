@@ -1,0 +1,226 @@
+$primary-color: #6366f1;
+$primary-hover: #4f46e5;
+$text-dark: #1f2937;
+$text-light: #6b7280;
+$border-color: #e5e7eb;
+$bg-light: #f9fafb;
+$error-color: #ef4444;
+$success-color: #10b981;
+
+.loginForm {
+    width: 100%;
+    max-width: 420px;
+    padding: 40px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+
+    .header {
+        text-align: center;
+        margin-bottom: 32px;
+
+        h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: $text-dark;
+            margin: 0 0 8px 0;
+        }
+
+        p {
+            font-size: 14px;
+            color: $text-light;
+            margin: 0;
+        }
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .inputGroup {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        label {
+            font-size: 14px;
+            font-weight: 500;
+            color: $text-dark;
+        }
+    }
+
+    .inputWrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        .icon {
+            position: absolute;
+            left: 14px;
+            font-size: 16px;
+            opacity: 0.5;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px 14px 14px 44px;
+            font-size: 15px;
+            border: 2px solid $border-color;
+            border-radius: 10px;
+            background: $bg-light;
+            transition: all 0.2s ease;
+            outline: none;
+
+            &::placeholder {
+                color: #9ca3af;
+            }
+
+            &:focus {
+                border-color: $primary-color;
+                background: white;
+                box-shadow: 0 0 0 4px rgba($primary-color, 0.1);
+            }
+        }
+
+        .togglePassword {
+            position: absolute;
+            right: 12px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 4px;
+            opacity: 0.6;
+            transition: opacity 0.2s;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+
+    .options {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 14px;
+
+        .rememberMe {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            color: $text-light;
+
+            input[type="checkbox"] {
+                width: 18px;
+                height: 18px;
+                accent-color: $primary-color;
+                cursor: pointer;
+            }
+        }
+
+        .forgotPassword {
+            color: $primary-color;
+            text-decoration: none;
+            font-weight: 500;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .submitBtn {
+        width: 100%;
+        padding: 14px;
+        font-size: 16px;
+        font-weight: 600;
+        color: white;
+        background: linear-gradient(135deg, $primary-color 0%, $primary-hover 100%);
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba($primary-color, 0.3);
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba($primary-color, 0.4);
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
+    }
+
+    .divider {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: $text-light;
+        font-size: 13px;
+
+        &::before,
+        &::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid $border-color;
+        }
+
+        span {
+            padding: 0 16px;
+        }
+    }
+
+    .socialButtons {
+        display: flex;
+        gap: 12px;
+
+        .socialBtn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px;
+            font-size: 14px;
+            font-weight: 500;
+            color: $text-dark;
+            background: white;
+            border: 2px solid $border-color;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+
+            span {
+                font-weight: 700;
+                font-size: 16px;
+            }
+
+            &:hover {
+                background: $bg-light;
+                border-color: #d1d5db;
+            }
+        }
+    }
+
+    .signupLink {
+        text-align: center;
+        font-size: 14px;
+        color: $text-light;
+        margin: 0;
+
+        a {
+            color: $primary-color;
+            text-decoration: none;
+            font-weight: 600;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
