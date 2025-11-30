@@ -24,9 +24,7 @@ function App() {
   return (
     <>
       <div style={{flexDirection:"row",position:"relative",display:"flex",top:"0",gap:"10px",margin:"auto",justifyContent:"space-evenly",width:"100vw"}}>
-        {image[0] && <img src={image[0]} alt="Random Dog" style={{height:"400px",width:"400px"}} />}
-        {image[1] && <img src={image[1]} alt="Random Dog" style={{height:"400px",width:"400px"}} />}
-        {image[2] && <img src={image[2]} alt="Random Dog" style={{height:"400px",width:"400px"}} />}
+        {image.map((img,indx)=>(<img src={img} key={indx} style={{height:"400px",width:"400px"}}/>))}
       </div>
       <div style={{position:"absolute",display:"flex",bottom:"10%",right:"50%"}}>
         
