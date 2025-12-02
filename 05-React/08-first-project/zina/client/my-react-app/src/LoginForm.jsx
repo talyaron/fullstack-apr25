@@ -8,7 +8,7 @@ function LoginForm({ onLogin }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!email || !password) {
-      setError("");
+      setError("נא למלא את כל השדות");
       return;
     }
     setError("");
