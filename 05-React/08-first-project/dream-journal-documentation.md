@@ -57,7 +57,7 @@ The application provides insights through statistics and visualizations, helping
 | Layer | Technology |
 |-------|------------|
 | Frontend | React.js |
-| Styling | SCSS |
+| Styling | CSS |
 | Backend | Node.js + Express.js |
 | Database | MongoDB |
 | Authentication | JWT (JSON Web Tokens) |
@@ -266,6 +266,41 @@ dream-journal/
 
 ---
 
+### Example requests (cURL)
+
+Register a new user:
+
+```bash
+curl -X POST http://localhost:5000/api/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{"name":"John Doe","email":"john@example.com","password":"securepassword123"}'
+```
+
+Login and get token:
+
+```bash
+curl -X POST http://localhost:5000/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"email":"john@example.com","password":"securepassword123"}'
+```
+
+Create a dream (authenticated):
+
+```bash
+curl -X POST http://localhost:5000/api/dreams \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <TOKEN>" \
+  -d '{"title":"Flying","content":"I flew over mountains","date":"2024-01-15","clarity":4,"mood":"peaceful","tags":["flying","mountains"]}'
+```
+
+List dreams (authenticated):
+
+```bash
+curl -X GET http://localhost:5000/api/dreams \
+  -H "Authorization: Bearer <TOKEN>"
+```
+
+
 ### Dream Endpoints
 
 | Method | Endpoint | Description | Auth Required |
@@ -375,7 +410,7 @@ JWT_SECRET=your-super-secret-jwt-key-here
 JWT_EXPIRE=7d
 
 # Client URL (for CORS)
-CLIENT_URL=http://localhost:3000
+CLIENT_URL=http://localhost:5173
 ```
 
 ---
@@ -391,13 +426,13 @@ npm run dev
 ```
 
 **Start the client (in a new terminal):**
-```bash
+```powershell
 cd client
-npm start
+npm run dev
 ```
 
-The application will be available at:
-- Frontend: `http://localhost:3000`
+The application will be available at (defaults):
+- Frontend (Vite dev server): `http://localhost:5173`
 - Backend API: `http://localhost:5000`
 
 ### Production Mode
@@ -508,6 +543,39 @@ npm start
 - [ ] **Backup & Sync** - Cloud backup of dream data
 
 ---
+
+## Testing
+
+This project doesn't include comprehensive tests yet. Suggested quick start:
+
+- Frontend: add Jest + React Testing Library and add a couple of component tests (login flow, notebook rendering).
+- Backend: add a small test suite using Jest or Mocha and supertest for route integration tests.
+
+Example commands to add locally:
+
+```bash
+# install testing deps for client
+cd client
+npm install --save-dev jest @testing-library/react @testing-library/jest-dom
+
+# run tests
+npm test
+```
+
+Add tests and a test script in `package.json` to run them in CI.
+
+## Accessibility & Performance Notes
+
+- Add `aria-label`s to interactive controls (buttons, inputs). Ensure keyboard navigation works for page flip (left/right arrows).
+- Keep color-contrast ratios accessible (use contrast-checker tools).
+- For large data sets, add pagination or virtualized lists to keep the UI responsive.
+
+## Security Notes
+
+- Keep secrets out of source control — use `.env` and `.env.example` as templates.
+- For production recommend storing JWTs in httpOnly cookies or implementing CSRF protections if using localStorage.
+- Sanitize user input on the server and add rate-limiting.
+
 
 ## Contributing
 

@@ -1,0 +1,145 @@
+.login-form {
+	background: #fffbe6;
+	border-radius: 12px;
+	box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+	padding: 32px 24px;
+	min-width: 320px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.login-form h2 {
+	margin-bottom: 18px;
+	color: #c2b280;
+}
+.form-group {
+	margin-bottom: 16px;
+	width: 100%;
+}
+.form-group label {
+	display: block;
+	margin-bottom: 6px;
+	color: #a89c6f;
+	font-size: 1rem;
+}
+.form-group input {
+	width: 100%;
+	padding: 8px;
+	border-radius: 6px;
+	border: 1px solid #e0d7b6;
+	font-size: 1rem;
+	background: #fdf6e3;
+}
+.login-form button {
+	margin-top: 8px;
+	padding: 8px 24px;
+	border-radius: 8px;
+	border: none;
+	background: #c2b280;
+	color: #fff;
+	font-size: 1rem;
+	cursor: pointer;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.login-form button:hover {
+	background: #a89c6f;
+}
+.error {
+	color: #d32f2f;
+	margin-bottom: 8px;
+	font-size: 0.95rem;
+}
+.book {
+	display: flex;
+	flex-direction: row;
+	background: #fdf6e3;
+	border-radius: 12px;
+	box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+	position: relative;
+	min-width: 360px;
+	min-height: 220px; /* reduced height to make the book shorter */
+	transition: box-shadow 0.3s;
+}
+.book-pages {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+.spine {
+	width: 16px;
+	background: #c2b280;
+	border-radius: 8px 0 0 8px;
+	box-shadow: 2px 0 8px rgba(0,0,0,0.12);
+}
+.page {
+	flex: 1;
+	background: #fffbe6;
+	margin: 12px 6px;
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+	padding: 12px 10px; /* reduced padding for compact layout */
+	display: flex;
+	flex-direction: column;
+}
+.left-page {
+	border-right: 2px solid #e0d7b6;
+}
+.right-page {
+	border-left: 2px solid #e0d7b6;
+}
+.page-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 12px;
+}
+
+.page-date {
+	margin-top: 6px;
+	background: transparent;
+	border: 1px solid #e0d7b6;
+	border-radius: 6px;
+	padding: 4px 6px;
+	font-size: 0.9rem;
+}
+.lines {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 4px; /* slightly tighter between lines */
+	overflow: auto;
+}
+.line-row {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+.line {
+	width: 18px;
+	height: 1.5px;
+	background: #e0d7b6;
+	border-radius: 1px;
+}
+.line-input {
+	flex: 1;
+	border: none;
+	border-bottom: 1px dashed #c2b280;
+	background: transparent;
+	font-size: 0.92rem; /* slightly smaller text */
+	padding: 2px 4px;
+}
+.book-flip.flipping {
+	animation: book-flip 0.4s linear;
+}
+@keyframes book-flip {
+	0% { transform: rotateY(0deg); }
+	50% { transform: rotateY(30deg); box-shadow: 0 16px 48px rgba(0,0,0,0.22); }
+	100% { transform: rotateY(0deg); }
+}
+
+.center-container {
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
