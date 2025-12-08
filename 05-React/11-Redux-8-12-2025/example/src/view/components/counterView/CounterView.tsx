@@ -4,7 +4,7 @@ import type { RootState } from '../../../redux/store'
 
 const CounterView = () => {
 
-const count = useSelector((state: RootState) => state.counter.value)
+const count = useSelector((state:RootState) => state.counter.value)
 
   return (
     <div>This is the counter: {count}</div>

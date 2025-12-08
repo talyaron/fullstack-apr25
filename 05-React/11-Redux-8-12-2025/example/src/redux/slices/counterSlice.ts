@@ -3,16 +3,18 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
 export interface CounterState {
-  value: number
+  value: number,
+  text?: string
 }
 
 const initialState: CounterState = {
   value: 0,
+  text: "Initial text"
 }
 
 export const counterSlice = createSlice({
   name: 'counter',
-  initialState,
+  initialState, //model of the state
   reducers: { // the functions that change the state
     increment: (state) => {
       // Redux Toolkit allows us to write "mutating" logic in reducers. It
