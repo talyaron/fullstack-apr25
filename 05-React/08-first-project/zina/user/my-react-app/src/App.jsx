@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import LoginForm from "./LoginForm";
 
 
@@ -7,7 +7,6 @@ function Notebook() {
     id: i + 1,
     lines: 20,
     textByLine: {},
-    // default date in YYYY-MM-DD suitable for <input type="date">
     date: new Date().toISOString().slice(0, 10),
   }));
   const [pages, setPages] = React.useState(() => makePages(30));
@@ -126,19 +125,27 @@ function Notebook() {
 
 function App() {
   const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    document.title = 'Dream Journal';
+  }, []);
   return (
     <div className="center-container">
       {!user ? (
-        <LoginForm onLogin={setUser} />
+        <div>
+          <h1 className="app-title">Dream Journal</h1>
+          <LoginForm onLogin={setUser} />
+        </div>
       ) : (
         <div className="app-shell">
+          <h1 className="app-title">Dream Journal</h1>
           <div className="top-bar">
-            <div className="welcome">שלום, {user}</div>
+            <div className="welcome"> {user}</div>
             <button
               className="signout-button"
               onClick={() => setUser(null)}
               aria-label="Sign out">
-              התנתק
+            
             </button>
           </div>
           <Notebook />
