@@ -12,7 +12,6 @@ function LoginForm({ onLogin }) {
       return;
     }
     setError("");
-    // Simulate login success
     onLogin(email);
   };
 

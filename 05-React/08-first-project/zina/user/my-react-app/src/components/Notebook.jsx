@@ -29,7 +29,7 @@ function Notebook({ pages = [] }) {
 
   return (
     <div className={`page ${isFlipping ? (flipDir === "right" ? "flipping-right" : "flipping-left") : ""}`}>
-      {/* תוכן העמוד */}
+      {}
     </div>
   );
 }

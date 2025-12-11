@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 import counterReducer from './slices/counterSlice'
+import textReducer from './slices/textSlice'
 
 export const store = configureStore({
   reducer: {
     // Add your reducers here
     counter: counterReducer,
+    text: textReducer
   },
 })
 
