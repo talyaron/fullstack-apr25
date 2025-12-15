@@ -1,12 +1,13 @@
 {
-  "name": "store-server",
+  "name": "library-server",
   "version": "1.0.0",
-  "description": "Express server for store with MySQL",
+  "description": "Express server for library with MySQL",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
-    "dev": "tsx watch src/index.ts"
+    "dev": "tsx watch src/index.ts",
+    "init-db": "tsx src/init_db.ts"
   },
   "dependencies": {
     "cors": "^2.8.5",

@@ -1,9 +1,16 @@
+-- Initialize Library Database
+-- Run this script to create/reset the database
+
 -- Create database
 CREATE DATABASE IF NOT EXISTS `library`;
 USE `library`;
 
+-- Drop existing tables (in correct order due to foreign key)
+DROP TABLE IF EXISTS `books`;
+DROP TABLE IF EXISTS `authors`;
+
 -- Create authors table
-CREATE TABLE IF NOT EXISTS `authors` (
+CREATE TABLE `authors` (
     `author_id` INT NOT NULL AUTO_INCREMENT,
     `first_name` VARCHAR(100) NOT NULL,
     `last_name` VARCHAR(100) NOT NULL,
@@ -12,8 +19,8 @@ CREATE TABLE IF NOT EXISTS `authors` (
     PRIMARY KEY (`author_id`)
 );
 
--- Create books table
-CREATE TABLE IF NOT EXISTS `books` (
+-- Create books table with foreign key to authors
+CREATE TABLE `books` (
     `book_id` INT NOT NULL AUTO_INCREMENT,
     `title` VARCHAR(255) NOT NULL,
     `publication_year` YEAR,
@@ -60,3 +67,22 @@ VALUES
     -- Neil Gaiman (author_id = 5)
     ('American Gods', 2001, '9780062562471', 5),
     ('Coraline', 2002, '9780380807345', 5);
+
+-- Insert a book without an author (to demonstrate NULL foreign key)
+INSERT INTO `books` (title, publication_year, isbn, author_id)
+VALUES
+    ('Unknown Author Book', 2005, '9780000000001', NULL);
+
+-- Verify the data
+SELECT 'Authors:' AS '';
+SELECT * FROM authors;
+
+SELECT 'Books with Authors (JOIN):' AS '';
+SELECT
+    b.book_id,
+    b.title,
+    b.publication_year,
+    b.isbn,
+    CONCAT(a.first_name, ' ', a.last_name) AS author_name
+FROM books b
+LEFT JOIN authors a ON b.author_id = a.author_id;

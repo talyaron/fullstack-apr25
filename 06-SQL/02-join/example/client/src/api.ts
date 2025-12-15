@@ -10,6 +10,7 @@ export async function getAuthors(): Promise<Author[]> {
 }
 
 export async function getAuthor(id: number): Promise<Author> {
+  console.log("get books")
   const response = await fetch(`${API_URL}/authors/${id}`);
   if (!response.ok) throw new Error('Failed to fetch author');
   return response.json();
@@ -49,7 +50,10 @@ export async function deleteAuthor(id: number): Promise<void> {
 export async function getBooks(): Promise<BookWithAuthor[]> {
   const response = await fetch(`${API_URL}/books`);
   if (!response.ok) throw new Error('Failed to fetch books');
-  return response.json();
+  const books = await response.json();
+  console.log(books)
+  return books;
+  
 }
 
 export async function getBook(id: number): Promise<BookWithAuthor> {

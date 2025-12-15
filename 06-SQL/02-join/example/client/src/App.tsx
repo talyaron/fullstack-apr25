@@ -31,6 +31,7 @@ function App() {
 
   const loadBooks = async () => {
     try {
+      console.log("load books")
       const data = await getBooks();
       setBooks(data);
       setError(null);
@@ -40,6 +41,7 @@ function App() {
   };
 
   useEffect(() => {
+    console.log("initlize")
     loadAuthors();
     loadBooks();
   }, []);
