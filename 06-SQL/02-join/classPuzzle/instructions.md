@@ -8,3 +8,7 @@ update seed_db to insert some genres, and update books to have genre_id values
 your goal is to be able to CRUD books with their authors and genres
 
 User can search books by genre
+
+make the app use react, to display books with their authors and genres, and search by genre
+
+The user should be able to add, edit, delete books, authors, and genres
