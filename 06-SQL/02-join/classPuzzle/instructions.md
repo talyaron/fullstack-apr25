@@ -1,4 +1,6 @@
-copy from example to classPuzzle/you-name
+author_id INT NOT NULL, 
+
+FOREIGN KEY (author_id) REFERENCES author(author_id)copy from example to classPuzzle/you-name
 
 run npm i for server and client
 
