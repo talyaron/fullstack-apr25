@@ -1,0 +1,46 @@
+// הגדרת משתנים
+$primary-color: #c3d8ee; // כחול לבחירה/ריחוף
+$text-color: #333;
+$border-color: #ddd;
+$light-bg: #f9f9f9;
+$input-border-color: #ccc;
+$max-width: 300px;
+$padding: 15px;
+
+.filterContainer {
+  // סגנונות כלליים
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: $padding;
+  background-color: $light-bg;
+  border-radius: 8px;
+  border: 1px solid $border-color;
+  max-width: $max-width;
+  direction: rtl; // חשוב לכיוון עברית
+
+  // סגנונות ה-Label
+  .label {
+    font-weight: bold;
+    color: $text-color;
+    font-size: 16px;
+    min-width: 60px;
+    text-align: right;
+  }
+
+  // סגנונות תיבת הבחירה (Select)
+  .select {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid $input-border-color;
+    font-size: 16px;
+    flex-grow: 1;
+    cursor: pointer;
+    background-color: white;
+
+    // פסאודו-סלקטור (ריחוף) באמצעות קינון SCSS
+    &:hover {
+      border-color: $primary-color; // שינוי צבע בעת ריחוף
+    }
+  }
+}
