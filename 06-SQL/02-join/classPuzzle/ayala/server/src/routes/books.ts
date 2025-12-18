@@ -15,9 +15,12 @@ router.get('/', async (_req: Request, res: Response) => {
         b.publication_year,
         b.isbn,
         b.author_id,
+        b.genre_id,
         a.first_name AS author_first_name,
-        a.last_name AS author_last_name
+        a.last_name AS author_last_name,
+        g.name AS genre_name
       FROM books b
+      LEFT JOIN genres g ON b.genre_id = g.genre_id
       LEFT JOIN authors a ON b.author_id = a.author_id
     `);
     res.json(rows as BookWithAuthor[]);
@@ -37,9 +40,12 @@ router.get('/:id', async (req: Request, res: Response) => {
         b.publication_year,
         b.isbn,
         b.author_id,
+        b.genre_id,
         a.first_name AS author_first_name,
-        a.last_name AS author_last_name
+        a.last_name AS author_last_name,
+        g.name AS genre_name
       FROM books b
+      LEFT JOIN genres g ON b.genre_id = g.genre_id
       LEFT JOIN authors a ON b.author_id = a.author_id
       WHERE b.book_id = ?
     `, [req.params.id]);
@@ -57,10 +63,10 @@ router.get('/:id', async (req: Request, res: Response) => {
 // Create book
 router.post('/', async (req: Request, res: Response) => {
   try {
-    const { title, publication_year, isbn, author_id }: BookInput = req.body;
+    const { title, publication_year, isbn, author_id, genre_id }: BookInput = req.body;
     const [result] = await pool.query<ResultSetHeader>(
-      'INSERT INTO books (title, publication_year, isbn, author_id) VALUES (?, ?, ?, ?)',
-      [title, publication_year || null, isbn || null, author_id || null]
+      'INSERT INTO books (title, publication_year, isbn, author_id, genre_id) VALUES (?, ?, ?, ?, ?)',
+      [title, publication_year || null, isbn || null, author_id || null, genre_id||null]
     );
     const newBook: Book = {
       book_id: result.insertId,
@@ -68,7 +74,7 @@ router.post('/', async (req: Request, res: Response) => {
       publication_year: publication_year || null,
       isbn: isbn || null,
       author_id: author_id || null,
-      genre_id: null,
+      genre_id: genre_id,
 
     };
     res.status(201).json(newBook);
@@ -89,16 +95,16 @@ router.post('/', async (req: Request, res: Response) => {
 // Update book
 router.put('/:id', async (req: Request, res: Response) => {
   try {
-    const { title, publication_year, isbn, author_id }: BookInput = req.body;
+    const { title, publication_year, isbn, author_id, genre_id }: BookInput = req.body;
     const [result] = await pool.query<ResultSetHeader>(
-      'UPDATE books SET title = ?, publication_year = ?, isbn = ?, author_id = ? WHERE book_id = ?',
-      [title, publication_year || null, isbn || null, author_id || null, req.params.id]
+      'UPDATE books SET title = ?, publication_year = ?, isbn = ?, author_id = ?, genre_id = ? WHERE book_id = ?',
+      [title, publication_year || null, isbn || null, author_id || null,genre_id, req.params.id]
     );
     if (result.affectedRows === 0) {
       res.status(404).json({ error: 'Book not found' });
       return;
     }
-    res.json({ book_id: parseInt(req.params.id), title, publication_year, isbn, author_id });
+    res.json({ book_id: parseInt(req.params.id), title, publication_year, isbn, author_id , genre_id});
   } catch (error: any) {
     console.error(error);
     if (error.code === 'ER_DUP_ENTRY') {

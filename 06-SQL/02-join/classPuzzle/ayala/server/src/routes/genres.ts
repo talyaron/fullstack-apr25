@@ -15,9 +15,12 @@ router.get('/:id', async (req: Request, res: Response) => {
         b.publication_year,
         b.isbn,
         b.author_id,
+        b.genre_id,
         a.first_name AS author_first_name,
-        a.last_name AS author_last_name
+        a.last_name AS author_last_name,
+        g.name AS genre_name
       FROM books b
+      LEFT JOIN genres g ON b.genre_id = g.genre_id
       LEFT JOIN authors a ON b.author_id = a.author_id
       WHERE b.genre_id = ?
     `,[req.params.id]);

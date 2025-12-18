@@ -1,7 +1,7 @@
 import { useState } from "react"
 import type {  BookWithAuthor, Genre } from "../types"
 import styles from './GenreFilter.module.scss'
-import { getBooksByGenre } from "../api"
+import { getBooks, getBooksByGenre } from "../api"
 interface Props {
     genres: Genre[];
     setBooks: React.Dispatch<React.SetStateAction<BookWithAuthor[]>>;
@@ -17,14 +17,15 @@ const GenreFilter = ({ genres, setBooks , setError}: Props) => {
         // המרה ל-number או שמירה כ-null אם נבחרה האפשרות "כל הסוגות"
         const newGenreId = value === 'all' ? null : Number(value);
         setSelectedGenreId(newGenreId);
-        if (newGenreId != null) loadBooksByGenre(newGenreId)
+        loadBooksByGenre(newGenreId)
     };
 
 
-    const loadBooksByGenre = async (id: number) => {
+    const loadBooksByGenre = async (id:number|null) => {
         try {
             console.log("load genres")
-            const data = await getBooksByGenre(id);
+
+            const data = id === null?await getBooks() :await getBooksByGenre(id);
             setBooks(data);
             setError(null);
         } catch {
@@ -44,7 +45,7 @@ const GenreFilter = ({ genres, setBooks , setError}: Props) => {
                 className={styles.select}
             >
                 {/* אפשרות ברירת מחדל לבחירת "כל הסוגות" (ללא פילטר) */}
-                <option value="all">כל הסוגות</option>
+                <option value="all">all</option>
 
                 {/* יצירת האפשרויות מתוך מערך ה-genres */}
                 {genres.map((genre) => (

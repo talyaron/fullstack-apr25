@@ -27,6 +27,7 @@ export function BookList({ books, onEdit, onDelete }: BookListProps) {
           <th>Author</th>
           <th>Year</th>
           <th>ISBN</th>
+          <th>Genre</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -38,6 +39,7 @@ export function BookList({ books, onEdit, onDelete }: BookListProps) {
             <td>{getAuthorName(book)}</td>
             <td>{book.publication_year || '-'}</td>
             <td>{book.isbn || '-'}</td>
+            <td>{book.genre_name|| 'none'}</td>
             <td>
               <button onClick={() => onEdit(book)}>Edit</button>
               <button onClick={() => onDelete(book.book_id)} className="delete-btn">

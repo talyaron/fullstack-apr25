@@ -14,13 +14,14 @@ export interface Book {
   publication_year: number | null;
   isbn: string | null;
   author_id: number | null;
+  genre_id:number|null
 }
-
 export type BookInput = Omit<Book, 'book_id'>;
 
 export interface BookWithAuthor extends Book {
   author_first_name: string | null;
   author_last_name: string | null;
+  genre_name:string
 }
 export interface Genre {
   genre_id:number;

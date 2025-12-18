@@ -170,6 +170,7 @@ function App() {
 
       {formMode === 'book' && (
         <BookForm
+        genres={genres}
           book={editingBook}
           authors={authors}
           onSubmit={handleBookSubmit}
