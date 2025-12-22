@@ -43,19 +43,17 @@ export const RegisterPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center cosmic-bg px-4">
-      <Card className="w-full max-w-md">
-        <div className="text-center mb-8">
-          <span className="text-4xl mb-4 block">🚀</span>
+    <div className="page-center cosmic-bg">
+      <Card className="container-sm">
+        <div className="text-center" style={{ marginBottom: '2rem' }}>
+          <span className="text-4xl" style={{ display: 'block', marginBottom: '1rem' }}>🚀</span>
           <h1 className="text-3xl font-bold text-gradient">Join the Cosmos</h1>
-          <p className="text-white/60 mt-2">Create your account and start exploring</p>
+          <p className="text-muted" style={{ marginTop: '0.5rem' }}>Create your account and start exploring</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="flex-col gap-6">
           {error && (
-            <div className="p-3 bg-red-500/20 border border-red-500/50 rounded-lg text-red-300 text-sm">
-              {error}
-            </div>
+            <div className="alert-error">{error}</div>
           )}
 
           <Input
@@ -87,14 +85,14 @@ export const RegisterPage = () => {
             required
           />
 
-          <Button type="submit" isLoading={isLoading} className="w-full">
+          <Button type="submit" isLoading={isLoading} fullWidth>
             Create Account
           </Button>
         </form>
 
-        <p className="text-center mt-6 text-white/60">
+        <p className="text-center text-muted" style={{ marginTop: '1.5rem' }}>
           Already have an account?{' '}
-          <Link to="/login" className="text-stellar-cyan hover:underline">
+          <Link to="/login" className="text-accent">
             Sign in here
           </Link>
         </p>

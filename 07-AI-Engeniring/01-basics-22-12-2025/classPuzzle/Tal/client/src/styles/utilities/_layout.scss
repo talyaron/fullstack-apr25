@@ -1,0 +1,135 @@
+// ============================================
+// LAYOUT UTILITIES
+// ============================================
+
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+// === CONTAINERS ===
+.container {
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 $spacing-4;
+
+  @include breakpoint-up(sm) {
+    padding: 0 $spacing-6;
+  }
+
+  @include breakpoint-up(lg) {
+    padding: 0 $spacing-8;
+  }
+}
+
+.container-sm {
+  max-width: 40rem;
+}
+
+.container-lg {
+  max-width: 90rem;
+}
+
+// === PAGE LAYOUTS ===
+.page {
+  min-height: 100vh;
+  @include gradient-cosmic;
+  position: relative;
+}
+
+.page-content {
+  padding: $spacing-8 0;
+}
+
+.page-center {
+  min-height: 100vh;
+  @include flex-center;
+  @include gradient-cosmic;
+  padding: $spacing-4;
+}
+
+// === COSMIC BACKGROUND ===
+.cosmic-bg {
+  @include gradient-cosmic;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+      radial-gradient(2px 2px at 20px 30px, white, transparent),
+      radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+      radial-gradient(1px 1px at 90px 40px, white, transparent),
+      radial-gradient(2px 2px at 160px 120px, rgba(255,255,255,0.9), transparent),
+      radial-gradient(1px 1px at 230px 80px, white, transparent),
+      radial-gradient(2px 2px at 300px 150px, rgba(255,255,255,0.7), transparent);
+    background-repeat: repeat;
+    background-size: 350px 200px;
+    animation: twinkle 4s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+// === GRID ===
+.grid {
+  display: grid;
+  gap: $spacing-4;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-responsive {
+  grid-template-columns: 1fr;
+
+  @include breakpoint-up(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include breakpoint-up(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// === FLEX UTILITIES ===
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  @include flex-center;
+}
+
+.flex-between {
+  @include flex-between;
+}
+
+.flex-col {
+  @include flex-column;
+}
+
+.gap-2 {
+  gap: $spacing-2;
+}
+
+.gap-4 {
+  gap: $spacing-4;
+}
+
+.gap-6 {
+  gap: $spacing-6;
+}

@@ -1,0 +1,76 @@
+// ============================================
+// MODAL STYLES
+// ============================================
+
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: $backdrop-blur;
+  @include flex-center;
+  z-index: $z-index-modal;
+  padding: $spacing-4;
+}
+
+.modal {
+  @include glass;
+  width: 100%;
+  max-width: 32rem;
+  max-height: 90vh;
+  overflow-y: auto;
+  @include custom-scrollbar;
+}
+
+.modal-header {
+  @include flex-between;
+  margin-bottom: $spacing-6;
+}
+
+.modal-title {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  @include text-gradient;
+}
+
+.modal-close {
+  color: $color-text-muted;
+  @include transition-colors;
+
+  &:hover {
+    color: $color-text-primary;
+  }
+
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+.modal-body {
+  color: $color-text-secondary;
+}
+
+.modal-footer {
+  @include flex-between;
+  gap: $spacing-4;
+  margin-top: $spacing-6;
+  padding-top: $spacing-4;
+  border-top: $border-width solid $color-border-light;
+}
+
+// === MODAL SIZES ===
+.modal-sm {
+  max-width: 24rem;
+}
+
+.modal-lg {
+  max-width: 48rem;
+}
+
+.modal-full {
+  max-width: 90vw;
+  max-height: 90vh;
+}

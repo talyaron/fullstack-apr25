@@ -60,27 +60,22 @@ export const TaskForm = ({ task, onClose }: TaskFormProps) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-      <Card className="w-full max-w-lg">
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl font-bold text-gradient">
+    <div className="modal-overlay">
+      <Card className="modal">
+        <div className="modal-header">
+          <h2 className="modal-title">
             {isEditing ? 'Edit Task' : 'Create New Task'}
           </h2>
-          <button
-            onClick={onClose}
-            className="text-white/60 hover:text-white transition-colors"
-          >
+          <button onClick={onClose} className="modal-close">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="flex-col gap-4">
           {error && (
-            <div className="p-3 bg-red-500/20 border border-red-500/50 rounded-lg text-red-300 text-sm">
-              {error}
-            </div>
+            <div className="alert-error">{error}</div>
           )}
 
           <Input
@@ -91,27 +86,24 @@ export const TaskForm = ({ task, onClose }: TaskFormProps) => {
             required
           />
 
-          <div className="space-y-2">
-            <label className="block text-sm font-medium text-white/80">Description</label>
+          <div className="input-group">
+            <label className="label">Description</label>
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               placeholder="Enter task description"
               rows={3}
-              className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg
-                focus:outline-none focus:border-stellar-cyan focus:ring-1 focus:ring-stellar-cyan
-                placeholder-white/40 transition-all duration-300 resize-none"
+              className="textarea"
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <label className="block text-sm font-medium text-white/80">Priority</label>
+          <div className="grid grid-2 gap-4">
+            <div className="input-group">
+              <label className="label">Priority</label>
               <select
                 value={priority}
                 onChange={(e) => setPriority(e.target.value as typeof priority)}
-                className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg
-                  focus:outline-none focus:border-stellar-cyan transition-all duration-300"
+                className="select"
               >
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
@@ -119,13 +111,12 @@ export const TaskForm = ({ task, onClose }: TaskFormProps) => {
               </select>
             </div>
 
-            <div className="space-y-2">
-              <label className="block text-sm font-medium text-white/80">Status</label>
+            <div className="input-group">
+              <label className="label">Status</label>
               <select
                 value={status}
                 onChange={(e) => setStatus(e.target.value as typeof status)}
-                className="w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg
-                  focus:outline-none focus:border-stellar-cyan transition-all duration-300"
+                className="select"
               >
                 <option value="pending">Pending</option>
                 <option value="in-progress">In Progress</option>
@@ -141,11 +132,11 @@ export const TaskForm = ({ task, onClose }: TaskFormProps) => {
             onChange={(e) => setDueDate(e.target.value)}
           />
 
-          <div className="flex gap-4 pt-4">
-            <Button type="button" variant="secondary" onClick={onClose} className="flex-1">
+          <div className="modal-footer">
+            <Button type="button" variant="secondary" onClick={onClose} fullWidth>
               Cancel
             </Button>
-            <Button type="submit" isLoading={isLoading} className="flex-1">
+            <Button type="submit" isLoading={isLoading} fullWidth>
               {isEditing ? 'Update Task' : 'Create Task'}
             </Button>
           </div>

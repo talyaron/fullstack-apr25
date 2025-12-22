@@ -1,0 +1,26 @@
+// ============================================
+// SPACE TASK MANAGER - DESIGN SYSTEM
+// Main entry point for all styles
+// ============================================
+
+// === BASE ===
+// Variables must come first - they define all design tokens
+@use 'base/variables';
+@use 'base/mixins';
+@use 'base/reset';
+
+// === COMPONENTS ===
+// Individual component styles
+@use 'components/buttons';
+@use 'components/inputs';
+@use 'components/cards';
+@use 'components/badges';
+@use 'components/navbar';
+@use 'components/modal';
+@use 'components/alerts';
+
+// === UTILITIES ===
+// Helper classes for layout and typography
+@use 'utilities/layout';
+@use 'utilities/typography';
+@use 'utilities/spinner';

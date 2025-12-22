@@ -1,0 +1,76 @@
+// ============================================
+// CSS RESET & BASE STYLES
+// ============================================
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-normal;
+  color: $color-text-primary;
+  background-color: $color-bg-primary;
+  min-height: 100vh;
+  @include custom-scrollbar;
+}
+
+a {
+  color: $color-secondary;
+  text-decoration: none;
+  @include transition-colors;
+
+  &:hover {
+    color: $color-secondary-light;
+    text-decoration: underline;
+  }
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+// Remove default focus outline and add custom
+:focus-visible {
+  @include focus-ring;
+}
+
+// Selection color
+::selection {
+  background-color: rgba($color-primary, 0.3);
+  color: $color-text-primary;
+}

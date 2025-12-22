@@ -1,0 +1,119 @@
+// ============================================
+// INPUT STYLES
+// ============================================
+
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+// === BASE INPUT ===
+.input {
+  width: 100%;
+  padding: $spacing-3 $spacing-4;
+  font-size: $font-size-base;
+  color: $color-text-primary;
+  background-color: rgba($color-text-primary, 0.05);
+  border: $border-width solid $color-border;
+  border-radius: $border-radius-lg;
+  @include transition-all;
+
+  &::placeholder {
+    color: $color-text-disabled;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: $color-text-muted;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $color-secondary;
+    box-shadow: 0 0 0 3px rgba($color-secondary, 0.15);
+  }
+
+  &:disabled {
+    @include disabled;
+    background-color: rgba($color-text-primary, 0.02);
+  }
+}
+
+// === INPUT WITH ERROR ===
+.input-error {
+  border-color: $color-error;
+
+  &:focus {
+    border-color: $color-error;
+    box-shadow: 0 0 0 3px rgba($color-error, 0.15);
+  }
+}
+
+// === INPUT WITH SUCCESS ===
+.input-success {
+  border-color: $color-success;
+
+  &:focus {
+    border-color: $color-success;
+    box-shadow: 0 0 0 3px rgba($color-success, 0.15);
+  }
+}
+
+// === TEXTAREA ===
+.textarea {
+  @extend .input;
+  min-height: 100px;
+  resize: vertical;
+}
+
+// === SELECT ===
+.select {
+  @extend .input;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23ffffff'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right $spacing-3 center;
+  background-size: 1rem;
+  padding-right: $spacing-10;
+
+  option {
+    background-color: $color-bg-secondary;
+    color: $color-text-primary;
+  }
+}
+
+// === INPUT GROUP ===
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2;
+}
+
+// === LABEL ===
+.label {
+  display: block;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-secondary;
+}
+
+// === HELPER TEXT ===
+.input-helper {
+  font-size: $font-size-sm;
+  color: $color-text-muted;
+}
+
+// === ERROR MESSAGE ===
+.input-error-message {
+  font-size: $font-size-sm;
+  color: $color-error;
+}
+
+// === INPUT SIZES ===
+.input-sm {
+  padding: $spacing-2 $spacing-3;
+  font-size: $font-size-sm;
+}
+
+.input-lg {
+  padding: $spacing-4 $spacing-5;
+  font-size: $font-size-lg;
+}

@@ -1,0 +1,68 @@
+// ============================================
+// NAVBAR STYLES
+// ============================================
+
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.navbar {
+  @include glass;
+  position: sticky;
+  top: 0;
+  z-index: $z-index-dropdown;
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+}
+
+.navbar-container {
+  @include flex-between;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 $spacing-4;
+  height: 4rem;
+
+  @include breakpoint-up(sm) {
+    padding: 0 $spacing-6;
+  }
+
+  @include breakpoint-up(lg) {
+    padding: 0 $spacing-8;
+  }
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.navbar-brand-icon {
+  font-size: $font-size-2xl;
+}
+
+.navbar-brand-text {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  @include text-gradient;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-4;
+}
+
+.navbar-user {
+  color: $color-text-muted;
+
+  .navbar-username {
+    color: $color-secondary;
+  }
+}

@@ -1,0 +1,128 @@
+// ============================================
+// DESIGN SYSTEM VARIABLES
+// Edit these values to change the entire theme
+// ============================================
+
+// === COLOR PALETTE ===
+// Primary colors
+$color-primary: #a855f7;        // Cosmic Purple
+$color-primary-light: #c084fc;
+$color-primary-dark: #7c3aed;
+
+// Secondary colors
+$color-secondary: #22d3ee;      // Stellar Cyan
+$color-secondary-light: #67e8f9;
+$color-secondary-dark: #06b6d4;
+
+// Accent colors
+$color-accent: #ec4899;         // Nebula Pink
+$color-accent-light: #f472b6;
+$color-accent-dark: #db2777;
+
+// Background colors
+$color-bg-primary: #0f0f23;     // Obsidian (darkest)
+$color-bg-secondary: #1e1b4b;   // Deep Indigo
+$color-bg-tertiary: #2d2a5e;    // Lighter indigo
+
+// Surface colors (cards, modals, etc.)
+$color-surface: rgba(255, 255, 255, 0.1);
+$color-surface-hover: rgba(255, 255, 255, 0.15);
+$color-surface-active: rgba(255, 255, 255, 0.2);
+
+// Text colors
+$color-text-primary: #ffffff;
+$color-text-secondary: rgba(255, 255, 255, 0.8);
+$color-text-muted: rgba(255, 255, 255, 0.6);
+$color-text-disabled: rgba(255, 255, 255, 0.4);
+
+// Border colors
+$color-border: rgba(255, 255, 255, 0.2);
+$color-border-light: rgba(255, 255, 255, 0.1);
+$color-border-focus: $color-secondary;
+
+// Status colors
+$color-success: #22c55e;
+$color-success-light: rgba(34, 197, 94, 0.2);
+$color-warning: #eab308;
+$color-warning-light: rgba(234, 179, 8, 0.2);
+$color-error: #ef4444;
+$color-error-light: rgba(239, 68, 68, 0.2);
+$color-info: #3b82f6;
+$color-info-light: rgba(59, 130, 246, 0.2);
+
+// === TYPOGRAPHY ===
+$font-family-base: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+$font-family-mono: 'Fira Code', 'Consolas', monospace;
+
+$font-size-xs: 0.75rem;    // 12px
+$font-size-sm: 0.875rem;   // 14px
+$font-size-base: 1rem;     // 16px
+$font-size-lg: 1.125rem;   // 18px
+$font-size-xl: 1.25rem;    // 20px
+$font-size-2xl: 1.5rem;    // 24px
+$font-size-3xl: 1.875rem;  // 30px
+$font-size-4xl: 2.25rem;   // 36px
+
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+$line-height-tight: 1.25;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.75;
+
+// === SPACING ===
+$spacing-0: 0;
+$spacing-1: 0.25rem;   // 4px
+$spacing-2: 0.5rem;    // 8px
+$spacing-3: 0.75rem;   // 12px
+$spacing-4: 1rem;      // 16px
+$spacing-5: 1.25rem;   // 20px
+$spacing-6: 1.5rem;    // 24px
+$spacing-8: 2rem;      // 32px
+$spacing-10: 2.5rem;   // 40px
+$spacing-12: 3rem;     // 48px
+$spacing-16: 4rem;     // 64px
+
+// === BORDERS ===
+$border-width: 1px;
+$border-width-thick: 2px;
+
+$border-radius-sm: 0.25rem;   // 4px
+$border-radius-md: 0.5rem;    // 8px
+$border-radius-lg: 0.75rem;   // 12px
+$border-radius-xl: 1rem;      // 16px
+$border-radius-full: 9999px;
+
+// === SHADOWS ===
+$shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+$shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
+$shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.3);
+
+// Glow effects
+$shadow-glow-primary: 0 0 20px rgba($color-primary, 0.3);
+$shadow-glow-secondary: 0 0 20px rgba($color-secondary, 0.3);
+$shadow-glow-accent: 0 0 20px rgba($color-accent, 0.3);
+
+// === TRANSITIONS ===
+$transition-fast: 150ms ease;
+$transition-normal: 300ms ease;
+$transition-slow: 500ms ease;
+
+// === BACKDROP ===
+$backdrop-blur: blur(10px);
+$backdrop-blur-lg: blur(20px);
+
+// === Z-INDEX ===
+$z-index-dropdown: 100;
+$z-index-modal: 200;
+$z-index-tooltip: 300;
+$z-index-toast: 400;
+
+// === BREAKPOINTS ===
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;

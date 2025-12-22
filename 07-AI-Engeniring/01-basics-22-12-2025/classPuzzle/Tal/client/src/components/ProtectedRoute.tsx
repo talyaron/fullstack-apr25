@@ -6,8 +6,8 @@ export const ProtectedRoute = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center cosmic-bg">
-        <div className="animate-spin h-12 w-12 border-4 border-stellar-cyan border-t-transparent rounded-full" />
+      <div className="loading-page cosmic-bg">
+        <div className="spinner" />
       </div>
     );
   }

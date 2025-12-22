@@ -8,16 +8,16 @@ interface TaskCardProps {
   onEdit: (task: TaskResponse) => void;
 }
 
-const priorityColors = {
-  low: 'bg-green-500/20 text-green-300 border-green-500/30',
-  medium: 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30',
-  high: 'bg-red-500/20 text-red-300 border-red-500/30',
+const priorityBadgeClasses = {
+  low: 'badge-priority-low',
+  medium: 'badge-priority-medium',
+  high: 'badge-priority-high',
 };
 
-const statusColors = {
-  pending: 'bg-gray-500/20 text-gray-300',
-  'in-progress': 'bg-blue-500/20 text-blue-300',
-  completed: 'bg-green-500/20 text-green-300',
+const statusBadgeClasses = {
+  pending: 'badge-status-pending',
+  'in-progress': 'badge-status-in-progress',
+  completed: 'badge-status-completed',
 };
 
 export const TaskCard = ({ task, onEdit }: TaskCardProps) => {
@@ -35,36 +35,35 @@ export const TaskCard = ({ task, onEdit }: TaskCardProps) => {
   };
 
   return (
-    <Card hover className="group">
-      <div className="flex justify-between items-start mb-4">
-        <h3 className="text-lg font-semibold text-white group-hover:text-stellar-cyan transition-colors">
-          {task.title}
-        </h3>
+    <Card hover>
+      <div className="card-header">
+        <h3 className="card-title">{task.title}</h3>
         <div className="flex gap-2">
-          <span className={`px-2 py-1 text-xs rounded-full border ${priorityColors[task.priority]}`}>
+          <span className={priorityBadgeClasses[task.priority]}>
             {task.priority}
           </span>
-          <span className={`px-2 py-1 text-xs rounded-full ${statusColors[task.status]}`}>
+          <span className={statusBadgeClasses[task.status]}>
             {task.status}
           </span>
         </div>
       </div>
 
       {task.description && (
-        <p className="text-white/60 text-sm mb-4 line-clamp-2">{task.description}</p>
+        <p className="text-muted text-sm line-clamp-2">{task.description}</p>
       )}
 
       {task.dueDate && (
-        <p className="text-white/50 text-xs mb-4">
+        <p className="text-muted text-xs" style={{ marginTop: '1rem' }}>
           Due: {new Date(task.dueDate).toLocaleDateString()}
         </p>
       )}
 
-      <div className="flex justify-between items-center pt-4 border-t border-white/10">
+      <div className="card-footer">
         <select
           value={task.status}
           onChange={(e) => handleStatusChange(e.target.value as typeof task.status)}
-          className="bg-white/5 border border-white/20 rounded px-2 py-1 text-sm focus:outline-none focus:border-stellar-cyan"
+          className="select input-sm"
+          style={{ width: 'auto' }}
         >
           <option value="pending">Pending</option>
           <option value="in-progress">In Progress</option>
@@ -72,14 +71,14 @@ export const TaskCard = ({ task, onEdit }: TaskCardProps) => {
         </select>
 
         <div className="flex gap-2">
-          <Button variant="secondary" onClick={() => onEdit(task)} className="px-3 py-1 text-sm">
+          <Button variant="secondary" size="sm" onClick={() => onEdit(task)}>
             Edit
           </Button>
           <Button
             variant="danger"
+            size="sm"
             onClick={handleDelete}
             isLoading={isDeleting}
-            className="px-3 py-1 text-sm"
           >
             Delete
           </Button>

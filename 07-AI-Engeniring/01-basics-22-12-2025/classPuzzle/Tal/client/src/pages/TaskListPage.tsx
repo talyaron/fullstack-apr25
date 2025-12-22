@@ -26,30 +26,26 @@ export const TaskListPage = () => {
   };
 
   return (
-    <div className="min-h-screen cosmic-bg">
+    <div className="page cosmic-bg">
       <Navbar />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex justify-between items-center mb-8">
+      <main className="container page-content">
+        <div className="flex-between" style={{ marginBottom: '2rem' }}>
           <div>
             <h1 className="text-3xl font-bold text-gradient">Your Tasks</h1>
-            <p className="text-white/60 mt-1">Manage your cosmic missions</p>
+            <p className="text-muted" style={{ marginTop: '0.25rem' }}>Manage your cosmic missions</p>
           </div>
           <Button onClick={() => setShowForm(true)}>
             + New Task
           </Button>
         </div>
 
-        <div className="flex gap-2 mb-6">
+        <div className="flex gap-2" style={{ marginBottom: '1.5rem' }}>
           {(['all', 'pending', 'in-progress', 'completed'] as const).map((status) => (
             <button
               key={status}
               onClick={() => setFilter(status)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300
-                ${filter === status
-                  ? 'bg-gradient-to-r from-cosmic-purple to-stellar-cyan'
-                  : 'bg-white/10 hover:bg-white/20'
-                }`}
+              className={filter === status ? 'btn-primary btn-sm' : 'btn-secondary btn-sm'}
             >
               {status.charAt(0).toUpperCase() + status.slice(1).replace('-', ' ')}
             </button>
@@ -57,23 +53,23 @@ export const TaskListPage = () => {
         </div>
 
         {isLoading ? (
-          <div className="flex justify-center py-12">
-            <div className="animate-spin h-12 w-12 border-4 border-stellar-cyan border-t-transparent rounded-full" />
+          <div className="loading-overlay">
+            <div className="spinner" />
           </div>
         ) : isError ? (
-          <div className="text-center py-12">
-            <p className="text-red-400">Failed to load tasks. Please try again.</p>
+          <div className="text-center" style={{ padding: '3rem 0' }}>
+            <p className="alert-error">Failed to load tasks. Please try again.</p>
           </div>
         ) : filteredTasks.length === 0 ? (
-          <div className="text-center py-12">
-            <span className="text-6xl mb-4 block">🌟</span>
-            <p className="text-white/60 text-lg">No tasks found</p>
-            <p className="text-white/40 text-sm mt-2">
+          <div className="text-center" style={{ padding: '3rem 0' }}>
+            <span className="text-4xl" style={{ display: 'block', marginBottom: '1rem' }}>🌟</span>
+            <p className="text-muted text-lg">No tasks found</p>
+            <p className="text-muted text-sm" style={{ marginTop: '0.5rem' }}>
               {filter === 'all' ? 'Create your first task to get started!' : 'No tasks match this filter'}
             </p>
           </div>
         ) : (
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-responsive gap-4">
             {filteredTasks.map((task) => (
               <TaskCard key={task._id} task={task} onEdit={handleEdit} />
             ))}

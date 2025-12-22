@@ -4,15 +4,29 @@ interface CardProps {
   children: ReactNode;
   className?: string;
   hover?: boolean;
+  size?: 'sm' | 'md' | 'lg';
 }
 
-export const Card = ({ children, className = '', hover = false }: CardProps) => {
+export const Card = ({
+  children,
+  className = '',
+  hover = false,
+  size = 'md',
+}: CardProps) => {
+  const sizeClasses = {
+    sm: 'card-sm',
+    md: '',
+    lg: 'card-lg',
+  };
+
+  const classes = [
+    hover ? 'card-hover' : 'card',
+    sizeClasses[size],
+    className,
+  ].filter(Boolean).join(' ');
+
   return (
-    <div
-      className={`bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-6
-        ${hover ? 'transition-all duration-300 hover:bg-white/15 hover:shadow-glow-purple cursor-pointer' : ''}
-        ${className}`}
-    >
+    <div className={classes}>
       {children}
     </div>
   );

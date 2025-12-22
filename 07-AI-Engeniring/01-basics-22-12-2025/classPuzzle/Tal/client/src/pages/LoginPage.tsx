@@ -32,19 +32,17 @@ export const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center cosmic-bg px-4">
-      <Card className="w-full max-w-md">
-        <div className="text-center mb-8">
-          <span className="text-4xl mb-4 block">🌌</span>
+    <div className="page-center cosmic-bg">
+      <Card className="container-sm">
+        <div className="text-center" style={{ marginBottom: '2rem' }}>
+          <span className="text-4xl" style={{ display: 'block', marginBottom: '1rem' }}>🌌</span>
           <h1 className="text-3xl font-bold text-gradient">Welcome Back</h1>
-          <p className="text-white/60 mt-2">Sign in to your cosmic workspace</p>
+          <p className="text-muted" style={{ marginTop: '0.5rem' }}>Sign in to your cosmic workspace</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="flex-col gap-6">
           {error && (
-            <div className="p-3 bg-red-500/20 border border-red-500/50 rounded-lg text-red-300 text-sm">
-              {error}
-            </div>
+            <div className="alert-error">{error}</div>
           )}
 
           <Input
@@ -65,14 +63,14 @@ export const LoginPage = () => {
             required
           />
 
-          <Button type="submit" isLoading={isLoading} className="w-full">
+          <Button type="submit" isLoading={isLoading} fullWidth>
             Sign In
           </Button>
         </form>
 
-        <p className="text-center mt-6 text-white/60">
+        <p className="text-center text-muted" style={{ marginTop: '1.5rem' }}>
           Don't have an account?{' '}
-          <Link to="/register" className="text-stellar-cyan hover:underline">
+          <Link to="/register" className="text-accent">
             Register here
           </Link>
         </p>

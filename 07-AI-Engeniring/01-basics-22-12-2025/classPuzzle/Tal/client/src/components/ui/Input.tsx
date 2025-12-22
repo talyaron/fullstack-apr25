@@ -3,30 +3,32 @@ import { InputHTMLAttributes, forwardRef } from 'react';
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   error?: string;
+  helperText?: string;
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ label, error, className = '', ...props }, ref) => {
+  ({ label, error, helperText, className = '', ...props }, ref) => {
+    const inputClasses = [
+      'input',
+      error ? 'input-error' : '',
+      className,
+    ].filter(Boolean).join(' ');
+
     return (
-      <div className="space-y-2">
+      <div className="input-group">
         {label && (
-          <label className="block text-sm font-medium text-white/80">
-            {label}
-          </label>
+          <label className="label">{label}</label>
         )}
         <input
           ref={ref}
-          className={`w-full px-4 py-3 bg-white/5 border rounded-lg
-            focus:outline-none focus:ring-1 transition-all duration-300
-            placeholder-white/40
-            ${error
-              ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-              : 'border-white/20 focus:border-stellar-cyan focus:ring-stellar-cyan'
-            } ${className}`}
+          className={inputClasses}
           {...props}
         />
         {error && (
-          <p className="text-sm text-red-400">{error}</p>
+          <p className="input-error-message">{error}</p>
+        )}
+        {helperText && !error && (
+          <p className="input-helper">{helperText}</p>
         )}
       </div>
     );

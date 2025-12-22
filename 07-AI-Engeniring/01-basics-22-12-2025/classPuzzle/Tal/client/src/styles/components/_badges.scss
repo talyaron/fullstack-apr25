@@ -1,0 +1,103 @@
+// ============================================
+// BADGE & TAG STYLES
+// ============================================
+
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+// === BASE BADGE ===
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: $spacing-1 $spacing-2;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  border-radius: $border-radius-full;
+  @include transition-colors;
+}
+
+// === BADGE VARIANTS ===
+.badge-default {
+  @extend .badge;
+  background-color: $color-surface;
+  color: $color-text-secondary;
+}
+
+.badge-primary {
+  @extend .badge;
+  background-color: rgba($color-primary, 0.2);
+  color: $color-primary-light;
+  border: $border-width solid rgba($color-primary, 0.3);
+}
+
+.badge-secondary {
+  @extend .badge;
+  background-color: rgba($color-secondary, 0.2);
+  color: $color-secondary-light;
+  border: $border-width solid rgba($color-secondary, 0.3);
+}
+
+.badge-success {
+  @extend .badge;
+  background-color: $color-success-light;
+  color: $color-success;
+  border: $border-width solid rgba($color-success, 0.3);
+}
+
+.badge-warning {
+  @extend .badge;
+  background-color: $color-warning-light;
+  color: $color-warning;
+  border: $border-width solid rgba($color-warning, 0.3);
+}
+
+.badge-error {
+  @extend .badge;
+  background-color: $color-error-light;
+  color: $color-error;
+  border: $border-width solid rgba($color-error, 0.3);
+}
+
+.badge-info {
+  @extend .badge;
+  background-color: $color-info-light;
+  color: $color-info;
+  border: $border-width solid rgba($color-info, 0.3);
+}
+
+// === PRIORITY BADGES ===
+.badge-priority-low {
+  @extend .badge-success;
+}
+
+.badge-priority-medium {
+  @extend .badge-warning;
+}
+
+.badge-priority-high {
+  @extend .badge-error;
+}
+
+// === STATUS BADGES ===
+.badge-status-pending {
+  @extend .badge-default;
+}
+
+.badge-status-in-progress {
+  @extend .badge-info;
+}
+
+.badge-status-completed {
+  @extend .badge-success;
+}
+
+// === BADGE SIZES ===
+.badge-sm {
+  padding: $spacing-1 $spacing-2;
+  font-size: 0.625rem;
+}
+
+.badge-lg {
+  padding: $spacing-2 $spacing-3;
+  font-size: $font-size-sm;
+}
