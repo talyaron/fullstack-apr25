@@ -1,0 +1,43 @@
+@import '../../styles/variables';
+
+.favoritesPage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $spacing-xl $spacing-md;
+
+  h1 {
+    color: $text-primary;
+    margin-bottom: $spacing-lg;
+  }
+}
+
+.count {
+  color: $text-light;
+  margin-bottom: $spacing-lg;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: $spacing-lg;
+}
+
+.empty {
+  text-align: center;
+  padding: $spacing-xl * 3;
+  background: white;
+  border-radius: $radius-lg;
+  box-shadow: 0 2px 8px $shadow;
+
+  .icon {
+    font-size: 4rem;
+    display: block;
+    margin-bottom: $spacing-lg;
+  }
+
+  p {
+    color: $text-light;
+    font-size: $font-lg;
+    margin-bottom: $spacing-xl;
+  }
+}

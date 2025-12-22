@@ -1,0 +1,111 @@
+@import '../../styles/variables';
+
+.recipeManagement {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $spacing-lg;
+
+    h2 {
+      color: $text-primary;
+    }
+  }
+}
+
+.formOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: $spacing-md;
+}
+
+.form {
+  background: white;
+  padding: $spacing-xl;
+  border-radius: $radius-lg;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+
+  h3 {
+    color: $primary-color;
+    margin-bottom: $spacing-lg;
+  }
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-md;
+}
+
+.formActions {
+  display: flex;
+  gap: $spacing-md;
+  margin-top: $spacing-lg;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th, td {
+    padding: $spacing-md;
+    text-align: right;
+    border-bottom: 1px solid $border-color;
+  }
+
+  th {
+    background-color: $background-dark;
+    color: $text-secondary;
+    font-weight: 600;
+  }
+
+  tr:hover td {
+    background-color: $cream;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: $spacing-sm;
+}
+
+.editBtn {
+  padding: $spacing-xs $spacing-sm;
+  border: 1px solid $primary-color;
+  border-radius: $radius-sm;
+  background: white;
+  color: $primary-color;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: $primary-color;
+    color: white;
+  }
+}
+
+.deleteBtn {
+  padding: $spacing-xs $spacing-sm;
+  border: 1px solid $error;
+  border-radius: $radius-sm;
+  background: white;
+  color: $error;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: $error;
+    color: white;
+  }
+}

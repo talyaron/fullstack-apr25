@@ -1,0 +1,45 @@
+@import '../../styles/variables';
+
+.userList {
+  h2 {
+    color: $text-primary;
+    margin-bottom: $spacing-lg;
+  }
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th, td {
+    padding: $spacing-md;
+    text-align: right;
+    border-bottom: 1px solid $border-color;
+  }
+
+  th {
+    background-color: $background-dark;
+    color: $text-secondary;
+    font-weight: 600;
+  }
+
+  tr:hover td {
+    background-color: $cream;
+  }
+}
+
+.role {
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $radius-sm;
+  font-size: $font-sm;
+
+  &.admin {
+    background-color: $primary-light;
+    color: white;
+  }
+
+  &.user {
+    background-color: $cream-dark;
+    color: $text-secondary;
+  }
+}

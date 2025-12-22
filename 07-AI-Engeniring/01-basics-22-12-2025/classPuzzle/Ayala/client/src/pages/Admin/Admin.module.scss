@@ -1,0 +1,48 @@
+@import '../../styles/variables';
+
+.adminPage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $spacing-xl $spacing-md;
+
+  h1 {
+    color: $text-primary;
+    margin-bottom: $spacing-lg;
+  }
+}
+
+.tabs {
+  display: flex;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-xl;
+  border-bottom: 2px solid $border-color;
+  padding-bottom: $spacing-sm;
+}
+
+.tab {
+  padding: $spacing-md $spacing-xl;
+  border: none;
+  background: none;
+  font-size: $font-md;
+  color: $text-light;
+  cursor: pointer;
+  border-radius: $radius-md $radius-md 0 0;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: $cream;
+    color: $text-primary;
+  }
+
+  &.active {
+    background-color: $primary-color;
+    color: white;
+  }
+}
+
+.content {
+  background: white;
+  padding: $spacing-xl;
+  border-radius: $radius-lg;
+  box-shadow: 0 2px 8px $shadow;
+}

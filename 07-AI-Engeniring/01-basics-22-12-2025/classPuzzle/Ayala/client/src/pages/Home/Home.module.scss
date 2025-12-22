@@ -1,0 +1,126 @@
+@import '../../styles/variables';
+
+.homePage {
+  min-height: calc(100vh - 80px);
+}
+
+.hero {
+  background: linear-gradient(135deg, $primary-color 0%, $primary-dark 100%);
+  color: white;
+  text-align: center;
+  padding: $spacing-xl * 3 $spacing-md;
+
+  h1 {
+    font-size: $font-2xl;
+    margin-bottom: $spacing-md;
+  }
+
+  p {
+    font-size: $font-lg;
+    opacity: 0.9;
+    margin-bottom: $spacing-xl;
+  }
+}
+
+.searchBox {
+  display: flex;
+  justify-content: center;
+  gap: $spacing-md;
+  max-width: 500px;
+  margin: 0 auto;
+
+  input {
+    flex: 1;
+    padding: $spacing-md;
+    border: none;
+    border-radius: $radius-md;
+    font-size: $font-md;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  button {
+    padding: $spacing-md $spacing-xl;
+  }
+}
+
+.categories {
+  padding: $spacing-xl $spacing-md;
+  background-color: $background-dark;
+
+  h2 {
+    text-align: center;
+    color: $text-primary;
+    margin-bottom: $spacing-lg;
+  }
+}
+
+.categoryList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: $spacing-sm;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.categoryBtn {
+  padding: $spacing-sm $spacing-lg;
+  border: 2px solid $primary-color;
+  border-radius: $radius-lg;
+  background-color: white;
+  color: $primary-color;
+  font-size: $font-md;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: $primary-light;
+    color: white;
+  }
+
+  &.active {
+    background-color: $primary-color;
+    color: white;
+  }
+}
+
+.recipes {
+  padding: $spacing-xl $spacing-md;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.recipesHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: $spacing-lg;
+
+  h2 {
+    color: $text-primary;
+  }
+}
+
+.viewAll {
+  color: $primary-color;
+  font-weight: 500;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.recipeGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: $spacing-lg;
+}
+
+.noRecipes {
+  text-align: center;
+  color: $text-light;
+  padding: $spacing-xl;
+}
