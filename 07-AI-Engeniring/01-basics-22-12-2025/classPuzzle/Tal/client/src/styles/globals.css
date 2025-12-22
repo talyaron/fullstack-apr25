@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-obsidian text-white min-h-screen;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-xl;
+  }
+
+  .glass-card {
+    @apply glass p-6 transition-all duration-300 hover:bg-white/15 hover:shadow-glow-purple;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 bg-gradient-to-r from-cosmic-purple to-stellar-cyan rounded-lg font-semibold
+           transition-all duration-300 hover:shadow-glow-cyan hover:scale-105
+           active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-white/10 border border-white/20 rounded-lg font-semibold
+           transition-all duration-300 hover:bg-white/20 hover:shadow-glow-purple
+           active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 bg-white/5 border border-white/20 rounded-lg
+           focus:outline-none focus:border-stellar-cyan focus:ring-1 focus:ring-stellar-cyan
+           placeholder-white/40 transition-all duration-300;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-white/80 mb-2;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-cosmic-purple via-stellar-cyan to-nebula-pink bg-clip-text text-transparent;
+  }
+
+  .animate-stars {
+    animation: twinkle 3s ease-in-out infinite;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+}
+
+.cosmic-bg {
+  background: linear-gradient(135deg, #0f0f23 0%, #1e1b4b 50%, #0f0f23 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.cosmic-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    radial-gradient(2px 2px at 20px 30px, white, transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 90px 40px, white, transparent),
+    radial-gradient(2px 2px at 160px 120px, rgba(255,255,255,0.9), transparent),
+    radial-gradient(1px 1px at 230px 80px, white, transparent),
+    radial-gradient(2px 2px at 300px 150px, rgba(255,255,255,0.7), transparent);
+  background-repeat: repeat;
+  background-size: 350px 200px;
+  animation: twinkle 4s ease-in-out infinite alternate;
+  pointer-events: none;
+}

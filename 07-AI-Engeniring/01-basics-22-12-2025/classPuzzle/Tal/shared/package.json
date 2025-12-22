@@ -1,0 +1,16 @@
+{
+  "name": "@space-task/shared",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "valibot": "^0.42.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  }
+}
