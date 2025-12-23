@@ -17,28 +17,28 @@ const Header = () => {
     <header className={styles.header}>
       <div className={styles.container}>
         <Link to="/" className={styles.logo}>
-          המתכונים של סבתא רינה
+          Grandma Rina's Recipes
         </Link>
 
         <nav className={styles.nav}>
-          <Link to="/" className={styles.navLink}>דף הבית</Link>
-          <Link to="/recipes" className={styles.navLink}>מתכונים</Link>
+          <Link to="/" className={styles.navLink}>Home</Link>
+          <Link to="/recipes" className={styles.navLink}>Recipes</Link>
 
           {user ? (
             <>
-              <Link to="/favorites" className={styles.navLink}>המועדפים שלי</Link>
+              <Link to="/favorites" className={styles.navLink}>My Favorites</Link>
               {user.role === 'admin' && (
-                <Link to="/admin" className={styles.navLink}>ניהול</Link>
+                <Link to="/admin" className={styles.navLink}>Admin</Link>
               )}
-              <span className={styles.userName}>שלום, {user.fullName}</span>
-              <button onClick={handleLogout} className={styles.logoutBtn}>
-                התנתק
+              <span className={styles.userName}>Hello, {user.fullName}</span>
+              <button onClick={handleLogout} className="btn btn-ghost">
+                Logout
               </button>
             </>
           ) : (
             <>
-              <Link to="/login" className={styles.navLink}>התחברות</Link>
-              <Link to="/register" className={styles.registerBtn}>הרשמה</Link>
+              <Link to="/login" className={styles.navLink}>Login</Link>
+              <Link to="/register" className="btn btn-light">Register</Link>
             </>
           )}
         </nav>

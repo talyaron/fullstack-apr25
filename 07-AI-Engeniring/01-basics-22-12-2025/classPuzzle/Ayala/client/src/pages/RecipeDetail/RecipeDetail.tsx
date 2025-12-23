@@ -20,7 +20,7 @@ const RecipeDetail = () => {
   }, [dispatch, id]);
 
   const getDifficultyText = (difficulty: number) => {
-    const levels = ['', 'קל מאוד', 'קל', 'בינוני', 'מאתגר', 'קשה'];
+    const levels = ['', 'Very Easy', 'Easy', 'Medium', 'Challenging', 'Hard'];
     return levels[difficulty] || '';
   };
 
@@ -52,7 +52,7 @@ const RecipeDetail = () => {
   }
 
   if (!currentRecipe) {
-    return <p className={styles.notFound}>המתכון לא נמצא</p>;
+    return <p className={styles.notFound}>Recipe not found</p>;
   }
 
   return (
@@ -75,7 +75,7 @@ const RecipeDetail = () => {
           <div className={styles.meta}>
             <div className={styles.metaItem}>
               <span className={styles.icon}>⏱️</span>
-              <span>{currentRecipe.prepTime} דקות</span>
+              <span>{currentRecipe.prepTime} minutes</span>
             </div>
             <div className={styles.metaItem}>
               <span className={styles.icon}>📊</span>
@@ -83,21 +83,21 @@ const RecipeDetail = () => {
             </div>
             <div className={styles.metaItem}>
               <span className={styles.icon}>⭐</span>
-              <span>{currentRecipe.averageRating.toFixed(1)} ({currentRecipe.ratings.length} דירוגים)</span>
+              <span>{currentRecipe.averageRating.toFixed(1)} ({currentRecipe.ratings.length} ratings)</span>
             </div>
           </div>
 
           <div className={styles.actions}>
             <button
               onClick={handleToggleFavorite}
-              className={`${styles.favoriteBtn} ${isFavorite ? styles.active : ''}`}
+              className={`btn btn-danger ${isFavorite ? 'active' : ''}`}
             >
-              {isFavorite ? '❤️ במועדפים' : '🤍 הוסף למועדפים'}
+              {isFavorite ? '❤️ In Favorites' : '🤍 Add to Favorites'}
             </button>
           </div>
 
           <div className={styles.ratingSection}>
-            <span>דרג את המתכון:</span>
+            <span>Rate this recipe:</span>
             <div className={styles.stars}>
               {[1, 2, 3, 4, 5].map((star) => (
                 <span
@@ -117,7 +117,7 @@ const RecipeDetail = () => {
 
       <div className={styles.content}>
         <div className={styles.ingredients}>
-          <h2>מצרכים</h2>
+          <h2>Ingredients</h2>
           <ul>
             {currentRecipe.ingredients.map((ingredient, index) => (
               <li key={index}>{ingredient}</li>
@@ -126,7 +126,7 @@ const RecipeDetail = () => {
         </div>
 
         <div className={styles.instructions}>
-          <h2>אופן הכנה</h2>
+          <h2>Instructions</h2>
           <ol>
             {currentRecipe.instructions.map((step, index) => (
               <li key={index}>{step}</li>

@@ -35,15 +35,15 @@ const UserList = () => {
 
   return (
     <div className={styles.userList}>
-      <h2>משתמשים רשומים ({users.length})</h2>
+      <h2>Registered Users ({users.length})</h2>
 
       <table className={styles.table}>
         <thead>
           <tr>
-            <th>שם מלא</th>
-            <th>אימייל</th>
-            <th>תפקיד</th>
-            <th>תאריך הרשמה</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Registration Date</th>
           </tr>
         </thead>
         <tbody>
@@ -53,10 +53,10 @@ const UserList = () => {
               <td>{user.email}</td>
               <td>
                 <span className={`${styles.role} ${styles[user.role]}`}>
-                  {user.role === 'admin' ? 'מנהל' : 'משתמש'}
+                  {user.role === 'admin' ? 'Admin' : 'User'}
                 </span>
               </td>
-              <td>{new Date(user.createdAt).toLocaleDateString('he-IL')}</td>
+              <td>{new Date(user.createdAt).toLocaleDateString('en-US')}</td>
             </tr>
           ))}
         </tbody>

@@ -25,7 +25,7 @@ export const fetchRecipes = createAsyncThunk(
       const response = await api.get(`/recipes?${params.toString()}`);
       return response.data as Recipe[];
     } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || 'שגיאה בטעינת המתכונים');
+      return rejectWithValue(error.response?.data?.message || 'Error loading recipes');
     }
   }
 );
@@ -37,7 +37,7 @@ export const fetchRecipeById = createAsyncThunk(
       const response = await api.get(`/recipes/${id}`);
       return response.data as Recipe;
     } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || 'שגיאה בטעינת המתכון');
+      return rejectWithValue(error.response?.data?.message || 'Error loading recipe');
     }
   }
 );
@@ -49,7 +49,7 @@ export const fetchCategories = createAsyncThunk(
       const response = await api.get('/recipes/categories');
       return response.data as string[];
     } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || 'שגיאה בטעינת הקטגוריות');
+      return rejectWithValue(error.response?.data?.message || 'Error loading categories');
     }
   }
 );
@@ -61,7 +61,7 @@ export const createRecipe = createAsyncThunk(
       const response = await api.post('/recipes', data);
       return response.data.recipe as Recipe;
     } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || 'שגיאה ביצירת המתכון');
+      return rejectWithValue(error.response?.data?.message || 'Error creating recipe');
     }
   }
 );
@@ -73,7 +73,7 @@ export const updateRecipe = createAsyncThunk(
       const response = await api.put(`/recipes/${id}`, data);
       return response.data.recipe as Recipe;
     } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || 'שגיאה בעדכון המתכון');
+      return rejectWithValue(error.response?.data?.message || 'Error updating recipe');
     }
   }
 );
@@ -85,7 +85,7 @@ export const deleteRecipe = createAsyncThunk(
       await api.delete(`/recipes/${id}`);
       return id;
     } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || 'שגיאה במחיקת המתכון');
+      return rejectWithValue(error.response?.data?.message || 'Error deleting recipe');
     }
   }
 );
@@ -97,7 +97,7 @@ export const rateRecipe = createAsyncThunk(
       const response = await api.post(`/recipes/${id}/rate`, { rating });
       return { id, averageRating: response.data.averageRating };
     } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || 'שגיאה בדירוג');
+      return rejectWithValue(error.response?.data?.message || 'Error rating recipe');
     }
   }
 );
@@ -109,7 +109,7 @@ export const toggleFavorite = createAsyncThunk(
       const response = await api.post(`/recipes/${id}/favorite`);
       return { id, isFavorite: response.data.isFavorite };
     } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || 'שגיאה בעדכון המועדפים');
+      return rejectWithValue(error.response?.data?.message || 'Error updating favorites');
     }
   }
 );

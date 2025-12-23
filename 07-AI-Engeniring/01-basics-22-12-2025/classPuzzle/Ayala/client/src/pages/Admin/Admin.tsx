@@ -22,20 +22,20 @@ const Admin = () => {
 
   return (
     <div className={styles.adminPage}>
-      <h1>לוח ניהול</h1>
+      <h1>Admin Dashboard</h1>
 
       <div className={styles.tabs}>
         <button
-          className={`${styles.tab} ${activeTab === 'recipes' ? styles.active : ''}`}
+          className={`btn-tab ${activeTab === 'recipes' ? 'active' : ''}`}
           onClick={() => setActiveTab('recipes')}
         >
-          ניהול מתכונים
+          Manage Recipes
         </button>
         <button
-          className={`${styles.tab} ${activeTab === 'users' ? styles.active : ''}`}
+          className={`btn-tab ${activeTab === 'users' ? 'active' : ''}`}
           onClick={() => setActiveTab('users')}
         >
-          משתמשים רשומים
+          Registered Users
         </button>
       </div>
 

@@ -49,25 +49,25 @@ const Recipes = () => {
 
   return (
     <div className={styles.recipesPage}>
-      <h1>כל המתכונים</h1>
+      <h1>All Recipes</h1>
 
       <div className={styles.filtersSection}>
         <div className={styles.filterRow}>
           <div className={styles.filterGroup}>
-            <label>חיפוש</label>
+            <label>Search</label>
             <input
               type="text"
               name="search"
-              placeholder="חפש מתכון..."
+              placeholder="Search recipe..."
               value={filters.search}
               onChange={handleFilterChange}
             />
           </div>
 
           <div className={styles.filterGroup}>
-            <label>קטגוריה</label>
+            <label>Category</label>
             <select name="category" value={filters.category} onChange={handleFilterChange}>
-              <option value="">הכל</option>
+              <option value="">All</option>
               {categories.map((cat) => (
                 <option key={cat} value={cat}>{cat}</option>
               ))}
@@ -75,33 +75,33 @@ const Recipes = () => {
           </div>
 
           <div className={styles.filterGroup}>
-            <label>מיון</label>
+            <label>Sort By</label>
             <select name="sortBy" value={filters.sortBy} onChange={handleFilterChange}>
-              <option value="">ברירת מחדל</option>
-              <option value="title">א-ב</option>
-              <option value="rating">דירוג</option>
-              <option value="prepTime">זמן הכנה</option>
+              <option value="">Default</option>
+              <option value="title">A-Z</option>
+              <option value="rating">Rating</option>
+              <option value="prepTime">Prep Time</option>
             </select>
           </div>
 
           <div className={styles.filterGroup}>
-            <label>רמת קושי</label>
+            <label>Difficulty</label>
             <select name="difficulty" value={filters.difficulty} onChange={handleFilterChange}>
-              <option value="">הכל</option>
-              <option value="1">קל מאוד</option>
-              <option value="2">קל</option>
-              <option value="3">בינוני</option>
-              <option value="4">מאתגר</option>
-              <option value="5">קשה</option>
+              <option value="">All</option>
+              <option value="1">Very Easy</option>
+              <option value="2">Easy</option>
+              <option value="3">Medium</option>
+              <option value="4">Challenging</option>
+              <option value="5">Hard</option>
             </select>
           </div>
 
           <div className={styles.filterGroup}>
-            <label>זמן מקסימלי (דקות)</label>
+            <label>Max Time (minutes)</label>
             <input
               type="number"
               name="maxTime"
-              placeholder="ללא הגבלה"
+              placeholder="No limit"
               value={filters.maxTime}
               onChange={handleFilterChange}
             />
@@ -110,10 +110,10 @@ const Recipes = () => {
 
         <div className={styles.filterActions}>
           <button onClick={handleApplyFilters} className="btn btn-primary">
-            החל סינון
+            Apply Filters
           </button>
           <button onClick={handleClearFilters} className="btn btn-outline">
-            נקה סינון
+            Clear Filters
           </button>
         </div>
       </div>
@@ -121,10 +121,10 @@ const Recipes = () => {
       {isLoading ? (
         <div className="loading"></div>
       ) : recipes.length === 0 ? (
-        <p className={styles.noRecipes}>לא נמצאו מתכונים</p>
+        <p className={styles.noRecipes}>No recipes found</p>
       ) : (
         <>
-          <p className={styles.resultsCount}>{recipes.length} מתכונים נמצאו</p>
+          <p className={styles.resultsCount}>{recipes.length} recipes found</p>
           <div className={styles.recipeGrid}>
             {recipes.map((recipe) => (
               <RecipeCard key={recipe._id} recipe={recipe} />

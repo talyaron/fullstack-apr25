@@ -7,16 +7,26 @@ dotenv.config();
 
 const seedDatabase = async () => {
   try {
+    const forceReseed = process.argv.includes('--force');
+
     const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/savta-rina';
     await mongoose.connect(mongoURI);
     console.log('Connected to MongoDB');
+
+    // Clear existing data if --force flag is used
+    if (forceReseed) {
+      console.log('Force flag detected - clearing existing data...');
+      await Recipe.deleteMany({});
+      await User.deleteMany({});
+      console.log('Existing data cleared');
+    }
 
     // Create admin user
     const existingAdmin = await User.findOne({ email: 'admin@rina.com' });
     if (!existingAdmin) {
       const admin = new User({
         email: 'admin@rina.com',
-        fullName: 'מנהל המערכת',
+        fullName: 'System Admin',
         password: 'IAmAdmin19296157#',
         role: 'admin'
       });
@@ -31,46 +41,46 @@ const seedDatabase = async () => {
     if (existingRecipes === 0) {
       const sampleRecipes = [
         {
-          title: 'עוגת שוקולד של סבתא',
-          category: 'קינוחים',
-          ingredients: ['2 כוסות קמח', '1 כוס סוכר', '3/4 כוס קקאו', '2 ביצים', '1 כוס שמן', '1 כוס מים רותחים'],
-          instructions: ['מערבבים את החומרים היבשים', 'מוסיפים ביצים ושמן', 'מוסיפים מים רותחים ומערבבים', 'אופים ב-180 מעלות 35 דקות'],
+          title: "Grandma's Chocolate Cake",
+          category: 'Desserts',
+          ingredients: ['2 cups flour', '1 cup sugar', '3/4 cup cocoa powder', '2 eggs', '1 cup oil', '1 cup boiling water'],
+          instructions: ['Mix the dry ingredients', 'Add eggs and oil', 'Add boiling water and mix well', 'Bake at 180°C for 35 minutes'],
           prepTime: 50,
           difficulty: 2,
           imageUrl: ''
         },
         {
-          title: 'מרק עוף עם קניידלך',
-          category: 'מרקים',
-          ingredients: ['עוף שלם', '3 גזרים', '2 בצלים', 'סלרי', 'פטרוזיליה', 'מלח ופלפל'],
-          instructions: ['מבשלים את העוף במים', 'מוסיפים ירקות', 'מבשלים 2 שעות', 'מוסיפים קניידלך'],
+          title: 'Chicken Soup with Dumplings',
+          category: 'Soups',
+          ingredients: ['1 whole chicken', '3 carrots', '2 onions', 'celery', 'parsley', 'salt and pepper'],
+          instructions: ['Cook the chicken in water', 'Add vegetables', 'Simmer for 2 hours', 'Add dumplings'],
           prepTime: 150,
           difficulty: 3,
           imageUrl: ''
         },
         {
-          title: 'חומוס ביתי',
-          category: 'מנות ראשונות',
-          ingredients: ['2 כוסות חומוס יבש', 'טחינה', 'לימון', 'שום', 'כמון', 'שמן זית'],
-          instructions: ['שורים חומוס לילה', 'מבשלים עד ריכוך', 'טוחנים עם שאר החומרים', 'מגישים עם שמן זית'],
+          title: 'Homemade Hummus',
+          category: 'Appetizers',
+          ingredients: ['2 cups dried chickpeas', 'tahini', 'lemon', 'garlic', 'cumin', 'olive oil'],
+          instructions: ['Soak chickpeas overnight', 'Cook until soft', 'Blend with other ingredients', 'Serve with olive oil'],
           prepTime: 30,
           difficulty: 2,
           imageUrl: ''
         },
         {
-          title: 'שניצל פריך',
-          category: 'מנות עיקריות',
-          ingredients: ['חזה עוף', 'קמח', 'ביצים', 'פירורי לחם', 'שמן לטיגון'],
-          instructions: ['חותכים חזה לפרוסות', 'מטבלים בקמח, ביצה ופירורי לחם', 'מטגנים בשמן חם'],
+          title: 'Crispy Schnitzel',
+          category: 'Main Courses',
+          ingredients: ['chicken breast', 'flour', 'eggs', 'breadcrumbs', 'oil for frying'],
+          instructions: ['Cut breast into slices', 'Coat in flour, egg, and breadcrumbs', 'Fry in hot oil'],
           prepTime: 30,
           difficulty: 1,
           imageUrl: ''
         },
         {
-          title: 'סלט ישראלי',
-          category: 'סלטים',
-          ingredients: ['עגבניות', 'מלפפונים', 'בצל', 'פטרוזיליה', 'לימון', 'שמן זית'],
-          instructions: ['חותכים ירקות לקוביות קטנות', 'מערבבים', 'מתבלים בלימון ושמן'],
+          title: 'Fresh Garden Salad',
+          category: 'Salads',
+          ingredients: ['tomatoes', 'cucumbers', 'onion', 'parsley', 'lemon', 'olive oil'],
+          instructions: ['Dice vegetables into small cubes', 'Mix together', 'Season with lemon and oil'],
           prepTime: 15,
           difficulty: 1,
           imageUrl: ''

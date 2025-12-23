@@ -15,7 +15,7 @@ export const register = createAsyncThunk(
       const response = await api.post('/auth/register', data);
       return response.data.user as User;
     } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || 'שגיאה בהרשמה');
+      return rejectWithValue(error.response?.data?.message || 'Registration error');
     }
   }
 );
@@ -27,7 +27,7 @@ export const login = createAsyncThunk(
       const response = await api.post('/auth/login', data);
       return response.data.user as User;
     } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || 'שגיאה בהתחברות');
+      return rejectWithValue(error.response?.data?.message || 'Login error');
     }
   }
 );
@@ -38,7 +38,7 @@ export const logout = createAsyncThunk(
     try {
       await api.post('/auth/logout');
     } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || 'שגיאה בהתנתקות');
+      return rejectWithValue(error.response?.data?.message || 'Logout error');
     }
   }
 );
@@ -50,7 +50,7 @@ export const getCurrentUser = createAsyncThunk(
       const response = await api.get('/auth/me');
       return response.data.user as User;
     } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || 'לא מחובר');
+      return rejectWithValue(error.response?.data?.message || 'Not logged in');
     }
   }
 );

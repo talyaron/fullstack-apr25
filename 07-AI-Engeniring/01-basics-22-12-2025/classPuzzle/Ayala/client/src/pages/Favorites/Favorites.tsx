@@ -38,24 +38,24 @@ const Favorites = () => {
 
   return (
     <div className={styles.favoritesPage}>
-      <h1>המועדפים שלי</h1>
+      <h1>My Favorites</h1>
 
       {isLoading ? (
         <div className="loading"></div>
       ) : favorites.length === 0 ? (
         <div className={styles.empty}>
           <span className={styles.icon}>💔</span>
-          <p>עדיין לא הוספת מתכונים למועדפים</p>
+          <p>You haven't added any recipes to favorites yet</p>
           <button
             className="btn btn-primary"
             onClick={() => navigate('/recipes')}
           >
-            גלה מתכונים
+            Discover Recipes
           </button>
         </div>
       ) : (
         <>
-          <p className={styles.count}>{favorites.length} מתכונים במועדפים</p>
+          <p className={styles.count}>{favorites.length} recipes in favorites</p>
           <div className={styles.grid}>
             {favorites.map((recipe) => (
               <RecipeCard key={recipe._id} recipe={recipe} />

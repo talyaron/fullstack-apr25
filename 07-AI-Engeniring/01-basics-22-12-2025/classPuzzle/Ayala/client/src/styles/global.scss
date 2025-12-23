@@ -1,4 +1,5 @@
 @import './variables';
+@import './buttons';
 
 * {
   margin: 0;
@@ -7,12 +8,12 @@
 }
 
 html {
-  direction: rtl;
+  direction: ltr;
   font-size: 16px;
 }
 
 body {
-  font-family: 'Segoe UI', 'Arial Hebrew', Arial, sans-serif;
+  font-family: 'Segoe UI', Arial, sans-serif;
   background-color: $background;
   color: $text-primary;
   line-height: 1.6;
@@ -49,8 +50,8 @@ input, textarea, select {
   text-align: center;
 }
 
-.text-right {
-  text-align: right;
+.text-left {
+  text-align: left;
 }
 
 .mt-1 { margin-top: $spacing-sm; }
@@ -60,50 +61,6 @@ input, textarea, select {
 .mb-2 { margin-bottom: $spacing-md; }
 .mb-3 { margin-bottom: $spacing-lg; }
 
-// Button styles
-.btn {
-  display: inline-block;
-  padding: $spacing-sm $spacing-lg;
-  border: none;
-  border-radius: $radius-md;
-  font-size: $font-md;
-  font-weight: 500;
-  transition: all 0.3s ease;
-
-  &-primary {
-    background-color: $primary-color;
-    color: white;
-
-    &:hover {
-      background-color: $primary-dark;
-    }
-  }
-
-  &-secondary {
-    background-color: $secondary-color;
-    color: white;
-
-    &:hover {
-      background-color: $secondary-light;
-    }
-  }
-
-  &-outline {
-    background-color: transparent;
-    border: 2px solid $primary-color;
-    color: $primary-color;
-
-    &:hover {
-      background-color: $primary-color;
-      color: white;
-    }
-  }
-
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
-}
 
 // Form styles
 .form-group {

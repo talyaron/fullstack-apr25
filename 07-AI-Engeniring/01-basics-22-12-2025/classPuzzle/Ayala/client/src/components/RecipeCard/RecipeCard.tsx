@@ -8,7 +8,7 @@ interface RecipeCardProps {
 
 const RecipeCard = ({ recipe }: RecipeCardProps) => {
   const getDifficultyText = (difficulty: number) => {
-    const levels = ['', 'קל מאוד', 'קל', 'בינוני', 'מאתגר', 'קשה'];
+    const levels = ['', 'Very Easy', 'Easy', 'Medium', 'Challenging', 'Hard'];
     return levels[difficulty] || '';
   };
 
@@ -41,7 +41,7 @@ const RecipeCard = ({ recipe }: RecipeCardProps) => {
         <h3 className={styles.title}>{recipe.title}</h3>
 
         <div className={styles.meta}>
-          <span className={styles.time}>⏱️ {recipe.prepTime} דקות</span>
+          <span className={styles.time}>⏱️ {recipe.prepTime} min</span>
           <span className={styles.difficulty}>
             📊 {getDifficultyText(recipe.difficulty)}
           </span>

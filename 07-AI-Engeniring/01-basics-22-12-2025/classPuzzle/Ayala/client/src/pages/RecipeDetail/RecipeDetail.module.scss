@@ -93,21 +93,6 @@
   margin-bottom: $spacing-lg;
 }
 
-.favoriteBtn {
-  padding: $spacing-sm $spacing-lg;
-  border: 2px solid $error;
-  border-radius: $radius-md;
-  background-color: white;
-  color: $error;
-  font-size: $font-md;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover, &.active {
-    background-color: $error;
-    color: white;
-  }
-}
 
 .ratingSection {
   display: flex;

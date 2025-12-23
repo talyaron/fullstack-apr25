@@ -7,7 +7,7 @@ export const register = async (req: Request, res: Response): Promise<void> => {
 
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      res.status(400).json({ message: 'משתמש עם אימייל זה כבר קיים' });
+      res.status(400).json({ message: 'User with this email already exists' });
       return;
     }
 
@@ -27,7 +27,7 @@ export const register = async (req: Request, res: Response): Promise<void> => {
     });
 
     res.status(201).json({
-      message: 'ההרשמה בוצעה בהצלחה',
+      message: 'Registration successful',
       user: {
         id: user._id,
         email: user.email,
@@ -37,7 +37,7 @@ export const register = async (req: Request, res: Response): Promise<void> => {
     });
   } catch (error) {
     console.error('Registration error:', error);
-    res.status(500).json({ message: 'שגיאה בהרשמה' });
+    res.status(500).json({ message: 'Registration error' });
   }
 };
 
@@ -47,13 +47,13 @@ export const login = async (req: Request, res: Response): Promise<void> => {
 
     const user = await User.findOne({ email });
     if (!user) {
-      res.status(401).json({ message: 'אימייל או סיסמה שגויים' });
+      res.status(401).json({ message: 'Invalid email or password' });
       return;
     }
 
     const isMatch = await user.comparePassword(password);
     if (!isMatch) {
-      res.status(401).json({ message: 'אימייל או סיסמה שגויים' });
+      res.status(401).json({ message: 'Invalid email or password' });
       return;
     }
 
@@ -64,7 +64,7 @@ export const login = async (req: Request, res: Response): Promise<void> => {
     });
 
     res.json({
-      message: 'התחברת בהצלחה',
+      message: 'Login successful',
       user: {
         id: user._id,
         email: user.email,
@@ -74,17 +74,17 @@ export const login = async (req: Request, res: Response): Promise<void> => {
     });
   } catch (error) {
     console.error('Login error:', error);
-    res.status(500).json({ message: 'שגיאה בהתחברות' });
+    res.status(500).json({ message: 'Login error' });
   }
 };
 
 export const logout = async (req: Request, res: Response): Promise<void> => {
   try {
     res.clearCookie('userId');
-    res.json({ message: 'התנתקת בהצלחה' });
+    res.json({ message: 'Logged out successfully' });
   } catch (error) {
     console.error('Logout error:', error);
-    res.status(500).json({ message: 'שגיאה בהתנתקות' });
+    res.status(500).json({ message: 'Logout error' });
   }
 };
 
@@ -92,14 +92,14 @@ export const getCurrentUser = async (req: Request, res: Response): Promise<void>
   try {
     const userId = req.cookies.userId;
     if (!userId) {
-      res.status(401).json({ message: 'לא מחובר' });
+      res.status(401).json({ message: 'Not logged in' });
       return;
     }
 
     const user = await User.findById(userId).select('-password');
     if (!user) {
       res.clearCookie('userId');
-      res.status(401).json({ message: 'משתמש לא נמצא' });
+      res.status(401).json({ message: 'User not found' });
       return;
     }
 
@@ -114,6 +114,6 @@ export const getCurrentUser = async (req: Request, res: Response): Promise<void>
     });
   } catch (error) {
     console.error('Get current user error:', error);
-    res.status(500).json({ message: 'שגיאה בקבלת פרטי משתמש' });
+    res.status(500).json({ message: 'Error getting user details' });
   }
 };

@@ -52,7 +52,7 @@ const RecipeManagement = () => {
   };
 
   const handleDelete = async (id: string) => {
-    if (window.confirm('האם אתה בטוח שברצונך למחוק את המתכון?')) {
+    if (window.confirm('Are you sure you want to delete this recipe?')) {
       await dispatch(deleteRecipe(id));
     }
   };
@@ -82,22 +82,22 @@ const RecipeManagement = () => {
   return (
     <div className={styles.recipeManagement}>
       <div className={styles.header}>
-        <h2>ניהול מתכונים ({recipes.length})</h2>
+        <h2>Manage Recipes ({recipes.length})</h2>
         <button
           className="btn btn-primary"
           onClick={() => setIsFormOpen(true)}
         >
-          + הוסף מתכון חדש
+          + Add New Recipe
         </button>
       </div>
 
       {isFormOpen && (
         <div className={styles.formOverlay}>
           <form className={styles.form} onSubmit={handleSubmit}>
-            <h3>{editingRecipe ? 'עריכת מתכון' : 'מתכון חדש'}</h3>
+            <h3>{editingRecipe ? 'Edit Recipe' : 'New Recipe'}</h3>
 
             <div className="form-group">
-              <label>שם המתכון</label>
+              <label>Recipe Name</label>
               <input
                 type="text"
                 value={formData.title}
@@ -107,19 +107,19 @@ const RecipeManagement = () => {
             </div>
 
             <div className="form-group">
-              <label>קטגוריה</label>
+              <label>Category</label>
               <input
                 type="text"
                 value={formData.category}
                 onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                placeholder="קינוחים, מרקים, מנות עיקריות..."
+                placeholder="Desserts, Soups, Main Courses..."
                 required
               />
             </div>
 
             <div className={styles.row}>
               <div className="form-group">
-                <label>זמן הכנה (דקות)</label>
+                <label>Prep Time (minutes)</label>
                 <input
                   type="number"
                   value={formData.prepTime}
@@ -130,22 +130,22 @@ const RecipeManagement = () => {
               </div>
 
               <div className="form-group">
-                <label>רמת קושי</label>
+                <label>Difficulty</label>
                 <select
                   value={formData.difficulty}
                   onChange={(e) => setFormData({ ...formData, difficulty: e.target.value })}
                 >
-                  <option value="1">קל מאוד</option>
-                  <option value="2">קל</option>
-                  <option value="3">בינוני</option>
-                  <option value="4">מאתגר</option>
-                  <option value="5">קשה</option>
+                  <option value="1">Very Easy</option>
+                  <option value="2">Easy</option>
+                  <option value="3">Medium</option>
+                  <option value="4">Challenging</option>
+                  <option value="5">Hard</option>
                 </select>
               </div>
             </div>
 
             <div className="form-group">
-              <label>מצרכים (כל מצרך בשורה נפרדת)</label>
+              <label>Ingredients (one per line)</label>
               <textarea
                 value={formData.ingredients}
                 onChange={(e) => setFormData({ ...formData, ingredients: e.target.value })}
@@ -155,7 +155,7 @@ const RecipeManagement = () => {
             </div>
 
             <div className="form-group">
-              <label>הוראות הכנה (כל שלב בשורה נפרדת)</label>
+              <label>Instructions (one step per line)</label>
               <textarea
                 value={formData.instructions}
                 onChange={(e) => setFormData({ ...formData, instructions: e.target.value })}
@@ -165,7 +165,7 @@ const RecipeManagement = () => {
             </div>
 
             <div className="form-group">
-              <label>קישור לתמונה (אופציונלי)</label>
+              <label>Image URL (optional)</label>
               <input
                 type="url"
                 value={formData.imageUrl}
@@ -175,10 +175,10 @@ const RecipeManagement = () => {
 
             <div className={styles.formActions}>
               <button type="submit" className="btn btn-primary">
-                {editingRecipe ? 'עדכן' : 'צור מתכון'}
+                {editingRecipe ? 'Update' : 'Create Recipe'}
               </button>
               <button type="button" className="btn btn-outline" onClick={resetForm}>
-                ביטול
+                Cancel
               </button>
             </div>
           </form>
@@ -191,12 +191,12 @@ const RecipeManagement = () => {
         <table className={styles.table}>
           <thead>
             <tr>
-              <th>שם המתכון</th>
-              <th>קטגוריה</th>
-              <th>זמן</th>
-              <th>קושי</th>
-              <th>דירוג</th>
-              <th>פעולות</th>
+              <th>Recipe Name</th>
+              <th>Category</th>
+              <th>Time</th>
+              <th>Difficulty</th>
+              <th>Rating</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -204,7 +204,7 @@ const RecipeManagement = () => {
               <tr key={recipe._id}>
                 <td>{recipe.title}</td>
                 <td>{recipe.category}</td>
-                <td>{recipe.prepTime} דק׳</td>
+                <td>{recipe.prepTime} min</td>
                 <td>{recipe.difficulty}/5</td>
                 <td>⭐ {recipe.averageRating.toFixed(1)}</td>
                 <td>
@@ -213,13 +213,13 @@ const RecipeManagement = () => {
                       className={styles.editBtn}
                       onClick={() => handleEdit(recipe)}
                     >
-                      ערוך
+                      Edit
                     </button>
                     <button
                       className={styles.deleteBtn}
                       onClick={() => handleDelete(recipe._id)}
                     >
-                      מחק
+                      Delete
                     </button>
                   </div>
                 </td>

@@ -39,7 +39,7 @@ export const getAllRecipes = async (req: Request, res: Response): Promise<void> 
     res.json(recipes);
   } catch (error) {
     console.error('Get all recipes error:', error);
-    res.status(500).json({ message: 'שגיאה בטעינת המתכונים' });
+    res.status(500).json({ message: 'Error loading recipes' });
   }
 };
 
@@ -47,13 +47,13 @@ export const getRecipeById = async (req: Request, res: Response): Promise<void> 
   try {
     const recipe = await Recipe.findById(req.params.id);
     if (!recipe) {
-      res.status(404).json({ message: 'המתכון לא נמצא' });
+      res.status(404).json({ message: 'Recipe not found' });
       return;
     }
     res.json(recipe);
   } catch (error) {
     console.error('Get recipe by id error:', error);
-    res.status(500).json({ message: 'שגיאה בטעינת המתכון' });
+    res.status(500).json({ message: 'Error loading recipe' });
   }
 };
 
@@ -72,10 +72,10 @@ export const createRecipe = async (req: Request, res: Response): Promise<void> =
     });
 
     await recipe.save();
-    res.status(201).json({ message: 'המתכון נוצר בהצלחה', recipe });
+    res.status(201).json({ message: 'Recipe created successfully', recipe });
   } catch (error) {
     console.error('Create recipe error:', error);
-    res.status(500).json({ message: 'שגיאה ביצירת המתכון' });
+    res.status(500).json({ message: 'Error creating recipe' });
   }
 };
 
@@ -90,14 +90,14 @@ export const updateRecipe = async (req: Request, res: Response): Promise<void> =
     );
 
     if (!recipe) {
-      res.status(404).json({ message: 'המתכון לא נמצא' });
+      res.status(404).json({ message: 'Recipe not found' });
       return;
     }
 
-    res.json({ message: 'המתכון עודכן בהצלחה', recipe });
+    res.json({ message: 'Recipe updated successfully', recipe });
   } catch (error) {
     console.error('Update recipe error:', error);
-    res.status(500).json({ message: 'שגיאה בעדכון המתכון' });
+    res.status(500).json({ message: 'Error updating recipe' });
   }
 };
 
@@ -105,13 +105,13 @@ export const deleteRecipe = async (req: Request, res: Response): Promise<void> =
   try {
     const recipe = await Recipe.findByIdAndDelete(req.params.id);
     if (!recipe) {
-      res.status(404).json({ message: 'המתכון לא נמצא' });
+      res.status(404).json({ message: 'Recipe not found' });
       return;
     }
-    res.json({ message: 'המתכון נמחק בהצלחה' });
+    res.json({ message: 'Recipe deleted successfully' });
   } catch (error) {
     console.error('Delete recipe error:', error);
-    res.status(500).json({ message: 'שגיאה במחיקת המתכון' });
+    res.status(500).json({ message: 'Error deleting recipe' });
   }
 };
 
@@ -119,19 +119,19 @@ export const rateRecipe = async (req: Request, res: Response): Promise<void> => 
   try {
     const userId = req.cookies.userId;
     if (!userId) {
-      res.status(401).json({ message: 'יש להתחבר כדי לדרג' });
+      res.status(401).json({ message: 'Please login to rate' });
       return;
     }
 
     const { rating } = req.body;
     if (rating < 0 || rating > 5) {
-      res.status(400).json({ message: 'דירוג חייב להיות בין 0 ל-5' });
+      res.status(400).json({ message: 'Rating must be between 0 and 5' });
       return;
     }
 
     const recipe = await Recipe.findById(req.params.id);
     if (!recipe) {
-      res.status(404).json({ message: 'המתכון לא נמצא' });
+      res.status(404).json({ message: 'Recipe not found' });
       return;
     }
 
@@ -146,10 +146,10 @@ export const rateRecipe = async (req: Request, res: Response): Promise<void> => 
     }
 
     await recipe.save();
-    res.json({ message: 'הדירוג נשמר בהצלחה', averageRating: recipe.averageRating });
+    res.json({ message: 'Rating saved successfully', averageRating: recipe.averageRating });
   } catch (error) {
     console.error('Rate recipe error:', error);
-    res.status(500).json({ message: 'שגיאה בשמירת הדירוג' });
+    res.status(500).json({ message: 'Error saving rating' });
   }
 };
 
@@ -157,14 +157,14 @@ export const toggleFavorite = async (req: Request, res: Response): Promise<void>
   try {
     const userId = req.cookies.userId;
     if (!userId) {
-      res.status(401).json({ message: 'יש להתחבר כדי להוסיף למועדפים' });
+      res.status(401).json({ message: 'Please login to add to favorites' });
       return;
     }
 
     const recipeId = req.params.id;
     const user = await User.findById(userId);
     if (!user) {
-      res.status(404).json({ message: 'משתמש לא נמצא' });
+      res.status(404).json({ message: 'User not found' });
       return;
     }
 
@@ -175,15 +175,15 @@ export const toggleFavorite = async (req: Request, res: Response): Promise<void>
     if (favoriteIndex > -1) {
       user.favorites.splice(favoriteIndex, 1);
       await user.save();
-      res.json({ message: 'הוסר מהמועדפים', isFavorite: false });
+      res.json({ message: 'Removed from favorites', isFavorite: false });
     } else {
       user.favorites.push(recipeId as any);
       await user.save();
-      res.json({ message: 'נוסף למועדפים', isFavorite: true });
+      res.json({ message: 'Added to favorites', isFavorite: true });
     }
   } catch (error) {
     console.error('Toggle favorite error:', error);
-    res.status(500).json({ message: 'שגיאה בעדכון המועדפים' });
+    res.status(500).json({ message: 'Error updating favorites' });
   }
 };
 
@@ -193,6 +193,6 @@ export const getCategories = async (req: Request, res: Response): Promise<void> 
     res.json(categories);
   } catch (error) {
     console.error('Get categories error:', error);
-    res.status(500).json({ message: 'שגיאה בטעינת הקטגוריות' });
+    res.status(500).json({ message: 'Error loading categories' });
   }
 };

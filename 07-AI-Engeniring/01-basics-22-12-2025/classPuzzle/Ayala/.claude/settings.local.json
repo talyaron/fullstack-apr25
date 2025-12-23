@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(timeout:*)",
+      "Bash(npx tsc:*)",
+      "mcp__ide__getDiagnostics"
+    ]
+  }
+}

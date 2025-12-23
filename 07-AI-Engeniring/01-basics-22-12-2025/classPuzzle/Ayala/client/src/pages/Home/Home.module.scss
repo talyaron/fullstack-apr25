@@ -66,26 +66,6 @@
   margin: 0 auto;
 }
 
-.categoryBtn {
-  padding: $spacing-sm $spacing-lg;
-  border: 2px solid $primary-color;
-  border-radius: $radius-lg;
-  background-color: white;
-  color: $primary-color;
-  font-size: $font-md;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background-color: $primary-light;
-    color: white;
-  }
-
-  &.active {
-    background-color: $primary-color;
-    color: white;
-  }
-}
 
 .recipes {
   padding: $spacing-xl $spacing-md;

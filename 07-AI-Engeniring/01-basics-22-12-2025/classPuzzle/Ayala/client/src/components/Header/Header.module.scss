@@ -52,31 +52,3 @@
   font-weight: 500;
 }
 
-.logoutBtn {
-  background-color: transparent;
-  border: 2px solid white;
-  color: white;
-  padding: $spacing-sm $spacing-md;
-  border-radius: $radius-md;
-  cursor: pointer;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background-color: white;
-    color: $primary-color;
-  }
-}
-
-.registerBtn {
-  background-color: white;
-  color: $primary-color;
-  padding: $spacing-sm $spacing-md;
-  border-radius: $radius-md;
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background-color: $cream;
-  }
-}
