@@ -1,7 +1,12 @@
 import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
+import potLogoSVG from './../../assets/pot_no_bg (4).svg'
 
 const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
@@ -10,31 +15,32 @@ const Footer = () => {
           <p className={styles.description}>
             Flavors from home, made with love.
           </p>
+          <img src={potLogoSVG} alt="Rina's Recipes" />
         </div>
 
         <div className={styles.section}>
           <h4 className={styles.subtitle}>Quick Links</h4>
           <nav className={styles.links}>
-            <Link to="/">Home</Link>
-            <Link to="/recipes">Recipes</Link>
-            <Link to="/favorites">Favorites</Link>
+            <Link to="/" onClick={scrollToTop}>Home</Link>
+            <Link to="/recipes" onClick={scrollToTop}>Recipes</Link>
+            <Link to="/favorites" onClick={scrollToTop}>Favorites</Link>
           </nav>
         </div>
 
         <div className={styles.section}>
           <h4 className={styles.subtitle}>Categories</h4>
           <nav className={styles.links}>
-            <Link to="/recipes?category=Appetizers">Appetizers</Link>
-            <Link to="/recipes?category=Main Dishes">Main Dishes</Link>
-            <Link to="/recipes?category=Desserts">Desserts</Link>
+            <Link to="/recipes?category=Appetizers" onClick={scrollToTop}>Appetizers</Link>
+            <Link to="/recipes?category=Main%20Dishes" onClick={scrollToTop}>Main Dishes</Link>
+            <Link to="/recipes?category=Desserts" onClick={scrollToTop}>Desserts</Link>
           </nav>
         </div>
 
         <div className={styles.section}>
           <h4 className={styles.subtitle}>Account</h4>
           <nav className={styles.links}>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
+            <Link to="/login" onClick={scrollToTop}>Login</Link>
+            <Link to="/register" onClick={scrollToTop}>Register</Link>
           </nav>
         </div>
       </div>

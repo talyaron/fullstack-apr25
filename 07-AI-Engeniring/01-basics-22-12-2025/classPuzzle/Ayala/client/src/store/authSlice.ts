@@ -61,6 +61,17 @@ const authSlice = createSlice({
   reducers: {
     clearError: (state) => {
       state.error = null;
+    },
+    updateFavorites: (state, action: { payload: { recipeId: string; isFavorite: boolean } }) => {
+      if (state.user) {
+        if (action.payload.isFavorite) {
+          if (!state.user.favorites.includes(action.payload.recipeId)) {
+            state.user.favorites.push(action.payload.recipeId);
+          }
+        } else {
+          state.user.favorites = state.user.favorites.filter(id => id !== action.payload.recipeId);
+        }
+      }
     }
   },
   extraReducers: (builder) => {
@@ -110,5 +121,5 @@ const authSlice = createSlice({
   }
 });
 
-export const { clearError } = authSlice.actions;
+export const { clearError, updateFavorites } = authSlice.actions;
 export default authSlice.reducer;

@@ -34,11 +34,15 @@ const Header = () => {
     setShowUserMenu(!showUserMenu);
   };
 
+  const handleLogoClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.container}>
         {/* Left - Logo */}
-        <Link to="/" className={styles.logo}>
+        <Link to="/" className={styles.logo} onClick={handleLogoClick}>
           <img src={newLogoSVG} alt="Rina's Recipes" />
         </Link>
 
