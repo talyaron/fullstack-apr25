@@ -3,7 +3,8 @@
     "allow": [
       "Bash(timeout:*)",
       "Bash(npx tsc:*)",
-      "mcp__ide__getDiagnostics"
+      "mcp__ide__getDiagnostics",
+      "Bash(dir \"C:\\\\Users\\\\The user\\\\Documents\\\\github\\\\fullstack-apr25\\\\07-AI-Engeniring\\\\01-basics-22-12-2025\\\\classPuzzle\\\\Ayala\\\\client\\\\src\")"
     ]
   }
 }

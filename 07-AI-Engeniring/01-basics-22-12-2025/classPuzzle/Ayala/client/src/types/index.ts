@@ -36,6 +36,7 @@ export interface RecipeState {
   recipes: Recipe[];
   currentRecipe: Recipe | null;
   categories: string[];
+  searchQuery: string;
   isLoading: boolean;
   error: string | null;
 }

@@ -1,27 +1,27 @@
-// Warm color palette for Savta Rina
-$primary-color: #d4731d;
-$primary-light: #e8954a;
-$primary-dark: #a85a15;
+// New color palette for Rina's Recipes
+$primary-color: #5E8A75;      // Sage green - main accent
+$primary-light: #7aa08d;
+$primary-dark: #4a7060;
 
-$secondary-color: #8b4513;
-$secondary-light: #a0522d;
+$secondary-color: #254258;    // Dark blue - secondary accent
+$secondary-light: #3a5a73;
 
-$cream: #fdf5e6;
-$cream-dark: #f5deb3;
+$cream: #F7F7F7;              // Off-white - cards/sections
+$cream-dark: #E3E6E1;         // Light gray - backgrounds
 
-$background: #fff8f0;
-$background-dark: #f5ebe0;
+$background: #F7F7F7;         // Off-white
+$background-dark: #E3E6E1;    // Light gray
 
-$text-primary: #3d2914;
-$text-secondary: #5c4033;
-$text-light: #8b7355;
+$text-primary: #254258;       // Dark blue - main text
+$text-secondary: #3a5a73;     // Lighter blue - secondary text
+$text-light: #6b7c8a;         // Muted text
 
-$success: #4a7c23;
+$success: #5E8A75;            // Sage green
 $error: #c41e3a;
 $warning: #daa520;
 
-$border-color: #d4b896;
-$shadow: rgba(139, 69, 19, 0.15);
+$border-color: #d1d5db;
+$shadow: rgba(37, 66, 88, 0.15);
 
 // Spacing
 $spacing-xs: 0.25rem;
