@@ -1,0 +1,185 @@
+// Station Zero Theme - Terminal/Sci-Fi Aesthetic
+// CSS Variables for consistent theming across components
+
+:root {
+  // Primary Colors - Terminal Green Theme
+  --primary-green: #00ff41;
+  --primary-green-dark: #00cc33;
+  --primary-green-light: #33ff66;
+  --primary-green-glow: rgba(0, 255, 65, 0.3);
+
+  // Background Colors - Dark Space Station
+  --bg-dark: #0a0e14;
+  --bg-darker: #050810;
+  --bg-panel: #121821;
+  --bg-panel-hover: #1a2230;
+  --bg-overlay: rgba(10, 14, 20, 0.95);
+
+  // Accent Colors
+  --accent-red: #ff3366;
+  --accent-red-glow: rgba(255, 51, 102, 0.3);
+  --accent-yellow: #ffcc00;
+  --accent-blue: #00ccff;
+  --accent-purple: #cc66ff;
+
+  // Text Colors
+  --text-primary: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --text-muted: #606060;
+  --text-terminal: var(--primary-green);
+  --text-error: var(--accent-red);
+  --text-warning: var(--accent-yellow);
+
+  // Border Colors
+  --border-default: #2a3040;
+  --border-light: #3a4050;
+  --border-terminal: var(--primary-green);
+  --border-error: var(--accent-red);
+
+  // Typography
+  --font-main: 'Courier New', 'Courier', monospace;
+  --font-display: 'Orbitron', 'Rajdhani', sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 2rem;
+
+  // Spacing
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+
+  // Border Radius
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+
+  // Shadows
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.7);
+  --shadow-glow-green: 0 0 20px var(--primary-green-glow);
+  --shadow-glow-red: 0 0 20px var(--accent-red-glow);
+
+  // Transitions
+  --transition-fast: 150ms ease-in-out;
+  --transition-base: 250ms ease-in-out;
+  --transition-slow: 400ms ease-in-out;
+
+  // Z-index Layers
+  --z-base: 1;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-modal: 1000;
+  --z-overlay: 1050;
+  --z-tooltip: 1100;
+
+  // Layout - Desktop Only (1024px minimum)
+  --min-width: 1024px;
+  --max-width: 1920px;
+  --header-height: 60px;
+  --inventory-bar-height: 80px;
+  --sidebar-width: 300px;
+
+  // Animation Keyframes
+  --scanline-speed: 8s;
+  --flicker-speed: 0.1s;
+
+  // Terminal Effects
+  --terminal-line-height: 1.4;
+  --terminal-letter-spacing: 0.05em;
+  --cursor-blink: 1s;
+}
+
+// SCSS Variables (for use in calculations and mixins)
+$primary-green: var(--primary-green);
+$bg-dark: var(--bg-dark);
+$accent-red: var(--accent-red);
+$font-main: var(--font-main);
+
+// Min width enforcement
+$min-desktop-width: 1024px;
+
+// Mixins
+@mixin terminal-text {
+  font-family: var(--font-main);
+  color: var(--text-terminal);
+  letter-spacing: var(--terminal-letter-spacing);
+  line-height: var(--terminal-line-height);
+}
+
+@mixin panel-style {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+@mixin glow-effect($color: var(--primary-green)) {
+  box-shadow: 0 0 10px $color, 0 0 20px rgba($color, 0.5);
+}
+
+@mixin scanline-effect {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      rgba(18, 16, 16, 0) 50%,
+      rgba(0, 0, 0, 0.25) 50%
+    );
+    background-size: 100% 4px;
+    z-index: 2;
+    pointer-events: none;
+    animation: scanline var(--scanline-speed) linear infinite;
+  }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(4px); }
+}
+
+@mixin fade-slide-in {
+  animation: fadeSlideIn var(--transition-slow) ease-out;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@mixin cursor-blink {
+  animation: cursorBlink var(--cursor-blink) step-end infinite;
+}
+
+@keyframes cursorBlink {
+  50% { opacity: 0; }
+}
+
+// Export for JavaScript usage
+:export {
+  primaryGreen: var(--primary-green);
+  bgDark: var(--bg-dark);
+  accentRed: var(--accent-red);
+  fontMain: var(--font-main);
+  transitionBase: var(--transition-base);
+}

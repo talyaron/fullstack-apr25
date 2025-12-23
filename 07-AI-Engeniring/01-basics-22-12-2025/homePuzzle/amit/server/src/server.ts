@@ -1,8 +1,9 @@
-import express, { Application, Request, Response } from 'express';
+import express, { Application, Response } from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import connectDB from './config/database';
 import authRoutes from './routes/authRoutes';
+import roomRoutes from './routes/roomRoutes';
 
 dotenv.config();
 
@@ -14,8 +15,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/auth', authRoutes);
+app.use('/api/rooms', roomRoutes);
 
-app.get('/api/health', (req: Request, res: Response) => {
+app.get('/api/health', (_, res: Response) => {
   res.status(200).json({
     success: true,
     message: 'Station Zero API is running',
@@ -23,7 +25,7 @@ app.get('/api/health', (req: Request, res: Response) => {
   });
 });
 
-app.use((req: Request, res: Response) => {
+app.use((_, res: Response) => {
   res.status(404).json({
     success: false,
     message: 'Route not found'

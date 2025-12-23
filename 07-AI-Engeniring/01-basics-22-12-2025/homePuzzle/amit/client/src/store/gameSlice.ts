@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 
 export interface Item {
   _id: string;
@@ -21,6 +22,8 @@ export interface PlayerState {
   id: string | null;
   username: string | null;
   currentRoom: Room | null;
+  currentRoomData: Room | null;
+  discoveredRooms: Room[];
   score: number;
   inventory: Item[];
   completedPuzzles: string[];
@@ -32,6 +35,15 @@ const initialState: PlayerState = {
   id: null,
   username: null,
   currentRoom: null,
+  currentRoomData: {
+    _id: 'initial',
+    title: 'Initialization Chamber',
+    description: 'Welcome to Station Zero. Systems initializing...',
+    imageAsset: '',
+    connections: {},
+    puzzles: []
+  },
+  discoveredRooms: [],
   score: 0,
   inventory: [],
   completedPuzzles: [],
@@ -86,6 +98,12 @@ const gameSlice = createSlice({
       state.score = 0;
       state.inventory = [];
       state.completedPuzzles = [];
+    },
+    setCurrentRoomData: (state, action: PayloadAction<Room>) => {
+      state.currentRoomData = action.payload;
+      if (!state.discoveredRooms.find(r => r._id === action.payload._id)) {
+        state.discoveredRooms.push(action.payload);
+      }
     }
   }
 });
@@ -99,7 +117,8 @@ export const {
   removeFromInventory,
   addCompletedPuzzle,
   updateScore,
-  resetGame
+  resetGame,
+  setCurrentRoomData
 } = gameSlice.actions;
 
 export default gameSlice.reducer;
