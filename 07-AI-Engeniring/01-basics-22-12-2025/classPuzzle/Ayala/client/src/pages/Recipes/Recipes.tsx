@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fetchRecipes, fetchCategories, setSearchQuery } from '../../store/recipeSlice';
 import RecipeCard from '../../components/RecipeCard/RecipeCard';
+import Dropdown from '../../components/Dropdown/Dropdown';
 import styles from './Recipes.module.scss';
 
 const Recipes = () => {
@@ -92,34 +93,50 @@ const Recipes = () => {
 
           <div className={styles.filterGroup}>
             <label>Category</label>
-            <select name="category" value={filters.category} onChange={handleFilterChange}>
-              <option value="">All</option>
-              {categories.map((cat) => (
-                <option key={cat} value={cat}>{cat}</option>
-              ))}
-            </select>
+            <Dropdown
+              name="category"
+              value={filters.category}
+              onChange={handleFilterChange}
+              placeholder="All"
+              options={[
+                { value: '', label: 'All' },
+                ...categories.map((cat) => ({ value: cat, label: cat }))
+              ]}
+            />
           </div>
 
           <div className={styles.filterGroup}>
             <label>Sort By</label>
-            <select name="sortBy" value={filters.sortBy} onChange={handleFilterChange}>
-              <option value="">Default</option>
-              <option value="title">A-Z</option>
-              <option value="rating">Rating</option>
-              <option value="prepTime">Prep Time</option>
-            </select>
+            <Dropdown
+              name="sortBy"
+              value={filters.sortBy}
+              onChange={handleFilterChange}
+              placeholder="Default"
+              options={[
+                { value: '', label: 'Default' },
+                { value: 'title', label: 'A-Z' },
+                { value: 'rating', label: 'Rating' },
+                { value: 'prepTime', label: 'Prep Time' }
+              ]}
+            />
           </div>
 
           <div className={styles.filterGroup}>
             <label>Difficulty</label>
-            <select name="difficulty" value={filters.difficulty} onChange={handleFilterChange}>
-              <option value="">All</option>
-              <option value="1">Very Easy</option>
-              <option value="2">Easy</option>
-              <option value="3">Medium</option>
-              <option value="4">Challenging</option>
-              <option value="5">Hard</option>
-            </select>
+            <Dropdown
+              name="difficulty"
+              value={filters.difficulty}
+              onChange={handleFilterChange}
+              placeholder="All"
+              options={[
+                { value: '', label: 'All' },
+                { value: '1', label: 'Very Easy' },
+                { value: '2', label: 'Easy' },
+                { value: '3', label: 'Medium' },
+                { value: '4', label: 'Challenging' },
+                { value: '5', label: 'Hard' }
+              ]}
+            />
           </div>
 
           <div className={styles.filterGroup}>
