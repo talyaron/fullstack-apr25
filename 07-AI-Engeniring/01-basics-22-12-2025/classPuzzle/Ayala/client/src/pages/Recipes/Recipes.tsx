@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fetchRecipes, fetchCategories, setSearchQuery } from '../../store/recipeSlice';
@@ -10,35 +10,43 @@ const Recipes = () => {
   const dispatch = useAppDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
   const { recipes, categories, searchQuery, isLoading } = useAppSelector((state) => state.recipes);
+  const lastSearchRef = useRef<string>('');
 
   const [filters, setFilters] = useState({
-    search: '',
     category: '',
     sortBy: '' as '' | 'title' | 'rating' | 'prepTime',
     difficulty: '',
     maxTime: ''
   });
 
-  // Initialize filters from URL params and redux state
+  // Initialize filters from URL params and fetch categories
+  useEffect(() => {
+    dispatch(fetchCategories());
+  }, [dispatch]);
+
+  // Handle search from header and category from URL
   useEffect(() => {
     const categoryFromUrl = searchParams.get('category') || '';
-    const searchFromRedux = searchQuery || '';
 
     setFilters((prev) => ({
       ...prev,
-      category: categoryFromUrl,
-      search: searchFromRedux
+      category: categoryFromUrl
     }));
 
-    dispatch(fetchCategories());
-    dispatch(fetchRecipes({
-      category: categoryFromUrl || undefined,
-      search: searchFromRedux || undefined
-    }));
-
-    // Clear the search query from redux after using it
-    if (searchFromRedux) {
+    // Only fetch if searchQuery changed to a new value, or on initial load
+    if (searchQuery && searchQuery !== lastSearchRef.current) {
+      lastSearchRef.current = searchQuery;
+      dispatch(fetchRecipes({
+        category: categoryFromUrl || undefined,
+        search: searchQuery
+      }));
       dispatch(setSearchQuery(''));
+    } else if (!lastSearchRef.current) {
+      // Initial load without search
+      dispatch(fetchRecipes({
+        category: categoryFromUrl || undefined
+      }));
+      lastSearchRef.current = 'initialized';
     }
   }, [dispatch, searchParams, searchQuery]);
 
@@ -54,7 +62,6 @@ const Recipes = () => {
     setSearchParams(newParams);
 
     dispatch(fetchRecipes({
-      search: filters.search || undefined,
       category: filters.category || undefined,
       sortBy: filters.sortBy || undefined,
       difficulty: filters.difficulty ? Number(filters.difficulty) : undefined,
@@ -64,13 +71,13 @@ const Recipes = () => {
 
   const handleClearFilters = () => {
     setFilters({
-      search: '',
       category: '',
       sortBy: '',
       difficulty: '',
       maxTime: ''
     });
     setSearchParams({});
+    lastSearchRef.current = 'cleared';
     dispatch(fetchRecipes({}));
   };
 
@@ -80,17 +87,6 @@ const Recipes = () => {
 
       <div className={styles.filtersSection}>
         <div className={styles.filterRow}>
-          <div className={styles.filterGroup}>
-            <label>Search</label>
-            <input
-              type="text"
-              name="search"
-              placeholder="Search recipe..."
-              value={filters.search}
-              onChange={handleFilterChange}
-            />
-          </div>
-
           <div className={styles.filterGroup}>
             <label>Category</label>
             <Dropdown
