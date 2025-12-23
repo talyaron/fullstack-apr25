@@ -50,7 +50,7 @@ const Recipes = () => {
     }
   }, [dispatch, searchParams, searchQuery]);
 
-  const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleFilterChange = (e: { target: { name: string; value: string } }) => {
     const { name, value } = e.target;
     setFilters((prev) => ({ ...prev, [name]: value }));
   };
