@@ -1,0 +1,82 @@
+@use '../../styles/variables.module' as *;
+
+.inventoryBar {
+  height: var(--inventory-bar-height);
+  background: var(--bg-panel);
+  border-top: 2px solid var(--border-terminal);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--spacing-xl);
+  gap: var(--spacing-lg);
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.5), 0 0 20px var(--primary-green-glow);
+  position: relative;
+  z-index: var(--z-sticky);
+}
+
+.label {
+  @include terminal-text;
+  font-size: var(--font-size-sm);
+  font-weight: bold;
+  letter-spacing: 0.15em;
+  min-width: 100px;
+}
+
+.slots {
+  display: flex;
+  gap: var(--spacing-md);
+  flex: 1;
+}
+
+.slot {
+  width: 80px;
+  height: 60px;
+  border: 2px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-base);
+  position: relative;
+  background: var(--bg-darker);
+
+  &.empty {
+    border-style: dashed;
+
+    .slotNumber {
+      color: var(--text-muted);
+      font-size: var(--font-size-xs);
+    }
+  }
+
+  &.filled {
+    background: var(--bg-panel-hover);
+    border-color: var(--border-terminal);
+    border-style: solid;
+    box-shadow: 0 0 10px var(--primary-green-glow);
+
+    &:hover {
+      transform: translateY(-2px);
+      border-color: var(--primary-green-light);
+      box-shadow: 0 0 20px var(--primary-green-glow);
+      cursor: pointer;
+    }
+  }
+}
+
+.item {
+  text-align: center;
+  padding: var(--spacing-xs);
+}
+
+.itemName {
+  color: var(--text-terminal);
+  font-size: var(--font-size-xs);
+  font-weight: bold;
+  font-family: var(--font-main);
+  display: block;
+  word-break: break-word;
+}
+
+.slotNumber {
+  font-family: var(--font-main);
+}

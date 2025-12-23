@@ -1,0 +1,140 @@
+@use '../../styles/variables.module' as *;
+
+.roomView {
+  flex: 1;
+  padding: var(--spacing-xl);
+  overflow-y: auto;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--text-terminal);
+  gap: var(--spacing-lg);
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--border-default);
+  border-top-color: var(--primary-green);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.roomHeader {
+  margin-bottom: var(--spacing-xl);
+}
+
+.roomTitle {
+  @include terminal-text;
+  font-size: var(--font-size-3xl);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-shadow: 0 0 15px var(--primary-green-glow);
+}
+
+.roomContent {
+  @include panel-style;
+  padding: var(--spacing-xl);
+}
+
+.descriptionBox {
+  margin-bottom: var(--spacing-2xl);
+  padding: var(--spacing-lg);
+  background: var(--bg-darker);
+  border-left: 3px solid var(--primary-green);
+  border-radius: var(--radius-sm);
+}
+
+.description {
+  @include terminal-text;
+  font-size: var(--font-size-lg);
+  line-height: 1.8;
+  margin: 0;
+}
+
+.cursor {
+  @include cursor-blink;
+  color: var(--primary-green);
+  margin-left: 2px;
+}
+
+.interactiveArea {
+  margin-top: var(--spacing-2xl);
+  padding: var(--spacing-lg);
+  background: var(--bg-darker);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+
+  h3 {
+    color: var(--text-terminal);
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-lg);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+}
+
+.objects {
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.exits {
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-xl);
+  border-top: 1px solid var(--border-default);
+
+  h4 {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+}
+
+.exitButtons {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.exitButton {
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--bg-panel);
+  border: 2px solid var(--border-terminal);
+  border-radius: var(--radius-sm);
+  color: var(--text-terminal);
+  font-family: var(--font-main);
+  font-weight: bold;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-size: var(--font-size-base);
+
+  &:hover {
+    background: var(--primary-green);
+    color: var(--bg-dark);
+    box-shadow: var(--shadow-glow-green);
+    transform: translateX(5px);
+  }
+
+  &:active {
+    transform: translateX(3px);
+  }
+}

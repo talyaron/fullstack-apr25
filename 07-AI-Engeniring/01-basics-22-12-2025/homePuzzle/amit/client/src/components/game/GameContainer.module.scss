@@ -1,0 +1,16 @@
+@use '../../styles/variables.module' as *;
+
+.gameContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-dark);
+}
+
+.mainContent {
+  flex: 1;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  min-height: calc(100vh - var(--header-height) - var(--inventory-bar-height));
+}

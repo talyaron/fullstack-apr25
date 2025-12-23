@@ -12,7 +12,13 @@
       "Bash(net start MongoDB)",
       "Bash(sc query:*)",
       "Bash(where:*)",
-      "Bash(npm run dev:*)"
+      "Bash(npm run dev:*)",
+      "Bash(ls:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(cat:*)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(taskkill:*)"
     ]
   }
 }

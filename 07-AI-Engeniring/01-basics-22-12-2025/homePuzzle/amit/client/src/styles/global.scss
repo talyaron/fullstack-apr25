@@ -1,0 +1,242 @@
+@use './variables.module' as *;
+
+// CSS Reset
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+// HTML & Body
+html {
+  min-width: var(--min-width);
+  overflow-x: auto;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  font-size: var(--font-size-base);
+  line-height: var(--terminal-line-height);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-width: var(--min-width);
+  overflow-x: hidden;
+
+  // Optional terminal scanline effect
+  @include scanline-effect;
+}
+
+// Root Container
+#root {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+// Typography
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  line-height: 1.2;
+  letter-spacing: 0.05em;
+}
+
+h1 {
+  font-size: var(--font-size-3xl);
+  color: var(--text-terminal);
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: var(--font-size-2xl);
+  color: var(--text-terminal);
+}
+
+h3 {
+  font-size: var(--font-size-xl);
+}
+
+// Links
+a {
+  color: var(--primary-green);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+
+  &:hover {
+    color: var(--primary-green-light);
+    text-shadow: 0 0 10px var(--primary-green-glow);
+  }
+}
+
+// Buttons
+button {
+  font-family: var(--font-main);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all var(--transition-base);
+  background: transparent;
+  color: var(--text-primary);
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// Inputs & Textareas
+input,
+textarea,
+select {
+  font-family: var(--font-main);
+  background-color: var(--bg-panel);
+  color: var(--text-primary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  transition: border-color var(--transition-fast);
+  font-size: var(--font-size-base);
+
+  &:focus {
+    outline: none;
+    border-color: var(--border-terminal);
+    box-shadow: 0 0 0 2px var(--primary-green-glow);
+  }
+
+  &::placeholder {
+    color: var(--text-muted);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+// Code Elements
+code, pre {
+  font-family: var(--font-main);
+  background-color: var(--bg-panel);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  color: var(--text-terminal);
+}
+
+pre {
+  padding: var(--spacing-md);
+  overflow-x: auto;
+  border: 1px solid var(--border-default);
+}
+
+// Custom Scrollbar
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-darker);
+  border-left: 1px solid var(--border-default);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-green);
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--bg-darker);
+
+  &:hover {
+    background: var(--primary-green-light);
+    box-shadow: var(--shadow-glow-green);
+  }
+}
+
+// Selection
+::selection {
+  background-color: var(--primary-green);
+  color: var(--bg-dark);
+}
+
+::-moz-selection {
+  background-color: var(--primary-green);
+  color: var(--bg-dark);
+}
+
+// Lists
+ul, ol {
+  list-style-position: inside;
+}
+
+ul {
+  list-style-type: none;
+}
+
+// Tables
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: var(--spacing-sm) var(--spacing-md);
+  text-align: left;
+  border-bottom: 1px solid var(--border-default);
+}
+
+th {
+  color: var(--text-terminal);
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: var(--font-size-sm);
+  letter-spacing: 0.1em;
+}
+
+// Utility Classes
+.terminal-text {
+  @include terminal-text;
+}
+
+.panel {
+  @include panel-style;
+}
+
+.glow-green {
+  @include glow-effect(var(--primary-green));
+}
+
+.glow-red {
+  @include glow-effect(var(--accent-red));
+}
+
+.fade-slide-in {
+  @include fade-slide-in;
+}
+
+.cursor-blink {
+  @include cursor-blink;
+}
+
+// Screen size warning for devices below 1024px
+@media (max-width: 1023px) {
+  body::before {
+    content: '⚠️ Station Zero requires a desktop screen (1024px minimum width)';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--accent-red);
+    color: white;
+    text-align: center;
+    padding: var(--spacing-md);
+    z-index: 10000;
+    font-family: var(--font-main);
+    font-size: var(--font-size-sm);
+  }
+
+  #root {
+    margin-top: 60px;
+  }
+}

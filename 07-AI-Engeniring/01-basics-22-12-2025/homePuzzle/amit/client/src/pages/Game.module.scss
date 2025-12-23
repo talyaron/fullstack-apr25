@@ -1,0 +1,187 @@
+@use '../styles/variables' as *;
+
+.gameContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: $bg-primary;
+}
+
+.header {
+  background: $bg-secondary;
+  border-bottom: 2px solid $border-default;
+  padding: $spacing-md $spacing-xl;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: $shadow-md;
+}
+
+.logo {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  background: linear-gradient(135deg, $accent-cyan 0%, $accent-purple 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 2px;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: $spacing-lg;
+}
+
+.username {
+  font-weight: $font-weight-medium;
+  color: $text-primary;
+}
+
+.score {
+  color: $accent-cyan;
+  font-weight: $font-weight-semibold;
+}
+
+.logoutButton {
+  padding: $spacing-sm $spacing-md;
+  background-color: transparent;
+  border: 1px solid $border-default;
+  color: $text-secondary;
+  border-radius: $border-radius-sm;
+  font-size: $font-size-sm;
+  transition: all $transition-base;
+
+  &:hover {
+    border-color: $accent-pink;
+    color: $accent-pink;
+    background-color: rgba($accent-pink, 0.1);
+  }
+}
+
+.mainContent {
+  flex: 1;
+  padding: $spacing-2xl;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: auto;
+}
+
+.welcomeCard {
+  background: $bg-secondary;
+  border: 2px solid $border-default;
+  border-radius: $border-radius-lg;
+  padding: $spacing-3xl;
+  max-width: 900px;
+  width: 100%;
+  box-shadow: $shadow-lg;
+
+  h1 {
+    font-size: $font-size-2xl;
+    margin-bottom: $spacing-md;
+    color: $text-primary;
+  }
+}
+
+.description {
+  color: $text-secondary;
+  font-size: $font-size-lg;
+  margin-bottom: $spacing-2xl;
+  line-height: 1.6;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: $spacing-lg;
+  margin-bottom: $spacing-2xl;
+}
+
+.statCard {
+  background: $bg-primary;
+  border: 1px solid $border-default;
+  border-radius: $border-radius-md;
+  padding: $spacing-lg;
+  text-align: center;
+  transition: all $transition-base;
+
+  &:hover {
+    border-color: $accent-cyan;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+    transform: translateY(-2px);
+  }
+}
+
+.statLabel {
+  font-size: $font-size-xs;
+  color: $text-muted;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: $spacing-sm;
+}
+
+.statValue {
+  font-size: $font-size-xl;
+  font-weight: $font-weight-bold;
+  color: $accent-cyan;
+}
+
+.comingSoon {
+  background: linear-gradient(135deg, rgba($accent-purple, 0.1) 0%, rgba($accent-cyan, 0.1) 100%);
+  border: 1px solid $border-light;
+  border-radius: $border-radius-md;
+  padding: $spacing-xl;
+  margin-top: $spacing-xl;
+
+  p {
+    font-weight: $font-weight-semibold;
+    margin-bottom: $spacing-md;
+    color: $accent-cyan;
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+
+    li {
+      padding: $spacing-sm 0;
+      color: $text-secondary;
+      position: relative;
+      padding-left: $spacing-lg;
+
+      &::before {
+        content: '▹';
+        position: absolute;
+        left: 0;
+        color: $accent-purple;
+        font-weight: $font-weight-bold;
+      }
+    }
+  }
+}
+
+@media (max-width: $breakpoint-md) {
+  .header {
+    flex-direction: column;
+    gap: $spacing-md;
+    align-items: flex-start;
+  }
+
+  .userInfo {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .mainContent {
+    padding: $spacing-md;
+  }
+
+  .welcomeCard {
+    padding: $spacing-xl;
+  }
+}
