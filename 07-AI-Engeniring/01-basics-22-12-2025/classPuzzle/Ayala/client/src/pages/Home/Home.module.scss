@@ -9,7 +9,7 @@
   background: linear-gradient(135deg, $primary-color 0%, $primary-dark 100%);
   color: white;
   text-align: center;
-  padding: $spacing-xl * 4 $spacing-md;
+  padding: $spacing-xl * 2 $spacing-md;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,6 +22,7 @@
   font-weight: 600;
   letter-spacing: 0.05em;
   margin-bottom: $spacing-sm;
+  animation: heroFadeIn 0.6s ease-out;
 
   @media (max-width: 768px) {
     font-size: 2.5rem;
@@ -34,9 +35,21 @@
   font-weight: 500;
   opacity: 0.9;
   letter-spacing: 0.1em;
+  animation: heroFadeIn 0.6s ease-out 0.15s both;
 
   @media (max-width: 768px) {
     font-size: $font-lg;
+  }
+}
+
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -73,6 +86,13 @@
   overflow: hidden;
   box-shadow: 0 4px 12px $shadow;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: categoryFadeIn 0.5s ease-out both;
+
+  @for $i from 1 through 8 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.08}s;
+    }
+  }
 
   &:hover {
     transform: translateY(-4px);
@@ -81,6 +101,17 @@
     .categoryImage img {
       transform: scale(1.1);
     }
+  }
+}
+
+@keyframes categoryFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
