@@ -52,6 +52,32 @@
   font-size: $font-sm;
 }
 
+.favoriteBtn {
+  position: absolute;
+  top: $spacing-sm;
+  left: $spacing-sm;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  color: $text-light;
+
+  &:hover {
+    transform: scale(1.1);
+    background-color: white;
+  }
+
+  &.favorited {
+    color: $error;
+  }
+}
+
 .content {
   padding: $spacing-md;
 }
