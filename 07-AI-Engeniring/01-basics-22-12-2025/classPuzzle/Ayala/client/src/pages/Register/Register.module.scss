@@ -1,0 +1,75 @@
+@import '../../styles/variables';
+
+.registerPage {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: $spacing-xl;
+  background: linear-gradient(135deg, $background 0%, $cream 100%);
+}
+
+.card {
+  background: white;
+  padding: $spacing-xl;
+  border-radius: $radius-lg;
+  box-shadow: 0 4px 20px $shadow;
+  width: 100%;
+  max-width: 400px;
+}
+
+.title {
+  color: $primary-color;
+  font-size: $font-2xl;
+  text-align: center;
+  margin-bottom: $spacing-sm;
+}
+
+.subtitle {
+  color: $text-light;
+  text-align: center;
+  margin-bottom: $spacing-xl;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+
+  button {
+
+    padding: $spacing-md;
+    font-size: $font-lg;
+  }
+}
+
+.passwordWrapper {
+  position: relative;
+
+  input {
+    width: 100%;
+    padding-right: 45px;
+  }
+}
+.eyeButton {
+  position: absolute;
+top:-10%;
+  right: 0;
+  width: fit-content;
+}
+
+
+.loginLink {
+  text-align: center;
+  margin-top: $spacing-lg;
+  color: $text-secondary;
+
+  a {
+    color: $primary-color;
+    font-weight: 500;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

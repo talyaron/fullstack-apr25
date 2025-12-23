@@ -1,0 +1,100 @@
+@import '../../styles/variables';
+
+.card {
+  display: block;
+  background: white;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  box-shadow: 0 2px 8px $shadow;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px $shadow;
+  }
+}
+
+.imageContainer {
+  position: relative;
+  height: 180px;
+  background-color: $cream;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, $cream 0%, $cream-dark 100%);
+
+  span {
+    font-size: 4rem;
+  }
+}
+
+.category {
+  position: absolute;
+  top: $spacing-sm;
+  right: $spacing-sm;
+  background-color: $primary-color;
+  color: white;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $radius-sm;
+  font-size: $font-sm;
+}
+
+.content {
+  padding: $spacing-md;
+}
+
+.title {
+  font-size: $font-lg;
+  color: $text-primary;
+  margin-bottom: $spacing-sm;
+  line-height: 1.3;
+}
+
+.meta {
+  display: flex;
+  gap: $spacing-md;
+  margin-bottom: $spacing-sm;
+  font-size: $font-sm;
+  color: $text-light;
+}
+
+.time, .difficulty {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+}
+
+.star {
+  color: $cream-dark;
+  font-size: $font-md;
+}
+
+.starFilled {
+  color: $warning;
+  font-size: $font-md;
+}
+
+.ratingValue {
+  color: $text-light;
+  font-size: $font-sm;
+  margin-right: $spacing-xs;
+}

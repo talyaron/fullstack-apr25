@@ -1,0 +1,54 @@
+@import '../../styles/variables';
+
+.header {
+  background-color: $primary-color;
+  padding: $spacing-md 0;
+  box-shadow: 0 2px 8px $shadow;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: $font-xl;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+
+  &:hover {
+    color: $cream;
+  }
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.navLink {
+  color: white;
+  text-decoration: none;
+  padding: $spacing-sm $spacing-md;
+  border-radius: $radius-md;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: $primary-dark;
+  }
+}
+
+.userName {
+  color: $cream;
+  font-weight: 500;
+}
+

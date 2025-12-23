@@ -1,0 +1,172 @@
+// Button styles - centralized button styling
+@import './variables';
+
+// Base button styles
+.btn {
+  display: inline-block;
+  padding: $spacing-sm $spacing-lg;
+  border: none;
+  border-radius: $radius-md;
+  font-size: $font-md;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  text-align: center;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+// Primary button - main action
+.btn-primary {
+  background-color: $primary-color;
+  color: white;
+
+  &:hover:not(:disabled) {
+    background-color: $primary-dark;
+  }
+}
+
+// Secondary button
+.btn-secondary {
+  background-color: $secondary-color;
+  color: white;
+
+  &:hover:not(:disabled) {
+    background-color: $secondary-light;
+  }
+}
+
+// Outline button - ghost style
+.btn-outline {
+  background-color: transparent;
+  border: 2px solid $primary-color;
+  color: $primary-color;
+
+  &:hover:not(:disabled) {
+    background-color: $primary-color;
+    color: white;
+  }
+}
+
+// Danger button - for delete/remove actions
+.btn-danger {
+  background-color: white;
+  border: 2px solid $error;
+  color: $error;
+
+  &:hover:not(:disabled),
+  &.active {
+    background-color: $error;
+    color: white;
+  }
+}
+
+// Ghost button - transparent with white border (for dark backgrounds)
+.btn-ghost {
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+
+  &:hover:not(:disabled) {
+    background-color: white;
+    color: $primary-color;
+  }
+}
+
+// Light button - white background (for dark backgrounds)
+.btn-light {
+  background-color: white;
+  color: $primary-color;
+
+  &:hover:not(:disabled) {
+    background-color: $cream;
+  }
+}
+
+// Icon button - for icon-only buttons (eye toggle, etc.)
+.btn-icon {
+  background: none;
+  border: none;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    color: #666;
+    pointer-events: none;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+// Tab button - for navigation tabs
+.btn-tab {
+  padding: $spacing-md $spacing-xl;
+  border: none;
+  background: none;
+  font-size: $font-md;
+  color: $text-light;
+  cursor: pointer;
+  border-radius: $radius-md $radius-md 0 0;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: $cream;
+    color: $text-primary;
+  }
+
+  &.active {
+    background-color: $primary-color;
+    color: white;
+  }
+}
+
+// Category button - for category selection
+.btn-category {
+  padding: $spacing-sm $spacing-lg;
+  border: 2px solid $primary-color;
+  border-radius: $radius-lg;
+  background-color: white;
+  color: $primary-color;
+  font-size: $font-md;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: $primary-light;
+    color: white;
+  }
+
+  &.active {
+    background-color: $primary-color;
+    color: white;
+  }
+}
+
+// Small button variant
+.btn-sm {
+  padding: $spacing-xs $spacing-sm;
+  font-size: $font-sm;
+}
+
+// Large button variant
+.btn-lg {
+  padding: $spacing-md $spacing-xl;
+  font-size: $font-lg;
+}
+
+// Full width button
+.btn-block {
+  width: 100%;
+}

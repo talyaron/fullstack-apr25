@@ -1,7 +1,24 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm install:*)"
+      "Bash(npm init:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run build:*)",
+      "Bash(node -e:*)",
+      "Bash(docker compose:*)",
+      "Bash(npm run seed:*)",
+      "Bash(mkdir -p:*)",
+      "Bash(npm create:*)",
+      "Bash(net start MongoDB)",
+      "Bash(sc query:*)",
+      "Bash(where:*)",
+      "Bash(npm run dev:*)",
+      "Bash(ls:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(cat:*)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(taskkill:*)"
     ]
   }
 }
