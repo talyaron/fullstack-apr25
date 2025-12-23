@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchRecipes, fetchCategories } from '../../store/recipeSlice';
+import { fetchRecipes, fetchCategories, setSearchQuery } from '../../store/recipeSlice';
 import RecipeCard from '../../components/RecipeCard/RecipeCard';
 import styles from './Recipes.module.scss';
 
 const Recipes = () => {
   const dispatch = useAppDispatch();
-  const { recipes, categories, isLoading } = useAppSelector((state) => state.recipes);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const { recipes, categories, searchQuery, isLoading } = useAppSelector((state) => state.recipes);
 
   const [filters, setFilters] = useState({
     search: '',
@@ -16,10 +18,28 @@ const Recipes = () => {
     maxTime: ''
   });
 
+  // Initialize filters from URL params and redux state
   useEffect(() => {
+    const categoryFromUrl = searchParams.get('category') || '';
+    const searchFromRedux = searchQuery || '';
+
+    setFilters((prev) => ({
+      ...prev,
+      category: categoryFromUrl,
+      search: searchFromRedux
+    }));
+
     dispatch(fetchCategories());
-    dispatch(fetchRecipes({}));
-  }, [dispatch]);
+    dispatch(fetchRecipes({
+      category: categoryFromUrl || undefined,
+      search: searchFromRedux || undefined
+    }));
+
+    // Clear the search query from redux after using it
+    if (searchFromRedux) {
+      dispatch(setSearchQuery(''));
+    }
+  }, [dispatch, searchParams, searchQuery]);
 
   const handleFilterChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -27,6 +47,11 @@ const Recipes = () => {
   };
 
   const handleApplyFilters = () => {
+    // Update URL params
+    const newParams = new URLSearchParams();
+    if (filters.category) newParams.set('category', filters.category);
+    setSearchParams(newParams);
+
     dispatch(fetchRecipes({
       search: filters.search || undefined,
       category: filters.category || undefined,
@@ -44,6 +69,7 @@ const Recipes = () => {
       difficulty: '',
       maxTime: ''
     });
+    setSearchParams({});
     dispatch(fetchRecipes({}));
   };
 
