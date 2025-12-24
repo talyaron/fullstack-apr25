@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fetchRecipeById, rateRecipe, toggleFavorite } from '../../store/recipeSlice';
+import { updateFavorites } from '../../store/authSlice';
 import styles from './RecipeDetail.module.scss';
 
 const RecipeDetail = () => {
@@ -41,7 +42,10 @@ const RecipeDetail = () => {
       return;
     }
     if (id) {
-      await dispatch(toggleFavorite(id));
+      const result = await dispatch(toggleFavorite(id));
+      if (toggleFavorite.fulfilled.match(result)) {
+        dispatch(updateFavorites({ recipeId: id, isFavorite: result.payload.isFavorite }));
+      }
     }
   };
 

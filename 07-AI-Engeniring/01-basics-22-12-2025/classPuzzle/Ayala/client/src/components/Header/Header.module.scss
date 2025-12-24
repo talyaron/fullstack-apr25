@@ -1,54 +1,159 @@
 @import '../../styles/variables';
 
 .header {
-  background-color: $primary-color;
+  background-color: $cream;
   padding: $spacing-md 0;
   box-shadow: 0 2px 8px $shadow;
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 $spacing-md;
+  padding: 0 $spacing-lg;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: $spacing-lg;
 }
 
 .logo {
-  font-size: $font-xl;
-  font-weight: bold;
-  color: white;
-  text-decoration: none;
+  flex-shrink: 0;
 
-  &:hover {
-    color: $cream;
+  img {
+    height: 4rem;
+    width: 12rem;
   }
 }
 
-.nav {
+.searchBar {
+  flex: 1;
+  max-width: 500px;
   display: flex;
   align-items: center;
-  gap: $spacing-md;
-}
+  background-color: white;
+  border: 1px solid $border-color;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
 
-.navLink {
-  color: white;
-  text-decoration: none;
-  padding: $spacing-sm $spacing-md;
-  border-radius: $radius-md;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: $primary-dark;
+  &:focus-within {
+    box-shadow: 0 0 0 2px rgba($primary-color, 0.2);
+    border-color: $primary-color;
   }
 }
 
-.userName {
-  color: $cream;
-  font-weight: 500;
+.searchInput {
+  flex: 1;
+  padding: $spacing-sm $spacing-md;
+  border: none;
+  outline: none;
+  font-size: $font-md;
+  color: $text-primary;
+
+  &::placeholder {
+    color: $text-light;
+  }
 }
 
+.searchButton {
+  padding: $spacing-sm $spacing-md;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+
+  img {
+    width: 20px;
+    height: 20px;
+    opacity: 0.6;
+  }
+
+  &:hover {
+    background-color: $background-dark;
+
+    img {
+      opacity: 1;
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.actionButton {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+
+  img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) saturate(100%) invert(26%) sepia(14%) saturate(1168%) hue-rotate(166deg) brightness(95%) contrast(89%);
+  }
+
+  &:hover {
+    background-color: $background-dark;
+  }
+}
+
+.userMenuWrapper {
+  position: relative;
+}
+
+.userMenu {
+  position: absolute;
+  top: calc(100% + $spacing-sm);
+  right: 0;
+  min-width: 150px;
+  background-color: white;
+  border-radius: $radius-md;
+  box-shadow: 0 4px 12px $shadow;
+  overflow: hidden;
+  z-index: 101;
+}
+
+.userInfo {
+  padding: $spacing-md;
+  background-color: $background-dark;
+  color: $text-primary;
+  font-weight: 500;
+  font-size: $font-sm;
+  border-bottom: 1px solid $border-color;
+}
+
+.menuItem {
+  display: block;
+  width: 100%;
+  padding: $spacing-sm $spacing-md;
+  text-align: left;
+  background-color: transparent;
+  border: none;
+  color: $text-primary;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: $font-md;
+
+  &:hover {
+    background-color: $background-dark;
+  }
+}

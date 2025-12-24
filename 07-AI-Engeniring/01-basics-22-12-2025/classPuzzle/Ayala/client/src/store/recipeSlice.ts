@@ -6,6 +6,7 @@ const initialState: RecipeState = {
   recipes: [],
   currentRecipe: null,
   categories: [],
+  searchQuery: '',
   isLoading: false,
   error: null
 };
@@ -123,6 +124,9 @@ const recipeSlice = createSlice({
     },
     clearError: (state) => {
       state.error = null;
+    },
+    setSearchQuery: (state, action) => {
+      state.searchQuery = action.payload;
     }
   },
   extraReducers: (builder) => {
@@ -188,5 +192,5 @@ const recipeSlice = createSlice({
   }
 });
 
-export const { clearCurrentRecipe, clearError } = recipeSlice.actions;
+export const { clearCurrentRecipe, clearError, setSearchQuery } = recipeSlice.actions;
 export default recipeSlice.reducer;

@@ -1,0 +1,116 @@
+@import '../../styles/variables';
+
+.dropdown {
+  position: relative;
+  width: 100%;
+}
+
+.trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-sm $spacing-md;
+  border: 2px solid $border-color;
+  border-radius: $radius-md;
+  font-size: $font-md;
+  font-family: 'Montserrat Alternates', sans-serif;
+  color: $text-primary;
+  background-color: $background;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba($primary-color, 0.1);
+  }
+
+  &:hover {
+    border-color: $primary-color;
+  }
+
+  &.open {
+    border-color: $primary-color;
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba($primary-color, 0.1);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+.placeholder {
+  color: $text-light;
+}
+
+.arrow {
+  color: $secondary-color;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+  margin-left: $spacing-sm;
+
+  &.rotated {
+    transform: rotate(180deg);
+  }
+}
+
+.menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: $spacing-xs 0;
+  list-style: none;
+  background-color: white;
+  border: 2px solid $primary-color;
+  border-top: none;
+  border-radius: 0 0 $radius-md $radius-md;
+  box-shadow: 0 4px 12px $shadow;
+  z-index: 100;
+  max-height: 240px;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $background;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $primary-light;
+    border-radius: 3px;
+  }
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-sm $spacing-md;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: $font-md;
+  color: $text-primary;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:hover {
+    background-color: rgba($primary-color, 0.1);
+    color: $primary-dark;
+  }
+
+  &.selected {
+    background-color: rgba($primary-color, 0.15);
+    color: $primary-dark;
+    font-weight: 500;
+  }
+}
+
+.check {
+  color: $primary-color;
+  flex-shrink: 0;
+}

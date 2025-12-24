@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fetchRecipes, createRecipe, updateRecipe, deleteRecipe } from '../../store/recipeSlice';
+import Dropdown from '../../components/Dropdown/Dropdown';
 import type { Recipe } from '../../types';
 import styles from './RecipeManagement.module.scss';
 
@@ -131,16 +132,18 @@ const RecipeManagement = () => {
 
               <div className="form-group">
                 <label>Difficulty</label>
-                <select
+                <Dropdown
+                  name="difficulty"
                   value={formData.difficulty}
                   onChange={(e) => setFormData({ ...formData, difficulty: e.target.value })}
-                >
-                  <option value="1">Very Easy</option>
-                  <option value="2">Easy</option>
-                  <option value="3">Medium</option>
-                  <option value="4">Challenging</option>
-                  <option value="5">Hard</option>
-                </select>
+                  options={[
+                    { value: '1', label: 'Very Easy' },
+                    { value: '2', label: 'Easy' },
+                    { value: '3', label: 'Medium' },
+                    { value: '4', label: 'Challenging' },
+                    { value: '5', label: 'Hard' }
+                  ]}
+                />
               </div>
             </div>
 
