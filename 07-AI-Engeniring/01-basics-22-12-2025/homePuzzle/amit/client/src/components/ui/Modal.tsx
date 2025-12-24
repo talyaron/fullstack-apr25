@@ -51,9 +51,9 @@ const Modal = ({ isOpen, onClose, title, children, width = '600px' }: ModalProps
           {/* Modal Container */}
           <motion.div
             className={styles.modalContainer}
-            initial={{ opacity: 0, scale: 0.9, y: -20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: -20 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
           >
             <div className={styles.modal} style={{ maxWidth: width }}>

@@ -35,14 +35,7 @@ const initialState: PlayerState = {
   id: null,
   username: null,
   currentRoom: null,
-  currentRoomData: {
-    _id: 'initial',
-    title: 'Initialization Chamber',
-    description: 'Weelcome to Station Zero. Systems initializing...',
-    imageAsset: '',
-    connections: {},
-    puzzles: []
-  },
+  currentRoomData: null, // Changed from hardcoded object to null
   discoveredRooms: [],
   score: 0,
   inventory: [],

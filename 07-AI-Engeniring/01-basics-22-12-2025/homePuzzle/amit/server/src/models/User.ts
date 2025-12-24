@@ -6,6 +6,19 @@ export interface IUser extends Document {
   score: number;
   inventory: mongoose.Types.ObjectId[];
   completedPuzzles: string[];
+  gameStats: {
+    totalPlayTime: number;
+    puzzlesSolved: number;
+    moralityChoices: {
+      good: number;
+      neutral: number;
+      bad: number;
+    };
+    secretsFound: number;
+    gameEnding?: 'hero' | 'martyr' | 'saboteur';
+    gameCompleted: boolean;
+    completionDate?: Date;
+  };
   createdAt: Date;
   updatedAt: Date;
 }
@@ -36,7 +49,39 @@ const UserSchema: Schema = new Schema(
     }],
     completedPuzzles: [{
       type: String
-    }]
+    }],
+    gameStats: {
+      totalPlayTime: {
+        type: Number,
+        default: 0
+      },
+      puzzlesSolved: {
+        type: Number,
+        default: 0
+      },
+      moralityChoices: {
+        good: { type: Number, default: 0 },
+        neutral: { type: Number, default: 0 },
+        bad: { type: Number, default: 0 }
+      },
+      secretsFound: {
+        type: Number,
+        default: 0
+      },
+      gameEnding: {
+        type: String,
+        enum: ['hero', 'martyr', 'saboteur'],
+        default: undefined
+      },
+      gameCompleted: {
+        type: Boolean,
+        default: false
+      },
+      completionDate: {
+        type: Date,
+        default: undefined
+      }
+    }
   },
   {
     timestamps: true

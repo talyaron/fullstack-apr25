@@ -45,7 +45,7 @@ const Header = () => {
         isOpen={isSettingsOpen}
         onClose={() => setIsSettingsOpen(false)}
         title="Settings"
-        width="500px"
+        width="700px"
       >
         <div className={styles.settingsContent}>
           <div className={styles.settingSection}>

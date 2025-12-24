@@ -32,6 +32,8 @@ const Login = () => {
 
     try {
       const response = await apiService.checkUser(username.trim());
+      console.log('[LOGIN] Auth response:', response);
+      console.log('[LOGIN] User current room:', response.user?.currentRoom);
 
       if (response.success) {
         dispatch(setAuthentication({
@@ -40,8 +42,12 @@ const Login = () => {
           id: response.user.id
         }));
 
+        const roomData = response.user.currentRoom;
+        console.log('[LOGIN] Setting room data:', roomData);
+
         dispatch(setPlayer({
-          currentRoom: response.user.currentRoom,
+          currentRoom: roomData,
+          currentRoomData: roomData,
           score: response.user.score,
           inventory: response.user.inventory,
           completedPuzzles: response.user.completedPuzzles
@@ -50,6 +56,7 @@ const Login = () => {
         navigate('/game', { replace: true });
       }
     } catch (err: any) {
+      console.error('[LOGIN] Error:', err);
       setError(err.response?.data?.message || 'Login failed. Please try again.');
     } finally {
       setIsLoading(false);

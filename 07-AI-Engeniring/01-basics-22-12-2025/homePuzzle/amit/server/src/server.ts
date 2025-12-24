@@ -5,6 +5,7 @@ import connectDB from './config/database';
 import authRoutes from './routes/authRoutes';
 import roomRoutes from './routes/roomRoutes';
 import puzzleRoutes from './routes/puzzleRoutes';
+import leaderboardRoutes from './routes/leaderboardRoutes';
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/auth', authRoutes);
 app.use('/api/rooms', roomRoutes);
 app.use('/api/puzzles', puzzleRoutes);
+app.use('/api/leaderboard', leaderboardRoutes);
 
 app.get('/api/health', (_, res: Response) => {
   res.status(200).json({

@@ -86,13 +86,54 @@
 .objects {
   min-height: 100px;
   display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .placeholder {
   color: var(--text-muted);
   font-style: italic;
+  width: 100%;
+  text-align: center;
+}
+
+.puzzleButton {
+  padding: var(--spacing-lg);
+  background: var(--bg-panel);
+  border: 2px solid var(--accent-yellow);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  min-width: 120px;
+
+  &:hover {
+    background: var(--accent-yellow);
+    color: var(--bg-dark);
+    box-shadow: 0 0 20px rgba(255, 204, 0, 0.4);
+    transform: translateY(-3px);
+  }
+
+  &:active {
+    transform: translateY(-1px);
+  }
+}
+
+.puzzleIcon {
+  font-size: var(--font-size-2xl);
+}
+
+.puzzleName {
+  font-size: var(--font-size-sm);
+  font-weight: bold;
+  text-align: center;
 }
 
 .exits {

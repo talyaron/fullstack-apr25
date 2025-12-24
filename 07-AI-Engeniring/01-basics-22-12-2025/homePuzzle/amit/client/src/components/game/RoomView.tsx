@@ -1,16 +1,21 @@
 import { motion } from 'framer-motion';
 import { useTypewriter } from '../../hooks/useTypewriter';
-import { useAppSelector } from '../../store/hooks';
+import { useAppSelector, useAppDispatch } from '../../store/hooks';
+import { setCurrentRoomData } from '../../store/gameSlice';
+import apiService from '../../services/api';
 import styles from './RoomView.module.scss';
 
 const RoomView = () => {
   const { currentRoomData } = useAppSelector((state) => state.game);
+  const dispatch = useAppDispatch();
+
   const { displayText } = useTypewriter({
     text: currentRoomData?.description || 'Initializing systems...',
     speed: 30
   });
 
   if (!currentRoomData) {
+    console.log('[ROOM VIEW] ❌ No room data');
     return (
       <div className={styles.loading}>
         <div className={styles.spinner}></div>
@@ -40,14 +45,37 @@ const RoomView = () => {
           </p>
         </div>
 
-        <div className={styles.interactiveArea}>
-          <h3>Interactive Objects</h3>
-          <div className={styles.objects}>
-            <p className={styles.placeholder}>
-              No interactive objects in this room yet.
-            </p>
+        {currentRoomData.puzzles && currentRoomData.puzzles.length > 0 ? (
+          <div className={styles.interactiveArea}>
+            <h3>Interactive Objects</h3>
+            <div className={styles.objects}>
+              {currentRoomData.puzzles.map((puzzle: any, index: number) => (
+                <button
+                  key={puzzle._id || index}
+                  className={styles.puzzleButton}
+                  onClick={() => {
+                    console.log('[ROOM VIEW] 🔐 Puzzle clicked:', puzzle);
+                    // TODO: Open puzzle modal
+                  }}
+                >
+                  <span className={styles.puzzleIcon}>🔐</span>
+                  <span className={styles.puzzleName}>
+                    {puzzle.title || `Puzzle ${index + 1}`}
+                  </span>
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className={styles.interactiveArea}>
+            <h3>Interactive Objects</h3>
+            <div className={styles.objects}>
+              <p className={styles.placeholder}>
+                No interactive objects in this room.
+              </p>
+            </div>
+          </div>
+        )}
 
         {currentRoomData.connections && Object.keys(currentRoomData.connections).length > 0 && (
           <div className={styles.exits}>
@@ -57,7 +85,20 @@ const RoomView = () => {
                 <button
                   key={direction}
                   className={styles.exitButton}
-                  onClick={() => console.log(`Moving ${direction} to room ${roomId}`)}
+                  onClick={async () => {
+                    console.log(`[ROOM VIEW] 🚪 Moving ${direction} to room ${roomId}`);
+                    try {
+                      const response = await apiService.movePlayer(roomId as string);
+                      console.log('[ROOM VIEW] Move player response:', response);
+
+                      if (response.success && response.user.currentRoom) {
+                        console.log('[ROOM VIEW] ✅ Successfully moved to new room');
+                        dispatch(setCurrentRoomData(response.user.currentRoom));
+                      }
+                    } catch (error) {
+                      console.error('[ROOM VIEW] ❌ Error moving player:', error);
+                    }
+                  }}
                 >
                   {direction.toUpperCase()} →
                 </button>

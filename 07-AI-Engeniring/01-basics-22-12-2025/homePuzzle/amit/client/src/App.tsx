@@ -13,22 +13,30 @@ function App() {
   useEffect(() => {
     const checkAuth = async () => {
       const token = localStorage.getItem('stationZeroToken');
+      console.log('[APP] Checking auth on mount. Token:', token ? 'exists' : 'missing');
+
       if (token) {
         try {
           const response = await apiService.getCurrentUser();
+
           if (response.success) {
+            const roomData = response.user.currentRoom;
+            console.log('[APP] Session restored. Room:', roomData?.title || 'No room');
+
             dispatch(setPlayer({
               id: response.user.id,
               username: response.user.username,
-              currentRoom: response.user.currentRoom,
+              currentRoom: roomData,
+              currentRoomData: roomData,
               score: response.user.score,
               inventory: response.user.inventory,
               completedPuzzles: response.user.completedPuzzles,
-              isAuthenticated: true
+              isAuthenticated: true,
+              token
             }));
           }
         } catch (error) {
-          console.error('Auth check failed:', error);
+          console.error('[APP] Auth check failed:', error);
           localStorage.removeItem('stationZeroToken');
         }
       }

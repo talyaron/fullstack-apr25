@@ -80,3 +80,99 @@
 .slotNumber {
   font-family: var(--font-main);
 }
+
+// Map Button Styles
+.mapButton {
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--bg-panel);
+  border: 2px solid var(--border-terminal);
+  border-radius: var(--radius-md);
+  color: var(--text-terminal);
+  font-family: var(--font-main);
+  font-weight: bold;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  box-shadow: var(--shadow-md);
+  margin-left: auto; // Push to far right
+
+  &:hover {
+    background: var(--primary-green);
+    color: var(--bg-dark);
+    box-shadow: var(--shadow-glow-green);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.mapIcon {
+  font-size: var(--font-size-lg);
+}
+
+// Map Modal Content
+.mapContent {
+  min-height: 300px;
+}
+
+.mapGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.mapRoom {
+  @include panel-style;
+  padding: var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  transition: all var(--transition-base);
+
+  &:hover {
+    border-color: var(--border-terminal);
+    box-shadow: var(--shadow-glow-green);
+    transform: translateY(-2px);
+  }
+}
+
+.roomIcon {
+  font-size: var(--font-size-2xl);
+}
+
+.roomInfo {
+  flex: 1;
+}
+
+.roomName {
+  color: var(--text-terminal);
+  font-weight: bold;
+  font-size: var(--font-size-base);
+  margin-bottom: var(--spacing-xs);
+}
+
+.roomStatus {
+  color: var(--text-secondary);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.noRooms {
+  text-align: center;
+  padding: var(--spacing-3xl);
+  color: var(--text-muted);
+
+  p {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .hint {
+    color: var(--text-terminal);
+    font-style: italic;
+  }
+}

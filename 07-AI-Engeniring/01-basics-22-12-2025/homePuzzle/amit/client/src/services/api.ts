@@ -49,6 +49,16 @@ class ApiService {
     return response.data;
   }
 
+  async getRoomById(roomId: string) {
+    const response = await this.api.get(`/rooms/${roomId}`);
+    return response.data;
+  }
+
+  async movePlayer(roomId: string) {
+    const response = await this.api.post('/rooms/move', { roomId });
+    return response.data;
+  }
+
   // Puzzle API methods
   async getPuzzleById(puzzleId: string) {
     const response = await this.api.get(`/puzzles/${puzzleId}`);
