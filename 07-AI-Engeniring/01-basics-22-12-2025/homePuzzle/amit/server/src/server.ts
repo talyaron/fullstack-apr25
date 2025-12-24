@@ -4,6 +4,7 @@ import cors from 'cors';
 import connectDB from './config/database';
 import authRoutes from './routes/authRoutes';
 import roomRoutes from './routes/roomRoutes';
+import puzzleRoutes from './routes/puzzleRoutes';
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/auth', authRoutes);
 app.use('/api/rooms', roomRoutes);
+app.use('/api/puzzles', puzzleRoutes);
 
 app.get('/api/health', (_, res: Response) => {
   res.status(200).json({

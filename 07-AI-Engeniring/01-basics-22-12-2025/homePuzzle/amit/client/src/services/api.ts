@@ -49,6 +49,22 @@ class ApiService {
     return response.data;
   }
 
+  // Puzzle API methods
+  async getPuzzleById(puzzleId: string) {
+    const response = await this.api.get(`/puzzles/${puzzleId}`);
+    return response.data;
+  }
+
+  async getPuzzlesByRoom(roomId: string) {
+    const response = await this.api.get(`/puzzles/room/${roomId}`);
+    return response.data;
+  }
+
+  async verifyPuzzleSolution(puzzleId: string, code: string) {
+    const response = await this.api.post('/puzzles/verify', { puzzleId, code });
+    return response.data;
+  }
+
   async get(url: string, config?: AxiosRequestConfig) {
     const response = await this.api.get(url, config);
     return response.data;

@@ -1,39 +1,51 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
 export interface ITestCase {
-  input: string;
-  expectedOutput: string;
-  description?: string;
+  input: any[];
+  expectedOutput: any;
+  description: string;
 }
 
 export interface IPuzzle extends Document {
+  title: string;
   problemDescription: string;
   starterCode: string;
+  functionName: string;
   testCases: ITestCase[];
-  rewardItem: string;
+  rewardItem: {
+    name: string;
+    description: string;
+  };
   difficulty: 'easy' | 'medium' | 'hard';
   points: number;
+  maxAttempts: number;
+  room: mongoose.Types.ObjectId;
+  hints?: string[];
   createdAt: Date;
   updatedAt: Date;
 }
 
 const TestCaseSchema: Schema = new Schema({
   input: {
-    type: String,
+    type: Schema.Types.Mixed,
     required: true
   },
   expectedOutput: {
-    type: String,
+    type: Schema.Types.Mixed,
     required: true
   },
   description: {
     type: String,
-    default: ''
+    required: true
   }
 }, { _id: false });
 
 const PuzzleSchema: Schema = new Schema(
   {
+    title: {
+      type: String,
+      required: true
+    },
     problemDescription: {
       type: String,
       required: true
@@ -42,6 +54,10 @@ const PuzzleSchema: Schema = new Schema(
       type: String,
       required: true,
       default: '// Write your solution here\n'
+    },
+    functionName: {
+      type: String,
+      required: true
     },
     testCases: {
       type: [TestCaseSchema],
@@ -54,8 +70,14 @@ const PuzzleSchema: Schema = new Schema(
       }
     },
     rewardItem: {
-      type: String,
-      required: true
+      name: {
+        type: String,
+        required: true
+      },
+      description: {
+        type: String,
+        required: true
+      }
     },
     difficulty: {
       type: String,
@@ -66,7 +88,19 @@ const PuzzleSchema: Schema = new Schema(
       type: Number,
       default: 100,
       min: 0
-    }
+    },
+    maxAttempts: {
+      type: Number,
+      default: 5
+    },
+    room: {
+      type: Schema.Types.ObjectId,
+      ref: 'Room',
+      required: true
+    },
+    hints: [{
+      type: String
+    }]
   },
   {
     timestamps: true

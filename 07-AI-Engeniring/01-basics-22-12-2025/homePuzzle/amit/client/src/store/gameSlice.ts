@@ -38,7 +38,7 @@ const initialState: PlayerState = {
   currentRoomData: {
     _id: 'initial',
     title: 'Initialization Chamber',
-    description: 'Welcome to Station Zero. Systems initializing...',
+    description: 'Weelcome to Station Zero. Systems initializing...',
     imageAsset: '',
     connections: {},
     puzzles: []
