@@ -1,9 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fetchRecipes, createRecipe, updateRecipe, deleteRecipe } from '../../store/recipeSlice';
-import Dropdown from '../../components/Dropdown/Dropdown';
-import type { Recipe } from '../../types';
+import type { Recipe, KosherType } from '../../types';
 import styles from './RecipeManagement.module.scss';
+
+const CATEGORIES = [
+  'Appetizers', 'Main Courses', 'Desserts', 'Soups', 'Salads',
+  'Side Dishes', 'Baked goods', 'Healthy & Tasty', 'Beverages', 'Breakfast', 'Snacks'
+];
+
+const KOSHER_TYPES: KosherType[] = ['Parve', 'Dairy', 'Meat'];
 
 const RecipeManagement = () => {
   const dispatch = useAppDispatch();
@@ -17,7 +23,9 @@ const RecipeManagement = () => {
     instructions: '',
     prepTime: '',
     difficulty: '1',
-    imageUrl: ''
+    imageUrl: '',
+    isYemeni: false,
+    kosherType: 'Parve' as KosherType
   });
 
   useEffect(() => {
@@ -32,7 +40,9 @@ const RecipeManagement = () => {
       instructions: '',
       prepTime: '',
       difficulty: '1',
-      imageUrl: ''
+      imageUrl: '',
+      isYemeni: false,
+      kosherType: 'Parve'
     });
     setEditingRecipe(null);
     setIsFormOpen(false);
@@ -47,7 +57,9 @@ const RecipeManagement = () => {
       instructions: recipe.instructions.join('\n'),
       prepTime: recipe.prepTime.toString(),
       difficulty: recipe.difficulty.toString(),
-      imageUrl: recipe.imageUrl || ''
+      imageUrl: recipe.imageUrl || '',
+      isYemeni: recipe.isYemeni || false,
+      kosherType: recipe.kosherType || 'Parve'
     });
     setIsFormOpen(true);
   };
@@ -68,7 +80,9 @@ const RecipeManagement = () => {
       instructions: formData.instructions.split('\n').filter(i => i.trim()),
       prepTime: Number(formData.prepTime),
       difficulty: Number(formData.difficulty),
-      imageUrl: formData.imageUrl
+      imageUrl: formData.imageUrl,
+      isYemeni: formData.isYemeni,
+      kosherType: formData.kosherType
     };
 
     if (editingRecipe) {
@@ -109,13 +123,18 @@ const RecipeManagement = () => {
 
             <div className="form-group">
               <label>Category</label>
-              <input
-                type="text"
-                value={formData.category}
-                onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                placeholder="Desserts, Soups, Main Courses..."
-                required
-              />
+              <div className={styles.chipGroup}>
+                {CATEGORIES.map((cat) => (
+                  <button
+                    key={cat}
+                    type="button"
+                    className={`${styles.chip} ${formData.category === cat ? styles.active : ''}`}
+                    onClick={() => setFormData({ ...formData, category: cat })}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
             </div>
 
             <div className={styles.row}>
@@ -132,18 +151,51 @@ const RecipeManagement = () => {
 
               <div className="form-group">
                 <label>Difficulty</label>
-                <Dropdown
-                  name="difficulty"
-                  value={formData.difficulty}
-                  onChange={(e) => setFormData({ ...formData, difficulty: e.target.value })}
-                  options={[
-                    { value: '1', label: 'Very Easy' },
-                    { value: '2', label: 'Easy' },
-                    { value: '3', label: 'Medium' },
-                    { value: '4', label: 'Challenging' },
-                    { value: '5', label: 'Hard' }
-                  ]}
-                />
+                <div className={styles.difficultyChips}>
+                  {[1, 2, 3, 4, 5].map((level) => (
+                    <button
+                      key={level}
+                      type="button"
+                      className={`${styles.difficultyChip} ${formData.difficulty === level.toString() ? styles.active : ''}`}
+                      onClick={() => setFormData({ ...formData, difficulty: level.toString() })}
+                      title={['Very Easy', 'Easy', 'Medium', 'Challenging', 'Hard'][level - 1]}
+                    >
+                      {level}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.attributesRow}>
+              <div className="form-group">
+                <label>Yemeni Food</label>
+                <div className={styles.toggleGroup}>
+                  <button
+                    type="button"
+                    className={`${styles.toggle} ${formData.isYemeni ? styles.active : ''}`}
+                    onClick={() => setFormData({ ...formData, isYemeni: !formData.isYemeni })}
+                  >
+                    <span className={styles.toggleIcon}>{formData.isYemeni ? '✓' : '○'}</span>
+                    <span>{formData.isYemeni ? 'Yes, Yemeni Recipe' : 'Not Yemeni'}</span>
+                  </button>
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label>Kosher Type</label>
+                <div className={styles.kosherChips}>
+                  {KOSHER_TYPES.map((type) => (
+                    <button
+                      key={type}
+                      type="button"
+                      className={`${styles.kosherChip} ${styles[type.toLowerCase()]} ${formData.kosherType === type ? styles.active : ''}`}
+                      onClick={() => setFormData({ ...formData, kosherType: type })}
+                    >
+                      {type}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
 

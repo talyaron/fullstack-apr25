@@ -9,7 +9,9 @@ import searchIcon from '../../assets/search.svg';
 import userIcon from '../../assets/user.svg';
 import heartIcon from '../../assets/heart.svg';
 import plusIcon from '../../assets/plus.svg';
-import newLogoSVG from './../../assets/newlogo.svg'
+//import newLogoSVG from './../../assets/newlogo.svg'
+import logoSVG from './../../assets/pot_no_bg (4).svg'
+import languageIcon from '../../assets/language.svg';
 
 const Header = () => {
   const dispatch = useAppDispatch();
@@ -17,6 +19,8 @@ const Header = () => {
   const { user } = useAppSelector((state) => state.auth);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [searchValue, setSearchValue] = useState('');
+  // Language state for future localization
+  const [lang, setLang] = useState<'he' | 'en'>('he');
 
   const handleLogout = async () => {
     await dispatch(logout());
@@ -43,7 +47,9 @@ const Header = () => {
       <div className={styles.container}>
         {/* Left - Logo */}
         <Link to="/" className={styles.logo} onClick={handleLogoClick}>
-          <img src={newLogoSVG} alt="Rina's Recipes" />
+          <img src={logoSVG} alt="Grandma's Recipes" />
+          <span className={styles.logoName}>  Grandma's<br/>Recipes</span>
+
         </Link>
 
         {/* Center - Search Bar */}
@@ -107,6 +113,16 @@ const Header = () => {
           <Link to="/favorites" className={styles.actionButton} aria-label="Favorites">
             <img src={heartIcon} alt="Favorites" />
           </Link>
+
+          {/* Language Toggle */}
+          <button
+            className={styles.actionButton}
+            onClick={() => setLang(prev => prev === 'he' ? 'en' : 'he')}
+            aria-label="Toggle language"
+            title={lang === 'he' ? 'Switch to English' : 'Switch to Hebrew'}
+          >
+            <img src={languageIcon} alt="Language" />
+          </button>
 
           {/* Admin - Plus (only for admin) */}
           {user?.role === 'admin' && (
