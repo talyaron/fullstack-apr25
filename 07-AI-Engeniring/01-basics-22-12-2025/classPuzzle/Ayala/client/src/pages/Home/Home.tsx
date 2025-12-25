@@ -38,13 +38,13 @@ const Home = () => {
     <div className={styles.homePage}>
       {/* Hero Section */}
       <section className={styles.hero}>
-        <h1 className={styles.heroTitle}>Grandma's Recipes</h1>
-        <p className={styles.heroSubtitle}>flavors from home</p>
+        <h1 className={styles.heroTitle}>המתכונים של סבתא</h1>
+        <p className={styles.heroSubtitle}>טעמים מהבית</p>
       </section>
 
       {/* Categories Section */}
       <section className={styles.categories}>
-        <h2 className={styles.sectionTitle}>Explore Categories</h2>
+        <h2 className={styles.sectionTitle}>גלה קטגוריות</h2>
 
         {isLoading ? (
           <div className="loading"></div>
@@ -70,7 +70,7 @@ const Home = () => {
 
         <div className={styles.viewAllWrapper}>
           <Link to="/recipes" className={styles.viewAllButton}>
-            View All Recipes
+            צפה בכל המתכונים
           </Link>
         </div>
       </section>

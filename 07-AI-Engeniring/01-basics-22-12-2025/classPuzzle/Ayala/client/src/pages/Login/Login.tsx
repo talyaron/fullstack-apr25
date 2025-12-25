@@ -34,25 +34,25 @@ const Login = () => {
   return (
     <div className={styles.loginPage}>
       <div className={styles.card}>
-        <h1 className={styles.title}>Login</h1>
-        <p className={styles.subtitle}>Welcome to Grandma Rina's Recipes</p>
+        <h1 className={styles.title}>התחברות</h1>
+        <p className={styles.subtitle}>ברוכים הבאים למתכונים של סבתא רינה</p>
 
         <form onSubmit={handleSubmit} className={styles.form}>
           <div className="form-group">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">אימייל</label>
             <input
               type="email"
               id="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="Enter email"
+              placeholder="הזן אימייל"
               required
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">סיסמה</label>
             <div className={styles.passwordWrapper}>
               <input
                 type={showPassword ? 'text' : 'password'}
@@ -60,14 +60,14 @@ const Login = () => {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                placeholder="Enter password"
+                placeholder="הזן סיסמה"
                 required
               />
               <button
                 type="button"
                 className={`btn-icon ${styles.eyeButton}`}
                 onClick={() => setShowPassword(!showPassword)}
-                aria-label={showPassword ? 'Hide password' : 'Show password'}
+                aria-label={showPassword ? 'הסתר סיסמה' : 'הצג סיסמה'}
               >
                 {showPassword ? (
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
@@ -86,12 +86,12 @@ const Login = () => {
           {error && <p className="error-message">{error}</p>}
 
           <button type="submit" className="btn btn-primary" disabled={isLoading}>
-            {isLoading ? 'Logging in...' : 'Login'}
+            {isLoading ? 'מתחבר...' : 'התחברות'}
           </button>
         </form>
 
         <p className={styles.registerLink}>
-          Don't have an account? <Link to="/register">Register now</Link>
+          אין לך חשבון? <Link to="/register">הירשם עכשיו</Link>
         </p>
       </div>
     </div>

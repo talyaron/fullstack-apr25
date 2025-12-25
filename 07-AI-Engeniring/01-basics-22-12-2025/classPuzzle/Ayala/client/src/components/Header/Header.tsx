@@ -47,8 +47,8 @@ const Header = () => {
       <div className={styles.container}>
         {/* Left - Logo */}
         <Link to="/" className={styles.logo} onClick={handleLogoClick}>
-          <img src={logoSVG} alt="Grandma's Recipes" />
-          <span className={styles.logoName}>  Grandma's<br/>Recipes</span>
+          <img src={logoSVG} alt="המתכונים של סבתא" />
+          <span className={styles.logoName}>המתכונים<br/>של סבתא</span>
 
         </Link>
 
@@ -56,7 +56,7 @@ const Header = () => {
         <form className={styles.searchBar} onSubmit={handleSearch}>
           <input
             type="text"
-            placeholder="Search recipes..."
+            placeholder="חיפוש מתכונים..."
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
             className={styles.searchInput}
@@ -82,9 +82,9 @@ const Header = () => {
               <div className={styles.userMenu}>
                 {user ? (
                   <>
-                    <div className={styles.userInfo}>Hello, {user.fullName}</div>
+                    <div className={styles.userInfo}>שלום, {user.fullName}</div>
                     <button onClick={handleLogout} className={styles.menuItem}>
-                      Logout
+                      התנתקות
                     </button>
                   </>
                 ) : (
@@ -94,14 +94,14 @@ const Header = () => {
                       className={styles.menuItem}
                       onClick={() => setShowUserMenu(false)}
                     >
-                      Login
+                      התחברות
                     </Link>
                     <Link
                       to="/register"
                       className={styles.menuItem}
                       onClick={() => setShowUserMenu(false)}
                     >
-                      Register
+                      הרשמה
                     </Link>
                   </>
                 )}
@@ -119,7 +119,7 @@ const Header = () => {
             className={styles.actionButton}
             onClick={() => setLang(prev => prev === 'he' ? 'en' : 'he')}
             aria-label="Toggle language"
-            title={lang === 'he' ? 'Switch to English' : 'Switch to Hebrew'}
+            title={lang === 'he' ? 'עבור לאנגלית' : 'עבור לעברית'}
           >
             <img src={languageIcon} alt="Language" />
           </button>
