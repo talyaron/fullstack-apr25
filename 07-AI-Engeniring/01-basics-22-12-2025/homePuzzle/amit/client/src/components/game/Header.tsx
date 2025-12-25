@@ -1,12 +1,23 @@
 import { useState } from 'react';
-import { useAppSelector } from '../../store/hooks';
-import { FaCog } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import { useAppSelector, useAppDispatch } from '../../store/hooks';
+import { logout } from '../../store/gameSlice';
+import { FaCog, FaSignOutAlt } from 'react-icons/fa';
 import Modal from '../ui/Modal';
 import styles from './Header.module.scss';
 
 const Header = () => {
   const { username, score } = useAppSelector((state) => state.game);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+
+  const handleLogout = () => {
+    if (confirm('Are you sure you want to logout?')) {
+      dispatch(logout());
+      navigate('/login');
+    }
+  };
 
   return (
     <>
@@ -95,6 +106,18 @@ const Header = () => {
           <p className={styles.note}>
             Note: Settings are currently placeholders and will be functional in future updates.
           </p>
+
+          {/* Logout Button */}
+          <div className={styles.logoutSection}>
+            <button
+              className={styles.logoutButton}
+              onClick={handleLogout}
+              aria-label="Logout"
+            >
+              <FaSignOutAlt className={styles.logoutIcon} />
+              <span>Logout</span>
+            </button>
+          </div>
         </div>
       </Modal>
     </>

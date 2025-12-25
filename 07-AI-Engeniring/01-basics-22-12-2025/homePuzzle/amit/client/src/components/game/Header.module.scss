@@ -180,3 +180,45 @@
   border-left: 3px solid var(--accent-yellow);
   border-radius: var(--radius-sm);
 }
+
+// Logout Section
+.logoutSection {
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--border-default);
+}
+
+.logoutButton {
+  width: 100%;
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--bg-darker);
+  border: 2px solid var(--accent-red);
+  border-radius: var(--radius-md);
+  color: var(--accent-red);
+  font-family: var(--font-main);
+  font-size: var(--font-size-base);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+
+  &:hover {
+    background: var(--accent-red);
+    color: white;
+    box-shadow: var(--shadow-glow-red);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.logoutIcon {
+  font-size: var(--font-size-lg);
+}
