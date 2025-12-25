@@ -9,7 +9,8 @@ import searchIcon from '../../assets/search.svg';
 import userIcon from '../../assets/user.svg';
 import heartIcon from '../../assets/heart.svg';
 import plusIcon from '../../assets/plus.svg';
-import newLogoSVG from './../../assets/newlogo.svg'
+//import newLogoSVG from './../../assets/newlogo.svg'
+import logoSVG from './../../assets/pot_no_bg (4).svg'
 import languageIcon from '../../assets/language.svg';
 
 const Header = () => {
@@ -46,7 +47,9 @@ const Header = () => {
       <div className={styles.container}>
         {/* Left - Logo */}
         <Link to="/" className={styles.logo} onClick={handleLogoClick}>
-          <img src={newLogoSVG} alt="Grandma's Recipes" />
+          <img src={logoSVG} alt="Grandma's Recipes" />
+          <span className={styles.logoName}>  Grandma's<br/>Recipes</span>
+
         </Link>
 
         {/* Center - Search Bar */}
