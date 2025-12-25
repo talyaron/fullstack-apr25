@@ -162,9 +162,9 @@
   }
 
   &.active {
-    background: #FFCF90;
-    border-color: #E5A050;
-    color: #8B5A2B;
+    background: $primary-color;
+    border-color: $primary-color;
+    color: white;
   }
 
   .toggleIcon {

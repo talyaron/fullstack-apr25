@@ -10,15 +10,7 @@ import userIcon from '../../assets/user.svg';
 import heartIcon from '../../assets/heart.svg';
 import plusIcon from '../../assets/plus.svg';
 import newLogoSVG from './../../assets/newlogo.svg'
-
-// Language SVG icon component
-const LanguageIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="10"/>
-    <line x1="2" y1="12" x2="22" y2="12"/>
-    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-  </svg>
-);
+import languageIcon from '../../assets/language.svg';
 
 const Header = () => {
   const dispatch = useAppDispatch();
@@ -126,7 +118,7 @@ const Header = () => {
             aria-label="Toggle language"
             title={lang === 'he' ? 'Switch to English' : 'Switch to Hebrew'}
           >
-            <LanguageIcon />
+            <img src={languageIcon} alt="Language" />
           </button>
 
           {/* Admin - Plus (only for admin) */}

@@ -25,14 +25,14 @@ const CATEGORY_BACKGROUNDS: Record<string, string> = {
   'Appetizers': '#D0FAFD',
   'Healthy & Tasty': '#AAF968',
   'Healthy Food': '#AAF968',
-  'Desserts': '#7DF98E',
-  'Baked goods': '#E3CEB2',
-  'Salads': '#D4C7E0',
+  'Desserts': '#E3CEB2',
+  'Baked goods': '#FFCF90',
+  'Salads': '#7DF98E',
   'Soups': '#FFAAAA',
 };
 
 // Special background for Yemeni food filter
-const YEMENI_BACKGROUND = '#FFCF90';
+const YEMENI_BACKGROUND = '#D4C7E0';
 
 const Recipes = () => {
   const dispatch = useAppDispatch();
@@ -152,8 +152,11 @@ const Recipes = () => {
     >
       <h1>All Recipes</h1>
 
-      <div className={styles.filtersSection}>
-        <div className={styles.filterRow}>
+      <div className={styles.pageLayout}>
+        {/* Left Sidebar - Filters */}
+        <aside className={styles.filtersSidebar}>
+          <h3 className={styles.filtersTitle}>Filters</h3>
+
           <div className={styles.filterGroup}>
             <label>Category</label>
             <Dropdown
@@ -185,7 +188,18 @@ const Recipes = () => {
           </div>
 
           <div className={styles.filterGroup}>
-            <label>Difficulty (multi-select)</label>
+            <label>Max Time (minutes)</label>
+            <input
+              type="number"
+              name="maxTime"
+              placeholder="No limit"
+              value={filters.maxTime}
+              onChange={handleFilterChange}
+            />
+          </div>
+
+          <div className={styles.filterGroup}>
+            <label>Difficulty</label>
             <div className={styles.chipGroup}>
               {DIFFICULTY_LEVELS.map((level) => (
                 <button
@@ -200,19 +214,6 @@ const Recipes = () => {
             </div>
           </div>
 
-          <div className={styles.filterGroup}>
-            <label>Max Time (minutes)</label>
-            <input
-              type="number"
-              name="maxTime"
-              placeholder="No limit"
-              value={filters.maxTime}
-              onChange={handleFilterChange}
-            />
-          </div>
-        </div>
-
-        <div className={styles.filterRow2}>
           <div className={styles.filterGroup}>
             <label>Kosher Type</label>
             <div className={styles.kosherChips}>
@@ -236,35 +237,38 @@ const Recipes = () => {
               className={`${styles.yemeniToggle} ${filters.isYemeni ? styles.active : ''}`}
               onClick={() => setFilters(prev => ({ ...prev, isYemeni: !prev.isYemeni }))}
             >
-              {filters.isYemeni ? '✓' : '○'} Yemeni Food
+              {filters.isYemeni ? '✓' : ''} Yemeni Food
             </button>
           </div>
-        </div>
 
-        <div className={styles.filterActions}>
-          <button onClick={handleApplyFilters} className="btn btn-primary">
-            Apply Filters
-          </button>
-          <button onClick={handleClearFilters} className="btn btn-outline">
-            Clear Filters
-          </button>
-        </div>
-      </div>
-
-      {isLoading ? (
-        <div className="loading"></div>
-      ) : recipes.length === 0 ? (
-        <p className={styles.noRecipes}>No recipes found</p>
-      ) : (
-        <>
-          <p className={styles.resultsCount}>{recipes.length} recipes found</p>
-          <div className={styles.recipeGrid}>
-            {recipes.map((recipe) => (
-              <RecipeCard key={recipe._id} recipe={recipe} />
-            ))}
+          <div className={styles.filterActions}>
+            <button onClick={handleApplyFilters} className="btn btn-primary">
+              Apply Filters
+            </button>
+            <button onClick={handleClearFilters} className="btn btn-outline">
+              Clear Filters
+            </button>
           </div>
-        </>
-      )}
+        </aside>
+
+        {/* Right - Recipe Content */}
+        <main className={styles.recipeContent}>
+          {isLoading ? (
+            <div className="loading"></div>
+          ) : recipes.length === 0 ? (
+            <p className={styles.noRecipes}>No recipes found</p>
+          ) : (
+            <>
+              <p className={styles.resultsCount}>{recipes.length} recipes found</p>
+              <div className={styles.recipeGrid}>
+                {recipes.map((recipe) => (
+                  <RecipeCard key={recipe._id} recipe={recipe} />
+                ))}
+              </div>
+            </>
+          )}
+        </main>
+      </div>
     </div>
   );
 };

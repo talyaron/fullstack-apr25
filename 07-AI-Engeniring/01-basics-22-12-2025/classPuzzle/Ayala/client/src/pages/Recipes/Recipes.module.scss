@@ -1,9 +1,10 @@
 @import '../../styles/variables';
 
 .recipesPage {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: $spacing-xl $spacing-md;
+  min-height: 100vh;
 
   h1 {
     font-family: 'Montserrat Alternates', sans-serif;
@@ -26,25 +27,57 @@
   }
 }
 
-.filtersSection {
+// Main page layout with sidebar
+.pageLayout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: $spacing-xl;
+  align-items: start;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Left sidebar filters
+.filtersSidebar {
   background: white;
   padding: $spacing-lg;
   border-radius: $radius-lg;
   box-shadow: 0 2px 12px $shadow;
-  margin-bottom: $spacing-xl;
   border: 1px solid rgba($primary-color, 0.1);
-  animation: slideDown 0.4s ease-out;
+  animation: slideIn 0.4s ease-out;
+  position: sticky;
+  top: 100px;
+
+  @media (max-width: 900px) {
+    position: static;
+  }
 }
 
-@keyframes slideDown {
+@keyframes slideIn {
   from {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateX(-20px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
   }
+}
+
+.filtersTitle {
+  font-family: 'Montserrat Alternates', sans-serif;
+  color: $primary-color;
+  font-size: $font-lg;
+  margin-bottom: $spacing-lg;
+  padding-bottom: $spacing-sm;
+  border-bottom: 2px solid rgba($primary-color, 0.2);
+}
+
+// Recipe content area
+.recipeContent {
+  animation: fadeIn 0.4s ease-out;
 }
 
 .filterRow {
@@ -54,6 +87,8 @@
 }
 
 .filterGroup {
+  margin-bottom: $spacing-md;
+
   label {
     display: block;
     margin-bottom: $spacing-sm;
@@ -116,7 +151,8 @@
 
 .filterActions {
   display: flex;
-  gap: $spacing-md;
+  flex-direction: column;
+  gap: $spacing-sm;
   margin-top: $spacing-lg;
   padding-top: $spacing-lg;
   border-top: 1px solid $border-color;
@@ -124,7 +160,9 @@
   .btn {
     font-family: 'Montserrat Alternates', sans-serif;
     font-weight: 500;
-    padding: $spacing-sm $spacing-xl;
+    padding: $spacing-sm $spacing-md;
+    width: 100%;
+    text-align: center;
   }
 }
 
@@ -203,18 +241,20 @@
   width: fit-content;
 
   &:hover {
-    border-color: #FFCF90;
+    border-color: $primary-color;
+    color: $primary-color;
   }
 
   &.active {
-    background: #FFCF90;
-    border-color: #E5A050;
-    color: #8B5A2B;
+    background: $primary-color;
+    border-color: $primary-color;
+    color: white;
   }
 }
 
 .kosherChips {
   display: flex;
+  flex-wrap: wrap;
   gap: $spacing-xs;
 }
 
@@ -252,11 +292,3 @@
   }
 }
 
-.filterRow2 {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: $spacing-lg;
-  margin-top: $spacing-lg;
-  padding-top: $spacing-lg;
-  border-top: 1px dashed $border-color;
-}
