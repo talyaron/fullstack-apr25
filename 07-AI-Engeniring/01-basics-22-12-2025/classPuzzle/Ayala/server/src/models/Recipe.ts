@@ -5,6 +5,8 @@ export interface IRating {
   rating: number;
 }
 
+export type KosherType = 'Parve' | 'Dairy' | 'Meat';
+
 export interface IRecipe extends Document {
   title: string;
   category: string;
@@ -15,6 +17,8 @@ export interface IRecipe extends Document {
   ratings: IRating[];
   averageRating: number;
   imageUrl?: string;
+  isYemeni: boolean;
+  kosherType: KosherType;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -69,6 +73,15 @@ const recipeSchema = new Schema<IRecipe>({
   imageUrl: {
     type: String,
     default: ''
+  },
+  isYemeni: {
+    type: Boolean,
+    default: false
+  },
+  kosherType: {
+    type: String,
+    enum: ['Parve', 'Dairy', 'Meat'],
+    default: 'Parve'
   }
 }, {
   timestamps: true

@@ -157,3 +157,106 @@
   font-size: $font-lg;
   font-family: 'Playfair Display', Georgia, serif;
 }
+
+// Multi-select chip styles
+.chipGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-xs;
+}
+
+.chip {
+  padding: $spacing-xs $spacing-md;
+  border: 2px solid $border-color;
+  border-radius: 20px;
+  background: white;
+  color: $text-secondary;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: $font-sm;
+  font-family: 'Montserrat Alternates', sans-serif;
+
+  &:hover {
+    border-color: $primary-color;
+    color: $primary-color;
+  }
+
+  &.active {
+    background: $primary-color;
+    border-color: $primary-color;
+    color: white;
+  }
+}
+
+.yemeniToggle {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-sm $spacing-md;
+  border: 2px solid $border-color;
+  border-radius: $radius-md;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: $font-sm;
+  width: fit-content;
+
+  &:hover {
+    border-color: #FFCF90;
+  }
+
+  &.active {
+    background: #FFCF90;
+    border-color: #E5A050;
+    color: #8B5A2B;
+  }
+}
+
+.kosherChips {
+  display: flex;
+  gap: $spacing-xs;
+}
+
+.kosherChip {
+  padding: $spacing-xs $spacing-md;
+  border: 2px solid $border-color;
+  border-radius: $radius-md;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-size: $font-sm;
+
+  &:hover {
+    border-color: $primary-color;
+  }
+
+  &.parve.active {
+    background: #E8F5E9;
+    border-color: #4CAF50;
+    color: #2E7D32;
+  }
+
+  &.dairy.active {
+    background: #E3F2FD;
+    border-color: #2196F3;
+    color: #1565C0;
+  }
+
+  &.meat.active {
+    background: #FFEBEE;
+    border-color: #F44336;
+    color: #C62828;
+  }
+}
+
+.filterRow2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: $spacing-lg;
+  margin-top: $spacing-lg;
+  padding-top: $spacing-lg;
+  border-top: 1px dashed $border-color;
+}

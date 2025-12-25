@@ -11,12 +11,23 @@ import heartIcon from '../../assets/heart.svg';
 import plusIcon from '../../assets/plus.svg';
 import newLogoSVG from './../../assets/newlogo.svg'
 
+// Language SVG icon component
+const LanguageIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10"/>
+    <line x1="2" y1="12" x2="22" y2="12"/>
+    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+  </svg>
+);
+
 const Header = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { user } = useAppSelector((state) => state.auth);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [searchValue, setSearchValue] = useState('');
+  // Language state for future localization
+  const [lang, setLang] = useState<'he' | 'en'>('he');
 
   const handleLogout = async () => {
     await dispatch(logout());
@@ -43,7 +54,7 @@ const Header = () => {
       <div className={styles.container}>
         {/* Left - Logo */}
         <Link to="/" className={styles.logo} onClick={handleLogoClick}>
-          <img src={newLogoSVG} alt="Rina's Recipes" />
+          <img src={newLogoSVG} alt="Grandma's Recipes" />
         </Link>
 
         {/* Center - Search Bar */}
@@ -107,6 +118,16 @@ const Header = () => {
           <Link to="/favorites" className={styles.actionButton} aria-label="Favorites">
             <img src={heartIcon} alt="Favorites" />
           </Link>
+
+          {/* Language Toggle */}
+          <button
+            className={styles.actionButton}
+            onClick={() => setLang(prev => prev === 'he' ? 'en' : 'he')}
+            aria-label="Toggle language"
+            title={lang === 'he' ? 'Switch to English' : 'Switch to Hebrew'}
+          >
+            <LanguageIcon />
+          </button>
 
           {/* Admin - Plus (only for admin) */}
           {user?.role === 'admin' && (

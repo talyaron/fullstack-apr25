@@ -11,11 +11,11 @@ const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.section}>
-          <h3 className={styles.title}>Rina's Recipes</h3>
+          <h3 className={styles.title}>Grandma's Recipes</h3>
           <p className={styles.description}>
             Flavors from home, made with love.
           </p>
-          <img src={potLogoSVG} alt="Rina's Recipes" />
+          <img src={potLogoSVG} alt="Grandma's Recipes" />
         </div>
 
         <div className={styles.section}>
@@ -46,7 +46,7 @@ const Footer = () => {
       </div>
 
       <div className={styles.bottom}>
-        <p>&copy; {new Date().getFullYear()} Rina's Recipes. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} Grandma's Recipes. All rights reserved.</p>
       </div>
     </footer>
   );

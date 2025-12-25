@@ -4,7 +4,7 @@ import { User } from '../models/User';
 
 export const getAllRecipes = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { category, search, sortBy, minTime, maxTime, difficulty } = req.query;
+    const { category, search, sortBy, minTime, maxTime, difficulty, isYemeni, kosherType } = req.query;
 
     let query: any = {};
 
@@ -22,8 +22,31 @@ export const getAllRecipes = async (req: Request, res: Response): Promise<void> 
       if (maxTime) query.prepTime.$lte = Number(maxTime);
     }
 
+    // Support multi-select difficulty (comma-separated values)
     if (difficulty) {
-      query.difficulty = Number(difficulty);
+      const difficultyStr = difficulty as string;
+      if (difficultyStr.includes(',')) {
+        const difficulties = difficultyStr.split(',').map(d => Number(d.trim()));
+        query.difficulty = { $in: difficulties };
+      } else {
+        query.difficulty = Number(difficultyStr);
+      }
+    }
+
+    // Filter by Yemeni food
+    if (isYemeni === 'true') {
+      query.isYemeni = true;
+    }
+
+    // Filter by kosher type (can be comma-separated for multi-select)
+    if (kosherType) {
+      const kosherStr = kosherType as string;
+      if (kosherStr.includes(',')) {
+        const types = kosherStr.split(',').map(t => t.trim());
+        query.kosherType = { $in: types };
+      } else {
+        query.kosherType = kosherStr;
+      }
     }
 
     let sortOption: any = { createdAt: -1 };
@@ -59,7 +82,7 @@ export const getRecipeById = async (req: Request, res: Response): Promise<void> 
 
 export const createRecipe = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { title, category, ingredients, instructions, prepTime, difficulty, imageUrl } = req.body;
+    const { title, category, ingredients, instructions, prepTime, difficulty, imageUrl, isYemeni, kosherType } = req.body;
 
     const recipe = new Recipe({
       title,
@@ -68,7 +91,9 @@ export const createRecipe = async (req: Request, res: Response): Promise<void> =
       instructions,
       prepTime,
       difficulty,
-      imageUrl
+      imageUrl,
+      isYemeni: isYemeni || false,
+      kosherType: kosherType || 'Parve'
     });
 
     await recipe.save();
@@ -81,11 +106,11 @@ export const createRecipe = async (req: Request, res: Response): Promise<void> =
 
 export const updateRecipe = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { title, category, ingredients, instructions, prepTime, difficulty, imageUrl } = req.body;
+    const { title, category, ingredients, instructions, prepTime, difficulty, imageUrl, isYemeni, kosherType } = req.body;
 
     const recipe = await Recipe.findByIdAndUpdate(
       req.params.id,
-      { title, category, ingredients, instructions, prepTime, difficulty, imageUrl },
+      { title, category, ingredients, instructions, prepTime, difficulty, imageUrl, isYemeni, kosherType },
       { new: true, runValidators: true }
     );
 

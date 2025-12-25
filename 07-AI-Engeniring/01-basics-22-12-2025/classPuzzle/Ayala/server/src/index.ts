@@ -27,7 +27,7 @@ app.use('/api/users', userRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'OK', message: 'Savta Rina API is running' });
+  res.json({ status: 'OK', message: 'Grandma\'s Recipes API is running' });
 });
 
 // Connect to DB and start server
