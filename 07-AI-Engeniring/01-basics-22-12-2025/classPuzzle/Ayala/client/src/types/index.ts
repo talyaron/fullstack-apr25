@@ -11,6 +11,8 @@ export interface Rating {
   rating: number;
 }
 
+export type KosherType = 'Parve' | 'Dairy' | 'Meat';
+
 export interface Recipe {
   _id: string;
   title: string;
@@ -22,6 +24,8 @@ export interface Recipe {
   ratings: Rating[];
   averageRating: number;
   imageUrl?: string;
+  isYemeni: boolean;
+  kosherType: KosherType;
   createdAt: string;
   updatedAt: string;
 }
@@ -47,5 +51,7 @@ export interface RecipeFilters {
   sortBy?: 'title' | 'rating' | 'prepTime';
   minTime?: number;
   maxTime?: number;
-  difficulty?: number;
+  difficulty?: string; // Can be comma-separated for multi-select e.g. "1,2,3"
+  isYemeni?: boolean;
+  kosherType?: string; // Can be comma-separated for multi-select
 }

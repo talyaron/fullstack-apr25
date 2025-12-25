@@ -23,10 +23,20 @@
 
 .logo {
   flex-shrink: 0;
-
+display: flex;
+justify-content: center;
+align-items: center;
   img {
-    height: 4rem;
-    width: 12rem;
+    height: 3rem;
+    width: 5rem;
+
+  }
+  .logoName{
+    display: block;
+    color: $text-primary;
+    font-weight: 750;
+    font-size: 1.7rem;
+    line-height: 1;
   }
 }
 
