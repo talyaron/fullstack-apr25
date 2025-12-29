@@ -29,6 +29,7 @@ function App() {
               score: response.user.score,
               inventory: response.user.inventory,
               completedPuzzles: response.user.completedPuzzles,
+              settings: response.user.settings,
               isAuthenticated: true,
               token
             }));

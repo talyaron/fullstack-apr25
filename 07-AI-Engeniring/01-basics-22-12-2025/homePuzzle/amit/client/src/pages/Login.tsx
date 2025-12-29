@@ -50,7 +50,8 @@ const Login = () => {
           currentRoomData: roomData,
           score: response.user.score,
           inventory: response.user.inventory,
-          completedPuzzles: response.user.completedPuzzles
+          completedPuzzles: response.user.completedPuzzles,
+          settings: response.user.settings
         }));
 
         navigate('/game', { replace: true });

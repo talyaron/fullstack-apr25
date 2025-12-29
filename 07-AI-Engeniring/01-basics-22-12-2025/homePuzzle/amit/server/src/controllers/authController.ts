@@ -65,7 +65,8 @@ export const checkUser = async (req: Request, res: Response): Promise<void> => {
         currentRoom: user.currentRoom,
         score: user.score,
         inventory: user.inventory,
-        completedPuzzles: user.completedPuzzles
+        completedPuzzles: user.completedPuzzles,
+        settings: user.settings
       }
     };
 
@@ -135,7 +136,8 @@ export const getCurrentUser = async (req: AuthRequest, res: Response): Promise<v
         currentRoom: user.currentRoom,
         score: user.score,
         inventory: user.inventory,
-        completedPuzzles: user.completedPuzzles
+        completedPuzzles: user.completedPuzzles,
+        settings: user.settings
       }
     };
 

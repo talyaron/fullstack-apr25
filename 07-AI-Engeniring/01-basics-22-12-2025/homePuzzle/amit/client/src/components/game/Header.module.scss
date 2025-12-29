@@ -181,6 +181,26 @@
   border-radius: var(--radius-sm);
 }
 
+.savingIndicator {
+  font-size: var(--font-size-sm);
+  color: var(--primary-green);
+  text-align: center;
+  padding: var(--spacing-sm);
+  background: var(--bg-darker);
+  border: 1px solid var(--primary-green);
+  border-radius: var(--radius-sm);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
 // Logout Section
 .logoutSection {
   margin-top: var(--spacing-lg);

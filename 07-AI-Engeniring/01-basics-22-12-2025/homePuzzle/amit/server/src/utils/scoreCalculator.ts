@@ -26,7 +26,7 @@ export interface ScoreResult {
  * Calculate final score for a puzzle
  */
 export function calculatePuzzleScore(input: ScoreCalculationInput): ScoreResult {
-  const { basePoints, timeSpentSeconds, attemptsUsed, maxAttempts, codeLines, optimalLines } = input;
+  const { basePoints, timeSpentSeconds, attemptsUsed, codeLines, optimalLines } = input;
 
   // Base points from puzzle
   const base = basePoints;

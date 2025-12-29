@@ -6,6 +6,21 @@ export interface IUser extends Document {
   score: number;
   inventory: mongoose.Types.ObjectId[];
   completedPuzzles: string[];
+  settings: {
+    audio: {
+      soundEffects: boolean;
+      backgroundMusic: boolean;
+      volume: number;
+    };
+    display: {
+      scanlineEffect: boolean;
+      terminalFontSize: 'small' | 'medium' | 'large';
+    };
+    gameplay: {
+      showHints: boolean;
+      autoSave: boolean;
+    };
+  };
   gameStats: {
     totalPlayTime: number;
     puzzlesSolved: number;
@@ -50,6 +65,45 @@ const UserSchema: Schema = new Schema(
     completedPuzzles: [{
       type: String
     }],
+    settings: {
+      audio: {
+        soundEffects: {
+          type: Boolean,
+          default: true
+        },
+        backgroundMusic: {
+          type: Boolean,
+          default: true
+        },
+        volume: {
+          type: Number,
+          default: 70,
+          min: 0,
+          max: 100
+        }
+      },
+      display: {
+        scanlineEffect: {
+          type: Boolean,
+          default: true
+        },
+        terminalFontSize: {
+          type: String,
+          enum: ['small', 'medium', 'large'],
+          default: 'medium'
+        }
+      },
+      gameplay: {
+        showHints: {
+          type: Boolean,
+          default: true
+        },
+        autoSave: {
+          type: Boolean,
+          default: true
+        }
+      }
+    },
     gameStats: {
       totalPlayTime: {
         type: Number,

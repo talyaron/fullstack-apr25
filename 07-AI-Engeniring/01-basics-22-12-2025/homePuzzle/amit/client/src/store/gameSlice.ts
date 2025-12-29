@@ -18,6 +18,22 @@ export interface Room {
   puzzles: string[];
 }
 
+export interface Settings {
+  audio: {
+    soundEffects: boolean;
+    backgroundMusic: boolean;
+    volume: number;
+  };
+  display: {
+    scanlineEffect: boolean;
+    terminalFontSize: 'small' | 'medium' | 'large';
+  };
+  gameplay: {
+    showHints: boolean;
+    autoSave: boolean;
+  };
+}
+
 export interface PlayerState {
   id: string | null;
   username: string | null;
@@ -27,6 +43,7 @@ export interface PlayerState {
   score: number;
   inventory: Item[];
   completedPuzzles: string[];
+  settings: Settings;
   isAuthenticated: boolean;
   token: string | null;
 }
@@ -40,6 +57,21 @@ const initialState: PlayerState = {
   score: 0,
   inventory: [],
   completedPuzzles: [],
+  settings: {
+    audio: {
+      soundEffects: true,
+      backgroundMusic: true,
+      volume: 70
+    },
+    display: {
+      scanlineEffect: true,
+      terminalFontSize: 'medium'
+    },
+    gameplay: {
+      showHints: true,
+      autoSave: true
+    }
+  },
   isAuthenticated: false,
   token: localStorage.getItem('stationZeroToken') || null
 };
@@ -97,6 +129,18 @@ const gameSlice = createSlice({
       if (!state.discoveredRooms.find(r => r._id === action.payload._id)) {
         state.discoveredRooms.push(action.payload);
       }
+    },
+    updateSettings: (state, action: PayloadAction<Partial<Settings>>) => {
+      state.settings = { ...state.settings, ...action.payload };
+    },
+    updateAudioSettings: (state, action: PayloadAction<Partial<Settings['audio']>>) => {
+      state.settings.audio = { ...state.settings.audio, ...action.payload };
+    },
+    updateDisplaySettings: (state, action: PayloadAction<Partial<Settings['display']>>) => {
+      state.settings.display = { ...state.settings.display, ...action.payload };
+    },
+    updateGameplaySettings: (state, action: PayloadAction<Partial<Settings['gameplay']>>) => {
+      state.settings.gameplay = { ...state.settings.gameplay, ...action.payload };
     }
   }
 });
@@ -111,7 +155,11 @@ export const {
   addCompletedPuzzle,
   updateScore,
   resetGame,
-  setCurrentRoomData
+  setCurrentRoomData,
+  updateSettings,
+  updateAudioSettings,
+  updateDisplaySettings,
+  updateGameplaySettings
 } = gameSlice.actions;
 
 export default gameSlice.reducer;

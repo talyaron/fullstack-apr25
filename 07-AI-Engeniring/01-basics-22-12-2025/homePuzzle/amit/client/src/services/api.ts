@@ -75,6 +75,17 @@ class ApiService {
     return response.data;
   }
 
+  // Settings API methods
+  async getSettings() {
+    const response = await this.api.get('/settings');
+    return response.data;
+  }
+
+  async updateSettings(settings: any) {
+    const response = await this.api.put('/settings', { settings });
+    return response.data;
+  }
+
   async get(url: string, config?: AxiosRequestConfig) {
     const response = await this.api.get(url, config);
     return response.data;

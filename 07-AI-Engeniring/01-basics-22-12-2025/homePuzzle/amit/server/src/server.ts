@@ -6,6 +6,7 @@ import authRoutes from './routes/authRoutes';
 import roomRoutes from './routes/roomRoutes';
 import puzzleRoutes from './routes/puzzleRoutes';
 import leaderboardRoutes from './routes/leaderboardRoutes';
+import settingsRoutes from './routes/settingsRoutes';
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/rooms', roomRoutes);
 app.use('/api/puzzles', puzzleRoutes);
 app.use('/api/leaderboard', leaderboardRoutes);
+app.use('/api/settings', settingsRoutes);
 
 app.get('/api/health', (_, res: Response) => {
   res.status(200).json({
