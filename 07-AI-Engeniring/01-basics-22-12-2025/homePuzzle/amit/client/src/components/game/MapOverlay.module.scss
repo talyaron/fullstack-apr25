@@ -36,7 +36,8 @@
 }
 
 .mapContent {
-  min-height: 300px;
+  min-height: 400px;
+  padding: var(--spacing-lg);
 }
 
 .mapGrid {
@@ -82,17 +83,29 @@
   letter-spacing: 0.1em;
 }
 
-.noRooms {
-  text-align: center;
-  padding: var(--spacing-3xl);
+/* Empty state when no rooms are discovered */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  width: 100%;
+}
+
+.emptyMessage {
   color: var(--text-muted);
+  font-size: var(--font-size-lg);
+  margin: 0 0 var(--spacing-md) 0;
+  text-align: center;
+  width: 100%;
+}
 
-  p {
-    margin-bottom: var(--spacing-md);
-  }
-
-  .hint {
-    color: var(--text-terminal);
-    font-style: italic;
-  }
+.emptyHint {
+  color: var(--text-terminal);
+  font-size: var(--font-size-base);
+  font-style: italic;
+  margin: 0;
+  text-align: center;
+  width: 100%;
 }

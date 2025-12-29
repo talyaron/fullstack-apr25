@@ -8,6 +8,8 @@ const MapOverlay = () => {
   const [isMapOpen, setIsMapOpen] = useState(false);
   const { discoveredRooms } = useAppSelector((state) => state.game);
 
+  const hasDiscoveredRooms = discoveredRooms && discoveredRooms.length > 0;
+
   return (
     <>
       <button
@@ -26,9 +28,9 @@ const MapOverlay = () => {
         width="800px"
       >
         <div className={styles.mapContent}>
-          <div className={styles.mapGrid}>
-            {discoveredRooms && discoveredRooms.length > 0 ? (
-              discoveredRooms.map((room) => (
+          {hasDiscoveredRooms ? (
+            <div className={styles.mapGrid}>
+              {discoveredRooms.map((room) => (
                 <div key={room._id} className={styles.mapRoom}>
                   <div className={styles.roomIcon}>📍</div>
                   <div className={styles.roomInfo}>
@@ -36,14 +38,14 @@ const MapOverlay = () => {
                     <div className={styles.roomStatus}>Discovered</div>
                   </div>
                 </div>
-              ))
-            ) : (
-              <div className={styles.noRooms}>
-                <p>No rooms discovered yet.</p>
-                <p className={styles.hint}>Start exploring to map the station!</p>
-              </div>
-            )}
-          </div>
+              ))}
+            </div>
+          ) : (
+            <div className={styles.emptyState}>
+              <p className={styles.emptyMessage}>No rooms discovered yet.</p>
+              <p className={styles.emptyHint}>Start exploring to map the station!</p>
+            </div>
+          )}
         </div>
       </Modal>
     </>

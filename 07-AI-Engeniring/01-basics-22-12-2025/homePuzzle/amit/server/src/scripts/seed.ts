@@ -40,11 +40,9 @@ You need to repair the terminal to access the station's systems and find out wha
     // Create Control Room (Room 2)
     const controlRoom = await Room.create({
       title: 'Main Control Room',
-      description: `The heart of Station Zero. Massive screens display star charts and system diagnostics. Most are offline.
-
-A captain's log plays on loop: "Day 47... the crew is showing signs of... [STATIC]... we can't trust..."
-
-The main computer needs authentication to restore full systems.`,
+      description: `The heart of Station Zero. Massive screens display star charts and system diagnostics. Most are offline.A captain's log plays on loop: "Day 47...
+      the crew is showing signs of... [STATIC]... we can't trust..."
+      The main computer needs authentication to restore full systems.`,
       imageAsset: 'control-room.jpg',
       connections: {
         south: initChamber._id.toString()
@@ -147,16 +145,12 @@ A personal log reveals the truth about Station Zero's mission...`,
     const puzzle1 = await Puzzle.create({
       title: 'Terminal Repair Protocol',
       problemDescription: `The terminal's boot sequence is corrupted. You need to write a function that validates system checksums.
-
-Write a function called 'validateChecksum' that takes an array of numbers and returns true if the sum of all numbers equals the last number in the array, false otherwise.
-
-Example:
-validateChecksum([1, 2, 3, 6]) → true (1+2+3 = 6)
-validateChecksum([5, 10, 15, 29]) → false (5+10+15 ≠ 29)`,
+      Write a function called 'validateChecksum' that takes an array of numbers and returns true if the sum of all numbers equals the last number in the array, false otherwise.
+      Example:
+      validateChecksum([1, 2, 3, 6]) → true (1+2+3 = 6)
+      validateChecksum([5, 10, 15, 29]) → false (5+10+15 ≠ 29)`,
       starterCode: `function validateChecksum(numbers: number[]): boolean {
-  // Your code here
-
-}`,
+      // Your code here }`,
       functionName: 'validateChecksum',
       testCases: [
         {
@@ -202,16 +196,13 @@ validateChecksum([5, 10, 15, 29]) → false (5+10+15 ≠ 29)`,
     const puzzle2 = await Puzzle.create({
       title: 'Authentication Override',
       problemDescription: `The control system needs password validation. Passwords must meet security requirements.
-
-Write a function called 'isValidPassword' that returns true if:
-- Length is at least 8 characters
-- Contains at least one uppercase letter
-- Contains at least one number
-
-Return false otherwise.`,
+      Write a function called 'isValidPassword' that returns true if:
+      - Length is at least 8 characters
+      - Contains at least one uppercase letter
+      - Contains at least one number
+      Return false otherwise.`,
       starterCode: `function isValidPassword(password: string): boolean {
-  // Your code here
-
+      // Your code here
 }`,
       functionName: 'isValidPassword',
       testCases: [
@@ -263,14 +254,11 @@ Return false otherwise.`,
     const puzzle3 = await Puzzle.create({
       title: 'Reactor Power Balance',
       problemDescription: `The reactor needs balanced power distribution across all sectors.
-
-Write a function called 'balancePower' that takes an array of power levels and returns an array where each element is the average of all elements.
-
-Example: balancePower([10, 20, 30]) → [20, 20, 20]`,
+      Write a function called 'balancePower' that takes an array of power levels and returns an array where each element is the average of all elements.
+      Example: balancePower([10, 20, 30]) → [20, 20, 20]`,
       starterCode: `function balancePower(levels: number[]): number[] {
-  // Your code here
-
-}`,
+      // Your code here
+      }`,
       functionName: 'balancePower',
       testCases: [
         {

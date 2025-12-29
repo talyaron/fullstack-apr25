@@ -11,26 +11,40 @@ export const useTypewriter = ({ text, speed = 30, delay = 0 }: UseTypewriterOpti
   const [isComplete, setIsComplete] = useState(false);
 
   useEffect(() => {
+    if (!text) return;
+
     setDisplayText('');
     setIsComplete(false);
+
+    let interval: ReturnType<typeof setInterval> | undefined;
+    let isCancelled = false;
 
     const timeout = setTimeout(() => {
       let index = 0;
 
-      const interval = setInterval(() => {
-        if (index < text.length) {
-          setDisplayText((prev) => prev + text[index]);
-          index++;
-        } else {
+      interval = setInterval(() => {
+        if (isCancelled) {
+          clearInterval(interval);
+          return;
+        }
+
+        if (index >= text.length) {
           setIsComplete(true);
           clearInterval(interval);
+          return;
         }
-      }, speed);
 
-      return () => clearInterval(interval);
+        const char = text.charAt(index);
+        setDisplayText((prev) => prev + char);
+        index++;
+      }, speed);
     }, delay);
 
-    return () => clearTimeout(timeout);
+    return () => {
+      isCancelled = true;
+      clearTimeout(timeout);
+      if (interval) clearInterval(interval);
+    };
   }, [text, speed, delay]);
 
   return { displayText, isComplete };

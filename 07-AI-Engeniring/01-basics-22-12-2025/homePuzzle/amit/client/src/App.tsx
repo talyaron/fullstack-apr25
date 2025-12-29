@@ -13,7 +13,6 @@ function App() {
   useEffect(() => {
     const checkAuth = async () => {
       const token = localStorage.getItem('stationZeroToken');
-      console.log('[APP] Checking auth on mount. Token:', token ? 'exists' : 'missing');
 
       if (token) {
         try {
@@ -21,7 +20,6 @@ function App() {
 
           if (response.success) {
             const roomData = response.user.currentRoom;
-            console.log('[APP] Session restored. Room:', roomData?.title || 'No room');
 
             dispatch(setPlayer({
               id: response.user.id,

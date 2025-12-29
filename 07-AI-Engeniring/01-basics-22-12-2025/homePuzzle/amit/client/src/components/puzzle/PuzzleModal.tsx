@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Editor from '@monaco-editor/react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaTimes, FaCode, FaLightbulb, FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
+import { FaCode, FaLightbulb, FaCheckCircle, FaTimesCircle, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import Modal from '../ui/Modal';
 import styles from './PuzzleModal.module.scss';
 
@@ -113,6 +113,12 @@ const PuzzleModal = ({ isOpen, onClose, puzzle, onSubmit }: PuzzleModalProps) =>
     }
   };
 
+  const showPreviousHint = () => {
+    if (currentHintIndex > 0) {
+      setCurrentHintIndex(prev => prev - 1);
+    }
+  };
+
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
       case 'easy': return 'var(--accent-green)';
@@ -124,7 +130,7 @@ const PuzzleModal = ({ isOpen, onClose, puzzle, onSubmit }: PuzzleModalProps) =>
 
   return (
     <>
-      <Modal isOpen={isOpen} onClose={onClose} title={puzzle.title}>
+      <Modal isOpen={isOpen} onClose={onClose} title={puzzle.title} width="4000px">
         <motion.div
           className={styles.puzzleContainer}
           animate={showFailure ? { x: [-10, 10, -10, 10, 0] } : {}}
@@ -160,21 +166,54 @@ const PuzzleModal = ({ isOpen, onClose, puzzle, onSubmit }: PuzzleModalProps) =>
 
               {puzzle.hints && puzzle.hints.length > 0 && (
                 <div className={styles.hints}>
-                  <button
-                    className={styles.hintButton}
-                    onClick={showNextHint}
-                    disabled={currentHintIndex >= puzzle.hints.length - 1}
-                  >
-                    <FaLightbulb /> {currentHintIndex === -1 ? 'Show Hint' : 'Next Hint'}
-                  </button>
+                  <div className={styles.hintsHeader}>
+                    <span className={styles.hintsTitle}>
+                      <FaLightbulb /> Hints
+                    </span>
+                    {currentHintIndex >= 0 && (
+                      <span className={styles.hintCounter}>
+                        {currentHintIndex + 1} / {puzzle.hints.length}
+                      </span>
+                    )}
+                  </div>
 
-                  <AnimatePresence>
+                  {currentHintIndex === -1 ? (
+                    <button
+                      className={styles.hintButton}
+                      onClick={showNextHint}
+                    >
+                      <FaLightbulb /> Show First Hint
+                    </button>
+                  ) : (
+                    <div className={styles.hintNavigation}>
+                      <button
+                        className={styles.navButton}
+                        onClick={showPreviousHint}
+                        disabled={currentHintIndex === 0}
+                        title="Previous hint"
+                      >
+                        <FaChevronLeft />
+                      </button>
+                      <button
+                        className={styles.navButton}
+                        onClick={showNextHint}
+                        disabled={currentHintIndex >= puzzle.hints.length - 1}
+                        title="Next hint"
+                      >
+                        <FaChevronRight />
+                      </button>
+                    </div>
+                  )}
+
+                  <AnimatePresence mode="wait">
                     {currentHintIndex >= 0 && (
                       <motion.div
+                        key={currentHintIndex}
                         className={styles.hintText}
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
+                        initial={{ opacity: 0, x: 10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -10 }}
+                        transition={{ duration: 0.2 }}
                       >
                         💡 {puzzle.hints[currentHintIndex]}
                       </motion.div>
