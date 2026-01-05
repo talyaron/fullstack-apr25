@@ -52,8 +52,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Handle file ---
     function handleFile(file) {
-        if (!file.type.startsWith('image/')) {
-            statusText.textContent = 'Please upload an image file!';
+        const supportedTypes = ['image/png', 'image/jpeg', 'image/gif', 'image/webp'];
+        if (!supportedTypes.includes(file.type)) {
+            statusText.textContent = 'Please upload PNG, JPEG, GIF, or WebP only!';
             return;
         }
 

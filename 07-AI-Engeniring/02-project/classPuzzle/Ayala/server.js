@@ -29,6 +29,13 @@ app.post('/api/guess', async (req, res) => {
             return res.status(400).json({ error: 'No image provided' });
         }
 
+        // Validate image format
+        const supportedFormats = ['image/png', 'image/jpeg', 'image/gif', 'image/webp'];
+        const formatMatch = image.match(/^data:(image\/\w+);base64,/);
+        if (!formatMatch || !supportedFormats.includes(formatMatch[1])) {
+            return res.status(400).json({ error: 'Unsupported image format. Use PNG, JPEG, GIF, or WebP.' });
+        }
+
         const response = await openai.chat.completions.create({
             model: "gpt-4o",
             messages: [
