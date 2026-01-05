@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Guess AI</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="game-container">
+        <header>
+            <h1>Image Guess AI</h1>
+            <p>Drop an image or click to upload, and let the AI guess what it is!</p>
+        </header>
+
+        <div class="drop-zone" id="dropZone">
+            <div class="drop-zone-content" id="dropContent">
+                <p class="drop-icon">📷</p>
+                <p>Drag & drop an image here</p>
+                <p class="or-text">or</p>
+                <button class="btn btn-secondary" id="browseBtn">Browse Files</button>
+                <input type="file" id="fileInput" accept="image/*" hidden>
+            </div>
+            <img id="previewImage" class="preview-image" hidden>
+        </div>
+
+        <div class="controls">
+            <button id="clearBtn" class="btn btn-secondary">Clear</button>
+            <button id="submitBtn" class="btn btn-primary">Submit to AI</button>
+        </div>
+
+        <div class="result-area">
+            <p id="statusText">Ready to guess...</p>
+            <h2 id="guessResult"></h2>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
