@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: '18'
       - name: Install & build client
-        working-directory: 05-React/08-first-project/zina/client/my-react-app
+        working-directory: 08-tests/example/client
         run: |
           npm ci
           npm run build
