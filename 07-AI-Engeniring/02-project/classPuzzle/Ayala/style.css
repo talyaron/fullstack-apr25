@@ -7,7 +7,7 @@
     --accent-hover: #2563eb; /* Blue 600 */
     --danger-color: #ef4444; /* Red 500 */
     --danger-hover: #dc2626; /* Red 600 */
-    --canvas-bg: #ffffff;
+    --canvas-bg: #cc2a2a;
     --border-radius: 16px;
     --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
 }
