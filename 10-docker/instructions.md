@@ -101,6 +101,91 @@ docker rmi react-example-app
 
 ---
 
+## Troubleshooting
+
+### Error: "500 Internal Server Error for API route"
+
+```
+ERROR: request returned 500 Internal Server Error for API route and version
+http://%2F%2F.%2Fpipe%2FdockerDesktopLinuxEngine/_ping
+```
+
+**Cause:** Docker Desktop is not running.
+
+**Solution:**
+1. **Windows:** Open Docker Desktop from the Start menu
+2. **Mac:** Open Docker Desktop from Applications
+3. Wait for it to fully start (whale icon stops animating)
+4. Verify with: `docker ps`
+
+| Problem | Solution |
+|---------|----------|
+| Docker Desktop not installed | [Download and install](https://www.docker.com/products/docker-desktop/) |
+| Docker Desktop closed | Open it and wait for startup |
+| Docker service stopped (Windows) | Run `Start-Service docker` in PowerShell as Admin |
+| Need to restart Docker | Right-click Docker icon → Restart |
+
+---
+
+### Error: "tsc: not found"
+
+```
+sh: tsc: not found
+ERROR: failed to solve: process "/bin/sh -c npm run build" did not complete successfully
+```
+
+**Cause:** The Dockerfile used `npm ci --only=production` which skips devDependencies like TypeScript.
+
+**Solution:** Make sure line 27 in the Dockerfile says:
+```dockerfile
+RUN npm ci
+```
+
+NOT:
+```dockerfile
+RUN npm ci --only=production
+```
+
+Then rebuild:
+```bash
+docker build -t react-example-app .
+```
+
+---
+
+### Error: "container name already in use"
+
+```
+docker: Error response from daemon: Conflict. The container name "/react-app" is already in use
+```
+
+**Solution:** Remove the existing container first:
+```bash
+docker rm -f react-app
+```
+
+Then run again:
+```bash
+docker run -d -p 3000:80 --name react-app react-example-app
+```
+
+---
+
+### Error: "port is already allocated"
+
+```
+docker: Error response from daemon: Bind for 0.0.0.0:3000 failed: port is already allocated
+```
+
+**Solution:** Either stop what's using port 3000, or use a different port:
+```bash
+docker run -d -p 3001:80 --name react-app react-example-app
+```
+
+Then visit: http://localhost:3001
+
+---
+
 ## Summary
 
 That's it - no need to install Node.js or run `npm install`. Docker handles everything inside the container.
