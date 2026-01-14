@@ -105,6 +105,11 @@ export const verifyPuzzleSolution = async (req: AuthRequest, res: Response): Pro
     let executionError: string | null = null;
 
     try {
+      console.log('=== Puzzle Verification Started ===');
+      console.log('Puzzle:', puzzle.title);
+      console.log('Function name:', puzzle.functionName);
+      console.log('User code:', code);
+
       // Create a secure VM sandbox
       const vm = new VM({
         timeout: 3000, // 3 second timeout
@@ -127,14 +132,20 @@ export const verifyPuzzleSolution = async (req: AuthRequest, res: Response): Pro
         ${puzzle.functionName};
       `;
 
+      console.log('Wrapped code:', wrappedCode);
+
       // Run the code to get the function
       const userFunction = vm.run(wrappedCode);
+      console.log('Function extracted, type:', typeof userFunction);
 
       // Test each test case
       for (const testCase of puzzle.testCases) {
         try {
+          console.log('Testing:', testCase.description, 'with input:', testCase.input);
           const result = userFunction(...testCase.input);
+          console.log('Result:', result, 'Expected:', testCase.expectedOutput);
           const passed = JSON.stringify(result) === JSON.stringify(testCase.expectedOutput);
+          console.log('Passed:', passed);
 
           testResults.push({
             passed,
@@ -147,6 +158,7 @@ export const verifyPuzzleSolution = async (req: AuthRequest, res: Response): Pro
             allTestsPassed = false;
           }
         } catch (error: any) {
+          console.error('Test error:', error.message);
           testResults.push({
             passed: false,
             testCase: testCase.description,
@@ -157,6 +169,7 @@ export const verifyPuzzleSolution = async (req: AuthRequest, res: Response): Pro
           allTestsPassed = false;
         }
       }
+      console.log('All tests passed:', allTestsPassed);
     } catch (error: any) {
       executionError = error.message;
       allTestsPassed = false;

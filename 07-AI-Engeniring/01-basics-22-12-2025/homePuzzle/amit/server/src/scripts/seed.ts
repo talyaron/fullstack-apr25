@@ -149,8 +149,9 @@ A personal log reveals the truth about Station Zero's mission...`,
       Example:
       validateChecksum([1, 2, 3, 6]) → true (1+2+3 = 6)
       validateChecksum([5, 10, 15, 29]) → false (5+10+15 ≠ 29)`,
-      starterCode: `function validateChecksum(numbers: number[]): boolean {
-      // Your code here }`,
+      starterCode: `function validateChecksum(numbers) {
+  // Your code here
+}`,
       functionName: 'validateChecksum',
       testCases: [
         {
@@ -201,8 +202,8 @@ A personal log reveals the truth about Station Zero's mission...`,
       - Contains at least one uppercase letter
       - Contains at least one number
       Return false otherwise.`,
-      starterCode: `function isValidPassword(password: string): boolean {
-      // Your code here
+      starterCode: `function isValidPassword(password) {
+  // Your code here
 }`,
       functionName: 'isValidPassword',
       testCases: [
@@ -256,9 +257,9 @@ A personal log reveals the truth about Station Zero's mission...`,
       problemDescription: `The reactor needs balanced power distribution across all sectors.
       Write a function called 'balancePower' that takes an array of power levels and returns an array where each element is the average of all elements.
       Example: balancePower([10, 20, 30]) → [20, 20, 20]`,
-      starterCode: `function balancePower(levels: number[]): number[] {
-      // Your code here
-      }`,
+      starterCode: `function balancePower(levels) {
+  // Your code here
+}`,
       functionName: 'balancePower',
       testCases: [
         {

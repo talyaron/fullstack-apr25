@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  # MongoDB Database
+  mongodb:
+    image: mongo:7
+    container_name: cat-mongodb
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - cat-network
+
+  # Backend API
+  backend:
+    build: ./backend
+    container_name: cat-backend
+    ports:
+      - "5001:5000"
+    environment:
+      - PORT=5000
+      - MONGODB_URI=mongodb://mongodb:27017/catcollection
+    depends_on:
+      - mongodb
+    networks:
+      - cat-network
+
+  # Frontend React App
+  frontend:
+    build: ./frontend
+    container_name: cat-frontend
+    ports:
+      - "3001:80"
+    depends_on:
+      - backend
+    networks:
+      - cat-network
+
+networks:
+  cat-network:
+    driver: bridge
+
+volumes:
+  mongodb_data:
