@@ -27,7 +27,9 @@
       "Bash(cmd /c \"taskkill /PID 5496 /F & taskkill /PID 24220 /F\")",
       "Bash(cmd /c \"taskkill /F /PID 5496\")",
       "Bash(cmd /c \"net stop MongoDB\")",
-      "Bash(docker-compose:*)"
+      "Bash(docker-compose:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ]
   }
 }
