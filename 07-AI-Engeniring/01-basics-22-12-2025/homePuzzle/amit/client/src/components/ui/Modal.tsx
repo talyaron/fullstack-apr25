@@ -8,20 +8,32 @@ interface ModalProps {
   title: string;
   children: React.ReactNode;
   width?: string;
+  showCloseButton?: boolean;
+  closeOnEscape?: boolean;
+  closeOnBackdrop?: boolean;
 }
 
-const Modal = ({ isOpen, onClose, title, children, width = '600px' }: ModalProps) => {
+const Modal = ({
+  isOpen,
+  onClose,
+  title,
+  children,
+  width = '600px',
+  showCloseButton = true,
+  closeOnEscape = true,
+  closeOnBackdrop = true
+}: ModalProps) => {
   // Close on Escape key
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isOpen) {
+      if (e.key === 'Escape' && isOpen && closeOnEscape) {
         onClose();
       }
     };
 
     document.addEventListener('keydown', handleEscape);
     return () => document.removeEventListener('keydown', handleEscape);
-  }, [isOpen, onClose]);
+  }, [isOpen, onClose, closeOnEscape]);
 
   // Prevent body scroll when modal is open
   useEffect(() => {
@@ -45,7 +57,7 @@ const Modal = ({ isOpen, onClose, title, children, width = '600px' }: ModalProps
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={onClose}
+            onClick={closeOnBackdrop ? onClose : undefined}
           />
 
           {/* Modal Container */}
@@ -60,13 +72,15 @@ const Modal = ({ isOpen, onClose, title, children, width = '600px' }: ModalProps
               {/* Header */}
               <div className={styles.header}>
                 <h2 className={styles.title}>{title}</h2>
-                <button
-                  className={styles.closeButton}
-                  onClick={onClose}
-                  aria-label="Close modal"
-                >
-                  ✕
-                </button>
+                {showCloseButton && (
+                  <button
+                    className={styles.closeButton}
+                    onClick={onClose}
+                    aria-label="Close modal"
+                  >
+                    ✕
+                  </button>
+                )}
               </div>
 
               {/* Content */}

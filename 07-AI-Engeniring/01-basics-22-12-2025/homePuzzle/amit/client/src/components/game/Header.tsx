@@ -13,6 +13,7 @@ const Header = () => {
   const navigate = useNavigate();
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
+  const [tempSettings, setTempSettings] = useState(settings);
 
   const handleLogout = () => {
     if (confirm('Are you sure you want to logout?')) {
@@ -21,28 +22,44 @@ const Header = () => {
     }
   };
 
-  const handleSettingChange = async (category: 'audio' | 'display' | 'gameplay', key: string, value: any) => {
-    try {
-      const updatedCategory = { ...settings[category], [key]: value };
-
-      if (category === 'audio') {
-        dispatch(updateAudioSettings(updatedCategory));
-      } else if (category === 'display') {
-        dispatch(updateDisplaySettings(updatedCategory));
-      } else if (category === 'gameplay') {
-        dispatch(updateGameplaySettings(updatedCategory));
+  const handleSettingChange = (category: 'audio' | 'display' | 'gameplay', key: string, value: any) => {
+    setTempSettings({
+      ...tempSettings,
+      [category]: {
+        ...tempSettings[category],
+        [key]: value
       }
+    });
+  };
 
+  const handleApply = async () => {
+    try {
       setIsSaving(true);
-      await apiService.updateSettings({
-        ...settings,
-        [category]: updatedCategory
-      });
+
+      // Update Redux store
+      dispatch(updateAudioSettings(tempSettings.audio));
+      dispatch(updateDisplaySettings(tempSettings.display));
+      dispatch(updateGameplaySettings(tempSettings.gameplay));
+
+      // Save to server
+      await apiService.updateSettings(tempSettings);
+
       setIsSaving(false);
+      setIsSettingsOpen(false);
     } catch (error) {
       console.error('Error updating settings:', error);
       setIsSaving(false);
     }
+  };
+
+  const handleCancel = () => {
+    setTempSettings(settings);
+    setIsSettingsOpen(false);
+  };
+
+  const handleOpenSettings = () => {
+    setTempSettings(settings);
+    setIsSettingsOpen(true);
   };
 
   return (
@@ -69,7 +86,7 @@ const Header = () => {
 
           <button
             className={styles.settingsButton}
-            onClick={() => setIsSettingsOpen(true)}
+            onClick={handleOpenSettings}
             aria-label="Open settings"
           >
             <FaCog className={styles.icon} />
@@ -80,9 +97,12 @@ const Header = () => {
       {/* Settings Modal */}
       <Modal
         isOpen={isSettingsOpen}
-        onClose={() => setIsSettingsOpen(false)}
+        onClose={handleCancel}
         title="Settings"
         width="700px"
+        showCloseButton={false}
+        closeOnEscape={false}
+        closeOnBackdrop={false}
       >
         <div className={styles.settingsContent}>
           <div className={styles.settingSection}>
@@ -91,7 +111,7 @@ const Header = () => {
               <label>Sound Effects</label>
               <input
                 type="checkbox"
-                checked={settings.audio.soundEffects}
+                checked={tempSettings.audio.soundEffects}
                 onChange={(e) => handleSettingChange('audio', 'soundEffects', e.target.checked)}
               />
             </div>
@@ -99,17 +119,17 @@ const Header = () => {
               <label>Background Music</label>
               <input
                 type="checkbox"
-                checked={settings.audio.backgroundMusic}
+                checked={tempSettings.audio.backgroundMusic}
                 onChange={(e) => handleSettingChange('audio', 'backgroundMusic', e.target.checked)}
               />
             </div>
             <div className={styles.settingItem}>
-              <label>Volume: {settings.audio.volume}%</label>
+              <label>Volume: {tempSettings.audio.volume}%</label>
               <input
                 type="range"
                 min="0"
                 max="100"
-                value={settings.audio.volume}
+                value={tempSettings.audio.volume}
                 onChange={(e) => handleSettingChange('audio', 'volume', parseInt(e.target.value))}
               />
             </div>
@@ -121,14 +141,14 @@ const Header = () => {
               <label>Scanline Effect</label>
               <input
                 type="checkbox"
-                checked={settings.display.scanlineEffect}
+                checked={tempSettings.display.scanlineEffect}
                 onChange={(e) => handleSettingChange('display', 'scanlineEffect', e.target.checked)}
               />
             </div>
             <div className={styles.settingItem}>
               <label>Terminal Font Size</label>
               <select
-                value={settings.display.terminalFontSize}
+                value={tempSettings.display.terminalFontSize}
                 onChange={(e) => handleSettingChange('display', 'terminalFontSize', e.target.value)}
               >
                 <option value="small">Small</option>
@@ -144,7 +164,7 @@ const Header = () => {
               <label>Show Hints</label>
               <input
                 type="checkbox"
-                checked={settings.gameplay.showHints}
+                checked={tempSettings.gameplay.showHints}
                 onChange={(e) => handleSettingChange('gameplay', 'showHints', e.target.checked)}
               />
             </div>
@@ -152,15 +172,29 @@ const Header = () => {
               <label>Auto-save</label>
               <input
                 type="checkbox"
-                checked={settings.gameplay.autoSave}
+                checked={tempSettings.gameplay.autoSave}
                 onChange={(e) => handleSettingChange('gameplay', 'autoSave', e.target.checked)}
               />
             </div>
           </div>
 
-          {isSaving && (
-            <p className={styles.savingIndicator}>Saving settings...</p>
-          )}
+          {/* Action Buttons */}
+          <div className={styles.actionButtons}>
+            <button
+              className={styles.cancelButton}
+              onClick={handleCancel}
+              disabled={isSaving}
+            >
+              Cancel
+            </button>
+            <button
+              className={styles.applyButton}
+              onClick={handleApply}
+              disabled={isSaving}
+            >
+              {isSaving ? 'Saving...' : 'Apply'}
+            </button>
+          </div>
 
           {/* Logout Button */}
           <div className={styles.logoutSection}>

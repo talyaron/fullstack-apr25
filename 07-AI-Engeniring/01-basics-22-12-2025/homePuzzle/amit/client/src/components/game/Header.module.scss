@@ -242,3 +242,60 @@
 .logoutIcon {
   font-size: var(--font-size-lg);
 }
+
+// Action Buttons
+.actionButtons {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--border-default);
+}
+
+.cancelButton,
+.applyButton {
+  flex: 1;
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-radius: var(--radius-md);
+  font-family: var(--font-main);
+  font-size: var(--font-size-base);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all var(--transition-base);
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.cancelButton {
+  background: var(--bg-darker);
+  border: 2px solid var(--border-default);
+  color: var(--text-secondary);
+
+  &:hover:not(:disabled) {
+    border-color: var(--accent-red);
+    color: var(--accent-red);
+    box-shadow: 0 0 10px rgba(255, 107, 107, 0.3);
+  }
+}
+
+.applyButton {
+  background: var(--primary-green);
+  border: 2px solid var(--primary-green);
+  color: var(--bg-darker);
+
+  &:hover:not(:disabled) {
+    background: var(--primary-green-light);
+    border-color: var(--primary-green-light);
+    box-shadow: var(--shadow-glow-green);
+    transform: translateY(-2px);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+}
