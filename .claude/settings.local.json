@@ -23,13 +23,7 @@
       "Bash(npx ts-node:*)",
       "Bash(xargs cat:*)",
       "Bash(timeout:*)",
-      "Bash(cmd /c \"taskkill /PID 10128 /F\")",
-      "Bash(cmd /c \"taskkill /PID 5496 /F & taskkill /PID 24220 /F\")",
-      "Bash(cmd /c \"taskkill /F /PID 5496\")",
-      "Bash(cmd /c \"net stop MongoDB\")",
-      "Bash(docker-compose:*)",
-      "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(tree:*)"
     ]
   }
 }
