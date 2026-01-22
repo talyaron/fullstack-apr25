@@ -1,6 +1,23 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView, SafeAreaView } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, SafeAreaView, FlatList } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import { ItemCard } from '@/components/ItemCard/ItemCard';
+
+
+const data = [
+  { id: 1, title: 'Card One', description: 'This is the first card description.' },
+  { id: 2, title: 'Card Two', description: 'This is the second card description.' },
+  { id: 3, title: 'Card Three', description: 'This is the third card description.' },
+  { id: 4, title: 'Card Four', description: 'This is the fourth card description.' },
+  { id: 5, title: 'Card Five', description: 'This is the fifth card description.' },
+  { id: 6, title: 'Card Six', description: 'This is the sixth card description.' },
+  { id: 7, title: 'Card Seven', description: 'This is the seventh card description.' },
+  { id: 8, title: 'Card Eight', description: 'This is the eighth card description.' },
+  { id: 9, title: 'Card Nine', description: 'This is the ninth card description.' },
+  { id: 10, title: 'Card Ten', description: 'This is the tenth card description.' },
+  { id: 11, title: 'Card Eleven', description: 'This is the eleventh card description.' },
+  { id: 12, title: 'Card Twelve', description: 'This is the twelfth card description.' },
+];
 
 export default function App() {
   const [isActive, setIsActive] = useState(false);
@@ -12,35 +29,16 @@ export default function App() {
           <Text style={styles.title}>React Native Styling</Text>
           <Text style={styles.subtitle}>Learning Example</Text>
         </View>
-      <ScrollView style={styles.container}>
         {/* Header Section */}
        
+       <FlatList
+        data={data}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => <ItemCard title={item.title} description={item.description} />}
+      />
 
-        {/* Card with shadow */}
-        <View style={styles.card}>
-          <Text style={styles.cardTitle}>Flexbox Layout</Text>
-          <Text style={styles.cardText}>
-            This card uses flexbox, padding, borders, and shadows
-          </Text>
-        </View>
-          <View style={styles.card}>
-          <Text style={styles.cardTitle}>Flexbox Layout</Text>
-          <Text style={styles.cardText}>
-            This card uses flexbox, padding, borders, and shadows
-          </Text>
-        </View>
-          <View style={styles.card}>
-          <Text style={styles.cardTitle}>Flexbox Layout</Text>
-          <Text style={styles.cardText}>
-            This card uses flexbox, padding, borders, and shadows
-          </Text>
-        </View>
-          <View style={styles.card}>
-          <Text style={styles.cardTitle}>Flexbox Layout</Text>
-          <Text style={styles.cardText}>
-            This card uses flexbox, padding, borders, and shadows
-          </Text>
-        </View>
+
+      
 
         {/* Row of colored boxes */}
         <View style={styles.boxContainer}>
@@ -70,7 +68,7 @@ export default function App() {
           <Text style={styles.infoText}>• Padding & margins</Text>
           <Text style={styles.infoText}>• Conditional styling</Text>
         </View>
-      </ScrollView>
+    
     </SafeAreaView>
   );
 }
@@ -85,7 +83,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5F5F5',
   },
   header: {
-    backgroundColor: '#6C63FF',
+    backgroundColor: '#ffb663',
     padding: 30,
     paddingTop: 20,
     alignItems: 'center',
