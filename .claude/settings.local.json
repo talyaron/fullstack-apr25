@@ -23,7 +23,18 @@
       "Bash(npx ts-node:*)",
       "Bash(xargs cat:*)",
       "Bash(timeout:*)",
-      "Bash(tree:*)"
+      "Bash(tree:*)",
+      "Bash(npx create-expo-app@latest . --template blank)",
+      "Bash(npx expo start:*)",
+      "Bash(powershell -Command:*)",
+      "Bash(powershell -NoProfile -Command \"Remove-Item -Path ''C:\\\\Programming\\\\INT.April25\\\\Github\\\\Repositories\\\\fullstack-apr25\\\\11-React-Native\\\\classPuzzle\\\\Ariel\\\\client'' -Recurse -Force\")",
+      "Bash(powershell -NoProfile -Command \"Get-Process | Where-Object {$_Path -like ''*client*''} | Select-Object Name, Id, Path\")",
+      "Bash(cmd //c \"rmdir /s /q \"\"C:\\\\Programming\\\\INT.April25\\\\Github\\\\Repositories\\\\fullstack-apr25\\\\11-React-Native\\\\classPuzzle\\\\Ariel\\\\client\"\"\")",
+      "Bash(cmd /c \"rmdir /s /q C:\\\\Programming\\\\INT.April25\\\\Github\\\\Repositories\\\\fullstack-apr25\\\\11-React-Native\\\\classPuzzle\\\\Ariel\\\\client\")",
+      "Bash(cmd /c \"taskkill /F /IM node.exe\")",
+      "Bash(adb kill-server:*)",
+      "Bash(adb start-server:*)",
+      "Bash(adb devices:*)"
     ]
   }
 }
