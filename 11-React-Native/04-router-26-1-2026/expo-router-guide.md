@@ -103,6 +103,7 @@ export default function HomeScreen() {
       </Link>
       
       {/* With styles */}
+      {/* Creates a navigational link component that renders its child element as a clickable link to the "/settings" route. The `asChild` prop merges the Link's functionality with the child component instead of wrapping it in an additional element, useful for maintaining proper semantic HTML structure and avoiding nested interactive elements. */}
       <Link href="/settings" asChild>
         <Pressable>
           <Text>Open Settings</Text>
