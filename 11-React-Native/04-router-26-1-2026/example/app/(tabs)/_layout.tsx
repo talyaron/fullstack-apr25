@@ -34,7 +34,7 @@ export default function TabLayout() {
       />
 
       {/* Tab 3: Profile - matches profile.tsx */}
-      {/* <Tabs.Screen
+      <Tabs.Screen
         name="profile"
         options={{
           title: 'Profile',
@@ -42,7 +42,7 @@ export default function TabLayout() {
             <Ionicons name="person" size={size} color={color} />
           ),
         }}
-      /> */}
+      />
        
     </Tabs>
   );

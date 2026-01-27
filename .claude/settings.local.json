@@ -34,7 +34,9 @@
       "Bash(cmd /c \"taskkill /F /IM node.exe\")",
       "Bash(adb kill-server:*)",
       "Bash(adb start-server:*)",
-      "Bash(adb devices:*)"
+      "Bash(adb devices:*)",
+      "Bash(adb reverse:*)",
+      "Bash(npx expo install:*)"
     ]
   }
 }
